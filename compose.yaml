@@ -1,0 +1,36 @@
+services:
+  cinevault-api:
+    build:
+      context: ../cinevault-api
+    environment:
+      DATA_FILE: /data/films.json
+    volumes:
+      - ../cinevault-api/app:/srv/cinevault/app:ro
+      - cinevault-data:/data
+    networks:
+      - interne
+    restart: unless-stopped
+
+  cinevault-web:
+    build:
+      context: ../cinevault-web
+    environment:
+      API_URL: http://cinevault-api:8000
+      SECRET_KEY: ${SECRET_KEY:?Définir une clé de session secrète et stable}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - "127.0.0.1:8080:5000"
+    volumes:
+      - ../cinevault-web/app:/srv/cinevault/app:ro
+    depends_on:
+      cinevault-api:
+        condition: service_healthy
+    networks:
+      - interne
+    restart: unless-stopped
+
+volumes:
+  cinevault-data:
+
+networks:
+  interne:

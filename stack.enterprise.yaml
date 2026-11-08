@@ -1,0 +1,152 @@
+# Deploy only after preloading and verifying the exact images on all three nodes.
+# This is separate from the historical pedagogical stack.yaml.
+version: "3.8"
+
+services:
+  cinevault-api:
+    image: ${CINEVAULT_API_IMAGE:?Verified API image required}
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    environment:
+      DATA_FILE: /data/films.json
+      ENTERPRISE_ENABLED: "true"
+      ENTERPRISE_DATA_FILE: /data/enterprise.json
+      AUTH_THROTTLE_KEY_FILE: /run/secrets/auth_throttle
+      CLIENT_CONTEXT_KEY_FILE: /run/secrets/client_context
+      CLIENT_CONTEXT_REQUIRED: "true"
+      METADATA_ENABLED: ${METADATA_ENABLED:-false}
+      METADATA_CACHE_FILE: /data/metadata-cache.json
+      WIKIMEDIA_USER_AGENT: ${WIKIMEDIA_USER_AGENT:-}
+    secrets:
+      - source: auth_throttle
+        target: auth_throttle
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+      - source: client_context
+        target: client_context
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+    volumes:
+      - cinevault-enterprise-data:/data
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 67108864
+    networks: [interne]
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.cinevault == api]
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          memory: 128M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+        window: 120s
+      update_config:
+        parallelism: 1
+        order: stop-first
+        monitor: 30s
+        failure_action: rollback
+      rollback_config:
+        parallelism: 1
+        order: stop-first
+
+  cinevault-web:
+    image: ${CINEVAULT_WEB_IMAGE:?Verified web image required}
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    environment:
+      API_URL: http://cinevault-api:8000
+      ENTERPRISE_ENABLED: "true"
+      SECRET_KEY_FILE: /run/secrets/web_session
+      SECRET_KEY: ""
+      COOKIE_SECURE: "false"
+      CLIENT_CONTEXT_KEY_FILE: /run/secrets/client_context
+    secrets:
+      - source: web_session
+        target: web_session
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+      - source: client_context
+        target: client_context
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+    volumes:
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 67108864
+    ports:
+      - target: 5000
+        published: 8080
+        protocol: tcp
+        mode: host
+    networks: [interne]
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.labels.cinevault == web]
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 256M
+        reservations:
+          memory: 64M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 5
+        window: 120s
+      update_config:
+        parallelism: 1
+        order: stop-first
+        monitor: 30s
+        failure_action: rollback
+      rollback_config:
+        parallelism: 1
+        order: stop-first
+
+volumes:
+  cinevault-enterprise-data:
+    external: true
+
+secrets:
+  auth_throttle:
+    external: true
+    name: cinevault_auth_throttle_v1
+  web_session:
+    external: true
+    name: cinevault_web_session_v1
+  client_context:
+    external: true
+    name: cinevault_client_context_v1
+
+networks:
+  interne:
+    driver: overlay
+    driver_opts:
+      encrypted: ""

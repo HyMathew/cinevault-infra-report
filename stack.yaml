@@ -1,0 +1,53 @@
+services:
+  cinevault-api:
+    image: ${CINEVAULT_API_IMAGE:?Fournir une image API accessible par tous les nœuds}
+    environment:
+      DATA_FILE: /data/films.json
+    volumes:
+      - cinevault-data:/data
+    networks:
+      - interne
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.cinevault == api
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+      update_config:
+        parallelism: 1
+        order: stop-first
+
+  cinevault-web:
+    image: ${CINEVAULT_WEB_IMAGE:?Fournir une image web accessible par tous les nœuds}
+    environment:
+      API_URL: http://cinevault-api:8000
+      SECRET_KEY: ${SECRET_KEY:?Définir une clé de session secrète et stable}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+    ports:
+      - target: 5000
+        published: 8080
+        protocol: tcp
+        mode: host
+    networks:
+      - interne
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.cinevault == web
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+      update_config:
+        parallelism: 1
+        order: stop-first
+
+volumes:
+  cinevault-data:
+    driver: local
+
+networks:
+  interne:
+    driver: overlay

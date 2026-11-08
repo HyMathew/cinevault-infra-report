@@ -1,0 +1,32 @@
+# Overlay for the opt-in account milestone; never mounts a production store.
+# Set all three CINEVAULT_*_KEY_FILE variables to separate private local files.
+services:
+  cinevault-api:
+    environment:
+      ENTERPRISE_ENABLED: "true"
+      ENTERPRISE_DATA_FILE: /data/enterprise.json
+      AUTH_THROTTLE_KEY_FILE: /run/secrets/auth_throttle
+      CLIENT_CONTEXT_KEY_FILE: /run/secrets/client_context
+      CLIENT_CONTEXT_REQUIRED: "true"
+      METADATA_ENABLED: ${METADATA_ENABLED:-false}
+      METADATA_CACHE_FILE: /data/metadata-cache.json
+      WIKIMEDIA_USER_AGENT: ${WIKIMEDIA_USER_AGENT:-}
+    secrets:
+      - auth_throttle
+      - client_context
+  cinevault-web:
+    environment:
+      ENTERPRISE_ENABLED: "true"
+      SECRET_KEY_FILE: /run/secrets/web_session
+      SECRET_KEY: ""
+      CLIENT_CONTEXT_KEY_FILE: /run/secrets/client_context
+    secrets:
+      - web_session
+      - client_context
+secrets:
+  auth_throttle:
+    file: ${CINEVAULT_AUTH_KEY_FILE:?Private API throttle key file required}
+  web_session:
+    file: ${CINEVAULT_WEB_KEY_FILE:?Private web session key file required}
+  client_context:
+    file: ${CINEVAULT_CLIENT_CONTEXT_KEY_FILE:?Private client context key file required}

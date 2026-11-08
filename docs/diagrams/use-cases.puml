@@ -1,0 +1,124 @@
+@startuml
+title CineVault — cas d'utilisation du modèle Enterprise local
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle stickman
+
+actor "Visiteur\n(non authentifié)" as V
+actor "Membre\nmember" as M
+actor "Gestionnaire\nmanager" as G
+actor "Administrateur applicatif\nadmin" as A
+actor "Exploitant système\n(hors rôles HTTP)" as O
+actor "Wikimedia\n(fournisseur facultatif)" as F
+
+G --|> M
+A --|> G
+
+rectangle "CineVault — système et outils d'exploitation" {
+  package "Consultation et accès" {
+    usecase "UC01\nRechercher et consulter" as UC01
+    usecase "UC02\nCréer un compte et se connecter" as UC02
+    usecase "UC03\nGérer son profil et son secret" as UC03
+  }
+  package "Catalogue et espace privé" {
+    usecase "UC04\nTenir films et exemplaires" as UC04
+    usecase "UC05\nOrganiser sa collection" as UC05
+    usecase "UC10\nImporter / exporter" as UC10
+    usecase "UC11\nEnrichir une fiche" as UC11
+    usecase "UC12\nLire statistiques et recommandations" as UC12
+  }
+  package "Circulation" {
+    usecase "UC06\nDemander un prêt" as UC06
+    usecase "UC07\nAttribuer un prêt" as UC07
+    usecase "UC08\nAnnuler une demande\nou enregistrer le retour" as UC08
+    usecase "UC09\nRéserver et gérer son attente" as UC09
+  }
+  package "Administration" {
+    usecase "UC13\nAdministrer les comptes" as UC13
+  }
+  package "Exploitation hors HTTP" {
+    usecase "UC14\nSauvegarder et reprendre" as UC14
+  }
+}
+
+V -- UC01
+V -- UC02
+M -- UC01
+M -- UC03
+M -- UC05
+M -- UC06
+M -- UC08
+M -- UC09
+M -- UC12
+G -- UC04
+G -- UC07
+G -- UC10
+G -- UC11
+A -- UC13
+O -- UC14
+F -- UC11
+
+UC11 ..> UC04 : <<extend>>
+
+note right of UC02
+  Inscription : rôle member imposé.
+  Connexion distincte : jeton opaque.
+  Authentification = précondition des cas privés,
+  pas une relation include à chaque opération.
+end note
+
+note bottom of UC05
+  Collection propre uniquement,
+  y compris pour manager et admin.
+  Possédés, favoris, vus, à voir,
+  listes personnalisées.
+end note
+
+note right of UC08
+  Annulation d'une demande pending :
+  auteur ou manager/admin.
+  Retour d'un prêt active :
+  manager/admin seulement.
+  Aucun effacement d'historique.
+end note
+
+note right of UC09
+  Création propre ; annulation propre
+  ou par manager/admin.
+  Lecture globale réservée à manager/admin.
+  FIFO, expiration opportuniste.
+  Satisfaction lors de UC07, dans le même commit.
+  Aucune notification ni attribution automatique.
+end note
+
+note right of UC12
+  Statistiques personnelles et recommandations
+  pour chaque compte actif.
+  Portée opérationnelle all : manager/admin.
+  Aucune lecture des collections privées tierces.
+end note
+
+note bottom of UC11
+  Extension facultative de la saisie manuelle.
+  Réseau fournisseur hors verrou métier ;
+  droits revérifiés avant restitution / écriture.
+end note
+
+note bottom of UC14
+  Primitive Python snapshot ; CLI de reprise.
+  Arrêt / coordination des écritures requis.
+  Nouvelle cible sans écrasement,
+  comptes historiques mis en quarantaine.
+  Aucun héritage de rôle applicatif par l'exploitant.
+end note
+
+legend bottom
+  Les quatorze UC correspondent au document actors-use-cases.md.
+  Généralisation : manager hérite de member ; admin hérite de manager.
+  Associations = capacités, pas séquences de messages.
+  Le chargement facultatif d'images depuis le CDN Wikimedia est un flux réseau,
+  distinct de l'API métier ; il doit figurer dans le schéma fonctionnel.
+  Modèle statique confronté au code ; aucune preuve de déploiement Swarm.
+endlegend
+@enduml
