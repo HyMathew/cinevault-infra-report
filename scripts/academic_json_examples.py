@@ -238,6 +238,7 @@ def source_sha256(path):
 
 
 def verify_source_fingerprints(api_root, manifest):
+    api_root = api_root.resolve()
     assert manifest["source_fingerprint_mode"] == SOURCE_FINGERPRINT_MODE
     for name, digest in manifest["api_source_sha256"].items():
         source = (api_root / name).resolve()
