@@ -1,0 +1,22 @@
+{
+  "scope": "Targeted current private synthetic demo collection and loans, keyboard traces and responsive state screenshots. Screenshots illustrate page state; focused button is established by DOM and accessibility trace, not by the loans screenshot.",
+  "web_commit": "f3d10cb0d5c9233c6427bd6503f3d2b841e99548",
+  "files": {
+    "collection-mobile.png": {
+      "bytes": 33785,
+      "sha256": "cd156e671a3ea3270be078bd98a497c68212119d62864987c31420a11efc2c0b"
+    },
+    "loans-820.png": {
+      "bytes": 47139,
+      "sha256": "691f0576bb4555f45c044ff4e86f76f6a03c5a435213aac3962ccb9664e9e442"
+    },
+    "loans-mobile.png": {
+      "bytes": 37245,
+      "sha256": "1883bdc468a56a019300e98589a5235730d92755c8f3b1f6036801d58f7da028"
+    },
+    "verification.json": {
+      "bytes": 5798,
+      "sha256": "476207074480474b8eb9315db537f90a1149d9fc5691faf7154e0aa11c91f64c"
+    }
+  }
+}

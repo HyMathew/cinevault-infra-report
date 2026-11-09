@@ -1,0 +1,218 @@
+{
+  "checked_at_utc": "2026-11-09T15:28:16.734Z",
+  "web_commit": "f3d10cb0d5c9233c6427bd6503f3d2b841e99548",
+  "scope": "Targeted current private-page keyboard and responsive QA via PC-local SSH; existing synthetic demo member; no business mutation",
+  "collection": {
+    "tabs": [
+      {
+        "documentWidth": 375,
+        "name": "Aller au contenu",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "CineVault",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Accueil",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Catalogue",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Ma collection",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Emprunts",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Réservations",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Mon espace",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Déconnexion",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "BUTTON",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Découvrir le catalogue",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Toute ma collection\nFilms possédés\nFavoris\nFilms vus\nFilms à voir\nListes personnelles",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "SELECT",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "list_name",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "INPUT",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Filtrer",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "BUTTON",
+        "viewport": 390,
+        "visible": true
+      }
+    ],
+    "filter_activated_by_enter": true,
+    "result_url": "http://127.0.0.1:8080/ma-collection?kind=&list_name=",
+    "entries_after": 1
+  },
+  "loans": {
+    "tabs": [
+      {
+        "documentWidth": 390,
+        "name": "Aller au contenu",
+        "outline": "rgb(16, 16, 16) auto 0.666667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "CineVault",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Accueil",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Catalogue",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Ma collection",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Emprunts",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Réservations",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Mon espace",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "A",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Déconnexion",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "BUTTON",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "status",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "SELECT",
+        "viewport": 390,
+        "visible": true
+      },
+      {
+        "documentWidth": 375,
+        "name": "Filtrer",
+        "outline": "rgb(255, 191, 88) solid 2.66667px",
+        "tag": "BUTTON",
+        "viewport": 390,
+        "visible": true
+      }
+    ],
+    "filter_activated_by_enter": true,
+    "result_url": "http://127.0.0.1:8080/emprunts?status=",
+    "entries_after": 1,
+    "geometry_820": {
+      "documentWidth": 805,
+      "selected": "",
+      "width": 820
+    }
+  },
+  "console_warnings_errors": [],
+  "limits": "Targeted main views only; no exhaustive WCAG, screen reader or zoom certification"
+}

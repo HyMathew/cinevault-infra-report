@@ -1,0 +1,11 @@
+{
+  "scope": "Fresh public clone on Windows, existing pinned Python dependencies; no untracked project files used",
+  "infra_commit": "f756d512620e12cbee8a722febc10a8681366080",
+  "api_commit": "6a86f2eba9de4dd704c7d4a38d93ab75ff32adc5",
+  "documents": "22 Markdown,13 SVG,30 chapters PASS",
+  "fixtures": "93 exchanges,44 operations,51 schema locations,5 technical schemas PASS",
+  "regression_tests": "23 PASS in3.693s",
+  "pdf_bytes": 734029,
+  "pdf_sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+  "build_receipt_time_utc": "2026-11-09T15:25:11.545127+00:00"
+}

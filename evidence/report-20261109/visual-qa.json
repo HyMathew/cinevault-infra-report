@@ -1,0 +1,88 @@
+{
+  "checked_at_utc": "2026-11-09T15:32:27.391680+00:00",
+  "reviewer_scope": "Independent read-only terminal artifact review; no network/VM/new security scan; temp renders only",
+  "candidate_infra_commit": "e0ee40767784faa7ee5a12ad4a0bc9a1fa5e97a6",
+  "pdf_filename": "RT0705_CineVault_Mathieu_Kuhnapfel.pdf",
+  "pdf_sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+  "bytes": 734029,
+  "page_count": 19,
+  "a4_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "a2_pages": [
+    18,
+    19
+  ],
+  "visually_inspected_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "visual_findings": "No blocking clipping, overlap or unreadable figure found at inspected full-page renders. A2 diagrams remain vector/zoomable; not a screen-reader or PDF/UA certification.",
+  "internal_destinations_checked": 40,
+  "invalid_internal_destinations": 0,
+  "external_public_links": 7,
+  "external_link_validation": "Static URI inspection only; network availability not independently re-requested",
+  "privacy_lot_review": {
+    "reviewed_commit": "f756d512620e12cbee8a722febc10a8681366080",
+    "changed_files": 92,
+    "utf8_files": 76,
+    "targeted_pattern_hits": 0,
+    "rfc1918_address_hits": 0,
+    "committed_pdf_matches": true,
+    "images_visually_inspected": true,
+    "scope_limit": "Targeted content/privacy review, not proof of absence of every possible secret format."
+  },
+  "ci_artifact_verification": {
+    "ci_run": 42644622299,
+    "commit": "e0ee40767784faa7ee5a12ad4a0bc9a1fa5e97a6",
+    "platforms": [
+      "Windows",
+      "Linux"
+    ],
+    "zip_crc_checked_locally": true,
+    "both_pdfs_byte_identical_to_inspected_pdf": true,
+    "ci_status_source": "Successful real jobs reported by primary agent; downloaded receipts and archive contents inspected independently."
+  },
+  "fresh_public_checkout": {
+    "commit": "f756d512620e12cbee8a722febc10a8681366080",
+    "local_pdf_bytes_identical": true,
+    "build_execution_source": "Primary-agent reproduction; checkout HEAD and rebuilt bytes inspected independently."
+  },
+  "pending_release_bookkeeping": [
+    "Consolidate final matrix statuses and publish the audit plus matrices",
+    "Infrastructure final tag not yet claimed"
+  ]
+}

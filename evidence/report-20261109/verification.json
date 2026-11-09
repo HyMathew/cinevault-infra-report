@@ -1,0 +1,19 @@
+{
+  "ci_run": 42644622299,
+  "commit": "e0ee40767784faa7ee5a12ad4a0bc9a1fa5e97a6",
+  "verification": "Both CI PDFs byte-identical to inspected named PDF and fresh public Windows checkout rebuild",
+  "results": [
+    {
+      "platform": "linux",
+      "pdf_sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+      "bytes": 734029,
+      "archive_crc": "PASS"
+    },
+    {
+      "platform": "windows",
+      "pdf_sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+      "bytes": 734029,
+      "archive_crc": "PASS"
+    }
+  ]
+}
