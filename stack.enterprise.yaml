@@ -1,4 +1,4 @@
-# Deploy only after preloading and verifying the exact images on all three nodes.
+# Deploy verified registry images pinned by digest; resolve and verify them on each node.
 # This is separate from the historical pedagogical stack.yaml.
 version: "3.8"
 

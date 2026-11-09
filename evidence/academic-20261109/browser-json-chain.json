@@ -1,0 +1,23 @@
+{
+  "scope": "Browser form on isolated legacy Compose; not production Enterprise data",
+  "browser_path": "/films/d6c4694a-5c34-42c3-a45c-0571f16b7e80",
+  "api_status": 200,
+  "persistent_json_equals_api": true,
+  "fixture": {
+    "acteurs": [
+      "Alice Exemple",
+      "Bob Exemple"
+    ],
+    "annee": 2024,
+    "id": "d6c4694a-5c34-42c3-a45c-0571f16b7e80",
+    "realisateur": "Camille Exemple",
+    "support": "dvd",
+    "synopsis": "Fiction de démonstration créée dans le volume pédagogique isolé.",
+    "titre": "Le voyage des pixels"
+  },
+  "screenshots": [
+    "exercice-a.jpg",
+    "exercice-b-formulaire.jpg",
+    "exercice-c-fiche.jpg"
+  ]
+}

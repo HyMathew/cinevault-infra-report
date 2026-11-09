@@ -1,0 +1,33 @@
+{
+  "captured_on": "2026-11-09",
+  "scope": "Authentic VSCode SSH and isolated pedagogical Compose browser captures; no production data",
+  "api_revision": "6a86f2eba9de4dd704c7d4a38d93ab75ff32adc5",
+  "web_revision": "4883876f596e1e44218de762cad9a6ea6d1148c1",
+  "files": {
+    "exercice-a.jpg": {
+      "bytes": 39557,
+      "sha256": "8cc3ec51564378312f817e1cfadd734a24ac9a8f9d32419a507549c81ccdba1c"
+    },
+    "exercice-b-formulaire.jpg": {
+      "bytes": 61712,
+      "sha256": "5046d357989c9cfde0d2f1a2e91ba5f90f40579177507a91c14a7ca0fec72bfd"
+    },
+    "exercice-c-fiche.jpg": {
+      "bytes": 59295,
+      "sha256": "5a01a3110cc0452631d423fa5cd37c715700124c4fe6013fe9affac10936b2c8"
+    },
+    "browser-json-chain.json": {
+      "bytes": 681,
+      "sha256": "fa2cc1344e942c7b2831a4e9bc41a822a4df100f3cb43fcc33b94780a271bf02"
+    },
+    "vscode-api.jpg": {
+      "bytes": 148844,
+      "sha256": "6863d59cc5115603c6ebe8d9ae1bd160bb4b0e93ba098c0ade0583c300620445"
+    },
+    "vscode-web.jpg": {
+      "bytes": 151912,
+      "sha256": "c1763f40e83ede4b87a4a701baf252b9f6b2dae94f64107049aaf94098c285db"
+    }
+  },
+  "sensitive_material_review": "Images visually inspected; original application source and explicitly fictional fixtures only; no passwords/tokens/VPN profile/physical IPs shown."
+}

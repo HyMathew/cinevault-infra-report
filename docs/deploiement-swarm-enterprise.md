@@ -1,6 +1,8 @@
 # Déploiement Enterprise sur trois VM
 
-**Mise à jour effectivement vérifiée le 8 novembre 2026 à 23 h 14 UTC, soit le 9 novembre à 00 h 14 à Paris.** API `4b15406` et web `9b1da4f` ont passé 31 contrôles sur trois VM, avec images exactes, santé, UID 10001, racine en lecture seule et `cap_drop: ALL`. Sauvegarde effectuée ; empreintes du document métier et des comptes identiques avant/après, session existante préservée et nouvelle connexion web avec contexte signé fonctionnelle. La troisième clé dédiée est montée comme secret Docker en mode 0400 pour UID/GID 10001 ; les deux anciennes clés, les comptes et le volume ont été préservés. Voir la [synthèse complète et ses limites](validation-current.md). Les paragraphes ci-dessous distinguent cette mise à jour de la première campagne historique.
+**État actuel vérifié le 9 novembre 2026 à 10 h 40 Paris :** images des CI API `6a86f2e` et web `4883876` téléchargées anonymement sur les trois nœuds et déployées par digests GHCR. Vingt-deux contrôles réussis, sauvegarde et données/comptes/secrets/sessions préservés. Les métadonnées externes sont activées et une recherche/aperçu réelle a réussi via la stack. Voir la [synthèse des CI, digests et limites](validation-current.md).
+
+**Jalon historique : mise à jour effectivement vérifiée le 8 novembre 2026 à 23 h 14 UTC, soit le 9 novembre à 00 h 14 à Paris.** API `4b15406` et web `9b1da4f` ont passé 31 contrôles sur trois VM, avec images exactes, santé, UID 10001, racine en lecture seule et `cap_drop: ALL`. Sauvegarde effectuée ; empreintes du document métier et des comptes identiques avant/après, session existante préservée et nouvelle connexion web avec contexte signé fonctionnelle. La troisième clé dédiée est montée comme secret Docker en mode 0400 pour UID/GID 10001 ; les deux anciennes clés, les comptes et le volume ont été préservés. Voir la [synthèse complète et ses limites](validation-current.md). Les paragraphes ci-dessous distinguent cette mise à jour de la première campagne historique.
 
 Lors de la première campagne distribuée du 8 novembre 2026, la stack Enterprise a été exécutée avec un manager dédié et deux workers distincts. Les deux images étaient celles des révisions API `e7ff089` et web `4303ef3`, validées localement au jalon qualité. Cinquante contrôles fonctionnels distribués ont réussi, dont une course d'attribution d'exemplaire et la persistance après recréation du service API. La preuve couvre ce laboratoire et ces images ; elle ne démontre ni haute disponibilité, ni certification de sécurité, ni CI GitHub.
 
@@ -12,7 +14,13 @@ Le manager est en disponibilité Drain. Les workers portent respectivement `cine
 
 La stack [stack.enterprise.yaml](../stack.enterprise.yaml) est distincte de la stack pédagogique historique. Une seule réplique API monte le volume local `cinevault-enterprise-data` sur le worker API. La présentation utilise le nom DNS du service API sur le réseau chiffré. Aucun port API n'est publié. Le web publie8080 en mode host sur son worker ; ce port n'est pas automatiquement limité à localhost.
 
-## Distribution des images
+## Distribution courante par registre
+
+Utiliser les deux références `ghcr.io/hymathew/cinevault-api@sha256:…` et `ghcr.io/hymathew/cinevault-web@sha256:…` complètes dans la [synthèse courante](validation-current.md). Ne pas déployer un tag mutable en supposant son contenu. Le digest du manifeste et son `config.digest` lient le registre au reçu d'image scannée de la CI. Contrôler ensuite le téléchargement sur chaque worker, les `RepoDigests`, la spécification de service et les conteneurs effectifs. Un téléchargement anonyme a été testé avec un dossier de configuration Docker temporaire vide ; aucune connexion au registre n'est nécessaire pour ces images publiques.
+
+La CI ne publie que sur la branche par défaut après tests, qualité, construction, santé et scan. Les exécutions de contribution construisent/scannent sans droit de publication. Les permissions d'écriture de paquet et le jeton sont limités au job et à l'étape de publication.
+
+## Distribution historique par préchargement
 
 Pour ce petit cluster fixe, les images ont été exportées depuis le poste, transférées par SFTP sur les trois nœuds, puis chargées par Docker. Le SHA256 de l'archive était identique sur le poste et les trois VM ; les IDs chargés ont ensuite été comparés au manifeste du jalon qualité :
 
@@ -21,7 +29,7 @@ Pour ce petit cluster fixe, les images ont été exportées depuis le poste, tra
 | cinevault-api:rt0705-e7ff08980a1f | sha256:c28c0d9a112d016a53397e1ee6a7306ad4b2965f8be99cd8903208ab8ff68ff9 |
 | cinevault-web:rt0705-4303ef317a45 | sha256:4a8dbd9207e1ccb3a877c6ae925e014a2151cc250391613f877e6647ab8762fb |
 
-Un tag seul est mutable. Ici, le contrôle des IDs avant déploiement et des conteneurs réellement exécutés complète le nom local. La commande de déploiement emploie `--resolve-image never` : ce mécanisme repose sur les caches préchargés et vérifiés, sans registre publié. Un nœud ajouté ou vidé doit recevoir les images avant de pouvoir exécuter les tâches. Il ne faut pas annoncer une distribution automatique par registre ni une provenance CI distante.
+Un tag seul est mutable. Ici, le contrôle des IDs avant déploiement et des conteneurs réellement exécutés complète le nom local. La commande de déploiement emploie `--resolve-image never` : ce mécanisme repose sur les caches préchargés et vérifiés, sans registre publié. Un nœud ajouté ou vidé doit recevoir les images avant de pouvoir exécuter les tâches. Cette phrase décrit le jalon historique : le déploiement courant utilise désormais le registre et les images issues de la CI vérifiée.
 
 ## Données et secrets
 
@@ -33,11 +41,11 @@ Pour une installation neuve, créer les trois secrets Docker aléatoires et stab
 
 ## Déploiement et contrôle effectif
 
-Après vérification des images, volume et secrets, fournir les références validées dans l'environnement du processus :
+Après vérification des images, volume et secrets, fournir les références par digest dans `CINEVAULT_API_IMAGE` et `CINEVAULT_WEB_IMAGE` de l'environnement du processus. Pour activer les métadonnées, définir `METADATA_ENABLED=true` et un `WIKIMEDIA_USER_AGENT` identifiant le projet et son URL publique. La valeur par défaut reste false ; l'application fonctionne aussi sans fournisseur externe. Contrôler d'abord la configuration puis déployer :
 
 ```sh
 docker stack config -c stack.enterprise.yaml >/dev/null
-docker stack deploy --resolve-image never -c stack.enterprise.yaml cinevault
+docker stack deploy --resolve-image always -c stack.enterprise.yaml cinevault
 docker stack services cinevault
 docker stack ps --no-trunc cinevault
 ```

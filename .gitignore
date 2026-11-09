@@ -9,3 +9,4 @@ __pycache__/
 
 # Plans de travail privés, conservés localement.
 docs/superpowers/
+docs/diagrams/.render-tools/

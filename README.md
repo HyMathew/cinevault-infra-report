@@ -1,7 +1,10 @@
 # CineVault — infrastructure et documentation
 
-Ce dossier regroupe l'architecture et les configurations de développement et de déploiement. La mise à jour Enterprise du 9 novembre 2026 à 00 h 14, heure de Paris, a été vérifiée sur trois VM avec les révisions API `4b15406` et web `9b1da4f` : 31 contrôles de mise à jour distribuée, après validation Windows/Linux et 171 contrôles Compose sur données jetables. Voir la [synthèse datée des validations et de leurs limites](docs/validation-current.md). Les services web et API vivent dans des dépôts Git distincts. Les dépôts publics ne sont pas encore créés et la CI distante est `NOT_RUN` ; publication, registre public, audit final et rapport scientifique restent ouverts.
+Ce dépôt regroupe l'architecture, les configurations et la documentation de CineVault Enterprise. Le 9 novembre 2026 à 10 h 40, heure de Paris, les images issues des CI GitHub réussies ont été déployées par digest sur trois VM : API `6a86f2e`, web `4883876`. Vingt-deux contrôles de mise à jour ont réussi, avec préservation des données, comptes, secrets et sessions. Voir la [synthèse datée des validations et de leurs limites](docs/validation-current.md). Le rapport scientifique et l'audit final restent en cours.
 
+Les deux projets applicatifs sont publics : [API Flask/JSON](https://github.com/HyMathew/cinevault-api) et [présentation Flask/Jinja](https://github.com/HyMathew/cinevault-web). Leurs CI exécutent les tests sur Windows et Ubuntu, les contrôles qualité, la construction et le scan des images avant publication dans GHCR. Les images ont été téléchargées sans identifiant sur les trois VM ; la stack utilise leurs références immuables.
+
+- [Preuves VS Code, volume partagé et exercices A/B/C](docs/pedagogical-validation.md)
 - [Architecture, flux et modèle de données](docs/architecture.md)
 - [Dictionnaire des données, messages JSON et limites de validation](docs/data-dictionary.md)
 - [Inventaire des pages, traitements et scripts frontend](docs/frontend-inventory.md)
