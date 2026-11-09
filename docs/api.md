@@ -1,29 +1,25 @@
-# Contrat API cible
+# API REST réellement implémentée
 
-Statut : **proposé, à comparer aux tests et à l'implémentation définitive**. Racine JSON UTF-8 `{"films": [...]}`. `id` est un UUID produit par l'API ; il n'est pas accepté dans les propriétés à créer ou à remplacer.
+La référence courante est [OpenAPI3.1 au commit6a86f2e](https://github.com/HyMathew/cinevault-api/blob/6a86f2eba9de4dd704c7d4a38d93ab75ff32adc5/docs/openapi-v1.json), avec42 composants et44 couples méthode/chemin Enterprise. Le [tableau exhaustif des opérations](rest-operations.md) donne méthodes, ressources, identifiants d'opération, authentification et codes. Le [dictionnaire](data-dictionary.md) distingue données stockées, projections HTTP, transferts et états techniques ; le [corpus exécutable](examples/README.md) fournit exemples, requêtes/réponses synthétiques et validations réellement exécutées.
 
-| Champ métier | Règle proposée |
-| --- | --- |
-| `titre` | chaîne non vide après nettoyage, 1 à 200 caractères |
-| `annee` | entier de 1888 à 2100, booléen exclu |
-| `realisateur` | chaîne non vide, 1 à 120 caractères |
-| `acteurs` | tableau de 0 à 30 chaînes non vides, jusqu'à 120 caractères chacune |
-| `support` | `numerique`, `dvd`, `blu-ray`, `vhs` ou `autre` |
-| `synopsis` | facultatif, chaîne vide par défaut, 4 000 caractères au maximum |
+## Ressources et traitements
 
-Le corps est limité à 64 Kio ; JSON malformé, champs inconnus ou répétés, type inattendu et valeurs invalides sont rejetés. `PUT` remplace les propriétés métier plutôt que d'opérer une fusion. Exemple fictif de corps de création :
+Les familles `/api/v1/movies`, `/copies`, `/collections`, `/loans`, `/reservations`, `/users`, `/me`, `/catalogue`, `/metadata`, `/posters`, `/statistics`, `/recommendations` et `/audit-events` exposent les opérations du contrat. À réception : décodage JSON, validation de forme/paramètres, authentification si requise, rôle/propriété et état métier, transaction ou lecture, puis projection et code HTTP. Les [séquences](diagrams/README.md) détaillent les traitements et les nuances de verrouillage ; elles ne sont pas des traces réseau.
 
-```json
-{"titre":"Exemple","annee":2001,"realisateur":"A. Martin","acteurs":["B. Durand"],"support":"dvd","synopsis":"Un exemple fictif."}
-```
+La lecture du catalogue, des copies et de la disponibilité est publique ; les données privées exigent un bearer et un contrôle côté API. Les mutations de catalogue et d'exemplaires sont réservées à la gestion, les entrées de collection à leur propriétaire, les transitions de prêts/réservations aux acteurs autorisés. Le rôle est relu côté API ; une décision dans le frontend seul ne fait pas autorité.
 
-| Requête | Réponse cible |
-| --- | --- |
-| `GET /health` | 200 si stockage exploitable ; 503 sinon |
-| `GET /api/films?q=...&support=...` | 200 `{"films": [...]}` ; filtre par titre/réalisateur sans distinction de casse et support exact |
-| `GET /api/films/<id>` | 200 film ; 404 si absent ou identifiant invalide |
-| `POST /api/films` | 201 film créé et en-tête `Location` ; 400/415/422 si requête invalide |
-| `PUT /api/films/<id>` | 200 film remplacé ; 404 si absent ; 400/415/422 si invalide |
-| `DELETE /api/films/<id>` | 204 sans corps ; 404 si absent |
+## Versions, conflits et erreurs
 
-En cas d'erreur, forme cible `{"error":{"code":"validation_error","message":"...","fields":{"titre":"..."}}}`, `fields` étant facultatif. Les erreurs 405, 413, 500 et 503 doivent rester cohérentes et ne divulguer ni chemins internes ni traces. Le web doit fixer des délais réseau et ne pas répéter automatiquement une mutation dont le résultat est ambigu.
+Les mutations protégées comparent `If-Match` à l'ETag dérivé de l'entité persistée :428 si absent,412 si périmé.409 décrit notamment doublon, état incompatible, copie indisponible ou priorité de réservation ;422 concerne validation.401/403/404 expriment session, permission et ressource, avec404 pour certaines ressources privées d'autrui.429 limite une opération ;503 garde l'erreur de service contrôlée. Les succès incluent200,201 et204 selon l'opération. Les corps d'erreur possèdent leur schéma, avec champs de formulaire lorsqu'applicable.
+
+Une création enrichie contrôle les droits avant le réseau puis les recontrôle au commit ; les appels fournisseur n'ont pas lieu sous le verrou métier. Un import utilise un porteur JSON même pour le contenu CSV ; la clé d'idempotence et son reçu évitent une réapplication du même lot. Une erreur de transport après écriture peut rendre le résultat incertain : lire l'état avant de répéter une mutation. Le frontend n'effectue aucune relance automatique de mutation.
+
+## Authentification et mode pédagogique
+
+Inscription et connexion utilisent un contexte visiteur signé lorsque la politique le requiert. La clé de contexte est distincte des clés de session et d'admission. Les tokens et mots de passe réels ne sont jamais des exemples publics ; le corpus publie des valeurs neutralisées et historiques, avec limites explicites.
+
+Le mode historique expose `/api/films` (GET,POST), `/api/films/{id}` (GET,PUT,DELETE), avec fichier `{"films":[…]}`. Lorsque Enterprise est activé, ses mutations sont bloquées ; ce mode n'est pas un chemin d'administration parallèle. `/health` vérifie la santé du service et du magasin approprié, sans remplacer un parcours métier.
+
+## Vérifications et limites
+
+La suite API courante compte173 tests réussis sur Windows et Ubuntu dans la [CI publique](https://github.com/HyMathew/cinevault-api/actions/runs/42536728355). Les requêtes/réponses du corpus utilisent les vrais handlers Flask mais restent in-process et hors réseau. Les essais Compose, Swarm et Chrome sont documentés séparément dans [la synthèse des validations](validation-current.md) et [le socle pédagogique](pedagogical-validation.md). Ces preuves ne sont pas fusionnées en une campagne fictive ni en une garantie de couverture de chaque branche possible.

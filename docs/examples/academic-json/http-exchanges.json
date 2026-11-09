@@ -1,0 +1,3089 @@
+[
+  {
+    "method": "POST",
+    "name": "register-fictif-admin",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "fictif-admin — FICTIF",
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-admin"
+    },
+    "response_body": {
+      "display_name": "fictif-admin — FICTIF",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000001",
+      "role": "member",
+      "username": "fictif-admin"
+    },
+    "response_headers": {},
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "login-fictif-admin",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-admin"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "register-fictif-alice",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "fictif-alice — FICTIF",
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-alice"
+    },
+    "response_body": {
+      "display_name": "fictif-alice — FICTIF",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000003",
+      "role": "member",
+      "username": "fictif-alice"
+    },
+    "response_headers": {},
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "login-fictif-alice",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-alice"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "register-fictif-bob",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "fictif-bob — FICTIF",
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-bob"
+    },
+    "response_body": {
+      "display_name": "fictif-bob — FICTIF",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000005",
+      "role": "member",
+      "username": "fictif-bob"
+    },
+    "response_headers": {},
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "login-fictif-bob",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-bob"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "register-fictif-carol",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "fictif-carol — FICTIF",
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-carol"
+    },
+    "response_body": {
+      "display_name": "fictif-carol — FICTIF",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000007",
+      "role": "member",
+      "username": "fictif-carol"
+    },
+    "response_headers": {},
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "login-fictif-carol",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-carol"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "register-fictif-dave",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "fictif-dave — FICTIF",
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-dave"
+    },
+    "response_body": {
+      "display_name": "fictif-dave — FICTIF",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000009",
+      "role": "member",
+      "username": "fictif-dave"
+    },
+    "response_headers": {},
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "login-fictif-dave",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-dave"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "register-fictif-aux",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "fictif-aux — FICTIF",
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-aux"
+    },
+    "response_body": {
+      "display_name": "fictif-aux — FICTIF",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-00000000000b",
+      "role": "member",
+      "username": "fictif-aux"
+    },
+    "response_headers": {},
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "login-fictif-aux",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-aux"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "anonymous-profile-error",
+    "path": "/api/v1/me",
+    "request_body": null,
+    "response_body": {
+      "error": {
+        "code": "unauthorized",
+        "message": "Authentification requise ou invalide."
+      }
+    },
+    "response_headers": {},
+    "status": 401
+  },
+  {
+    "method": "POST",
+    "name": "invalid-registration",
+    "path": "/api/v1/auth/register",
+    "request_body": {
+      "display_name": "FICTIF",
+      "password": "short",
+      "username": "bad"
+    },
+    "response_body": {
+      "error": {
+        "code": "validation_error",
+        "fields": {
+          "body": "Identifiant, nom ou mot de passe invalide."
+        },
+        "message": "Données invalides."
+      }
+    },
+    "response_headers": {},
+    "status": 422
+  },
+  {
+    "method": "PATCH",
+    "name": "profile-update",
+    "path": "/api/v1/me",
+    "request_body": {
+      "display_name": "Alice fictive — mise à jour"
+    },
+    "response_body": {
+      "display_name": "Alice fictive — mise à jour",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000003",
+      "role": "member",
+      "username": "fictif-alice"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "metadata-search",
+    "path": "/api/v1/metadata/search?q=papier",
+    "request_body": null,
+    "response_body": {
+      "cache": {
+        "hit": false,
+        "status": "fresh",
+        "stored_at": 1700000000
+      },
+      "items": [
+        {
+          "description": "Résultat entièrement synthétique.",
+          "id": "Q123",
+          "source_url": "https://www.wikidata.org/wiki/Q123",
+          "title": "Le Voyage de papier — FICTIF"
+        }
+      ]
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "metadata-detail",
+    "path": "/api/v1/metadata/Q123",
+    "request_body": null,
+    "response_body": {
+      "cache": {
+        "hit": false,
+        "status": "fresh",
+        "stored_at": 1700000000
+      },
+      "film": {
+        "actors": [
+          "B. Durand FICTIF"
+        ],
+        "description": "Proposition synthétique, aucune source externe interrogée.",
+        "director": "A. Martin FICTIF",
+        "genres": [
+          "Aventure"
+        ],
+        "id": "Q123",
+        "poster": {
+          "artist": "Artiste entièrement fictif — aucun média consulté",
+          "attribution_required": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/FICTIF_INEXISTANT.jpg",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "source_url": "https://commons.wikimedia.org/wiki/File:FICTIF_INEXISTANT.jpg"
+        },
+        "poster_filename": "FICTIF_INEXISTANT.jpg",
+        "retrieved_at": 1700000000,
+        "revision": 123,
+        "source_url": "https://www.wikidata.org/wiki/Q123",
+        "title": "Le Voyage de papier — FICTIF",
+        "warnings": [
+          "Données et attribution fictives ; aucun droit de média vérifié."
+        ],
+        "year": 2001
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "metadata-without-year-poster",
+    "path": "/api/v1/metadata/Q124",
+    "request_body": null,
+    "response_body": {
+      "cache": {
+        "hit": false,
+        "status": "fresh",
+        "stored_at": 1700000000
+      },
+      "film": {
+        "actors": [
+          "B. Durand FICTIF"
+        ],
+        "description": "Proposition synthétique, aucune source externe interrogée.",
+        "director": "A. Martin FICTIF",
+        "genres": [
+          "Aventure"
+        ],
+        "id": "Q124",
+        "poster": null,
+        "poster_filename": null,
+        "retrieved_at": 1700000000,
+        "revision": 123,
+        "source_url": "https://www.wikidata.org/wiki/Q124",
+        "title": "Le Voyage de papier — FICTIF",
+        "warnings": [
+          "Données et attribution fictives ; aucun droit de média vérifié."
+        ],
+        "year": null
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "movie-create-with-copy",
+    "path": "/api/v1/movies",
+    "request_body": {
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "external_id": "Q123",
+      "genres": [
+        "Aventure"
+      ],
+      "initial_copy": {
+        "condition": "good",
+        "location": "Rayon FICTIF A",
+        "support": "dvd"
+      },
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Le Voyage de papier — FICTIF",
+      "year": 2001
+    },
+    "response_body": {
+      "_etag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "external_source": {
+        "qid": "Q123",
+        "retrieved_at": 1700000000,
+        "revision": 123
+      },
+      "genres": [
+        "Aventure"
+      ],
+      "id": "00000000-0000-4000-8000-00000000000d",
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Le Voyage de papier — FICTIF",
+      "year": 2001
+    },
+    "response_headers": {
+      "ETag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+      "Location": "/api/v1/movies/00000000-0000-4000-8000-00000000000d"
+    },
+    "status": 201
+  },
+  {
+    "method": "GET",
+    "name": "copy-list",
+    "path": "/api/v1/copies?movie_id=00000000-0000-4000-8000-00000000000d",
+    "request_body": null,
+    "response_body": {
+      "copies": [
+        {
+          "_etag": "\"e9c411046d30f68b15abcc91c434ea91879f61648593d58c6459c8415e79b899\"",
+          "condition": "good",
+          "id": "00000000-0000-4000-8000-00000000000e",
+          "location": "Rayon FICTIF A",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "support": "dvd"
+        }
+      ]
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "public-posters",
+    "path": "/api/v1/posters?movie_id=00000000-0000-4000-8000-00000000000d",
+    "request_body": null,
+    "response_body": {
+      "posters": {
+        "00000000-0000-4000-8000-00000000000d": {
+          "artist": "Artiste entièrement fictif — aucun média consulté",
+          "attribution_required": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/FICTIF_INEXISTANT.jpg",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "source_url": "https://commons.wikimedia.org/wiki/File:FICTIF_INEXISTANT.jpg"
+        }
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "second-movie",
+    "path": "/api/v1/movies",
+    "request_body": {
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Les Archives du vent — FICTIF",
+      "year": 2001
+    },
+    "response_body": {
+      "_etag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\"",
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "id": "00000000-0000-4000-8000-00000000000f",
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Les Archives du vent — FICTIF",
+      "year": 2001
+    },
+    "response_headers": {
+      "ETag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\"",
+      "Location": "/api/v1/movies/00000000-0000-4000-8000-00000000000f"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "recommendation-candidate",
+    "path": "/api/v1/movies",
+    "request_body": {
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Échos d’encre — FICTIF",
+      "year": 2001
+    },
+    "response_body": {
+      "_etag": "\"150e3652aa1d5ec09240bb6e88cf18ef45b9d76374ffd975a029285aaca9884c\"",
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "id": "00000000-0000-4000-8000-000000000010",
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Échos d’encre — FICTIF",
+      "year": 2001
+    },
+    "response_headers": {
+      "ETag": "\"150e3652aa1d5ec09240bb6e88cf18ef45b9d76374ffd975a029285aaca9884c\"",
+      "Location": "/api/v1/movies/00000000-0000-4000-8000-000000000010"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "idempotent-copy-create",
+    "path": "/api/v1/copies",
+    "request_body": {
+      "condition": "good",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "support": "dvd"
+    },
+    "response_body": {
+      "_etag": "\"546267a4803b5af23fad2f077d526e1e75b9a78403bc82e4d992d7ddb0c18567\"",
+      "condition": "good",
+      "id": "00000000-0000-4000-8000-000000000011",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "support": "dvd"
+    },
+    "response_headers": {
+      "ETag": "\"546267a4803b5af23fad2f077d526e1e75b9a78403bc82e4d992d7ddb0c18567\"",
+      "Location": "/api/v1/copies/00000000-0000-4000-8000-000000000011"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "idempotent-copy-replay",
+    "path": "/api/v1/copies",
+    "request_body": {
+      "condition": "good",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "support": "dvd"
+    },
+    "response_body": {
+      "_etag": "\"546267a4803b5af23fad2f077d526e1e75b9a78403bc82e4d992d7ddb0c18567\"",
+      "condition": "good",
+      "id": "00000000-0000-4000-8000-000000000011",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "support": "dvd"
+    },
+    "response_headers": {
+      "ETag": "\"546267a4803b5af23fad2f077d526e1e75b9a78403bc82e4d992d7ddb0c18567\"",
+      "Idempotency-Replayed": "true",
+      "Location": "/api/v1/copies/00000000-0000-4000-8000-000000000011"
+    },
+    "status": 201
+  },
+  {
+    "method": "PUT",
+    "name": "movie-update",
+    "path": "/api/v1/movies/00000000-0000-4000-8000-00000000000f",
+    "request_body": {
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Les Archives du vent — FICTIF",
+      "year": 2001
+    },
+    "response_body": {
+      "_etag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\"",
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "id": "00000000-0000-4000-8000-00000000000f",
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Les Archives du vent — FICTIF",
+      "year": 2001
+    },
+    "response_headers": {
+      "ETag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\""
+    },
+    "status": 200
+  },
+  {
+    "method": "PUT",
+    "name": "copy-update",
+    "path": "/api/v1/copies/00000000-0000-4000-8000-000000000011",
+    "request_body": {
+      "condition": "good",
+      "location": "Rayon FICTIF A",
+      "support": "dvd"
+    },
+    "response_body": {
+      "_etag": "\"546267a4803b5af23fad2f077d526e1e75b9a78403bc82e4d992d7ddb0c18567\"",
+      "condition": "good",
+      "id": "00000000-0000-4000-8000-000000000011",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "support": "dvd"
+    },
+    "response_headers": {
+      "ETag": "\"546267a4803b5af23fad2f077d526e1e75b9a78403bc82e4d992d7ddb0c18567\""
+    },
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "movie-list",
+    "path": "/api/v1/movies",
+    "request_body": null,
+    "response_body": {
+      "copy_summaries": {
+        "00000000-0000-4000-8000-00000000000d": {
+          "count": 1,
+          "supports": [
+            "dvd"
+          ]
+        },
+        "00000000-0000-4000-8000-00000000000f": {
+          "count": 1,
+          "supports": [
+            "dvd"
+          ]
+        },
+        "00000000-0000-4000-8000-000000000010": {
+          "count": 0,
+          "supports": []
+        }
+      },
+      "limit": 24,
+      "movies": [
+        {
+          "_etag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "external_source": {
+            "qid": "Q123",
+            "retrieved_at": 1700000000,
+            "revision": 123
+          },
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000d",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Le Voyage de papier — FICTIF",
+          "year": 2001
+        },
+        {
+          "_etag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000f",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Les Archives du vent — FICTIF",
+          "year": 2001
+        },
+        {
+          "_etag": "\"150e3652aa1d5ec09240bb6e88cf18ef45b9d76374ffd975a029285aaca9884c\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-000000000010",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Échos d’encre — FICTIF",
+          "year": 2001
+        }
+      ],
+      "offset": 0,
+      "total": 3
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "movie-get",
+    "path": "/api/v1/movies/00000000-0000-4000-8000-00000000000d",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "external_source": {
+        "qid": "Q123",
+        "retrieved_at": 1700000000,
+        "revision": 123
+      },
+      "genres": [
+        "Aventure"
+      ],
+      "id": "00000000-0000-4000-8000-00000000000d",
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Le Voyage de papier — FICTIF",
+      "year": 2001
+    },
+    "response_headers": {
+      "ETag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\""
+    },
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "copy-get",
+    "path": "/api/v1/copies/00000000-0000-4000-8000-00000000000e",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"e9c411046d30f68b15abcc91c434ea91879f61648593d58c6459c8415e79b899\"",
+      "condition": "good",
+      "id": "00000000-0000-4000-8000-00000000000e",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "support": "dvd"
+    },
+    "response_headers": {
+      "ETag": "\"e9c411046d30f68b15abcc91c434ea91879f61648593d58c6459c8415e79b899\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "collection-favorite",
+    "path": "/api/v1/collections",
+    "request_body": {
+      "kind": "favorite",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "supports": []
+    },
+    "response_body": {
+      "_etag": "\"392bae8623f5c0de53b2a04d6fbed9f913d34935c6251f3a860a4a411c069514\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-000000000013",
+      "kind": "favorite",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"392bae8623f5c0de53b2a04d6fbed9f913d34935c6251f3a860a4a411c069514\"",
+      "Location": "/api/v1/collections/00000000-0000-4000-8000-000000000013"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "collection-watched",
+    "path": "/api/v1/collections",
+    "request_body": {
+      "kind": "watched",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "supports": []
+    },
+    "response_body": {
+      "_etag": "\"583bbca19d4e13209d192d974e6e7b117c8f41b5c9e935c6dc9614a3b1de6d0f\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-000000000015",
+      "kind": "watched",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"583bbca19d4e13209d192d974e6e7b117c8f41b5c9e935c6dc9614a3b1de6d0f\"",
+      "Location": "/api/v1/collections/00000000-0000-4000-8000-000000000015"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "collection-owned",
+    "path": "/api/v1/collections",
+    "request_body": {
+      "kind": "owned",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "supports": [
+        "dvd"
+      ]
+    },
+    "response_body": {
+      "_etag": "\"1f445388d684b08aa6f0bc162d80aa4f84dbabc6f40d169f311444c6bc766cca\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-000000000017",
+      "kind": "owned",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": [
+        "dvd"
+      ]
+    },
+    "response_headers": {
+      "ETag": "\"1f445388d684b08aa6f0bc162d80aa4f84dbabc6f40d169f311444c6bc766cca\"",
+      "Location": "/api/v1/collections/00000000-0000-4000-8000-000000000017"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "collection-custom",
+    "path": "/api/v1/collections",
+    "request_body": {
+      "kind": "custom",
+      "list_name": "Mes films FICTIFS",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "supports": []
+    },
+    "response_body": {
+      "_etag": "\"16ec28a5b9f814bcb4cf812454634420d9bcceb1174bcd59631a3ab8e484abb8\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-000000000019",
+      "kind": "custom",
+      "list_name": "Mes films FICTIFS",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"16ec28a5b9f814bcb4cf812454634420d9bcceb1174bcd59631a3ab8e484abb8\"",
+      "Location": "/api/v1/collections/00000000-0000-4000-8000-000000000019"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "collection-watchlist",
+    "path": "/api/v1/collections",
+    "request_body": {
+      "kind": "watchlist",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "supports": []
+    },
+    "response_body": {
+      "_etag": "\"c0005794cde6d772fe81badeb4e97b048d5281c66f018671b02815e4bb63708e\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-00000000001b",
+      "kind": "watchlist",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"c0005794cde6d772fe81badeb4e97b048d5281c66f018671b02815e4bb63708e\"",
+      "Location": "/api/v1/collections/00000000-0000-4000-8000-00000000001b"
+    },
+    "status": 201
+  },
+  {
+    "method": "PUT",
+    "name": "collection-update",
+    "path": "/api/v1/collections/00000000-0000-4000-8000-000000000019",
+    "request_body": {
+      "list_name": "Mes récits FICTIFS",
+      "supports": []
+    },
+    "response_body": {
+      "_etag": "\"65dca6a5f487d7e542c83e53433cad2e456045e6f52fdb6c66a67cf2a1c3b9a8\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-000000000019",
+      "kind": "custom",
+      "list_name": "Mes récits FICTIFS",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"65dca6a5f487d7e542c83e53433cad2e456045e6f52fdb6c66a67cf2a1c3b9a8\""
+    },
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "collection-get",
+    "path": "/api/v1/collections/00000000-0000-4000-8000-000000000013",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"392bae8623f5c0de53b2a04d6fbed9f913d34935c6251f3a860a4a411c069514\"",
+      "created_at": 1700000000,
+      "id": "00000000-0000-4000-8000-000000000013",
+      "kind": "favorite",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"392bae8623f5c0de53b2a04d6fbed9f913d34935c6251f3a860a4a411c069514\""
+    },
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "collection-list",
+    "path": "/api/v1/collections",
+    "request_body": null,
+    "response_body": {
+      "entries": [
+        {
+          "_etag": "\"c0005794cde6d772fe81badeb4e97b048d5281c66f018671b02815e4bb63708e\"",
+          "created_at": 1700000000,
+          "id": "00000000-0000-4000-8000-00000000001b",
+          "kind": "watchlist",
+          "list_name": "",
+          "movie_id": "00000000-0000-4000-8000-000000000010",
+          "owner_id": "00000000-0000-4000-8000-000000000003",
+          "supports": []
+        },
+        {
+          "_etag": "\"65dca6a5f487d7e542c83e53433cad2e456045e6f52fdb6c66a67cf2a1c3b9a8\"",
+          "created_at": 1700000000,
+          "id": "00000000-0000-4000-8000-000000000019",
+          "kind": "custom",
+          "list_name": "Mes récits FICTIFS",
+          "movie_id": "00000000-0000-4000-8000-000000000010",
+          "owner_id": "00000000-0000-4000-8000-000000000003",
+          "supports": []
+        },
+        {
+          "_etag": "\"1f445388d684b08aa6f0bc162d80aa4f84dbabc6f40d169f311444c6bc766cca\"",
+          "created_at": 1700000000,
+          "id": "00000000-0000-4000-8000-000000000017",
+          "kind": "owned",
+          "list_name": "",
+          "movie_id": "00000000-0000-4000-8000-00000000000f",
+          "owner_id": "00000000-0000-4000-8000-000000000003",
+          "supports": [
+            "dvd"
+          ]
+        },
+        {
+          "_etag": "\"583bbca19d4e13209d192d974e6e7b117c8f41b5c9e935c6dc9614a3b1de6d0f\"",
+          "created_at": 1700000000,
+          "id": "00000000-0000-4000-8000-000000000015",
+          "kind": "watched",
+          "list_name": "",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "owner_id": "00000000-0000-4000-8000-000000000003",
+          "supports": []
+        },
+        {
+          "_etag": "\"392bae8623f5c0de53b2a04d6fbed9f913d34935c6251f3a860a4a411c069514\"",
+          "created_at": 1700000000,
+          "id": "00000000-0000-4000-8000-000000000013",
+          "kind": "favorite",
+          "list_name": "",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "owner_id": "00000000-0000-4000-8000-000000000003",
+          "supports": []
+        }
+      ],
+      "limit": 24,
+      "movies": {
+        "00000000-0000-4000-8000-00000000000d": {
+          "_etag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "external_source": {
+            "qid": "Q123",
+            "retrieved_at": 1700000000,
+            "revision": 123
+          },
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000d",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Le Voyage de papier — FICTIF",
+          "year": 2001
+        },
+        "00000000-0000-4000-8000-00000000000f": {
+          "_etag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000f",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Les Archives du vent — FICTIF",
+          "year": 2001
+        },
+        "00000000-0000-4000-8000-000000000010": {
+          "_etag": "\"150e3652aa1d5ec09240bb6e88cf18ef45b9d76374ffd975a029285aaca9884c\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-000000000010",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Échos d’encre — FICTIF",
+          "year": 2001
+        }
+      },
+      "offset": 0,
+      "total": 5
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "loan-pending",
+    "path": "/api/v1/loans",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000d"
+    },
+    "response_body": {
+      "_etag": "\"b504908a0cb418eb1decfc7177a9697c10e3ae2c0a039c8bc6132f4e14953441\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-00000000001e",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "pending"
+    },
+    "response_headers": {
+      "ETag": "\"b504908a0cb418eb1decfc7177a9697c10e3ae2c0a039c8bc6132f4e14953441\"",
+      "Location": "/api/v1/loans/00000000-0000-4000-8000-00000000001e"
+    },
+    "status": 201
+  },
+  {
+    "method": "GET",
+    "name": "loan-get",
+    "path": "/api/v1/loans/00000000-0000-4000-8000-00000000001e",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"b504908a0cb418eb1decfc7177a9697c10e3ae2c0a039c8bc6132f4e14953441\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-00000000001e",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "pending"
+    },
+    "response_headers": {
+      "ETag": "\"b504908a0cb418eb1decfc7177a9697c10e3ae2c0a039c8bc6132f4e14953441\""
+    },
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "loan-options",
+    "path": "/api/v1/loans/00000000-0000-4000-8000-00000000001e/options",
+    "request_body": null,
+    "response_body": {
+      "copies": [
+        {
+          "_etag": "\"e9c411046d30f68b15abcc91c434ea91879f61648593d58c6459c8415e79b899\"",
+          "condition": "good",
+          "id": "00000000-0000-4000-8000-00000000000e",
+          "location": "Rayon FICTIF A",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "support": "dvd"
+        }
+      ],
+      "loan_id": "00000000-0000-4000-8000-00000000001e"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "loan-active",
+    "path": "/api/v1/loans/00000000-0000-4000-8000-00000000001e/approve",
+    "request_body": {
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400
+    },
+    "response_body": {
+      "_etag": "\"8a391fd207ff040f6629c58d3b4048835fd1c116f46278c22ab1ee29aeebf0b7\"",
+      "approved_at": 1700000000,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400,
+      "id": "00000000-0000-4000-8000-00000000001e",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "active"
+    },
+    "response_headers": {
+      "ETag": "\"8a391fd207ff040f6629c58d3b4048835fd1c116f46278c22ab1ee29aeebf0b7\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "reservation-waiting-bob",
+    "path": "/api/v1/reservations",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000d"
+    },
+    "response_body": {
+      "_etag": "\"a79b8c710c17bbb3b7dfe322b433601ff75bbe227937eed7cf2c317e5f529d10\"",
+      "closed_at": null,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000021",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 44,
+      "status": "waiting",
+      "user_id": "00000000-0000-4000-8000-000000000005"
+    },
+    "response_headers": {
+      "ETag": "\"a79b8c710c17bbb3b7dfe322b433601ff75bbe227937eed7cf2c317e5f529d10\"",
+      "Location": "/api/v1/reservations/00000000-0000-4000-8000-000000000021"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "reservation-waiting-carol",
+    "path": "/api/v1/reservations",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000d"
+    },
+    "response_body": {
+      "_etag": "\"01b6c5325e50415a13df41d383819c7bd84f9c811d46e430e1e33b3e6129f2a1\"",
+      "closed_at": null,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000023",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 45,
+      "status": "waiting",
+      "user_id": "00000000-0000-4000-8000-000000000007"
+    },
+    "response_headers": {
+      "ETag": "\"01b6c5325e50415a13df41d383819c7bd84f9c811d46e430e1e33b3e6129f2a1\"",
+      "Location": "/api/v1/reservations/00000000-0000-4000-8000-000000000023"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "reservation-waiting-dave",
+    "path": "/api/v1/reservations",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000d"
+    },
+    "response_body": {
+      "_etag": "\"b84c49eda49a4f19650b4f24e7b2d187bd8089bbc52ad9735cf4d000dc496d1f\"",
+      "closed_at": null,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000025",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 46,
+      "status": "waiting",
+      "user_id": "00000000-0000-4000-8000-000000000009"
+    },
+    "response_headers": {
+      "ETag": "\"b84c49eda49a4f19650b4f24e7b2d187bd8089bbc52ad9735cf4d000dc496d1f\"",
+      "Location": "/api/v1/reservations/00000000-0000-4000-8000-000000000025"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "reservation-cancelled",
+    "path": "/api/v1/reservations/00000000-0000-4000-8000-000000000023/cancel",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"2c5840440013d5ac052a1f3abf323f467348af06656d69d21b0b112cc1a9d4ca\"",
+      "closed_at": 1700000000,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000023",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 45,
+      "status": "cancelled",
+      "user_id": "00000000-0000-4000-8000-000000000007"
+    },
+    "response_headers": {
+      "ETag": "\"2c5840440013d5ac052a1f3abf323f467348af06656d69d21b0b112cc1a9d4ca\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "loan-returned",
+    "path": "/api/v1/loans/00000000-0000-4000-8000-00000000001e/return",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"9f4d4090da271a87bfba22660a75092cf4385b69607b56f4cb80dfde5a142ce9\"",
+      "approved_at": 1700000000,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400,
+      "id": "00000000-0000-4000-8000-00000000001e",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": 1700000000,
+      "status": "returned"
+    },
+    "response_headers": {
+      "ETag": "\"9f4d4090da271a87bfba22660a75092cf4385b69607b56f4cb80dfde5a142ce9\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "reserved-loan-pending",
+    "path": "/api/v1/loans",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000d"
+    },
+    "response_body": {
+      "_etag": "\"e7927ff4f197fdf7bb2606af0f79b396aadc274f50cd647946ed4fd123f5cee3\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000005",
+      "cancelled_at": null,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-000000000029",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "pending"
+    },
+    "response_headers": {
+      "ETag": "\"e7927ff4f197fdf7bb2606af0f79b396aadc274f50cd647946ed4fd123f5cee3\"",
+      "Location": "/api/v1/loans/00000000-0000-4000-8000-000000000029"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "reserved-loan-active",
+    "path": "/api/v1/loans/00000000-0000-4000-8000-000000000029/approve",
+    "request_body": {
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400
+    },
+    "response_body": {
+      "_etag": "\"0c67b01b25b287dd21bbe1d8977142bc0745d59cb8053525ac5a93702d3d82b5\"",
+      "approved_at": 1700000000,
+      "borrower_id": "00000000-0000-4000-8000-000000000005",
+      "cancelled_at": null,
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400,
+      "id": "00000000-0000-4000-8000-000000000029",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "active"
+    },
+    "response_headers": {
+      "ETag": "\"0c67b01b25b287dd21bbe1d8977142bc0745d59cb8053525ac5a93702d3d82b5\""
+    },
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "reservation-fulfilled",
+    "path": "/api/v1/reservations/00000000-0000-4000-8000-000000000021",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"e732353ecea77f0938022f35afae1371c3b85db60a9e966ad3620b32536b210b\"",
+      "closed_at": 1700000000,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000021",
+      "loan_id": "00000000-0000-4000-8000-000000000029",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 44,
+      "status": "fulfilled",
+      "user_id": "00000000-0000-4000-8000-000000000005"
+    },
+    "response_headers": {
+      "ETag": "\"e732353ecea77f0938022f35afae1371c3b85db60a9e966ad3620b32536b210b\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "cancel-request-pending",
+    "path": "/api/v1/loans",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000f"
+    },
+    "response_body": {
+      "_etag": "\"4209ed863cadab0bafbeb3e132065ac190b4fda10f843e7acd9d6b2c95cd9d7e\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000007",
+      "cancelled_at": null,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-00000000002d",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "pending"
+    },
+    "response_headers": {
+      "ETag": "\"4209ed863cadab0bafbeb3e132065ac190b4fda10f843e7acd9d6b2c95cd9d7e\"",
+      "Location": "/api/v1/loans/00000000-0000-4000-8000-00000000002d"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "loan-cancelled",
+    "path": "/api/v1/loans/00000000-0000-4000-8000-00000000002d/cancel",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"9f6f6a3be655987a4bcab435fc2d443c61149c8e5b706f81427f9f262f918ea0\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000007",
+      "cancelled_at": 1700000000,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-00000000002d",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "cancelled"
+    },
+    "response_headers": {
+      "ETag": "\"9f6f6a3be655987a4bcab435fc2d443c61149c8e5b706f81427f9f262f918ea0\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "retained-pending-loan",
+    "path": "/api/v1/loans",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000f"
+    },
+    "response_body": {
+      "_etag": "\"3c926e71a73fbe01c313e0cf5cf78e42ac9e4bb4dc1fec0c0426b2450cde4803\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-000000000030",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "pending"
+    },
+    "response_headers": {
+      "ETag": "\"3c926e71a73fbe01c313e0cf5cf78e42ac9e4bb4dc1fec0c0426b2450cde4803\"",
+      "Location": "/api/v1/loans/00000000-0000-4000-8000-000000000030"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "renew-fictif-admin",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-admin"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "renew-fictif-alice",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-alice"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "renew-fictif-bob",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-bob"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "renew-fictif-carol",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-carol"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "renew-fictif-dave",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-dave"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "renew-fictif-aux",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-aux"
+    },
+    "response_body": {
+      "expires_in": 28800,
+      "token": "FICTIVE-NONFUNCTIONAL-EXPIRED-TOKEN-0000",
+      "token_type": "Bearer"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "reservation-expired",
+    "path": "/api/v1/reservations/00000000-0000-4000-8000-000000000025",
+    "request_body": null,
+    "response_body": {
+      "_etag": "\"7e22da0d1b441be8e5f06f74c8f39881ccee2075baee89112ad1a20047791b30\"",
+      "closed_at": 1701209601,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000025",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 46,
+      "status": "expired",
+      "user_id": "00000000-0000-4000-8000-000000000009"
+    },
+    "response_headers": {
+      "ETag": "\"7e22da0d1b441be8e5f06f74c8f39881ccee2075baee89112ad1a20047791b30\""
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "retained-waiting-reservation",
+    "path": "/api/v1/reservations",
+    "request_body": {
+      "movie_id": "00000000-0000-4000-8000-00000000000d"
+    },
+    "response_body": {
+      "_etag": "\"7a7443d4d981844830469dead57c05999eb11f4fb70082c8f9baeae58a020626\"",
+      "closed_at": null,
+      "created_at": 1701209601,
+      "expires_at": 1702419201,
+      "id": "00000000-0000-4000-8000-000000000039",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 62,
+      "status": "waiting",
+      "user_id": "00000000-0000-4000-8000-000000000007"
+    },
+    "response_headers": {
+      "ETag": "\"7a7443d4d981844830469dead57c05999eb11f4fb70082c8f9baeae58a020626\"",
+      "Location": "/api/v1/reservations/00000000-0000-4000-8000-000000000039"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "retained-copy-receipt",
+    "path": "/api/v1/copies",
+    "request_body": {
+      "condition": "good",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "support": "dvd"
+    },
+    "response_body": {
+      "_etag": "\"9a6457c3499582df824558c293339786df42a00c8f6097bc66a7561d9070dd55\"",
+      "condition": "good",
+      "id": "00000000-0000-4000-8000-00000000003b",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-000000000010",
+      "support": "dvd"
+    },
+    "response_headers": {
+      "ETag": "\"9a6457c3499582df824558c293339786df42a00c8f6097bc66a7561d9070dd55\"",
+      "Location": "/api/v1/copies/00000000-0000-4000-8000-00000000003b"
+    },
+    "status": 201
+  },
+  {
+    "method": "GET",
+    "name": "loan-list",
+    "path": "/api/v1/loans",
+    "request_body": null,
+    "response_body": {
+      "borrowers": {
+        "00000000-0000-4000-8000-000000000003": {
+          "display_name": "Alice fictive — mise à jour",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000003",
+          "role": "member",
+          "username": "fictif-alice"
+        },
+        "00000000-0000-4000-8000-000000000005": {
+          "display_name": "fictif-bob — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000005",
+          "role": "member",
+          "username": "fictif-bob"
+        },
+        "00000000-0000-4000-8000-000000000007": {
+          "display_name": "fictif-carol — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000007",
+          "role": "member",
+          "username": "fictif-carol"
+        }
+      },
+      "limit": 24,
+      "loans": [
+        {
+          "_etag": "\"3c926e71a73fbe01c313e0cf5cf78e42ac9e4bb4dc1fec0c0426b2450cde4803\"",
+          "approved_at": null,
+          "borrower_id": "00000000-0000-4000-8000-000000000003",
+          "cancelled_at": null,
+          "copy_id": null,
+          "due_at": null,
+          "id": "00000000-0000-4000-8000-000000000030",
+          "movie_id": "00000000-0000-4000-8000-00000000000f",
+          "requested_at": 1700000000,
+          "returned_at": null,
+          "status": "pending"
+        },
+        {
+          "_etag": "\"9f6f6a3be655987a4bcab435fc2d443c61149c8e5b706f81427f9f262f918ea0\"",
+          "approved_at": null,
+          "borrower_id": "00000000-0000-4000-8000-000000000007",
+          "cancelled_at": 1700000000,
+          "copy_id": null,
+          "due_at": null,
+          "id": "00000000-0000-4000-8000-00000000002d",
+          "movie_id": "00000000-0000-4000-8000-00000000000f",
+          "requested_at": 1700000000,
+          "returned_at": null,
+          "status": "cancelled"
+        },
+        {
+          "_etag": "\"0c67b01b25b287dd21bbe1d8977142bc0745d59cb8053525ac5a93702d3d82b5\"",
+          "approved_at": 1700000000,
+          "borrower_id": "00000000-0000-4000-8000-000000000005",
+          "cancelled_at": null,
+          "copy_id": "00000000-0000-4000-8000-00000000000e",
+          "due_at": 1700086400,
+          "id": "00000000-0000-4000-8000-000000000029",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "requested_at": 1700000000,
+          "returned_at": null,
+          "status": "active"
+        },
+        {
+          "_etag": "\"9f4d4090da271a87bfba22660a75092cf4385b69607b56f4cb80dfde5a142ce9\"",
+          "approved_at": 1700000000,
+          "borrower_id": "00000000-0000-4000-8000-000000000003",
+          "cancelled_at": null,
+          "copy_id": "00000000-0000-4000-8000-00000000000e",
+          "due_at": 1700086400,
+          "id": "00000000-0000-4000-8000-00000000001e",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "requested_at": 1700000000,
+          "returned_at": 1700000000,
+          "status": "returned"
+        }
+      ],
+      "movies": {
+        "00000000-0000-4000-8000-00000000000d": {
+          "_etag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "external_source": {
+            "qid": "Q123",
+            "retrieved_at": 1700000000,
+            "revision": 123
+          },
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000d",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Le Voyage de papier — FICTIF",
+          "year": 2001
+        },
+        "00000000-0000-4000-8000-00000000000f": {
+          "_etag": "\"1b2f61527c548b0ecc77d9ab9d2bf2192df813b195d4a4476b66278afbb22b82\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000f",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Les Archives du vent — FICTIF",
+          "year": 2001
+        }
+      },
+      "offset": 0,
+      "overdue_ids": [
+        "00000000-0000-4000-8000-000000000029"
+      ],
+      "total": 4
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "reservation-list",
+    "path": "/api/v1/reservations",
+    "request_body": null,
+    "response_body": {
+      "limit": 24,
+      "movies": {
+        "00000000-0000-4000-8000-00000000000d": {
+          "_etag": "\"61bbcdb1c9da5ee5fa21c35f31b400f0efdaf00b6b0e81006e8369ca41e88156\"",
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "director": "A. Martin FICTIF",
+          "external_source": {
+            "qid": "Q123",
+            "retrieved_at": 1700000000,
+            "revision": 123
+          },
+          "genres": [
+            "Aventure"
+          ],
+          "id": "00000000-0000-4000-8000-00000000000d",
+          "synopsis": "Une ville de papier entièrement inventée.",
+          "title": "Le Voyage de papier — FICTIF",
+          "year": 2001
+        }
+      },
+      "offset": 0,
+      "open_loan_ids": {
+        "00000000-0000-4000-8000-000000000021": "00000000-0000-4000-8000-000000000029"
+      },
+      "positions": {
+        "00000000-0000-4000-8000-000000000039": 1
+      },
+      "ready_ids": [],
+      "reservations": [
+        {
+          "_etag": "\"7a7443d4d981844830469dead57c05999eb11f4fb70082c8f9baeae58a020626\"",
+          "closed_at": null,
+          "created_at": 1701209601,
+          "expires_at": 1702419201,
+          "id": "00000000-0000-4000-8000-000000000039",
+          "loan_id": null,
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "sequence": 62,
+          "status": "waiting",
+          "user_id": "00000000-0000-4000-8000-000000000007"
+        },
+        {
+          "_etag": "\"7e22da0d1b441be8e5f06f74c8f39881ccee2075baee89112ad1a20047791b30\"",
+          "closed_at": 1701209601,
+          "created_at": 1700000000,
+          "expires_at": 1701209600,
+          "id": "00000000-0000-4000-8000-000000000025",
+          "loan_id": null,
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "sequence": 46,
+          "status": "expired",
+          "user_id": "00000000-0000-4000-8000-000000000009"
+        },
+        {
+          "_etag": "\"2c5840440013d5ac052a1f3abf323f467348af06656d69d21b0b112cc1a9d4ca\"",
+          "closed_at": 1700000000,
+          "created_at": 1700000000,
+          "expires_at": 1701209600,
+          "id": "00000000-0000-4000-8000-000000000023",
+          "loan_id": null,
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "sequence": 45,
+          "status": "cancelled",
+          "user_id": "00000000-0000-4000-8000-000000000007"
+        },
+        {
+          "_etag": "\"e732353ecea77f0938022f35afae1371c3b85db60a9e966ad3620b32536b210b\"",
+          "closed_at": 1700000000,
+          "created_at": 1700000000,
+          "expires_at": 1701209600,
+          "id": "00000000-0000-4000-8000-000000000021",
+          "loan_id": "00000000-0000-4000-8000-000000000029",
+          "movie_id": "00000000-0000-4000-8000-00000000000d",
+          "sequence": 44,
+          "status": "fulfilled",
+          "user_id": "00000000-0000-4000-8000-000000000005"
+        }
+      ],
+      "total": 4,
+      "users": {
+        "00000000-0000-4000-8000-000000000005": {
+          "display_name": "fictif-bob — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000005",
+          "role": "member",
+          "username": "fictif-bob"
+        },
+        "00000000-0000-4000-8000-000000000007": {
+          "display_name": "fictif-carol — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000007",
+          "role": "member",
+          "username": "fictif-carol"
+        },
+        "00000000-0000-4000-8000-000000000009": {
+          "display_name": "fictif-dave — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000009",
+          "role": "member",
+          "username": "fictif-dave"
+        }
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "availability",
+    "path": "/api/v1/availability?movie_id=00000000-0000-4000-8000-00000000000d",
+    "request_body": null,
+    "response_body": {
+      "available": 0,
+      "free": 0,
+      "loaned": 1,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "reserved": 1,
+      "total": 1
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "json-import",
+    "path": "/api/v1/catalogue/import",
+    "request_body": {
+      "content": {
+        "format_version": 1,
+        "movies": [
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          }
+        ]
+      },
+      "duplicate_policy": "reject",
+      "format": "json"
+    },
+    "response_body": {
+      "created_copies": 1,
+      "created_movies": 1,
+      "operation_id": "00000000-0000-4000-8000-00000000003d",
+      "skipped_copies": 0,
+      "skipped_movies": 0
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "json-import-replay",
+    "path": "/api/v1/catalogue/import",
+    "request_body": {
+      "content": {
+        "format_version": 1,
+        "movies": [
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          }
+        ]
+      },
+      "duplicate_policy": "reject",
+      "format": "json"
+    },
+    "response_body": {
+      "created_copies": 1,
+      "created_movies": 1,
+      "operation_id": "00000000-0000-4000-8000-00000000003d",
+      "skipped_copies": 0,
+      "skipped_movies": 0
+    },
+    "response_headers": {
+      "Idempotency-Replayed": "true"
+    },
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "duplicate-policy-reject",
+    "path": "/api/v1/catalogue/import",
+    "request_body": {
+      "content": {
+        "format_version": 1,
+        "movies": [
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          }
+        ]
+      },
+      "duplicate_policy": "reject",
+      "format": "json"
+    },
+    "response_body": {
+      "error": {
+        "code": "import_conflict",
+        "message": "Conflit dans le lot ; aucun film ou exemplaire importé."
+      }
+    },
+    "response_headers": {},
+    "status": 409
+  },
+  {
+    "method": "POST",
+    "name": "duplicate-policy-skip",
+    "path": "/api/v1/catalogue/import",
+    "request_body": {
+      "content": {
+        "format_version": 1,
+        "movies": [
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          }
+        ]
+      },
+      "duplicate_policy": "skip",
+      "format": "json"
+    },
+    "response_body": {
+      "created_copies": 0,
+      "created_movies": 0,
+      "operation_id": "00000000-0000-4000-8000-000000000045",
+      "skipped_copies": 1,
+      "skipped_movies": 1
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "duplicate-policy-append_copies",
+    "path": "/api/v1/catalogue/import",
+    "request_body": {
+      "content": {
+        "format_version": 1,
+        "movies": [
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          }
+        ]
+      },
+      "duplicate_policy": "append_copies",
+      "format": "json"
+    },
+    "response_body": {
+      "created_copies": 1,
+      "created_movies": 0,
+      "operation_id": "00000000-0000-4000-8000-000000000048",
+      "skipped_copies": 0,
+      "skipped_movies": 1
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "json-export",
+    "path": "/api/v1/catalogue/export?format=json",
+    "request_body": null,
+    "response_body": {
+      "content": {
+        "format_version": 1,
+        "movies": [
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "id": "00000000-0000-4000-8000-00000000000e",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "external_source": {
+              "qid": "Q123",
+              "retrieved_at": 1700000000,
+              "revision": 123
+            },
+            "genres": [
+              "Aventure"
+            ],
+            "id": "00000000-0000-4000-8000-00000000000d",
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Le Voyage de papier — FICTIF",
+            "year": 2001
+          },
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "id": "00000000-0000-4000-8000-000000000011",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "id": "00000000-0000-4000-8000-00000000000f",
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Les Archives du vent — FICTIF",
+            "year": 2001
+          },
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "id": "00000000-0000-4000-8000-00000000003b",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "id": "00000000-0000-4000-8000-000000000010",
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Échos d’encre — FICTIF",
+            "year": 2001
+          },
+          {
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "copies": [
+              {
+                "condition": "good",
+                "id": "00000000-0000-4000-8000-00000000003f",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              },
+              {
+                "condition": "good",
+                "id": "00000000-0000-4000-8000-000000000049",
+                "location": "Rayon FICTIF A",
+                "support": "dvd"
+              }
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "id": "00000000-0000-4000-8000-00000000003e",
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          }
+        ]
+      },
+      "filename": "cinevault-catalogue.json",
+      "format": "json"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "csv-export",
+    "path": "/api/v1/catalogue/export?format=csv",
+    "request_body": null,
+    "response_body": {
+      "content": "﻿\"movie_id\",\"copy_id\",\"title\",\"year\",\"director\",\"actors\",\"genres\",\"synopsis\",\"support\",\"location\",\"condition\",\"external_source\"\r\n\"00000000-0000-4000-8000-00000000000d\",\"00000000-0000-4000-8000-00000000000e\",\"Le Voyage de papier — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"{\"\"qid\"\":\"\"Q123\"\",\"\"revision\"\":123,\"\"retrieved_at\"\":1700000000}\"\r\n\"00000000-0000-4000-8000-00000000000f\",\"00000000-0000-4000-8000-000000000011\",\"Les Archives du vent — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n\"00000000-0000-4000-8000-000000000010\",\"00000000-0000-4000-8000-00000000003b\",\"Échos d’encre — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n\"00000000-0000-4000-8000-00000000003e\",\"00000000-0000-4000-8000-00000000003f\",\"Import JSON — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n\"00000000-0000-4000-8000-00000000003e\",\"00000000-0000-4000-8000-000000000049\",\"Import JSON — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n",
+      "filename": "cinevault-catalogue.csv",
+      "format": "csv"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "csv-import",
+    "path": "/api/v1/catalogue/import",
+    "request_body": {
+      "content": "﻿\"movie_id\",\"copy_id\",\"title\",\"year\",\"director\",\"actors\",\"genres\",\"synopsis\",\"support\",\"location\",\"condition\",\"external_source\"\r\n\"00000000-0000-4000-8000-00000000000d\",\"00000000-0000-4000-8000-00000000000e\",\"Le Voyage de papier — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"{\"\"qid\"\":\"\"Q123\"\",\"\"revision\"\":123,\"\"retrieved_at\"\":1700000000}\"\r\n\"00000000-0000-4000-8000-00000000000f\",\"00000000-0000-4000-8000-000000000011\",\"Les Archives du vent — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n\"00000000-0000-4000-8000-000000000010\",\"00000000-0000-4000-8000-00000000003b\",\"Échos d’encre — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n\"00000000-0000-4000-8000-00000000003e\",\"00000000-0000-4000-8000-00000000003f\",\"Import JSON — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n\"00000000-0000-4000-8000-00000000003e\",\"00000000-0000-4000-8000-000000000049\",\"Import JSON — FICTIF\",\"2001\",\"A. Martin FICTIF\",\"[\"\"B. Durand FICTIF\"\"]\",\"[\"\"Aventure\"\"]\",\"Une ville de papier entièrement inventée.\",\"dvd\",\"Rayon FICTIF A\",\"good\",\"\"\r\n",
+      "duplicate_policy": "skip",
+      "format": "csv"
+    },
+    "response_body": {
+      "created_copies": 0,
+      "created_movies": 0,
+      "operation_id": "00000000-0000-4000-8000-000000000050",
+      "skipped_copies": 5,
+      "skipped_movies": 4
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "statistics-mine",
+    "path": "/api/v1/statistics",
+    "request_body": null,
+    "response_body": {
+      "as_of": 1701209601,
+      "catalogue": {
+        "available": 4,
+        "by_genre": {
+          "Aventure": 4
+        },
+        "by_support": {
+          "autre": 0,
+          "blu-ray": 0,
+          "dvd": 5,
+          "numerique": 0,
+          "vhs": 0
+        },
+        "copies": 5,
+        "damaged": 0,
+        "free": 4,
+        "held_for_queue": 0,
+        "movies": 4
+      },
+      "personal": {
+        "activity_last_7_days": 0,
+        "activity_retained": 8,
+        "by_kind": {
+          "custom": 1,
+          "favorite": 1,
+          "owned": 1,
+          "watched": 1,
+          "watchlist": 1
+        },
+        "by_owned_support": {
+          "autre": 0,
+          "blu-ray": 0,
+          "dvd": 1,
+          "numerique": 0,
+          "vhs": 0
+        },
+        "collection_entries": 5,
+        "collection_movies": 3,
+        "loans": {
+          "active": 0,
+          "cancelled": 0,
+          "pending": 1,
+          "returned": 1
+        },
+        "overdue": 0,
+        "recent_activity": [
+          {
+            "action": "loan.requested",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "loan.requested",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "collection.updated",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "collection.created",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "collection.created",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "collection.created",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "collection.created",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "collection.created",
+            "timestamp": 1700000000
+          }
+        ],
+        "waiting_reservations": 0
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "statistics-all",
+    "path": "/api/v1/statistics?scope=all",
+    "request_body": null,
+    "response_body": {
+      "as_of": 1701209601,
+      "catalogue": {
+        "available": 4,
+        "by_genre": {
+          "Aventure": 4
+        },
+        "by_support": {
+          "autre": 0,
+          "blu-ray": 0,
+          "dvd": 5,
+          "numerique": 0,
+          "vhs": 0
+        },
+        "copies": 5,
+        "damaged": 0,
+        "free": 4,
+        "held_for_queue": 0,
+        "movies": 4
+      },
+      "operations": {
+        "activity_last_7_days": {
+          "export.completed": 2,
+          "import.completed": 4,
+          "import.failed": 1,
+          "reservation.created": 1,
+          "reservation.expired": 1
+        },
+        "loans": {
+          "active": 1,
+          "cancelled": 1,
+          "pending": 1,
+          "returned": 1
+        },
+        "overdue": 1,
+        "waiting_reservations": 1
+      },
+      "personal": {
+        "activity_last_7_days": 7,
+        "activity_retained": 11,
+        "by_kind": {
+          "custom": 0,
+          "favorite": 0,
+          "owned": 0,
+          "watched": 0,
+          "watchlist": 0
+        },
+        "by_owned_support": {
+          "autre": 0,
+          "blu-ray": 0,
+          "dvd": 0,
+          "numerique": 0,
+          "vhs": 0
+        },
+        "collection_entries": 0,
+        "collection_movies": 0,
+        "loans": {
+          "active": 0,
+          "cancelled": 0,
+          "pending": 0,
+          "returned": 0
+        },
+        "overdue": 0,
+        "recent_activity": [
+          {
+            "action": "import.completed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "export.completed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "export.completed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "import.completed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "import.completed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "import.failed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "import.completed",
+            "timestamp": 1701209601
+          },
+          {
+            "action": "loan.approved",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "reservation.fulfilled",
+            "timestamp": 1700000000
+          },
+          {
+            "action": "loan.returned",
+            "timestamp": 1700000000
+          }
+        ],
+        "waiting_reservations": 0
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "recommendations",
+    "path": "/api/v1/recommendations?genre=Aventure",
+    "request_body": null,
+    "response_body": {
+      "limit": 12,
+      "method": "content-rules-v1",
+      "personalized": true,
+      "recommendations": [
+        {
+          "available_copies": 1,
+          "movie": {
+            "_etag": "\"150e3652aa1d5ec09240bb6e88cf18ef45b9d76374ffd975a029285aaca9884c\"",
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "id": "00000000-0000-4000-8000-000000000010",
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Échos d’encre — FICTIF",
+            "year": 2001
+          },
+          "reasons": [
+            {
+              "code": "preferred_genre",
+              "label": "Genre choisi : Aventure",
+              "points": 5
+            },
+            {
+              "code": "similar_genre",
+              "label": "Genre de vos films de référence : Aventure",
+              "points": 3
+            },
+            {
+              "code": "similar_director",
+              "label": "Même réalisateur que l’un de vos films de référence",
+              "points": 2
+            },
+            {
+              "code": "similar_actors",
+              "label": "Interprètes en commun avec vos films de référence",
+              "points": 1
+            },
+            {
+              "code": "watchlist",
+              "label": "Présent dans votre liste à voir",
+              "points": 2
+            }
+          ],
+          "score": 13
+        },
+        {
+          "available_copies": 2,
+          "movie": {
+            "_etag": "\"54ccc0d7306e0753f2f0d8277c6420e0a22f6da0fac028bb233450b384323cbb\"",
+            "actors": [
+              "B. Durand FICTIF"
+            ],
+            "director": "A. Martin FICTIF",
+            "genres": [
+              "Aventure"
+            ],
+            "id": "00000000-0000-4000-8000-00000000003e",
+            "synopsis": "Une ville de papier entièrement inventée.",
+            "title": "Import JSON — FICTIF",
+            "year": 2001
+          },
+          "reasons": [
+            {
+              "code": "preferred_genre",
+              "label": "Genre choisi : Aventure",
+              "points": 5
+            },
+            {
+              "code": "similar_genre",
+              "label": "Genre de vos films de référence : Aventure",
+              "points": 3
+            },
+            {
+              "code": "similar_director",
+              "label": "Même réalisateur que l’un de vos films de référence",
+              "points": 2
+            },
+            {
+              "code": "similar_actors",
+              "label": "Interprètes en commun avec vos films de référence",
+              "points": 1
+            }
+          ],
+          "score": 11
+        }
+      ],
+      "total": 2
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "users-list",
+    "path": "/api/v1/users",
+    "request_body": null,
+    "response_body": {
+      "limit": 50,
+      "offset": 0,
+      "total": 6,
+      "users": [
+        {
+          "display_name": "fictif-admin — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000001",
+          "role": "admin",
+          "username": "fictif-admin"
+        },
+        {
+          "display_name": "Alice fictive — mise à jour",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000003",
+          "role": "member",
+          "username": "fictif-alice"
+        },
+        {
+          "display_name": "fictif-aux — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-00000000000b",
+          "role": "member",
+          "username": "fictif-aux"
+        },
+        {
+          "display_name": "fictif-bob — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000005",
+          "role": "member",
+          "username": "fictif-bob"
+        },
+        {
+          "display_name": "fictif-carol — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000007",
+          "role": "member",
+          "username": "fictif-carol"
+        },
+        {
+          "display_name": "fictif-dave — FICTIF",
+          "enabled": true,
+          "id": "00000000-0000-4000-8000-000000000009",
+          "role": "member",
+          "username": "fictif-dave"
+        }
+      ]
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "user-get",
+    "path": "/api/v1/users/00000000-0000-4000-8000-000000000003",
+    "request_body": null,
+    "response_body": {
+      "display_name": "Alice fictive — mise à jour",
+      "enabled": true,
+      "id": "00000000-0000-4000-8000-000000000003",
+      "role": "member",
+      "username": "fictif-alice"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "PATCH",
+    "name": "user-admin-update",
+    "path": "/api/v1/users/00000000-0000-4000-8000-000000000009",
+    "request_body": {
+      "enabled": false,
+      "role": "member"
+    },
+    "response_body": {
+      "display_name": "fictif-dave — FICTIF",
+      "enabled": false,
+      "id": "00000000-0000-4000-8000-000000000009",
+      "role": "member",
+      "username": "fictif-dave"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "PUT",
+    "name": "password-change",
+    "path": "/api/v1/me/password",
+    "request_body": {
+      "current_password": "FICTIF apprentissage uniquement 123",
+      "new_password": "FICTIF apprentissage uniquement 123 neuf"
+    },
+    "response_body": null,
+    "response_headers": {},
+    "status": 204
+  },
+  {
+    "method": "POST",
+    "name": "logout",
+    "path": "/api/v1/auth/logout",
+    "request_body": null,
+    "response_body": null,
+    "response_headers": {},
+    "status": 204
+  },
+  {
+    "method": "GET",
+    "name": "audit-list",
+    "path": "/api/v1/audit-events",
+    "request_body": null,
+    "response_body": {
+      "events": [
+        {
+          "action": "import.completed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-000000000050",
+          "entity_type": "import",
+          "id": "00000000-0000-4000-8000-000000000051",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "export.completed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-00000000004e",
+          "entity_type": "export",
+          "id": "00000000-0000-4000-8000-00000000004f",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "export.completed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-00000000004c",
+          "entity_type": "export",
+          "id": "00000000-0000-4000-8000-00000000004d",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "import.completed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-000000000048",
+          "entity_type": "import",
+          "id": "00000000-0000-4000-8000-00000000004a",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "import.completed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-000000000045",
+          "entity_type": "import",
+          "id": "00000000-0000-4000-8000-000000000046",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "import.failed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-000000000043",
+          "entity_type": "import",
+          "id": "00000000-0000-4000-8000-000000000044",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "import.completed",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-00000000003d",
+          "entity_type": "import",
+          "id": "00000000-0000-4000-8000-000000000040",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "reservation.created",
+          "actor_id": "00000000-0000-4000-8000-000000000007",
+          "entity_id": "00000000-0000-4000-8000-000000000039",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-00000000003a",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "reservation.expired",
+          "actor_id": null,
+          "entity_id": "00000000-0000-4000-8000-000000000025",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-000000000038",
+          "timestamp": 1701209601
+        },
+        {
+          "action": "loan.requested",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-000000000030",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-000000000031",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.cancelled",
+          "actor_id": "00000000-0000-4000-8000-000000000007",
+          "entity_id": "00000000-0000-4000-8000-00000000002d",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-00000000002f",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.requested",
+          "actor_id": "00000000-0000-4000-8000-000000000007",
+          "entity_id": "00000000-0000-4000-8000-00000000002d",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-00000000002e",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.approved",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-000000000029",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-00000000002c",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "reservation.fulfilled",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-000000000021",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-00000000002b",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.requested",
+          "actor_id": "00000000-0000-4000-8000-000000000005",
+          "entity_id": "00000000-0000-4000-8000-000000000029",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-00000000002a",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.returned",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-00000000001e",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-000000000028",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "reservation.cancelled",
+          "actor_id": "00000000-0000-4000-8000-000000000007",
+          "entity_id": "00000000-0000-4000-8000-000000000023",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-000000000027",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "reservation.created",
+          "actor_id": "00000000-0000-4000-8000-000000000009",
+          "entity_id": "00000000-0000-4000-8000-000000000025",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-000000000026",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "reservation.created",
+          "actor_id": "00000000-0000-4000-8000-000000000007",
+          "entity_id": "00000000-0000-4000-8000-000000000023",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-000000000024",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "reservation.created",
+          "actor_id": "00000000-0000-4000-8000-000000000005",
+          "entity_id": "00000000-0000-4000-8000-000000000021",
+          "entity_type": "reservation",
+          "id": "00000000-0000-4000-8000-000000000022",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.approved",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "entity_id": "00000000-0000-4000-8000-00000000001e",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-000000000020",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "loan.requested",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-00000000001e",
+          "entity_type": "loan",
+          "id": "00000000-0000-4000-8000-00000000001f",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "collection.updated",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-000000000019",
+          "entity_type": "collection",
+          "id": "00000000-0000-4000-8000-00000000001d",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "collection.created",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-00000000001b",
+          "entity_type": "collection",
+          "id": "00000000-0000-4000-8000-00000000001c",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "collection.created",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-000000000019",
+          "entity_type": "collection",
+          "id": "00000000-0000-4000-8000-00000000001a",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "collection.created",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-000000000017",
+          "entity_type": "collection",
+          "id": "00000000-0000-4000-8000-000000000018",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "collection.created",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-000000000015",
+          "entity_type": "collection",
+          "id": "00000000-0000-4000-8000-000000000016",
+          "timestamp": 1700000000
+        },
+        {
+          "action": "collection.created",
+          "actor_id": "00000000-0000-4000-8000-000000000003",
+          "entity_id": "00000000-0000-4000-8000-000000000013",
+          "entity_type": "collection",
+          "id": "00000000-0000-4000-8000-000000000014",
+          "timestamp": 1700000000
+        }
+      ],
+      "limit": 50,
+      "offset": 0,
+      "total": 28
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "disposable-movie-create",
+    "path": "/api/v1/movies",
+    "request_body": {
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Démonstration effacée — FICTIF",
+      "year": 2001
+    },
+    "response_body": {
+      "_etag": "\"ce009aa0428d3620e9e0dc37b04f3f1e603d40408e3fdf025c92519530c32a40\"",
+      "actors": [
+        "B. Durand FICTIF"
+      ],
+      "director": "A. Martin FICTIF",
+      "genres": [
+        "Aventure"
+      ],
+      "id": "00000000-0000-4000-8000-000000000053",
+      "synopsis": "Une ville de papier entièrement inventée.",
+      "title": "Démonstration effacée — FICTIF",
+      "year": 2001
+    },
+    "response_headers": {
+      "ETag": "\"ce009aa0428d3620e9e0dc37b04f3f1e603d40408e3fdf025c92519530c32a40\"",
+      "Location": "/api/v1/movies/00000000-0000-4000-8000-000000000053"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "disposable-copy-create",
+    "path": "/api/v1/copies",
+    "request_body": {
+      "condition": "good",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-000000000053",
+      "support": "dvd"
+    },
+    "response_body": {
+      "_etag": "\"aef6e3231d7b2431d3b9ed9051de38f5e04da1e2b1c157269f494d290d672db7\"",
+      "condition": "good",
+      "id": "00000000-0000-4000-8000-000000000054",
+      "location": "Rayon FICTIF A",
+      "movie_id": "00000000-0000-4000-8000-000000000053",
+      "support": "dvd"
+    },
+    "response_headers": {
+      "ETag": "\"aef6e3231d7b2431d3b9ed9051de38f5e04da1e2b1c157269f494d290d672db7\"",
+      "Location": "/api/v1/copies/00000000-0000-4000-8000-000000000054"
+    },
+    "status": 201
+  },
+  {
+    "method": "POST",
+    "name": "disposable-collection-create",
+    "path": "/api/v1/collections",
+    "request_body": {
+      "kind": "favorite",
+      "movie_id": "00000000-0000-4000-8000-000000000053"
+    },
+    "response_body": {
+      "_etag": "\"3afc69bb41f71627bd5709bbf8b3f4c10376f0f8beae584f3afa424a7ceef469\"",
+      "created_at": 1701209601,
+      "id": "00000000-0000-4000-8000-000000000055",
+      "kind": "favorite",
+      "list_name": "",
+      "movie_id": "00000000-0000-4000-8000-000000000053",
+      "owner_id": "00000000-0000-4000-8000-000000000003",
+      "supports": []
+    },
+    "response_headers": {
+      "ETag": "\"3afc69bb41f71627bd5709bbf8b3f4c10376f0f8beae584f3afa424a7ceef469\"",
+      "Location": "/api/v1/collections/00000000-0000-4000-8000-000000000055"
+    },
+    "status": 201
+  },
+  {
+    "method": "DELETE",
+    "name": "collection-delete",
+    "path": "/api/v1/collections/00000000-0000-4000-8000-000000000055",
+    "request_body": null,
+    "response_body": null,
+    "response_headers": {},
+    "status": 204
+  },
+  {
+    "method": "DELETE",
+    "name": "copy-delete",
+    "path": "/api/v1/copies/00000000-0000-4000-8000-000000000054",
+    "request_body": null,
+    "response_body": null,
+    "response_headers": {},
+    "status": 204
+  },
+  {
+    "method": "DELETE",
+    "name": "movie-delete",
+    "path": "/api/v1/movies/00000000-0000-4000-8000-000000000053",
+    "request_body": null,
+    "response_body": null,
+    "response_headers": {},
+    "status": 204
+  },
+  {
+    "method": "POST",
+    "name": "failed-login-for-attempt",
+    "path": "/api/v1/auth/login",
+    "request_body": {
+      "password": "FICTIF apprentissage uniquement 123",
+      "username": "fictif-absent"
+    },
+    "response_body": {
+      "error": {
+        "code": "unauthorized",
+        "message": "Authentification requise ou invalide."
+      }
+    },
+    "response_headers": {},
+    "status": 401
+  },
+  {
+    "method": "GET",
+    "name": "health",
+    "path": "/health",
+    "request_body": null,
+    "response_body": {
+      "status": "ok"
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "name": "metadata-stale-fallback",
+    "path": "/api/v1/metadata/Q123",
+    "request_body": null,
+    "response_body": {
+      "cache": {
+        "hit": true,
+        "status": "stale",
+        "stored_at": 1700000000
+      },
+      "film": {
+        "actors": [
+          "B. Durand FICTIF"
+        ],
+        "description": "Proposition synthétique, aucune source externe interrogée.",
+        "director": "A. Martin FICTIF",
+        "genres": [
+          "Aventure"
+        ],
+        "id": "Q123",
+        "poster": {
+          "artist": "Artiste entièrement fictif — aucun média consulté",
+          "attribution_required": true,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/FICTIF_INEXISTANT.jpg",
+          "license": "CC BY 4.0",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "source_url": "https://commons.wikimedia.org/wiki/File:FICTIF_INEXISTANT.jpg"
+        },
+        "poster_filename": "FICTIF_INEXISTANT.jpg",
+        "retrieved_at": 1700000000,
+        "revision": 123,
+        "source_url": "https://www.wikidata.org/wiki/Q123",
+        "title": "Le Voyage de papier — FICTIF",
+        "warnings": [
+          "Données et attribution fictives ; aucun droit de média vérifié."
+        ],
+        "year": 2001
+      }
+    },
+    "response_headers": {},
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "name": "legacy-create",
+    "path": "/api/films",
+    "request_body": {
+      "acteurs": [
+        "B. Durand FICTIF"
+      ],
+      "annee": 2001,
+      "realisateur": "A. Martin FICTIF",
+      "support": "dvd",
+      "synopsis": "Un récit fictif.",
+      "titre": "Le Voyage de papier — FICTIF"
+    },
+    "response_body": {
+      "acteurs": [
+        "B. Durand FICTIF"
+      ],
+      "annee": 2001,
+      "id": "00000000-0000-4000-8000-00000000005c",
+      "realisateur": "A. Martin FICTIF",
+      "support": "dvd",
+      "synopsis": "Un récit fictif.",
+      "titre": "Le Voyage de papier — FICTIF"
+    },
+    "response_headers": {
+      "Location": "/api/films/00000000-0000-4000-8000-00000000005c"
+    },
+    "status": 201
+  },
+  {
+    "method": "GET",
+    "name": "legacy-list",
+    "path": "/api/films",
+    "request_body": null,
+    "response_body": {
+      "films": [
+        {
+          "acteurs": [
+            "B. Durand FICTIF"
+          ],
+          "annee": 2001,
+          "id": "00000000-0000-4000-8000-00000000005c",
+          "realisateur": "A. Martin FICTIF",
+          "support": "dvd",
+          "synopsis": "Un récit fictif.",
+          "titre": "Le Voyage de papier — FICTIF"
+        }
+      ]
+    },
+    "response_headers": {},
+    "status": 200
+  }
+]

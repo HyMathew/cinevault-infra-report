@@ -1,69 +1,45 @@
-# Architecture et modélisation
+# Architecture effective et choix de modélisation
 
-**Lecture historique et état courant.** Les paragraphes de conception ci-dessous précèdent les validations distribuées des 8 et 9 novembre 2026 ; leurs mentions « cible » ou « non vérifié » ne décrivent pas l'état actuel du laboratoire. La [synthèse datée](validation-current.md) distingue les campagnes effectivement exécutées et leurs limites. Ces modèles restent à rapprocher exhaustivement du code courant.
+État vérifié le9novembre2026 à16h04Paris : API6a86f2e, webf3d10cb, trois VM Ubuntu24.04.5, cluster Docker29.9.3. Les modèles ci-dessous décrivent les responsabilités observées, sans exposer les adresses physiques du laboratoire. La [synthèse des validations](validation-current.md) donne les révisions complètes, les liens CI et les digests ; les [preuves pédagogiques](pedagogical-validation.md) distinguent Compose et Swarm.
 
-## Statut initial de conception, avant les validations des 8 et 9 novembre 2026
+## Trois tiers logiques
 
-Conception : non assimilable à une observation du laboratoire. Elle doit être confrontée aux implémentations et au réseau réel avant déploiement. Une topologie avec trois VM est une cible, pas une infrastructure déjà vérifiée.
+![Architecture logique](architecture-diagrams/logical.svg)
 
-## Acteurs et responsabilités
+Le navigateur envoie des requêtes et formulaires au service web. Flask/Jinja produit le HTML ; le client HTTP natif applique des délais, refuse les redirections API, conserve les erreurs HTTP utiles et vérifie les structures JSON réellement consommées. Le frontend ne monte ni ne modifie le magasin métier. L'API authentifie, autorise et valide les requêtes ; elle seule détient le document JSON. Le manager orchestre ces services et ne constitue pas un quatrième tiers applicatif.
 
-L'utilisateur interagit avec son navigateur. Le service web construit du HTML avec Flask/Jinja et appelle l'API via HTTP/JSON. L'API valide les requêtes et détient seule le fichier JSON. L'administrateur gère l'exploitation et les sauvegardes. La couche navigateur, la couche de présentation et la couche d'accès aux données sont trois rôles logiques ; le manager est un rôle d'orchestration supplémentaire.
+## Placement physique observé
 
-```mermaid
-flowchart LR
-    U[Utilisateur] --> B[Navigateur]
-    B -->|HTML, formulaires| W[Service web Flask et Jinja]
-    W -->|HTTP et JSON sur réseau interne| A[Service API Flask]
-    A -->|lecture et écriture| D[(Fichier JSON persistant)]
-    O[Administrateur] -. déploie et contrôle .-> M[Manager Swarm]
-    M -. orchestre .-> W
-    M -. orchestre .-> A
-```
+![Architecture physique](architecture-diagrams/physical.svg)
 
-## Cible physique proposée
+| Machine logique | Rôle effectif | Ressources constatées | Exécution |
+|---|---|---|---|
+| VM1 | Worker de présentation | 2CPU, environ1966Mio RAM | Une tâche web ; publication8080 en mode host |
+| VM2 | Worker propriétaire des données | 2CPU, environ1966Mio RAM | Une tâche API ; volume local persistant /data |
+| VM3 | Manager dédié | 2CPU, environ1966Mio RAM | Leader, disponibilité Drain, aucune tâche applicative |
 
-```mermaid
-flowchart LR
-    N[Navigateur] -->|HTTP, HTTPS si configuré| F
-    subgraph Cluster[Cible Swarm du modèle initial]
-        M[VM manager]
-        F[VM worker web : service web]
-        A[VM worker API : service API]
-        V[(Volume local du worker API)]
-        M -. contrôle .-> F
-        M -. contrôle .-> A
-        F <-->|réseau Overlay| A
-        A --- V
-    end
-```
+Les labels de placement maintiennent l'API sur le nœud qui détient son volume. Ajouter une seconde réplique API sur un autre hôte dupliquerait les fichiers au lieu de partager une transaction : cette configuration n'est pas proposée. Le manager unique, le worker API et son disque restent des points de défaillance. Une contrainte de placement ne déplace pas les données.
 
-Le manager dédié peut fonctionner seulement si ses ressources réelles le permettent. La position exacte des nœuds, les adresses, le pare-feu, la distribution des images et les ports de communication sont à mesurer. Une contrainte de placement maintient l'API sur le nœud propriétaire de son volume. Le volume local n'est ni répliqué ni partagé ; perte de nœud ou de disque signifie indisponibilité et restauration nécessaire. Une réplique API ne constitue pas une haute disponibilité.
+L'accès depuis le PC utilise VPN puis SSH strict par clé ; le tunnel HTTP est lié à127.0.0.1 sur le PC. Cela chiffre le trajet distant sans créer de terminaison HTTPS publique. Le port web reste publié sur les interfaces du worker ; seules des données synthétiques sont utilisées. L'API n'a aucun port publié et reçoit les appels par le nom de service sur un Overlay chiffré. Les contrôles préalables comprennent routage, DNS, ports Swarm et essais effectifs de l'Overlay ; une sonde UDP seule ne suffirait pas à prouver son fonctionnement.
 
-## Scénario de création
+## Exécution et intégrité
 
-```mermaid
-sequenceDiagram
-    actor U as Utilisateur
-    participant B as Navigateur
-    participant W as Web Flask/Jinja
-    participant A as API Flask
-    participant D as Stockage JSON
-    U->>B: Saisit le formulaire
-    B->>W: POST avec jeton CSRF
-    W->>W: Vérifie jeton et formulaire
-    W->>A: POST application/json
-    A->>A: Valide les champs
-    A->>D: Verrouille, relit et écrit atomiquement
-    D-->>A: Confirmation ou erreur
-    A-->>W: 201 et ressource ou erreur
-    W-->>B: Redirection ou formulaire avec erreurs
-```
+Les deux conteneurs exécutent Gunicorn avec deux workers, en UID10001, racine en lecture seule, capacités retirées et /tmp explicitement en tmpfs. Le document métier est partagé entre les processus de l'unique conteneur API ; un verrou fichier interprocessus protège toute la transaction lecture-modification-écriture. Le candidat complet est validé, écrit dans un fichier temporaire du même dossier, synchronisé puis remplacé atomiquement. Le verrou local à un thread serait insuffisant entre workers Gunicorn.
 
-Le comportement effectif, les délais d'attente et les erreurs doivent être confirmés par tests ; ce diagramme décrit la cible.
+Le document v2 contient utilisateurs, sessions, compteurs d'authentification, reçus idempotents, films, exemplaires, collections, prêts, réservations et audit. Le modèle historique `{films:[…]}` reste utilisable pour les exercices pédagogiques. Les deux modes et leurs fichiers sont explicitement distincts ; une installation Enterprise exige une initialisation et un premier administrateur locaux, jamais un compte par défaut dans le dépôt.
 
-## Stockage et limites
+Les comptes utilisent des rôles member/manager/admin relus côté API. L'exploitant système est un acteur séparé. Les jetons de session sont opaques et leurs empreintes seules sont stockées. Les requêtes anonymes de connexion/inscription portent un contexte de visiteur signé par une clé dédiée ; un en-tête IP libre n'est pas une identité de confiance. Une admission bornée, séparée du verrou métier, précède le calcul Argon2 à l'inscription. Les limites et leurs réserves sont documentées dans les sources et les tests.
 
-Le document UTF-8 envisagé possède une racine `films` contenant une liste. L'API est l'unique propriétaire du fichier et doit sérialiser les écritures concurrentes, conserver un fichier corrompu et n'écraser la précédente version que par remplacement atomique. Un volume persiste lors de la recréation d'un conteneur sur le même hôte ; il ne remplace pas une sauvegarde. Une restauration doit être testée, mais n'a pas encore été exécutée ici.
+Les métadonnées transitent par un cache distinct, sous verrou distinct et avec budgets de requêtes. Une URL d'affiche autorisée est ensuite chargée directement par le navigateur depuis Commons ; le frontend n'est pas un proxy arbitraire. Un fournisseur indisponible ne bloque pas la consultation du catalogue. La création enrichie revalide droits et données après le réseau externe ; elle ne tient pas le verrou métier pendant l'attente réseau.
 
-Le réseau interne n'est pas une authentification. Ne pas exposer l'API hors d'un environnement de confiance sans protection d'accès adaptée, et ne pas présenter HTTP sans TLS comme confidentiel. Les noms et images de démonstration ne doivent inclure aucune donnée confidentielle du laboratoire.
+## Développement monté et déploiement immuable
+
+Le socle `compose.yaml` monte le code hôte en lecture seule et fournit un volume de données distinct. Son fonctionnement a été vérifié avant Swarm puis rafraîchi dans une pile isolée : voir [la campagne pédagogique](pedagogical-validation.md). Les images Swarm embarquent au contraire le code à une révision contrôlée. Les deux pratiques répondent à des besoins différents et coexistent.
+
+Les CI Windows/Ubuntu testent chaque application, vérifient la qualité et les dépendances, construisent l'image, la démarrent sans privilège et la scannent. Le job autorisé publie seulement l'image contrôlée. La stack utilise un digest GHCR vérifié par la chaîne manifeste/configuration et par les conteneurs réellement lancés. La première méthode de préchargement SFTP est conservée comme historique, pas présentée comme le mode courant.
+
+## Limites et documents associés
+
+Le stockage local persiste lors d'une recréation de conteneur, mais n'est ni répliqué ni une sauvegarde. Une reprise d'exploitation doit restaurer sur une cible isolée, neutraliser les anciens accès et vérifier les données avant bascule. Les essais de reprise locaux sont distincts des mises à jour récentes qui préservent les comptes existants. Aucun RTO/RPO garanti n'est revendiqué.
+
+Le boot autonome depuis le disque de VM2/3, la restauration après perte de disque, la haute disponibilité et HTTPS public ne sont pas démontrés. Les [données et messages](data-dictionary.md), les [acteurs et cas d'utilisation](actors-use-cases.md), les [modèles d'exécution](execution-model.md) et les [séquences vectorielles](diagrams/README.md) détaillent le code ; le rapport et l'audit de conformité restent des livrables séparés.

@@ -1,0 +1,50 @@
+{
+  "observedAt": "2026-11-09T15:05:43.867Z",
+  "webSource": "f3d10cb0d5c9233c6427bd6503f3d2b841e99548",
+  "url": "http://127.0.0.1:8080/films",
+  "title": "Catalogue partagé · CineVault",
+  "keyboardTraversalCount": 14,
+  "placeholderContrastBefore": [
+    {
+      "background": "rgb(33, 31, 31)",
+      "color": "rgb(117, 117, 117)",
+      "id": "q",
+      "ratio": 3.5595134310162524
+    },
+    {
+      "background": "rgb(33, 31, 31)",
+      "color": "rgb(117, 117, 117)",
+      "id": "genre",
+      "ratio": 3.5595134310162524
+    }
+  ],
+  "placeholderContrastAfter": [
+    {
+      "background": "rgb(33, 31, 31)",
+      "color": "rgb(201, 190, 181)",
+      "id": "q",
+      "opacity": "1",
+      "ratio": 8.993830155851523
+    },
+    {
+      "background": "rgb(33, 31, 31)",
+      "color": "rgb(201, 190, 181)",
+      "id": "genre",
+      "opacity": "1",
+      "ratio": 8.993830155851523
+    }
+  ],
+  "mobileGeometry": {
+    "documentWidth": 375,
+    "viewport": 390
+  },
+  "intermediateGeometry": {
+    "viewport": 820,
+    "documentWidth": 805
+  },
+  "searchEmptyStateObserved": true,
+  "clearFiltersRestoredCatalogue": true,
+  "consoleEntries": [],
+  "viewportReset": true,
+  "scope": "Public catalogue targeted browser QA; not exhaustive WCAG or all private screens"
+}

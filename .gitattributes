@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+# These published receipts contain byte-exact file hashes. Preserve their bytes.
+docs/examples/academic-json/** -text whitespace=cr-at-eol
+docs/diagrams/** -text whitespace=cr-at-eol
+evidence/** -text whitespace=cr-at-eol

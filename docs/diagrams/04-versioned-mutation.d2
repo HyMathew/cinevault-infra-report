@@ -1,0 +1,24 @@
+# UC04 ; deux transactions pour PUT movie, même sans enrichissement.
+shape: sequence_diagram
+browser: Gestionnaire / navigateur
+web: Web Flask / Jinja
+api: API / catalogue
+store: V2Store / JSON
+browser -> web: "1. GET /films/{id}/modifier"
+web -> api: "GET /api/v1/me + bearer\nPuis lecture publique du film"
+api -> web: "2. Identité + film avec _etag\nETag = SHA-256 de l'entité canonique"
+web -> browser: "3. Formulaire HTML\nCSRF + champ caché version"
+browser -> web: "4. POST /films/{id}/modifier\nValeurs, CSRF, version affichée"
+web -> web: "CSRF puis identité / rôle\nValidation de formulaire"
+web -> api: "5. PUT /api/v1/movies/{id}\nJSON + bearer + If-Match: version"
+api -> store: "6. prepare_movie → management(parse)\nIdentité/rôle puis lookup + precondition"
+store -> api: "Gate autorisé ; verrou relâché\nSinon 401 / 403 / 404 / 428 / 412"
+api -> api: "7. movie_data : validation métier\nOption external_id : réseau hors verrou\nVoir figure 08"
+api -> store: "8. management(replace) : nouvelle transaction\nRECONTRÔLER identité/rôle + If-Match\nPuis doublon de film"
+store -> store: "9. Si accord : movie.update\nrevision + 1, valider, remplacement atomique"
+api -> web: "10. Film JSON 200 + nouvel ETag"
+web -> browser: "11. 303 vers la fiche ; relecture"
+failure: "Alternatives — aucun écrasement métier forcé" {
+  api -> web: "428 If-Match absent / 412 différent\n409 doublon / 422 champs / 503 panne"
+  web -> browser: "Conserver champs et version\nRecharger / comparer avant nouvel envoi"
+}

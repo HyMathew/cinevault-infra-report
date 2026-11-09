@@ -1,0 +1,25 @@
+# UC02 — la vérification Argon2 du login se trouve bien SOUS transact(attempt).
+shape: sequence_diagram
+browser: Visiteur / navigateur
+web: Présentation web
+api: API / login
+store: V2Store / JSON
+browser -> web: "1. POST /connexion\nFormulaire + CSRF valide (sinon 400)"
+web -> web: "2. anonymous_auth : remote_addr seul\nX-Forwarded-For navigateur ignoré\nSigner les octets JSON réellement envoyés"
+web -> api: "3. POST /api/v1/auth/login\nX-CineVault-Client-IP / Time / Signature"
+api -> api: "4. client_address : HMAC + fraîcheur ±30 s\nSinon 401 ; payload strict"
+api -> store: "5. transact(attempt)\nVerrou métier + document validé"
+store -> api: "Callback SOUS verrou : purger compteurs\nFenêtre 900 s ; clés utilisateur ET source"
+api -> api: "6. Compteur ≥5 : limited sans Argon2\nSinon Argon2.verify(hash réel ou dummy)\nCette vérification tient le verrou métier"
+success: "Si identité et compte actif valides" {
+  api -> store: "7. Ajouter session, SHA-256 du jeton seul\nPurger sessions expirées / inactives"
+  store -> store: "revision + 1 ; validation complète\nTemporaire fsync → remplacement atomique"
+  api -> web: "8. JSON 200 : token, Bearer, 28 800 s"
+  web -> web: "Vérifier forme du reçu\nVider session Flask"
+  web -> browser: "9. 303 /profil ; cookie cinevault_auth\nHttpOnly, SameSite=Lax, 8 h\nSecure selon configuration effective"
+}
+failure: "Alternatives exclusives du succès" {
+  api -> store: "Échec identité : incrémenter 2 compteurs\nRetour callback invalid / limited : commit technique"
+  api -> web: "401 invalide / 429 limité\n429 : Retry-After 900 ; stockage : 503"
+  web -> browser: "Message contrôlé ; username conservé\nAucun mot de passe réaffiché"
+}

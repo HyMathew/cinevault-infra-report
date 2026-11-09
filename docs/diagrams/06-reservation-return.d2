@@ -1,0 +1,20 @@
+# UC08–UC09 : retour et réservation ne sont pas une attribution automatique.
+shape: sequence_diagram
+web: Navigateur via web
+api: API circulation
+store: V2Store / JSON
+web -> api: "1. POST /api/v1/reservations\nbearer membre + movie_id ; web : CSRF"
+api -> store: "2. protected(create), verrou unique\nRelire identité ; expire_waiting(now)"
+store -> store: "3. Film existant ; pas d'attente identique\nMoins de 10 attentes ; aucun prêt actif propre\navailability.available = 0 obligatoire"
+store -> store: "4. Créer waiting ; sequence = revision + 1\nexpires_at = création +14 jours\nAudit ; revision + 1 ; validation et remplacement"
+api -> web: "5. JSON 201 ; web 303 /reservations\n404 film ; 409 doublon/quota/prêt/copie libre"
+web -> api: "6. POST /api/v1/loans/{id}/return\nGestionnaire ; If-Match ; aucun corps"
+api -> store: "7. protected(record_return), verrou unique\nRôle ; prêt existant ; version ; état active\nHorloge ≥ approved_at"
+store -> store: "8. loan → returned ; returned_at = now\nAudit, validation et remplacement atomique\nCopie libre calculée depuis les prêts actifs"
+api -> web: "9. JSON 200 ; web 303 /emprunts\nPas d'attribution ni notification automatique"
+web -> api: "10. GET /api/v1/reservations + bearer"
+api -> store: "11. Expirer les attentes échues\nCalculer positions et ready_ids\nSession last_seen et revision réécrites"
+api -> web: "12. Tête FIFO prête si copie libre\nAttribution explicite : figure 05"
+failure: "Alternatives retour / annulation" {
+  api -> web: "Retour : 401/403/404/412/428 ; 409 état/horloge\nAnnuler attente : POST /reservations/{id}/cancel\nPropriétaire ou manager, If-Match, état waiting"
+}

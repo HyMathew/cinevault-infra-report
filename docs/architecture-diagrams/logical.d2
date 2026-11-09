@@ -1,0 +1,8 @@
+direction: down
+browser: "Tiers client\nNavigateur" {style.fill: "#fff6dc"}
+web: "Tiers présentation\nFlask · Jinja · formulaires" {style.fill: "#e7eef8"}
+api: "Tiers données\nAPI REST Flask · règles · droits" {style.fill: "#e7eef8"}
+store: "Document JSON v2\nVerrou interprocessus · remplacement atomique" {shape: cylinder; style.fill: "#e9f3e9"}
+browser -> web: "HTTP / HTML · CSRF · cookie"
+web -> api: "HTTP / JSON · bearer · timeout"
+api -> store: "Transaction lecture-modification-écriture"

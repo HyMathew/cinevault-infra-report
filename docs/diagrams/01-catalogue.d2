@@ -1,0 +1,24 @@
+# UC01 — modèle statique, API 6a86f2e / web 4883876 ; sources détaillées dans README.md.
+shape: sequence_diagram
+browser: Navigateur
+web: Web Flask / Jinja
+api: API Flask
+store: V2Store / JSON
+browser -> web: "1. GET /films ou /films/{id}\nConsultation anonyme Enterprise"
+web -> api: "2. GET /api/v1/movies + filtres\nou /movies/{id}"
+api -> api: "Valider filtres / pagination\nbounded_integer, liste blanche"
+api -> store: "3. check_store → read()\nVerrou fichier, décodage, validation"
+store -> api: "Document v2 valide\nAucune écriture pour ce GET public"
+api -> api: "Filtrer / trier / projeter\nresource() ajoute _etag"
+api -> web: "4. JSON 200 : movies, résumés\nou film + ETag"
+detail: "Si fiche : appels publics supplémentaires" {
+  web -> api: "5. GET /api/v1/copies?movie_id=…\npuis GET /api/v1/availability?movie_id=…"
+  api -> store: "read() séparé pour chaque appel\nPas de snapshot commun à la page"
+  api -> web: "Copies + disponibilité agrégée\nAucune identité d'emprunteur"
+}
+web -> web: "6. movie_view : title → titre, etc.\nJinja échappe les valeurs"
+web -> browser: "7. HTML 200 : catalogue / fiche\nAffiche facultative : voir figure 09"
+failure: "Alternatives — arrêt du parcours concerné" {
+  api -> web: "422 filtre invalide / 404 absent\n503 stockage indisponible"
+  web -> browser: "Erreur HTML contrôlée\nTransport / délai / redirection API → 503"
+}

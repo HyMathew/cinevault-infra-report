@@ -1,0 +1,18 @@
+# UC01 / UC11 — ce GET public ne déclenche aucun HTTP d'enrichissement.
+shape: sequence_diagram
+browser: Navigateur
+web: Web / Jinja
+api: API / posters
+cache: JSON métier + cache
+commons: CDN Wikimedia HTTPS
+browser -> web: "1. GET catalogue / fiche"
+web -> api: "2. GET /api/v1/posters?movie_id=…\nFilm(s) référencé(s), sans bearer nécessaire"
+api -> api: "3. Valider 1–100 UUID canoniques\nSinon 422"
+api -> cache: "4. check_store().read() : external_source\nPuis cache.peek_many(detail:QID)"
+cache -> api: "5. Entrées FRAÎCHES seulement\nQID + révision source doivent correspondre\nAucun appel Wikidata/Commons distant ici"
+api -> api: "6. validated_poster : URL, type, licence\nRéférence absente/invalide → omise"
+api -> web: "7. JSON 200 : posters par movie_id\nCache absent/illisible → image absente"
+web -> web: "8. safe_poster revérifie les liens\nAPIError absorbée : affiche facultative"
+web -> browser: "9. HTML img + attribution + source/licence\nCSP : deux hôtes images exacts\nreferrerpolicy = no-referrer"
+browser -> commons: "10. GET image publique directement\nupload.wikimedia.org ou thumb.wikimedia.org\nSans cookie CineVault, sans Referer"
+commons -> browser: "11. Image ou échec indépendant\nLe texte du catalogue reste consultable"

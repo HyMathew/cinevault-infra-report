@@ -1,0 +1,159 @@
+{
+  "observed_utc": "2026-11-09T10:05:39.5454566Z",
+  "mode": "static-read-only-source-review-no-git",
+  "reported_api_reference": "6a86f2e",
+  "reported_web_reference": "4883876",
+  "web_boundary_patch": "local uncommitted code present during review",
+  "files": [
+    {
+      "path": "cinevault-api/app/enterprise_auth.py",
+      "bytes": 17135,
+      "sha256": "ecfe82e41544b43edd03c7de92366348023828ca2c099ad7d0d1ceacdddfd9b1"
+    },
+    {
+      "path": "cinevault-api/app/registration_admission.py",
+      "bytes": 3261,
+      "sha256": "b5056f2111dfdfd430968faa486ff6c5eb37b20304b99a7f0d38b80a0f36f5be"
+    },
+    {
+      "path": "cinevault-api/app/client_context.py",
+      "bytes": 2595,
+      "sha256": "f7c5e93663af8af33c6738c9ab9a2b6960fba87b3d66f833eb1ce43d35f38b2c"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_catalogue.py",
+      "bytes": 13036,
+      "sha256": "190dbe997b48bb8d0940496841ff165009008ce794035ee3d26320411fd0369a"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_collections.py",
+      "bytes": 5881,
+      "sha256": "7dee407df4f1895309d165cc5efa41f3566aa11951b70f20c97e431ee2d53ce0"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_lending.py",
+      "bytes": 11130,
+      "sha256": "ce57d9de8131958271a31b4c4b3ca798303203db7fc9b93780868246002f12ea"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_reservations.py",
+      "bytes": 6972,
+      "sha256": "a18c216f2387c1847388b3beecdfeafe7f8ccce08ed1a803f8c06d4db52986f0"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_transfer.py",
+      "bytes": 4003,
+      "sha256": "29faa6f4b9bf54097015e4c3771ee62a4718939fe582c9428226e8809d886c67"
+    },
+    {
+      "path": "cinevault-api/app/catalogue_transfer.py",
+      "bytes": 9836,
+      "sha256": "cc9a4909519ef880a60a996b8d560585b1b816417270bd02ab6f4de9271f3a2e"
+    },
+    {
+      "path": "cinevault-api/app/idempotency.py",
+      "bytes": 2626,
+      "sha256": "dac998f8b97c4075c6037f2f6549f019771b96c0ace1367ebd8c18e1c13ccdda"
+    },
+    {
+      "path": "cinevault-api/app/storage_v2.py",
+      "bytes": 8066,
+      "sha256": "fd977913b63388b3ce59d759ac72c547acecebc2d4331708c5a920f4be339386"
+    },
+    {
+      "path": "cinevault-api/app/reservation_service.py",
+      "bytes": 2907,
+      "sha256": "179c4ced963b523cf0bc7f7e432b9686c74059c64d73e20ff1cb90b7ed8717e2"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_metadata.py",
+      "bytes": 5925,
+      "sha256": "2379b1e1a9c57deae7e22ce565368887c629c1e1b9b417c183a172bffdb1768d"
+    },
+    {
+      "path": "cinevault-api/app/metadata.py",
+      "bytes": 17801,
+      "sha256": "005da7d3b04058e9af0191a31d1b067b181dbc68a3997098660163c7a5f3795b"
+    },
+    {
+      "path": "cinevault-api/app/wikimedia.py",
+      "bytes": 9090,
+      "sha256": "a38eb98cc70dd6c83487140b6ee8cc1052e377574863b041b820298de718f58a"
+    },
+    {
+      "path": "cinevault-api/app/insights.py",
+      "bytes": 8092,
+      "sha256": "a033cef300412d1756572cfa87d2b609c9dd82d877fdd9ce4d20a84e617ef466"
+    },
+    {
+      "path": "cinevault-api/app/enterprise_insights.py",
+      "bytes": 1739,
+      "sha256": "276aea94759a2cf1f7a26641f7a6ea0e054d83ced38039935ad6fc0553d65b31"
+    },
+    {
+      "path": "cinevault-api/app/recovery.py",
+      "bytes": 7587,
+      "sha256": "1a660f7ba1748e4c1f44b82111a957c104be2ed1c4c4f3d7e4a355f6c5f5e1b2"
+    },
+    {
+      "path": "cinevault-api/app/validation.py",
+      "bytes": 2137,
+      "sha256": "a6073ef139670f2f66518c380f10882ec86a9e7e47e3cecf110da524e9b49c7f"
+    },
+    {
+      "path": "cinevault-web/app/api_client.py",
+      "bytes": 17648,
+      "sha256": "9d086c445ac8a328a2ac8f30f57cd3bc1213fac161e634b924ca403c83406782"
+    },
+    {
+      "path": "cinevault-web/app/accounts.py",
+      "bytes": 8189,
+      "sha256": "7448211ffcdf2d9f7caf6cc1fd03d12087f75ab39dd918f68247f25efae8cde1"
+    },
+    {
+      "path": "cinevault-web/app/routes.py",
+      "bytes": 10980,
+      "sha256": "b350552194c18f8478d401c47342aa55012f0f7aedc0f799da049aced304bca6"
+    },
+    {
+      "path": "cinevault-web/app/lending.py",
+      "bytes": 5849,
+      "sha256": "07c04d6b37326e6ab44c0f5719544f4fc24b45c3c03c4259cbb6e0f8005f0aae"
+    },
+    {
+      "path": "cinevault-web/app/personal.py",
+      "bytes": 3443,
+      "sha256": "7538b63eff4ddee2383c25682260b8bad3943cc35ddf7301d6251431928ebe08"
+    },
+    {
+      "path": "cinevault-web/app/transfer.py",
+      "bytes": 4202,
+      "sha256": "64583f68bdb894387a33c3cc0898f3ade5fd88f1b019bf7b242f83ad0bc2b4f0"
+    },
+    {
+      "path": "cinevault-web/app/metadata_views.py",
+      "bytes": 2249,
+      "sha256": "c5a0228453e89717ada8651acb7fb769da05ea39b0caaafb3d1b64439159f341"
+    },
+    {
+      "path": "cinevault-web/app/insights.py",
+      "bytes": 2370,
+      "sha256": "df515e802336cb4955ebd65af231c0b66bb5755287633e260315bffe9a0a79ad"
+    },
+    {
+      "path": "cinevault-web/app/__init__.py",
+      "bytes": 6019,
+      "sha256": "d586c750a56dec79c3d5675e256947d58556c7b22f6ee847992a134735cf1fef"
+    },
+    {
+      "path": "cinevault-web/app/templates/poster.html",
+      "bytes": 427,
+      "sha256": "63e08c2fb5358d194bf33d29d76061f6b2108414496c7402f53f8df14e02c49e"
+    },
+    {
+      "path": "cinevault-infra-report/docs/actors-use-cases.md",
+      "bytes": 10773,
+      "sha256": "db7a7d6bc6b97cff7a3ea5e692325c96f5fd1f70c02ee9b5a1bfe5e26e9677ef"
+    }
+  ]
+}

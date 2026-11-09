@@ -1,12 +1,20 @@
 # Inventaire du frontend
 
-**Références de source :** les liens GitHub ciblent les commits locaux immuables audités destinés à la publication. Les dépôts publics ne sont pas encore créés ; leur disponibilité externe n'a pas été vérifiée. Les documents pédagogiques et journaux de travail restent locaux et ne sont pas distribués avec ce dépôt. Voir la [synthèse courante des validations](validation-current.md).
+**Références de source :** les liens ciblent des commits immuables désormais accessibles dans les dépôts publics audités. Les documents pédagogiques, secrets et journaux privés restent exclus. Voir la [synthèse courante des validations](validation-current.md) pour les révisions déployées et les CI réellement exécutées. Les analyses statiques historiques ci-dessous restent datées.
 
-## Périmètre et provenance
+## Actualisation du client natif — web10612c9, puis CSSf3d10cb
+
+La révision courante ajoute `app/response_contracts.py` : validation structurelle des réponses JSON après décodage et avant adaptation/Jinja. Elle vérifie les champs consommés, tableaux, cartes, pagination et chaînes UTF-8 ; elle refuse un204 inattendu. Une réponse incompatible lève APIError503. Les réponses sans contenu documentées, champs nuls légitimes, données vides, Unicode ordinaire et affiches facultatives restent compatibles. Les clients injectés ne sont pas enveloppés. Aucun nouvel écran, URL ou template : le total passe à11 modules, avec28 templates et36 règles inchangés. Les74 cas ajoutés portent la suite à159 tests sur chacune des CI Windows/Ubuntu ; cette version est déployée et contrôlée séparément.
+
+Le script `scripts/publish_image.py` complète les quatre scripts historiques de qualité : il ne traite aucune requête utilisateur. Il vérifie le reçu d'image construite, saine et scannée, puis publie seulement cette image sur l'événement de branche autorisé. Permissions de paquet et jeton sont limités au job/step ; la configuration Docker temporaire est supprimée. Le workflow comporte désormais cinq scripts distincts de qualité/publication. Les références statiques du relevé ci-dessous restent disponibles à leur commit historique.
+
+La révision f3d10cb ajoute uniquement le contraste explicite des placeholders : couleur `var(--muted)`, opacité1. Le contrôle réel passe de3,56 à8,99:1. Le client natif et les routes demeurent ceux de10612c9 ; le [contrôle navigateur courant](../evidence/browser-20261109/verification.json) conserve14positions Tab et les observations390/820px.
+
+## Périmètre et provenance historique
 
 Relevé **des sources locales du 8 novembre 2026**, sans nouvelle campagne navigateur ni nouvel appel réseau. Le précédent inventaire décrivait le commit web `4303ef3` du 7 novembre. Les ajouts de contexte client signé et de propagation de `Retry-After`, initialement relevés dans le candidat non commité, sont désormais dans le **commit web local `9b1da4f85adcd20c06e6113516de566d10aa6996`** ; le HEAD et l'absence de différences web ont été relus après cette stabilisation. Le contrat API proche correspond au commit local `4b15406c2a1125518fb9a52dc53e9f50545db28e`. Ces commits locaux ne prouvent ni publication ni déploiement ; les nouveaux comportements ne sont pas attribués au commit historique `4303ef3`.
 
-Le frontend est un service **Flask/Jinja avec formulaires HTML**, sans SPA ni JavaScript applicatif. Le contrôle statique compte **10 modules Python dans `app/`, 28 templates HTML, 1 feuille CSS, 36 règles d'URL explicites et 33 fonctions de vue**. Trois fonctions desservent chacune deux règles : formulaire film, exemplaire et collection. Route statique Flask implicite et HEAD/OPTIONS automatiques exclus.
+Le frontend est un service **Flask/Jinja avec formulaires HTML**, sans SPA ni JavaScript applicatif. Le contrôle statique compte **11 modules Python dans `app/`, 28 templates HTML, 1 feuille CSS, 36 règles d'URL explicites et 33 fonctions de vue**. Trois fonctions desservent chacune deux règles : formulaire film, exemplaire et collection. Route statique Flask implicite et HEAD/OPTIONS automatiques exclus.
 
 Les 11 règles de `app/routes.py` sont enregistrées dans les deux modes ; ses trois règles d'exemplaires renvoient explicitement 404 hors Enterprise. Les 25 règles des six autres blueprints sont enregistrées seulement avec `ENTERPRISE_ENABLED is True`. Il reste huit règles applicatives utilisables en mode pédagogique, hors statique. Un template partagé n'est pas un écran supplémentaire.
 

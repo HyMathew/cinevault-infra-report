@@ -1,0 +1,28 @@
+# UC02 — inscription ; le login est distinct et détaillé figure 03.
+shape: sequence_diagram
+browser: Visiteur / navigateur
+web: Présentation web
+api: API / register
+admission: Admission séparée
+store: JSON métier
+browser -> web: "1. POST /inscription\nFormulaire + cookie Flask + CSRF"
+web -> web: "Vérifier CSRF (sinon 400)\nConfirmation du mot de passe (sinon 422)"
+web -> api: "2. POST /api/v1/auth/register\nJSON UTF-8 exact + contexte HMAC signé"
+api -> api: "Vérifier IP canonique / signature\nMéthode, chemin, SHA du corps, ±30 s\nContexte invalide / obligatoire absent : 401"
+api -> api: "3. payload + normalize_username\nvalid_display + valid_password : sinon 422"
+api -> store: "4. check_store().read()\nPrécontrôle nom libre / capacité"
+store -> api: "Doublon : 409 / 10 000 comptes : 503\nSi refus, aucun calcul Argon2"
+api -> admission: "5. compute(source HMAC, horloge)\nVerrou non bloquant dédié"
+admission -> admission: "Réserver AVANT calcul :\n20 / source / 60 s et 60 global / 60 s\nÉcrire les compteurs séparés"
+admission -> api: "6. make_user → Argon2id.hash\nRôle member imposé ; compte actif\nAdmission tenue, verrou métier libre"
+admission -> admission: "Libérer le verrou d'admission\nBudget consommé même si worker échoue"
+api -> store: "7. transact(add) : relire sous verrou\nRECONTRÔLER doublon et capacité"
+store -> store: "Si accord : ajouter compte\nrevision + 1 ; valider ; remplacer atomiquement"
+store -> api: "8. Profil public 201\nou conflit concurrent 409 / capacité 503"
+api -> web: "9. Profil sans hash ni secret"
+web -> browser: "10. 303 /connexion\nInscription sans connexion automatique"
+refusal: "Alternative admission refusée" {
+  admission -> api: "429 : verrou occupé ou budget épuisé\nRetry-After borné 1–60 s ; aucun Argon2"
+  api -> web: "429 contrôlé ; panne admission : 503"
+  web -> browser: "Formulaire sans mot de passe réaffiché\nRetry-After relayé si valide"
+}

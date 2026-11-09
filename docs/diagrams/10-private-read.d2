@@ -1,0 +1,21 @@
+# Lecture privée = transaction ; InvalidSession annule avant commit.
+shape: sequence_diagram
+web: Web authentifié
+api: API / protected
+store: V2Store / JSON
+web -> api: "1. GET /api/v1/me + bearer\nou GET privé métier (collections, prêts…)"
+api -> api: "2. token_digest / syntaxe\nJeton mal formé : 401 sans transaction"
+api -> store: "3. transact(action) : verrou interprocessus\nLire et valider le document"
+store -> api: "4. find_session : comparer SHA du jeton\nCompte actif, expiration 8 h, inactivité <30 min\nHorloge ≥ last_seen"
+invalid: "Alternative identité invalide" {
+  api -> store: "Lever InvalidSession avant callback métier\nException : libérer verrou SANS remplacement"
+  api -> web: "401 ; le web efface un cookie refusé par /me"
+}
+valid: "Si session valide" {
+  api -> store: "5. session.last_seen = now\nCallback : propriétaire / rôle / projection\nCertains GET expirent aussi des réservations"
+  store -> store: "6. revision + 1 même pour un GET privé\nValider tout le document ; temporaire fsync\nRemplacer atomiquement et libérer le verrou"
+  api -> web: "7. Profil / objets JSON 200 ; no-store"
+}
+returned: "Autre issue du callback avec session valide" {
+  api -> web: "Refus retourné (ex. forbidden) :\nlast_seen / revision peuvent être committés\nException avant commit : pas de remplacement"
+}

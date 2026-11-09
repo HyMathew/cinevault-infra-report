@@ -1,0 +1,15 @@
+{
+  "films": [
+    {
+      "acteurs": [
+        "B. Durand FICTIF"
+      ],
+      "annee": 2001,
+      "id": "00000000-0000-4000-8000-00000000005c",
+      "realisateur": "A. Martin FICTIF",
+      "support": "dvd",
+      "synopsis": "Un récit fictif.",
+      "titre": "Le Voyage de papier — FICTIF"
+    }
+  ]
+}

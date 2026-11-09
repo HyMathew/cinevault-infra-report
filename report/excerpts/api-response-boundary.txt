@@ -1,0 +1,11 @@
+if response.status_code == 204:
+    if allows_no_content(method, path):
+        return None
+    raise APIError(503, "Réponse invalide du service de données.")
+try:
+    result = response.json()
+except ValueError as exc:
+    raise APIError(503, "Réponse invalide du service de données.") from exc
+if not valid_response(method, path, result):
+    raise APIError(503, "Réponse invalide du service de données.")
+return result

@@ -1,0 +1,25 @@
+# UC10 — atomicité du lot catalogue et reçu, pas absence de toute écriture sur refus.
+shape: sequence_diagram
+browser: Gestionnaire / navigateur
+web: Web / transfert
+api: API / import
+store: V2Store / JSON
+browser -> web: "1. POST /transfert multipart + CSRF\nFichier, format, politique, operation_key"
+web -> web: "2. Identité/rôle ; format/politique\nLire ≤1 Mio +1 octet ; décoder UTF-8-sig\nFichier >1 Mio : 422 ; enveloppe >2 Mio : 413"
+web -> api: "3. POST /api/v1/catalogue/import\nJSON format/content/duplicate_policy\nBearer + Idempotency-Key ; plafond API 8 Mio"
+api -> store: "4. management(transfer) sous verrou\nRevalider identité/rôle et payload\nTaille métier, parse_csv / normalize"
+api -> store: "5. run_once : clé obligatoire\nPurger reçus expirés ; acteur + SHA clé\nComparer opération + empreinte des données"
+replay: "Alternative reçu déjà présent" {
+  store -> api: "Même opération/corps : reçu 200\nIdempotency-Replayed: true ; aucun second lot\nDifférent : 409 ; horloge incohérente : 409"
+}
+new: "Si clé neuve et capacité de reçus disponible" {
+  store -> store: "6. prepare_import : deepcopy du document\nTout le lot traité sur copie candidate\nreject / skip / append_copies"
+  store -> store: "7. Si lot valide : affecter movies + copies\nAudit completed + reçu (rétention 86 400 s)\nrevision + 1 ; valider document complet"
+  store -> store: "8. Écrire temporaire même dossier + fsync\nRemplacer atomiquement ; libérer verrou"
+  api -> web: "9. JSON 200 : operation_id + compteurs"
+  web -> browser: "10. HTML 200 : compteurs d'import\nNouvelle clé seulement après succès"
+}
+failure: "Alternatives : aucun lot catalogue partiel" {
+  api -> web: "422 contenu invalide / 409 conflit de lot\n428 clé absente / 503 capacité-stockage"
+  web -> browser: "Conserver options et clé ; fichier à resélectionner\n503 : vérifier état avant reprise avec même clé"
+}

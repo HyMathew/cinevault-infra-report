@@ -1,0 +1,8 @@
+{
+  "closed_reservations": 1,
+  "disabled_users": 6,
+  "operation_id": "00000000-0000-4000-8000-000000000059",
+  "revoked_sessions": 3,
+  "source_sha256": "b2c4baacb9c5f2aedbc28978087c6297afb9bd2f1a8ac08f2ff154b062ef8175",
+  "target_sha256": "aedd4db72cf86fb348cfb1112f0dcdc7f47c590b875e3e44b41c1fefc69b5e53"
+}

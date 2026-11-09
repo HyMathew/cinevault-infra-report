@@ -1,0 +1,27 @@
+# UC11 — le cache garde son propre verrou pendant le réseau ; pas le verrou métier.
+shape: sequence_diagram
+web: Web gestionnaire
+api: API métadonnées
+store: JSON métier
+cache: Cache métadonnées
+provider: Wikidata / Commons
+web -> api: "1. GET /api/v1/metadata/search?q=…\nou /metadata/{QID} + bearer"
+api -> store: "2. authorised_read : management gate\nRevalider session/compte/rôle sous transact"
+store -> api: "3. Autorisation ; last_seen/revision committés\nVerrou métier RELÂCHÉ"
+api -> cache: "4. provider.search / load_detail\nCache indépendant : verrou ≤2 s d'attente"
+fresh: "Alternative cache frais" {
+  cache -> api: "Résultat frais ; aucun HTTP fournisseur\nTTL 86 400 s"
+}
+fetch: "Sinon renouvellement sous le verrou DU CACHE" {
+  cache -> cache: "5. Avant chaque requête HTTP : réserver quota\n20 requêtes / 60 s ; compteur persisté"
+  cache -> provider: "6. HTTPS GET, endpoints fixes, User-Agent\nTimeout 4 s par requête ; redirection refusée\nAucun bearer ni catalogue privé"
+  provider -> cache: "7. JSON ≤1 Mio ; vérifier et normaliser\nFilm, provenance et affiche licenciée facultative"
+  cache -> cache: "8. Conserver ≤100 entrées, écrire cache\nPanne/quota : stale si délai de grâce valable\nGrâce = TTL +7 jours depuis stockage"
+  cache -> api: "Résultat fresh / stale\nSans repli : 429 Busy ou 503 indisponible"
+}
+api -> store: "9. Si résultat : management de nouveau\nRevalider identité/rôle APRÈS attente réseau"
+store -> api: "10. Résultat autorisé ou 401 / 403\nNouvelle transaction technique de session"
+api -> web: "11. JSON proposition + cache + warnings\nWeb : aperçu / préremplissage, pas de sauvegarde"
+save: "Enregistrement ultérieur explicite" {
+  web -> api: "12. POST/PUT film + external_id\nL'API relit la provenance (load_detail)\nPuis recontrôle droits/version avant commit"
+}

@@ -1,0 +1,11 @@
+{
+  "compiled_at_utc": "2026-11-09T15:15:16.725410+00:00",
+  "compiler": "typst 0.15.1 (9dfd3a08)",
+  "system_fonts_ignored": true,
+  "creation_timestamp_is_fixed_release_epoch": 1794236676,
+  "filename": "RT0705_CineVault_Mathieu_Kuhnapfel.pdf",
+  "bytes": 734029,
+  "sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+  "platform": "Windows",
+  "scope": "Compilation only; visual inspection and final audit are separate gates."
+}

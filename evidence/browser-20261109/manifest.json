@@ -1,0 +1,22 @@
+{
+  "source_commit": "f3d10cb0d5c9233c6427bd6503f3d2b841e99548",
+  "scope": "Authentic targeted public catalogue QA via local SSH tunnel; no private account, token or physical lab IP published",
+  "files": {
+    "verification.json": {
+      "bytes": 1279,
+      "sha256": "0afd3ae567814786e3f5392a0d22dafa70733f8ae0582f5f5638e53637e0f28e"
+    },
+    "keyboard-traversal.json": {
+      "bytes": 1934,
+      "sha256": "9dcf33c38a58647f6c67fa5d9199c558464d79a2fb93c3e120b8285a3ca57a37"
+    },
+    "catalogue-desktop-after.jpg": {
+      "bytes": 79338,
+      "sha256": "3fc0bad2ebf017890ea6f5e2339f4771d8ef563710bcf3fb526707e1fbb80c23"
+    },
+    "catalogue-mobile-after.jpg": {
+      "bytes": 24871,
+      "sha256": "5138e103eb3db54c0b7338b33a1de0e7f7910b259ca202454a925e55db867b50"
+    }
+  }
+}

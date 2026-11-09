@@ -1,0 +1,11 @@
+direction: down
+pc: "Poste Windows\nVS Code · Git · SSH" {style.fill: "#fff6dc"}
+worker_web: "VM1 · worker web\ncinevault-web : 1 tâche\nUID10001 · racine readonly" {style.fill: "#e7eef8"}
+worker_api: "VM2 · worker API\ncinevault-api : 1 tâche\nUID10001 · racine readonly" {style.fill: "#e7eef8"}
+manager: "VM3 · manager unique\nLeader · Drain\nAucune tâche applicative" {style.fill: "#f2e8f5"}
+data: "Volume local de VM2\nJSON métier persistant" {shape: cylinder; style.fill: "#e9f3e9"}
+pc -> worker_web: "HTTP loopback via SSH"
+worker_web -> worker_api: "Overlay chiffré · API non publiée"
+worker_api -> data: "Montage /data en écriture"
+manager -> worker_web: "Placement et contrôle" {style.stroke-dash: 3}
+manager -> worker_api: "Placement et contrôle" {style.stroke-dash: 3}

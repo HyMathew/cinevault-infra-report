@@ -1,0 +1,82 @@
+{
+  "mode": "offline-local-svg-only",
+  "results": [
+    {
+      "name": "01-catalogue.svg",
+      "width": 1122,
+      "height": 1773,
+      "textElements": 20,
+      "outsideRoot": 0
+    },
+    {
+      "name": "02-registration.svg",
+      "width": 1726,
+      "height": 2362,
+      "textElements": 25,
+      "outsideRoot": 0
+    },
+    {
+      "name": "03-login.svg",
+      "width": 1470,
+      "height": 1966,
+      "textElements": 21,
+      "outsideRoot": 0
+    },
+    {
+      "name": "04-versioned-mutation.svg",
+      "width": 1470,
+      "height": 1946,
+      "textElements": 21,
+      "outsideRoot": 0
+    },
+    {
+      "name": "05-loan-approval.svg",
+      "width": 1204,
+      "height": 1862,
+      "textElements": 18,
+      "outsideRoot": 0
+    },
+    {
+      "name": "06-reservation-return.svg",
+      "width": 1167,
+      "height": 1732,
+      "textElements": 17,
+      "outsideRoot": 0
+    },
+    {
+      "name": "07-atomic-import.svg",
+      "width": 1550,
+      "height": 1837,
+      "textElements": 20,
+      "outsideRoot": 0
+    },
+    {
+      "name": "08-metadata-provider.svg",
+      "width": 1538,
+      "height": 1832,
+      "textElements": 22,
+      "outsideRoot": 0
+    },
+    {
+      "name": "09-public-poster.svg",
+      "width": 1455,
+      "height": 1425,
+      "textElements": 16,
+      "outsideRoot": 0
+    },
+    {
+      "name": "10-private-read.svg",
+      "width": 1163,
+      "height": 1392,
+      "textElements": 16,
+      "outsideRoot": 0
+    },
+    {
+      "name": "use-cases.svg",
+      "width": 1290,
+      "height": 2476,
+      "textElements": 86,
+      "outsideRoot": 0
+    }
+  ]
+}

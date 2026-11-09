@@ -1,6 +1,6 @@
 # Dictionnaire des données CineVault
 
-**Références de source :** les liens GitHub ciblent les commits locaux immuables audités destinés à la publication. Les dépôts publics ne sont pas encore créés ; leur disponibilité externe n'a pas été vérifiée. Les documents pédagogiques et journaux de travail restent locaux et ne sont pas distribués avec ce dépôt. Voir la [synthèse courante des validations](validation-current.md).
+**Références de source :** les liens ciblent des commits immuables désormais accessibles dans les dépôts publics audités. Les documents pédagogiques, secrets et journaux privés restent exclus. Voir la [synthèse courante des validations](validation-current.md) pour les révisions déployées et les CI réellement exécutées. Les analyses statiques historiques ci-dessous restent datées.
 
 État documentaire : **9 novembre 2026**, confrontation statique au candidat API présent dans le workspace, y compris `client_context.py` et `registration_admission.py`. Ce document décrit les formes implémentées ; il ne prouve ni le déploiement du candidat, ni l'exécution de ses tests. Aucune validation d'exemple, aucun service et aucun appel réseau n'ont été exécutés pour rédiger ce dictionnaire. Les exemples ci-dessous sont fictifs, proposés à la validation, sauf mention de leur simple présence dans les sources. Ils ne contiennent aucun compte réel, secret utilisable ou attribution de média réelle.
 
@@ -329,7 +329,7 @@ Politique reject : refuse tout film déjà présent ; skip : ignore son film et 
 
 La sauvegarde de `V2Store.snapshot` est un document v2 complet validé, dont l'empreinte SHA-256 des octets est renvoyée ; la primitive ne produit pas une enveloppe JSON de transfert. `V2Store.restore` restaure exactement vers une cible absente. La reprise opérationnelle `recovery.recover` vérifie empreinte/schéma/horloge, révoque les sessions, enlève les compteurs de connexion, met les comptes anciens en quarantaine avec nouveaux hachages aléatoires jetés et ajoute un nouvel admin. Les prêts historiques restent cohérents ; les attentes sont clôturées. Voir [le contrat de reprise](https://github.com/HyMathew/cinevault-api/blob/4b15406c2a1125518fb9a52dc53e9f50545db28e/docs/recovery.md).
 
-Le rapport JSON CLI de reprise contient exactement `operation_id:UUID`, `source_sha256:string`, `target_sha256:string` (64 hexadécimaux), `disabled_users:int≥0`, `revoked_sessions:int≥0`, `closed_reservations:int≥0`. Source : `recovery.recover`. Aucun schéma JSON autonome/OpenAPI ne décrit actuellement ce rapport et aucun exemple de rapport avec empreintes réellement calculées n'est livré ici. Il n'y a pas de route HTTP de restauration. Les empreintes garantissent une comparaison d'octets avec une référence fiable, pas l'actualité de la sauvegarde ou un RPO nul.
+Le rapport JSON CLI de reprise contient exactement `operation_id:UUID`, `source_sha256:string`, `target_sha256:string` (64 hexadécimaux), `disabled_users:int≥0`, `revoked_sessions:int≥0`, `closed_reservations:int≥0`. Source : `recovery.recover`. Aucun schéma JSON autonome/OpenAPI ne décrit actuellement ce rapport ; le corpus de la section8.3 fournit désormais un rapport qualifié et des empreintes calculées sur les fichiers synthétiques neutralisés publiés. Il n'y a pas de route HTTP de restauration. Les empreintes garantissent une comparaison d'octets avec une référence fiable, pas l'actualité de la sauvegarde ou un RPO nul.
 
 ## 5. Données dérivées et enrichissement
 
@@ -357,7 +357,7 @@ Signaux propres : favoris poids 3, vus et prêts retournés poids 1, maximum par
 {"recommendations":[],"total":0,"limit":12,"personalized":false,"method":"content-rules-v1"}
 ```
 
-Un exemple Statistics complet et une recommandation non vide avec ETag calculé restent à produire dans le lot de validation ; une carte partielle présentée comme Statistics ne serait pas valide.
+Le corpus de la section8.3 fournit désormais Statistics complet et une recommandation non vide avec ETag calculé ; une carte partielle ne serait pas une ressource Statistics valide.
 
 ### 5.2 Recherche, proposition de métadonnées et affiche
 
@@ -455,7 +455,7 @@ Source : [repository.py](https://github.com/HyMathew/cinevault-api/blob/4b15406c
 
 GET liste et ressource utilisent cette forme ; POST/PUT attendent les attributs sans id (synopsis facultatif à l'entrée, défaut chaîne vide). En mode Enterprise, les mutations legacy sont refusées ; leur lecture de transition reste disponible depuis le fichier legacy distinct. L'OpenAPI v1 ne sert pas de schéma des routes `/api/films`. Il n'existe pas actuellement de schéma JSON autonome legacy ; la validation est exécutable par Repository/validate.
 
-## 8. Inventaire des exemples, couverture et preuves restant à établir
+## 8. Inventaire historique des exemples et couverture actualisée
 
 ### 8.1 Exemples présents dans le dépôt au moment de lecture
 
@@ -487,7 +487,17 @@ Tous les composants lus sont classés ci-dessous ; une famille n'implique pas qu
 
 S'ajoutent les types v2 non exposés comme composants nommés OpenAPI (`user`, `session`, `attempt`, `receipt`, `cached_copy`, `import_summary`), les schémas HTTP inline d'authentification/admin/demande/approbation, le modèle legacy, la santé, le rapport de reprise, le cache technique et le contexte signé. Le `$defs/reserved` du schéma v2 décrit un tableau nécessairement vide ; c'est un auxiliaire de schéma, pas une onzième collection effective ni une entité métier.
 
-### 8.3 Manques explicites à fermer avant d'annoncer S04/S10 entièrement démontrés
+### 8.3 Corpus exécutable de complément — 9 novembre 2026
+
+Le [corpus synthétique](examples/README.md) et son [manifeste](examples/academic-json/manifest.json) complètent les exemples inline proposés plus haut. Le générateur offline utilise les vrais handlers Flask, un magasin temporaire neuf, une horloge/UUID contrôlés et un fournisseur explicitement fictif. Aucun réseau ni magasin du laboratoire. Le contrôle exécuté vérifie **42 composants OpenAPI, 18 définitions de stockage, 93 échanges HTTP et 51 emplacements de schéma HTTP uniques résolubles**, avec formats UUID/URI. Les exemples inline historiques de ce dictionnaire ne sont pas pour autant déclarés exécutés.
+
+Le snapshot est non vide dans les dix tableaux et présente ensemble les quatre états de prêt et quatre états de réservation. Les ETags sont calculés ; les cartes et références, branches de schéma, imports/exports JSON et CSV, reçus et rejeux, statistiques, recommandations, cache, admission et contexte signé sont vérifiés. Les hachages Argon2 réellement générés restent dans le temporaire : les fichiers publiés neutralisent hachages et tokens, dont le rejet est testé. Une reprise est exécutée dans ce temporaire ; le rapport public est explicitement adapté aux fichiers neutralisés et ne prétend pas être un reçu de restauration du laboratoire.
+
+Les sources et scripts sont empreintés selon UTF-8/LF normalisé ; les données gardent des empreintes d'octets exacts. Le contrôle distingue une variation de fin de ligne d'une altération réelle. Cinq schémas autonomes complémentaires sont désormais fournis dans technical-schemas.json (LegacyCatalogue, Health, RecoveryReport, MetadataCache, ClientContext), validés avec leurs exemples ; l'admission conserve le schéma API existant. HMAC, fraîcheur, IP canonique, digests, sommes et contraintes en octets restent aussi contrôlés par le code. Vingt-trois tests négatifs/positifs passent. Le tableau historique ci-dessous ne décrit plus une absence de ces cinq schémas. Les exemples de fournisseur, URLs, artistes et licences sont entièrement fictifs, sans autorisation de média réel déduite de leur seule forme.
+
+### 8.4 Historique des manques initiaux et limites sémantiques
+
+Le tableau suivant conserve les besoins identifiés avant le corpus. Les lignes d'exemples et de couverture sont traitées dans le corpus ci-dessus ; la ligne des divergences de modèle reste une réserve documentaire à lire avec le code, sans prétendre qu'un JSON Schema exprime toutes les règles métier.
 
 | Manque | Livrable ou validation encore nécessaire |
 |---|---|

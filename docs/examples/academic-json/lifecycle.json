@@ -1,0 +1,106 @@
+{
+  "loans": {
+    "active": {
+      "_etag": "\"0c67b01b25b287dd21bbe1d8977142bc0745d59cb8053525ac5a93702d3d82b5\"",
+      "approved_at": 1700000000,
+      "borrower_id": "00000000-0000-4000-8000-000000000005",
+      "cancelled_at": null,
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400,
+      "id": "00000000-0000-4000-8000-000000000029",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "active"
+    },
+    "cancelled": {
+      "_etag": "\"9f6f6a3be655987a4bcab435fc2d443c61149c8e5b706f81427f9f262f918ea0\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000007",
+      "cancelled_at": 1700000000,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-00000000002d",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "cancelled"
+    },
+    "pending": {
+      "_etag": "\"3c926e71a73fbe01c313e0cf5cf78e42ac9e4bb4dc1fec0c0426b2450cde4803\"",
+      "approved_at": null,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": null,
+      "due_at": null,
+      "id": "00000000-0000-4000-8000-000000000030",
+      "movie_id": "00000000-0000-4000-8000-00000000000f",
+      "requested_at": 1700000000,
+      "returned_at": null,
+      "status": "pending"
+    },
+    "returned": {
+      "_etag": "\"9f4d4090da271a87bfba22660a75092cf4385b69607b56f4cb80dfde5a142ce9\"",
+      "approved_at": 1700000000,
+      "borrower_id": "00000000-0000-4000-8000-000000000003",
+      "cancelled_at": null,
+      "copy_id": "00000000-0000-4000-8000-00000000000e",
+      "due_at": 1700086400,
+      "id": "00000000-0000-4000-8000-00000000001e",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "requested_at": 1700000000,
+      "returned_at": 1700000000,
+      "status": "returned"
+    }
+  },
+  "reservations": {
+    "cancelled": {
+      "_etag": "\"2c5840440013d5ac052a1f3abf323f467348af06656d69d21b0b112cc1a9d4ca\"",
+      "closed_at": 1700000000,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000023",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 45,
+      "status": "cancelled",
+      "user_id": "00000000-0000-4000-8000-000000000007"
+    },
+    "expired": {
+      "_etag": "\"7e22da0d1b441be8e5f06f74c8f39881ccee2075baee89112ad1a20047791b30\"",
+      "closed_at": 1701209601,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000025",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 46,
+      "status": "expired",
+      "user_id": "00000000-0000-4000-8000-000000000009"
+    },
+    "fulfilled": {
+      "_etag": "\"e732353ecea77f0938022f35afae1371c3b85db60a9e966ad3620b32536b210b\"",
+      "closed_at": 1700000000,
+      "created_at": 1700000000,
+      "expires_at": 1701209600,
+      "id": "00000000-0000-4000-8000-000000000021",
+      "loan_id": "00000000-0000-4000-8000-000000000029",
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 44,
+      "status": "fulfilled",
+      "user_id": "00000000-0000-4000-8000-000000000005"
+    },
+    "waiting": {
+      "_etag": "\"7a7443d4d981844830469dead57c05999eb11f4fb70082c8f9baeae58a020626\"",
+      "closed_at": null,
+      "created_at": 1701209601,
+      "expires_at": 1702419201,
+      "id": "00000000-0000-4000-8000-000000000039",
+      "loan_id": null,
+      "movie_id": "00000000-0000-4000-8000-00000000000d",
+      "sequence": 62,
+      "status": "waiting",
+      "user_id": "00000000-0000-4000-8000-000000000007"
+    }
+  }
+}

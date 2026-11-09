@@ -1,0 +1,21 @@
+# UC06–UC07 ; les opérations de la queue partagent le commit du prêt.
+shape: sequence_diagram
+web: Navigateur via web
+api: API prêts
+store: V2Store / JSON
+web -> api: "1. POST /api/v1/loans + bearer membre\nmovie_id ; formulaire web CSRF"
+api -> store: "protected(create) : identité, film, doublon\nMaximum 10 pending ; créer demande pending"
+api -> web: "2. 201 : aucun exemplaire attribué\nWeb : 303 /emprunts"
+web -> api: "3. GET /loans/{id} et /loans/{id}/options\nGestionnaire : version + copies proposées"
+api -> store: "protected(options) : expiration opportuniste\nBénéficiaire / quotas / priorité ; copies libres"
+api -> web: "4. JSON 200 ; ce choix n'est pas une réservation\nLes GET privés réécrivent last_seen / revision"
+web -> api: "5. POST /loans/{id}/approve\nIf-Match + copy_id + due_at + bearer\nWeb : CSRF, conversion date UTC"
+api -> store: "6. protected(approve) : verrou + relecture\nCompte actif, rôle manager/admin ; expire_waiting"
+store -> store: "7. lookup ; If-Match ; état pending\nBénéficiaire actif / horloge / moins de 5 active\nÉchéance future ≤90 jours ; copie même film\nNon damaged et sans prêt actif"
+store -> store: "8. priority_allows : si réservataire, tête FIFO\nSinon nombre de copies libres > attentes\nContrôle dans la MÊME transaction"
+store -> store: "9. loan → active ; fulfill tête si bénéficiaire\nRéservation → fulfilled avec loan_id\nAudit ; revision + 1 ; valider ; remplacer"
+api -> web: "10. JSON 200 ; web 303 /emprunts\nUn prêt actif par copie"
+race: "Alternative — deuxième requête concurrente" {
+  api -> store: "Relire APRÈS le premier remplacement\nSérialisation par verrou du même hôte"
+  api -> web: "412 si même prêt/version périmée\n409 copy_unavailable / reservation_priority\n409 état, compte, horloge ou quota"
+}

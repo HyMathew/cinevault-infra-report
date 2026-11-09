@@ -1,0 +1,19 @@
+{
+  "mode": "offline-local-svg-only",
+  "results": [
+    {
+      "name": "logical.svg",
+      "width": 438,
+      "height": 793,
+      "textElements": 7,
+      "outsideRoot": 0
+    },
+    {
+      "name": "physical.svg",
+      "width": 578,
+      "height": 841,
+      "textElements": 10,
+      "outsideRoot": 0
+    }
+  ]
+}

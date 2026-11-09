@@ -1,0 +1,103 @@
+{
+  "scope": "Actual Tab traversal on public deployed catalogue; no programmatic focus",
+  "source_commit": "10612c999cef4a82b268b8d8f900222d713b4e2b",
+  "trace": [
+    {
+      "step": 0,
+      "tag": "A",
+      "text": "Aller au contenu",
+      "href": "#contenu"
+    },
+    {
+      "step": 1,
+      "href": "/",
+      "id": "",
+      "tag": "A",
+      "text": "CineVault"
+    },
+    {
+      "step": 2,
+      "href": "/",
+      "id": "",
+      "tag": "A",
+      "text": "Accueil"
+    },
+    {
+      "step": 3,
+      "href": "/films",
+      "id": "",
+      "tag": "A",
+      "text": "Catalogue"
+    },
+    {
+      "step": 4,
+      "href": "/connexion",
+      "id": "",
+      "tag": "A",
+      "text": "Connexion"
+    },
+    {
+      "step": 5,
+      "href": null,
+      "id": "q",
+      "tag": "INPUT",
+      "text": "q"
+    },
+    {
+      "step": 6,
+      "href": null,
+      "id": "genre",
+      "tag": "INPUT",
+      "text": "genre"
+    },
+    {
+      "step": 7,
+      "href": null,
+      "id": "year",
+      "tag": "INPUT",
+      "text": "year"
+    },
+    {
+      "step": 8,
+      "href": null,
+      "id": "support",
+      "tag": "SELECT",
+      "text": "Tous les supportsNumériqueDVDBlu-rayVHSAutre"
+    },
+    {
+      "step": 9,
+      "href": null,
+      "id": "sort",
+      "tag": "SELECT",
+      "text": "Titre A–ZTitre Z–AAnnée croissanteAnnée décroissante"
+    },
+    {
+      "step": 10,
+      "href": null,
+      "id": "",
+      "tag": "BUTTON",
+      "text": "Rechercher"
+    },
+    {
+      "step": 11,
+      "href": "/films",
+      "id": "",
+      "tag": "A",
+      "text": "Effacer les filtres"
+    },
+    {
+      "step": 12,
+      "href": "/films/f90a7b43-949b-427f-9b75-d49da6206366",
+      "id": "",
+      "tag": "A",
+      "text": "Échos du laboratoire — édition Swarm"
+    },
+    {
+      "step": 13,
+      "href": "/page-simple",
+      "id": "",
+      "tag": "A",
+      "text": "Page simple"
+    }
+  ]
+}

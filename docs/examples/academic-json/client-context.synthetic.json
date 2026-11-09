@@ -1,0 +1,13 @@
+{
+  "accepted_only_at_fictional_clock": 1701209601,
+  "body_utf8": "{\"username\":\"fictif-alice\",\"password\":\"FICTIF apprentissage uniquement 123\"}",
+  "fictional_key_hex": "464943544956452d4c4f43414c2d4f4e4c592d4b45592d3030303030303030303030",
+  "headers": {
+    "Content-Type": "application/json",
+    "X-CineVault-Client-IP": "192.0.2.10",
+    "X-CineVault-Client-Signature": "6225c336d3c477763423dfbfe987a2f34799692629000155008315085d287b42",
+    "X-CineVault-Client-Time": "1701209601"
+  },
+  "rejected_at": 1701209632,
+  "signed_message": "cinevault-client-v1\n1701209601\n192.0.2.10\nPOST\n/api/v1/auth/login\nd500a67137bd8038694133eba02c5beb632531d52eac08bda119424043f619be"
+}

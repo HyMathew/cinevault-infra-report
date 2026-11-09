@@ -1,0 +1,86 @@
+{
+  "blocked_until": 0,
+  "count": 1,
+  "entries": {
+    "8631d87d74ac3c1b01a98b185471f9cf42fb4dfe6d0cf128ce267842e6f1c9c8": {
+      "expires_at": 1700086400,
+      "stale_until": 1700691200,
+      "stored_at": 1700000000,
+      "value": {
+        "items": [
+          {
+            "description": "Résultat entièrement synthétique.",
+            "id": "Q123",
+            "source_url": "https://www.wikidata.org/wiki/Q123",
+            "title": "Le Voyage de papier — FICTIF"
+          }
+        ]
+      }
+    },
+    "e7036d6c108a68b9960c91738e9ae64ea4e7f05b90fcd92755e8040cd05b30c8": {
+      "expires_at": 1700086400,
+      "stale_until": 1700691200,
+      "stored_at": 1700000000,
+      "value": {
+        "film": {
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "description": "Proposition synthétique, aucune source externe interrogée.",
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "Q123",
+          "poster": {
+            "artist": "Artiste entièrement fictif — aucun média consulté",
+            "attribution_required": true,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/FICTIF_INEXISTANT.jpg",
+            "license": "CC BY 4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "source_url": "https://commons.wikimedia.org/wiki/File:FICTIF_INEXISTANT.jpg"
+          },
+          "poster_filename": "FICTIF_INEXISTANT.jpg",
+          "retrieved_at": 1700000000,
+          "revision": 123,
+          "source_url": "https://www.wikidata.org/wiki/Q123",
+          "title": "Le Voyage de papier — FICTIF",
+          "warnings": [
+            "Données et attribution fictives ; aucun droit de média vérifié."
+          ],
+          "year": 2001
+        }
+      }
+    },
+    "ff55291c18397fca3813bc545dc56514e4c8b8b691b6df3fd03d52e6a7e12b3a": {
+      "expires_at": 1700086400,
+      "stale_until": 1700691200,
+      "stored_at": 1700000000,
+      "value": {
+        "film": {
+          "actors": [
+            "B. Durand FICTIF"
+          ],
+          "description": "Proposition synthétique, aucune source externe interrogée.",
+          "director": "A. Martin FICTIF",
+          "genres": [
+            "Aventure"
+          ],
+          "id": "Q124",
+          "poster": null,
+          "poster_filename": null,
+          "retrieved_at": 1700000000,
+          "revision": 123,
+          "source_url": "https://www.wikidata.org/wiki/Q124",
+          "title": "Le Voyage de papier — FICTIF",
+          "warnings": [
+            "Données et attribution fictives ; aucun droit de média vérifié."
+          ],
+          "year": null
+        }
+      }
+    }
+  },
+  "version": 1,
+  "window_start": 1700086401
+}
