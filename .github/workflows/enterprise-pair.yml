@@ -56,8 +56,9 @@ jobs:
           import subprocess
           from pathlib import Path
           executable = "Scripts/python.exe" if os.name == "nt" else "bin/python"
-          api_python = (Path(".venv-api") / executable).resolve()
-          web_python = (Path(".venv-web") / executable).resolve()
+          # Keep the venv symlink: resolving it selects the base Python on Linux.
+          api_python = (Path(".venv-api") / executable).absolute()
+          web_python = (Path(".venv-web") / executable).absolute()
           subprocess.run([
               str(web_python), "cinevault-infra-report/scripts/check_enterprise_pair.py",
               "--api-root", "cinevault-api", "--web-root", "cinevault-web",
