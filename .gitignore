@@ -6,6 +6,7 @@
 *.ovpn
 __pycache__/
 .pytest_cache/
+reports/
 
 # Plans de travail privés, conservés localement.
 docs/superpowers/

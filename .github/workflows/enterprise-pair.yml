@@ -1,0 +1,54 @@
+name: Enterprise JSON pair contract
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: enterprise-pair-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  pair:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: cinevault-infra-report
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: HyMathew/cinevault-api
+          ref: c0a6d61625da8bfa0967be0bdc6cf950ae66420d
+          path: cinevault-api
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: HyMathew/cinevault-web
+          ref: 53735465a081d4382c3a44874a441080024b32d1
+          path: cinevault-web
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Install the pinned application dependencies
+        run: python -m pip install -r cinevault-api/requirements-dev.txt -r cinevault-web/requirements-dev.txt
+      - run: python -m pip check
+      - name: Exercise real API HTTP and isolated JSON persistence
+        run: >-
+          python cinevault-infra-report/scripts/check_enterprise_pair.py
+          --api-root cinevault-api --web-root cinevault-web
+          --report cinevault-infra-report/reports/pair-check.json
+      - name: Keep the exact-pair receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: enterprise-json-pair-${{ matrix.os }}
+          path: cinevault-infra-report/reports/pair-check.json
+          retention-days: 7
+          if-no-files-found: warn
