@@ -6,6 +6,8 @@ Actualisation du 10 novembre : le mandat consolidé introduit MongoDB comme pers
 
 ## Ordre et critères de passage
 
+La séquence de persistance détaillée est désormais le [plan MongoDB](MONGODB_IMPLEMENTATION_PLAN.md), avec activation exclusive après conversion de tous les consommateurs. Les lots ci-dessous restent le plan transversal produit et livraison.
+
 | Lot | Résultat attendu | Preuves requises avant clôture |
 | --- | --- | --- |
 | 0 — référence | Audit contradictoire, sauvegardes et captures actuelles | Bundles Git vérifiés, commits identifiés, tests de référence, limites explicites des audits |

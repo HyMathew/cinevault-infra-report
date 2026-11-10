@@ -1,14 +1,14 @@
 # ADR 0001 — JSON académique et MongoDB Enterprise
 
-Date : 10 novembre 2026. Statut : **décision d’architecture adoptée ; implémentation, migration et déploiement MongoDB non réalisés**.
+Date : 10 novembre 2026. Statut : **décision adoptée et modèle documentaire éprouvé ; backend applicatif, migration et déploiement MongoDB non réalisés**.
 
 ## Contexte et état réellement préservé
 
 Le nouveau mandat utilisateur remplace la direction de persistance de la première mission 2.0 : MongoDB devient la source de vérité du mode Enterprise, avec maintien d’un mode académique réellement fondé sur un fichier JSON. Les échanges web–API restent HTTP/JSON. BSON est le format documentaire de MongoDB, distinct du fichier JSON pédagogique.
 
-La référence livrée reste `v1.0.0` : API `6a86f2e`, web `f3d10cb`, infrastructure `9255fba` (tag infra `12af518`). Les bundles de sauvegarde et le PDF original sont conservés. Deux correctifs ultérieurs sont commités dans des worktrees isolés : API `c0a6d61625da8bfa0967be0bdc6cf950ae66420d` pour la réauthentification et web `53735465a081d4382c3a44874a441080024b32d1` pour les listes et erreurs de formulaires. Ces commits locaux ne sont pas encore une release ni une preuve de CI distante.
+La référence livrée reste `v1.0.0` : API `6a86f2e`, web `f3d10cb`, infrastructure `9255fba` (tag infra `12af518`). Les bundles de sauvegarde et le PDF original sont conservés. Deux correctifs ultérieurs sont commités dans des worktrees isolés : API `c0a6d61625da8bfa0967be0bdc6cf950ae66420d` pour la réauthentification et web `53735465a081d4382c3a44874a441080024b32d1` pour les listes et erreurs de formulaires. Leurs branches de qualité ont été poussées et leurs CI ont réussi ; aucune release ni bascule des services stables n’en découle.
 
-Les résultats locaux disponibles sont 185 tests API et 361 tests web, avec un contrôle interservices sur une vraie API HTTP et un magasin JSON temporaire. La couverture MongoDB est **nulle à ce stade**. Les services Swarm stables ont été revérifiés par SSH : une réplique web et une API, images v1 inchangées. Aucun magasin existant n’est migré ou modifié par cet ADR.
+Le relevé initial comptait 185 tests API et 361 tests web. La fondation documentaire a ensuite porté l’API à 214 tests locaux réussis et ajouté des essais réels du moteur et du driver, décrits dans l’[étude exécutée](../quality/MONGODB_ENGINE_STUDY.md). Les CI des correctifs web/auth et le gate interservices JSON ont réussi sous Windows et Linux. La couverture du **backend métier MongoDB reste nulle** tant que ses repositories/services ne sont pas intégrés. Les services Swarm stables ont été revérifiés par SSH : une réplique web et une API, images v1 inchangées. Aucun magasin existant n’est migré ou modifié par cet ADR.
 
 ## Contraintes tirées du code
 
@@ -57,7 +57,7 @@ Il s’agit de deux chemins de configuration exclusifs, et non de deux destinati
 
 Favorites et watchlists restent des types d’entrée ; roles reste un enum. Reviews et nouvelles entités ne sont pas créés uniquement parce que le moteur les permet. Le modèle détaillé, les `$jsonSchema` et les index effectifs seront versionnés avant migration.
 
-Les UUID publics restent des chaînes canoniques, sans conversion implicite en ObjectId. Les années restent des entiers. Les horodatages métier continuent à sortir en secondes UTC entières dans le contrat REST ; leur représentation BSON et sa conversion exacte seront définies et testées avant implémentation. Les dates nulles gardent leur sens. Aucun TTL asynchrone ne remplace une décision d’expiration de sécurité dans l’API.
+Les UUID publics restent des chaînes canoniques, sans conversion implicite en ObjectId. Le premier modèle implémenté conserve les entiers, années et horodatages en BSON Int64 ; les horodatages restent des secondes UTC entières depuis l’époque Unix, sans passage par une date locale ou une conversion en millisecondes. Le décodage produit explicitement un `int` Python, distinct de bool, avant validation métier. Ce choix conserve notamment les secondes jusqu’à 2^53 déjà admises dans les métadonnées. Un entier hors plage Int64 est refusé avant écriture et doit être signalé par la simulation de migration ; JSON conserve son contrat propre. Les dates nulles gardent leur sens. Aucun TTL asynchrone ne remplace une décision d’expiration de sécurité dans l’API.
 
 ## Transactions, conflits et erreurs
 
@@ -68,6 +68,8 @@ Le callback de `with_transaction()` peut être réexécuté. Nous sortirons de c
 Les conflits d’unicité métier et de version seront traduits dans les erreurs REST existantes, sans transmettre d’exception MongoDB, d’URI ou d’identifiant secret. Une indisponibilité doit produire un refus contrôlé et un readiness négatif, sans faux succès ni écriture partielle.
 
 Une transaction snapshot n’empêche pas, à elle seule, deux décisions concurrentes fondées sur un comptage puis écrivant des documents différents. La protection du dernier administrateur, les plafonds par bénéficiaire et l’ordre de file devront donc posséder une coordination écrite commune à la contrainte, ou une opération atomique équivalente. Les tests feront concourir ces chemins distincts ; le simple succès de deux transactions indépendantes ne prouverait pas l’invariant.
+
+Le premier chemin d’implémentation retient un petit document scalaire de coordination, incrémenté en première écriture de chaque commande transactionnelle avant lecture des entités. Il conserve la sérialisation et la révision métier actuelles sans contenir les tableaux de données. Les lectures publiques restent ciblées. Ce compromis de contention est volontaire pour le laboratoire ; une séparation en gardes par agrégat devra être motivée et éprouvée ultérieurement. Un registre UUID intertypes préserve aussi l’unicité globale que vérifie le fichier JSON, notamment face aux imports. Voir le [plan d’implémentation MongoDB](../quality/MONGODB_IMPLEMENTATION_PLAN.md).
 
 ## Faisabilité Docker et sécurité
 
