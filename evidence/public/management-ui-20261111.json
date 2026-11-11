@@ -1,0 +1,1235 @@
+{
+  "scope": "Real Flask/Jinja, API simulated, fictional management records only",
+  "checked_at": "2026-11-11T18:08:26.428284+00:00",
+  "web_commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+  "source_commit_equivalence": "12 changed files verified against the commit; line endings normalized only for Git comparison",
+  "browser": "156.0.8078.80",
+  "browser_plugin": "Browser plugin not available; authorized regular Playwright; CUA Chrome distinct",
+  "complete": true,
+  "checks_count": 140,
+  "checks": [
+    {
+      "name": "identity movie-new 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-new 1280",
+      "passed": true
+    },
+    {
+      "name": "identity movie-edit 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-edit 1280",
+      "passed": true
+    },
+    {
+      "name": "identity copy-new 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-new 1280",
+      "passed": true
+    },
+    {
+      "name": "identity copy-edit 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-edit 1280",
+      "passed": true
+    },
+    {
+      "name": "identity approve 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow approve 1280",
+      "passed": true
+    },
+    {
+      "name": "identity admin 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow admin 1280",
+      "passed": true
+    },
+    {
+      "name": "identity transfer 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow transfer 1280",
+      "passed": true
+    },
+    {
+      "name": "identity metadata 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow metadata 1280",
+      "passed": true
+    },
+    {
+      "name": "identity preview 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow preview 1280",
+      "passed": true
+    },
+    {
+      "name": "identity discover 1280",
+      "passed": true
+    },
+    {
+      "name": "reflow discover 1280",
+      "passed": true
+    },
+    {
+      "name": "identity movie-new 390",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-new 390",
+      "passed": true
+    },
+    {
+      "name": "axe movie-new",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "computed contrast for axe indeterminate nodes movie-new",
+      "passed": true,
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "name": "identity movie-edit 390",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-edit 390",
+      "passed": true
+    },
+    {
+      "name": "axe movie-edit",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "computed contrast for axe indeterminate nodes movie-edit",
+      "passed": true,
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "name": "identity copy-new 390",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-new 390",
+      "passed": true
+    },
+    {
+      "name": "axe copy-new",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity copy-edit 390",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-edit 390",
+      "passed": true
+    },
+    {
+      "name": "axe copy-edit",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity approve 390",
+      "passed": true
+    },
+    {
+      "name": "reflow approve 390",
+      "passed": true
+    },
+    {
+      "name": "axe approve",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity admin 390",
+      "passed": true
+    },
+    {
+      "name": "reflow admin 390",
+      "passed": true
+    },
+    {
+      "name": "axe admin",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity transfer 390",
+      "passed": true
+    },
+    {
+      "name": "reflow transfer 390",
+      "passed": true
+    },
+    {
+      "name": "axe transfer",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity metadata 390",
+      "passed": true
+    },
+    {
+      "name": "reflow metadata 390",
+      "passed": true
+    },
+    {
+      "name": "axe metadata",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity preview 390",
+      "passed": true
+    },
+    {
+      "name": "reflow preview 390",
+      "passed": true
+    },
+    {
+      "name": "axe preview",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity discover 390",
+      "passed": true
+    },
+    {
+      "name": "reflow discover 390",
+      "passed": true
+    },
+    {
+      "name": "axe discover",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "identity movie-new 320",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-new 320",
+      "passed": true
+    },
+    {
+      "name": "identity movie-edit 320",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-edit 320",
+      "passed": true
+    },
+    {
+      "name": "identity copy-new 320",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-new 320",
+      "passed": true
+    },
+    {
+      "name": "identity copy-edit 320",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-edit 320",
+      "passed": true
+    },
+    {
+      "name": "identity approve 320",
+      "passed": true
+    },
+    {
+      "name": "reflow approve 320",
+      "passed": true
+    },
+    {
+      "name": "identity admin 320",
+      "passed": true
+    },
+    {
+      "name": "reflow admin 320",
+      "passed": true
+    },
+    {
+      "name": "identity transfer 320",
+      "passed": true
+    },
+    {
+      "name": "reflow transfer 320",
+      "passed": true
+    },
+    {
+      "name": "identity metadata 320",
+      "passed": true
+    },
+    {
+      "name": "reflow metadata 320",
+      "passed": true
+    },
+    {
+      "name": "identity preview 320",
+      "passed": true
+    },
+    {
+      "name": "reflow preview 320",
+      "passed": true
+    },
+    {
+      "name": "identity discover 320",
+      "passed": true
+    },
+    {
+      "name": "reflow discover 320",
+      "passed": true
+    },
+    {
+      "name": "identity movie-new 768",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-new 768",
+      "passed": true
+    },
+    {
+      "name": "identity movie-edit 768",
+      "passed": true
+    },
+    {
+      "name": "reflow movie-edit 768",
+      "passed": true
+    },
+    {
+      "name": "identity copy-new 768",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-new 768",
+      "passed": true
+    },
+    {
+      "name": "identity copy-edit 768",
+      "passed": true
+    },
+    {
+      "name": "reflow copy-edit 768",
+      "passed": true
+    },
+    {
+      "name": "identity approve 768",
+      "passed": true
+    },
+    {
+      "name": "reflow approve 768",
+      "passed": true
+    },
+    {
+      "name": "identity admin 768",
+      "passed": true
+    },
+    {
+      "name": "reflow admin 768",
+      "passed": true
+    },
+    {
+      "name": "identity transfer 768",
+      "passed": true
+    },
+    {
+      "name": "reflow transfer 768",
+      "passed": true
+    },
+    {
+      "name": "identity metadata 768",
+      "passed": true
+    },
+    {
+      "name": "reflow metadata 768",
+      "passed": true
+    },
+    {
+      "name": "identity preview 768",
+      "passed": true
+    },
+    {
+      "name": "reflow preview 768",
+      "passed": true
+    },
+    {
+      "name": "identity discover 768",
+      "passed": true
+    },
+    {
+      "name": "reflow discover 768",
+      "passed": true
+    },
+    {
+      "name": "edge fixture includes comma CRLF NUL astral",
+      "passed": true
+    },
+    {
+      "name": "keyboard reached #titre",
+      "passed": true
+    },
+    {
+      "name": "reverse traversal metadata link",
+      "passed": true
+    },
+    {
+      "name": "forward traversal title",
+      "passed": true
+    },
+    {
+      "name": "server list add preserves raw original values",
+      "passed": true
+    },
+    {
+      "name": "server list remove restores original count",
+      "passed": true
+    },
+    {
+      "name": "edge arrays exact after form submission",
+      "passed": true
+    },
+    {
+      "name": "stale film 412 retains fields and original version",
+      "passed": true
+    },
+    {
+      "name": "stale edit metadata link retains trusted route target",
+      "passed": true
+    },
+    {
+      "name": "axe film-stale",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "computed contrast for axe indeterminate nodes film-stale",
+      "passed": true,
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-3"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "name": "synopsis server error associated with control",
+      "passed": true
+    },
+    {
+      "name": "axe film-invalid-synopsis",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "computed contrast for axe indeterminate nodes film-invalid-synopsis",
+      "passed": true,
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-3"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "name": "uncertain copy result keeps key fields and warning",
+      "passed": true
+    },
+    {
+      "name": "axe copy-uncertain",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "manual copy retry preserves operation identity",
+      "passed": true
+    },
+    {
+      "name": "uncertain import retains key options and explicit file reselection",
+      "passed": true
+    },
+    {
+      "name": "manual import retry and key rotation after confirmation",
+      "passed": true
+    },
+    {
+      "name": "keyboard reached .csv-structure summary",
+      "passed": true
+    },
+    {
+      "name": "CSV disclosure keyboard opens actual structure",
+      "passed": true
+    },
+    {
+      "name": "CSV reverse traversal reaches import submit",
+      "passed": true
+    },
+    {
+      "name": "admin role status submitted for exact account",
+      "passed": true
+    },
+    {
+      "name": "last administrator refusal visible",
+      "passed": true
+    },
+    {
+      "name": "stale metadata cache warning before action",
+      "passed": true
+    },
+    {
+      "name": "metadata prefill has no mutation and keeps existing synopsis",
+      "passed": true
+    },
+    {
+      "name": "loan conflict preserves chosen copy date version",
+      "passed": true
+    },
+    {
+      "name": "recommendation shows actual zero availability",
+      "passed": true
+    },
+    {
+      "name": "keyboard reached .recommendation-ranking summary",
+      "passed": true
+    },
+    {
+      "name": "ranking explanation keyboard opened",
+      "passed": true
+    },
+    {
+      "name": "empty state reflows admin",
+      "passed": true
+    },
+    {
+      "name": "empty state meaningful admin",
+      "passed": true
+    },
+    {
+      "name": "axe admin-empty-320",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "long state reflows admin",
+      "passed": true
+    },
+    {
+      "name": "empty state reflows metadata",
+      "passed": true
+    },
+    {
+      "name": "empty state meaningful metadata",
+      "passed": true
+    },
+    {
+      "name": "axe metadata-empty-320",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "long state reflows metadata",
+      "passed": true
+    },
+    {
+      "name": "empty state reflows approve",
+      "passed": true
+    },
+    {
+      "name": "empty state meaningful approve",
+      "passed": true
+    },
+    {
+      "name": "axe approve-empty-320",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "long state reflows approve",
+      "passed": true
+    },
+    {
+      "name": "empty state reflows discover",
+      "passed": true
+    },
+    {
+      "name": "empty state meaningful discover",
+      "passed": true
+    },
+    {
+      "name": "axe discover-empty-320",
+      "passed": true,
+      "violations": []
+    },
+    {
+      "name": "long state reflows discover",
+      "passed": true
+    },
+    {
+      "name": "computed management contrast",
+      "passed": true,
+      "ratios": {
+        "control_border": 4.262762269910598,
+        "control_text": 15.207017754150003,
+        "primary_text": 9.433259199377952
+      }
+    },
+    {
+      "name": "no JS runtime errors",
+      "passed": true
+    }
+  ],
+  "viewport_widths": [
+    320,
+    390,
+    768,
+    1280
+  ],
+  "screens_count": 58,
+  "axe": [
+    {
+      "state": "movie-new",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "state": "movie-edit",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "state": "copy-new",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "copy-edit",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "approve",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "admin",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "transfer",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "metadata",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "preview",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "discover",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "film-stale",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 8
+        }
+      ]
+    },
+    {
+      "state": "film-invalid-synopsis",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 8
+        }
+      ]
+    },
+    {
+      "state": "copy-uncertain",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "admin-empty-320",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "metadata-empty-320",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "approve-empty-320",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "state": "discover-empty-320",
+      "violations": [],
+      "incomplete": []
+    }
+  ],
+  "manual_incomplete_contrast": [
+    {
+      "state": "movie-new",
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "state": "movie-edit",
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "state": "film-stale",
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-3"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "state": "film-invalid-synopsis",
+      "measurements": [
+        {
+          "target": [
+            "#synopsis"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#acteurs-3"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-0"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-1"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        },
+        {
+          "target": [
+            "#genres-2"
+          ],
+          "foreground": "rgb(245, 238, 229)",
+          "background": "rgb(27, 25, 25)",
+          "ratio": 15.207017754150003,
+          "minimum": 4.5,
+          "opacity": "1"
+        }
+      ]
+    }
+  ],
+  "contrasts": {
+    "control_border": 4.262762269910598,
+    "control_text": 15.207017754150003,
+    "primary_text": 9.433259199377952
+  },
+  "keyboard_method": "Real Tab/Shift+Tab/Enter with observed activeElement; no programmatic focus.",
+  "page_errors": [],
+  "expected_http_errors": [
+    412,
+    422,
+    503
+  ],
+  "owned_server_stopped": true,
+  "tests": {
+    "passed": 437,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "warnings_as_errors": true
+  },
+  "proof_sha256": {
+    "screens-v2-management/qa-results.json": "7b6ecca145fa9d3cc54fa3f41fe380441dfb470f2c870f2083380febceff06f3",
+    "web-management-full-strict.xml": "798299a94b8a32af747ccdb39c55fb1c23432d2a7b07fb6d2d10e6714cf172fd",
+    "ui_management_qa.py": "2722fac6b8010a7f349517a669116d3b3244e9674177e0c9c5d59cbe0ef0b38b",
+    "ui_management_interactions.py": "c71e5f71c872d9aa327ce56110cb785535b3b57a79b70f7f48bd1d838787e565"
+  },
+  "selected_images": [
+    {
+      "path": "docs/design/screens-v2-management/after-movie-edit-1280.png",
+      "sha256": "1c9cce7fe59e1629d243336d89efcb5f06619df387d3ef6807cb4194936f06fb"
+    },
+    {
+      "path": "docs/design/screens-v2-management/after-admin-1280.png",
+      "sha256": "30ab2443437f59b86e8bad2be089f6e285a90b858577d114cd0b3aac3803d40e"
+    },
+    {
+      "path": "docs/design/screens-v2-management/after-transfer-390.png",
+      "sha256": "f5faa6049ca04390ba71424e6567cf185ba31313337cec109ec40a44e699ae6e"
+    },
+    {
+      "path": "docs/design/screens-v2-management/after-admin-long-320.png",
+      "sha256": "c6759c68e8c0f1ad33105026b8b5d390724e349350e82121ca5f39de7f1b1f64"
+    },
+    {
+      "path": "docs/design/screens-v2-management/after-film-invalid-synopsis.png",
+      "sha256": "1bba5a825b083e9babc06de85c67bc16d19dc749486a5551cf1e24cc97a70e74"
+    },
+    {
+      "path": "docs/design/screens-v2-management/before-movie-edit-1280.png",
+      "sha256": "d8486552ed77e9c580f6caf571aee2fade89480c42fa39415d88a71ee68378ad"
+    }
+  ],
+  "limits": [
+    "API simulated for this presentation campaign",
+    "Not a Mongo REST, TLS, Swarm, load or global accessibility compliance claim",
+    "Separate real API browser campaign identifies its own source revisions"
+  ]
+}
