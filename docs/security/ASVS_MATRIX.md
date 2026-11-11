@@ -152,4 +152,3 @@ filtres NoSQL, autorisations, prêts/FIFO, dernière identité admin, idempotenc
 expiration et import seront comparés sur les deux moteurs réels. Les décisions
 de profil ou exceptions seront motivées individuellement ; aucune ligne non
 vérifiée ne deviendra verte par simple changement de niveau ou de libellé.
-
