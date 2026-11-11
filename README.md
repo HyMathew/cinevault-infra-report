@@ -1,5 +1,19 @@
 # CineVault — infrastructure et documentation
 
+Cette branche prépare **CineVault Enterprise 2.0**. Le déploiement et le rapport
+ci-dessous constituent la référence **v1.0.0 préservée** ; leur audit historique
+n'est pas une validation finale du candidat2.0. La nouvelle version n'est pas
+encore publiée ni déployée sur le service stable.
+
+L'évolution MongoDB est décrite dans l'[ADR](docs/adr/0001-json-mongodb.md),
+l'[étude moteur exécutée](docs/quality/MONGODB_ENGINE_STUDY.md) et le
+[plan d'intégration](docs/quality/MONGODB_IMPLEMENTATION_PLAN.md). Les essais de
+repositories et du service d'authentification ne valent pas encore activation de
+tous les endpoints Mongo, migration ou restauration. La
+[matrice ASVS5](docs/security/ASVS_MATRIX.md) et ses
+[écarts vérifiés](docs/security/ASVS_FINDINGS.md) séparent qualification source,
+preuves d'exécution et travail restant, sans conformité globale annoncée.
+
 Ce dépôt regroupe l'architecture, les configurations et la documentation de CineVault Enterprise. Le 9 novembre 2026 à 16 h 04, heure de Paris, les images issues des CI GitHub réussies ont été déployées par digest sur trois VM : API `6a86f2e`, web `f3d10cb`. Vingt-cinq contrôles de mise à jour ont réussi, avec préservation des données, comptes, secrets et sessions. Voir la [synthèse datée des validations et de leurs limites](docs/validation-current.md). Le rapport scientifique de19pages est compilé et inspecté ; son PDF est identique sur Windows et Ubuntu. L’audit indépendant final est effectué, avec réserves explicites.
 
 Les deux projets applicatifs sont publics : [API Flask/JSON](https://github.com/HyMathew/cinevault-api) et [présentation Flask/Jinja](https://github.com/HyMathew/cinevault-web). Leurs CI exécutent les tests sur Windows et Ubuntu, les contrôles qualité, la construction et le scan des images avant publication dans GHCR. Les images ont été téléchargées sans identifiant sur les trois VM ; la stack utilise leurs références immuables.
