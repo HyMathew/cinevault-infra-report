@@ -31,6 +31,16 @@ Le reçu téléchargé et vérifié par SHA confirme :
 
 L’archive Mongo porte le SHA-256
 `1682a56b8031aef4ccd85d0fb61b786687eadfe2c063253683051eab1bcef37a`.
+Le [reçu public de qualification](../../evidence/public/c2c-qualification-20261111.json)
+conserve ces résultats et ceux de la paire HTTP/navigateur exacte.
+
+L’image API construite par ce run est
+`sha256:15c9eefcdd65d66435302885910523ceee74c502abc21b0217d899959a3eab06`.
+Le smoke confirme UID10001, PyMongo4.19.0 sans extensions C, dnspython2.9.2,
+Int64 exact, dix schémas et25index, notices présentes et outils de build absents.
+Health, scan et nettoyage réussissent ; le scanner relève cinq Medium et un Low,
+aucun High/Critical au gate. Cette image n’est ni sans vulnérabilité ni publiée
+ou déployée par ce run.
 
 ## Plans et limites
 

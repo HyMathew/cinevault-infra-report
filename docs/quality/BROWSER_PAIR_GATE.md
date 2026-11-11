@@ -123,7 +123,15 @@ La fiche desktop et le profil mobile ont aussi été examinés visuellement.
 
 Cette réussite concerne exactement cette paire. Les workflows sont ensuite
 épinglés sur APIc2fe26b/web8256166 pour qualifier les nouvelles lectures communes
-du catalogue ; leur résultat doit être lu dans le run de cette nouvelle révision.
+du catalogue. Cette paire a ensuite réussi la
+[CI43116366688](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43116366688),
+avec18contrôles et cinq captures vérifiées. Les contrats HTTP réels ont aussi
+réussi sur Windows et Ubuntu dans le
+[run43116366696](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43116366696).
+Le [reçu public de qualification](../../evidence/public/c2c-qualification-20261111.json)
+lie les commits, versions, contrôles et empreintes des archives. La comparaison
+des octets Linux a utilisé des archives Git sans conversion locale CRLF ; les
+paramètres n’ont été appliqués qu’à cette commande, sans changer Git globalement.
 
 ## Limites de portée
 
