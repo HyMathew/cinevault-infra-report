@@ -48,8 +48,10 @@ Les endpoints HTTP Mongo complets, la migration, TLS, Swarm, la charge et les
 courses avec plusieurs clients restent à valider dans leurs propres environnements.
 Ce parcours à une réservation ne prouve pas à lui seul toutes les règles FIFO.
 
-Le programme automatisé et son manifeste détaillé sont conservés dans le dossier
-de travail de la mission ; leur intégration publique portable reste ouverte.
+Le programme de cette première campagne et son manifeste détaillé restent
+conservés dans le dossier de travail. Le
+[gate navigateur portable](BROWSER_PAIR_GATE.md) est désormais intégré dans le
+dépôt et a réussi sa première CI sur une paire plus récente, identifiée séparément.
 Les passes de présentation avec API simulée et leurs contrôles axe demeurent
 identifiées séparément : cette campagne fonctionnelle ne remplace pas un audit
 complet d’accessibilité. Les captures ne représentent pas un déploiement v2 livré.

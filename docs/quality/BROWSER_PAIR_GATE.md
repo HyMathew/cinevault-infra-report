@@ -110,7 +110,22 @@ Une absence de confirmation ou un échec de suppression refuse le gate ; seul
 le dossier privé possédé est alors conservé pour diagnostic. Les captures et
 le rapport demandés sont des livrables, pas des données temporaires à effacer.
 
-## Limites
+## Première CI réellement exécutée
+
+La [CI43115608968](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43115608968)
+a réussi sur infra2ae586e, avec API4c062f9 et web8256166 propres, sous Ubuntu24.04.
+Chromium156.0.8078.4, fourni par Playwright1.64.1, a réussi18contrôles et produit
+cinq captures. Le reçu confirme APIexit0, arrêt web, fermeture du navigateur et
+suppression des données temporaires. Les empreintes des cinq images et le SHA
+de l’archive ont été contrôlés après téléchargement :
+`3f6d554f0afa0cf6d438cbd045f15d46260a3739a7f9534700d62854b19bbc05`.
+La fiche desktop et le profil mobile ont aussi été examinés visuellement.
+
+Cette réussite concerne exactement cette paire. Les workflows sont ensuite
+épinglés sur APIc2fe26b/web8256166 pour qualifier les nouvelles lectures communes
+du catalogue ; leur résultat doit être lu dans le run de cette nouvelle révision.
+
+## Limites de portée
 
 Ce scénario couvre une paire HTTP locale et le backend JSON. Il ne démontre pas
 MongoDB, TLS, Docker/Swarm, un déploiement, une charge représentative, la
