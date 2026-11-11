@@ -1,0 +1,78 @@
+{
+  "scope": "Local key-only SSH administration of three authorized lab VMs; not a v2 deployment",
+  "proofs": {
+    "harden_vm1_ssh.result.json": {
+      "started_at": "2026-11-11T18:17:18.687643+00:00",
+      "vm": 1,
+      "passed": true,
+      "file": "/etc/ssh/sshd_config.d/10-cinevault-key-auth.conf",
+      "sha256": "08e6a8442e2300792cb06559ffac57c77b6ffe100013081ab49a668786d3b938",
+      "scope": "Only VM1 SSH password authentication; application images and data untouched",
+      "rescue_key_connection_verified": true,
+      "fresh_key_connection_verified": true,
+      "effective": {
+        "permitrootlogin": "without-password",
+        "pubkeyauthentication": "yes",
+        "passwordauthentication": "no",
+        "kbdinteractiveauthentication": "no"
+      },
+      "service_active": true,
+      "finished_at": "2026-11-11T18:17:20.467750+00:00"
+    },
+    "ssh_auth_methods_probe.result.json": {
+      "observed_at": "2026-11-11T18:17:49.700365+00:00",
+      "passed": true,
+      "vms": [
+        {
+          "vm": 1,
+          "host_key_pinned": true,
+          "offered_methods": [
+            "publickey"
+          ]
+        },
+        {
+          "vm": 2,
+          "host_key_pinned": true,
+          "offered_methods": [
+            "publickey"
+          ]
+        },
+        {
+          "vm": 3,
+          "host_key_pinned": true,
+          "offered_methods": [
+            "publickey"
+          ]
+        }
+      ]
+    },
+    "stable_after_ssh_hardening.result.json": {
+      "observed_at": "2026-11-11T18:18:18.813848+00:00",
+      "passed": true,
+      "containers": {
+        "1": [
+          {
+            "image": "4d715bc72b7b",
+            "status": "Up 2 days (healthy)"
+          }
+        ],
+        "2": [
+          {
+            "image": "ca3effbd2430",
+            "status": "Up 2 days (healthy)"
+          }
+        ]
+      },
+      "nodes": "cinevaultapi Ready Active \ncinevaultmgr Ready Drain Leader\ncinevaultweb Ready Active",
+      "stable_images": {
+        "cinevault_cinevault-api": "ghcr.io/hymathew/cinevault-api@sha256:ca3effbd243062120078029f6ebcb9e5be1d142760913f52bb4187e3df355783",
+        "cinevault_cinevault-web": "ghcr.io/hymathew/cinevault-web@sha256:4d715bc72b7b18faff2ba9e5a7b8386adf99e96f5d2baea4b6cfe2a4d9a85bcf"
+      }
+    }
+  },
+  "proof_sha256": {
+    "harden_vm1_ssh.result.json": "df2a2b001ca4d69370fb90c1dc5632028fdcbf0fad3abb4e11c1744bdf0b10e7",
+    "ssh_auth_methods_probe.result.json": "d5abe81094802ee1855ea5eddbe38672eb42c0d0cc7e201172c0c76d09bdf190",
+    "stable_after_ssh_hardening.result.json": "2ad4507a92ec23e26004b4416ae08c9312c74d7220c7d4b3cbba56e9456d600c"
+  }
+}
