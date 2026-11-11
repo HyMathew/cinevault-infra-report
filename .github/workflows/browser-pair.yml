@@ -1,0 +1,71 @@
+name: Real browser and JSON service pair
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: browser-pair-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  chromium:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      PIP_DISABLE_PIP_VERSION_CHECK: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: cinevault-infra-report
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: HyMathew/cinevault-api
+          ref: 4c062f9de1fc91bbdb822f4a8ce0081ffefc14fe
+          path: cinevault-api
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: HyMathew/cinevault-web
+          ref: 8256166588ad770d3cb7cdaae93189de3fc0dcb3
+          path: cinevault-web
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Install each service in a separate environment
+        shell: python
+        run: |
+          import subprocess
+          import sys
+          from pathlib import Path
+          for service in ("api", "web"):
+              environment = Path(f".venv-{service}").absolute()
+              subprocess.run([sys.executable, "-m", "venv", str(environment)], check=True)
+              python = environment / "bin/python"
+              subprocess.run([str(python), "-m", "pip", "install", "--only-binary=:all:", "-r", f"cinevault-{service}/requirements.txt"], check=True)
+              if service == "web":
+                  subprocess.run([str(python), "-m", "pip", "install", "--only-binary=:all:", "--require-hashes", "-r", "cinevault-infra-report/requirements-browser.txt"], check=True)
+              subprocess.run([str(python), "-m", "pip", "check"], check=True)
+      - name: Install the Chromium revision selected by pinned Playwright
+        run: .venv-web/bin/python -m playwright install --with-deps chromium
+      - name: Exercise browser, both real HTTP services and disposable JSON
+        run: >-
+          .venv-web/bin/python cinevault-infra-report/scripts/check_browser_pair.py
+          --api-root cinevault-api --web-root cinevault-web
+          --api-python .venv-api/bin/python
+          --report cinevault-infra-report/reports/browser-pair.json
+          --screens-dir cinevault-infra-report/reports/browser-pair-screens
+      - name: Keep sanitized receipt and synthetic screenshots
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: real-browser-json-pair
+          path: |
+            cinevault-infra-report/reports/browser-pair.json
+            cinevault-infra-report/reports/browser-pair-screens/
+          retention-days: 7
+          if-no-files-found: error
