@@ -65,6 +65,13 @@ les sauvegardes restaurées et le chemin Mongo déployé doivent encore être é
   JSON ; le refactoring d'authentification en cours n'est pas utilisé comme preuve.
 - Web : [c3dbc9e](https://github.com/HyMathew/cinevault-web/tree/c3dbc9e2b4db1e494c2f3317be43e074a5d1b22b),
   contrôles CSRF, cookies, client HTTP, formulaires, templates et navigation.
+- Complément ciblé web [7166549](https://github.com/HyMathew/cinevault-web/tree/7166549f932ea608a8b1a272931d504ad209cc05) :
+  validation commune de la clé de session courante et de chaque ancienne clé
+  `SECRET_KEY_FALLBACKS`, au moins 32 octets UTF-8/bruts, sans transformation des
+  clés valides. Reçu local isolé relu : 428 tests réussis dont 52 spécifiques ;
+  [CI43071643085 réussie](https://github.com/HyMathew/cinevault-web/actions/runs/43071643085)
+  au SHA exact. Les trois lignes `11.2.3`, `11.5.1` et `13.3.1` intègrent cette
+  preuve et restent PARTIEL ; aucune conclusion sur v1 déployée n'en découle.
 - Infra : [d2a29c0](https://github.com/HyMathew/cinevault-infra-report/tree/d2a29c083affffffb2e3f33a06205b85f1314240),
   stack, Compose, contrats d'exploitation et études. Les mentions datées de v1
   ne sont pas présentées comme une observation de v2 déployée.
@@ -79,8 +86,8 @@ les sauvegardes restaurées et le chemin Mongo déployé doivent encore être é
 - Services stables : v1 préservée. Un contrôle marqué partiel dans le candidat
   n’est pas déclaré corrigé sur le service actuellement exposé.
 
-Dans le CSV, `API@72b7624`, `Web@c3dbc9e` et `Infra@d2a29c0` désignent ces
-révisions exactes. Les chemins/fonctions sont les preuves de source inspectées ;
+Dans le CSV, `API@72b7624`, `Web@c3dbc9e`, `Web@7166549` et `Infra@d2a29c0`
+désignent ces révisions exactes. Les chemins/fonctions sont les preuves de source inspectées ;
 les chemins de test désignent un test pertinent, **pas une nouvelle exécution**
 de ce test pendant cette qualification. Les constats nécessitant du réseau, de
 la charge, un matériel ou un déploiement restent non vérifiés ou partiels.
@@ -133,7 +140,7 @@ ce tableau n'est pas la totalité du périmètre.
 | `v5.0.0-8.3.1` | 1 | PARTIEL | Les contrôles d’accès sont côté service API ; les contrôles web sont supplémentaires. Achever extraction services/UoW sans autorisation préchargée hors transaction. |
 | `v5.0.0-9.1.1` | 1 | PARTIEL | Cookie Flask signé pour CSRF/messages ; authentification API par référence opaque, sans JWT. Revue signature, paramètres et rotation de clé ; ne pas exclure le cookie signé du périmètre V9. |
 | `v5.0.0-11.4.2` | 2 | PARTIEL | Argon2id actuel memory_cost65536/time_cost3/parallelism2. Mesurer coût sur VM et vérifier politique de rehash/rotation et préservation des hashes migrés. |
-| `v5.0.0-11.5.1` | 2 | PARTIEL | Secrets et bearer via CSPRNG ; UUID publics ne servent pas de secrets. Contrôler entropie et provenance de toutes clés, y compris configuration env faible et nouvelles identités Mongo. |
+| `v5.0.0-11.5.1` | 2 | PARTIEL | Secrets et bearer via CSPRNG ; UUID publics ne servent pas de secrets. Web7166549 refuse désormais les clés courantes/fallback trop courtes sur toutes les sources ; 52 cas spécifiques et 428 tests réussis. La taille ne prouve pas l'entropie : provenance/génération de toutes clés et identités Mongo restent à vérifier. |
 | `v5.0.0-12.2.1` | 1 | NON_SATISFAIT | Service web stable exposé en HTTP dans le laboratoire ; staging HTTPS non établi. Configurer puis éprouver HTTPS, confiance certificat et absence de repli en clair. |
 | `v5.0.0-12.3.1` | 2 | NON_VERIFIE | SSH contrôlé ; essais Mongo loopback sans réseau externe, pas une preuve du transport de déploiement. Vérifier API/backend/Mongo/proxy/observabilité et documenter toute exception de frontière locale. |
 | `v5.0.0-13.2.1` | 2 | PARTIEL | Identités maintenance/application séparées et privilèges Mongo réduits démontrés en étude. Identités de déploiement, rotation/expiration et éventuelles exceptions aux secrets statiques à traiter. |

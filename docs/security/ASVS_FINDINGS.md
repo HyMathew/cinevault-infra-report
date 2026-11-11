@@ -4,8 +4,10 @@ Revue source du 11 novembre 2026, associée à la [matrice](ASVS_MATRIX.md) et �
 [inventaire de 345 contrôles](asvs-v5.0.0-applicability.csv). Révisions : API
 `72b7624101eb25bda4387726b9825c3bc596205c`, web
 `c3dbc9e2b4db1e494c2f3317be43e074a5d1b22b`, infra
-`d2a29c083affffffb2e3f33a06205b85f1314240`. Les modifications d'authentification
-en cours après ces révisions ne sont pas couvertes par cette qualification.
+`d2a29c083affffffb2e3f33a06205b85f1314240`. Complément ciblé : correctif de
+configuration web `7166549f932ea608a8b1a272931d504ad209cc05`, décrit ci-dessous.
+Les autres modifications après les révisions initiales ne sont pas couvertes par
+cette qualification.
 
 La grille contient 235 contrôles applicables : 175 partiels, 31 non vérifiés,
 29 non satisfaits. Les 110 N/A sont conditionnels à l'absence d'une fonctionnalité
@@ -16,7 +18,7 @@ remplacent pas les résultats du scan source scellé v1.
 
 ## Écarts à traiter dans le candidat et son exploitation
 
-### Configuration de la clé de session web
+### Configuration de la clé de session web : correction candidate vérifiée
 
 Le [chargement de clé web](https://github.com/HyMathew/cinevault-web/blob/c3dbc9e2b4db1e494c2f3317be43e074a5d1b22b/app/__init__.py)
 refuse un fichier de moins de 32 octets, mais ne vérifie que la présence d'une
@@ -29,9 +31,39 @@ ou secret réel n'a été utilisé. Cela démontre une configuration faible admi
 **pas** l'utilisation d'une clé faible sur la stack existante : cette dernière
 est documentée avec une clé aléatoire séparée de 64 octets montée comme secret.
 
-Action : appliquer une validation cohérente aux deux voies de chargement, définir
-le contrat de génération et tester démarrage refusé/accepté. La longueur seule ne
-mesure pas l'entropie. Contrôles concernés : `v5.0.0-11.2.3`, `11.5.1`, `13.3.1`.
+Le [correctif web7166549](https://github.com/HyMathew/cinevault-web/commit/7166549f932ea608a8b1a272931d504ad209cc05)
+applique désormais une validation unique après sélection de la clé courante :
+configuration Python, environnement ou fichier. Chaque clé doit être une chaîne
+encodable en UTF-8 d'au moins 32 octets, ou des `bytes` d'au moins 32 octets.
+Clés absentes, vides, trop courtes, textes non encodables et types non admis
+refusent le démarrage sans afficher la valeur, y compris avec `TESTING=true`.
+La voie sœur `SECRET_KEY_FALLBACKS`, qui permettait également d'accepter un cookie
+signé avec une ancienne clé courte, est incluse : liste/tuple explicite et même
+contrôle pour chaque clé, sans désactiver la rotation Flask.
+
+Le fichier conserve ses octets bruts, espaces et fins de ligne compris, sans
+`strip` ni décodage. Clés valides, priorité fichier, ordre des anciennes clés et
+signatures existantes restent inchangés. Les nouveaux cookies utilisent toujours
+la clé courante. Ni le digest ni l'algorithme de signature n'ont été modifiés.
+
+Les [52 cas spécifiques](https://github.com/HyMathew/cinevault-web/blob/7166549f932ea608a8b1a272931d504ad209cc05/tests/test_session_key_config.py)
+couvrent les frontières de taille/types/UTF-8, les trois sources, la priorité,
+l'absence de fuite dans l'erreur et les cookies avant/après rotation. Le reçu
+JUnit local relu contient **428 tests, dont ces 52, sans échec, erreur ni skip**.
+Son manifeste source lie un checkout isolé basé sur web57aa187 aux 12 fichiers du
+correctif ; les 12 empreintes et leur égalité avec le commit7166549 ont été
+contrôlées, en tenant compte uniquement des fins de ligne Git. Cette campagne
+exclut les modifications d'interface de gestion encore en cours. La
+[CI43071643085](https://github.com/HyMathew/cinevault-web/actions/runs/43071643085)
+a été constatée terminée avec succès pour le SHA7166549 exact.
+
+Ce défaut de validation n'est plus reproduit dans le candidat vérifié. Cela ne
+modifie pas le constat historique ci-dessus et ne prouve aucun déploiement de ce
+correctif sur v1. Les contrôles `v5.0.0-11.2.3`, `11.5.1` et `13.3.1` restent
+**PARTIEL** : la longueur seule ne mesure pas l'entropie, et génération/provenance
+de toutes les clés, inventaire cryptographique, rotation opérationnelle,
+permissions, sauvegarde et restauration demandent encore leurs preuves.
+
 La signature du cookie utilise le digest délégué par Flask/itsdangerous ; la
 reproduction a observé `sha1`. Il faut qualifier cet usage HMAC et son algorithme
 dans l'inventaire cryptographique ; ce nom seul ne démontre pas une falsification
