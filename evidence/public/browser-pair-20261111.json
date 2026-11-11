@@ -1,0 +1,54 @@
+{
+  "scope": "Chrome and both real services, temporary JSON, local HTTP; no Mongo REST or deployment",
+  "started_at": "2026-11-11T13:03:55.404920+00:00",
+  "finished_at": "2026-11-11T13:04:10.024036+00:00",
+  "browser": "156.0.8078.80",
+  "api_source": {
+    "commit": "eb532ec84917662e92f83ca8f42b20f9bbd76fb9",
+    "application_sha256": "9b2345f9371bb5b9d67a03e66cf8e823d97b24315b333dfeb2e713d99ac91a8d",
+    "source_clean": true
+  },
+  "web_source": {
+    "commit": "57aa187b9a7b4066023eff4913d1458f43a36694",
+    "application_sha256": "d09db29e365ab1e6e9796b26dbea0211d80e8565c325ead21c21eed18cc4b2aa",
+    "source_clean": true
+  },
+  "checks": [
+    "real signed-context login and bearer cookie",
+    "browser movie creation with atomic initial copy",
+    "real profile mutation persisted",
+    "real web rejects missing CSRF",
+    "rejected CSRF did not alter profile",
+    "member management route denied",
+    "real private collection mutation",
+    "other actor cannot list private entry",
+    "real manager approval",
+    "real reservation when copy unavailable",
+    "queue priority exposed after return",
+    "real JSON retained one film and one initial copy",
+    "actor comma preserved through actual browser and HTTP",
+    "real loan is returned and reservation remains waiting",
+    "profile persisted in actual JSON",
+    "private favorite belongs to member",
+    "loan borrower is the registered member"
+  ],
+  "passed": true,
+  "cleanup": {
+    "api_exit": 0,
+    "web_stopped": true,
+    "temporary_data_removed": true
+  },
+  "harness_sha256": "ce24c748c3a9acee4c7aef641f4b8c668940f1c23ebbf274903a39ae9d76a6d0",
+  "screenshots_sha256": {
+    "docs/design/screens-v2-real/actual-film-desktop.png": "c91e8cec30412262ecd8482882789602f95b5402813a6fe581c2875b15b14da0",
+    "docs/design/screens-v2-real/actual-ready-reservation-desktop.png": "ffd09eaf0159e833eb4910e7899df780cae7948aae25a332ffc2dbed1c23253d",
+    "docs/design/screens-v2-real/actual-profile-mobile.png": "7ccbf0876911c04e46853ba8784a6bba23405e8ebd0291fe514589757275e56a",
+    "docs/design/screens-v2-real/actual-collection-mobile.png": "e5846a17293776952e604a092c22afb5a195bee87b70ece88c69f55ce7163790",
+    "docs/design/screens-v2-real/actual-returned-loan-mobile.png": "bbd31fd93ac7909608397114c142481e92e2359e937798838739efb128c3fa43"
+  },
+  "limitations": [
+    "Local HTTP and JSON only; no deployment or complete Mongo REST proof",
+    "This is a bounded functional campaign, not a complete accessibility or concurrency audit",
+    "The current automation harness is retained in the mission workspace; portable public integration remains pending"
+  ]
+}
