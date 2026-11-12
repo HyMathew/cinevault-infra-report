@@ -1,5 +1,48 @@
 # Services communs sur MongoDB réel
 
+## Qualification C3 — collections privées et journal
+
+Le [candidat API139a839](https://github.com/HyMathew/cinevault-api/tree/139a8391181d498144ce9c0e907734d3570b2bfb)
+ajoute le service commun des collections privées et du journal. Sa
+[CI43205951909](https://github.com/HyMathew/cinevault-api/actions/runs/43205951909)
+complète a réussi, incluant qualité/tests Windows et Ubuntu, Mongo réel et audit
+d'image. La composition HTTP reste JSON ; ce résultat n'active pas Mongo global.
+Le [reçu public C3](../../evidence/public/c3-qualification-20261112.json) conserve
+les résultats natifs et ceux de la paire exacte API139a839/web8256166 dans
+Chromium et en HTTP sur les deux OS. Les empreintes du code chargé ont été
+comparées aux archives Git sans conversion CRLF, et les cinq captures vérifiées.
+
+Le contrat natif observe310commandes de portée privée : propriétaire appliqué
+avant page ou mutation, y compris face à un administrateur, films joints bornés
+à la page, unicité Unicode et conflit concurrent sans double entrée/événement.
+L'audit utilise un ordinal BSON Int64 technique strict et caché, sous le verrou
+transactionnel existant. La rétention garde exactement le suffixe2000 après un
+jeu de2501événements et libère les UUID en plusieurs lots. Les rangs absents,
+invalides ou dupliqués, leur épuisement et les parents absents sont refusés avec
+annulation atomique.
+
+Le précontrôle d'autorité effectue51lectures sans modifier session ni révision.
+La commande finale relit les droits, puis réalise touch et mutation dans sa
+transaction. Les refus de précontrôle ne prolongent plus la session ; les refus
+métier normaux dans une commande finale gardent leur politique de commit propre.
+Ce choix ne signifie pas que toute erreur de toute route ne peut jamais écrire.
+
+L'image auditée est
+`sha256:19f869849cdc923e17031c094113269b3ac3fe363371df39d1cc45f31881383e` :
+UID10001, SDK4.19.0 sans extensions C, dix schémas,25index déclarés, notices
+présentes et outils de build absents. Santé, scan et nettoyage réussissent ;
+cinq Medium et un Low restent observés, aucun High/Critical au gate. Cette image
+n'a été ni publiée ni déployée par ce run.
+
+Une base antérieure sans ordinal exige une migration explicite, sans collMod
+silencieux. Les budgets équitables, autres services, composition exclusive,
+migration/rollback et exploitation finale restent ouverts. L'
+[étude de sauvegarde C2c](MONGODB_BACKUP_STUDY.md) est préliminaire et doit être
+requalifiée sur le schéma final. Le replica set à un membre ne fournit aucune
+redondance physique.
+
+## Qualification C2c historique
+
 Le [candidat APIc2fe26b](https://github.com/HyMathew/cinevault-api/tree/c2fe26bf2bc5c6f75048d216eb5f104a853877a4)
 extrait les services communs d’authentification, de modification de films,
 d’exemplaires/reçus d’idempotence et de lecture publique du catalogue. Leur

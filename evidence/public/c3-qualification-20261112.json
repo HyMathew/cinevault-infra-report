@@ -1,0 +1,311 @@
+{
+  "scope": "Exact C3 API and management web candidate; not a Mongo REST deployment",
+  "api_commit": "139a8391181d498144ce9c0e907734d3570b2bfb",
+  "web_commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+  "infra_ci_commit": "ae3178b8417ddcf4d3b7fbbde53b40bd7e1dad9b",
+  "ci_runs": {
+    "api": 43205951909,
+    "browser": 43251502747,
+    "http_pair": 43251503081,
+    "docs": 43251502724
+  },
+  "git_source_comparison": "Git archives with per-command core.autocrlf=false/core.eol=lf match Linux runtime byte fingerprints; Windows HTTP-pair source identity is verified separately by commit and clean status",
+  "mongo": {
+    "image": "mongo@sha256:1d7a2d487c6465ea022474b90b65d6c91bb600b421b65880d8c6e141d6122200",
+    "passed": true,
+    "started_at": "2026-11-12T11:04:50.595905+00:00",
+    "stage": "contracts_passed",
+    "host_kernel": "6.8.0-1070-azure",
+    "server_version": "8.0.34",
+    "application_contract": {
+      "contract": "passed",
+      "revision": 5,
+      "invalid_commands_checked": 8,
+      "authentication_service": {
+        "real_auth_service": "passed",
+        "reauth_failures_checked": 5,
+        "future_window_preserved": true
+      },
+      "catalogue_service": {
+        "movie_commands": "passed",
+        "atomic_initial_copy": true,
+        "etag_and_reference_checks": true
+      },
+      "copy_service": {
+        "copy_service": "passed",
+        "replay_after_deletion": true,
+        "expiry_and_detachment": true,
+        "copy_history_preserved": true,
+        "native_expired_receipts_removed": 501,
+        "invalid_native_receipt_commands_aborted": 2
+      },
+      "personal_service": {
+        "personal_service": "passed",
+        "owner_admin_privacy": true,
+        "unicode_duplicate_and_filter": true,
+        "atomic_minimal_append_order_audit": true,
+        "invalid_actor_aborts_entry_and_event": true,
+        "concurrent_duplicate_one_entry_one_event": true,
+        "native_owner_page_trace": {
+          "checked": true,
+          "commands": 310
+        },
+        "multiple_appends_preserve_order_in_one_transaction": true,
+        "audit_retention_exact": 2000,
+        "audit_multi_batch_registry_release": true,
+        "native_unique_ordinal_and_validation_refused": true,
+        "audit_ordinal_exhaustion_aborts": true,
+        "missing_collection_parent_aborts_and_releases_registry": true
+      },
+      "readonly_authorization": {
+        "read_only_authorization": "passed",
+        "preflight_revision_and_session_unchanged": true,
+        "final_write_revision_delta": 1,
+        "native_read_trace": {
+          "checked": true,
+          "commands": 51
+        }
+      },
+      "public_catalogue_service": {
+        "public_catalogue": "passed",
+        "native_public_read_trace": {
+          "checked": true,
+          "commands": 61
+        },
+        "literal_unicode_cross_field_search": true,
+        "server_pagination_contract": true,
+        "read_only_revision": true,
+        "copies_not_truncated_after_100": true,
+        "native_missing_key_refused": true,
+        "native_tampered_key_read_refused": true,
+        "tiny_fixture_query_plans": {
+          "literal_substring": {
+            "stages": [
+              "COLLSCAN"
+            ],
+            "indexes": []
+          },
+          "year_order": {
+            "stages": [
+              "FETCH",
+              "IXSCAN",
+              "LIMIT"
+            ],
+            "indexes": [
+              "movie_year_order"
+            ]
+          },
+          "natural_duplicate": {
+            "stages": [
+              "FETCH",
+              "IXSCAN"
+            ],
+            "indexes": [
+              "movie_natural_key"
+            ]
+          }
+        }
+      },
+      "ddl_denied": true,
+      "cross_database_denied": true,
+      "anonymous_denied": true
+    },
+    "real_tests_passed": 5,
+    "container_removed": true,
+    "temporary_data_removed": true,
+    "finished_at": "2026-11-12T11:05:10.086429+00:00"
+  },
+  "browser": {
+    "passed": true,
+    "started_at": "2026-11-12T15:47:57.117255+00:00",
+    "stage": "final_json_invariants",
+    "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
+    "checks": [
+      "real signed-context login and bearer cookie",
+      "browser movie creation with atomic initial copy",
+      "real profile mutation persisted",
+      "real web rejects missing CSRF",
+      "rejected CSRF did not alter profile",
+      "member management route denied",
+      "real private collection mutation",
+      "other actor cannot list private entry",
+      "real manager approval",
+      "real reservation when copy unavailable",
+      "queue priority exposed after return",
+      "nonlocal browser request refused before network dispatch",
+      "real JSON retained one film and one initial copy",
+      "actor comma preserved through actual browser and HTTP",
+      "real loan is returned and reservation remains waiting",
+      "profile persisted in actual JSON",
+      "private favorite belongs to member",
+      "loan borrower is the registered member"
+    ],
+    "screens": [
+      {
+        "file": "actual-film-desktop.png",
+        "sha256": "83606b08542535b5a1d4c50b7795a1285bb7687b4a9b4671da93929edc1701e1",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "path": "/films/eb0dfd09-5734-4a30-aa35-b1973d630231"
+      },
+      {
+        "file": "actual-profile-mobile.png",
+        "sha256": "009481815810fa4fc8460efb60cf45882d7c4c5b7576d83eb638fcebaf6f6a63",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "path": "/profil"
+      },
+      {
+        "file": "actual-collection-mobile.png",
+        "sha256": "ae59d2046654d7728e19693e91792162b9a48f4b7447af85cd34e981237a8208",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "path": "/ma-collection"
+      },
+      {
+        "file": "actual-returned-loan-mobile.png",
+        "sha256": "771ea03a303cabd715e5a868213c46ebbaa60b18c18d3cfe0b7b27e986d92acf",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "path": "/emprunts"
+      },
+      {
+        "file": "actual-ready-reservation-desktop.png",
+        "sha256": "937f2f5a498f55e6d4c00ca632cd71c7c9fe29c43753d13b4b4904719f5f192e",
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "path": "/reservations"
+      }
+    ],
+    "limits": [
+      "JSON backend only; no MongoDB, Docker, Swarm, TLS or production deployment",
+      "Sequential circulation case, not global FIFO/concurrency or load validation",
+      "Browser request routing is not an operating-system network sandbox",
+      "No complete accessibility, cross-browser or keyboard campaign"
+    ],
+    "api_source": {
+      "kind": "git",
+      "commit": "139a8391181d498144ce9c0e907734d3570b2bfb",
+      "application_sha256": "8e4ec81d7263621785b07ee3b7ce7e6f186266ef03dcd31808654660508ad568",
+      "source_clean": true
+    },
+    "web_source": {
+      "kind": "git",
+      "commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+      "application_sha256": "32926749616a880c63d8287bb54f89ed31646cc03b2e94855005100d3b69c5b1",
+      "source_clean": true
+    },
+    "browser_packages": {
+      "playwright": "1.64.1",
+      "pyee": "14.0.0",
+      "greenlet": "3.5.6",
+      "typing-extensions": "4.16.0"
+    },
+    "browser": "156.0.8078.4",
+    "browser_channel": "playwright-default-chromium",
+    "browser_closed": true,
+    "web_thread_stopped": true,
+    "owned_api_exit": 0,
+    "api_process_stopped": true,
+    "api_clean_exit": true,
+    "temporary_data_removed": true,
+    "finished_at": "2026-11-12T15:48:10.215127+00:00"
+  },
+  "http_pair": {
+    "ubuntu-24.04": {
+      "passed": true,
+      "checks": [
+        "signed client context, login and real bearer session",
+        "case 0: exact actor/genre persistence and stale-edit rejection",
+        "case 1: exact actor/genre persistence and stale-edit rejection",
+        "case 2: exact actor/genre persistence and stale-edit rejection",
+        "real HTTP reauthentication: five failures then429 even with correct secret",
+        "real JSON store remains readable with all synthetic films"
+      ],
+      "api_source": {
+        "commit": "139a8391181d498144ce9c0e907734d3570b2bfb",
+        "application_sha256": "8e4ec81d7263621785b07ee3b7ce7e6f186266ef03dcd31808654660508ad568",
+        "source_clean": true
+      },
+      "web_source": {
+        "commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+        "application_sha256": "32926749616a880c63d8287bb54f89ed31646cc03b2e94855005100d3b69c5b1",
+        "source_clean": true
+      },
+      "limits": [
+        "Flask test client drives web routes; API uses real loopback HTTP.",
+        "No Docker, Swarm, TLS or browser validation is claimed by this gate."
+      ]
+    },
+    "windows-latest": {
+      "passed": true,
+      "checks": [
+        "signed client context, login and real bearer session",
+        "case 0: exact actor/genre persistence and stale-edit rejection",
+        "case 1: exact actor/genre persistence and stale-edit rejection",
+        "case 2: exact actor/genre persistence and stale-edit rejection",
+        "real HTTP reauthentication: five failures then429 even with correct secret",
+        "real JSON store remains readable with all synthetic films"
+      ],
+      "api_source": {
+        "commit": "139a8391181d498144ce9c0e907734d3570b2bfb",
+        "application_sha256": "3ec719c20c50f7ec7a4075663c6f83830a581623ba39e5f37b4184a1b2168c27",
+        "source_clean": true
+      },
+      "web_source": {
+        "commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+        "application_sha256": "a790f23498a845e5bf7ccfdd876742c087ff1da94f98905e3eb39e865bad10e4",
+        "source_clean": true
+      },
+      "limits": [
+        "Flask test client drives web routes; API uses real loopback HTTP.",
+        "No Docker, Swarm, TLS or browser validation is claimed by this gate."
+      ]
+    }
+  },
+  "image": {
+    "image_id": "sha256:19f869849cdc923e17031c094113269b3ac3fe363371df39d1cc45f31881383e",
+    "runtime_uid": 10001,
+    "mongodb_runtime": {
+      "pymongo": "4.19.0",
+      "dnspython": "2.9.2",
+      "c_extensions": false,
+      "bson_int64_exact": true,
+      "schemas": 10,
+      "indexes": 25,
+      "build_tools_absent": true,
+      "notices_present": true
+    },
+    "severity_counts": {
+      "Medium": 5,
+      "Low": 1
+    },
+    "health_passed": true,
+    "scan_passed": true,
+    "cleanup_passed": true
+  },
+  "archive_sha256": {
+    "c3-real-browser-json-pair-43251502747.zip": "4ea5cd6f3feab57b07b6975a19bb5f171beaa8220ce596d9bd103270f71556aa",
+    "c3-enterprise-json-pair-ubuntu-24.04-43251503081.zip": "b7c25da799da5fedfb3ead945baed48aeb28585854312bdcb1edbc4647dcb000",
+    "c3-enterprise-json-pair-windows-latest-43251503081.zip": "c1846d7c7f359787cf87ed6f35594912fde15ec35f9cda9fd329a48237b8aabb",
+    "c3-mongodb-contract-43205951909.zip": "56358021e9726ffd279e40d6729fc14a6f64e15fad0de64f48f724c5ec7df4b7",
+    "c3-image-audit-43205951909.zip": "f9250a5b2631785c8892929738cd750a5617e549383483effd3739fa1a63636b"
+  },
+  "limits": [
+    "Single-member replica set has no physical redundancy",
+    "Substring query used COLLSCAN on a tiny fixture; not a load benchmark",
+    "HTTP/browser gates use actual JSON; complete Mongo REST composition remains open",
+    "Image built/scanned in CI, not published/deployed",
+    "Scanner observed five Medium and one Low findings; not vulnerability free"
+  ]
+}

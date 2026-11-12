@@ -136,7 +136,14 @@ paramètres n’ont été appliqués qu’à cette commande, sans changer Git gl
 Les workflows ciblent désormais API139a839/web8256166 pour qualifier les
 collections privées et le précontrôle sans écriture. La CI complète de cet API
 a réussi dans le [run43205951909](https://github.com/HyMathew/cinevault-api/actions/runs/43205951909).
-Le prochain reçu de paire doit encore confirmer ce nouveau couple exact.
+Ce couple a ensuite réussi le
+[run navigateur43251502747](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43251502747),
+avec18contrôles et cinq captures, ainsi que le
+[run HTTP43251503081](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43251503081)
+sur Windows et Ubuntu. Le [reçu C3](../../evidence/public/c3-qualification-20261112.json)
+lie les archives vérifiées, empreintes du code chargé et résultats natifs Mongo.
+La version web de cette preuve reste8256166 ; elle ne qualifie pas un changement
+web postérieur.
 
 ## Limites de portée
 
