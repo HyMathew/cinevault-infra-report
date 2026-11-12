@@ -18,6 +18,13 @@ une migration ou une restauration finale. La
 [écarts vérifiés](docs/security/ASVS_FINDINGS.md) séparent qualification source,
 preuves d'exécution et travail restant, sans conformité globale annoncée.
 
+La [reprise web des créations incertaines](docs/quality/LENDING_RECOVERY_CHECKS.md)
+et l'[étude de sauvegarde restaurée](docs/quality/MONGODB_BACKUP_STUDY.md)
+distinguent les parcours simulés, les essais natifs et leurs limites. Les études
+de [staging et exploitation](docs/quality/STAGING_AND_OPERATIONS_STUDY.md) et du
+[portail documentaire](docs/quality/DOCUMENTATION_PORTAL_STUDY.md) précisent les
+choix candidats ; elles ne sont pas présentées comme des services déjà déployés.
+
 Les contrôles2.1 à compléter comprennent les propriétés métier séquentielles,
 le mutation testing ciblé, les mesures web comparables et les procédures
 d'exploitation portables. Le critère de livraison reste la reprise du projet par

@@ -1,0 +1,691 @@
+{
+  "scope": "Actual Flask/Jinja; simulated API; no backend idempotence or Mongo claim",
+  "web_commit": "7d602d33a0ce03e7ef178199e29a0f0a49114176",
+  "subsequent_docs_only_commit": "f59c7af7d5bbe29493569b31403b924f20c3427a",
+  "baseline_commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+  "browser": "157.0.8103.51",
+  "browser_plugin": "Browser plugin not available; regular Playwright",
+  "runtime_sources_windows_byte_sha256": {
+    "app/api_client.py": "ed8e588ee964cbdf869e0e1d68e36d9db22721da3c9b805a3823a986a095f044",
+    "app/lending.py": "a7cf8e1936309cfa0cebfa2151dbd7b7805864213067adc65f43ce2814f08d7e",
+    "app/templates/enterprise_detail.html": "4e2e50f5929e05dadabe859c800d4b3d0ecd7d855f45affa683846b3eb93e43c",
+    "app/templates/reservation_list.html": "f12853bd2b98b12b8ac4f30cae561cc705549027d5399a6a12600d4eff5db63a",
+    "app/templates/lending_retry.html": "0c95cd353f6a1b363cbd3915fdaed8728990cff35dca9fe0e1792d41d7d634b9"
+  },
+  "local_tests": {
+    "passed": 464,
+    "warnings_as_errors": true,
+    "new_tests": 27,
+    "independent_review_focus_passed": 50,
+    "independent_edge_cases_passed": 26
+  },
+  "rendered": {
+    "scope": "Actual Flask/Jinja; simulated API; no backend idempotence or Mongo claim",
+    "baseline_commit": "8256166588ad770d3cb7cdaae93189de3fc0dcb3",
+    "browser_plugin": "Browser plugin not available; regular Playwright",
+    "checks": [
+      {
+        "name": "before-loan-320-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-loan-320-private",
+        "passed": true
+      },
+      {
+        "name": "before-loan-320-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-loan-320-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-320-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-320-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-320-private",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-320-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-320-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-loan-390-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-loan-390-private",
+        "passed": true
+      },
+      {
+        "name": "before-loan-390-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-loan-390-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-390-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-390-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-390-private",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-390-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-390-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-loan-768-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-loan-768-private",
+        "passed": true
+      },
+      {
+        "name": "before-loan-768-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-loan-768-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-768-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-768-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-768-private",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-768-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-768-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-loan-1280-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-loan-1280-private",
+        "passed": true
+      },
+      {
+        "name": "before-loan-1280-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-loan-1280-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-1280-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-1280-private",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-1280-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "before-reservation-1280-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-baseline-has-no-retry",
+        "passed": true
+      },
+      {
+        "name": "after-loan-320-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-loan-320-private",
+        "passed": true
+      },
+      {
+        "name": "after-loan-320-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-loan-320-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-320-same-key",
+        "passed": true
+      },
+      {
+        "name": "loan-320-retry-after",
+        "passed": true
+      },
+      {
+        "name": "loan-320-axe",
+        "passed": true
+      },
+      {
+        "name": "loan-320-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-320-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "loan-320-active-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-320-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-320-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-320-private",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-320-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-320-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-same-key",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-retry-after",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-axe",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-active-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-320-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-loan-390-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-loan-390-private",
+        "passed": true
+      },
+      {
+        "name": "after-loan-390-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-loan-390-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-390-same-key",
+        "passed": true
+      },
+      {
+        "name": "loan-390-retry-after",
+        "passed": true
+      },
+      {
+        "name": "loan-390-axe",
+        "passed": true
+      },
+      {
+        "name": "loan-390-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-390-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "loan-390-active-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-390-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-390-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-390-private",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-390-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-390-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-same-key",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-retry-after",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-axe",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-active-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-390-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-loan-768-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-loan-768-private",
+        "passed": true
+      },
+      {
+        "name": "after-loan-768-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-loan-768-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-768-same-key",
+        "passed": true
+      },
+      {
+        "name": "loan-768-retry-after",
+        "passed": true
+      },
+      {
+        "name": "loan-768-axe",
+        "passed": true
+      },
+      {
+        "name": "loan-768-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-768-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "loan-768-active-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-768-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-768-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-768-private",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-768-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-768-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-same-key",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-retry-after",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-axe",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-active-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-768-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-loan-1280-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-loan-1280-private",
+        "passed": true
+      },
+      {
+        "name": "after-loan-1280-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-loan-1280-nonblank",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-same-key",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-retry-after",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-axe",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-active-retry",
+        "passed": true
+      },
+      {
+        "name": "loan-1280-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-1280-uncertain503",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-1280-private",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-1280-no-overflow",
+        "passed": true
+      },
+      {
+        "name": "after-reservation-1280-nonblank",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-same-key",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-retry-after",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-axe",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-no-automatic-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-reverse-tab",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-active-retry",
+        "passed": true
+      },
+      {
+        "name": "reservation-1280-manual-retry-state",
+        "passed": true
+      },
+      {
+        "name": "page-errors",
+        "passed": true
+      },
+      {
+        "name": "console-errors",
+        "passed": true
+      }
+    ],
+    "screens": [
+      {
+        "file": "before-loan-320.png",
+        "sha256": "424d01e8ce3e241a3b581ec69e19a45c9113af1b2091200c4d6d19461a29ce0a"
+      },
+      {
+        "file": "before-reservation-320.png",
+        "sha256": "424d01e8ce3e241a3b581ec69e19a45c9113af1b2091200c4d6d19461a29ce0a"
+      },
+      {
+        "file": "before-loan-390.png",
+        "sha256": "93e099355a6ca4f5f2128d39a5d02bbc8af6c43f5cfd40799ba3a307a7925cfc"
+      },
+      {
+        "file": "before-reservation-390.png",
+        "sha256": "93e099355a6ca4f5f2128d39a5d02bbc8af6c43f5cfd40799ba3a307a7925cfc"
+      },
+      {
+        "file": "before-loan-768.png",
+        "sha256": "0fd4a63eade1c88026a02b46e6dd66a35744d7ed9d4559708d663a7c689799b7"
+      },
+      {
+        "file": "before-reservation-768.png",
+        "sha256": "0fd4a63eade1c88026a02b46e6dd66a35744d7ed9d4559708d663a7c689799b7"
+      },
+      {
+        "file": "before-loan-1280.png",
+        "sha256": "5881c625bcee726f2b1561b5fad6822d802f588ed2d9cb7cc5313c1be90c3707"
+      },
+      {
+        "file": "before-reservation-1280.png",
+        "sha256": "5881c625bcee726f2b1561b5fad6822d802f588ed2d9cb7cc5313c1be90c3707"
+      },
+      {
+        "file": "after-loan-320.png",
+        "sha256": "a2be042bb6d36b2af793f1c809c01e2e9d306b326e83533e0d8ee729c5b47a41"
+      },
+      {
+        "file": "after-reservation-320.png",
+        "sha256": "3bcafb624214dfb7675c5d6dc6183756a2d41a6a2be92ef96b788d4f6c764038"
+      },
+      {
+        "file": "after-loan-390.png",
+        "sha256": "5b70e041c33ac01ef16d47446d6851d9f5b61c57529d20923f6d871a62f7e1c0"
+      },
+      {
+        "file": "after-reservation-390.png",
+        "sha256": "5bb99f7ed7ae2194118ee05400a43c1cf1d664fb9f91bc88798ae32b371d2088"
+      },
+      {
+        "file": "after-loan-768.png",
+        "sha256": "3f482386c99dcde0517360a00b527d1bccde34c6156acc93079edd57e3d9e056"
+      },
+      {
+        "file": "after-reservation-768.png",
+        "sha256": "9ca9d2663bef8dd0c7e65b913d00dbeb06a57542211c7996df4621be2e3879ca"
+      },
+      {
+        "file": "after-loan-1280.png",
+        "sha256": "e0293c1025a22bf65e85928a8b9afb60fa44a3a45c6a58d80e36a6a69dc5073e"
+      },
+      {
+        "file": "after-reservation-1280.png",
+        "sha256": "358b8cb0a8dc238103eaab6f85e668e70d27be15c7c669995d83fbd9c9128696"
+      }
+    ],
+    "axe": [
+      {
+        "kind": "loan",
+        "width": 320,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "reservation",
+        "width": 320,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "loan",
+        "width": 390,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "reservation",
+        "width": 390,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "loan",
+        "width": 768,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "reservation",
+        "width": 768,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "loan",
+        "width": 1280,
+        "violations": [],
+        "incomplete": []
+      },
+      {
+        "kind": "reservation",
+        "width": 1280,
+        "violations": [],
+        "incomplete": []
+      }
+    ],
+    "console_errors": [],
+    "page_errors": [],
+    "cleanup": [
+      {
+        "owned_server_stopped": true
+      },
+      {
+        "owned_server_stopped": true
+      }
+    ],
+    "browser": "157.0.8103.51",
+    "passed": true
+  },
+  "published_screens": [
+    "before-loan-1280.png",
+    "after-loan-320.png",
+    "after-reservation-1280.png",
+    "after-reservation-390.png"
+  ],
+  "receipt_sha256": "1cf495d7f74eacb76a46507deaefdb1f7b378bbdd28c89527b00911646a50283",
+  "qa_script_sha256": "b983271344fa0d5e8c7226d5f8f0ffb5cd372da2866c2620feeb45fbd7e42cd4",
+  "limits": [
+    "API explicitly simulated; no receipt replay or Mongo composition proven",
+    "Backend C4 integration and actual lost-response/TTL scenarios remain required",
+    "One Chrome engine; not global accessibility or performance certification",
+    "Operation receipts are bounded to 24h; no indefinite idempotence guarantee"
+  ]
+}

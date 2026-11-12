@@ -133,7 +133,7 @@ lie les commits, versions, contrôles et empreintes des archives. La comparaison
 des octets Linux a utilisé des archives Git sans conversion locale CRLF ; les
 paramètres n’ont été appliqués qu’à cette commande, sans changer Git globalement.
 
-Les workflows ciblent désormais API139a839/web8256166 pour qualifier les
+Les workflows ont ensuite ciblé API139a839/web8256166 pour qualifier les
 collections privées et le précontrôle sans écriture. La CI complète de cet API
 a réussi dans le [run43205951909](https://github.com/HyMathew/cinevault-api/actions/runs/43205951909).
 Ce couple a ensuite réussi le
@@ -144,6 +144,14 @@ sur Windows et Ubuntu. Le [reçu C3](../../evidence/public/c3-qualification-2026
 lie les archives vérifiées, empreintes du code chargé et résultats natifs Mongo.
 La version web de cette preuve reste8256166 ; elle ne qualifie pas un changement
 web postérieur.
+
+Les pins courants visent API139a839/webf59c7af, après réussite de la
+[CI web43254511589](https://github.com/HyMathew/cinevault-web/actions/runs/43254511589).
+Ce changement raccorde les formulaires à clé d'opération et la référence DESIGN.md.
+La nouvelle exécution de paire doit encore être inspectée ; les reçus C3 ci-dessus
+conservent la version8256166 exacte. L'API139a839 n'implémente pas encore les reçus
+de création C4 : ce couple peut vérifier les parcours compatibles, pas leur rejeu
+backend après réponse perdue.
 
 ## Limites de portée
 

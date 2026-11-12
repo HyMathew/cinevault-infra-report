@@ -1,0 +1,85 @@
+{
+  "scope": "Single read-only lab observation; not a load benchmark or availability SLA",
+  "checked_at_utc": "2026-11-12T16:02:26.956837+00:00",
+  "private_source_receipt_sha256": "eeda8aa4b19b6cfc581e385f580e264f25dc5c54543426b2157058fbaee38d4e",
+  "swarm_ready_nodes": 3,
+  "manager_drained": true,
+  "nodes": [
+    {
+      "role": "web",
+      "kernel": "6.8.0-139-generic",
+      "logical_cpus": 2,
+      "memory_bytes": {
+        "MemTotal": 2062168064,
+        "MemAvailable": 1516720128,
+        "SwapTotal": 2147479552,
+        "SwapFree": 2120622080
+      },
+      "root_disk_bytes": {
+        "total": 19896352768,
+        "available": 9317830656
+      },
+      "running_containers": 1,
+      "container_statuses": [
+        "Up 3 days (healthy)"
+      ],
+      "container_metrics_snapshot": [
+        {
+          "CPUPerc": "0.03%",
+          "MemUsage": "60.16MiB / 256MiB",
+          "MemPerc": "23.50%",
+          "PIDs": "3"
+        }
+      ]
+    },
+    {
+      "role": "api",
+      "kernel": "6.8.0-139-generic",
+      "logical_cpus": 2,
+      "memory_bytes": {
+        "MemTotal": 2062172160,
+        "MemAvailable": 1552330752,
+        "SwapTotal": 2147479552,
+        "SwapFree": 2099314688
+      },
+      "root_disk_bytes": {
+        "total": 19896352768,
+        "available": 8656400384
+      },
+      "running_containers": 1,
+      "container_statuses": [
+        "Up 3 days (healthy)"
+      ],
+      "container_metrics_snapshot": [
+        {
+          "CPUPerc": "0.15%",
+          "MemUsage": "39.56MiB / 512MiB",
+          "MemPerc": "7.73%",
+          "PIDs": "3"
+        }
+      ]
+    },
+    {
+      "role": "manager",
+      "kernel": "6.8.0-139-generic",
+      "logical_cpus": 2,
+      "memory_bytes": {
+        "MemTotal": 2062168064,
+        "MemAvailable": 1580257280,
+        "SwapTotal": 2147479552,
+        "SwapFree": 2146942976
+      },
+      "root_disk_bytes": {
+        "total": 41953755136,
+        "available": 32723517440
+      },
+      "running_containers": 0,
+      "container_statuses": [],
+      "container_metrics_snapshot": []
+    }
+  ],
+  "stable_service_replicas": {
+    "cinevault_cinevault-api": "1/1",
+    "cinevault_cinevault-web": "1/1"
+  }
+}
