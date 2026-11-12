@@ -121,7 +121,7 @@ de l’archive ont été contrôlés après téléchargement :
 `3f6d554f0afa0cf6d438cbd045f15d46260a3739a7f9534700d62854b19bbc05`.
 La fiche desktop et le profil mobile ont aussi été examinés visuellement.
 
-Cette réussite concerne exactement cette paire. Les workflows sont ensuite
+Cette réussite concerne exactement cette paire. Les workflows ont ensuite été
 épinglés sur APIc2fe26b/web8256166 pour qualifier les nouvelles lectures communes
 du catalogue. Cette paire a ensuite réussi la
 [CI43116366688](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43116366688),
@@ -132,6 +132,11 @@ Le [reçu public de qualification](../../evidence/public/c2c-qualification-20261
 lie les commits, versions, contrôles et empreintes des archives. La comparaison
 des octets Linux a utilisé des archives Git sans conversion locale CRLF ; les
 paramètres n’ont été appliqués qu’à cette commande, sans changer Git globalement.
+
+Les workflows ciblent désormais API139a839/web8256166 pour qualifier les
+collections privées et le précontrôle sans écriture. La CI complète de cet API
+a réussi dans le [run43205951909](https://github.com/HyMathew/cinevault-api/actions/runs/43205951909).
+Le prochain reçu de paire doit encore confirmer ce nouveau couple exact.
 
 ## Limites de portée
 

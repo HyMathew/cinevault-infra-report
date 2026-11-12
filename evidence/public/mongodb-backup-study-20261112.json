@@ -1,0 +1,85 @@
+{
+  "scope": "Preliminary synthetic C2c one-database quiesced backup study; not final Enterprise 2.1 portable operations",
+  "source_commit": "c2fe26bf2bc5c6f75048d216eb5f104a853877a4",
+  "source_manifest_sha256": "3c40c19ee4cc2626d4365948300588f34ebb133f76364a3ba71a5e37474cae89",
+  "private_receipt_sha256": "eff31e3a35bb0d20716fdcbd4295632b79d37827c913234e23917cd0f79f1c59",
+  "executed_programs_manifest_sha256": "539bc3754fec297a973456d589c3b35d4c87c84d13c03e1b6aee0aab0134a847",
+  "started_at": "2026-11-12T10:47:07.606189+00:00",
+  "finished_at": "2026-11-12T10:49:17.564345+00:00",
+  "passed": true,
+  "mongo_image": "mongo@sha256:1d7a2d487c6465ea022474b90b65d6c91bb600b421b65880d8c6e141d6122200",
+  "server_version": "8.0.34",
+  "feature_compatibility_version": "8.0",
+  "database_tools_version": "100.20.0",
+  "consistent_capture": {
+    "collections": 12,
+    "documents": 244,
+    "indexes_including_automatic": 37,
+    "declared_indexes": 25,
+    "bson_int64_values": 25,
+    "uuid_canonical_string_values": 365,
+    "revision": 6,
+    "same_typed_documents_options_indexes_after_restore": true,
+    "canonical_writer_write_conflicts": 3,
+    "canonical_writer_committed": false,
+    "guard_server_transaction_checked": true,
+    "guard_alive_after_dump": true,
+    "guard_aborted_without_revision_change": true,
+    "same_all_collection_fingerprints_before_after_dump": true
+  },
+  "crypto": {
+    "algorithm": "AES-256-GCM",
+    "key_bytes": 32,
+    "nonce_bytes": 12,
+    "private_key_acl_user_and_system_only": true,
+    "effective_acl_inspection": {
+      "directory_protected": true,
+      "only_current_user_and_system": true,
+      "key_files_checked": 2
+    },
+    "negative_cases_refused_before_restore": [
+      "wrong-key",
+      "tampered",
+      "truncated"
+    ],
+    "rotation_new_key_and_nonce": true,
+    "plaintext_archive_persisted_on_pc": false,
+    "profile_bound_not_portable_escrow": true
+  },
+  "identities": {
+    "old_backup_identity_refused_on_original_and_renamed_auth_sources": true,
+    "users_info_exact_expected_sets_both_auth_databases": true,
+    "application_authentication_and_public_reads_after_restore": true
+  },
+  "source_stopped_before_restore_started": true,
+  "restored_restart_persistence_and_authentication": true,
+  "measurements_seconds": {
+    "freeze": 1.134,
+    "dump_and_ssh_memory_transfer": 0.886,
+    "mongorestore": 2.386,
+    "source_stop_to_verified_target": 36.514
+  },
+  "cleanup": {
+    "containers": 4,
+    "volumes": 4,
+    "errors": []
+  },
+  "stable_application_unchanged_and_healthy": true,
+  "local_unit_tests": {
+    "passed": 7,
+    "warnings_as_errors": true,
+    "scope": "Synthetic crypto and identity gate tests; not substitutes for native execution"
+  },
+  "first_study_rectification": "Original receipt 9145aacedf41febab771cd2df337c805b4e35f7eec29cd20fc80a1e14e8077f7 only checked refusal on the original authSource; this second execution additionally checks the renamed authSource and exact server identities.",
+  "limitations": [
+    "Frozen C2c source; final C3+ schema must be requalified",
+    "Private SSH helper and Windows CurrentUser DPAPI depend on the study workstation/profile",
+    "No portable independent operator recovery or key escrow delivered by this study",
+    "64 MiB whole-buffer cryptography limit",
+    "Single controlled synthetic run; measured timings are not an operational SLA",
+    "No loss observed under an enforced write freeze does not establish an active-system RPO",
+    "Final scheduling, retention, rotation, portable tooling and external-operator restore remain open",
+    "Single-member replica set has no physical redundancy",
+    "No deployment or stable application data changes"
+  ]
+}
