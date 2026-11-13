@@ -1,0 +1,33 @@
+{
+  "name": "cinevault-documentation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.19.0 <25",
+    "npm": ">=11.17.0 <12"
+  },
+  "scripts": {
+    "test": "node --test scripts/prepare.test.mjs scripts/check-site.test.mjs scripts/notices.test.mjs scripts/keyboard-content.test.mjs scripts/owned-output.test.mjs",
+    "build": "node scripts/build.mjs",
+    "check:reproducible": "node scripts/check-reproducible.mjs",
+    "sbom": "node scripts/sbom.mjs",
+    "preview": "astro preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.0",
+    "@astrojs/markdown-satteri": "0.4.9",
+    "@astrojs/starlight": "0.42.11",
+    "astro": "7.4.11",
+    "github-slugger": "2.0.0",
+    "parse5": "8.0.0",
+    "remark-gfm": "4.0.1",
+    "remark-parse": "11.0.0",
+    "remark-stringify": "11.0.0",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.2.0"
+  },
+  "devDependencies": {
+    "axe-core": "4.11.0"
+  }
+}

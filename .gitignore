@@ -11,3 +11,10 @@ reports/
 # Plans de travail privés, conservés localement.
 docs/superpowers/
 docs/diagrams/.render-tools/
+
+# Documentation build inputs stay in README/docs; these are reproducible outputs.
+portal/node_modules/
+portal/.generated/
+portal/.astro/
+portal/dist/
+portal/.cache/

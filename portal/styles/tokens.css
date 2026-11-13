@@ -1,0 +1,47 @@
+:root {
+  --sl-font: Arial, Helvetica, sans-serif;
+  --sl-color-white: #f5eee5;
+  --sl-color-black: #111011;
+  --sl-color-gray-1: #f5eee5;
+  --sl-color-gray-2: #e6ded5;
+  --sl-color-gray-3: #c9beb5;
+  --sl-color-gray-4: #887b70;
+  --sl-color-gray-5: #48413d;
+  --sl-color-gray-6: #211f1f;
+  --sl-color-gray-7: #1b1919;
+  --sl-color-bg: #111011;
+  --sl-color-bg-nav: #171415;
+  --sl-color-bg-sidebar: #171415;
+  --sl-color-accent-low: #302112;
+  --sl-color-accent: #f2a838;
+  --sl-color-accent-high: #ffd79c;
+}
+:root[data-theme='light'] {
+  --sl-color-white: #17110b;
+  --sl-color-black: #fff9f0;
+  --sl-color-gray-1: #262020;
+  --sl-color-gray-2: #3f3732;
+  --sl-color-gray-3: #63564e;
+  --sl-color-gray-4: #7b6a5e;
+  --sl-color-gray-5: #cbbbad;
+  --sl-color-gray-6: #eee2d4;
+  --sl-color-gray-7: #f8efe4;
+  --sl-color-bg: #fff9f0;
+  --sl-color-bg-nav: #f8efe4;
+  --sl-color-bg-sidebar: #f8efe4;
+  --sl-color-accent-low: #ffead0;
+  --sl-color-accent: #865008;
+  --sl-color-accent-high: #4b2a00;
+}
+h1, h2, h3, .site-title { font-family: Georgia, 'Times New Roman', serif; }
+starlight-theme-select select { min-width: 8rem; }
+@media (max-width: 49.999rem) {
+  .site-title { font-size: 1rem; letter-spacing: -.02em; }
+}
+@media (max-width: 23.75rem) {
+  .site-title { font-size: .875rem; }
+}
+:focus-visible { outline: 3px solid var(--sl-color-accent); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

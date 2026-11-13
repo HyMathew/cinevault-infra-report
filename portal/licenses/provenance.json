@@ -1,0 +1,13 @@
+{
+  "Pagefind/pagefind": {
+    "tag": "v1.6.0",
+    "commit": "860a4ea87e7a52379520f9eaefd0f8a6b23eb462",
+    "license_url": "https://raw.githubusercontent.com/Pagefind/pagefind/860a4ea87e7a52379520f9eaefd0f8a6b23eb462/LICENSE",
+    "license_sha256": "4736929bfded122bd969f0621a0d917484b126d981270d68a63ed42cb55503d5",
+    "license_bytes": 1048
+  },
+  "actions/setup-node": {
+    "tag": "v7.1.0",
+    "commit": "949feb2413d6458794dcd2491c4babbbce0c15c1"
+  }
+}
