@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rename, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -37,4 +37,21 @@ test('refuses changed upstream license text before publication', async t => {
   const root = await fixture(t);
   await writeFile(path.join(root, 'licenses/pagefind-LICENSE'), 'different');
   await assert.rejects(collectNotices(root), /provenance mismatch/);
+});
+
+test('canonicalizes an aliased project root before checking installed package paths', async t => {
+  const root = await fixture(t);
+  const alias = path.join(root, 'project-alias');
+  await symlink(root, alias, process.platform === 'win32' ? 'junction' : 'dir');
+  const result = await collectNotices(alias);
+  assert.equal(result.catalogue.packages.find(item => item.name === 'pagefind').installed, true);
+});
+
+test('still refuses a linked installed package beneath a canonical project root', async t => {
+  const root = await fixture(t);
+  const directory = path.join(root, 'node_modules/pagefind');
+  const target = path.join(root, 'node_modules/pagefind-real');
+  await rename(directory, target);
+  await symlink(target, directory, process.platform === 'win32' ? 'junction' : 'dir');
+  await assert.rejects(collectNotices(root), /Unsupported installed package directory/);
 });

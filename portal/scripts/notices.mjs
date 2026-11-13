@@ -9,6 +9,7 @@ const clientPackages = new Set(['astro', '@astrojs/starlight', 'astro-expressive
  * This catalogue does not assert that every build dependency ships to browsers.
  */
 export async function collectNotices(project) {
+  project = await realpath(path.resolve(project));
   const lock = JSON.parse(await readFile(path.join(project, 'package-lock.json'), 'utf8'));
   const provenance = JSON.parse(await readFile(path.join(project, 'licenses/provenance.json'), 'utf8'));
   const pagefindLicense = await readFile(path.join(project, 'licenses/pagefind-LICENSE'));
