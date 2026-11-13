@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "started_at": "2026-11-13T20:08:39.240193+00:00",
+  "stage": "final_json_invariants",
+  "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
+  "checks": [
+    "real signed-context login and bearer cookie",
+    "browser movie creation with atomic initial copy",
+    "real profile mutation persisted",
+    "real web rejects missing CSRF",
+    "rejected CSRF did not alter profile",
+    "member management route denied",
+    "real private collection mutation",
+    "other actor cannot list private entry",
+    "loan lost response becomes recovery503",
+    "loan uncertain page preserves original operation key",
+    "loan upstream201 persisted exactly one entity before replay",
+    "loan committed receipt matches created entity",
+    "loan owner GET reconciles persisted creation",
+    "loan availability GET remains readable",
+    "loan no automatic creation retry",
+    "loan manual same-key replay is confirmed",
+    "loan replay leaves exactly one original entity",
+    "loan replay leaves one creation audit",
+    "loan replay preserves exactly one unchanged receipt",
+    "loan actual upstream replay keeps key body ID and replay header",
+    "real manager approval",
+    "reservation lost response becomes recovery503",
+    "reservation uncertain page preserves original operation key",
+    "reservation upstream201 persisted exactly one entity before replay",
+    "reservation committed receipt matches created entity",
+    "reservation owner GET reconciles persisted creation",
+    "reservation availability GET remains readable",
+    "reservation no automatic creation retry",
+    "reservation manual same-key replay is confirmed",
+    "reservation replay leaves exactly one original entity",
+    "reservation replay leaves one creation audit",
+    "reservation replay preserves exactly one unchanged receipt",
+    "reservation actual upstream replay keeps key body ID and replay header",
+    "real reservation when copy unavailable",
+    "queue priority exposed after return",
+    "nonlocal browser request refused before network dispatch",
+    "fault proxy had no unexpected transport error",
+    "no uncaught browser page errors",
+    "no unexpected browser console error or warning",
+    "real JSON retained one film and one initial copy",
+    "actor comma preserved through actual browser and HTTP",
+    "real loan is returned and reservation remains waiting",
+    "profile persisted in actual JSON",
+    "private favorite belongs to member",
+    "loan borrower is the registered member"
+  ],
+  "screens": [
+    {
+      "file": "actual-film-desktop.png",
+      "sha256": "c91e8cec30412262ecd8482882789602f95b5402813a6fe581c2875b15b14da0",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "path": "/films/f7001682-1e5a-4119-98d5-bac33af02ee2"
+    },
+    {
+      "file": "actual-profile-mobile.png",
+      "sha256": "b73229450c3afd068274429b13077857f4abeebc38340c0f8da4fd91e3ee5ed8",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/profil"
+    },
+    {
+      "file": "actual-collection-mobile.png",
+      "sha256": "e5846a17293776952e604a092c22afb5a195bee87b70ece88c69f55ce7163790",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/ma-collection"
+    },
+    {
+      "file": "actual-uncertain-loan.png",
+      "sha256": "f51e3e7ccc1f163ab09959de51e62f0c0c65adf4cd3e37c37b73c6d861ab9b90",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/films/f7001682-1e5a-4119-98d5-bac33af02ee2/emprunter"
+    },
+    {
+      "file": "actual-uncertain-reservation.png",
+      "sha256": "358b8cb0a8dc238103eaab6f85e668e70d27be15c7c669995d83fbd9c9128696",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "path": "/films/f7001682-1e5a-4119-98d5-bac33af02ee2/reserver"
+    },
+    {
+      "file": "actual-returned-loan-mobile.png",
+      "sha256": "ff8f7d80ba3e4cc281b87678f4ffaf6031c578608c7f974da22facf3f2f29593",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "path": "/emprunts"
+    },
+    {
+      "file": "actual-ready-reservation-desktop.png",
+      "sha256": "fe3d342898046f7d8a1b915b14765c0b7b455c27b721db5a5b041254b604386f",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "path": "/reservations"
+    }
+  ],
+  "limits": [
+    "JSON backend only; no MongoDB, Docker, Swarm, TLS or production deployment",
+    "Sequential circulation case, not global FIFO/concurrency or load validation",
+    "Browser request routing is not an operating-system network sandbox",
+    "No complete accessibility, cross-browser or keyboard campaign",
+    "Response connection closure is injected by an owned local proxy after real API 201; not a physical network fault or Mongo commit-ack experiment"
+  ],
+  "api_source": {
+    "kind": "git",
+    "commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+    "application_sha256": "607bc77503babfab30a4fe3928685ac0c7c5117542e3ed4659436e8cc5e472b0",
+    "source_clean": true
+  },
+  "web_source": {
+    "kind": "git",
+    "commit": "f59c7af7d5bbe29493569b31403b924f20c3427a",
+    "application_sha256": "aa08a350c23536eb725a8ab4e32bf884936192a48a32b735d992cc3ca952bae1",
+    "source_clean": true
+  },
+  "browser_packages": {
+    "playwright": "1.64.1",
+    "pyee": "14.0.0",
+    "greenlet": "3.5.6",
+    "typing-extensions": "4.16.0"
+  },
+  "browser": "157.0.8103.51",
+  "browser_channel": "chrome",
+  "lost_creation_responses": [
+    {
+      "operation": "loan.request",
+      "upstream201_before_connection_closed": true,
+      "manual_replay_same_key_and_body": true,
+      "upstream_idempotency_replayed": true,
+      "persisted_entities": 1,
+      "creation_audits": 1,
+      "receipts": 1
+    },
+    {
+      "operation": "reservation.create",
+      "upstream201_before_connection_closed": true,
+      "manual_replay_same_key_and_body": true,
+      "upstream_idempotency_replayed": true,
+      "persisted_entities": 1,
+      "creation_audits": 1,
+      "receipts": 1
+    }
+  ],
+  "console_health": {
+    "page_error_types": [],
+    "unexpected": [],
+    "expected_negative_response_messages": {
+      "uncertain503": 2,
+      "authorization403": 1,
+      "blocked_probe": 0
+    }
+  },
+  "browser_closed": true,
+  "web_thread_stopped": true,
+  "fault_proxy_stopped": true,
+  "owned_api_exit": 0,
+  "api_process_stopped": true,
+  "api_clean_exit": true,
+  "temporary_data_removed": true,
+  "finished_at": "2026-11-13T20:08:58.392684+00:00"
+}

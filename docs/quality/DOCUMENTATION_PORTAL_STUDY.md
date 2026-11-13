@@ -64,14 +64,17 @@ Le workflow `documentation-portal.yml` prépare construction et contrôles sur
 Ubuntu et Windows avec droits de lecture ; sa qualification CI est distincte des
 exécutions locales ci-dessous et reste à rattacher au commit final du portail.
 
-Le candidat a construit 48 documents en 49 pages HTML, plus 63 ressources liées.
+L'instantané de qualification locale initiale a construit 48 documents en
+49 pages HTML, plus 63 ressources liées.
 Les 4364 liens locaux et ancres vérifiés sont valides. Deux constructions
 consécutives produisent les mêmes 340 noms de fichiers et octets sur le même
 poste Windows/Node24.19.0 ; cela n'est pas une preuve entre plateformes ou entre
 constructeurs indépendants. Le reçu distingue l'état des documents de celui de
 l'outillage : des documents inchangés ne rendent pas un générateur modifié propre.
 
-Les 25 tests Node passent. Ils couvrent aussi les sorties non possédées, parents
+Les 25 tests Node initiaux passent. La correction d'un alias de chemin Windows,
+reproduit en CI, ajoute ensuite deux témoins : 27 tests passent localement,
+sans supprimer le refus des dépendances réellement liées. Ils couvrent aussi les sorties non possédées, parents
 liés, HTML brut, ancres dupliquées, ponctuation, images dans les titres et liens
 locaux avec paramètres. Les identifiants de titre sont collectés par le même
 moteur Markdown verrouillé que celui du site. Le lock inclut

@@ -1,0 +1,331 @@
+{
+  "commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+  "method": "Git archive with canonical LF text, app/schemas and the two engine/image gates",
+  "files": [
+    {
+      "path": "app/__init__.py",
+      "sha256": "3f6ebda5529f5ed27a1c930b18ed2084e962e283cc0a61a1259324b1ff2cf43c",
+      "bytes": 4974
+    },
+    {
+      "path": "app/audit.py",
+      "sha256": "2a6aa1678ec88fe1f8debe417be8444e0f440c0a797ffa67411e6a02243eab75",
+      "bytes": 507
+    },
+    {
+      "path": "app/auth_storage.py",
+      "sha256": "9d2d90b0ebd05cfb94f989ff7e5171b888a441216bd79f1d936aae3c7a9aded7",
+      "bytes": 3762
+    },
+    {
+      "path": "app/bootstrap.py",
+      "sha256": "8a647ab43ea0bd96a34c830bca00d46de396e8d02bed0c0fbf2d8a2da371489b",
+      "bytes": 1925
+    },
+    {
+      "path": "app/business_storage.py",
+      "sha256": "d13ba4052abd811b12ede192b824b50cb11f3dadbfc21526c2b0c0707b640daa",
+      "bytes": 11213
+    },
+    {
+      "path": "app/catalogue_query.py",
+      "sha256": "bc2d74db2c384c12f13ba04a7576f587096c46768ab003fcc72206957bb77365",
+      "bytes": 3433
+    },
+    {
+      "path": "app/catalogue_transfer.py",
+      "sha256": "cc6d29e85d472689060c1fea93ebf2334f0cd23c92bea8f56b0cab0078fbcb39",
+      "bytes": 9561
+    },
+    {
+      "path": "app/circulation_model.py",
+      "sha256": "94eb234860f47117337d6b71ef1983164ad322196de1c4ce13bfe31e086ad2d4",
+      "bytes": 4013
+    },
+    {
+      "path": "app/client_context.py",
+      "sha256": "f7c5e93663af8af33c6738c9ab9a2b6960fba87b3d66f833eb1ce43d35f38b2c",
+      "bytes": 2595
+    },
+    {
+      "path": "app/enterprise_auth.py",
+      "sha256": "081487624dd9563080bbad047521a16815ae0b00f27078f8169c9096564b1fda",
+      "bytes": 15186
+    },
+    {
+      "path": "app/enterprise_catalogue.py",
+      "sha256": "253525a7db065ed9de5ac053a46e1a15e64fab06c07092d3b7fcfbdc5db61f95",
+      "bytes": 6714
+    },
+    {
+      "path": "app/enterprise_collections.py",
+      "sha256": "84070b5a2d8db3b519d1e44a48893fa92624e4b08ac95efcedd4d2c120965ef7",
+      "bytes": 2300
+    },
+    {
+      "path": "app/enterprise_insights.py",
+      "sha256": "2dbe6c4e6e7d59be92e9f96a7d0f8f6273f9486d5b55dbecba27de02574c4099",
+      "bytes": 1693
+    },
+    {
+      "path": "app/enterprise_lending.py",
+      "sha256": "e688b1a1eeb92ef65519e551f8777d088adbfbdc730dad49ac986e148bf2db7e",
+      "bytes": 2640
+    },
+    {
+      "path": "app/enterprise_metadata.py",
+      "sha256": "7d0106773d0cd01299c87c334331043a7921d68b22e9eff78dc924ecc8c45977",
+      "bytes": 5768
+    },
+    {
+      "path": "app/enterprise_reservations.py",
+      "sha256": "e9809dbfdb3a27259186925e8bb38d4d1587b3ed6acb7a477c668e8f0196dcef",
+      "bytes": 1807
+    },
+    {
+      "path": "app/enterprise_transfer.py",
+      "sha256": "cf4e90eb68b69889276485bddea5bde934f91b82cc445ab1a99bca778b5eb5cc",
+      "bytes": 3895
+    },
+    {
+      "path": "app/idempotency.py",
+      "sha256": "149c329638845a6f953ec94106af9d1f3f1d5b4876ffa00f685495376430c8fd",
+      "bytes": 2275
+    },
+    {
+      "path": "app/insights.py",
+      "sha256": "998c27e112e46ec29b738ee5657275cca55aa82f5f5ebc4bc7ead1bc51202933",
+      "bytes": 7904
+    },
+    {
+      "path": "app/metadata.py",
+      "sha256": "17f76034e44c9bcde988e8be2170d2d6a397bddb9170b42f697ac52ace228e55",
+      "bytes": 17317
+    },
+    {
+      "path": "app/metadata_model.py",
+      "sha256": "2bcaa5b3a46247ce476f5a3b96495f2db8156ceea9d8677f470e4b102370f807",
+      "bytes": 555
+    },
+    {
+      "path": "app/migrate_v2.py",
+      "sha256": "9fbfc7b198fe08199f97ca5e5e320fdc8870a504d1d57053b7e0626445ad1306",
+      "bytes": 4306
+    },
+    {
+      "path": "app/persistence/__init__.py",
+      "sha256": "227497f43654918aa6c5764b575484d109159a692cd1724ff7e36a70124b407c",
+      "bytes": 82
+    },
+    {
+      "path": "app/persistence/contracts.py",
+      "sha256": "5ff3c82359c4870e315076966d73a757288b92cda2bf49561992a4c4598baf7b",
+      "bytes": 6570
+    },
+    {
+      "path": "app/persistence/errors.py",
+      "sha256": "0bd20a35150a31847e2fd0fc31aed6e85100ff311db4bc213a79af400ec6afae",
+      "bytes": 323
+    },
+    {
+      "path": "app/persistence/execution.py",
+      "sha256": "c20028b10c72b05bcab7775de8dddb339589e1f51070cff60e08c59ae6b9d62e",
+      "bytes": 1630
+    },
+    {
+      "path": "app/persistence/json.py",
+      "sha256": "2c86a6ec89581545268d6833f62e33826254dc959d2b1fab28c9df36fdeb381d",
+      "bytes": 3328
+    },
+    {
+      "path": "app/persistence/json_circulation.py",
+      "sha256": "91a6f34ff81c382fa8ecf9903ced1c25d8902083651be74bc7713cb35ec960a7",
+      "bytes": 8034
+    },
+    {
+      "path": "app/persistence/json_repositories.py",
+      "sha256": "f05101d65ec3da5c3204a230069891b9c95f45109c112cd822f53c3d7d8b73e9",
+      "bytes": 17864
+    },
+    {
+      "path": "app/persistence/mongo.py",
+      "sha256": "12595451e2cb8af0afd7aa49d82025d0ae557aa2e419171ba39e1a9a21faba74",
+      "bytes": 4199
+    },
+    {
+      "path": "app/persistence/mongo_circulation.py",
+      "sha256": "b0700bbb873b9c895cda471c8d4d1af425dc23e33110fc2f334b3b664c73e1ae",
+      "bytes": 10303
+    },
+    {
+      "path": "app/persistence/mongo_maintenance.py",
+      "sha256": "2f845a6d3bb9d077f77ae37bdc6729e3b327d7ba9913d33a990fcaa4cfdebe82",
+      "bytes": 5098
+    },
+    {
+      "path": "app/persistence/mongo_model.py",
+      "sha256": "6cbd81a6e320cefab63a1d74e38187fbd80b070ddfdfe19ff60c975279130b24",
+      "bytes": 12996
+    },
+    {
+      "path": "app/persistence/mongo_repositories.py",
+      "sha256": "c7593b0043d4b9f11d53ab37e5df354557b194dde0a416921b757b2e234b4c33",
+      "bytes": 31843
+    },
+    {
+      "path": "app/persistence/mongo_transactions.py",
+      "sha256": "5acbe4752fcfbc854b160253918c59d40ad42474ffa32322e6bfca30e8a3e535",
+      "bytes": 6445
+    },
+    {
+      "path": "app/personal_model.py",
+      "sha256": "8914782a8c648486fefb58c3aafe9613a315f7277d111933f4336e22465feb1b",
+      "bytes": 2848
+    },
+    {
+      "path": "app/receipt_storage.py",
+      "sha256": "45f164eb9ad6a689582de6ecf488b327abf3a4677b7725e9437d37b1e47cdf17",
+      "bytes": 6332
+    },
+    {
+      "path": "app/recovery.py",
+      "sha256": "cc89769f18bc700a8b50952fb0f3778df8045d778756e01d3b4b9a2a4e59cd07",
+      "bytes": 7387
+    },
+    {
+      "path": "app/registration_admission.py",
+      "sha256": "b5056f2111dfdfd430968faa486ff6c5eb37b20304b99a7f0d38b80a0f36f5be",
+      "bytes": 3261
+    },
+    {
+      "path": "app/repository.py",
+      "sha256": "8be5a2a3470acb60466574b431388165a1b918631ef6ca5198b6433d224918ed",
+      "bytes": 3459
+    },
+    {
+      "path": "app/reservation_service.py",
+      "sha256": "0f9c6b426c18d40142efbf09c47ddbfe7b2f420127ca27b6eb77ba536ac4e62a",
+      "bytes": 389
+    },
+    {
+      "path": "app/services/__init__.py",
+      "sha256": "cf6650542019c4f28cd2b360e6874ccfad8faf005a5aa3cca6845b77afb6c8e9",
+      "bytes": 80
+    },
+    {
+      "path": "app/services/authentication.py",
+      "sha256": "dc19ecd18987c4145ddcd3001f5f6b92e9e572295803c1ac32bdcbb8b7495b94",
+      "bytes": 8729
+    },
+    {
+      "path": "app/services/catalogue.py",
+      "sha256": "4e1e65c2f815c3bca1c0343b6a5ca5e39a74b32e1db5be3d071066d82d48e960",
+      "bytes": 4539
+    },
+    {
+      "path": "app/services/catalogue_model.py",
+      "sha256": "5604dd00e5b5f15cc55b9eee5d890ae5af56914127c2aec672676edadebf21da",
+      "bytes": 2390
+    },
+    {
+      "path": "app/services/circulation.py",
+      "sha256": "e2bd0bfecb06696e301f6da6e8423a01bc9ca2cf2e3fd04309803f5f746b76fd",
+      "bytes": 23639
+    },
+    {
+      "path": "app/services/copies.py",
+      "sha256": "31fd4579629f3f12b687ce88cb7e147d03b282676c1b6867abd3e84f385f4864",
+      "bytes": 5381
+    },
+    {
+      "path": "app/services/personal.py",
+      "sha256": "46ed4f6a94c108a12972a4641f8db0b81d206cd6b35367b9ed5e405eca88ac49",
+      "bytes": 6622
+    },
+    {
+      "path": "app/services/public_catalogue.py",
+      "sha256": "f3e8c93d3aa857e44bb85d0a87a20193ea229dfa64872db233341d00441117b5",
+      "bytes": 2123
+    },
+    {
+      "path": "app/services/receipts.py",
+      "sha256": "b3f32d8f109ddf30790bedbb63528637a95f48df37248bfc3252686a5e9ba481",
+      "bytes": 955
+    },
+    {
+      "path": "app/services/results.py",
+      "sha256": "79f1ba79489179f8322c4ec84c0dd1c4f9bc6dc97eba1421bfec31befc80ce19",
+      "bytes": 586
+    },
+    {
+      "path": "app/storage_v2.py",
+      "sha256": "0ce09e03a7055f71d36a5fdeefb7217f16c44b7fa52514e792499d2d93edf5ba",
+      "bytes": 7828
+    },
+    {
+      "path": "app/validation.py",
+      "sha256": "452efce3ec93bcaf92fa3ca4228e747d10cd60e189502a4e96a5a7089553bf24",
+      "bytes": 2075
+    },
+    {
+      "path": "app/wikimedia.py",
+      "sha256": "e2553975ddbe00ffcc3bc5f7f8ea62a66c8c66deba4a124820e37168779d0eed",
+      "bytes": 8859
+    },
+    {
+      "path": "schemas/catalogue-transfer-v1.example.csv",
+      "sha256": "d998673557e13dcfe8971155f87d40a0e05d8469f78d995e7ac959caba7d5ed8",
+      "bytes": 268
+    },
+    {
+      "path": "schemas/catalogue-transfer-v1.example.json",
+      "sha256": "f3a657bcec8ed6e6cedeff315c20c0f383393e2ffe240a0bbbf10a3649163142",
+      "bytes": 449
+    },
+    {
+      "path": "schemas/catalogue-transfer-v1.schema.json",
+      "sha256": "b4f8e46ee521203a09554c8f3ce2e3e61f640ee20f7abe8375732820c5e7c464",
+      "bytes": 3766
+    },
+    {
+      "path": "schemas/catalogue-v2.example.json",
+      "sha256": "e63cca56ee9fb8bf00b629cc6bf95c88f72553084eaff1cae2d0eb3220ac99c1",
+      "bytes": 640
+    },
+    {
+      "path": "schemas/catalogue-v2.schema.json",
+      "sha256": "9ba51aae126a163288f82e77083898391da2a1eecf636e83848573c02e7682db",
+      "bytes": 29843
+    },
+    {
+      "path": "schemas/collection.example.json",
+      "sha256": "08f28975ae0e2a7134d0c0056e1bb55626e75da17ad9cee4af57244c73958d76",
+      "bytes": 247
+    },
+    {
+      "path": "schemas/external-source.example.json",
+      "sha256": "293a7cde3b7c77bce409caa7468a409984af6603eee54b68ed7cb95dbf46a3d8",
+      "bytes": 72
+    },
+    {
+      "path": "schemas/registration-admission.example.json",
+      "sha256": "d1473906e15bf79385ec97884692c0e01cff19e16f6ab454e73a7a9c7ca4b8a9",
+      "bytes": 157
+    },
+    {
+      "path": "schemas/registration-admission.schema.json",
+      "sha256": "0469d6e2134b1144a2610c3d6eedd8af0cb907c0e0971809efd9256018eeb698",
+      "bytes": 740
+    },
+    {
+      "path": "scripts/check_image.py",
+      "sha256": "a860df54464a5a839acf74f403c43a2a238de3462c3073913a2ecc450df35f74",
+      "bytes": 14744
+    },
+    {
+      "path": "scripts/check_mongodb.py",
+      "sha256": "30e03eea717530e61dd34691a34a67d05f823e0c183669638a795d9d56061ee1",
+      "bytes": 23187
+    }
+  ]
+}

@@ -2,11 +2,14 @@
 
 import argparse
 import hashlib
+import http.client
+import http.server
 import json
 import logging
 import re
 import secrets
 import shutil
+import socket
 import subprocess
 import sys
 import tempfile
@@ -25,6 +28,162 @@ BROWSER_PINS = {
     "greenlet": "3.5.6",
     "typing-extensions": "4.16.0",
 }
+
+
+class LostCreationResponseProxy:
+    """Owned loopback fault injector; upstream is still the actual HTTP API."""
+
+    def __init__(self, upstream):
+        endpoint = urlsplit(upstream)
+        if (
+            endpoint.scheme != "http"
+            or endpoint.hostname != "127.0.0.1"
+            or not endpoint.port
+            or endpoint.username
+            or endpoint.password
+            or endpoint.path
+            or endpoint.query
+            or endpoint.fragment
+        ):
+            raise ValueError("Fault proxy requires an owned loopback API origin")
+        self._lock = threading.Lock()
+        self._armed = None
+        self._attempts = []
+        self.errors = []
+        owner = self
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def log_message(self, *_):
+                pass
+
+            def forward(self):
+                connection = None
+                try:
+                    self.connection.settimeout(5)
+                    target = urlsplit(self.path)
+                    if (
+                        target.scheme
+                        or target.netloc
+                        or not target.path.startswith("/")
+                    ):
+                        raise ValueError("Nonlocal request target refused")
+                    length = int(self.headers.get("Content-Length", "0"))
+                    if not 0 <= length <= 1024 * 1024:
+                        raise ValueError("Fault proxy input exceeds fixture bound")
+                    body = self.rfile.read(length)
+                    if len(body) != length:
+                        raise ValueError("Truncated fixture request")
+                    hop = {
+                        "host",
+                        "connection",
+                        "proxy-connection",
+                        "transfer-encoding",
+                        "content-length",
+                        "keep-alive",
+                        "te",
+                        "trailer",
+                        "upgrade",
+                    }
+                    headers = {
+                        name: value
+                        for name, value in self.headers.items()
+                        if name.lower() not in hop
+                    }
+                    connection = http.client.HTTPConnection(
+                        endpoint.hostname, endpoint.port, timeout=5
+                    )
+                    connection.request(
+                        self.command, self.path, body=body, headers=headers
+                    )
+                    response = connection.getresponse()
+                    payload = response.read(2 * 1024 * 1024 + 1)
+                    if len(payload) > 2 * 1024 * 1024:
+                        raise ValueError("Fault proxy response exceeds fixture bound")
+                    dropped = False
+                    if self.command == "POST" and target.path in (
+                        "/api/v1/loans",
+                        "/api/v1/reservations",
+                    ):
+                        result = json.loads(payload)
+                        with owner._lock:
+                            dropped = (
+                                response.status == 201 and owner._armed == target.path
+                            )
+                            if dropped:
+                                owner._armed = None
+                            owner._attempts.append(
+                                {
+                                    "path": target.path,
+                                    "key_hash": hashlib.sha256(
+                                        self.headers.get("Idempotency-Key", "").encode()
+                                    ).hexdigest(),
+                                    "body_hash": hashlib.sha256(body).hexdigest(),
+                                    "identity": result.get("id"),
+                                    "status": response.status,
+                                    "replayed": response.getheader(
+                                        "Idempotency-Replayed"
+                                    )
+                                    == "true",
+                                    "dropped": dropped,
+                                }
+                            )
+                    if dropped:
+                        # The API returned 201. Deliver no HTTP response to the web client.
+                        self.close_connection = True
+                        try:
+                            self.connection.shutdown(socket.SHUT_RDWR)
+                        except OSError:
+                            pass
+                        self.connection.close()
+                        return
+                    self.send_response(response.status)
+                    for name, value in response.getheaders():
+                        if name.lower() not in hop:
+                            self.send_header(name, value)
+                    self.send_header("Content-Length", str(len(payload)))
+                    self.end_headers()
+                    self.wfile.write(payload)
+                except (OSError, ValueError, http.client.HTTPException) as exc:
+                    with owner._lock:
+                        owner.errors.append(type(exc).__name__)
+                    self.close_connection = True
+                finally:
+                    if connection is not None:
+                        connection.close()
+
+            do_GET = do_POST = do_PUT = do_PATCH = do_DELETE = forward
+
+        class Server(http.server.ThreadingHTTPServer):
+            daemon_threads = False
+            block_on_close = True
+
+        self.server = Server(("127.0.0.1", 0), Handler)
+        self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
+        try:
+            self.thread.start()
+        except BaseException:
+            self.server.server_close()
+            raise
+        self.url = "http://127.0.0.1:" + str(self.server.server_port)
+
+    def arm(self, path):
+        with self._lock:
+            if self._armed is not None or path not in (
+                "/api/v1/loans",
+                "/api/v1/reservations",
+            ):
+                raise ValueError("Only one expected creation response can be armed")
+            self._armed = path
+
+    def creation_attempts(self, path):
+        with self._lock:
+            return [dict(row) for row in self._attempts if row["path"] == path]
+
+    def close(self):
+        self.server.shutdown()
+        self.server.server_close()
+        self.thread.join(timeout=10)
+        return not self.thread.is_alive()
 
 
 def parse_args(argv=None):
@@ -126,7 +285,139 @@ def capture(page, name, args, report):
     )
 
 
-def exercise_browser(browser, base, config, folder, args, report):
+def exercise_lost_creation(
+    page, context, base, film_path, kind, folder, args, report, check, fault
+):
+    """A committed upstream creation must remain one entity after a manual replay."""
+    action, label, table, operation, event = (
+        ("emprunter", "Demander un prêt", "loans", "loan.request", "loan.requested")
+        if kind == "loan"
+        else (
+            "reserver",
+            "Réserver ce film",
+            "reservations",
+            "reservation.create",
+            "reservation.created",
+        )
+    )
+    form = page.locator(f"form[action$='/{action}']")
+    original_key = form.locator("input[name='operation_key']").input_value()
+    fault.arm("/api/v1/" + table)
+    with page.expect_response(
+        lambda response: (
+            urlsplit(response.url).path == film_path + "/" + action
+            and response.request.method == "POST"
+        )
+    ) as submitted:
+        page.get_by_role("button", name=label, exact=True).click()
+    settle(page)
+    check(kind + " lost response becomes recovery503", submitted.value.status == 503)
+    check(
+        kind + " uncertain page preserves original operation key",
+        page.get_by_role(
+            "heading", name="Vérifiez votre demande.", exact=True
+        ).is_visible()
+        and page.locator("input[name='operation_key']").input_value() == original_key,
+    )
+    snapshot = json.loads((folder / "enterprise.json").read_text(encoding="utf-8"))
+    check(
+        kind + " upstream201 persisted exactly one entity before replay",
+        len(snapshot[table]) == 1,
+    )
+    identity = snapshot[table][0]["id"]
+    receipt_before = [
+        row for row in snapshot["idempotency_records"] if row["operation"] == operation
+    ]
+    check(
+        kind + " committed receipt matches created entity",
+        len(receipt_before) == 1 and receipt_before[0]["response"]["id"] == identity,
+    )
+    capture(page, "actual-uncertain-" + kind + ".png", args, report)
+    listing_label = "Mes emprunts" if kind == "loan" else "Mes réservations"
+    listing_href = page.get_by_role(
+        "link", name=listing_label, exact=True
+    ).get_attribute("href")
+    availability_href = page.get_by_role(
+        "link", name="Disponibilité du film", exact=True
+    ).get_attribute("href")
+    reconciliation = context.new_page()
+    try:
+        reconciliation.goto(base + listing_href)
+        settle(reconciliation)
+        check(
+            kind + " owner GET reconciles persisted creation",
+            reconciliation.locator("article.circulation-entry").count() == 1,
+        )
+        reconciliation.goto(base + availability_href)
+        settle(reconciliation)
+        check(
+            kind + " availability GET remains readable",
+            reconciliation.get_by_role(
+                "heading", name="Voyage dans les images — essai réel", exact=True
+            ).is_visible(),
+        )
+    finally:
+        reconciliation.close()
+    check(
+        kind + " no automatic creation retry",
+        len(fault.creation_attempts("/api/v1/" + table)) == 1,
+    )
+    with page.expect_response(
+        lambda response: (
+            urlsplit(response.url).path == film_path + "/" + action
+            and response.request.method == "POST"
+        )
+    ) as replayed:
+        page.get_by_role("button", name="Réessayer la même demande", exact=True).click()
+    settle(page)
+    check(kind + " manual same-key replay is confirmed", replayed.value.status == 303)
+    current = json.loads((folder / "enterprise.json").read_text(encoding="utf-8"))
+    check(
+        kind + " replay leaves exactly one original entity",
+        len(current[table]) == 1 and current[table][0]["id"] == identity,
+    )
+    check(
+        kind + " replay leaves one creation audit",
+        len(
+            [
+                row
+                for row in current["audit_events"]
+                if row["action"] == event and row["entity_id"] == identity
+            ]
+        )
+        == 1,
+    )
+    check(
+        kind + " replay preserves exactly one unchanged receipt",
+        [row for row in current["idempotency_records"] if row["operation"] == operation]
+        == receipt_before,
+    )
+    attempts = fault.creation_attempts("/api/v1/" + table)
+    check(
+        kind + " actual upstream replay keeps key body ID and replay header",
+        len(attempts) == 2
+        and attempts[0]["key_hash"] == attempts[1]["key_hash"]
+        and attempts[0]["body_hash"] == attempts[1]["body_hash"]
+        and attempts[0]["identity"] == attempts[1]["identity"] == identity
+        and attempts[0]["status"] == attempts[1]["status"] == 201
+        and attempts[0]["dropped"]
+        and not attempts[1]["dropped"]
+        and attempts[1]["replayed"],
+    )
+    report.setdefault("lost_creation_responses", []).append(
+        {
+            "operation": operation,
+            "upstream201_before_connection_closed": True,
+            "manual_replay_same_key_and_body": True,
+            "upstream_idempotency_replayed": True,
+            "persisted_entities": 1,
+            "creation_audits": 1,
+            "receipts": 1,
+        }
+    )
+
+
+def exercise_browser(browser, base, config, folder, args, report, fault):
     from playwright.sync_api import Error as BrowserError
 
     def check(name, value):
@@ -135,8 +426,17 @@ def exercise_browser(browser, base, config, folder, args, report):
             raise AssertionError(name)
         report["checks"].append(name)
 
-    blocked = []
+    blocked, console_messages, page_errors = [], [], []
     origin = urlsplit(base)
+
+    def watch(page):
+        page.on("pageerror", lambda error: page_errors.append(type(error).__name__))
+        page.on(
+            "console",
+            lambda message: console_messages.append(
+                (message.type, message.text, message.location)
+            ),
+        )
 
     def local_only(route):
         target = urlsplit(route.request.url)
@@ -162,6 +462,7 @@ def exercise_browser(browser, base, config, folder, args, report):
         for context in (admin_context, member_context):
             context.set_default_timeout(10000)
             context.route("**/*", local_only)
+            context.on("page", watch)
         admin, member = admin_context.new_page(), member_context.new_page()
         report["stage"] = "admin_login"
         login(admin, base, "pair-admin", config["password"])
@@ -252,8 +553,18 @@ def exercise_browser(browser, base, config, folder, args, report):
         )
         report["stage"] = "loan_request_and_approval"
         member.goto(base + film_path)
-        member.get_by_role("button", name="Demander un prêt", exact=True).click()
-        settle(member)
+        exercise_lost_creation(
+            member,
+            member_context,
+            base,
+            film_path,
+            "loan",
+            folder,
+            args,
+            report,
+            check,
+            fault,
+        )
         admin.goto(base + "/emprunts?scope=all")
         admin.get_by_role("link", name="Attribuer un exemplaire", exact=True).click()
         admin.locator("#copy_id").select_option(index=1)
@@ -265,8 +576,18 @@ def exercise_browser(browser, base, config, folder, args, report):
         )
         report["stage"] = "reservation_and_return"
         admin.goto(base + film_path)
-        admin.get_by_role("button", name="Réserver ce film", exact=True).click()
-        settle(admin)
+        exercise_lost_creation(
+            admin,
+            admin_context,
+            base,
+            film_path,
+            "reservation",
+            folder,
+            args,
+            report,
+            check,
+            fault,
+        )
         check(
             "real reservation when copy unavailable",
             urlsplit(admin.url).path == "/reservations",
@@ -301,6 +622,58 @@ def exercise_browser(browser, base, config, folder, args, report):
             "nonlocal browser request refused before network dispatch",
             refused and len(blocked) == before + 1,
         )
+        check("fault proxy had no unexpected transport error", not fault.errors)
+        expected_messages, unexpected = (
+            {"uncertain503": 0, "authorization403": 0, "blocked_probe": 0},
+            [],
+        )
+        for level, message, location in console_messages:
+            if level not in ("warning", "error"):
+                continue
+            source = urlsplit(location.get("url", ""))
+            expected_503 = (
+                source.scheme == origin.scheme
+                and source.netloc == origin.netloc
+                and source.path in (film_path + "/emprunter", film_path + "/reserver")
+                and re.match(
+                    r"^Failed to load resource: the server responded with a status of 503(?:\s|$)",
+                    message,
+                )
+            )
+            expected_block = (
+                source.hostname == "example.invalid"
+                and source.path == "/cinevault-gate-probe"
+                and "net::ERR_FAILED" in message
+            )
+            expected_403 = (
+                source.scheme == origin.scheme
+                and source.netloc == origin.netloc
+                and source.path == "/films/nouveau"
+                and re.match(
+                    r"^Failed to load resource: the server responded with a status of 403(?:\s|$)",
+                    message,
+                )
+            )
+            if expected_503:
+                expected_messages["uncertain503"] += 1
+            elif expected_403:
+                expected_messages["authorization403"] += 1
+            elif expected_block:
+                expected_messages["blocked_probe"] += 1
+            else:
+                unexpected.append(
+                    {
+                        "type": level,
+                        "message_sha256": hashlib.sha256(message.encode()).hexdigest(),
+                    }
+                )
+        report["console_health"] = {
+            "page_error_types": page_errors,
+            "unexpected": unexpected,
+            "expected_negative_response_messages": expected_messages,
+        }
+        check("no uncaught browser page errors", not page_errors)
+        check("no unexpected browser console error or warning", not unexpected)
     finally:
         admin_context.close()
         member_context.close()
@@ -351,10 +724,11 @@ def run_pair(args):
             "Sequential circulation case, not global FIFO/concurrency or load validation",
             "Browser request routing is not an operating-system network sandbox",
             "No complete accessibility, cross-browser or keyboard campaign",
+            "Response connection closure is injected by an owned local proxy after real API 201; not a physical network fault or Mongo commit-ack experiment",
         ],
     }
     folder = Path(tempfile.mkdtemp(prefix="cinevault-browser-pair-"))
-    process = server = thread = browser = None
+    process = server = thread = browser = fault = None
     log = None
     api_start_attempted = False
     try:
@@ -388,6 +762,7 @@ def run_pair(args):
             or not endpoint.port
         ):
             raise RuntimeError("API endpoint is not owned loopback")
+        fault = LostCreationResponseProxy(api_url)
         key = folder / "web-session.key"
         key.write_bytes(secrets.token_bytes(32))
         key.chmod(0o600)
@@ -396,7 +771,7 @@ def run_pair(args):
                 "TESTING": True,
                 "SECRET_KEY_FILE": str(key),
                 "ENTERPRISE_ENABLED": True,
-                "API_URL": api_url,
+                "API_URL": fault.url,
                 "CLIENT_CONTEXT_KEY": bytes.fromhex(config["context_key"]),
                 "SESSION_COOKIE_SECURE": False,
             }
@@ -417,7 +792,7 @@ def run_pair(args):
                 report["browser_channel"] = (
                     args.browser_channel or "playwright-default-chromium"
                 )
-                exercise_browser(browser, base, config, folder, args, report)
+                exercise_browser(browser, base, config, folder, args, report, fault)
             finally:
                 browser.close()
                 report["browser_closed"] = True
@@ -436,6 +811,12 @@ def run_pair(args):
             except (OSError, RuntimeError) as exc:
                 report["web_cleanup_error_type"] = type(exc).__name__
         report["web_thread_stopped"] = thread is None or not thread.is_alive()
+        report["fault_proxy_stopped"] = fault is None
+        if fault is not None:
+            try:
+                report["fault_proxy_stopped"] = fault.close()
+            except (OSError, RuntimeError) as exc:
+                report["fault_proxy_cleanup_error_type"] = type(exc).__name__
         if process is not None:
             try:
                 if process.stdin and not process.stdin.closed:
@@ -455,7 +836,11 @@ def run_pair(args):
         if log is not None:
             log.close()
         report["temporary_data_removed"] = False
-        if report["web_thread_stopped"] and report["api_process_stopped"]:
+        if (
+            report["web_thread_stopped"]
+            and report["api_process_stopped"]
+            and report["fault_proxy_stopped"]
+        ):
             try:
                 shutil.rmtree(folder)
                 report["temporary_data_removed"] = not folder.exists()
@@ -469,6 +854,7 @@ def run_pair(args):
             and report["web_thread_stopped"]
             and report["api_process_stopped"]
             and report["api_clean_exit"]
+            and report["fault_proxy_stopped"]
             and report["temporary_data_removed"]
             and report.get("browser_closed", False)
         )

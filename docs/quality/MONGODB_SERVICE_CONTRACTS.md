@@ -1,5 +1,42 @@
 # Services communs sur MongoDB réel
 
+## Qualification C4 — prêts, réservations et reprises
+
+Le [candidat API7aa9b05](https://github.com/HyMathew/cinevault-api/tree/7aa9b05f419d8c4ef4840e35c8d04be7ada216c5)
+ajoute le service de circulation commun aux deux persistances : règles FIFO,
+quotas, versions, expiration et reçus des créations. Sa
+[CI générale](https://github.com/HyMathew/cinevault-api/actions/runs/43390239620)
+et sa [CI de propriétés P1-P3](https://github.com/HyMathew/cinevault-api/actions/runs/43390239717)
+ont réussi. Le [reçu vérifié](../../evidence/public/c4-ci-7aa-20261113.json) et le
+[manifeste des sources](../../evidence/public/c4-source-7aa-20261113.json)
+conservent les empreintes des neuf archives inspectées, les résultats et limites.
+
+Le contrat Mongo réel vérifie sept courses entre processus,501expirations en
+batches500+1 dans une transaction, neuf annulations après de vraies écritures,
+FK/quotas et registre d'UUID. La perte d'accusé est injectée après un vrai commit :
+un corps, deux appels du même commit, puis rapprochement sans doublon. Ce n'est
+pas une panne réseau physique. Les petits plans explain ne sont pas un benchmark.
+
+Les JUnit des suites Windows et Ubuntu comptent436 dans l'attribut tests,
+incluant35sous-tests et cinq cas natifs ignorés dans cette suite puis exécutés
+séparément. Le gate moteur exécute ses cinq tests natifs sans skip et les contrats
+de service additionnels. Les propriétés P1-P3 ont20tests par OS ; les douze
+mutations explicites sont détectées par assertions comportementales. Le lot P4
+de propriétés de circulation est une qualification ultérieure distincte.
+
+L'image auditée b0731ad6849a0353f2ed8bf5beabcbf2bc16ba1f69b9f321f237385380421b8c
+fonctionne en UID10001 et contient28index déclarés, dix schémas et le SDK sans
+extensions C. Santé, scan et nettoyage passent ; cinq Medium et un Low restent
+observés, aucun High/Critical à ce gate. Elle n'est ni publiée ni déployée.
+Un premier run échoué sur un contrôle d'image resté à25index est conservé ; le
+contrôle a été aligné sur les28index après reproduction, sans retirer de garde.
+
+La composition HTTP reste JSON. Le
+[couple web/API C4](BROWSER_PAIR_GATE.md) vérifie séparément les créations après
+coupure HTTP locale. Migration, rollback après nouvelles écritures, sauvegarde
+portable finale, admission équitable et activation HTTP Mongo globale restent
+ouverts. Les sections suivantes conservent leurs preuves historiques exactes.
+
 ## Qualification C3 — collections privées et journal
 
 Le [candidat API139a839](https://github.com/HyMathew/cinevault-api/tree/139a8391181d498144ce9c0e907734d3570b2bfb)

@@ -1,0 +1,291 @@
+{
+  "schema": 1,
+  "source_commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+  "scope": "Exact-commit CI qualification of the C4 candidate; no release, deployed Mongo HTTP or global security approval",
+  "workflow_runs": [
+    43390239620,
+    43390239717
+  ],
+  "workflow_urls": [
+    "https://github.com/HyMathew/cinevault-api/actions/runs/43390239620",
+    "https://github.com/HyMathew/cinevault-api/actions/runs/43390239717"
+  ],
+  "tests_junit": {
+    "ubuntu-24.04": {
+      "tests": 436,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "xml_sha256": "7e4388482be61d9a485773890ae6731ac21eacf3ea91f413ec359c3ccce549c1"
+    },
+    "windows-latest": {
+      "tests": 436,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5,
+      "xml_sha256": "169e202d338191522748f8fb363990fcee37bb5e2dbab46803bd72108ea2a603"
+    }
+  },
+  "dependency_audits": {
+    "ubuntu-24.04": [
+      {
+        "file": "mongodb-build-tools-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "ec6accc512bb2fc2791a67928964f4e8f651ba235da7ea0e884585974b8e588f"
+      },
+      {
+        "file": "requirements-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "960cf854b00b3a978703a0f7f764d6a2a7e6c4ec89ddf1a53a9950d166e2c108"
+      },
+      {
+        "file": "requirements-dev-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "e7fbac14344610b6a723d379d42740c2d37443147a5e36c7a5c99b11b63647b8"
+      },
+      {
+        "file": "requirements-mongodb-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "f63c79dc3ef6602349f1eeae84e75119117458e7329f1e79a947af8ea86e76f4"
+      },
+      {
+        "file": "requirements-quality-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "52141d68f290e6d69e6c9919fdca12095faafe87b7a47303376da3bcfcb792b1"
+      }
+    ],
+    "windows-latest": [
+      {
+        "file": "mongodb-build-tools-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "ec6accc512bb2fc2791a67928964f4e8f651ba235da7ea0e884585974b8e588f"
+      },
+      {
+        "file": "requirements-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "d4fba764c7aabe5ab29bddddc6a74319bd7b9809b26bc4ce489253f98a0f617f"
+      },
+      {
+        "file": "requirements-dev-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "ed36b688a846e768f35a85a1a1edb5968446a2a16f9de7fa7b72c50b22054652"
+      },
+      {
+        "file": "requirements-mongodb-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "f63c79dc3ef6602349f1eeae84e75119117458e7329f1e79a947af8ea86e76f4"
+      },
+      {
+        "file": "requirements-quality-audit.json",
+        "vulnerabilities": 0,
+        "sha256": "52141d68f290e6d69e6c9919fdca12095faafe87b7a47303376da3bcfcb792b1"
+      }
+    ]
+  },
+  "properties_p1_p3_junit": {
+    "ubuntu-24.04": {
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "xml_sha256": "3c051426e94ca84a5d7a9725d0afdb9d160ba75b56eedf899f4c01c97a9eb8b3"
+    },
+    "windows-latest": {
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "xml_sha256": "d74fe83258ce9a71b5e875126d7e02bccbb637f55f7f7533b14334a0fc1a070a"
+    }
+  },
+  "source_manifest_sha256": "3e04b5b7b5e63c1c9e2ed0edf8564fdb3e6db43e087d8c294b9f9c1039ce2b9c",
+  "mongodb": {
+    "image": "mongo@sha256:1d7a2d487c6465ea022474b90b65d6c91bb600b421b65880d8c6e141d6122200",
+    "host_kernel": "6.8.0-1070-azure",
+    "real_pytest_cases": 5,
+    "circulation_service": {
+      "circulation_service": "passed",
+      "fifo_and_receipts": true,
+      "native_targeted_trace": {
+        "checked": true,
+        "commands": 512
+      },
+      "expiration_order_and_exception_rollback": "passed",
+      "actor_key_and_lost_ack_reconciliation": "passed",
+      "targeted_fk_owner_and_closed_scope": "passed",
+      "abort_replay_with_additional_expiration_keeps_ids": "passed",
+      "uuid_collision_aborts_without_regeneration": "passed",
+      "native_or_json_constraints": "passed",
+      "active_pending_waiting_limits": [
+        5,
+        10,
+        10
+      ],
+      "damaged_inventory_and_strict_surplus_fifo": "passed",
+      "real_native_commit_then_injected_ack_loss": "passed",
+      "command_executions": 1,
+      "commit_executions": 2,
+      "real_write_then_abort_points": 9,
+      "entry_link_audit_receipt_registry_rollback": "passed",
+      "global_expiration_batch_sizes": [
+        500,
+        1
+      ],
+      "expired_in_one_uow": 501,
+      "measured_query_plans": [
+        {
+          "collection": "loans",
+          "candidate_index": "loan_time_order",
+          "optimizer": {
+            "indexes": [
+              "loan_time_order"
+            ],
+            "blocking_sort": false,
+            "returned": 18,
+            "documents_examined": 18
+          },
+          "explicit_hint": {
+            "indexes": [
+              "loan_time_order"
+            ],
+            "blocking_sort": false,
+            "returned": 18,
+            "documents_examined": 18
+          }
+        },
+        {
+          "collection": "loans",
+          "candidate_index": "borrower_time_order",
+          "optimizer": {
+            "indexes": [
+              "borrower_time_order"
+            ],
+            "blocking_sort": false,
+            "returned": 1,
+            "documents_examined": 1
+          },
+          "explicit_hint": {
+            "indexes": [
+              "borrower_time_order"
+            ],
+            "blocking_sort": false,
+            "returned": 1,
+            "documents_examined": 1
+          }
+        },
+        {
+          "collection": "reservations",
+          "candidate_index": "user_reservation_order",
+          "optimizer": {
+            "indexes": [
+              "user_reservation_order"
+            ],
+            "blocking_sort": false,
+            "returned": 1,
+            "documents_examined": 1
+          },
+          "explicit_hint": {
+            "indexes": [
+              "user_reservation_order"
+            ],
+            "blocking_sort": false,
+            "returned": 1,
+            "documents_examined": 1
+          }
+        }
+      ],
+      "query_plan_fixture_is_not_a_load_benchmark": true,
+      "native_process_races": {
+        "checked": true,
+        "real_process_races": 7,
+        "last_copy_fifo_cancellation_and_actor_key": "passed"
+      }
+    },
+    "container_removed": true,
+    "temporary_data_removed": true
+  },
+  "image": {
+    "image_id": "sha256:b0731ad6849a0353f2ed8bf5beabcbf2bc16ba1f69b9f321f237385380421b8c",
+    "scanner": "anchore/grype:v0.121.2@sha256:6a36234da13f9faa327306ac0b3dab3405cfa2b4eb20c8f904125a8707863913",
+    "runtime_uid": 10001,
+    "health_passed": true,
+    "scan_passed": true,
+    "severity_counts": {
+      "Medium": 5,
+      "Low": 1
+    },
+    "mongodb_runtime": {
+      "pymongo": "4.19.0",
+      "dnspython": "2.9.2",
+      "c_extensions": false,
+      "bson_int64_exact": true,
+      "schemas": 10,
+      "indexes": 28,
+      "build_tools_absent": true,
+      "notices_present": true
+    },
+    "cleanup_passed": true
+  },
+  "named_mutations": {
+    "experiments": 12,
+    "all_detected_by_behavioral_assertions": true,
+    "source_restored": true,
+    "automatic_global_mutation_score": false
+  },
+  "archives": [
+    {
+      "name": "c4-7aa-dependency-audit-ubuntu-24.04.zip",
+      "sha256": "16aa6b9bf0ff808230548111c3f06a95b849084111a022e6282906d2af1f666c",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-dependency-audit-windows-latest.zip",
+      "sha256": "54ed56e6a3f4031b53152ae8e6561f84925e15bcc3394023e6b5d4bcc81ba8de",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-image-audit.zip",
+      "sha256": "eefced3e3c7f0a078118f49feba0cb6768ef5be5748fd461aeb3ec98a743639a",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-mongodb-contract.zip",
+      "sha256": "8d183c2af5261ff4eae8a05db219bfdc6733f8609cafdf552e164a5393f9ec8b",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-named-mutation-experiments.zip",
+      "sha256": "28c979e707c8ab89780b352a684bcd3062e505ba836208b3fc1b4b6564eed233",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-properties-ubuntu-24.04.zip",
+      "sha256": "979ee093f4df7368552d85936442e5b7fcf122fb99bcc93b89f3ee540845e52f",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-properties-windows-latest.zip",
+      "sha256": "0629666fd1ed66e6af349b555ee8faa7e7a5ef566be07830c29fc51c9f7e191b",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-tests-ubuntu-24.04.zip",
+      "sha256": "ebbfc23d5c239080b64a6497d1f5a0cbba08d490d15c4ab020023011f121f2b8",
+      "crc_and_paths_verified": true
+    },
+    {
+      "name": "c4-7aa-tests-windows-latest.zip",
+      "sha256": "9e87e510115ea88d7d6db97ba22b0a003710703d0a86f937a3e065008ffc62d9",
+      "crc_and_paths_verified": true
+    }
+  ],
+  "limits": [
+    "Five skipped unit cases are native tests executed separately by the engine gate",
+    "Full-suite JUnit counts include subtests",
+    "Image has five Medium and one Low scanner matches; not a zero-vulnerability claim",
+    "P4 circulation properties are a later separate lot",
+    "Generated native corpus was replayed separately in the controlled R3 study, not this CI corpus job",
+    "Publication is skipped on this candidate branch; no service was deployed",
+    "Mono-member replica set and tiny explain fixtures provide neither physical HA nor a load benchmark"
+  ]
+}

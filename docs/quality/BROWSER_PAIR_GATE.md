@@ -15,6 +15,14 @@ acteurs, demande de prêt, attribution par le gestionnaire, réservation puis
 retour et priorité de réservation. Des assertions relisent enfin le JSON pour
 vérifier le propriétaire, l’emprunteur, les états et le nom d’acteur avec virgule.
 
+Pour le prêt et la réservation, un proxy local relaie la création à l'API réelle,
+lit son201 puis ferme sa connexion au Web sans livrer de réponse. Le Web présente
+son503 d'incertitude. Le scénario consulte les GET de rapprochement puis reprend
+manuellement le même formulaire, avec la même clé et le même corps. Il exige un
+rejeu confirmé et une seule entité, un seul audit de création et un reçu inchangé.
+Ce mécanisme est une injection de coupure HTTP locale ; il ne simule pas un
+succès métier et ne démontre pas une panne physique ni un commit Mongo incertain.
+
 Le navigateur ne peut charger que l’origine HTTP locale du frontend pendant le
 scénario. Une tentative contrôlée vers un domaine réservé `.invalid` vérifie le
 refus avant envoi par Playwright. Les service workers sont bloqués. Cette règle
@@ -22,8 +30,8 @@ de routage ne constitue pas un pare-feu ni un confinement réseau du système
 d’exploitation. Le frontend joint l’API sur son propre port loopback ; les
 métadonnées externes sont désactivées pour ce scénario reproductible.
 
-Les cinq captures portent sur des états après soumission : fiche, profil,
-collection, prêt retourné et réservation prioritaire. Aucun écran contenant un
+Les sept captures portent sur des états après soumission : fiche, profil,
+collection, deux créations incertaines, prêt retourné et réservation prioritaire. Aucun écran contenant un
 mot de passe saisi n’est capturé. Les comptes et films restent fictifs.
 
 ## Exécution portable
@@ -145,13 +153,25 @@ lie les archives vérifiées, empreintes du code chargé et résultats natifs Mo
 La version web de cette preuve reste8256166 ; elle ne qualifie pas un changement
 web postérieur.
 
-Les pins courants visent API139a839/webf59c7af, après réussite de la
+Les pins précédents visaient API139a839/webf59c7af, après réussite de la
 [CI web43254511589](https://github.com/HyMathew/cinevault-web/actions/runs/43254511589).
 Ce changement raccorde les formulaires à clé d'opération et la référence DESIGN.md.
 La nouvelle exécution de paire doit encore être inspectée ; les reçus C3 ci-dessus
 conservent la version8256166 exacte. L'API139a839 n'implémente pas encore les reçus
 de création C4 : ce couple peut vérifier les parcours compatibles, pas leur rejeu
 backend après réponse perdue.
+
+Les pins courants visent **API7aa9b05/webf59c7af**. Le
+[reçu local C4](../../evidence/public/c4-browser-7aa-f59-20261113.json) comporte
+45contrôles et sept captures, avec code chargé depuis deux clones propres.
+Une [réexécution indépendante](../../evidence/public/c4-browser-independent-20261113.json)
+confirme les45contrôles et le nettoyage. Les deux503 injectés et le403 du refus
+d'autorisation sont classés séparément : aucune erreur JavaScript ou console
+inattendue n'est annoncée comme inexistante. Les empreintes, limites et versions
+exactes restent dans ces reçus. La CI de ce nouveau raccord doit encore être
+inspectée après intégration ; ces preuves locales ne la remplacent pas.
+Les [sept captures synthétiques](../../evidence/public/c4-recovery-20261113/README.md)
+restent accessibles avec leurs empreintes dans le reçu.
 
 ## Limites de portée
 
