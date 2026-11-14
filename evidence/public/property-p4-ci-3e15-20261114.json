@@ -1,0 +1,1639 @@
+{
+  "format": 1,
+  "review": "independent-inspection-of-executed-ci-artifacts",
+  "repository": "HyMathew/cinevault-api",
+  "source_sha": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+  "previous_application_sha": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+  "collected_at_utc": "2026-11-14T02:56:59.308090+00:00",
+  "result": "PASS_CI_EVIDENCE_INSPECTED",
+  "runs": [
+    {
+      "id": 43548063079,
+      "head_sha": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+      "name": "Quality, tests and image audit",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/HyMathew/cinevault-api/actions/runs/43548063079",
+      "created_at": "2026-11-14T02:45:43Z",
+      "updated_at": "2026-11-14T02:50:35Z",
+      "event": "push"
+    },
+    {
+      "id": 43548063014,
+      "head_sha": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+      "name": "Generated JSON and BSON contracts",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/HyMathew/cinevault-api/actions/runs/43548063014",
+      "created_at": "2026-11-14T02:45:43Z",
+      "updated_at": "2026-11-14T02:48:03Z",
+      "event": "push"
+    }
+  ],
+  "jobs": [
+    {
+      "run_id": 43548063079,
+      "id": 132303894342,
+      "name": "mongodb",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063079,
+      "id": 132303894556,
+      "name": "tests (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063079,
+      "id": 132303894585,
+      "name": "quality (ubuntu-24.04)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063079,
+      "id": 132303894637,
+      "name": "quality (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063079,
+      "id": 132303894642,
+      "name": "tests (ubuntu-24.04)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063079,
+      "id": 132304729084,
+      "name": "image",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063079,
+      "id": 132304730744,
+      "name": "publish-image",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "run_id": 43548063014,
+      "id": 132303894046,
+      "name": "properties (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063014,
+      "id": 132303894290,
+      "name": "properties (ubuntu-24.04)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063014,
+      "id": 132304347937,
+      "name": "named-mutations",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "run_id": 43548063014,
+      "id": 132304347953,
+      "name": "circulation-mutations",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifact_count": 10,
+  "artifacts": [
+    {
+      "file": "api-3e15-image-audit.zip",
+      "artifact_id": 14095750310,
+      "run_id": 43548063079,
+      "github_digest": "sha256:7c360ccf93f208d436c31e33df322c01cea08826cb431b5e483a523c8d69c45f",
+      "sha256": "7c360ccf93f208d436c31e33df322c01cea08826cb431b5e483a523c8d69c45f",
+      "size_bytes": 18480,
+      "entries": [
+        {
+          "path": "image-check.json",
+          "bytes": 4903,
+          "sha256": "0a16942c9c5837c6523a205a576fe3f17351b0941407b09d337243c114475bd5",
+          "crc32": "bfe1e8ea"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/build.iid",
+          "bytes": 71,
+          "sha256": "c8641009f881f2201d950b9e9f71a8bd5bc414d255ba93fcdb1755f578f89401",
+          "crc32": "3e5ea067"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/cache-init.log",
+          "bytes": 925,
+          "sha256": "192abefa344fff2d16ccab8056ced3ce6cd8bf4e0382fd1b881f07d3665404b5",
+          "crc32": "dbab38fe"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/container-health.json",
+          "bytes": 211,
+          "sha256": "a1de57b71a252a6558a0cf4394558d361e1bd28cfdb0a780c395befe3113271b",
+          "crc32": "75ea22a4"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/docker-build.log",
+          "bytes": 15674,
+          "sha256": "2edf25bbd609b0cc9c34651398f1f428c315223631ee106729ab26574b164966",
+          "crc32": "6df10520"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/image-check.json",
+          "bytes": 4903,
+          "sha256": "0a16942c9c5837c6523a205a576fe3f17351b0941407b09d337243c114475bd5",
+          "crc32": "bfe1e8ea"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/image-scan.log",
+          "bytes": 790,
+          "sha256": "81123d37fbe26bb3be7e8566b863a62a2888ec5f3350fcd7e6f1daf54dac4432",
+          "crc32": "82673758"
+        },
+        {
+          "path": "image-ec74c38143de4b93a62576b07bea2af6/image-vulnerabilities.json",
+          "bytes": 32225,
+          "sha256": "42b992a4ad296c58d3e9b69a63323e897fcf56d9bce7a609e36d8ea5e45f0e64",
+          "crc32": "792018cd"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-tests-ubuntu-24.04.zip",
+      "artifact_id": 14095475743,
+      "run_id": 43548063079,
+      "github_digest": "sha256:217fd804a670da7527f57235f78a68b96b68f611de4dd9b9f0b54357bd93a59a",
+      "sha256": "217fd804a670da7527f57235f78a68b96b68f611de4dd9b9f0b54357bd93a59a",
+      "size_bytes": 11617,
+      "entries": [
+        {
+          "path": "tests.xml",
+          "bytes": 65612,
+          "sha256": "4a6cef3e3131da7ee6dd143e9ec3ffbe6bc2ac6308ab929ed977dc99509ba3ed",
+          "crc32": "d68246d2"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-tests-windows-latest.zip",
+      "artifact_id": 14095470756,
+      "run_id": 43548063079,
+      "github_digest": "sha256:bbc0a6bef7dba78c20660007e6f56b0c2bfacda04ba0bfaeb9226bfcaad24c61",
+      "sha256": "bbc0a6bef7dba78c20660007e6f56b0c2bfacda04ba0bfaeb9226bfcaad24c61",
+      "size_bytes": 11885,
+      "entries": [
+        {
+          "path": "tests.xml",
+          "bytes": 65607,
+          "sha256": "60098ee58064553938fac8ba00c458ba6afe048d573c597d07037898686a69d2",
+          "crc32": "fbd10614"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-dependency-audit-ubuntu-24.04.zip",
+      "artifact_id": 14095325905,
+      "run_id": 43548063079,
+      "github_digest": "sha256:7b0b60249b0f45e5c3769663dd7a8615a7dba1b366c929c4522b68946b5d7d18",
+      "sha256": "7b0b60249b0f45e5c3769663dd7a8615a7dba1b366c929c4522b68946b5d7d18",
+      "size_bytes": 3707,
+      "entries": [
+        {
+          "path": "dependency-summary.json",
+          "bytes": 294,
+          "sha256": "d21e66c14faf1a8994841183222b93247b708fa78c4b4baad147b0db47f7dec5",
+          "crc32": "9f9b922a"
+        },
+        {
+          "path": "mongodb-build-tools-audit.json",
+          "bytes": 505,
+          "sha256": "e60dc63d09e6412af6444eb98eed76d205a847ec541ba449fcc51f37bd92c8cb",
+          "crc32": "ba0057a0"
+        },
+        {
+          "path": "requirements-audit.json",
+          "bytes": 816,
+          "sha256": "2c23aa276e28ae21b69a116465f265bee7744936b051744248af1d2bd0fba2be",
+          "crc32": "d033ecfe"
+        },
+        {
+          "path": "requirements-audit.log",
+          "bytes": 265,
+          "sha256": "79d30422388543b2563e1dde76bb7e7857d7ef0c6fdf05c8c71598633ca07e1e",
+          "crc32": "6ae84ab9"
+        },
+        {
+          "path": "requirements-dev-audit.log",
+          "bytes": 265,
+          "sha256": "79d30422388543b2563e1dde76bb7e7857d7ef0c6fdf05c8c71598633ca07e1e",
+          "crc32": "6ae84ab9"
+        },
+        {
+          "path": "requirements-dev-audit.json",
+          "bytes": 675,
+          "sha256": "0a97f4b5399907159f375206e429fcedfd5838e05f1524a068f3274e6169878b",
+          "crc32": "5bd37632"
+        },
+        {
+          "path": "requirements-mongodb-audit.json",
+          "bytes": 143,
+          "sha256": "7b221171be7b6354a7b0b0406a09bc9413c493b6d275fb4ffef77b8a7bf1616d",
+          "crc32": "e37caa90"
+        },
+        {
+          "path": "requirements-mongodb-audit.log",
+          "bytes": 265,
+          "sha256": "79d30422388543b2563e1dde76bb7e7857d7ef0c6fdf05c8c71598633ca07e1e",
+          "crc32": "6ae84ab9"
+        },
+        {
+          "path": "requirements-quality-audit.json",
+          "bytes": 2929,
+          "sha256": "58667459a349eb6ed02a9d87d8746fd2517f9d01f4d3ffd71b43bd49ee1f50c1",
+          "crc32": "a26b297b"
+        },
+        {
+          "path": "requirements-quality-audit.log",
+          "bytes": 265,
+          "sha256": "79d30422388543b2563e1dde76bb7e7857d7ef0c6fdf05c8c71598633ca07e1e",
+          "crc32": "6ae84ab9"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-dependency-audit-windows-latest.zip",
+      "artifact_id": 14094776661,
+      "run_id": 43548063079,
+      "github_digest": "sha256:a2eff1e98b5fc871fd04fc77bda2e3fa99f9bb454c4422eb62bb77d8300047de",
+      "sha256": "a2eff1e98b5fc871fd04fc77bda2e3fa99f9bb454c4422eb62bb77d8300047de",
+      "size_bytes": 3748,
+      "entries": [
+        {
+          "path": "dependency-summary.json",
+          "bytes": 311,
+          "sha256": "d4aa282ee8d2b30fe4d747e900fa012f3a7e127975661f8d9dafc48a056eaa69",
+          "crc32": "9414caab"
+        },
+        {
+          "path": "mongodb-build-tools-audit.json",
+          "bytes": 506,
+          "sha256": "2dd7bef4c7cbe598ef88eb2f7444dba9219523263681b5e7802a2fb61446fbb9",
+          "crc32": "abfa33eb"
+        },
+        {
+          "path": "requirements-audit.json",
+          "bytes": 869,
+          "sha256": "1e9004be30e573f284c2c7fdcfd64df4661094e74e099ed5c23cb8a48372ee2b",
+          "crc32": "20e89a00"
+        },
+        {
+          "path": "requirements-audit.log",
+          "bytes": 268,
+          "sha256": "e82148c0c30269ca5a2c35420ece6af011a4faf5a375325d750e243ffdb10625",
+          "crc32": "7a9cf5ec"
+        },
+        {
+          "path": "requirements-dev-audit.json",
+          "bytes": 731,
+          "sha256": "371caf585d90239b77866afc73a237f6ee4ca95a92b510d5b8d124000bbf3735",
+          "crc32": "28f77321"
+        },
+        {
+          "path": "requirements-dev-audit.log",
+          "bytes": 268,
+          "sha256": "e82148c0c30269ca5a2c35420ece6af011a4faf5a375325d750e243ffdb10625",
+          "crc32": "7a9cf5ec"
+        },
+        {
+          "path": "requirements-mongodb-audit.json",
+          "bytes": 144,
+          "sha256": "0db09439c1204fcac0954b60dd57766f3a85258bb9803616fa05c4f8fe28faa7",
+          "crc32": "8d7a7fba"
+        },
+        {
+          "path": "requirements-mongodb-audit.log",
+          "bytes": 268,
+          "sha256": "e82148c0c30269ca5a2c35420ece6af011a4faf5a375325d750e243ffdb10625",
+          "crc32": "7a9cf5ec"
+        },
+        {
+          "path": "requirements-quality-audit.json",
+          "bytes": 2930,
+          "sha256": "4f21a366536aa32f82109a5db73a78775be2ab128a8c891932af4dddd9d25012",
+          "crc32": "bae353c9"
+        },
+        {
+          "path": "requirements-quality-audit.log",
+          "bytes": 268,
+          "sha256": "e82148c0c30269ca5a2c35420ece6af011a4faf5a375325d750e243ffdb10625",
+          "crc32": "7a9cf5ec"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-mongodb-contract.zip",
+      "artifact_id": 14094567281,
+      "run_id": 43548063079,
+      "github_digest": "sha256:1473c7f9b00085ffcc0196e87ee9c4d88df56a5faee8dfbcbbe64f924bc89abc",
+      "sha256": "1473c7f9b00085ffcc0196e87ee9c4d88df56a5faee8dfbcbbe64f924bc89abc",
+      "size_bytes": 3108,
+      "entries": [
+        {
+          "path": "mongodb-check.json",
+          "bytes": 6598,
+          "sha256": "2302d1bad3b151c415f87041992de157f46395d775cb736c728b491d607761e2",
+          "crc32": "57321511"
+        },
+        {
+          "path": "mongodb-tests.xml",
+          "bytes": 944,
+          "sha256": "c5c1771a2dc05c5ae4d96e0b38546259be1979379a396251b3bea13559c4ff0d",
+          "crc32": "03704a55"
+        },
+        {
+          "path": "mongodb-tests.log",
+          "bytes": 98,
+          "sha256": "bf1b67312cf56615863dfc5aede5f1cb03426288f66b12c9ef3c0a1fafdf35f4",
+          "crc32": "00c9aed2"
+        },
+        {
+          "path": "circulation-native-corpus.json",
+          "bytes": 1091,
+          "sha256": "4b34c2ac90d9b07ff6d8c1e6339fdf82022e41c1846d51f8c611f0f81c94d730",
+          "crc32": "c4213ff4"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-properties-ubuntu-24.04.zip",
+      "artifact_id": 14095520317,
+      "run_id": 43548063014,
+      "github_digest": "sha256:5c5a32be3784782446fcbbc92448c3f35396f4975fab52a62fb519033a6d5f19",
+      "sha256": "5c5a32be3784782446fcbbc92448c3f35396f4975fab52a62fb519033a6d5f19",
+      "size_bytes": 4793,
+      "entries": [
+        {
+          "path": "property-circulation-native-corpus.json",
+          "bytes": 1091,
+          "sha256": "4b34c2ac90d9b07ff6d8c1e6339fdf82022e41c1846d51f8c611f0f81c94d730",
+          "crc32": "c4213ff4"
+        },
+        {
+          "path": "property-dependency-audit.json",
+          "bytes": 155,
+          "sha256": "4e6e7cf0cd4719756828cc870effc4451a344657446db0224677cd1d7150377e",
+          "crc32": "d1488d0e"
+        },
+        {
+          "path": "property-native-corpus.json",
+          "bytes": 8006,
+          "sha256": "39ddc66c5f322e3b963a6fec95130b45030ec4936f4ba07ba2598b64bbd39deb",
+          "crc32": "d97068af"
+        },
+        {
+          "path": "property-testing.json",
+          "bytes": 1376,
+          "sha256": "b2c21049d7c6da1523c38a3f5eefcaf7bb113994409d432ac1e87758c14ea8dd",
+          "crc32": "e4780bbd"
+        },
+        {
+          "path": "property-tests.xml",
+          "bytes": 12554,
+          "sha256": "e7ea5a52cc4d050edab9384d0a70549bd8131dea440c7f80f7ed4fc5c7cdcf4d",
+          "crc32": "b38812ad"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-properties-windows-latest.zip",
+      "artifact_id": 14095455597,
+      "run_id": 43548063014,
+      "github_digest": "sha256:4455c460cb7e13783d51c29c62e184152952010dd3d6cdf65e2762fdfd6fc334",
+      "sha256": "4455c460cb7e13783d51c29c62e184152952010dd3d6cdf65e2762fdfd6fc334",
+      "size_bytes": 4868,
+      "entries": [
+        {
+          "path": "property-native-corpus.json",
+          "bytes": 8006,
+          "sha256": "39ddc66c5f322e3b963a6fec95130b45030ec4936f4ba07ba2598b64bbd39deb",
+          "crc32": "d97068af"
+        },
+        {
+          "path": "property-dependency-audit.json",
+          "bytes": 156,
+          "sha256": "a06cba58c16e021c30efcb2daeec195f428eab7860adcc617042829622bd3ebe",
+          "crc32": "9afff5de"
+        },
+        {
+          "path": "property-circulation-native-corpus.json",
+          "bytes": 1091,
+          "sha256": "4b34c2ac90d9b07ff6d8c1e6339fdf82022e41c1846d51f8c611f0f81c94d730",
+          "crc32": "c4213ff4"
+        },
+        {
+          "path": "property-testing.json",
+          "bytes": 1434,
+          "sha256": "f68b66e7b58b792bbb3a5c451097dd9e7e37e3d95aa8d55ee7df72ea78f32ab6",
+          "crc32": "2f29608d"
+        },
+        {
+          "path": "property-tests.xml",
+          "bytes": 12570,
+          "sha256": "4d1f0cdc4130fcd87eb18ce209f6c650ef0a33bab0d1565ad8116c79824fd838",
+          "crc32": "588e97e0"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-circulation-mutation-experiments.zip",
+      "artifact_id": 14094534894,
+      "run_id": 43548063014,
+      "github_digest": "sha256:f652b9bddde16a3c7556fec1a906b21d28efa756b99d16780c0c524aced98adf",
+      "sha256": "f652b9bddde16a3c7556fec1a906b21d28efa756b99d16780c0c524aced98adf",
+      "size_bytes": 17501,
+      "entries": [
+        {
+          "path": "baseline-properties.json",
+          "bytes": 1376,
+          "sha256": "b2c21049d7c6da1523c38a3f5eefcaf7bb113994409d432ac1e87758c14ea8dd",
+          "crc32": "e4780bbd"
+        },
+        {
+          "path": "baseline.log",
+          "bytes": 99,
+          "sha256": "cef90aed2202209edd7b788deb16b47d76ca13f3f64f4cf625d0a763d7aca568",
+          "crc32": "5026b5c3"
+        },
+        {
+          "path": "baseline.xml",
+          "bytes": 12543,
+          "sha256": "2f2fcf6b1594c5f51f1461f5cda8633b2e5733b8d7f774322af27b3eb20a09a5",
+          "crc32": "6dd1049a"
+        },
+        {
+          "path": "circulation-expiry-exclusive-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "circulation-expiry-exclusive.log",
+          "bytes": 3227,
+          "sha256": "1bdb62200f011029665443b370e05852975570c83b13ce5c06e4366f90eb85c9",
+          "crc32": "b578e471"
+        },
+        {
+          "path": "circulation-expiry-exclusive.patch",
+          "bytes": 467,
+          "sha256": "7c2717a866cdf6088695a1b5efc8bc7e366aa5fca216fd363f40fea36c14974e",
+          "crc32": "2e79f932"
+        },
+        {
+          "path": "circulation-expiry-exclusive.xml",
+          "bytes": 3218,
+          "sha256": "7755d5030d5783185df80d6eff15c81b1f51d6b85ba5b74c3830d7a2bd26db09",
+          "crc32": "1636045e"
+        },
+        {
+          "path": "circulation-fifo-bypassed-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "circulation-fifo-bypassed.log",
+          "bytes": 2905,
+          "sha256": "0f92dd9a2f29311c521babaec74d145843798347da5d068273430db0570b43b4",
+          "crc32": "d966c8d9"
+        },
+        {
+          "path": "circulation-fifo-bypassed.patch",
+          "bytes": 215,
+          "sha256": "fa8b17e4bbe6958dd205229336dcaeca34b7b04f8d6a36c01a572ce23abf97ac",
+          "crc32": "3137b774"
+        },
+        {
+          "path": "circulation-fifo-bypassed.xml",
+          "bytes": 2887,
+          "sha256": "a37d016ed58be9c4050aa19d58935f62cbe6bfb13a9880e10a1ce00dbad08fdc",
+          "crc32": "81a4c458"
+        },
+        {
+          "path": "circulation-receipt-response-rewritten-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "circulation-receipt-response-rewritten.log",
+          "bytes": 2367,
+          "sha256": "6392d42565045b78b0631ce55ddbdc7628509cfdaf21fe553df7efe4e4761199",
+          "crc32": "5200b501"
+        },
+        {
+          "path": "circulation-receipt-response-rewritten.patch",
+          "bytes": 443,
+          "sha256": "88b8f5dc954a408e90848831b5d2c5b263e80466713eec8ab68fe0cbe7cf4790",
+          "crc32": "c759ec58"
+        },
+        {
+          "path": "circulation-receipt-response-rewritten.xml",
+          "bytes": 2346,
+          "sha256": "2a064a6262812c25f53c7b3a56e00af8fc83a9bca07a8f0c3a67303134fdcddf",
+          "crc32": "95c4ee52"
+        },
+        {
+          "path": "circulation-tenth-pending-rejected-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "circulation-tenth-pending-rejected.patch",
+          "bytes": 592,
+          "sha256": "403d82748e4a3f27db66832e1a6ea6f9c6ffba49490a022b741263a929ebe511",
+          "crc32": "64651230"
+        },
+        {
+          "path": "circulation-tenth-pending-rejected.xml",
+          "bytes": 1965,
+          "sha256": "bad516d158aab204a4c8939640731805ab129d28245b713928fd5ee36046f810",
+          "crc32": "34e00af3"
+        },
+        {
+          "path": "circulation-tenth-pending-rejected.log",
+          "bytes": 1980,
+          "sha256": "d5099dabae285623a70eee35adce170e77806e7dde997d8f2a18a566e755bc95",
+          "crc32": "963d8eff"
+        },
+        {
+          "path": "mutation-receipt.json",
+          "bytes": 6145,
+          "sha256": "b997e66af067416a1785335cd741e72ab70e04c351f698392df418101f48dab8",
+          "crc32": "71180283"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    },
+    {
+      "file": "api-3e15-named-mutation-experiments.zip",
+      "artifact_id": 14094514839,
+      "run_id": 43548063014,
+      "github_digest": "sha256:29b3bd107e95dbd8951951276be357c9a5354e0cb4726dd8b52146479e34cfb0",
+      "sha256": "29b3bd107e95dbd8951951276be357c9a5354e0cb4726dd8b52146479e34cfb0",
+      "size_bytes": 44859,
+      "entries": [
+        {
+          "path": "absolute-expiry-inclusive-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "absolute-expiry-inclusive.patch",
+          "bytes": 391,
+          "sha256": "056a00231ac53a4aecad717b7730c3c7463309fc6b3550d70f63628f54619edc",
+          "crc32": "8c355313"
+        },
+        {
+          "path": "absolute-expiry-inclusive.log",
+          "bytes": 2006,
+          "sha256": "eefbf0431ef1591281234e0a87d16c1866aae50f93fbec1c7d323a03f70ab24b",
+          "crc32": "8c32d260"
+        },
+        {
+          "path": "absolute-expiry-inclusive.xml",
+          "bytes": 1988,
+          "sha256": "561fba13141827a725f8a6facc18aa77ec421b3b9680454232ca0a7c29ff75a1",
+          "crc32": "99f685ea"
+        },
+        {
+          "path": "audit-retains-prefix-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "audit-retains-prefix.log",
+          "bytes": 2121,
+          "sha256": "d4c23e09ffb808fee50235fe82b64a8409cd2e610cab99703b42898ffa376a17",
+          "crc32": "fb69e85a"
+        },
+        {
+          "path": "audit-retains-prefix.patch",
+          "bytes": 438,
+          "sha256": "809007c4e25743921eb9dcb52c742e3973d5786f39c0dafc15e15c869a4961e9",
+          "crc32": "086132f4"
+        },
+        {
+          "path": "audit-retains-prefix.xml",
+          "bytes": 2111,
+          "sha256": "14a0cf58f9252e52c0fcdc7a2af3145bcd7002ac63c76068af01178c69d76811",
+          "crc32": "a2f7280c"
+        },
+        {
+          "path": "baseline-properties.json",
+          "bytes": 1376,
+          "sha256": "b2c21049d7c6da1523c38a3f5eefcaf7bb113994409d432ac1e87758c14ea8dd",
+          "crc32": "e4780bbd"
+        },
+        {
+          "path": "baseline.log",
+          "bytes": 100,
+          "sha256": "84a0da1fa7ab25a0127a3ca4a65e8a62501d3daa77474a1ced99f5c398cd3eb7",
+          "crc32": "8dd59757"
+        },
+        {
+          "path": "bson-small-integer-int32-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "baseline.xml",
+          "bytes": 12550,
+          "sha256": "e72f39e4404c2724cc11a8919a28446d9e87a5220ea5d4dfb4340610aa50b602",
+          "crc32": "04c80f7c"
+        },
+        {
+          "path": "bson-small-integer-int32.log",
+          "bytes": 1103,
+          "sha256": "84b07e1cff58eec5444a55eadc2923aa39f37bc27d04f5aec3de05de7906b516",
+          "crc32": "34c69e38"
+        },
+        {
+          "path": "bson-small-integer-int32.patch",
+          "bytes": 403,
+          "sha256": "5ea1013bd372f10dad87684a492a4dc4865663242d5715974ef03e99ccc98985",
+          "crc32": "2ba4e975"
+        },
+        {
+          "path": "clock-rollback-accepted-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "bson-small-integer-int32.xml",
+          "bytes": 1109,
+          "sha256": "9f3591915fedc6d5c15b42b33381be95b14cd91bda88ecc92ed7e4d5b4512e7c",
+          "crc32": "560f6967"
+        },
+        {
+          "path": "clock-rollback-accepted.log",
+          "bytes": 2006,
+          "sha256": "b1bbc608b8f082eebbf47215f65bee984b6573527fbb77b47cfbdd3547e83d86",
+          "crc32": "b04c056c"
+        },
+        {
+          "path": "clock-rollback-accepted.patch",
+          "bytes": 318,
+          "sha256": "884991d20a815f0c02df228c9411ac10cc23490077957c753f8d8eecc2f76b80",
+          "crc32": "80c39b58"
+        },
+        {
+          "path": "clock-rollback-accepted.xml",
+          "bytes": 1988,
+          "sha256": "412980bd500b06b9e0fcc0bcf45ff420b2162246ba25ac1179888b81750c2909",
+          "crc32": "c3592c5c"
+        },
+        {
+          "path": "foreign-private-read-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "foreign-private-read.patch",
+          "bytes": 467,
+          "sha256": "40b92dabc8ed13d8dfe7ca730d9bf628d4cce816470ade02f0a1c0048a26f313",
+          "crc32": "af737af9"
+        },
+        {
+          "path": "foreign-private-read.xml",
+          "bytes": 3487,
+          "sha256": "d045e412b8f9c7bd0f4618226435741cc64b170f0bb8a9339b3394f6ae982826",
+          "crc32": "f4ff6845"
+        },
+        {
+          "path": "foreign-private-read.log",
+          "bytes": 3504,
+          "sha256": "659ecc87d59f88711bed9683861ecd1323dec3651810abb969674dd6403e131f",
+          "crc32": "a18a29fd"
+        },
+        {
+          "path": "idle-expiry-inclusive-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "idle-expiry-inclusive.log",
+          "bytes": 1998,
+          "sha256": "2d5645c11e584580f8e006067d812595ebc61165aee928d99a97c1fa7b5c0f43",
+          "crc32": "f3fd41d2"
+        },
+        {
+          "path": "idle-expiry-inclusive.xml",
+          "bytes": 1980,
+          "sha256": "dfc4b356f4734becf5d58ceae5c5cee9a2e4fd370924289aeefb70f235a571a8",
+          "crc32": "e1a43e7b"
+        },
+        {
+          "path": "idle-expiry-inclusive.patch",
+          "bytes": 385,
+          "sha256": "91cf2c4f1e5daa196b81a6c2d2b92e6075f4a4079e139f72632264557f851e2e",
+          "crc32": "cf9e8242"
+        },
+        {
+          "path": "mutation-receipt.json",
+          "bytes": 11881,
+          "sha256": "d01cadc6b5c81324b59a035e07acd69d67cce4ae9b4cdbccf20308895eeec4da",
+          "crc32": "46bb605c"
+        },
+        {
+          "path": "preflight-commits-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "preflight-commits.log",
+          "bytes": 8822,
+          "sha256": "fc76edd05715ab6b08aec5983c361c6fa03b2a1a3aa9b13611f78f647f334e47",
+          "crc32": "40be03ff"
+        },
+        {
+          "path": "preflight-commits.patch",
+          "bytes": 292,
+          "sha256": "8b67403ee50e866df5ba991f5411ce66ccf2f2398948d006608a49fe6c41e4ba",
+          "crc32": "d14a9b82"
+        },
+        {
+          "path": "preflight-commits.xml",
+          "bytes": 10113,
+          "sha256": "2188e5b413857739d390ae50bbfb248310da2f8a229ab480cbcc3f188ab4de3d",
+          "crc32": "88b32939"
+        },
+        {
+          "path": "receipt-content-ignored-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "receipt-content-ignored.log",
+          "bytes": 3226,
+          "sha256": "a18523425765edd1ee74db00b7dd6aa932c1f5ce85fb3c86b4858108b40ab76d",
+          "crc32": "d2a442be"
+        },
+        {
+          "path": "receipt-content-ignored.patch",
+          "bytes": 527,
+          "sha256": "7d154e689705be4e78c791265334ab89d7fc3ebfc67f20b36fd1f4690ac4c382",
+          "crc32": "66a2c47e"
+        },
+        {
+          "path": "receipt-content-ignored.xml",
+          "bytes": 3212,
+          "sha256": "e0e514c3653d46a7e77a691db242faa1d9bc169fbf09031c1f7fa1731e5a98ad",
+          "crc32": "6318c023"
+        },
+        {
+          "path": "receipt-expiry-inclusive-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "receipt-expiry-inclusive.log",
+          "bytes": 3688,
+          "sha256": "2df52baae3f6d76afd998b3b8708aed0b30f73cab025845f6e8aab42242b7bfa",
+          "crc32": "177d5a63"
+        },
+        {
+          "path": "receipt-expiry-inclusive.patch",
+          "bytes": 492,
+          "sha256": "cbb53135845da39bbad9eefb2e8f0fe09754abff050ed3f45813984f0aa0fdf9",
+          "crc32": "1cdb5c03"
+        },
+        {
+          "path": "receipt-expiry-inclusive.xml",
+          "bytes": 3674,
+          "sha256": "78761a20fcd5ba4e5abcbd09ecbed7acb37685f6a4fe4478cbb68964041846a2",
+          "crc32": "b6cd1aec"
+        },
+        {
+          "path": "receipt-future-accepted-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "receipt-future-accepted.log",
+          "bytes": 1051,
+          "sha256": "3a342daa968f40b7478e050460705fc94fdf1924c1280dc5b5c035a29d6520e2",
+          "crc32": "0bef8e94"
+        },
+        {
+          "path": "receipt-future-accepted.patch",
+          "bytes": 514,
+          "sha256": "974f1d55481f256a1b846722c47b8c67bd6333455f703db328633270133c9b4b",
+          "crc32": "870c349d"
+        },
+        {
+          "path": "receipt-future-accepted.xml",
+          "bytes": 1029,
+          "sha256": "71cd27ddc46986e817b8ddaa14fa51f23145acfb0058af97371d113640001b3f",
+          "crc32": "2287fec7"
+        },
+        {
+          "path": "sixth-crypto-attempt-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "sixth-crypto-attempt.log",
+          "bytes": 8492,
+          "sha256": "6158acf9ef757f31b7584bbcf25c42cc38c52725d75ddd5a247c1c88d60e4800",
+          "crc32": "bf40d825"
+        },
+        {
+          "path": "sixth-crypto-attempt.patch",
+          "bytes": 547,
+          "sha256": "5c3126bd3507f5851afb562ce26861e154477b2851e07da81474456a1465430d",
+          "crc32": "0b38af19"
+        },
+        {
+          "path": "sixth-crypto-attempt.xml",
+          "bytes": 8543,
+          "sha256": "10eb210f055ccf33d1c7e6b8743782b2087053ba43e2730ace3284aed922444d",
+          "crc32": "3c18e033"
+        },
+        {
+          "path": "stale-version-accepted-properties.json",
+          "bytes": 336,
+          "sha256": "aa4dbaab57e6d8b49af24a36c22cefd0e174be185144188d14f4ed4e60623930",
+          "crc32": "ce0ee413"
+        },
+        {
+          "path": "stale-version-accepted.log",
+          "bytes": 5027,
+          "sha256": "524f236c5a9ae9e0f9957dbe6dfc339822c9ba5937e610725537f07dc476f6f1",
+          "crc32": "0e9f641e"
+        },
+        {
+          "path": "stale-version-accepted.patch",
+          "bytes": 419,
+          "sha256": "ec750ea867992504af0ef91e1cf12bce3a8e5c1711d76ad5f44fb87aa28d32c0",
+          "crc32": "b1fc5fd9"
+        },
+        {
+          "path": "stale-version-accepted.xml",
+          "bytes": 5010,
+          "sha256": "74acfed438e82245841a68b47380a374f6645f7fae00fe26469f8660c4f32715",
+          "crc32": "e4338b12"
+        }
+      ],
+      "crc_verified": true,
+      "path_checks_passed": true,
+      "symlinks": 0,
+      "duplicate_paths": 0,
+      "casefold_collisions": 0
+    }
+  ],
+  "archive_integrity": {
+    "github_sha256_and_size_matched": 10,
+    "crc_and_decompression_passed": 10,
+    "path_and_symlink_checks_passed": 10,
+    "duplicate_paths": 0,
+    "casefold_collisions": 0
+  },
+  "application": {
+    "files_unchanged": 54,
+    "schemas_unchanged": true,
+    "source_reconstruction_manifest": "source-readonly-manifest-utc.json",
+    "source_archive_sha256": "899949e5e58db9603f7e751f8b38b05ae76271f468f985c7ae8a5f8d800a5eaa"
+  },
+  "full_tests": [
+    {
+      "os": "ubuntu-24.04",
+      "passed_test_functions": 428,
+      "passed_subtests_in_aggregate": 35,
+      "testcase_elements": 433,
+      "failures": 0,
+      "errors": 0,
+      "skips": 5,
+      "suite_tests": 468,
+      "skipped_tests": [
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_backend_contract_on_real_engine",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_concurrent_admin_commands_on_real_engine",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_final_references_and_hidden_driver_error_on_real_engine",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_missing_coordination_is_not_created_by_application",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_provision_refuses_to_overwrite_existing_validator",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        }
+      ]
+    },
+    {
+      "os": "windows-latest",
+      "passed_test_functions": 428,
+      "passed_subtests_in_aggregate": 35,
+      "testcase_elements": 433,
+      "failures": 0,
+      "errors": 0,
+      "skips": 5,
+      "suite_tests": 468,
+      "skipped_tests": [
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_backend_contract_on_real_engine",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_concurrent_admin_commands_on_real_engine",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_final_references_and_hidden_driver_error_on_real_engine",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_missing_coordination_is_not_created_by_application",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        },
+        {
+          "class": "tests.test_mongo_persistence.RealMongoTests",
+          "name": "test_provision_refuses_to_overwrite_existing_validator",
+          "reason": "MONGODB_TEST_URI absent: real MongoDB contract not executed"
+        }
+      ]
+    }
+  ],
+  "property_tests": [
+    {
+      "os": "ubuntu-24.04",
+      "junit": {
+        "testcase_elements": 50,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "suite_tests": 50,
+        "skipped_tests": []
+      },
+      "source_head": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+      "source_may_include_working_changes": true,
+      "python": "3.13.18",
+      "platform": "Linux",
+      "hypothesis": "6.170.15",
+      "pytest_exitstatus": 0,
+      "campaigns": {
+        "bson_roundtrip": {
+          "examples_completed": 100,
+          "steps_completed": 100
+        },
+        "int64_overflow": {
+          "examples_completed": 25,
+          "steps_completed": 50
+        },
+        "reserved_keys": {
+          "examples_completed": 25,
+          "steps_completed": 25
+        },
+        "field_validation_uow": {
+          "examples_completed": 5,
+          "steps_completed": 5
+        },
+        "circulation_corpus_json": {
+          "examples_completed": 1,
+          "steps_completed": 149
+        },
+        "circulation_fifo_json": {
+          "examples_completed": 25,
+          "steps_completed": 622
+        },
+        "circulation_quotas_json": {
+          "examples_completed": 10,
+          "steps_completed": 340
+        },
+        "circulation_receipts_json": {
+          "examples_completed": 6,
+          "steps_completed": 46
+        },
+        "http_json": {
+          "examples_completed": 25,
+          "steps_completed": 500
+        },
+        "private_json": {
+          "examples_completed": 25,
+          "steps_completed": 500
+        },
+        "receipts_json": {
+          "examples_completed": 25,
+          "steps_completed": 500
+        }
+      },
+      "native_mongodb_executed": false,
+      "counts_include_successful_replays_when_running_failed_cases": true
+    },
+    {
+      "os": "windows-latest",
+      "junit": {
+        "testcase_elements": 50,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "suite_tests": 50,
+        "skipped_tests": []
+      },
+      "source_head": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+      "source_may_include_working_changes": true,
+      "python": "3.13.17",
+      "platform": "Windows",
+      "hypothesis": "6.170.15",
+      "pytest_exitstatus": 0,
+      "campaigns": {
+        "bson_roundtrip": {
+          "examples_completed": 100,
+          "steps_completed": 100
+        },
+        "int64_overflow": {
+          "examples_completed": 25,
+          "steps_completed": 50
+        },
+        "reserved_keys": {
+          "examples_completed": 25,
+          "steps_completed": 25
+        },
+        "field_validation_uow": {
+          "examples_completed": 5,
+          "steps_completed": 5
+        },
+        "circulation_corpus_json": {
+          "examples_completed": 1,
+          "steps_completed": 149
+        },
+        "circulation_fifo_json": {
+          "examples_completed": 25,
+          "steps_completed": 622
+        },
+        "circulation_quotas_json": {
+          "examples_completed": 10,
+          "steps_completed": 340
+        },
+        "circulation_receipts_json": {
+          "examples_completed": 6,
+          "steps_completed": 46
+        },
+        "http_json": {
+          "examples_completed": 25,
+          "steps_completed": 500
+        },
+        "private_json": {
+          "examples_completed": 25,
+          "steps_completed": 500
+        },
+        "receipts_json": {
+          "examples_completed": 25,
+          "steps_completed": 500
+        }
+      },
+      "native_mongodb_executed": false,
+      "counts_include_successful_replays_when_running_failed_cases": true
+    }
+  ],
+  "corpora": [
+    {
+      "os": "ubuntu-24.04",
+      "file": "property-native-corpus.json",
+      "sha256": "39ddc66c5f322e3b963a6fec95130b45030ec4936f4ba07ba2598b64bbd39deb",
+      "cases": 8
+    },
+    {
+      "os": "ubuntu-24.04",
+      "file": "property-circulation-native-corpus.json",
+      "sha256": "4b34c2ac90d9b07ff6d8c1e6339fdf82022e41c1846d51f8c611f0f81c94d730",
+      "cases": 8
+    },
+    {
+      "os": "windows-latest",
+      "file": "property-native-corpus.json",
+      "sha256": "39ddc66c5f322e3b963a6fec95130b45030ec4936f4ba07ba2598b64bbd39deb",
+      "cases": 8
+    },
+    {
+      "os": "windows-latest",
+      "file": "property-circulation-native-corpus.json",
+      "sha256": "4b34c2ac90d9b07ff6d8c1e6339fdf82022e41c1846d51f8c611f0f81c94d730",
+      "cases": 8
+    }
+  ],
+  "mutations": [
+    {
+      "group": "circulation-mutation-experiments",
+      "count": 4,
+      "baseline": {
+        "testcase_elements": 50,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "suite_tests": 50,
+        "skipped_tests": []
+      },
+      "source_archive_digest_matches_readonly_export": true,
+      "test_overlay_files_equal_committed_blobs": 24,
+      "source_restored_reported_by_ci": true,
+      "experiments": [
+        {
+          "name": "circulation-fifo-bypassed",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_circulation_sequences.py::test_fifo_tail_cannot_take_head_slot_regression",
+          "assertion": "FIFO tail options must stay empty",
+          "patch_sha256": "fa8b17e4bbe6958dd205229336dcaeca34b7b04f8d6a36c01a572ce23abf97ac",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "circulation-expiry-exclusive",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_circulation_sequences.py::test_expiration_exact_and_cancelled_history_regression",
+          "assertion": "Reservation history must match the plan",
+          "patch_sha256": "7c2717a866cdf6088695a1b5efc8bc7e366aa5fca216fd363f40fea36c14974e",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "circulation-tenth-pending-rejected",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_circulation_sequences.py::test_pending_active_waiting_real_quota_regression",
+          "assertion": "Circulation outcome",
+          "patch_sha256": "403d82748e4a3f27db66832e1a6ea6f9c6ffba49490a022b741263a929ebe511",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "circulation-receipt-response-rewritten",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_circulation_sequences.py::test_historical_receipt_and_exact_ttl_regression",
+          "assertion": "Closed entity replay must remain historical",
+          "patch_sha256": "88b8f5dc954a408e90848831b5d2c5b263e80466713eec8ab68fe0cbe7cf4790",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        }
+      ]
+    },
+    {
+      "group": "named-mutation-experiments",
+      "count": 12,
+      "baseline": {
+        "testcase_elements": 50,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0,
+        "suite_tests": 50,
+        "skipped_tests": []
+      },
+      "source_archive_digest_matches_readonly_export": true,
+      "test_overlay_files_equal_committed_blobs": 24,
+      "source_restored_reported_by_ci": true,
+      "experiments": [
+        {
+          "name": "preflight-commits",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_preflight_is_readonly_even_when_authority_is_valid",
+          "assertion": "Preflight committed state",
+          "patch_sha256": "8b67403ee50e866df5ba991f5411ce66ccf2f2398948d006608a49fe6c41e4ba",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "foreign-private-read",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_private_model_ownership_etag_and_audit_regression",
+          "assertion": "Private ownership boundary",
+          "patch_sha256": "40b92dabc8ed13d8dfe7ca730d9bf628d4cce816470ade02f0a1c0048a26f313",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "stale-version-accepted",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_private_model_ownership_etag_and_audit_regression",
+          "assertion": "ETag/precondition boundary",
+          "patch_sha256": "ec750ea867992504af0ef91e1cf12bce3a8e5c1711d76ad5f44fb87aa28d32c0",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "receipt-content-ignored",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_receipt_model_replay_conflict_delete_and_ttl_regression",
+          "assertion": "Receipt content conflict",
+          "patch_sha256": "7d154e689705be4e78c791265334ab89d7fc3ebfc67f20b36fd1f4690ac4c382",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "receipt-future-accepted",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_receipt_future_clock_and_cross_operation_are_rejected",
+          "assertion": "Future receipt must be rejected",
+          "patch_sha256": "974f1d55481f256a1b846722c47b8c67bd6333455f703db328633270133c9b4b",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "receipt-expiry-inclusive",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_receipt_model_replay_conflict_delete_and_ttl_regression",
+          "assertion": "New operation must not be a replay",
+          "patch_sha256": "cbb53135845da39bbad9eefb2e8f0fe09754abff050ed3f45813984f0aa0fdf9",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "absolute-expiry-inclusive",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_absolute_expiry_idle_and_clock_rollback_are_separate_boundaries",
+          "assertion": "Session boundary: absolute",
+          "patch_sha256": "056a00231ac53a4aecad717b7730c3c7463309fc6b3550d70f63628f54619edc",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "idle-expiry-inclusive",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_absolute_expiry_idle_and_clock_rollback_are_separate_boundaries",
+          "assertion": "Session boundary: idle",
+          "patch_sha256": "91cf2c4f1e5daa196b81a6c2d2b92e6075f4a4079e139f72632264557f851e2e",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "clock-rollback-accepted",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_absolute_expiry_idle_and_clock_rollback_are_separate_boundaries",
+          "assertion": "Session boundary: rollback",
+          "patch_sha256": "884991d20a815f0c02df228c9411ac10cc23490077957c753f8d8eecc2f76b80",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "sixth-crypto-attempt",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_sixth_failed_login_is_refused_before_the_crypto_provider",
+          "assertion": "Throttled request reached crypto provider",
+          "patch_sha256": "5c3126bd3507f5851afb562ce26861e154477b2851e07da81474456a1465430d",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "audit-retains-prefix",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_critical_contract.py::test_audit_retains_the_last_append_even_when_its_clock_is_older",
+          "assertion": "Audit must retain append suffix",
+          "patch_sha256": "809007c4e25743921eb9dcb52c742e3973d5786f39c0dafc15e15c869a4961e9",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        },
+        {
+          "name": "bson-small-integer-int32",
+          "status": "detected-by-behavioral-assertion",
+          "test": "tests/properties/test_bson_contract.py::test_int64_edges_and_ordinal_are_exact_not_bool",
+          "assertion": "BSON integer must be Int64",
+          "patch_sha256": "5ea1013bd372f10dad87684a492a4dc4865663242d5715974ef03e99ccc98985",
+          "original_and_mutated_hashes_reconstructed": true,
+          "junit_exactly_one_behavioral_failure": true
+        }
+      ]
+    }
+  ],
+  "dependency_audits": [
+    {
+      "os": "ubuntu-24.04",
+      "file": "api-3e15-properties-ubuntu-24.04-contents/property-dependency-audit.json",
+      "dependencies": 2,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "ubuntu-24.04",
+      "file": "api-3e15-dependency-audit-ubuntu-24.04-contents/mongodb-build-tools-audit.json",
+      "dependencies": 8,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "ubuntu-24.04",
+      "file": "api-3e15-dependency-audit-ubuntu-24.04-contents/requirements-audit.json",
+      "dependencies": 14,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "ubuntu-24.04",
+      "file": "api-3e15-dependency-audit-ubuntu-24.04-contents/requirements-dev-audit.json",
+      "dependencies": 11,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "ubuntu-24.04",
+      "file": "api-3e15-dependency-audit-ubuntu-24.04-contents/requirements-mongodb-audit.json",
+      "dependencies": 2,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "ubuntu-24.04",
+      "file": "api-3e15-dependency-audit-ubuntu-24.04-contents/requirements-quality-audit.json",
+      "dependencies": 49,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "windows-latest",
+      "file": "api-3e15-properties-windows-latest-contents/property-dependency-audit.json",
+      "dependencies": 2,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "windows-latest",
+      "file": "api-3e15-dependency-audit-windows-latest-contents/mongodb-build-tools-audit.json",
+      "dependencies": 8,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "windows-latest",
+      "file": "api-3e15-dependency-audit-windows-latest-contents/requirements-audit.json",
+      "dependencies": 15,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "windows-latest",
+      "file": "api-3e15-dependency-audit-windows-latest-contents/requirements-dev-audit.json",
+      "dependencies": 12,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "windows-latest",
+      "file": "api-3e15-dependency-audit-windows-latest-contents/requirements-mongodb-audit.json",
+      "dependencies": 2,
+      "vulnerabilities": 0
+    },
+    {
+      "os": "windows-latest",
+      "file": "api-3e15-dependency-audit-windows-latest-contents/requirements-quality-audit.json",
+      "dependencies": 49,
+      "vulnerabilities": 0
+    }
+  ],
+  "mongodb": {
+    "job_id": 132303894342,
+    "passed": true,
+    "server_version": "8.0.34",
+    "host_kernel": "6.8.0-1070-azure",
+    "corpus_sha256": "4b34c2ac90d9b07ff6d8c1e6339fdf82022e41c1846d51f8c611f0f81c94d730",
+    "replay": {
+      "sequences_completed": 8,
+      "service_actions_completed": 149,
+      "generator_executed_here": false,
+      "native_failure_shrinking": false,
+      "concurrent_engine_exercised": false
+    },
+    "least_privilege_application_identity": "application",
+    "identity_basis": "runtime result nested under application_contract; pinned runner passes app[name] from username=application CRUD-only MongoClient",
+    "ddl_cross_database_anonymous_denied": true,
+    "native_junit": {
+      "testcase_elements": 5,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0,
+      "suite_tests": 5,
+      "skipped_tests": []
+    },
+    "historical_native_process_races": 7,
+    "container_removed": true,
+    "temporary_data_removed": true,
+    "startup_retry_observed": {
+      "stage": "wait_ping",
+      "returncode": 1,
+      "timeout": false,
+      "stdout_tail": "",
+      "stderr_tail": "MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017\n"
+    }
+  },
+  "image": {
+    "job_id": 132304729084,
+    "image": "cinevault-api:ci-3e15e61d0a309b12918338708e40d4f47a0ccdec",
+    "image_id": "sha256:bd8a7307d666595c82ee78dd69fd285ed4821891ae2c43428941a4287ca62cc1",
+    "scan_passed": true,
+    "health_passed": true,
+    "configured_user": "10001:10001",
+    "runtime_uid": 10001,
+    "scanner": "anchore/grype:v0.121.2@sha256:6a36234da13f9faa327306ac0b3dab3405cfa2b4eb20c8f904125a8707863913",
+    "database_built": "2026-11-13T15:40:34Z",
+    "severity_counts": {
+      "Medium": 5,
+      "Low": 1
+    },
+    "residual_vulnerabilities": [
+      {
+        "id": "CVE-2025-15367",
+        "severity": "Medium",
+        "package": "python",
+        "version": "3.13.18",
+        "fix": {
+          "versions": [
+            "3.15.0a6"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.15.0a6",
+              "date": "2026-09-22",
+              "kind": "first-observed"
+            },
+            {
+              "version": "3.15.0a6",
+              "date": "2026-03-03",
+              "kind": "first-observed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "CVE-2025-60876",
+        "severity": "Medium",
+        "package": "busybox",
+        "version": "1.37.0-r31",
+        "fix": {
+          "versions": [],
+          "state": ""
+        }
+      },
+      {
+        "id": "CVE-2025-60876",
+        "severity": "Medium",
+        "package": "busybox-binsh",
+        "version": "1.37.0-r31",
+        "fix": {
+          "versions": [],
+          "state": ""
+        }
+      },
+      {
+        "id": "CVE-2025-60876",
+        "severity": "Medium",
+        "package": "ssl_client",
+        "version": "1.37.0-r31",
+        "fix": {
+          "versions": [],
+          "state": ""
+        }
+      },
+      {
+        "id": "CVE-2026-116566",
+        "severity": "Medium",
+        "package": "python",
+        "version": "3.13.18",
+        "fix": {
+          "versions": [
+            "3.16.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.16.0",
+              "date": "2026-11-05",
+              "kind": "first-observed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "CVE-2026-103995",
+        "severity": "Low",
+        "package": "python",
+        "version": "3.13.18",
+        "fix": {
+          "versions": [
+            "3.16.0"
+          ],
+          "state": "fixed",
+          "available": [
+            {
+              "version": "3.16.0",
+              "date": "2026-10-31",
+              "kind": "first-observed"
+            }
+          ]
+        }
+      }
+    ],
+    "cleanup_passed": true,
+    "published": false,
+    "publish_job_conclusion": "skipped",
+    "manifest_digest": "sha256:920a1dc2b6db31c47a4708daa59406a8efbc585b0be734093b98408d4b99eaec"
+  },
+  "limits": [
+    "Evidence inspection only: no application test, mutation, MongoDB, Docker, SSH or workflow was re-executed by this reviewer.",
+    "Mutation CI artifacts omit source.zip and isolated-export. Source archive digest and every patch are independently reconstructed from pinned Git blobs; post-run restored tree is attested by source_restored=true, not independently downloaded.",
+    "Property receipts retain source_may_include_working_changes=true; CI source identity is corroborated by run head, immutable archive reconstruction and all 24 overlay digests.",
+    "P4 native replay is sequential and bounded: generator/shrinking/concurrent_engine flags are false. Historical seven native races are a separate contract.",
+    "General two-OS campaigns skip five native-only tests; the dedicated MongoDB JUnit executes all five without skips.",
+    "Image scan has five Medium and one Low matches; pass does not mean vulnerability-free. Image publication job is skipped.",
+    "No production deployment, external load test, global mutation score or full security certification is established.",
+    "Full local 428PASS/5SKIP/35subtests reported by root is not re-executed or used as a CI substitute.",
+    "Image scan source embeds base64 image metadata. One diagnostic inadvertently printed those fields; public receipt excludes them and temporary download URLs were never printed or persisted."
+  ],
+  "supplementary_checks": {
+    "grype_target_and_embedded_config_digest_match_built_image": true,
+    "grype_manifest_digest_recomputed": "sha256:920a1dc2b6db31c47a4708daa59406a8efbc585b0be734093b98408d4b99eaec",
+    "embedded_config_nonroot_user_verified": true,
+    "old_corpus_shape": {
+      "format": 1,
+      "seed": 20261112,
+      "cases": 8,
+      "private_cases": 4,
+      "receipts_cases": 4,
+      "actions_per_case": 12,
+      "same_bytes_two_os": true,
+      "sha256": "39ddc66c5f322e3b963a6fec95130b45030ec4936f4ba07ba2598b64bbd39deb"
+    },
+    "old_corpus_native_replay_claimed_here": false
+  }
+}

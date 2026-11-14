@@ -1,5 +1,24 @@
 # Évaluation du portail documentaire
 
+## État publié le 14 novembre 2026
+
+Le [portail candidat](https://hymathew.github.io/cinevault-infra-report/) est
+hébergé. La [publication 43550763730](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43550763730)
+promue depuis main reprend exactement l'artefact Ubuntu qualifié `cf026c0`, sans
+reconstruction. Les [preuves et captures](../../evidence/public/portal-hosted-20261114/README.md)
+confirment les 351 fichiers servis, leurs octets, les quatre sources cachées et
+187 contrôles navigateur sur le vrai site. Le marqueur de possession est la
+seule omission des 352 fichiers du build. L'environnement autorise seulement main.
+
+Recherche française, clavier, mobile et vraie réponse 404 passent. Aucun problème
+de script, de console ou HTTP inattendu n'est relevé. Les six états axe gardent
+deux résultats de contraste non conclusifs, soit 102 occurrences dans Chrome
+Windows, contre 104 dans le navigateur Ubuntu antérieur. Ces résultats restent
+ouverts. Le portail publie un instantané candidat ; la branche courante et la
+release applicative ont des qualifications distinctes.
+
+## Évaluation et preuves antérieures
+
 Évaluation prioritaire d'Astro Starlight le12novembre2026. La documentation Markdown
 versionnée reste la source ; le portail doit ajouter navigation, recherche et accès
 aux preuves, sans remplacer Flask/Jinja dans l'application.
@@ -135,6 +154,6 @@ run. Le serveur temporaire est arrêté selon le reçu.
 Les autres archives conservent 45 contrôles du couple navigateur réel API7aa9b05 /
 webf59c7af, six contrôles HTTP par OS et deux PDF v1 identiques au SHA
 `2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885`.
-Les limites de chaque campagne sont conservées. Hébergement public du portail,
-examen des résultats axe non conclusifs et validation finale de l'application
-restent à terminer.
+Les limites de chaque campagne sont conservées. L'hébergement de cet instantané
+est qualifié ci-dessus ; la promotion des mises à jour, l'examen des résultats
+axe non conclusifs et la validation finale de l'application restent à terminer.

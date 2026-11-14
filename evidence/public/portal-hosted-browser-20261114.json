@@ -1,0 +1,4524 @@
+{
+  "scope": "Actual hosted HTTPS candidate documentation; no application qualification",
+  "browser_route": "Browser plugin not available; regular local Playwright",
+  "published_artifact_commit": "cf026c0b98205af5fcaa4fa6de8e319335c58664",
+  "publish_run": 43550763730,
+  "console_unexpected": [],
+  "http_unexpected": [],
+  "expected_404_console_messages": 1,
+  "checks": [
+    {
+      "name": "page responds: guides/design",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/design",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/design",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/product",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/product",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/product",
+      "passed": true
+    },
+    {
+      "name": "page responds: ",
+      "passed": true
+    },
+    {
+      "name": "one main heading: ",
+      "passed": true
+    },
+    {
+      "name": "French language: ",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/actors-use-cases",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/actors-use-cases",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/actors-use-cases",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/adr/0001-json-mongodb",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/adr/0001-json-mongodb",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/adr/0001-json-mongodb",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/api",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/api",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/api",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/architecture",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/architecture",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/architecture",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/audit-final",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/audit-final",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/audit-final",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/data-dictionary",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/data-dictionary",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/data-dictionary",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/decisions",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/decisions",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/decisions",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/deploiement-swarm-enterprise",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/deploiement-swarm-enterprise",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/deploiement-swarm-enterprise",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/deploiement",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/deploiement",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/deploiement",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/design-system",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/design-system",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/design-system",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/design/design_system",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/design/design_system",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/design/design_system",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/design/concepts",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/design/concepts",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/design/concepts",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/diagrams",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/diagrams",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/diagrams",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/examples",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/examples",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/examples",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/execution-model",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/execution-model",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/execution-model",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/frontend-inventory",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/frontend-inventory",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/frontend-inventory",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/media-provenance",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/media-provenance",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/media-provenance",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/pedagogical-validation",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/pedagogical-validation",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/pedagogical-validation",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/browser_pair_gate",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/browser_pair_gate",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/browser_pair_gate",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/documentation_portal_study",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/documentation_portal_study",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/documentation_portal_study",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/enterprise_pair_gate",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/enterprise_pair_gate",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/enterprise_pair_gate",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/implementation_plan",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/implementation_plan",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/implementation_plan",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/initial_audit",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/initial_audit",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/initial_audit",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/lending_recovery_checks",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/lending_recovery_checks",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/lending_recovery_checks",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/local_ssh_access",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/local_ssh_access",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/local_ssh_access",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/management_ui_checks",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/management_ui_checks",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/management_ui_checks",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/mongodb_backup_study",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/mongodb_backup_study",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/mongodb_backup_study",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/mongodb_engine_study",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/mongodb_engine_study",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/mongodb_engine_study",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/mongodb_implementation_plan",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/mongodb_implementation_plan",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/mongodb_implementation_plan",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/mongodb_service_contracts",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/mongodb_service_contracts",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/mongodb_service_contracts",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/priorities",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/priorities",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/priorities",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/real_browser_pair",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/real_browser_pair",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/real_browser_pair",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/skills_additional_audit",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/skills_additional_audit",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/skills_additional_audit",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/skills_audit",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/skills_audit",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/skills_audit",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/skills_selection",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/skills_selection",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/skills_selection",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/quality/staging_and_operations_study",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/quality/staging_and_operations_study",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/quality/staging_and_operations_study",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/requirements/extensions",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/requirements/extensions",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/requirements/extensions",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/requirements/traceability",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/requirements/traceability",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/requirements/traceability",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/rest-operations",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/rest-operations",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/rest-operations",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/security/asvs_findings",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/security/asvs_findings",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/security/asvs_findings",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/security/asvs_matrix",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/security/asvs_matrix",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/security/asvs_matrix",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/validation-current",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/validation-current",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/validation-current",
+      "passed": true
+    },
+    {
+      "name": "page responds: guides/validation-reprise",
+      "passed": true
+    },
+    {
+      "name": "one main heading: guides/validation-reprise",
+      "passed": true
+    },
+    {
+      "name": "French language: guides/validation-reprise",
+      "passed": true
+    },
+    {
+      "name": "page responds: records/evidence",
+      "passed": true
+    },
+    {
+      "name": "one main heading: records/evidence",
+      "passed": true
+    },
+    {
+      "name": "French language: records/evidence",
+      "passed": true
+    },
+    {
+      "name": "page responds: records/evidence/public/c4-recovery-20261113",
+      "passed": true
+    },
+    {
+      "name": "one main heading: records/evidence/public/c4-recovery-20261113",
+      "passed": true
+    },
+    {
+      "name": "French language: records/evidence/public/c4-recovery-20261113",
+      "passed": true
+    },
+    {
+      "name": "page responds: records/report",
+      "passed": true
+    },
+    {
+      "name": "one main heading: records/report",
+      "passed": true
+    },
+    {
+      "name": "French language: records/report",
+      "passed": true
+    },
+    {
+      "name": "no home horizontal overflow 320",
+      "passed": true
+    },
+    {
+      "name": "full brand visible 320",
+      "passed": true
+    },
+    {
+      "name": "no home horizontal overflow 390",
+      "passed": true
+    },
+    {
+      "name": "full brand visible 390",
+      "passed": true
+    },
+    {
+      "name": "no home horizontal overflow 768",
+      "passed": true
+    },
+    {
+      "name": "full brand visible 768",
+      "passed": true
+    },
+    {
+      "name": "no home horizontal overflow 840",
+      "passed": true
+    },
+    {
+      "name": "full brand visible 840",
+      "passed": true
+    },
+    {
+      "name": "no home horizontal overflow 1024",
+      "passed": true
+    },
+    {
+      "name": "full brand visible 1024",
+      "passed": true
+    },
+    {
+      "name": "no home horizontal overflow 1280",
+      "passed": true
+    },
+    {
+      "name": "full brand visible 1280",
+      "passed": true
+    },
+    {
+      "name": "first Tab reaches skip link",
+      "passed": true
+    },
+    {
+      "name": "skip link navigates to main heading anchor",
+      "passed": true
+    },
+    {
+      "name": "next Tab after skip enters main content",
+      "passed": true
+    },
+    {
+      "name": "Escape restores search button focus",
+      "passed": true
+    },
+    {
+      "name": "theme selection: light",
+      "passed": true
+    },
+    {
+      "name": "full French theme label: light",
+      "passed": true
+    },
+    {
+      "name": "axe automatic WCAG violations: home-1280-light",
+      "passed": true
+    },
+    {
+      "name": "theme selection: dark",
+      "passed": true
+    },
+    {
+      "name": "full French theme label: dark",
+      "passed": true
+    },
+    {
+      "name": "axe automatic WCAG violations: home-1280-dark",
+      "passed": true
+    },
+    {
+      "name": "French Pagefind finds scoped MongoDB result",
+      "passed": true
+    },
+    {
+      "name": "axe automatic WCAG violations: search-1280-dark",
+      "passed": true
+    },
+    {
+      "name": "search navigates to result",
+      "passed": true
+    },
+    {
+      "name": "keyboard opens mobile menu",
+      "passed": true
+    },
+    {
+      "name": "axe automatic WCAG violations: mobile-menu-390-dark",
+      "passed": true
+    },
+    {
+      "name": "Escape closes mobile menu",
+      "passed": true
+    },
+    {
+      "name": "axe automatic WCAG violations: home-390-dark",
+      "passed": true
+    },
+    {
+      "name": "table guide reflows at390",
+      "passed": true
+    },
+    {
+      "name": "keyboard scrolls table",
+      "passed": true
+    },
+    {
+      "name": "keyboard scrolls pre",
+      "passed": true
+    },
+    {
+      "name": "axe automatic WCAG violations: data-dictionary-390-dark",
+      "passed": true
+    },
+    {
+      "name": "French404 heading",
+      "passed": true
+    },
+    {
+      "name": "actual hosted missing route responds404",
+      "passed": true
+    },
+    {
+      "name": "actual hosted404 remains French",
+      "passed": true
+    },
+    {
+      "name": "no unexpected HTTP error",
+      "passed": true
+    },
+    {
+      "name": "no unexpected console warning or error",
+      "passed": true
+    },
+    {
+      "name": "no script errors",
+      "passed": true
+    },
+    {
+      "name": "no external requests needed",
+      "passed": true
+    }
+  ],
+  "screens": [
+    {
+      "file": "home-320.png",
+      "sha256": "890c03879e221f72b02ee6e7c1edf9cfb95dc01618884d43c2ff14a275f55ee6"
+    },
+    {
+      "file": "home-390.png",
+      "sha256": "ab59295972788b09a39d12aef19ca34422aaad56198811aaac7ab9eb3486b3c2"
+    },
+    {
+      "file": "home-768.png",
+      "sha256": "a5e2cf4b4b6a8b93be13e4b4069b1fce7e1cafd6866d6907ce69ee135f16e028"
+    },
+    {
+      "file": "home-840.png",
+      "sha256": "f19c91e6bb59b3fbe54faa5f71f750f8370c8f776cad0c0dca17af064e7c3589"
+    },
+    {
+      "file": "home-1024.png",
+      "sha256": "2e804b7874f4ee64caaad293e2c0bee00b9fc2906c518a8bfcf06918e1ecf782"
+    },
+    {
+      "file": "home-1280.png",
+      "sha256": "a31a3c5d6bdc7732440264a1a37d62466a6a60e2d0969cccba7f98f7bf94db86"
+    },
+    {
+      "file": "home-1280-light.png",
+      "sha256": "5990e7f206c638f8b807d6ec96c83f276214be3992f25afe832438fd5f0a01f7"
+    },
+    {
+      "file": "home-1280-dark.png",
+      "sha256": "a8ee607e12e39a163fa6aea186428568b26daaf4844808c6349b9caeeea36867"
+    },
+    {
+      "file": "search-1280.png",
+      "sha256": "42dbc1f88be4cc1407b9525a6e56ff429eef389d315abb0ff9c3f0b55acd0690"
+    },
+    {
+      "file": "menu-390-dark.png",
+      "sha256": "8d13066f729b1d2e40d0ae1e2f28736b0b4f45f8c7d25d1b687e31e155be210b"
+    },
+    {
+      "file": "actual-hosted404.png",
+      "sha256": "1dc12225c42ac1031434a48192900c469d2a88a6e3282fa0a5170112f56bbf05"
+    }
+  ],
+  "axe": [
+    {
+      "state": "home-1280-light",
+      "violations": [],
+      "incomplete": [],
+      "passes": 28
+    },
+    {
+      "state": "home-1280-dark",
+      "violations": [],
+      "incomplete": [],
+      "passes": 28
+    },
+    {
+      "state": "search-1280-dark",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "11.3pt (15.12px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"pagefind-ui__result-nested svelte-4xnkmf\">",
+                      "target": [
+                        ".pagefind-ui__result-nested"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<a class=\"pagefind-ui__result-link svelte-4xnkmf\" href=\"/cinevault-infra-report/guides/quality/mongodb_service_contracts/#qualification-c3--collections-priv%C3%A9es-et-journal\">Qualification C3 — collections privées et journal</a>",
+              "target": [
+                ".pagefind-ui__result-nested > .pagefind-ui__result-title.svelte-4xnkmf > .pagefind-ui__result-link.svelte-4xnkmf"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fontSize": "9.6pt (12.8px)",
+                    "fontWeight": "normal",
+                    "messageKey": "pseudoContent",
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<div class=\"pagefind-ui__result-nested svelte-4xnkmf\">",
+                      "target": [
+                        ".pagefind-ui__result-nested"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined due to a pseudo element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<mark>ordinal</mark>",
+              "target": [
+                "mark"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            }
+          ]
+        }
+      ],
+      "passes": 23
+    },
+    {
+      "state": "mobile-menu-390-dark",
+      "violations": [],
+      "incomplete": [],
+      "passes": 27
+    },
+    {
+      "state": "home-390-dark",
+      "violations": [],
+      "incomplete": [],
+      "passes": 23
+    },
+    {
+      "state": "data-dictionary-390-dark",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=axeAPI",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "9.8pt (13px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscuring",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it partially overlaps other elements"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span class=\"display-current astro-66cqc7ze\">1. Autorité, conventions et niveaux de représentation</span>",
+              "target": [
+                ".display-current"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Niveau</th>",
+              "target": [
+                "table:nth-child(5) > thead > tr > th:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Ce qu’il ne faut pas confondre</th>",
+              "target": [
+                "table:nth-child(5) > thead > tr > th:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Document legacy</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(1) > td:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Ce n’est pas le document Enterprise et il ne contient pas de comptes</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(1) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Document Enterprise v2</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">schema_version:2</code> ne signifie pas version 2 de l’API HTTP</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Projection HTTP Enterprise v1</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">_etag</code>, disponibilité, retards et positions ne sont pas des colonnes métier persistées</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Transfert catalogue v1</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(4) > td:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Ce n’est pas une sauvegarde du document complet</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(4) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>États techniques dérivés v1</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(5) > td:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Leurs <code dir=\"auto\">version:1</code>, compteurs et verrous sont indépendants de <code dir=\"auto\">revision</code> métier</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(5) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Contexte de client signé</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(6) > td:nth-child(1)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Ce n’est ni une session utilisateur ni une entité du catalogue</td>",
+              "target": [
+                "table:nth-child(5) > tbody > tr:nth-child(6) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "10.5pt (14px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<pre data-language=\"json\" tabindex=\"0\">",
+                      "target": [
+                        ".expressive-code:nth-child(13) > figure > pre"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<span style=\"--0:#7FDBCA;--1:#096E72\">\"schema_version\"</span>",
+              "target": [
+                ".expressive-code:nth-child(13) > figure > pre > code > .ec-line > .code > span:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Référence de validation</th>",
+              "target": [
+                "table:nth-child(75) > thead > tr > th:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Exactement <code dir=\"auto\">id</code>, <code dir=\"auto\">username</code>, <code dir=\"auto\">display_name</code>, <code dir=\"auto\">role</code>, <code dir=\"auto\">enabled</code> ; aucun hash ni date de création</td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(1) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">enterprise_auth.public_profile</code>, OpenAPI <code dir=\"auto\">Profile</code></td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(1) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">token:string</code>, <code dir=\"auto\">token_type:\"Bearer\"</code>, <code dir=\"auto\">expires_in:28800</code> ; token opaque émis une fois</td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(2) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">enterprise_auth.login</code>, OpenAPI <code dir=\"auto\">Token</code></td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(2) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">{\"error\":{\"code\":string,\"message\":string,\"fields\":object?}}</code> ; fields décrit éventuellement des saisies invalides</td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(3) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">enterprise_auth.error</code>, <code dir=\"auto\">create_app</code> error handlers, OpenAPI <code dir=\"auto\">Error</code></td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(3) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">{\"status\":\"ok\"}</code> seulement après accès au stockage sélectionné</td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(4) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">create_app.health</code> ; pas de composant OpenAPI v1 nommé</td>",
+              "target": [
+                "table:nth-child(75) > tbody > tr:nth-child(4) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Validation et décisions</th>",
+              "target": [
+                "table:nth-child(82) > thead > tr > th:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">enterprise_auth.register</code>, règles §2.4 ; rôle/propriétaire interdits</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(1) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">login</code> ; identité invalide et mauvais secret : erreur uniforme</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(2) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PATCH <code dir=\"auto\">/me</code>, <code dir=\"auto\">valid_display</code></td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(3) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PUT <code dir=\"auto\">/me/password</code>, valid_password sur nouveau ; révocation de toutes les sessions</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(4) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">{\"role\":\"manager\"}</code> et/ou <code dir=\"auto\">{\"enabled\":false}</code> ; au moins un</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(5) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PATCH <code dir=\"auto\">/users/{user_id}</code>, rôle admin, protection du dernier admin</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(5) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Champs film sans ID ; genres/external_id facultatifs ; initial_copy facultatif = CopyInput</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(6) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>POST films, <code dir=\"auto\">prepare_movie</code>, <code dir=\"auto\">movie_data</code>, création film+copie atomique</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(6) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Champs film sans ID ni initial_copy ; genres/external_id facultatifs</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(7) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PUT film, remplacement des métadonnées, version exigée</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(7) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">movie_id</code>, <code dir=\"auto\">support</code>, <code dir=\"auto\">location</code>, <code dir=\"auto\">condition</code></td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(8) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">copy_data</code>, référence film existante</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(8) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PUT copie, pas de changement movie_id</td>",
+              "target": [
+                "tr:nth-child(9) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">attributes</code>, compte courant comme owner_id</td>",
+              "target": [
+                "tr:nth-child(10) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">list_name</code>, <code dir=\"auto\">supports</code> obligatoires</td>",
+              "target": [
+                "table:nth-child(82) > tbody > tr:nth-child(11) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PUT collection, conserve propriétaire/film/type</td>",
+              "target": [
+                "tr:nth-child(11) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>POST loans/reservations ; auteur imposé par session</td>",
+              "target": [
+                "tr:nth-child(12) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">approve_loan</code> ; échéance future à l’heure réelle du traitement, ≤90 jours</td>",
+              "target": [
+                "tr:nth-child(13) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><strong>Aucun corps</strong>, pas un objet vide obligatoire</td>",
+              "target": [
+                "tr:nth-child(14) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>POST loan return/cancel et reservation cancel ; If-Match requis</td>",
+              "target": [
+                "tr:nth-child(14) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">format</code>, <code dir=\"auto\">content</code>, duplicate_policy facultatif</td>",
+              "target": [
+                "tr:nth-child(15) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Voir §4 ; manager/admin et clé d’idempotence obligatoire</td>",
+              "target": [
+                "tr:nth-child(15) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Attributs de l’enveloppe / type et relation</th>",
+              "target": [
+                "table:nth-child(89) > thead > tr > th:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(1) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">copies:Copy[]</code>, éventuellement filtré par film</td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(2) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">entries:CollectionEntry[]</code>, <code dir=\"auto\">movies:{id:Movie}</code>, <code dir=\"auto\">total,limit,offset</code> ; jointure limitée aux films des entrées propres de la page</td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(3) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">events:Stored_audit_event[]</code>, <code dir=\"auto\">total,limit,offset</code> ; admin seulement ; événements sans <code dir=\"auto\">_etag</code></td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(4) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">loans:Loan[]</code>, <code dir=\"auto\">movies:{id:Movie}</code>, <code dir=\"auto\">borrowers:{id:Profile}</code>, <code dir=\"auto\">overdue_ids:UUID[] distincts</code>, <code dir=\"auto\">total,limit,offset</code> ; retards dérivés sur la page</td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(5) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">loan_id:UUID</code>, <code dir=\"auto\">copies:Copy[]</code> ; choix libres/prêtables et priorité à l’instant lu, revérifiés à l’approbation</td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(6) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(7) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">users:Profile[]</code>, <code dir=\"auto\">total,limit,offset</code> ; schéma inline GET <code dir=\"auto\">/users</code>, admin seulement</td>",
+              "target": [
+                "table:nth-child(89) > tbody > tr:nth-child(8) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">movies,copies,damaged,free,held_for_queue,available</code> : compteurs ≥0 ; <code dir=\"auto\">by_support</code> : compteur pour chacun des cinq supports ; <code dir=\"auto\">by_genre</code> : carte libellé→compteur, genres regroupés sans casse</td>",
+              "target": [
+                "table:nth-child(114) > tbody > tr:nth-child(2) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>",
+              "target": [
+                "table:nth-child(114) > tbody > tr:nth-child(3) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Au plus dix objets <code dir=\"auto\">{action,timestamp}</code> de l’acteur ; ordre décroissant date puis ID, pas un journal complet</td>",
+              "target": [
+                "table:nth-child(114) > tbody > tr:nth-child(4) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Pour scope all réservé manager/admin : <code dir=\"auto\">loans</code>, <code dir=\"auto\">overdue</code>, <code dir=\"auto\">waiting_reservations</code>, <code dir=\"auto\">activity_last_7_days</code> (carte action→compteur) ; pas d’identités ni de collections privées tierces</td>",
+              "target": [
+                "table:nth-child(114) > tbody > tr:nth-child(5) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">film</code> objet proposé ci-dessous et même cache ; seul manager/admin accède recherche/détail</td>",
+              "target": [
+                "table:nth-child(122) > tbody > tr:nth-child(2) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">id:QID</code>, <code dir=\"auto\">title</code> ≤200, `year:int1888–2100</td>",
+              "target": [
+                "table:nth-child(122) > tbody > tr:nth-child(3) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Exactement <code dir=\"auto\">image_url</code>, <code dir=\"auto\">source_url</code>, <code dir=\"auto\">artist</code>, <code dir=\"auto\">license</code>, <code dir=\"auto\">license_url</code> : chaînes ; <code dir=\"auto\">attribution_required:boolean</code></td>",
+              "target": [
+                "table:nth-child(122) > tbody > tr:nth-child(4) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td><code dir=\"auto\">posters:{movie_id:Poster}</code> ; absence d’une clé = pas d’affiche autorisée disponible, pas un film absent</td>",
+              "target": [
+                "table:nth-child(122) > tbody > tr:nth-child(5) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Vérification nécessaire</th>",
+              "target": [
+                "table:nth-child(145) > thead > tr > th:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Horodatage métier ou technique en secondes UTC</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(1) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Inégalités, durée limite, horloge de référence et nullabilité selon objet</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(1) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Compteur global d’écritures ; origine des séquences de réservation</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(2) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Géré uniquement par store ; aucune équivalence avec dernière modification du film</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(2) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Numéro unique attribué sous verrou</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(3) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>FIFO par ordre croissant ; position dérivée variable</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(3) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>SHA-256 de JSON entité persistée <code dir=\"auto\">sort_keys=True,ensure_ascii=False,separators=(\",\",\":\")</code>, encodé UTF-8 ; digest entouré de guillemets, inclus comme texte JSON dans <code dir=\"auto\">_etag</code></td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(4) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>PUT/DELETE et transitions protégées comparent exactement la version ; 428 absente, 412 périmée ; le digest n’est ni un horodatage ni un secret</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(4) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>En-tête ASCII <code dir=\"auto\">[A-Za-z0-9_-]{16,128}</code> ; hash mémorisé par acteur pour copy.create et catalog.import, conservation ≤24 h</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(5) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Requête canonique et opération identiques ; conflit 409 sinon ; clé optionnelle pour copie, obligatoire pour import</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(5) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Même résultat initial, 201 copie ou 200 import, en-tête <code dir=\"auto\">Idempotency-Replayed:true</code></td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(6) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Droits courants revérifiés ; ne recrée pas une ressource retirée depuis ; après expiration, nouvelle création possible</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(6) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>24 h frais +7 jours de grâce pour certains appels, quotas et verrou propres</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(7) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Cache HTTP no-store distinct ; cohérence de révision exigée pour affiche publique</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(7) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Secrets de service distincts, domaines et durées définis en §2.5/§5.4</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(8) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Pas de mot de passe ni bearer dans ces champs ; une signature correcte ne confère pas un rôle</td>",
+              "target": [
+                "table:nth-child(145) > tbody > tr:nth-child(8) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Limite de preuve dans ce travail</th>",
+              "target": [
+                "table:nth-child(153) > thead > tr > th:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Pas d’exemple non vide compte/session/prêt/réservation/audit/reçu ; <code dir=\"auto\">test_v2_schema.py</code> prévoit schéma + validate_document, mais n’a pas été exécuté pour ce dictionnaire</td>",
+              "target": [
+                "table:nth-child(153) > tbody > tr:nth-child(1) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>IDs propres à cet exemple, à ne pas fusionner tels quels avec ceux du document catalogue ; validation référentielle exige un document enveloppant cohérent</td>",
+              "target": [
+                "table:nth-child(153) > tbody > tr:nth-child(2) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Ne prouve aucune consultation de fournisseur ou droit de média</td>",
+              "target": [
+                "table:nth-child(153) > tbody > tr:nth-child(3) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Leur présence et les tests de transfert ne constituent pas ici un résultat frais d’exécution</td>",
+              "target": [
+                "table:nth-child(153) > tbody > tr:nth-child(4) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Vérifier schéma et somme/horloge via le code ; aucun test exécuté par ce travail</td>",
+              "target": [
+                "table:nth-child(153) > tbody > tr:nth-child(5) > td:nth-child(3)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<th>Livrable ou validation encore nécessaire</th>",
+              "target": [
+                "table:nth-child(165) > thead > tr > th:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Document synthétique complet avec compte au hachage Argon2id réellement généré, session, tentatives, collections, états des prêts/réservations, audit et deux variantes de reçu ; IDs uniques et références/chronologie cohérentes</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(1) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Fixtures pending/active/returned/cancelled et waiting/fulfilled/cancelled/expired ; vérifier liens prêt-réservation, séquence/révision, quotas et acteur système</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(2) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(3) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(4) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Exemples contrôlés register/login/password/admin + Profile/Token/Error issus de clients de test ; pas de secrets réels ; corps inline à contrôler contre chemins OpenAPI</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(5) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Exécuter validation JSON Schema et normalisation/import CSV, enveloppes <code dir=\"auto\">ImportRequest</code>, <code dir=\"auto\">CatalogueExport</code>, résultat <code dir=\"auto\">ImportSummary</code>, reçus et politiques de doublon ; vérifier les exemples existants avec le candidat exact</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(6) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Fixture Statistics intégrale pour mine et all, Recommendation non vide + Reason, vérifier somme des points/ordre/exclusions/confidentialité et compteurs d’inventaire</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(7) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Fixture MetadataDetail complète (avec et sans Poster), MetadataSearch non vide, Poster et carte Posters non vide issus de données synthétiques/fournisseur contrôlé ; validation des URLs/licences séparée de la simple forme ; aucune image réelle requise dans le dépôt</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(8) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Valider l’exemple admission contre schéma <strong>et</strong> lecture avec horloge contrôlée ; fixture de cache avec entrée et durée calculée ; contexte client avec signature calculée sur le corps exact</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(9) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>Legacy, santé, rapport CLI de reprise, fichier cache, message de contexte client : validateurs exécutables identifiés, mais pas de schéma JSON autonome dédié ; ne pas présenter le schéma HTTP MetadataDetail comme schéma de cache</td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(10) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": null,
+                    "bgColor": null,
+                    "contrastRatio": 0,
+                    "fontSize": "12.0pt (16px)",
+                    "fontWeight": "normal",
+                    "messageKey": "elmPartiallyObscured",
+                    "expectedContrastRatio": "4.5:1",
+                    "shadowColor": null
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<body class=\"astro-g5ptsecz\">",
+                      "target": [
+                        "body"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element's background color could not be determined because it's partially obscured by another element"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<td>",
+              "target": [
+                "table:nth-child(165) > tbody > tr:nth-child(11) > td:nth-child(2)"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ],
+      "passes": 25
+    }
+  ],
+  "page_errors": [],
+  "blocked_external_requests": [],
+  "build_receipt": {
+    "schema": 1,
+    "scope": "Static documentation build; no application or deployment qualification",
+    "node": "v24.19.0",
+    "base": "/cinevault-infra-report",
+    "package_lock_sha256": "bbd198c8c14c7c84359d951d14e02d8eaad1e6c5f84fe333751fd20957887e65",
+    "source_commit": "cf026c0b98205af5fcaa4fa6de8e319335c58664",
+    "source_clean": true,
+    "tooling_clean": true,
+    "generator_sha256": "89a1b5c82e783be9f83869a331b792fc457d27dc3c3d9c4f176643a9907e3dce",
+    "source_pages": 49,
+    "copied_assets": 74,
+    "checks": {
+      "passed": true,
+      "htmlPages": 50,
+      "checkedLinks": 4500,
+      "errors": []
+    },
+    "dependency_notices": {
+      "resolved_packages": 457,
+      "installed_packages": 358,
+      "license_texts": 140
+    },
+    "keyboard_content_pages": 50
+  },
+  "browser": "157.0.8103.51",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "text": "Rechercher\nCtrl\nK",
+      "label": "Rechercher",
+      "placeholder": null,
+      "title": null,
+      "type": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Annuler",
+      "label": null,
+      "placeholder": null,
+      "title": null,
+      "type": null
+    },
+    {
+      "tag": "SELECT",
+      "text": "Sombre\nClair\nAuto",
+      "label": null,
+      "placeholder": null,
+      "title": null,
+      "type": null
+    },
+    {
+      "tag": "BUTTON",
+      "text": "Menu",
+      "label": null,
+      "placeholder": null,
+      "title": null,
+      "type": null
+    },
+    {
+      "tag": "SELECT",
+      "text": "SombreClairAuto",
+      "label": null,
+      "placeholder": null,
+      "title": null,
+      "type": null
+    }
+  ],
+  "skip_link_after_enter": {
+    "tag": "BODY",
+    "id": "",
+    "hash": "#_top"
+  },
+  "search_tab_steps": 3,
+  "menu_tab_steps": 4,
+  "scroll_tab_steps_table": 10,
+  "scroll_tab_steps_pre": 12,
+  "passed": true,
+  "owned_local_server_created": false,
+  "browser_closed": true
+}

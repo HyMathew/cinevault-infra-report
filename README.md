@@ -1,5 +1,11 @@
 # CineVault — infrastructure et documentation
 
+Le [portail documentaire candidat](https://hymathew.github.io/cinevault-infra-report/)
+est hébergé depuis l'artefact qualifié `cf026c0`. Les
+[preuves HTTPS et navigateur](evidence/public/portal-hosted-20261114/README.md)
+identifient ce contenu ; les évolutions suivantes de cette branche ne sont pas
+automatiquement publiées.
+
 Cette branche prépare **CineVault Enterprise 2.1**, en poursuivant le travail2.0
 déjà engagé. Le déploiement et le rapport
 ci-dessous constituent la référence **v1.0.0 préservée** ; leur audit historique

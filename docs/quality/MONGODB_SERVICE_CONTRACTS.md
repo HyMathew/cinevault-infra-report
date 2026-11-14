@@ -1,5 +1,36 @@
 # Services communs sur MongoDB réel
 
+## Qualification P4 — plans générés et mutations ciblées
+
+Le [candidat API3e15e61](https://github.com/HyMathew/cinevault-api/tree/3e15e61d0a309b12918338708e40d4f47a0ccdec)
+conserve les 54 sources applicatives et les schémas de C4 inchangés. Il ajoute
+l'oracle de circulation, ses tests générés et le raccord natif public. La
+[CI générale](https://github.com/HyMathew/cinevault-api/actions/runs/43548063079)
+et la [CI de propriétés](https://github.com/HyMathew/cinevault-api/actions/runs/43548063014)
+ont réussi. Le [reçu inspecté](../../evidence/public/property-p4-ci-3e15-20261114.json)
+et l'[inventaire des dix archives](../../evidence/public/property-p4-ci-content-20261114.json)
+conservent les empreintes, résultats et limites.
+
+Sur chacun des deux OS, 428 tests passent ; les cinq tests natifs ignorés dans
+ces suites sont exécutés séparément sans skip. Le JUnit général contient
+433 éléments testcase et un agrégat de 468 incluant 35 sous-tests.
+Les propriétés ont 50 tests verts par OS. Les quatre mutants de circulation et
+les douze précédents échouent chacun sur l'assertion comportementale attendue,
+sans erreur d'import, de collection ni skip ; leurs baselines ont 50 succès.
+L'arbre restauré de la CI n'est pas téléversé : sa restauration est attestée par
+le runner, tandis que patchs, hashes et exports sont recoupés indépendamment.
+
+Le job Mongo exécute réellement les huit séquences et 149 appels du corpus P4
+sous le compte applicatif CRUD. Le SHA du corpus exporté correspond à celui du
+reçu natif. Génération dans un processus contrôleur distinct ; pas de shrinking
+natif ni de concurrence du corpus P4. Les sept courses entre processus de C4
+restent une campagne séparée. Privilèges refusés et nettoyage sont vérifiés.
+
+L'image qualifiée `bd8a7307d666595c82ee78dd69fd285ed4821891ae2c43428941a4287ca62cc1`
+garde cinq Medium et un Low au scan, aucun High/Critical à ce gate. La publication
+d'image est ignorée. Ce lot ne démontre ni activation HTTP Mongo, ni migration,
+ni restauration finale de l'application.
+
 ## Qualification C4 — prêts, réservations et reprises
 
 Le [candidat API7aa9b05](https://github.com/HyMathew/cinevault-api/tree/7aa9b05f419d8c4ef4840e35c8d04be7ada216c5)

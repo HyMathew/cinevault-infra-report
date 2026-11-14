@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "scope": "Published candidate documentation only; full Enterprise2.1 delivery remains open",
+  "url": "https://hymathew.github.io/cinevault-infra-report/",
+  "artifact_source_commit": "cf026c0b98205af5fcaa4fa6de8e319335c58664",
+  "publisher_commit": "fb7763332b92ad2d9d3211962db2b13a390e6ad1",
+  "pull_request": "https://github.com/HyMathew/cinevault-infra-report/pull/1",
+  "publish_run": 43550763730,
+  "publish_job": 132312434575,
+  "qualified_archive_sha256": "01ff467afa5f993a37603211605747429f71457520f80203f005be59d24746a1",
+  "pages_artifact": {
+    "id": 14095917143,
+    "zip_sha256": "0a64e16bd886915b2f60b73b0839898d95a94b74ced5bdad464e9ef0ab8f2177",
+    "tar_sha256": "5c5b111f45ae8ec8df085526dfb745ed1cf847cda095fcc1bbc43a81e423a609",
+    "regular_files_verified": 351,
+    "only_omission_from_qualified_dist": ".cinevault-output.json"
+  },
+  "deployment_environment": {
+    "name": "github-pages",
+    "only_allowed_branch": "main",
+    "https_enforced": true
+  },
+  "https_verification": {
+    "receipt_sha256": "50cca70cebc5a08a8267ce5635f23d057587fdc766895865794c7a6b9af671d3",
+    "files": 351,
+    "hidden_sources": 4,
+    "all_bytes_match": true,
+    "started_at_utc": "2026-11-14T10:39:41.008277+00:00",
+    "finished_at_utc": "2026-11-14T10:40:25.339079+00:00"
+  },
+  "actual_browser": {
+    "receipt_sha256": "44131bcccd925e3aee9adeceb9e1336da88341f69ec0d86e14ed269c0602c3a1",
+    "browser": "157.0.8103.51",
+    "checks": 187,
+    "screens": 11,
+    "unexpected_console_messages": 0,
+    "unexpected_http_errors": 0,
+    "uncaught_page_errors": 0,
+    "expected404_console_messages": 1,
+    "browser_closed": true,
+    "local_server_created": false,
+    "axe_states": 6,
+    "axe_violations": 0,
+    "axe_incomplete_rule_results": 2,
+    "axe_incomplete_node_occurrences": 102
+  },
+  "visual_review": [
+    "home-320.png",
+    "home-1280-dark.png",
+    "search-1280.png",
+    "actual-hosted404.png"
+  ],
+  "limits": [
+    "Source is the explicitly qualified cf026c0 candidate, not an automatic latest-branch build",
+    "Two axe contrast results remain incomplete; no full accessibility certification",
+    "Actual browser uses Windows Chrome157, retained CI browser uses Ubuntu Chromium156",
+    "No application image, Swarm service, tag or release changed by this documentation publication",
+    "Artifact retention is bounded; subsequent publication requires a newly qualified artifact and reviewed promotion pins"
+  ]
+}

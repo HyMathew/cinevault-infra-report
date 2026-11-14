@@ -22,5 +22,6 @@ L'inspection visuelle humaine attestée ici porte sur l'accueil 320, l'accueil
 sombre 1280 et la recherche 1280 : textes et commandes lisibles, marque entière,
 aucune coupe horizontale visible.
 
-Il s'agit de la documentation d'un candidat en développement. Le portail n'est
-pas encore hébergé et ces captures ne qualifient pas le déploiement de CineVault.
+Ces captures précèdent l'hébergement du portail candidat. La
+[qualification du site hébergé](../portal-hosted-20261114/README.md) est séparée ;
+aucune de ces campagnes ne qualifie le déploiement applicatif de CineVault.
