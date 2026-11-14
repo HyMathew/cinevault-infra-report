@@ -1,0 +1,124 @@
+# Promote one verified candidate documentation artifact without rebuilding it.
+name: Publish qualified candidate documentation
+on:
+  workflow_dispatch:
+permissions: {}
+concurrency:
+  group: documentation-pages-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.repository == 'HyMathew/cinevault-infra-report' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download and verify exactly the qualified Ubuntu candidate
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import hashlib, io, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
+          REPO = 'HyMathew/cinevault-infra-report'
+          COMMIT = 'cf026c0b98205af5fcaa4fa6de8e319335c58664'
+          RUN = 43502640262
+          ARTIFACT = 14074392758
+          DIGEST = '01ff467afa5f993a37603211605747429f71457520f80203f005be59d24746a1'
+          ROOT = f'https://api.github.com/repos/{REPO}/'
+          headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                     'Accept': 'application/vnd.github+json', 'User-Agent': 'CineVault-portal-promotion',
+                     'X-GitHub-Api-Version': '2026-03-10'}
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, hdrs, newurl):
+                  return None
+          opener = urllib.request.build_opener(NoRedirect())
+          def api(path):
+              with opener.open(urllib.request.Request(ROOT + path, headers=headers), timeout=60) as r:
+                  return json.load(r)
+          run = api(f'actions/runs/{RUN}')
+          assert run['repository']['full_name'] == REPO
+          assert run['head_sha'] == COMMIT and run['head_branch'] == 'quality/cinevault-v2'
+          assert run['path'] == '.github/workflows/documentation-portal.yml'
+          assert run['status'] == 'completed' and run['conclusion'] == 'success'
+          a = api(f'actions/artifacts/{ARTIFACT}')
+          assert a['id'] == ARTIFACT and a['name'] == 'documentation-portal-ubuntu-24.04'
+          assert not a['expired'] and a['digest'] == 'sha256:' + DIGEST
+          assert a['workflow_run']['id'] == RUN and a['workflow_run']['head_sha'] == COMMIT
+          # Stop the API redirect before sending any authorization to blob storage.
+          try:
+              opener.open(
+                  urllib.request.Request(ROOT + f'actions/artifacts/{ARTIFACT}/zip', headers=headers), timeout=60)
+              raise RuntimeError('Expected an artifact archive redirect')
+          except urllib.error.HTTPError as e:
+              assert e.code == 302
+              location = e.headers['Location']
+          location_parts = urllib.parse.urlsplit(location)
+          assert location_parts.scheme == 'https' and location_parts.hostname
+          assert location_parts.username is None and location_parts.password is None
+          with urllib.request.urlopen(location, timeout=60) as r:
+              data = r.read(6964502)
+          assert len(data) == 6964501 and hashlib.sha256(data).hexdigest() == DIGEST
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+              assert z.testzip() is None
+              names = z.namelist()
+              assert len(names) == len(set(names))
+              for item in z.infolist():
+                  p = pathlib.PurePosixPath(item.filename)
+                  assert not p.is_absolute() and '..' not in p.parts and '\\' not in item.filename
+                  assert p.parts[0] in ('dist', '.cache')
+                  assert not stat.S_ISLNK(item.external_attr >> 16)
+              receipt = json.loads(z.read('dist/build-receipt.json'))
+              assert receipt['source_commit'] == COMMIT
+              assert receipt['source_clean'] and receipt['tooling_clean']
+              assert receipt['base'] == '/cinevault-infra-report'
+              assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 50
+              assert receipt['checks']['checkedLinks'] == 4500 and not receipt['checks']['errors']
+              repro = json.loads(z.read('.cache/reproducibility.json'))
+              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 352
+              dist = {n[5:]: z.read(n) for n in names if n.startswith('dist/') and not n.endswith('/')}
+              assert set(dist) == {f['path'] for f in repro['files']}
+              assert all(hashlib.sha256(dist[f['path']]).hexdigest() == f['sha256'] for f in repro['files'])
+              browser = json.loads(z.read('.cache/browser-report/receipt.json'))
+              assert browser['build_receipt'] == receipt and browser['passed']
+              assert len(browser['checks']) == 183 and all(c['passed'] for c in browser['checks'])
+              assert not browser['page_errors'] and browser['owned_server_stopped']
+              home = dist['index.html'].decode('utf-8')
+              assert 'en préparation' in home and 'pas une validation finale' in home
+              target = pathlib.Path('qualified-site')
+              target.mkdir(exist_ok=False)
+              for name, content in dist.items():
+                  dest = target.joinpath(*pathlib.PurePosixPath(name).parts)
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  dest.write_bytes(content)
+          print('Verified qualified candidate: 352 exact dist files; 50 HTML; 183 retained browser checks.')
+      - name: Package exact public files including linked dot-directory sources
+        shell: bash
+        run: |
+          tar --directory qualified-site --format=posix --exclude='./.cinevault-output.json' -cf "$RUNNER_TEMP/artifact.tar" .
+          python - <<'PY'
+          import os, pathlib, tarfile
+          with tarfile.open(pathlib.Path(os.environ['RUNNER_TEMP']) / 'artifact.tar') as t:
+              files = [m for m in t.getmembers() if m.isfile()]
+              assert len(files) == 351
+              assert all(m.isfile() or m.isdir() for m in t.getmembers())
+              assert './sources/.github/workflows/browser-pair.yml' in t.getnames()
+              assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
+              assert './.cinevault-output.json' not in t.getnames()
+          PY
+      - name: Upload Pages tar using the already qualified artifact action
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          path: ${{ runner.temp }}/artifact.tar
+          name: github-pages
+          retention-days: 1
+          if-no-files-found: error
+          archive: true
+      - name: Deploy candidate documentation
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
