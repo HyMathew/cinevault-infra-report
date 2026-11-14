@@ -1,0 +1,635 @@
+{
+  "schema": 1,
+  "scope": "Independent read-only qualification of retained CI artifacts; no build/browser/CI rerun or deployment",
+  "infra_commit": "cf026c0b98205af5fcaa4fa6de8e319335c58664",
+  "qualified_at_utc": "2026-11-14T02:41:31.535353+00:00",
+  "run_ids": {
+    "documentation-portal": 43502640262,
+    "real-browser-json-pair": 43502640266,
+    "enterprise-json-pair": 43502640278,
+    "report": 43502640479
+  },
+  "run_success_status_source": "Controller reported GitHub connector verification at 2026-11-14T02:30Z; reviewer did not refetch statuses",
+  "archives": [
+    {
+      "name": "infra-cf026c0-documentation-portal-ubuntu-24.04.zip",
+      "sha256": "01ff467afa5f993a37603211605747429f71457520f80203f005be59d24746a1",
+      "bytes": 6964501,
+      "entries": 366,
+      "workflow_run_id": 43502640262,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    },
+    {
+      "name": "infra-cf026c0-documentation-portal-windows-latest.zip",
+      "sha256": "aa9e4adc7cb6c223ec427fb82fc8136b30490d64cd08c6f8c25dde9b862e6ff6",
+      "bytes": 5147786,
+      "entries": 355,
+      "workflow_run_id": 43502640262,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    },
+    {
+      "name": "infra-cf026c0-real-browser-json-pair.zip",
+      "sha256": "c903e70c10b04396c078489d49ce788f4103ac21001a804ab256fbad91a3d94e",
+      "bytes": 419442,
+      "entries": 8,
+      "workflow_run_id": 43502640266,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    },
+    {
+      "name": "infra-cf026c0-enterprise-json-pair-ubuntu-24.04.zip",
+      "sha256": "f5553e1baf050d8aece51b4143301d2ed2eea0bbbc9da2977d2309e991160f02",
+      "bytes": 674,
+      "entries": 1,
+      "workflow_run_id": 43502640278,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    },
+    {
+      "name": "infra-cf026c0-enterprise-json-pair-windows-latest.zip",
+      "sha256": "e86d552853101b67988be5c159e52cd99b7c16be464dde5cbc11badb1c58a4db",
+      "bytes": 678,
+      "entries": 1,
+      "workflow_run_id": 43502640278,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    },
+    {
+      "name": "infra-cf026c0-report-windows-latest.zip",
+      "sha256": "e72feb108476e9586aa70dd069768736db3259dd47e5e7a51348785ca0836ff8",
+      "bytes": 532294,
+      "entries": 2,
+      "workflow_run_id": 43502640479,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    },
+    {
+      "name": "infra-cf026c0-report-ubuntu-24.04.zip",
+      "sha256": "ac26699122066ff0977997594970d4c8c5ec3e21184e992aae49663b9c9194ba",
+      "bytes": 532289,
+      "entries": 2,
+      "workflow_run_id": 43502640479,
+      "crc_ok": true,
+      "member_names_safe": true,
+      "symlinks": 0
+    }
+  ],
+  "portal": {
+    "ubuntu-24.04": {
+      "build_receipt_sha256": "ecac81c70b60f16e9aa8ea1e0f33956b8ee847ddd8a67c500621718d1dd51ac4",
+      "source_manifest_sha256": "eeb5413cf2d419d25af9d581b32dae4a5e1aab7cf847f645ca21e4cc06bdd8a0",
+      "reproducibility_receipt_sha256": "6f2636aec598cdfc6f711f90f14b7795e14eb9939f4470d20c0d0c1fc82f22a1",
+      "source_commit": "cf026c0b98205af5fcaa4fa6de8e319335c58664",
+      "source_clean_recorded": true,
+      "tooling_clean_recorded": true,
+      "git_source_pages_exact": 49,
+      "git_assets_exact": 74,
+      "git_generator_exact": true,
+      "git_lock_exact": true,
+      "html_files_count": 50,
+      "links_checked_reported": 4500,
+      "link_errors_reported": [],
+      "dist_files_count": 352,
+      "all_dist_file_hashes_match_reproducibility_inventory": true,
+      "dist_inventory_paths_exact": true,
+      "two_same_machine_builds_reported_equal": true,
+      "reproducibility_scope": "Byte-for-byte repeatability on this machine with unchanged inputs; no cross-platform or independent builder claim",
+      "dependency_notices": {
+        "resolved_packages": 457,
+        "installed_packages": 358,
+        "license_texts": 140
+      },
+      "license_text_references": 349,
+      "all_copied_license_text_hashes_match": true
+    },
+    "windows-latest": {
+      "build_receipt_sha256": "e9e0205532e3eb4098d38741758d8d2feeae2a43be994cbe13fa5d71c996f6ee",
+      "source_manifest_sha256": "eeb5413cf2d419d25af9d581b32dae4a5e1aab7cf847f645ca21e4cc06bdd8a0",
+      "reproducibility_receipt_sha256": "b1874aaa44c4459ff2720a559fbefffa4f520fac69ffe2e5b3c8bd110595a4bb",
+      "source_commit": "cf026c0b98205af5fcaa4fa6de8e319335c58664",
+      "source_clean_recorded": true,
+      "tooling_clean_recorded": true,
+      "git_source_pages_exact": 49,
+      "git_assets_exact": 74,
+      "git_generator_exact": true,
+      "git_lock_exact": true,
+      "html_files_count": 50,
+      "links_checked_reported": 4500,
+      "link_errors_reported": [],
+      "dist_files_count": 353,
+      "all_dist_file_hashes_match_reproducibility_inventory": true,
+      "dist_inventory_paths_exact": true,
+      "two_same_machine_builds_reported_equal": true,
+      "reproducibility_scope": "Byte-for-byte repeatability on this machine with unchanged inputs; no cross-platform or independent builder claim",
+      "dependency_notices": {
+        "resolved_packages": 457,
+        "installed_packages": 357,
+        "license_texts": 141
+      },
+      "license_text_references": 349,
+      "all_copied_license_text_hashes_match": true
+    }
+  },
+  "cross_os": {
+    "source_manifest_identical": true,
+    "all_50_html_identical": true,
+    "common_paths": 343,
+    "byte_identical_common_files": 335,
+    "byte_different_common_paths": [
+      "build-receipt.json",
+      "pagefind/pagefind-component-ui.css",
+      "pagefind/pagefind-entry.json",
+      "pagefind/pagefind-modular-ui.css",
+      "pagefind/pagefind-ui.js",
+      "pagefind/wasm.fr.pagefind",
+      "pagefind/wasm.unknown.pagefind",
+      "third-party/packages.json"
+    ],
+    "ubuntu_only_paths": [
+      "pagefind/index/fr_33ab421.pf_index",
+      "pagefind/index/fr_8134338.pf_index",
+      "pagefind/index/fr_81d3aa6.pf_index",
+      "pagefind/index/fr_8be8954.pf_index",
+      "pagefind/index/fr_989c37e.pf_index",
+      "pagefind/index/fr_c121049.pf_index",
+      "pagefind/index/fr_e1c3090.pf_index",
+      "pagefind/index/fr_e4da20c.pf_index",
+      "pagefind/pagefind.fr_4067863564.pf_meta"
+    ],
+    "windows_only_paths": [
+      "pagefind/index/fr_1998ed9.pf_index",
+      "pagefind/index/fr_2932da9.pf_index",
+      "pagefind/index/fr_397b73a.pf_index",
+      "pagefind/index/fr_4e1de4f.pf_index",
+      "pagefind/index/fr_5ccfbd1.pf_index",
+      "pagefind/index/fr_aabc7ff.pf_index",
+      "pagefind/index/fr_cd1928e.pf_index",
+      "pagefind/index/fr_fb13913.pf_index",
+      "pagefind/pagefind.fr_c41ef5c124.pf_meta",
+      "third-party/licenses/dc1f5d2d43c5531dfe0acaf4e950ea5dbe3e61e1850cf0e983bda7efc10d6693.txt"
+    ],
+    "css_lf_normalized_equal": {
+      "pagefind/pagefind-component-ui.css": true,
+      "pagefind/pagefind-modular-ui.css": true
+    },
+    "wasm_decompressed_identical": {
+      "pagefind/wasm.fr.pagefind": false,
+      "pagefind/wasm.unknown.pagefind": false
+    },
+    "same_457_resolution_name_version_license_integrity": true,
+    "installed_or_license_different_packages": [
+      {
+        "name": "@astrojs/compiler-binding-linux-x64-gnu",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@astrojs/compiler-binding-win32-x64-msvc",
+        "ubuntu_installed": false,
+        "windows_installed": true,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@bruits/satteri-linux-x64-gnu",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@bruits/satteri-win32-x64-msvc",
+        "ubuntu_installed": false,
+        "windows_installed": true,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@img/sharp-libvips-linux-x64",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@img/sharp-linux-x64",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [
+          {
+            "filename": "LICENSE",
+            "sha256": "73ba74dfaa520b49a401b5d21459a8523a146f3b7518a833eea5efa85130bf68"
+          }
+        ],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@img/sharp-win32-x64",
+        "ubuntu_installed": false,
+        "windows_installed": true,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": [
+          {
+            "filename": "LICENSE",
+            "sha256": "dc1f5d2d43c5531dfe0acaf4e950ea5dbe3e61e1850cf0e983bda7efc10d6693"
+          }
+        ]
+      },
+      {
+        "name": "@pagefind/linux-x64",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [
+          {
+            "filename": "upstream/LICENSE",
+            "sha256": "4736929bfded122bd969f0621a0d917484b126d981270d68a63ed42cb55503d5"
+          }
+        ],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@pagefind/windows-x64",
+        "ubuntu_installed": false,
+        "windows_installed": true,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": [
+          {
+            "filename": "upstream/LICENSE",
+            "sha256": "4736929bfded122bd969f0621a0d917484b126d981270d68a63ed42cb55503d5"
+          }
+        ]
+      },
+      {
+        "name": "@rolldown/binding-linux-x64-gnu",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "@rolldown/binding-win32-x64-msvc",
+        "ubuntu_installed": false,
+        "windows_installed": true,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": []
+      },
+      {
+        "name": "lightningcss-linux-x64-gnu",
+        "ubuntu_installed": true,
+        "windows_installed": false,
+        "ubuntu_license_texts": [
+          {
+            "filename": "LICENSE",
+            "sha256": "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e"
+          }
+        ],
+        "windows_license_texts": []
+      },
+      {
+        "name": "lightningcss-win32-x64-msvc",
+        "ubuntu_installed": false,
+        "windows_installed": true,
+        "ubuntu_license_texts": [],
+        "windows_license_texts": [
+          {
+            "filename": "LICENSE",
+            "sha256": "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e"
+          }
+        ]
+      }
+    ]
+  },
+  "portal_browser": {
+    "workflow_run_id": 43502640262,
+    "os": "ubuntu-24.04",
+    "checks_passed": 183,
+    "receipt_sha256": "37958a6f1d634d1ef0bfc1b1b7576561b203d868aa25d59a0c9b4216d531653d",
+    "executed_qa_matches_commit": true,
+    "screenshots": [
+      {
+        "file": "home-320.png",
+        "sha256": "dedf1399b9dc74781027cfcfeb0062ed3a3a8ae94b6e92886d3dc911145b51dd",
+        "bytes": 74790,
+        "width": 320,
+        "height": 812,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-390.png",
+        "sha256": "a359034b948a87674a7dcf09fafca03b65971ae0848fe737270267f48bd26b50",
+        "bytes": 97376,
+        "width": 390,
+        "height": 844,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-768.png",
+        "sha256": "e62e26bed94dc8879752c1aa8958feaa6c8c21b8457377f25a7e1cd7f2c0eaaa",
+        "bytes": 205443,
+        "width": 768,
+        "height": 1024,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-840.png",
+        "sha256": "0aabf0656687faa4b628b230139ff30ee136f878323b001af2cd683bbee2111f",
+        "bytes": 213771,
+        "width": 840,
+        "height": 900,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-1024.png",
+        "sha256": "914f1154eae510094051a024c5b4d82f56b1b2db7babc30dabfed1ccf47f8f3a",
+        "bytes": 228637,
+        "width": 1024,
+        "height": 900,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-1280.png",
+        "sha256": "73b9e79ed73112932da28d8ce34ee63c1d9571ed291963cfeb4c27b9ce6f9650",
+        "bytes": 242908,
+        "width": 1280,
+        "height": 900,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-1280-light.png",
+        "sha256": "2a3d257fb5a50d6d48a63fb7a1e4efd28298bcc81c0350a9c712bd6ca5d3846b",
+        "bytes": 243938,
+        "width": 1280,
+        "height": 900,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "home-1280-dark.png",
+        "sha256": "fb2265f9026fa8a9ac0505457aa0ec67264918140ee832fe469f3e4a6e8dc130",
+        "bytes": 248874,
+        "width": 1280,
+        "height": 900,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "search-1280.png",
+        "sha256": "a7c674dd80488c4a1ed9f52e39be4774128198e77a44547bc9d11612b753b608",
+        "bytes": 236827,
+        "width": 1280,
+        "height": 900,
+        "matches_ci_receipt_sha256": true
+      },
+      {
+        "file": "menu-390-dark.png",
+        "sha256": "50c62958bc4962b33e6b41b4fdfec7d7f4ca5c48886dbf784d0a72f751be20bc",
+        "bytes": 75139,
+        "width": 390,
+        "height": 844,
+        "matches_ci_receipt_sha256": true
+      }
+    ],
+    "axe_states": [
+      {
+        "state": "home-1280-light",
+        "violation_rules": 0,
+        "incomplete_rules": 0,
+        "incomplete_node_occurrences": 0,
+        "incomplete_details": []
+      },
+      {
+        "state": "home-1280-dark",
+        "violation_rules": 0,
+        "incomplete_rules": 0,
+        "incomplete_node_occurrences": 0,
+        "incomplete_details": []
+      },
+      {
+        "state": "search-1280-dark",
+        "violation_rules": 0,
+        "incomplete_rules": 1,
+        "incomplete_node_occurrences": 2,
+        "incomplete_details": [
+          {
+            "rule": "color-contrast",
+            "impact": "serious",
+            "node_occurrences": 2
+          }
+        ]
+      },
+      {
+        "state": "mobile-menu-390-dark",
+        "violation_rules": 0,
+        "incomplete_rules": 0,
+        "incomplete_node_occurrences": 0,
+        "incomplete_details": []
+      },
+      {
+        "state": "home-390-dark",
+        "violation_rules": 0,
+        "incomplete_rules": 0,
+        "incomplete_node_occurrences": 0,
+        "incomplete_details": []
+      },
+      {
+        "state": "data-dictionary-390-dark",
+        "violation_rules": 0,
+        "incomplete_rules": 1,
+        "incomplete_node_occurrences": 102,
+        "incomplete_details": [
+          {
+            "rule": "color-contrast",
+            "impact": "serious",
+            "node_occurrences": 102
+          }
+        ]
+      }
+    ],
+    "axe_violations": 0,
+    "axe_incomplete_rule_state_results": 2,
+    "axe_incomplete_node_occurrences": 104,
+    "page_errors": [],
+    "blocked_external_requests": [],
+    "owned_server_stopped_recorded": true,
+    "full_accessibility_certification": false,
+    "screens_visually_reviewed_by_this_reviewer": false
+  },
+  "real_browser_pair": {
+    "workflow_run_id": 43502640266,
+    "receipt_sha256": "86526995ac6535317c8c6f9bdb140a7c3f87510da9e769bfdd35e26f48f54552",
+    "checks_passed_recorded": 45,
+    "screenshots_count": 7,
+    "all_screenshot_sha256_match": true,
+    "api_source": {
+      "kind": "git",
+      "commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+      "application_sha256": "607bc77503babfab30a4fe3928685ac0c7c5117542e3ed4659436e8cc5e472b0",
+      "source_clean": true
+    },
+    "web_source": {
+      "kind": "git",
+      "commit": "f59c7af7d5bbe29493569b31403b924f20c3427a",
+      "application_sha256": "aa08a350c23536eb725a8ab4e32bf884936192a48a32b735d992cc3ca952bae1",
+      "source_clean": true
+    },
+    "lost_creation_responses": [
+      {
+        "operation": "loan.request",
+        "upstream201_before_connection_closed": true,
+        "manual_replay_same_key_and_body": true,
+        "upstream_idempotency_replayed": true,
+        "persisted_entities": 1,
+        "creation_audits": 1,
+        "receipts": 1
+      },
+      {
+        "operation": "reservation.create",
+        "upstream201_before_connection_closed": true,
+        "manual_replay_same_key_and_body": true,
+        "upstream_idempotency_replayed": true,
+        "persisted_entities": 1,
+        "creation_audits": 1,
+        "receipts": 1
+      }
+    ],
+    "console_health": {
+      "page_error_types": [],
+      "unexpected": [],
+      "expected_negative_response_messages": {
+        "uncertain503": 2,
+        "authorization403": 1,
+        "blocked_probe": 0
+      }
+    },
+    "cleanup_recorded": {
+      "browser_closed": true,
+      "web_thread_stopped": true,
+      "fault_proxy_stopped": true,
+      "api_process_stopped": true,
+      "api_clean_exit": true,
+      "temporary_data_removed": true,
+      "owned_api_exit": 0
+    },
+    "limits": [
+      "JSON backend only; no MongoDB, Docker, Swarm, TLS or production deployment",
+      "Sequential circulation case, not global FIFO/concurrency or load validation",
+      "Browser request routing is not an operating-system network sandbox",
+      "No complete accessibility, cross-browser or keyboard campaign",
+      "Response connection closure is injected by an owned local proxy after real API 201; not a physical network fault or Mongo commit-ack experiment"
+    ]
+  },
+  "http_pair": {
+    "ubuntu-24.04": {
+      "workflow_run_id": 43502640278,
+      "receipt_sha256": "1b7390bd5eddef446a89e6579b49a5059b22ead0e9574d65486f4d8126a4b7c8",
+      "checks_passed_recorded": 6,
+      "api_source": {
+        "commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+        "application_sha256": "607bc77503babfab30a4fe3928685ac0c7c5117542e3ed4659436e8cc5e472b0",
+        "source_clean": true
+      },
+      "web_source": {
+        "commit": "f59c7af7d5bbe29493569b31403b924f20c3427a",
+        "application_sha256": "aa08a350c23536eb725a8ab4e32bf884936192a48a32b735d992cc3ca952bae1",
+        "source_clean": true
+      },
+      "limits": [
+        "Flask test client drives web routes; API uses real loopback HTTP.",
+        "No Docker, Swarm, TLS or browser validation is claimed by this gate."
+      ],
+      "explicit_cleanup_fields_in_receipt": false
+    },
+    "windows-latest": {
+      "workflow_run_id": 43502640278,
+      "receipt_sha256": "8cf7ce02ca32568c4456212fdf261dc7d1d627c68842901f6fc846459d389ffe",
+      "checks_passed_recorded": 6,
+      "api_source": {
+        "commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+        "application_sha256": "86313fdffdcf2cbec71b3bdf4d53d1797e00b95cbee607e57dab9e893cc7b381",
+        "source_clean": true
+      },
+      "web_source": {
+        "commit": "f59c7af7d5bbe29493569b31403b924f20c3427a",
+        "application_sha256": "8403b9b9edf61e5e65b818e4d73dc51fdd4c3401472412f1736a635e0eb88e8d",
+        "source_clean": true
+      },
+      "limits": [
+        "Flask test client drives web routes; API uses real loopback HTTP.",
+        "No Docker, Swarm, TLS or browser validation is claimed by this gate."
+      ],
+      "explicit_cleanup_fields_in_receipt": false
+    }
+  },
+  "api_web_source_comparison": {
+    "api": {
+      "commit": "7aa9b05f419d8c4ef4840e35c8d04be7ada216c5",
+      "file_count": 55,
+      "git_lf_sha256": "607bc77503babfab30a4fe3928685ac0c7c5117542e3ed4659436e8cc5e472b0",
+      "git_content_with_crlf_sha256": "86313fdffdcf2cbec71b3bdf4d53d1797e00b95cbee607e57dab9e893cc7b381",
+      "ubuntu_hash_exactly_matches_git_lf": true,
+      "windows_hash_exactly_reconstructed_by_crlf_only": true,
+      "algorithm": "sha256(json.dumps(ordered pairs(path, sha256(file bytes))))"
+    },
+    "web": {
+      "commit": "f59c7af7d5bbe29493569b31403b924f20c3427a",
+      "file_count": 46,
+      "git_lf_sha256": "aa08a350c23536eb725a8ab4e32bf884936192a48a32b735d992cc3ca952bae1",
+      "git_content_with_crlf_sha256": "8403b9b9edf61e5e65b818e4d73dc51fdd4c3401472412f1736a635e0eb88e8d",
+      "ubuntu_hash_exactly_matches_git_lf": true,
+      "windows_hash_exactly_reconstructed_by_crlf_only": true,
+      "algorithm": "sha256(json.dumps(ordered pairs(path, sha256(file bytes))))"
+    }
+  },
+  "pdf": {
+    "ubuntu-24.04": {
+      "workflow_run_id": 43502640479,
+      "build_receipt_sha256": "c447310a2251f849cc510f58b9d6e3cb7a6d1efc200086862b65046d0952d67e",
+      "filename": "RT0705_CineVault_Mathieu_Kuhnapfel.pdf",
+      "sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+      "bytes": 734029,
+      "equals_committed_v1_pdf": true,
+      "compiler": "typst 0.15.1 (9dfd3a08)",
+      "system_fonts_ignored": true,
+      "creation_timestamp_fixed_release_epoch": 1794236676,
+      "scope": "Compilation only; visual inspection and final audit are separate gates."
+    },
+    "windows-latest": {
+      "workflow_run_id": 43502640479,
+      "build_receipt_sha256": "d89da0e941bce51cf96c6099651f741ad9287dac33210f23a60e2ac4a3a1ac14",
+      "filename": "RT0705_CineVault_Mathieu_Kuhnapfel.pdf",
+      "sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+      "bytes": 734029,
+      "equals_committed_v1_pdf": true,
+      "compiler": "typst 0.15.1 (9dfd3a08)",
+      "system_fonts_ignored": true,
+      "creation_timestamp_fixed_release_epoch": 1794236676,
+      "scope": "Compilation only; visual inspection and final audit are separate gates."
+    }
+  },
+  "not_independently_executed_here": [
+    "build",
+    "browser",
+    "CI",
+    "SSH",
+    "npm tests",
+    "dependency audit",
+    "PDF compilation",
+    "visual screenshot review"
+  ],
+  "limits": [
+    "Portal repeatability is same-machine, same-input; not cross-OS byte identity.",
+    "Two axe incomplete color-contrast rule/state results cover 104 node occurrences and remain unqualified manually.",
+    "Real pair is sequential disposable JSON, not MongoDB or production.",
+    "HTTP receipt has no explicit runtime-cleanup fields.",
+    "The unchanged v1 PDF does not integrate v2/P4 content.",
+    "Publication and integration remain with the controller."
+  ]
+}

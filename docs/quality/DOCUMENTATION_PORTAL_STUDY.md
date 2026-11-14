@@ -100,6 +100,41 @@ dictionnaire : ils demandent une appréciation humaine et ne sont pas convertis 
 PASS. Les tests automatiques et captures ne certifient pas la conformité globale.
 Le serveur temporaire a été arrêté ; aucune requête externe n'a été nécessaire.
 
-Ces résultats qualifient un candidat local. Ils ne démontrent ni un portail déjà
-hébergé, ni la validation finale de l'application Enterprise2.1, ni la fraîcheur
-perpétuelle des dépendances. Le build CI et la publication sont encore à vérifier.
+Ces résultats locaux ne démontrent ni un portail déjà hébergé, ni la validation
+finale d'Enterprise2.1, ni la fraîcheur perpétuelle des dépendances.
+
+## Qualification CI du commit cf026c0
+
+Le [run 43502640262](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43502640262)
+a réussi sur Ubuntu et Windows après correction de l'alias Windows 8.3 du projet.
+Les deux logs confirment 27 tests Node réussis et aucun signal de vulnérabilité
+par npm audit au moment de cette exécution. Le refus d'une vraie dépendance liée
+reste testé et actif.
+
+Le [reçu vérifié](../../evidence/public/portal-cf026c0-ci-20261114.json) rattache les
+sept archives à leurs SHA-256 et aux quatre runs. Le portail utilise 49 documents
+suivis, 74 ressources copiées et 50 pages HTML ; ses 4 500 liens contrôlés n'ont
+aucune erreur. Sources, générateur et lock correspondent au commit exact, sans
+modification de document ou d'outillage pendant le build.
+
+Chaque runner construit deux fois les mêmes noms et octets : 352 fichiers sous
+Ubuntu, 353 sous Windows, tous rehashés dans les archives. Les 50 HTML sont
+identiques entre OS. Binaires et index Pagefind ainsi que notices de dépendances
+natives diffèrent ; ces sorties ne sont pas annoncées reproductibles octet pour
+octet entre systèmes. Le graphe résolu reste de 457 paquets, avec 358 installés
+et 140 textes distincts sous Ubuntu, contre 357 et 141 sous Windows.
+
+Le navigateur Ubuntu a réussi 183 contrôles et produit
+[dix captures vérifiées](../../evidence/public/portal-cf026c0-20261114/README.md).
+Recherche française, clavier, thèmes, menu et défilement utilisent le site réel.
+Six états axe présentent zéro violation automatique, mais deux résultats de
+contraste gardent 104 occurrences non conclusives, sans résolution manuelle
+globale revendiquée. Aucun navigateur du portail Windows n'est qualifié par ce
+run. Le serveur temporaire est arrêté selon le reçu.
+
+Les autres archives conservent 45 contrôles du couple navigateur réel API7aa9b05 /
+webf59c7af, six contrôles HTTP par OS et deux PDF v1 identiques au SHA
+`2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885`.
+Les limites de chaque campagne sont conservées. Hébergement public du portail,
+examen des résultats axe non conclusifs et validation finale de l'application
+restent à terminer.

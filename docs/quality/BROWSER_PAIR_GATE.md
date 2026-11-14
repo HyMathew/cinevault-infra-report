@@ -173,6 +173,15 @@ inspectée après intégration ; ces preuves locales ne la remplacent pas.
 Les [sept captures synthétiques](../../evidence/public/c4-recovery-20261113/README.md)
 restent accessibles avec leurs empreintes dans le reçu.
 
+Le [run navigateur 43502640266](https://github.com/HyMathew/cinevault-infra-report/actions/runs/43502640266)
+a ensuite réussi les 45 contrôles et sept captures au commit infra cf026c0,
+avec les mêmes pins API7aa9b05/webf59c7af. Le
+[reçu de qualification CI](../../evidence/public/portal-cf026c0-ci-20261114.json)
+vérifie son archive, les pertes de réponse injectées, les reprises manuelles et
+les flags de nettoyage. Les contrôles HTTP du même commit réussissent sur deux
+OS ; leurs différences d'empreintes sont entièrement expliquées par LF/CRLF.
+La CI de cette paire est donc inspectée, sans étendre sa portée JSON à MongoDB.
+
 ## Limites de portée
 
 Ce scénario couvre une paire HTTP locale et le backend JSON. Il ne démontre pas
