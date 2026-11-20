@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "status": "PASS_PORTABLE_CI_AND_CROSS_PLATFORM_KEY_ROTATION",
+  "ci": {
+    "passed": true,
+    "source": "3bb73bb23be3ab564ab9a5052c9d2260797e8e4e",
+    "run_id": 44748082354,
+    "jobs": [
+      {
+        "platform": "windows",
+        "job_id": 136328493809,
+        "archive_id": 14634376040,
+        "archive_sha256": "3d7467f80578b2e54d715481e00c9735c895c3215558cd8705cfeb57714b06d6",
+        "bytes": 27569,
+        "python": "3.13.17",
+        "bootstrap_elapsed_seconds": 36.869,
+        "files": {
+          "bootstrap.json": "69e92e76acd37e1981e2200ddc28961217463d2c580182f4819cbcdbe4ae748b",
+          "init-private.txt": "c4de2c6550b44448e20cb5bd3f147fa3432a88ed0f8fe5bd0a349766099ff3d8",
+          "init-tmp.txt": "c4de2c6550b44448e20cb5bd3f147fa3432a88ed0f8fe5bd0a349766099ff3d8",
+          "init-work.txt": "c4de2c6550b44448e20cb5bd3f147fa3432a88ed0f8fe5bd0a349766099ff3d8",
+          "notices.json": "74139437a077d28e6afa098045cc746bae430a1e3444309eef770f975d3d71dc",
+          "notices/python/dnspython/LICENSE": "c3ea3ff5654b329c19d3bc5f7481af623c3dded4a6145585499f843ad3d741cd",
+          "notices/python/pymongo/LICENSE": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+          "notices/upstream/age/LICENSE": "afbdb4e07a359499db587ae632815809b1fc1670a92d5449af112ce9a67833a2",
+          "notices/upstream/mongodb/LICENSE.md": "e0b215145cf51c766603856643a746420f60aedfbf9a523a2d82a251cac3cce3",
+          "notices/upstream/mongodb/THIRD-PARTY-NOTICES": "88cf41e6a11789919c35aa60e0b24e9b5faef3c8fedab578db4080dd0a462a5b",
+          "pip-check.txt": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+          "pip-install.txt": "4c3ae8c2c9a7eaa9e6434655585081d20528d60f4d40d20a53bb62218f561a9e",
+          "public-installer.txt": "8e381ae192be5bdf12637d003de39207d6dd8dfc75b691e623d2c9044bbc94b9",
+          "receipt.json": "fa87ad39b0c44131cd46a6acbdb5fc53cbfa5d63892ec336d8f654af1de9d77d",
+          "unittest.txt": "29ca503d9905bb4f46f6cce559f5fd32fb8866e65d753e51c9ac9ba3b001a656",
+          "worker.txt": "acb31302adccda288d3110618216ab136f42eba5aaf8b5c31f4b54a1f4281c6e"
+        },
+        "source_file_count": 15,
+        "tests_passed": 45,
+        "skipped": 0,
+        "real_age_tests": 7
+      },
+      {
+        "platform": "ubuntu",
+        "job_id": 136328494221,
+        "archive_id": 14633283720,
+        "archive_sha256": "5771565b41abf02585cf1dc0a2e0c2ea80f2295e3884520d97ca847c77cdba14",
+        "bytes": 27752,
+        "python": "3.12.16",
+        "bootstrap_elapsed_seconds": 7.262,
+        "files": {
+          "bootstrap.json": "f5e5d25b7c5c0eed7fff69ae6c9830b07a9e450dc52b3af62ef0a03ae99a557c",
+          "init-private.txt": "0754e7de6397c5f8821308165d8f0018123cfd09512d129fa692df16d75549a4",
+          "init-tmp.txt": "0754e7de6397c5f8821308165d8f0018123cfd09512d129fa692df16d75549a4",
+          "init-work.txt": "0754e7de6397c5f8821308165d8f0018123cfd09512d129fa692df16d75549a4",
+          "notices.json": "d653847a92d788bd87922375f79546e57e9d1eef7816479fea8a54f3b4ecf9d7",
+          "notices/python/dnspython/LICENSE": "c3ea3ff5654b329c19d3bc5f7481af623c3dded4a6145585499f843ad3d741cd",
+          "notices/python/pymongo/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "notices/upstream/age/LICENSE": "afbdb4e07a359499db587ae632815809b1fc1670a92d5449af112ce9a67833a2",
+          "notices/upstream/mongodb/LICENSE.md": "e0b215145cf51c766603856643a746420f60aedfbf9a523a2d82a251cac3cce3",
+          "notices/upstream/mongodb/THIRD-PARTY-NOTICES": "88cf41e6a11789919c35aa60e0b24e9b5faef3c8fedab578db4080dd0a462a5b",
+          "pip-check.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+          "pip-install.txt": "977943ffc8ec728c70620b32f050327e569843c3dbee8c381200f7d2ef1453c8",
+          "public-installer.txt": "a1540adbf1a9045454b97dcaa33adc69dda9930925ceed635e0724b0e7ee6ad1",
+          "receipt.json": "83f2f3e9706e8c598bf22984e82d3181a9dab682e5e83ccae066a4eb3d6764ab",
+          "unittest.txt": "4c665b163cacb5f3dc34858939bc4ad5bb3d308216afefaa4f385270f87e79bf",
+          "worker.txt": "fd6a4832d55deb8afca97b9d50a31b63916a2993f1c6785e2351a1f8b29a0533"
+        },
+        "source_file_count": 15,
+        "tests_passed": 44,
+        "skipped": 1,
+        "real_age_tests": 7
+      }
+    ]
+  },
+  "isolated_rotation": {
+    "observed_at_utc": "2026-11-20T13:55:53.757430+00:00",
+    "private_receipt_sha256": "b0c4912d1c6410087b897aebe28b531664c1fc637caccf8f44742bd21a759135",
+    "controller_sha256": "0a6af4c97ff44f871285dcf876eded476a50a20e1acca4995862f90debccd01a",
+    "qualified_backup_manifest_sha256": "7a827a1e1b6df3d9192c130fe654be4872ee0db51c69b25b07ad9c8be17adb8c",
+    "original_ciphertext_sha256": "8b50eb7a4bc49aa92e40857f4ca4ec7654fd7986cb07ed444139659537421ba4",
+    "rotated_ciphertext_sha256": "5f0400c83be9f1aa81a09f8890c33e2ccc003afd2e4a30f2d3db2c75f616e227",
+    "ciphertext_bytes": 19940,
+    "logical_archive_bytes": 14423,
+    "linux_public_cli": "ROTATED_COPY_CREATED",
+    "windows_cross_verification": {
+      "public_verify_receipt": {
+        "status": "CIPHERTEXT_AUTHENTICATED",
+        "archive_bytes": 14423,
+        "ciphertext_sha256": "5f0400c83be9f1aa81a09f8890c33e2ccc003afd2e4a30f2d3db2c75f616e227"
+      },
+      "new_key_authenticates": true,
+      "old_key_refused_on_new_copy": true,
+      "old_key_authenticates_original_before_and_after": true,
+      "old_key_cli_classification": "truncated_envelope",
+      "old_key_direct_age_classification": "no_matching_recipient",
+      "age_and_ciphertext_digests_unchanged": true,
+      "work_empty": true
+    },
+    "temporary_key_removed": true,
+    "no_server_started": true,
+    "baseline_resources_unchanged": true
+  },
+  "limits": [
+    "CI runs offline contract tests after installation of pinned tools and dependencies.",
+    "Rotation qualified the previously restored synthetic archive.",
+    "Storage policy and periodic execution for the final deployment remain to be qualified."
+  ]
+}
