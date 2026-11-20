@@ -31,6 +31,12 @@ de [staging et exploitation](docs/quality/STAGING_AND_OPERATIONS_STUDY.md) et du
 [portail documentaire](docs/quality/DOCUMENTATION_PORTAL_STUDY.md) précisent les
 choix candidats ; elles ne sont pas présentées comme des services déjà déployés.
 
+La [sauvegarde portable chiffrée](docs/operations/MONGODB_BACKUP.md) possède désormais
+une [qualification native distincte](docs/quality/MONGODB_PORTABLE_BACKUP.md) :
+archive hors VM, source supprimée, restauration neuve de 393 documents et 40 index,
+redémarrage et 31 appels de services partagés vérifiés. Ces preuves ne constituent
+pas l'activation HTTP Mongo ni la qualification du schéma final s'il évolue.
+
 Les contrôles2.1 à compléter comprennent les propriétés métier séquentielles,
 le mutation testing ciblé, les mesures web comparables et les procédures
 d'exploitation portables. Le critère de livraison reste la reprise du projet par

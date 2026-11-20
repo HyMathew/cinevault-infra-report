@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "recorded_at_utc": "2026-11-14T16:19:24.953099+00:00",
+  "status": "SYNTHETIC_BACKUP_RESTORE_CORE_QUALIFIED",
+  "scope": "Actual public portable CLI, source VM2 destroyed, retained PC ciphertext restored on new isolated VM3 engine. Shared-service smoke and final-schema deployment qualification remain open.",
+  "tool_source_manifest_sha256": "7a827a1e1b6df3d9192c130fe654be4872ee0db51c69b25b07ad9c8be17adb8c",
+  "fixture_manifest_sha256": "c1d76af16f085eda977b3f1ba00e9c14d31d0fadd0bce40aaf5a5594ba70d1b2",
+  "schema_api_source_commit": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+  "versions": {
+    "mongodb": "8.0.34",
+    "database_tools": "100.20.0",
+    "age": "1.3.2",
+    "backup_pymongo": "4.20.0"
+  },
+  "private_receipt_sha256": {
+    "native-source-2b923e72c21d.json": "f20f435fef885b1469ee0f6124aab39187518a27fcfef296bd24139d093e792d",
+    "native-target-474556d76c60.json": "a0a1ad32a8f90bed1a25b5807f4599f455742c47c7b8786ba75956d49ad988fb",
+    "native-failures-474556d76c60.json": "da639a79514cd62a7d17cd269326a70c816d54ea80fe1089372d3acac050e7b3",
+    "real-archive-pc-b8ed69f47918.json": "96e66613247fd4c3233fe6a2fb808f772ccc24db496077268102e466af2dde9d"
+  },
+  "inventory": {
+    "collections": 12,
+    "documents": 393,
+    "index_count": 40,
+    "counts": {
+      "audit_events": 25,
+      "auth_attempts": 4,
+      "collection_entries": 2,
+      "coordination": 1,
+      "copies": 130,
+      "entity_ids": 194,
+      "idempotency_records": 5,
+      "loans": 6,
+      "movies": 11,
+      "reservations": 5,
+      "sessions": 6,
+      "users": 4
+    },
+    "full_bson_options_indexes_equal_after_restore_and_restart": true
+  },
+  "archive": {
+    "ciphertext_sha256": "8b50eb7a4bc49aa92e40857f4ca4ec7654fd7986cb07ed444139659537421ba4",
+    "ciphertext_bytes": 19940,
+    "stream_archive_bytes": 14423,
+    "windows_off_host_authentication": true,
+    "source_vm_removed_before_restore": true,
+    "ciphertext_only_no_seed_on_target": true
+  },
+  "restore": {
+    "public_cli_status": "ISOLATED_RESTORE_VERIFIED",
+    "nonempty_repeat_refused_unchanged": true,
+    "same_container_volumes_after_restart": true,
+    "new_mongo_process_identity": true,
+    "claim_absent": true,
+    "isolated_network_none_no_published_ports": true,
+    "runtime_uid": 1000,
+    "server_uid": 999,
+    "read_only_server_root": true,
+    "separate_maintenance_restorer_app_identities": true,
+    "source_mongodb_authentication_accounts_not_restored": true,
+    "before_restart_denials": {
+      "restorer": {
+        "coordination_update": 13,
+        "business_collection_drop": 13,
+        "database_drop": 13,
+        "user_creation": 13,
+        "validation_bypass": 13
+      },
+      "anonymous": 13,
+      "application": [
+        121,
+        11000,
+        13
+      ]
+    },
+    "after_restart_same_denials": true,
+    "identity_and_work_config_snapshots_on_private_tmpfs": true
+  },
+  "failure_probes": {
+    "passed": true,
+    "ack_loss_cases": [
+      {
+        "confirmation_unavailable_injected": false,
+        "real_marker_drop_calls": 1,
+        "marker_absent": true,
+        "inventory_unchanged": true,
+        "result": "read_only_reconciliation_success",
+        "duration_seconds": 0.088
+      },
+      {
+        "confirmation_unavailable_injected": true,
+        "real_marker_drop_calls": 1,
+        "marker_absent": true,
+        "inventory_unchanged": true,
+        "result": "finalization_unknown",
+        "duration_seconds": 0.053
+      }
+    ],
+    "canonical_writer_conflict": {
+      "code": 112,
+      "transient_transaction_error": true
+    },
+    "freeze_aborted_inventory_unchanged": true,
+    "post_freeze_writer_committed_once": true,
+    "coordinator_revision_before": 173,
+    "coordinator_revision_after": 174,
+    "all_other_collections_unchanged": true,
+    "injection_is_not_physical_network_fault": true
+  },
+  "windows_real_archive_negative_cases": [
+    {
+      "name": "wrong-key",
+      "exit": 1,
+      "target_connections": 0,
+      "work_empty": true
+    },
+    {
+      "name": "late-bit-flip",
+      "exit": 1,
+      "target_connections": 0,
+      "work_empty": true
+    },
+    {
+      "name": "late-truncation",
+      "exit": 1,
+      "target_connections": 0,
+      "work_empty": true
+    },
+    {
+      "name": "trailing-bytes",
+      "exit": 1,
+      "target_connections": 0,
+      "work_empty": true
+    },
+    {
+      "name": "trusted-digest-mismatch",
+      "exit": 1,
+      "target_connections": 0,
+      "work_empty": true
+    },
+    {
+      "name": "positive-authentication-contact-control",
+      "exit": 1,
+      "target_connections": 11,
+      "not_a_mongodb_success": true
+    }
+  ],
+  "windows_key_rotation": {
+    "new_copy_authenticates_new_key": true,
+    "old_key_refused_on_new_copy": true,
+    "original_retained_unchanged": true,
+    "public_cli_receipt": {
+      "archive_bytes": 14423,
+      "ciphertext_sha256": "8b50eb7a4bc49aa92e40857f4ca4ec7654fd7986cb07ed444139659537421ba4",
+      "rotated_ciphertext_sha256": "d9bd0c9862969e309f734717fe44ab920e69472b69ce0823d65e94c3d983f402",
+      "status": "ROTATED_COPY_CREATED"
+    }
+  },
+  "cleanup": {
+    "source_container_and_two_volumes_removed": true,
+    "target_container_and_two_volumes_removed": true,
+    "volume_baselines_restored": true,
+    "recovery_tmpfs_identity_and_work_removed": true,
+    "pc_original_ciphertext_and_private_identity_retained": true
+  },
+  "limits": [
+    "Small synthetic dataset timings are not benchmarks, RPO/RTO or SLA.",
+    "ACK loss and unavailable confirmation are Python injections after a real MongoDB drop, not physical network faults.",
+    "Canonical writer probe changes only the coordinator in a real transaction; it is not a complete concurrent HTTP business workflow.",
+    "Shared-service smoke on restored state, final schema requalification and production deployment remain separate required checks.",
+    "No global HTTP Mongo factory, bidirectional migration P5, fairness/history or overall goal completion is claimed.",
+    "No cryptographic memory zeroisation, swap/crash-dump exclusion or hard operating-system I/O deadline is established."
+  ]
+}

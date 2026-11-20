@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "recorded_at_utc": "2026-11-14T16:30:10.459001+00:00",
+  "status": "PASS_ISOLATED_RESTORED_SHARED_SERVICES",
+  "scope": "Second fresh restore from retained PC ciphertext, same core restore/restart/refusal checks, then actual shared services over real MongoPersistence and least-privilege app identity. No HTTP factory or application deployment.",
+  "api_source_commit": "3e15e61d0a309b12918338708e40d4f47a0ccdec",
+  "source_snapshot_files": 55,
+  "private_receipt_sha256": {
+    "native-business-1c3580c2b218.json": "c219c125691a37e35117aee464027b1d4731b2281fe1044cf2fdb44ef1a6c192",
+    "native-target-eb5f6bd92a21.json": "d1e9bd0a04043eba24c0663d249cf6e573230dac4778264ca4967022c9feae15"
+  },
+  "review_sha256": "8abc307426cd8b4a3f979175876e1e54b29cc04106e5f31500edffc79ec97d95",
+  "adapter_sha256": "62e353b4bde1e12cfabe15f83c19dcd328acdc7cb0746f388a54cc0020b32779",
+  "code_bundle": {
+    "business_smoke.py": "e436b84e02e4dd4b44a00546b5e66a104bd1d976121398ce34827433399e47db",
+    "smoke_core.py": "0671858d7a0c8cf0324bb2d105ff18844a0697f557831324264f146533d0da1e",
+    "bundle-manifest.json": "e00415c32793a454709f10d6541cce6e9f43fe749fdb6785da911a313248634f",
+    "business-smoke-bundle.tar.gz": "d63ba562f1aae1dcbf027388d4d5836ed61ddd52ae7eb0ec95efe8686f40b35b",
+    "requirements-linux-cp312-hashed.txt": "acd97c67eb5bd769f87d973a9bc81926ce7363679c28a79bbfa928ef3666b654"
+  },
+  "pre_service_counts": {
+    "collections": 12,
+    "documents": 393,
+    "indexes": 40,
+    "revision": 173
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "bson_has_c": false,
+    "pymongo_has_c": false,
+    "packages": {
+      "pymongo": "4.19.0",
+      "pycparser": "3.12",
+      "cffi": "2.1.1",
+      "argon2-cffi": "25.1.0",
+      "argon2-cffi-bindings": "26.1.0",
+      "portalocker": "4.4.2",
+      "dnspython": "2.9.2"
+    }
+  },
+  "sdk_build": {
+    "wheel_sha256": "4213be2dfa5ca50f3fd3dd2a894a6bad798d6d00aa61ee2b8250120ac9212a93",
+    "input_sdist_sha256": "3c510dd3c5d9b392d3b33bb5d2a594758acfe8f026fca654253f947ce0af9d40",
+    "no_ext": true,
+    "two_builds_byte_identical": true,
+    "wheel_tag_preserved": "cp312-cp312-linux_x86_64",
+    "not_retagged_or_universal": true,
+    "codec_cases_passed": 10,
+    "build_evidence_manifest_sha256": "61ec24ffdd91cab7e69c602b4adfd160c4c283db6ca78c8dca0be5dab354e0ed"
+  },
+  "business": {
+    "passed": true,
+    "scope": "shared-services-no-http",
+    "clock": "qualified-fixture-logical-clock",
+    "enabled_login_and_me": 3,
+    "disabled_login_and_me_refused": true,
+    "expired_session_refused": true,
+    "public_movies": 11,
+    "public_copies": 130,
+    "owner_collection_pages": 2,
+    "owner_circulation_pages": 4,
+    "replays_unchanged": 2,
+    "business_collections_unchanged": true,
+    "rbac_errors_preserved": 4,
+    "service_calls": 31,
+    "committed_service_uows": 26,
+    "revision_delta": 26,
+    "sessions_added": 3,
+    "sessions_pruned": 1,
+    "auth_attempts_added": 2,
+    "audit_events_added": 0
+  },
+  "cleanup": {
+    "recovery_key_tmpfs_removed": true,
+    "target_server_and_two_volumes_removed": true,
+    "pc_source_archive_and_key_retained": true,
+    "dependency_only_private_runtime_retained_no_server_process": true
+  },
+  "limits": [
+    "Initial 393-document count precedes the explicit authentication/session/revision mutations of this probe; it is not the final cardinality.",
+    "Private oracle is an independent assertion input in RAM/stdin, not data seeded into the target.",
+    "Real shared-service calls are not complete HTTP Mongo activation or native qualification of the later C5 identity candidate.",
+    "Final-schema requalification, migration P5, admission/history, operational scheduling/storage and full goal acceptance remain separate."
+  ]
+}

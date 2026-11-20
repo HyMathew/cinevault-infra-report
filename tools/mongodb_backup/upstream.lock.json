@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "retrieved_utc": "2026-11-13",
+  "age": "1.3.2",
+  "mongodb_tools": "100.20.0",
+  "mongo_server": "8.0.34",
+  "primary_metadata": [
+    "https://api.github.com/repos/FiloSottile/age/releases/tags/v1.3.2",
+    "https://fastdl.mongodb.org/tools/db/full.json"
+  ],
+  "archives": [
+    {
+      "label": "age-linux",
+      "url": "https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-linux-amd64.tar.gz",
+      "sha256": "cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10",
+      "binaries": {
+        "age-keygen": {
+          "member": "age/age-keygen",
+          "sha256": "0a0009db842259d6717f7eeb30acb6b90d2a2eb924c6acd0a0db0ca1f1537899"
+        },
+        "age": {
+          "member": "age/age",
+          "sha256": "eb7dd1b518f0a307c99cd97782623c5321da049154b04acd2d98d21aa7bc9b2c"
+        }
+      }
+    },
+    {
+      "label": "mongo-windows",
+      "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-100.20.0.zip",
+      "sha256": "b65a32595db38cdf0f413d53cac440c4a6ddac0d224405b550e4100535bdd5ca",
+      "binaries": {
+        "mongodump.exe": {
+          "member": "mongodb-database-tools-windows-x86_64-100.20.0/bin/mongodump.exe",
+          "sha256": "caa8fb254a010eff0fecb8b0c348acfebf3dc97980d6fc2bff3fc2e012344484"
+        },
+        "mongorestore.exe": {
+          "member": "mongodb-database-tools-windows-x86_64-100.20.0/bin/mongorestore.exe",
+          "sha256": "51225270d5e5fe70ffce61489ad8865b5834ec5cdc89420d6a49ceb38d2530de"
+        }
+      }
+    },
+    {
+      "label": "mongo-ubuntu2404",
+      "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2404-x86_64-100.20.0.tgz",
+      "sha256": "0cee7b5bf3e986a01f5b4fcc750d056064a619ba7131cf1b22fef139558cc4be",
+      "binaries": {
+        "mongodump": {
+          "member": "mongodb-database-tools-ubuntu2404-x86_64-100.20.0/bin/mongodump",
+          "sha256": "3df8cafae049e723f0d54b5ba830de7f07712ec1e4170b54f18fa195e9a16136"
+        },
+        "mongorestore": {
+          "member": "mongodb-database-tools-ubuntu2404-x86_64-100.20.0/bin/mongorestore",
+          "sha256": "8141d9ebed3d471ba44cde593e45e9571bdb786da4fdaae8251bfa112a067980"
+        }
+      }
+    },
+    {
+      "label": "age-windows",
+      "url": "https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-windows-amd64.zip",
+      "sha256": "f48d8f8f9ebe903ab5027ed067652f2cc1db94bc206976430133b905dcd8e8c7",
+      "binaries": {
+        "age-keygen.exe": {
+          "member": "age/age-keygen.exe",
+          "sha256": "1549c7049be32695594bedd09bbd352a94b6013a9d5c43364f3c6cd7a09ab61c"
+        },
+        "age.exe": {
+          "member": "age/age.exe",
+          "sha256": "2821a4ed191da07372acd302e5f6feae7a7985e285e1417765ebe74025af45f0"
+        }
+      }
+    }
+  ]
+}
