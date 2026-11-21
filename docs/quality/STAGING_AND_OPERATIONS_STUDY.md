@@ -50,8 +50,9 @@ Les VM universitaires ne sont pas exposées publiquement par ce choix.
 
 Les healthchecks et la rotation Docker json-file10m×3 existent dans la stack
 historique. Le web vérifie son processus ; ce n'est pas une preuve de disponibilité
-de l'API. La future readiness API doit vérifier le backend **sélectionné** et
-refuser une panne Mongo sans basculer silencieusement sur JSON.
+de l'API. La readiness API vérifie le stockage sélectionné et donne
+503 lors d'une indisponibilité de MongoDB. Le contrôle natif a exercé ce
+contrat avec des connexions TLS vérifiées et des refus contraires.
 
 L'observabilité retenue commence par des logs structurés assainis, identifiants de
 corrélation, durée/statut des requêtes, disponibilité/readiness, CPU/RAM/disque et
@@ -63,7 +64,8 @@ Un contrôle périodique léger doit produire un code d'échec et un reçu born�
 collecté hors VM ; sa panne ou l'absence de reçu est elle-même un signal. Les seuils,
 durées de conservation et destination d'alerte seront configurés, puis testés avec
 panne API/Mongo, disque sous seuil, sauvegarde ancienne et collecteur indisponible.
-Ces éléments ne sont pas annoncés comme déjà installés par l'instantané SSH.
+Les journaux applicatifs et le résumeur HTTP ont été vérifiés localement.
+[Procédure](../observability.md). [Comparaison JSON et MongoDB](../performance.md).
 
 Le staging sera qualifié seulement après installation depuis clone propre, HTTPS,
 refus externe27017, parcours authentifié synthétique, arrêt/redémarrage,

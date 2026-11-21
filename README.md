@@ -54,6 +54,8 @@ Les deux projets applicatifs sont publics : [API Flask/JSON](https://github.com/
 - [Développement local et déploiement](docs/deploiement.md)
 - [Swarm Enterprise réellement exécuté et limites](docs/deploiement-swarm-enterprise.md)
 - [Vérification et reprise](docs/validation-reprise.md)
+- [Journaux corrélés et exploitation](docs/observability.md)
+- [Mesures API sur JSON et MongoDB](docs/performance.md)
 - [Rapport scientifique PDF](report/RT0705_CineVault_Mathieu_Kuhnapfel.pdf) et [sources éditables et reconstruction](report/README.md)
 - [Index des preuves publiques et privées](evidence/README.md)
 - [Audit indépendant des24critères et réserves](docs/audit-final.md)
