@@ -44,7 +44,7 @@ test('rewrites encoded spaces, heading fragments and reference-style assets unde
   });
   const manifest = await prepare({ repoRoot: root, base: '/cinevault/' });
   const content = await readFile(path.join(root, 'portal/.generated/src/content/docs/index.md'), 'utf8');
-  assert.match(content, /\/cinevault\/guides\/mon%20guide\/#_top/);
+  assert.match(content, /\/cinevault\/guides\/mon-guide\/#_top/);
   assert.match(content, /\/cinevault\/sources\/evidence\/vue\.svg/);
   assert.equal(manifest.assets.length, 1);
   assert.equal((await readFile(path.join(root, 'portal/.generated/public/sources/evidence/vue.svg'), 'utf8')), '<svg xmlns="http://www.w3.org/2000/svg"></svg>');
@@ -112,15 +112,28 @@ test('tracked report and evidence Markdown remain navigable documents', async t 
     'README.md': '# Home\n\n[Proof](evidence/run/README.md) [Report](report/README.md) [Design](DESIGN.md)',
     'DESIGN.md': '# Design authority\n\nPreserved direction.',
     'evidence/run/README.md': '# Historical proof\n\nDated evidence.',
-    'report/README.md': '# Report\n\nVersion preserved.',
+    'report/README.md': '# Report\n\n[Enterprise](enterprise-2.1/README.md)',
+    'report/enterprise-2.1/README.md': '# Enterprise 2.1\n\nReport sources.',
   });
   const manifest = await prepare({ repoRoot: root });
-  assert.equal(manifest.pages.length, 4);
+  assert.equal(manifest.pages.length, 5);
   assert.equal(manifest.assets.length, 0);
   const markdown = await readFile(path.join(root, 'portal/.generated/src/content/docs/index.md'), 'utf8');
   assert.match(markdown, /\/records\/evidence\/run\//);
   assert.match(markdown, /\/records\/report\//);
   assert.match(markdown, /\/guides\/design\//);
+  const report = await readFile(path.join(root, 'portal/.generated/src/content/docs/records/report.md'), 'utf8');
+  assert.match(report, /\[Enterprise\]\(\/records\/report\/enterprise-21\/\)/);
+  assert.equal(manifest.pages.find(page => page.source === 'report/enterprise-2.1/README.md').route, 'records/report/enterprise-21');
+});
+
+test('refuses distinct source paths that Astro would publish at the same URL', async t => {
+  const root = await fixture(t, {
+    'README.md': '# Home',
+    'report/edition-2.1/README.md': '# Edition 2.1',
+    'report/edition-21/README.md': '# Conflicting edition',
+  });
+  await assert.rejects(prepare({ repoRoot: root }), /Documentation route collision: records\/report\/edition-21/);
 });
 
 test('clean editorial data does not imply clean portal tooling', async t => {

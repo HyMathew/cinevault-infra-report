@@ -7,7 +7,7 @@ import remarkParse from 'remark-parse';
 import remarkStringify from 'remark-stringify';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
-import GithubSlugger from 'github-slugger';
+import GithubSlugger, { slug } from 'github-slugger';
 import { createSatteriMarkdownProcessor } from '@astrojs/markdown-satteri';
 
 const OWNER = 'cinevault-documentation-generated-v1';
@@ -30,12 +30,12 @@ export function normalizeBase(base = '/') {
 const textOf = node => node.value ?? node.alt ?? (node.children ?? []).map(textOf).join('');
 const urlPath = value => value.split('/').map(encodeURIComponent).join('/');
 
-function routeFor(source) {
+function entryPathFor(source) {
   if (source === 'README.md') return '';
   if (!source.includes('/')) return 'guides/' + source.replace(/\.md$/i, '').toLowerCase();
   const documentation = source.startsWith('docs/');
   const name = (documentation ? source.slice('docs/'.length) : source).replace(/\.md$/i, '').toLowerCase();
-  return (documentation ? 'guides/' : 'records/') + name.replace(/(?:^|\/)readme$/, '').replace(/\/$/, '');
+  return ((documentation ? 'guides/' : 'records/') + name.replace(/(?:^|\/)readme$/, '')).replace(/\/$/, '');
 }
 
 /** Only tracked public inputs are considered; ignored plans and secrets stay outside publication. */
@@ -97,10 +97,14 @@ export async function prepare({ repoRoot, outputRoot, base = '/' }) {
     const rendered = await headingRenderer.render(parser.stringify(tree));
     if (rendered.metadata.headings.length !== contentAnchors.length) throw new Error('Unsupported heading transformation: ' + source);
     contentAnchors.forEach((anchor, index) => anchors.set(anchor, rendered.metadata.headings[index].slug));
-    const route = routeFor(source);
+    const entryPath = entryPathFor(source);
+    // Astro slugs each file path segment. Astro and Starlight each remove a
+    // terminal /index, and Starlight normalizes the resulting URL parameter.
+    const entrySlug = entryPath.split('/').map(segment => slug(segment)).join('/').replace(/\/index$/, '');
+    const route = entrySlug.replace(/\/index$/, '').normalize();
     if (routes.has(route)) throw new Error('Documentation route collision: ' + route);
     routes.add(route);
-    pages.set(source, { source, bytes, tree, title, route, anchors });
+    pages.set(source, { source, bytes, tree, title, route, entryPath, anchors });
   }
 
   function fragmentFor(fragment, page) {
@@ -186,7 +190,7 @@ export async function prepare({ repoRoot, outputRoot, base = '/' }) {
   }
   for (const page of pages.values()) {
     const generated = '---\ntitle: ' + JSON.stringify(page.title) + '\n---\n\n' + parser.stringify(page.tree);
-    const filename = page.route ? page.route + '.md' : 'index.md';
+    const filename = page.entryPath ? page.entryPath + '.md' : 'index.md';
     const destination = path.join(output, 'src/content/docs', filename);
     await mkdir(path.dirname(destination), { recursive: true });
     await writeFile(destination, generated, 'utf8');
