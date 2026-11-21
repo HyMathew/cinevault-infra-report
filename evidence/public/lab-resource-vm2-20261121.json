@@ -1,0 +1,18 @@
+{
+  "commands": [
+    "docker info (four selected columns)",
+    "free -m",
+    "df -B1 --output=size,used,avail /var/lib/docker"
+  ],
+  "docker_storage_driver": "overlayfs",
+  "docker_version": "29.9.3",
+  "filesystem_available_bytes": 8023269376,
+  "filesystem_size_bytes": 19896352768,
+  "filesystem_used_bytes": 10836463616,
+  "logical_cpus": 2,
+  "memory_available_mib": 1485,
+  "memory_total_bytes": 2062172160,
+  "node_role": "API and proposed staging storage worker",
+  "observed_at_utc": "2026-11-21T13:39:09.773609+00:00",
+  "scope": "point-in-time resource observation over SSH on existing VM2"
+}

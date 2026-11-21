@@ -60,12 +60,15 @@ def compiler(folder):
     return next(folder.glob("*/typst"))
 
 
-def compile_report(executable):
+def compile_report(executable, edition=None):
+    report = ROOT / "report"
+    if edition == "enterprise-2.1":
+        report = report / edition
     version = subprocess.check_output([str(executable), "--version"], text=True).strip()
     assert version.startswith("typst " + VERSION + " "), "Unexpected Typst version"
-    config = json.loads((ROOT / "report/build-config.json").read_text(encoding="utf-8"))
-    output = ROOT / "report" / config["filename"]
-    assert output.parent == ROOT / "report" and output.suffix == ".pdf"
+    config = json.loads((report / "build-config.json").read_text(encoding="utf-8"))
+    output = report / config["filename"]
+    assert output.parent == report and output.suffix == ".pdf"
     subprocess.run(
         [
             str(executable),
@@ -77,7 +80,7 @@ def compile_report(executable):
             str(ROOT),
             "--input",
             "status=" + config["status"],
-            str(ROOT / "report/main.typ"),
+            str(report / "main.typ"),
             str(output),
         ],
         check=True,
@@ -96,7 +99,7 @@ def compile_report(executable):
         "platform": platform.system(),
         "scope": "Compilation only; visual inspection and final audit are separate gates.",
     }
-    (ROOT / "report/build-receipt.json").write_text(
+    (report / "build-receipt.json").write_text(
         json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     print(json.dumps(result, ensure_ascii=False))
@@ -107,12 +110,13 @@ def main():
     parser.add_argument(
         "--typst", type=Path, help="Use a previously verified local Typst0.15.1"
     )
+    parser.add_argument("--edition", choices=("enterprise-2.1",))
     args = parser.parse_args()
     if args.typst:
-        compile_report(args.typst.resolve())
+        compile_report(args.typst.resolve(), args.edition)
     else:
         with tempfile.TemporaryDirectory(prefix="cinevault-typst-") as directory:
-            compile_report(compiler(Path(directory).resolve()))
+            compile_report(compiler(Path(directory).resolve()), args.edition)
 
 
 if __name__ == "__main__":

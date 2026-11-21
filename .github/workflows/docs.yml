@@ -50,3 +50,17 @@ jobs:
             cinevault-infra-report/report/build-receipt.json
           retention-days: 7
           if-no-files-found: error
+      - name: Check HTTP summary and correlation
+        working-directory: cinevault-infra-report
+        run: python -B -m pytest -q -W error tests/test_http_log_summary.py
+      - name: Compile Enterprise 2.1 report with pinned Typst
+        run: python -B cinevault-infra-report/scripts/build_report.py --edition enterprise-2.1
+      - name: Keep Enterprise 2.1 PDF and receipt
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: report-enterprise-2.1-${{ matrix.os }}
+          path: |
+            cinevault-infra-report/report/enterprise-2.1/RT0705_CineVault_Mathieu_Kuhnapfel.pdf
+            cinevault-infra-report/report/enterprise-2.1/build-receipt.json
+          retention-days: 7
+          if-no-files-found: error

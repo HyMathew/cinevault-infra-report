@@ -31,14 +31,37 @@ def main():
                 )
                 assert resolved.exists(), f"Missing local link: {target} in {path.name}"
     diagrams = list((ROOT / "docs").glob("*diagrams/*.svg"))
+    diagrams.extend((ROOT / "report/enterprise-2.1/figures").glob("*.svg"))
     for path in diagrams:
         assert ElementTree.parse(path).getroot().tag.endswith("svg"), path.name
     chapters = json.loads((ROOT / "report/chapters.json").read_text(encoding="utf-8"))
     assert len(chapters) == len({item["id"] for item in chapters}) == 30
     assert all(item["title"] and all(item["paragraphs"]) for item in chapters)
+    updated = json.loads(
+        (ROOT / "report/enterprise-2.1/chapters.json").read_text(encoding="utf-8")
+    )
+    original_ids = [item["id"] for item in chapters]
+    updated_ids = [item["id"] for item in updated]
+    assert [
+        identity for identity in updated_ids if identity in original_ids
+    ] == original_ids
+    assert set(updated_ids) - set(original_ids) == {
+        "mongo",
+        "migration",
+        "operations",
+        "performance",
+    }
+    assert len(updated_ids) == len(set(updated_ids)) == 34
+    assert all(
+        item["title"].strip()
+        and item["paragraphs"]
+        and all(text.strip() for text in item["paragraphs"])
+        for item in updated
+    )
     print(
         f"PASS: {len(documents)} Markdown documents, {len(diagrams)} SVG roots, "
-        "30 nonempty report chapters. PDF compilation/visual QA is a separate gate."
+        "30 original report chapters and 34 for Enterprise 2.1. "
+        "PDF compilation/visual QA is a separate gate."
     )
 
 

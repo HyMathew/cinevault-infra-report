@@ -1,0 +1,275 @@
+[
+  {
+    "id": "intro",
+    "title": "Introduction",
+    "paragraphs": [
+      "Une vidéothèque partagée doit préserver l’état de ses exemplaires quand plusieurs utilisateurs demandent le même prêt. Une collection personnelle doit rester privée et l’échec d’un import doit laisser les données cohérentes. CineVault décompose ces opérations entre un navigateur, une présentation Flask/Jinja et une API Flask.",
+      "L’édition 2.1 présente le socle RT0705 fondé sur JSON, le service JSON observé sur Swarm le 9 novembre 2026 et les qualifications MongoDB effectuées ensuite sur des bases isolées. Chaque observation est rattachée aux révisions et aux conditions de son essai. L’état des preuves est arrêté au 21 novembre 2026."
+    ]
+  },
+  {
+    "id": "subject",
+    "title": "Analyse du sujet et des cours",
+    "paragraphs": [
+      "Le sujet RT0705TP suit trois étapes. Il demande l’analyse des fonctionnalités, des acteurs, des données et de leur exécution. Il précise ensuite la séparation en deux projets, le montage du code dans les conteneurs et les exercices Flask/Jinja. Il poursuit avec l’API et le démarrage coordonné de la présentation. TRACEABILITY.md conserve les 28 exigences du socle et la portée des vérifications.",
+      "Les cours C0 à C5 fournissent le vocabulaire pour décrire le traitement des données et des messages. Les séquences relient les requêtes aux vérifications, aux opérations de stockage et aux réponses. Les comptes, le prêt d’exemplaires et l’orchestration Swarm prolongent cette réalisation pédagogique."
+    ]
+  },
+  {
+    "id": "requirements",
+    "title": "Cahier des charges et critères de réussite",
+    "paragraphs": [
+      "Le visiteur consulte et filtre le catalogue. Le membre gère ses collections privées, demande un prêt ou réserve un film. Les gestionnaires entretiennent le catalogue, les exemplaires et les prêts. L’administrateur gère les comptes et leurs rôles. L’API fournit aussi l’import et l’export, des propositions de métadonnées, des statistiques et des recommandations explicables.",
+      "Le parcours académique exige deux projets Git, un échange HTTP/JSON et la persistance dans un fichier JSON. Le mode Enterprise 2.1 peut sélectionner MongoDB à la place du fichier métier pour une instance donnée. Une migration vérifiée et une séquence de retour font partie des critères d’exploitation."
+    ]
+  },
+  {
+    "id": "method",
+    "title": "Méthodologie et conservation de l’existant",
+    "paragraphs": [
+      "Chaque essai fixe le problème, la révision, l’environnement et les résultats attendus. Une reproduction ciblée précède la correction. Une nouvelle campagne vérifie ensuite le comportement et consigne les limites de son périmètre. Les opérations de qualification emploient des données synthétiques et des ressources créées pour l’essai.",
+      "Le rapport v1.0.0 et ses preuves sont conservés. L’édition 2.1 cite notamment validation-current.md pour le déploiement du 9 novembre, les reçus du dépôt API pour l’exécution MongoDB et le reçu conjoint de performance et d’observabilité du 21 novembre. Les empreintes permettent de rattacher les observations aux jeux de sources correspondants."
+    ]
+  },
+  {
+    "id": "actors",
+    "title": "Acteurs, responsabilités et charge",
+    "paragraphs": [
+      "Le visiteur correspond à l’absence de session. Les rôles member, manager et admin portent les permissions métier. L’exploitant administre Linux, le réseau, les services et la reprise. Les droits de cet exploitant et ceux du compte MongoDB sont distincts des permissions applicatives. La protection des collections privées s’applique également face à l’administrateur applicatif.",
+      "Les parcours prévoient des lectures fréquentes du catalogue, des modifications moins fréquentes et des opérations d’authentification coûteuses en calcul. Cette description est une hypothèse de conception. Les mesures 2.1 utilisent ensuite des jeux et des scénarios synthétiques documentés."
+    ]
+  },
+  {
+    "id": "personas",
+    "title": "Personas et parcours prioritaires",
+    "paragraphs": [
+      "Cinq profils fictifs aident à préciser les besoins d’usage. La collectionneuse retrouve ses favoris et ses supports. Le membre occasionnel comprend la disponibilité et l’attente. Le gestionnaire attribue un exemplaire sans collision. L’administrateur préserve au moins un compte administrateur actif. L’exploitant retrouve la version exécutée et les preuves nécessaires à la reprise.",
+      "Les profils orientent les tests du catalogue, des formulaires, des autorisations et de la restauration. Une étude de satisfaction auprès d’utilisateurs reste une perspective."
+    ]
+  },
+  {
+    "id": "usecases",
+    "title": "Cas d’utilisation et autorisations",
+    "paragraphs": [
+      "Le modèle UML du socle décrit 14 cas principaux. actors-use-cases.md précise leurs préconditions, les états attendus et les exceptions. Les fonctions de consultation, de gestion du catalogue et de circulation sont distinguées des responsabilités d’administration.",
+      "Pour une mutation, l’API vérifie la session, le rôle ou la propriété, l’existence de la ressource et sa version lorsque le contrat l’exige. Le contrôle appliqué par le frontend facilite la navigation. La décision qui autorise une écriture est relue dans l’unité de travail de l’API."
+    ]
+  },
+  {
+    "id": "functional",
+    "title": "Modèle fonctionnel",
+    "paragraphs": [
+      "Un film décrit une œuvre. Les exemplaires prêtables ont leurs propres identifiants, supports, états et emplacements. Une collection personnelle décrit le lien entre un membre et un film. Une demande de prêt et une réservation portent chacune leur cycle de vie.",
+      "Les services métier séparent comptes, catalogue, collections, circulation, transfert et calculs. Les routes publiques exposent les projections nécessaires à la consultation. Les routes privées ajoutent les contraintes de rôle et de propriétaire avant de construire leur résultat."
+    ]
+  },
+  {
+    "id": "data",
+    "title": "Modèle de données et exemples",
+    "paragraphs": [
+      "Le document JSON Enterprise v2 représente dix ensembles, dont les comptes, sessions, compteurs d’authentification, reçus d’idempotence, films, exemplaires, collections, prêts, réservations et événements d’audit. Les identifiants stables portent les références entre objets. Le dictionnaire des données distingue les champs persistés de ceux des ressources HTTP.",
+      "Dans le corpus académique initial, 93 échanges exécutés couvrent les 44 couples méthode-chemin. Le corpus couvre également 42 composants OpenAPI, 18 définitions du stockage et cinq schémas techniques. Les 23 régressions du vérificateur documentent les refus de formes corrompues et la portabilité des exemples. Les tests métier examinent séparément relations, unicité, autorisations et transitions."
+    ]
+  },
+  {
+    "id": "execution",
+    "title": "Modèles d’exécution et messages",
+    "paragraphs": [
+      "Le chemin navigateur, présentation et API est synchrone. Le formulaire est validé et, pour une mutation, soumis au contrôle CSRF sur le Web. Le client HTTP applique des délais bornés. L’API décode et valide le message, contrôle les droits, exécute la commande métier et construit sa réponse après confirmation de la transaction.",
+      "Les dix séquences vectorielles du socle illustrent les échanges et les traitements à réception. Avec les services communs en 2.1, une lecture publique et un précontrôle d’autorité utilisent une unité de travail de lecture. Une opération privée peut actualiser la session. Une mutation relit l’autorité et les références utiles dans sa transaction."
+    ]
+  },
+  {
+    "id": "logical",
+    "title": "Architecture à trois tiers",
+    "paragraphs": [
+      "Le navigateur constitue le tiers client. Flask/Jinja présente les données reçues par HTTP/JSON. L’API Flask possède l’accès au stockage métier et choisit l’adaptateur configuré. JSON et MongoDB implémentent une frontière commune d’accès aux données derrière les mêmes services métier.",
+      "Le manager Swarm appartient au plan d’orchestration. Sur le cluster observé, son état Drain laisse les tâches applicatives aux workers. L’évolution du stockage se situe dans le tiers API. Le navigateur et le frontend continuent à utiliser le contrat HTTP."
+    ]
+  },
+  {
+    "id": "inventory",
+    "title": "Inventaire du frontend et des scripts",
+    "paragraphs": [
+      "L’inventaire du socle rattache les pages aux données, traitements, appels API et erreurs. Le relevé v1 compte 36 règles URL explicites et 28 templates. Les outils de qualité et de publication font partie de l’inventaire des scripts. Les nombres restent associés à la révision du relevé.",
+      "L’accueil, le catalogue, la fiche, le profil, les collections et la circulation utilisent des composants Jinja communs. Les états vides, les refus d’accès, le conflit de version et l’indisponibilité font partie du contrat de présentation. frontend-inventory.md détaille les dépendances de chaque vue."
+    ]
+  },
+  {
+    "id": "rest",
+    "title": "Spécification REST",
+    "paragraphs": [
+      "Le contrat /api/v1 sépare les ressources des actions qui changent leur état. Les statuts différencient notamment la validation 422, l’autorisation 401 ou 403, l’absence 404, le conflit 409 et la condition de version 412 ou 428. Une limitation peut donner 429. Une indisponibilité du stockage peut donner 503. OpenAPI décrit les formes exactes des réponses.",
+      "Une précondition If-Match protège certaines mutations contre l’écrasement d’une version plus récente. Une clé d’idempotence permet de retrouver le résultat d’un import compatible après une incertitude. Le service Web invite à vérifier l’état de l’opération quand la réponse de mutation n’est pas exploitable."
+    ]
+  },
+  {
+    "id": "physical",
+    "title": "Infrastructure RemoteLabz",
+    "paragraphs": [
+      "Le laboratoire répartit la présentation sur VM1, l’API sur VM2 et le manager Swarm sur VM3. Le relevé donne Ubuntu 24.04.5, environ 1 966 Mio par VM et deux CPU logiques. Le manager utilise Docker 29.9.3. Le poste Windows administre les VM par SSH avec contrôle des clés hôtes.",
+      "Le 21 novembre, le relevé ponctuel lab-resource-vm2-20261121.json a mesuré sur VM2 1 485 Mio de mémoire disponible et 7,47 Gio libres sur le système de fichiers Docker. Ces valeurs caractérisent un instant. Elles permettent de préparer les limites de ressources du staging, dont la consommation effective doit encore être mesurée."
+    ]
+  },
+  {
+    "id": "compose",
+    "title": "Docker Compose et volume partagé",
+    "paragraphs": [
+      "Compose coordonne les deux applications du socle. Les conteneurs montent le code de leurs projets en lecture seule et le volume métier reste distinct. Les modifications du code et la persistance des données s’observent ainsi séparément.",
+      "Une pile isolée a effectué 16 contrôles sur VM1 aux révisions API 6a86f2e et Web 4883876. Les montages, les empreintes du code, la visibilité du témoin et les exercices A/B/C ont été vérifiés. Les captures du rapport initial proviennent de cette campagne pédagogique."
+    ]
+  },
+  {
+    "id": "swarm",
+    "title": "Docker Swarm et distribution des images",
+    "paragraphs": [
+      "Le cluster observé possède un manager Leader en Drain et deux workers, avec un réseau Overlay chiffré pour les échanges interservices. Le déploiement JSON du 9 novembre utilise une réplique API et son volume local. Les deux images publiques ont été tirées anonymement sur les trois nœuds. Les preuves relient les manifestes du registre aux images scannées et aux références effectivement utilisées.",
+      "Le manifeste 2.1 de staging ajoute un réseau interne dédié entre API et MongoDB et un réseau distinct entre Web et API. MongoDB et ses données locales sont prévus sur VM2. Le 21 novembre, le manager a rendu la configuration avec zéro puis un réplica de chaque application et aucun port publié. Cette vérification de configuration précède la mise en service du staging. La procédure et ses préconditions figurent dans staging-mongodb.md."
+    ]
+  },
+  {
+    "id": "frontend",
+    "title": "Développement du frontend et robustesse",
+    "paragraphs": [
+      "Le client HTTP de la présentation centralise les délais, les erreurs, les jetons d’accès et la validation des réponses. Une réponse décodable mais mal formée peut provoquer une erreur de rendu. La frontière native contrôle les champs avant de les transmettre à Jinja. Les réponses vides ou les chaînes non encodables sont traitées comme des erreurs contrôlées lorsque le contrat exige une autre forme.",
+      "Les observations Chrome v1 couvrent 14 positions Tab sur le catalogue, l’état vide et le retour au catalogue, à 390 et 820 pixels sans débordement observé. Le contraste des deux placeholders passe de 3,56:1 à 8,99:1 dans ce parcours. La synthèse et les preuves sont dans validation-current.md. La validation 2.1 des journaux repose sur une campagne HTTP distincte."
+    ]
+  },
+  {
+    "id": "backend",
+    "title": "Développement du backend",
+    "paragraphs": [
+      "Les contrôleurs transforment les requêtes en paramètres métier. Les services de compte, catalogue, prêt et transfert utilisent les mêmes contrats de stockage pour JSON et MongoDB. Les ports limitent les accès aux opérations attendues et les repositories appliquent les projections et écritures techniques du moteur.",
+      "Les contrôles de rôle et de propriété restent dans la même unité de travail que les lectures ou les mutations protégées. Un traitement qui attend un fournisseur externe réalise un premier contrôle avant l’appel réseau, puis revalide l’état pertinent avant une écriture. La réponse HTTP est construite après la confirmation de la transaction."
+    ]
+  },
+  {
+    "id": "auth",
+    "title": "Authentification et autorisations",
+    "paragraphs": [
+      "Le service API hache les secrets avec Argon2id et conserve l’empreinte des jetons opaques. La connexion vérifie budget, compte et mot de passe dans une unité de travail cohérente avec l’ouverture de la session. Une reprise complète du callback MongoDB peut refaire le calcul. L’inscription, elle, effectue son hachage après réservation d’un budget sous un verrou d’admission distinct, puis vérifie à nouveau les préconditions dans la transaction métier.",
+      "La fenêtre d’inscription autorise 20 calculs par source et 60 globalement en 60 secondes pour le magasin d’admission considéré. Le contexte signé relie le pair observé aux données de la requête. La campagne C5 a exercé huit contrôles des commandes opérateur, dont la confirmation masquée et la révocation des seules sessions du compte réinitialisé. Elle a utilisé une base séparée du scénario P5. Le reçu commun se trouve dans mongodb-p5-operator-native-20261120.json du dépôt API."
+    ]
+  },
+  {
+    "id": "collections",
+    "title": "Collections et exemplaires",
+    "paragraphs": [
+      "Les supports déclarés par un membre décrivent sa collection personnelle. Les exemplaires prêtables appartiennent au catalogue géré. Cette distinction explique la présence de deux objets même lorsque les deux font référence au même film.",
+      "La disponibilité s’appuie sur les exemplaires, les prêts effectifs et la priorité applicable. La modification ou suppression versionnée protège l’historique référencé. Les accès aux collections vérifient le propriétaire côté API, y compris lorsqu’un administrateur demande une entrée d’un autre membre."
+    ]
+  },
+  {
+    "id": "loans",
+    "title": "Emprunts et réservations",
+    "paragraphs": [
+      "Une demande de prêt peut exister avant le choix d’un exemplaire. Lors de l’attribution, la transaction relit la demande, sa version, la disponibilité de l’exemplaire et la priorité pertinente. Elle prévient l’attribution simultanée de la même copie à deux prêts actifs. Le retour conserve l’historique.",
+      "Une réservation suit une file ordonnée et peut être satisfaite, annulée ou expirée. La priorité est recalculée sur l’état courant. Les campagnes de circulation documentent un succès et un conflit lors d’une double attribution. Le retour P5 a confirmé la présence d’une attribution et d’une réservation créées après l’import initial."
+    ]
+  },
+  {
+    "id": "json",
+    "title": "Persistance JSON et reprise",
+    "paragraphs": [
+      "Le stockage fichier protège lecture, modification et écriture par un verrou interprocessus. Le service valide le document entier avant le remplacement atomique de la version. Le coût de lecture et la durée de contention augmentent avec la taille du magasin. Une erreur qui suit le remplacement peut rendre l’issue d’une opération incertaine.",
+      "La restauration d’un instantané Enterprise crée une cible distincte. Elle met en quarantaine les accès restaurés tout en conservant les relations et l’historique métier. Cette procédure a été vérifiée sur une cible jetable. Le chemin JSON reste disponible pour l’exécution académique et pour le retour contrôlé testé en 2.1."
+    ]
+  },
+  {
+    "id": "mongo",
+    "title": "Persistance documentaire et transactions MongoDB",
+    "paragraphs": [
+      "Un document BSON représente une entité. Les UUID publics restent des chaînes et les entiers sont convertis explicitement en Int64 BSON. Les horodatages métier gardent leur unité en secondes UTC. La base qualifiée possède douze collections, dont le registre d’identifiants et le coordinateur, et 40 index. Les validateurs contrôlent les formes. Les contraintes entre collections restent vérifiées par l’unité de travail.",
+      "L’adaptateur MongoDB prend un instantané de lecture ou réserve la révision de coordination avant les écritures d’une commande. Une erreur transitoire permet de reprendre la transaction entière avec des effets métier préparés de façon stable. Une confirmation incertaine entraîne d’abord une reprise du commit de la même transaction, dans les bornes de la politique. Les écritures restent sérialisées autour du coordinateur. Les règles et les limites sont détaillées dans mongodb-model.md et persistence-uow.md du dépôt API.",
+      "Le runtime sélectionne un moteur à l’initialisation. MongoDB requiert un nom de base explicite et un fichier secret pour la connexion authentifiée. Une panne du moteur actif produit un refus de disponibilité. Le fichier d’admission et le cache éventuel sont distincts des données métier. Le manifeste de staging prévoit un volume auxiliaire."
+    ]
+  },
+  {
+    "id": "migration",
+    "title": "Migration P5 et retour contrôlé",
+    "paragraphs": [
+      "Après arrêt des écrivains et sauvegarde de l’original, le CLI inspecte le document d’entrée et vérifie son empreinte. L’exploitant préprovisionne une base distincte. Le CLI contrôle ses validateurs et index, puis écrit et vérifie l’état dans une transaction. Une relance sur le même état confirme le résultat déjà appliqué. Une cible divergente est refusée. Le retour prend un nouvel instantané de MongoDB et produit un fichier JSON distinct après comparaison de ses empreintes.",
+      "Sur MongoDB 8.0.34 en boucle locale isolée, la campagne a500e245 a effectué neuf étapes et vérifié 39 échanges HTTP du scénario. Elle a créé une inscription, des sessions, un prêt approuvé et une réservation après la migration. L’export inverse et le redémarrage JSON ont retrouvé les nouvelles écritures et les reçus. L’original et la sauvegarde ont gardé les mêmes octets. Ce scénario démontre le retour sur des données synthétiques avec les écrivains maîtrisés. Les pièces sont mongodb-migration.md et mongodb-p5-operator-native-20261120.json du dépôt API."
+    ]
+  },
+  {
+    "id": "external",
+    "title": "Métadonnées, statistiques et recommandations",
+    "paragraphs": [
+      "Le service opt-in de métadonnées applique cache, quota et délai avant de proposer des valeurs au gestionnaire. La stack JSON du 9 novembre a effectué une recherche Wikimedia sur Metropolis et ouvert l’aperçu Q151599. Le résultat a été consulté sans création de film. Les métadonnées proposées et l’attribution de l’affiche restent à vérifier avant enregistrement.",
+      "Les règles de calcul utilisent les permissions et l’état des collections. Les recommandations déterministes rendent leurs raisons explicites. Sur une base MongoDB restaurée, la campagne c270d94 a vérifié quatorze résultats analytiques exacts, des refus de droits et les accès au cache des affiches avec un fournisseur de test déterministe. La pièce read-services-native-20261120.json décrit des appels de services distincts des contrôles HTTP."
+    ]
+  },
+  {
+    "id": "tests",
+    "title": "Stratégie de tests",
+    "paragraphs": [
+      "Les tests unitaires et de contrat couvrent les formes, les droits, les transitions et la concurrence déterministe. Les essais Compose contrôlent les échanges HTTP et les volumes. Les campagnes distribuées vérifient le placement, les images et les communications réelles. Les observations navigateur qualifient un parcours et une taille d’écran identifiés.",
+      "L’API a500e245 a été exécutée dans le workflow 44831153091, qui publie des résultats Windows, Ubuntu et cinq tests MongoDB réels. Les campagnes P5, C5, TLS et de backup gardent chacune leurs propres preuves. Les essais locaux des révisions de journaux 22bcecd et 70fa78e comptent respectivement 567 et 470 tests réussis. Le total API est accompagné de 35 sous-tests réussis et cinq tests ignorés dans cette exécution locale."
+    ]
+  },
+  {
+    "id": "security",
+    "title": "Sécurité et chaîne de livraison",
+    "paragraphs": [
+      "Le déploiement JSON contrôlé le 9 novembre monte les secrets aux seuls services concernés. Les conteneurs applicatifs utilisent un UID non privilégié, une racine en lecture seule et des capacités système retirées. En qualification MongoDB, les identités de provisionnement, d’application et d’exploitation ont des droits distincts. Le 21 novembre, la sonde HTTP /health de l’API a500e245 a obtenu 200 avec TLS 1.3 et SCRAM sur le lien API–MongoDB. Elle a obtenu 503 avec une CA erronée, un nom de serveur incorrect et un mauvais mot de passe. mongodb-tls-native-20261121.json borne cette observation à un réseau isolé sur un hôte.",
+      "Le scan récent des images locales de staging a produit dix correspondances High par image, soit cinq avis affectant chacun libcrypto3 et libssl3 en version Alpine 3.5.9-r1. La base utilisée par Grype 0.121.2 a été construite le 21 novembre à 06 h 20 UTC. Les cinq avis sont CVE-2026-107493, CVE-2026-107494, CVE-2026-121482, CVE-2026-124709 et CVE-2026-84786. Le seuil High/Critical empêche la distribution de ces images et suspend le déploiement du staging. Le résultat est détaillé dans runtime.md des dépôts applicatifs."
+    ]
+  },
+  {
+    "id": "results",
+    "title": "Résultats observés",
+    "paragraphs": [
+      "Le 9 novembre à 16 h 04 à Paris, trois nœuds sont Ready, le manager est Leader en Drain et deux services JSON sont sains sur leurs workers. Les 25 contrôles de mise à jour des références API 6a86f2e et Web f3d10cb ont confirmé le placement, les digests, la conservation du volume métier et du digest des comptes, ainsi que le maintien d’une session existante et une nouvelle connexion signée. La comparaison du digest exclut les champs opérationnels de session, compteurs et révision. La campagne est documentée dans validation-current.md.",
+      "Le 21 novembre, 21 échanges HTTP ont vérifié l’import et l’export de catalogue en mode MongoDB sur a500e245. Le lot a créé un film et ajouté du stock. Les contrôles couvrent l’atomicité d’un refus, les droits, le rejeu, les exports JSON et CSV et les cardinalités finales. catalogue-transfer-native-20261121.json en conserve le résultat."
+    ]
+  },
+  {
+    "id": "operations",
+    "title": "Sauvegarde et exploitation",
+    "paragraphs": [
+      "Le 14 novembre, une base synthétique sur VM2 a été sauvegardée vers un PC Windows dans une archive chiffrée. La restauration sur VM3, après retrait du conteneur et des volumes source, a retrouvé 393 documents dans douze collections et 40 index sans réinsérer le jeu initial. Le redémarrage de la cible a conservé l’inventaire. Une rotation de clé effectuée sous Linux le 20 novembre a été vérifiée sous Windows. La nouvelle clé permet d’ouvrir et de vérifier la copie tournée. L’ancienne ouvre encore l’original. Les deux campagnes sont décrites dans MONGODB_PORTABLE_BACKUP.md.",
+      "Sur le PC, un vrai chargement Web de /films en 70fa78e a appelé /api/v1/movies sur l’API 22bcecd. Les deux événements 200 ont été rapprochés par les identifiants de requête. Les valeurs de contrôle passées en recherche, cookie et en-tête entrant étaient absentes des événements. Le résumeur calcule les taux de 5xx et des percentiles sur une fenêtre choisie. observability.md documente l’usage du résumeur et des sondes. L’installation d’une collecte et d’alertes périodiques reste à qualifier."
+    ]
+  },
+  {
+    "id": "performance",
+    "title": "Comparaison des latences",
+    "paragraphs": [
+      "Le 21 novembre, deux jeux synthétiques de 120 et 600 films avec 358 et 1 798 exemplaires ont été exécutés sur VM3. Un même code a500e245 et un serveur WSGI multithread ont traité successivement les variantes JSON et MongoDB par HTTP en boucle locale. La campagne a mesuré 736 requêtes après échauffement et vérifié statuts, contenu et créations de favoris.",
+      "Avec un seul client et 120 films, le p95 de la page de catalogue est de 10,8 ms en JSON et 13,2 ms en MongoDB. Avec 600 films et quatre clients, il atteint 819,0 ms et 47,1 ms. Les mesures comprennent la connexion et la lecture de la réponse. Une campagne par jeu décrit ce laboratoire. Le pic mémoire déclaré concerne le processus API et inclut l’authentification initiale. performance.md contient les résultats par opération et leur interprétation. Le reçu est mongodb-performance-observability-20261121.json."
+    ]
+  },
+  {
+    "id": "incidents",
+    "title": "Problèmes rencontrés et corrections",
+    "paragraphs": [
+      "Le montage tmpfs court était accepté par la validation Swarm initiale, mais absent du service effectif. Gunicorn échouait faute de répertoire temporaire inscriptible. La syntaxe longue a été vérifiée sur les montages réellement appliqués, puis sur le démarrage et l’état de santé des tâches.",
+      "Lors de la première campagne P5, les vérifications métier ont réussi et le retrait de répertoires a demandé une seconde connexion. Le retrait a été consigné séparément. La campagne suivante a confirmé les étapes métier et le nettoyage. L’édition retient ce deuxième reçu comme résultat complet et conserve la distinction entre les deux exécutions."
+    ]
+  },
+  {
+    "id": "critical",
+    "title": "Analyse critique des choix",
+    "paragraphs": [
+      "Le fichier JSON reste adapté au nécessaire aller-retour pédagogique entre formulaire, message et données persistées. MongoDB permet des lectures et projections ciblées avec des transactions sur plusieurs collections. Le coordinateur reste un point de contention des écritures et une phase de retour peut être limitée par la capacité du document JSON. Les mesures de taille et de concurrence aident à décider quels usages approfondir.",
+      "Swarm facilite le placement et l’identification des tâches. La topologie observée repose sur un manager et des volumes locaux. La future base de staging prévoit un réplica à un membre. La provenance des images identifie un artefact construit et scanné. Une reconstruction à une autre date peut résoudre des paquets système différents et doit repasser les contrôles de livraison."
+    ]
+  },
+  {
+    "id": "limits",
+    "title": "Limites et travaux de clôture",
+    "paragraphs": [
+      "La qualification TLS MongoDB sur un hôte et les essais de migration isolés précèdent la validation multidomaine du staging. Les contrôles d’accès au réseau entre VM, le redémarrage autonome depuis les disques de VM2 et VM3, la reprise après perte de disque et une terminaison HTTPS publique restent à démontrer. La décision de livraison dépend aussi de nouvelles images qui franchissent le scan de sécurité.",
+      "Les captures du socle décrivent les parcours observés et l’étude de performance une charge synthétique bornée. Une campagne d’accessibilité élargie, des essais de résilience multi-hôte et des mesures de collecte en déploiement complèteraient ces observations. Le rapport de la v1.0.0 et ses reçus restent des pièces distinctes des preuves 2.1."
+    ]
+  },
+  {
+    "id": "conclusion",
+    "title": "Conclusion",
+    "paragraphs": [
+      "CineVault conserve les exercices Flask/Jinja, le dialogue HTTP/JSON, les deux projets et la persistance pédagogique en fichier. L’édition 2.1 démontre sur des cibles isolées un accès métier à MongoDB, un aller-retour de migration qui conserve les écritures intervenues sur la cible, une restauration depuis une archive portable et des refus attendus sur TLS.",
+      "Les choix de stockage, de topologie et de vérification répondent aux contraintes observées. Les résultats soutiennent le passage à une qualification de staging après correction et revalidation des images. La documentation, les sources versionnées et les reçus permettent de reprendre cette qualification à partir des mêmes critères."
+    ]
+  }
+]

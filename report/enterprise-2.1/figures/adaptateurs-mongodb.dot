@@ -1,0 +1,64 @@
+digraph "CineVault 2.1 — choix exclusif du stockage" {
+  graph [
+    charset="UTF-8", bgcolor="#ffffff", rankdir=TB, splines=polyline,
+    pad=0.09, nodesep=0.24, ranksep=0.29, fontname="DejaVu Sans"
+  ]
+  node [
+    shape=box, style="rounded,filled", width=3.06, margin="0.16,0.10",
+    color="#a9bbc8", fillcolor="#f4f7fa", fontcolor="#182d3c", penwidth=1.05,
+    fontname="DejaVu Sans", fontsize=12
+  ]
+  edge [
+    color="#435e71", fontcolor="#304c60", penwidth=1.2, arrowsize=0.63,
+    fontname="DejaVu Sans", fontsize=11
+  ]
+
+  browser [
+    width=2.65,
+    label=<<B>Navigateur</B><BR/><FONT POINT-SIZE="11">Tiers client</FONT>>
+  ]
+  web [
+    label=<<B>Présentation Flask/Jinja</B><BR/><FONT POINT-SIZE="11">Rendu des gabarits</FONT>>
+  ]
+  api [
+    label=<<B>API Flask</B><BR/><FONT POINT-SIZE="11">Autorisations et services métier</FONT>>
+  ]
+  choice [
+    color="#193951", fillcolor="#193951", fontcolor="#ffffff",
+    label=<<B>STORAGE_BACKEND</B><BR/><FONT POINT-SIZE="11">Un adaptateur métier au démarrage</FONT>>
+  ]
+
+  json [
+    label=<<B>Adaptateur JSON</B><BR/><FONT POINT-SIZE="11">Socle académique v1 conservé<BR/>Fichier persistant sur volume</FONT>>
+  ]
+  mongo [
+    color="#669492", fillcolor="#eaf5f2",
+    label=<<B>Adaptateur MongoDB Enterprise</B><BR/><FONT POINT-SIZE="11">SCRAM-SHA-256<BR/>TLS vérifié hors boucle locale</FONT>>
+  ]
+
+  browser -> web [label="HTTP · HTML et formulaires"]
+  web -> api [label="HTTP/JSON"]
+  api -> choice
+  choice -> json [label="json"]
+  choice -> mongo [label="mongodb"]
+
+  context [
+    shape=plaintext, style=solid, width=0, height=0, margin="0.02,0.02",
+    label=<<B>Validation MongoDB et topologie prévue</B>>
+  ]
+  lab [
+    color="#669492", fillcolor="#eaf5f2",
+    label=<<B>Essai isolé réalisé</B><BR/><FONT POINT-SIZE="11">VM3 · boucle locale<BR/>MongoDB 8.0.34 · un membre<BR/>Campagnes P5 et TLS 1.3</FONT>>
+  ]
+  staging [
+    style="rounded,dashed,filled", color="#99754e", fillcolor="#fcf6eb",
+    label=<<B>Staging Swarm prévu</B><BR/><FONT POINT-SIZE="11">VM1 Web :5000 → VM2 API :8000<BR/>VM2 MongoDB :27017<BR/>Overlays front et data chiffrés<BR/>VM3 manager en Drain<BR/>Aucun port publié</FONT>>
+  ]
+
+  { rank=same; json; mongo; json -> mongo [style=invis, weight=4] }
+  json -> context [style=invis]
+  mongo -> context [style=invis]
+  { rank=same; lab; staging; lab -> staging [style=invis, weight=4] }
+  context -> lab [style=invis]
+  context -> staging [style=invis]
+}
