@@ -61,3 +61,6 @@ L'accès utilisé depuis le PC passe par un tunnel SSH lié à127.0.0.1:8080, av
 Le test Chrome local a exercé recherche anonyme, connexion administrateur et filtre d'historique. Les largeurs desktop et390px ne présentaient pas de débordement horizontal sur l'écran testé ; cela ne constitue pas une validation exhaustive de l'accessibilité. Les captures et reçus sont conservés dans l'espace de preuves privé avant audit de publication.
 
 La limite ISO/ordre de boot des VM2/3 reste ouverte : le choix du disque dans GRUB a été nécessaire malgré l'éjection demandée. Le cluster actuel fonctionne, mais le redémarrage autonome de ces VM ne doit pas être déclaré validé. Le manager unique, la réplique API unique et le volume local constituent des points de défaillance explicites. Garder les sauvegardes et les étapes de reprise séparées des essais jetables.
+
+Le [staging MongoDB chiffré](staging-mongodb.md) utilise un manifeste séparé
+avec ses propres secrets, réseaux et volumes.
