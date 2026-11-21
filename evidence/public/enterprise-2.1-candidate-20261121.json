@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "observed_date_utc": "2026-11-21",
+  "pair": {
+    "api_source_commit": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "api_application_sha256": "4f8471e79b574b1d6d8f675c20e34974b3ce1dff8dd6aaf606ca3fb84276db65",
+    "web_source_commit": "26079075bdb8c153f1965ce6869a8e946b7e70c2",
+    "web_application_sha256": "70142eb0a62b0554a0cd0a60208c099f832c34dc07781c224ded5e79fe326c6e",
+    "engine": "JSON",
+    "http_flask_and_real_api": {
+      "passed": true,
+      "checks": 6,
+      "receipt_sha256": "1fc777e32b3a83125f25caac2a46b4bc99c68efbcef5337e54d86a9720fe651e"
+    },
+    "chromium_and_real_services": {
+      "passed": true,
+      "checks": 45,
+      "screens": 7,
+      "temporary_data_removed": true,
+      "receipt_sha256": "e8157b54bf1c41338eba188bb58610d1574e743d5e1d39faf4a30d6822045f69"
+    }
+  },
+  "insights": {
+    "api_source_commit": "22bcecdadee4512ddc5eb6db5759834c27b1ad48",
+    "web_source_commit": "26079075bdb8c153f1965ce6869a8e946b7e70c2",
+    "engine": "JSON",
+    "passed": true,
+    "viewport_widths_px": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "navigations": 36,
+    "layout_checks": 32,
+    "axe_scans": 24,
+    "axe_violations": 0,
+    "axe_incomplete": 0,
+    "screens": 18,
+    "cleanup_confirmed": true,
+    "receipt_sha256": "c3188fd0873a614fcfb06f83fbceecd6868fe9a8dffb72b99a14b04eac4ab12e"
+  },
+  "documentation_portal": {
+    "infra_source_commit": "0427e10081e9215c5c601e51dba1fe0f789b0fdf",
+    "run": 44911096819,
+    "passed": true,
+    "link_checks_per_platform": 5651,
+    "archive_manifest_sha256": "d4f1a0d9b53ab9cc13419e86dda078e9dc883e872dd074fa86b11ce108e3706d",
+    "artifacts": [
+      {
+        "os": "Ubuntu 24.04",
+        "id": 14710296086,
+        "sha256": "b819fbb9c15fe6319892102c71ad190d9c88b366e485ee47bdfa95136ba8261e",
+        "dist_files": 409,
+        "chromium_checks": 207
+      },
+      {
+        "os": "Windows",
+        "id": 14709364421,
+        "sha256": "5a9faa2d195dc0b795a4de1559fe8f418921bd8f6c326cf02fc49ebab9013b4c",
+        "dist_files": 410
+      }
+    ],
+    "enterprise_pdf_sha256": "9c891e534242b48170b0ca3d11bcab9b29b19bbea2bc83867ae2b51d534b2992"
+  }
+}

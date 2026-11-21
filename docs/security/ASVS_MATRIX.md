@@ -1,11 +1,9 @@
 # Matrice ASVS 5.0.0 — état de vérification CineVault
 
-État du 11 novembre 2026. L'applicabilité des **345 contrôles est qualifiée** par
-revue documentaire et du code ; leur vérification de bout en bout reste ouverte.
-Cette matrice ne constitue ni une certification ni une revendication de niveau
-ASVS atteint. Elle distingue le candidat
-2.0, le backend Mongo encore en intégration et le déploiement stable v1. Les
-réussites locales ou CI ne sont pas une preuve de déploiement.
+État au 21 novembre 2026. L'applicabilité des **345 contrôles** a été examinée
+par revue documentaire et du code. Les contrôles de bout en bout du candidat
+Enterprise 2.1 restent en cours. Les preuves locales, natives et CI sont datées
+et rattachées au code mesuré. Le déploiement stable v1 possède ses propres preuves.
 
 ## Source et inventaire complet
 
@@ -19,8 +17,8 @@ et leur texte officiel anglais : 70 de niveau 1, 183 de niveau 2 et 92 de niveau
 Il fournit un état, une justification, une preuve disponible et la vérification
 restante par identifiant versionné. Il ne supprime pas les exigences difficiles.
 
-Qualification actuelle : **235 contrôles applicables**, dont 175 partiels,
-31 non vérifiés et 29 non satisfaits ; **110 conditionnellement non applicables**
+La grille contient **236 contrôles applicables**, dont 177 partiels,
+30 non vérifiés et 29 non satisfaits, et **109 conditionnellement non applicables**
 à l'architecture actuelle. Chaque ligne comporte une justification et une
 vérification restante. Aucun contrôle n'est déclaré pleinement satisfait et aucun
 pourcentage de conformité n'est calculé. La qualification d'applicabilité n'est
@@ -55,7 +53,7 @@ si le bearer API est opaque et qu’aucun JWT n’est utilisé.
 Une limite d’environnement ne suffit pas à marquer un contrôle satisfait. En
 particulier, HTTP du laboratoire, cookie non préfixé et absence de journal
 d’authentification restent des écarts, pas des N/A. Le staging HTTPS, la rotation,
-les sauvegardes restaurées et le chemin Mongo déployé doivent encore être éprouvés.
+les contrôles de reprise en staging et le chemin Mongo déployé doivent encore être éprouvés.
 
 ## Repères de preuve
 
@@ -86,11 +84,43 @@ les sauvegardes restaurées et le chemin Mongo déployé doivent encore être é
 - Services stables : v1 préservée. Un contrôle marqué partiel dans le candidat
   n’est pas déclaré corrigé sur le service actuellement exposé.
 
+### Campagnes du 20 et 21 novembre 2026
+
+- La migration `a500e24` a exercé 39 échanges HTTP et neuf étapes, dont le retour
+  à JSON après de nouvelles écritures sur Mongo. Ce même code a été testé en
+  transfert de catalogue lors de 21 échanges HTTP. La campagne de lecture
+  `c270d94` a travaillé sur 393 documents restaurés avec un fournisseur de
+  métadonnées simulé. [Migration et opérations sur les comptes](https://github.com/HyMathew/cinevault-api/blob/c1e150927b24fb9e0f22441272f5a701e81eda04/docs/evidence/mongodb-p5-operator-native-20261120.json) ·
+  [Transfert de catalogue](https://github.com/HyMathew/cinevault-api/blob/1ac6adeb638a260783ba78fcacbdb46db11ee471/docs/evidence/catalogue-transfer-native-20261121.json) ·
+  [Services de lecture](https://github.com/HyMathew/cinevault-api/blob/c1e150927b24fb9e0f22441272f5a701e81eda04/docs/evidence/read-services-native-20261120.json).
+- `12.3.1` et `12.3.4` passent à `PARTIEL`. L'API `a500e24` a négocié TLS 1.3
+  avec MongoDB en isolation. La readiness HTTP a renvoyé 200 avec CA, SAN et
+  authentification valides, et 503 si l'un de ces paramètres était invalide.
+  La validation des certificats sur Swarm et du HTTPS navigateur reste ouverte.
+  [Reçu TLS natif](https://github.com/HyMathew/cinevault-api/blob/1ac6adeb638a260783ba78fcacbdb46db11ee471/docs/evidence/mongodb-tls-native-20261121.json).
+- La rotation et la vérification de l'archive chiffrée ont été éprouvées sur
+  Linux et Windows. Le lot opérationnel reste ouvert pour les identités et les
+  secrets applicatifs du déploiement final.
+  [Reçu de sauvegarde et rotation](../../evidence/public/mongodb-portable-backup-ci-rotation-20261120.json).
+- La reprise `f1515dd` a publié la quarantaine dans une nouvelle base à partir
+  d'une archive chiffrée restaurée. Elle a désactivé quatre comptes et révoqué
+  six sessions. Le nouveau compte a obtenu 200 en HTTP. Un ancien mot de passe
+  et un jeton restauré ont obtenu 401.
+  [Reçu de reprise MongoDB](https://github.com/HyMathew/cinevault-api/blob/4dd5cd99287fafdc647dead5ce32dbd42a5c457c/docs/evidence/mongodb-quarantine-native-20261121.json).
+- Les journaux structurés de l'API `22bcecd` et du Web `70fa78e` ont corrélé un
+  échange HTTP réel en loopback avec un identifiant généré par chaque service.
+  La campagne de performance distincte a mesuré 736 réponses HTTP sur les deux
+  moteurs. La collecte durable, les événements exhaustifs et les mesures sur le
+  réseau de déploiement restent à vérifier.
+  [Reçu de performance et observabilité](../../evidence/public/mongodb-performance-observability-20261121.json).
+
 Dans le CSV, `API@72b7624`, `Web@c3dbc9e`, `Web@7166549` et `Infra@d2a29c0`
 désignent ces révisions exactes. Les chemins/fonctions sont les preuves de source inspectées ;
 les chemins de test désignent un test pertinent, **pas une nouvelle exécution**
-de ce test pendant cette qualification. Les constats nécessitant du réseau, de
-la charge, un matériel ou un déploiement restent non vérifiés ou partiels.
+de ce test pendant cette qualification. Les références SHA-1 des campagnes
+indiquent le code testé, et les liens ci-dessus identifient les reçus publiés
+après exécution. Les constats nécessitant d'autres preuves restent non vérifiés
+ou partiels.
 Les [écarts et prochaines preuves](ASVS_FINDINGS.md) regroupent le travail concret.
 
 ## Premier ensemble de contrôles et écarts actuels
@@ -108,11 +138,11 @@ ce tableau n'est pas la totalité du périmètre.
 | --- | --- | --- | --- |
 | `v5.0.0-1.2.1` | 1 | PARTIEL | Échappement contextuel Jinja, jamais de HTML utilisateur de confiance. Revalider les rendus après redesign, y compris attributs, URLs et erreurs. |
 | `v5.0.0-1.2.4` | 1 | PARTIEL | Sélecteurs UUID typés et requêtes Mongo fixes ; opérateurs reçus comme objets refusés. Tester les vrais endpoints Mongo et le futur filtre de recherche ; aucun filtre arbitraire fourni par HTTP. |
-| `v5.0.0-1.2.10` | 3 | PARTIEL | Export CSV avec protection des cellules interprétables par un tableur. Rejouer les cas formule/NUL/tabulation sur les deux moteurs et vérifier le téléchargement web. |
-| `v5.0.0-2.1.1` | 1 | PARTIEL | Formes JSON et contraintes métier versionnées ; modèle BSON dérivé. Compléter dictionnaire de données, modèles auxiliaires et règles de migration. |
-| `v5.0.0-2.2.1` | 1 | PARTIEL | Validation positive des types, champs, bornes, Unicode et identifiants. Conserver ces refus après extraction des services et dans tous les endpoints Mongo. |
-| `v5.0.0-2.3.1` | 1 | PARTIEL | Transitions prêt/réservation, rôles et versions déjà testés sur JSON. Contrats REST et courses réelles sur Mongo ; la primitive UoW ne prouve pas tout le workflow. |
-| `v5.0.0-2.3.3` | 2 | PARTIEL | Verrou et remplacement JSON ; vrai runner Mongo commit/abort éprouvé. Transactions métier complètes, import atomique et migration restent à éprouver. |
+| `v5.0.0-1.2.10` | 3 | PARTIEL | Export CSV éprouvé par HTTP dans la campagne native de transfert. Les protections de cellules existent dans le sérialiseur. Rejouer les cas formule/NUL/tabulation sur les deux moteurs et vérifier le téléchargement web. |
+| `v5.0.0-2.1.1` | 1 | PARTIEL | Le modèle BSON et les formes JSON ont été comparés lors d’une migration aller-retour avec nouvelles écritures. Les vues de lecture ont été comparées sur un instantané restauré. Vérifier tous les modèles auxiliaires, les bornes et la correspondance aux contrats de la révision finale. |
+| `v5.0.0-2.2.1` | 1 | PARTIEL | Le transfert Mongo natif a vérifié le refus atomique d’un conflit de métadonnées. Les services de lecture ont vérifié quatre refus de validation. Rejouer les refus aux frontières de tous les endpoints et des formulaires sur le couple final avec les deux moteurs. |
+| `v5.0.0-2.3.1` | 1 | PARTIEL | P5 a validé des parcours HTTP avec prêt approuvé et réservation après migration vers Mongo, puis leur export et relecture dans JSON. Tester la course HTTP sur la dernière copie, les étapes FIFO et toutes les transitions au candidat final. |
+| `v5.0.0-2.3.3` | 2 | PARTIEL | Le transfert Mongo a préservé la révision après refus d'un lot conflictuel. P5 a vérifié transaction de migration, rejeu, nouvelles écritures et retour JSON. Vérifier les défaillances réseau et la reprise opérationnelle du couple final déployable, ainsi que les autres flux transactionnels. |
 | `v5.0.0-2.4.1` | 2 | PARTIEL | Budgets login/réauth avant Argon2 et contrôle d’admission ; défauts de capacité v1 connus. Partager budgets/admission Mongo, résoudre la capacité par acteur et mesurer contention. |
 | `v5.0.0-3.3.1` | 1 | NON_SATISFAIT | Secure est configurable ; noms actuels session/cinevault_auth sans préfixe requis, service stable HTTP. Déployer HTTPS et cookies préfixés adaptés avec migration/test des deux cookies. |
 | `v5.0.0-3.3.2` | 2 | PARTIEL | SameSite=Lax configuré pour session et bearer cookie. Vérifier les parcours cross-origin et la configuration déployée après reverse proxy. |
@@ -126,30 +156,30 @@ ce tableau n'est pas la totalité du périmètre.
 | `v5.0.0-3.5.1` | 1 | PARTIEL | CSRF synchronisé via cookie signé/session et champ de formulaire, contrôlé côté web. Rejouer tous POST/retours d’erreur, origine étrangère et déploiement HTTPS. |
 | `v5.0.0-4.1.1` | 1 | PARTIEL | API JSON et formulaires UTF-8 ; erreurs et réponses amont mal formées contrôlées. Vérifier Content-Type sur tous exports, erreurs, statiques et proxy. |
 | `v5.0.0-4.1.3` | 2 | PARTIEL | Contexte client BFF signé HMAC ; un en-tête utilisateur arbitraire n’est pas une identité. Vérifier confiance proxy, configuration clefs, usurpation et chemin Mongo après refactoring. |
-| `v5.0.0-5.2.1` | 1 | PARTIEL | Import JSON/CSV borné ; limites de formulaire spécifiques et limites métier. Mesurer consommation, cas malformés et limites sur les deux moteurs sans perte partielle. |
+| `v5.0.0-5.2.1` | 1 | PARTIEL | L’import JSON/CSV applique des bornes de formulaire et de traitement. La campagne native confirme le refus d’un lot conflictuel sans mutation partielle. Mesurer consommation, cas malformés et limites sur les deux moteurs sans perte partielle. |
 | `v5.0.0-6.2.1` | 1 | PARTIEL | Mots de passe applicatifs de 12 à 256 caractères, borne UTF-8 ; minimum supérieur à 8. Revalider politique commune et migration des hashes ; ne pas appliquer à tort cette politique au compte Ubuntu du TP. |
 | `v5.0.0-6.2.5` | 1 | PARTIEL | Aucune règle de composition par catégorie de caractère ; Unicode accepté dans les bornes. Vérifier formulaires, espaces, collage et nouvelle couche comptes ; aucune normalisation silencieuse. |
 | `v5.0.0-6.3.1` | 1 | PARTIEL | Réauth 5 échecs/900s partagée entre sessions ; recul d’horloge conserve les fenêtres futures. Correctif candidat non déployé sur v1 ; mécanisme Mongo et contrôles distribués à intégrer. |
 | `v5.0.0-6.3.3` | 2 | NON_SATISFAIT | Authentification applicative par mot de passe seul, pas de MFA ni combinaison de facteurs. Exigence L2 non satisfaite ; décider et documenter le profil/mesures compensatoires, sans classer simplement N/A. |
 | `v5.0.0-7.2.1` | 1 | PARTIEL | L’API vérifie la session et le compte ; le frontend ne fait pas autorité sur le rôle. Relecture dans la même UoW Mongo pour chaque opération protégée et test révocation/course. |
 | `v5.0.0-7.2.3` | 1 | PARTIEL | Bearer généré par secrets.token_urlsafe(32), empreinte seule persistée. Revalider durée de vie, unicité, chiffrement du transport et absence dans logs/backups publics. |
-| `v5.0.0-7.4.1` | 1 | PARTIEL | Logout/changement de mot de passe/désactivation invalident les sessions côté API. Tests comparatifs deux moteurs et course révocation/action après extraction des services. |
+| `v5.0.0-7.4.1` | 1 | PARTIEL | Le reset natif Mongo révoque les sessions du compte ciblé dans la transaction et préserve celles d'un autre compte. Logout et désactivation restent couverts par les tests applicatifs. La reprise native a vidé six sessions restaurées et refusé un ancien jeton sur le candidat HTTP. Comparer tous les chemins de terminaison et les courses révocation/action sur le couple final. |
 | `v5.0.0-7.5.1` | 2 | PARTIEL | Changement de mot de passe avec mot de passe courant et budget avant Argon2. Parcours réel et service Mongo, maintien des sessions/counters en erreur et sur panne. |
-| `v5.0.0-8.2.1` | 1 | PARTIEL | RBAC côté API pour opérations de gestion, rôle actuel relu. Même décision dans services communs et endpoints Mongo, pas seulement menu masqué. |
-| `v5.0.0-8.2.2` | 1 | PARTIEL | Listes privées bornées par propriétaire, sans exception administrateur. Filtres propriétaire dans Mongo avant pagination et tests d’accès croisé sur le vrai backend. |
-| `v5.0.0-8.3.1` | 1 | PARTIEL | Les contrôles d’accès sont côté service API ; les contrôles web sont supplémentaires. Achever extraction services/UoW sans autorisation préchargée hors transaction. |
+| `v5.0.0-8.2.1` | 1 | PARTIEL | Les opérations de transfert satisfont le rôle de gestion vérifié et refusent le membre dans le vrai backend HTTP Mongo. Les services de lecture ont testé d'autres portées. Rejouer les autorisations directes et la révocation en cours de requête sur chaque route du candidat. |
+| `v5.0.0-8.2.2` | 1 | PARTIEL | La campagne de lecture sur l'instantané Mongo restauré a vérifié cinq refus de portée, des filtres propriétaire et des projections. Rejouer les portées via HTTP et navigateur, avant et après changement de rôle, sur le couple final. |
+| `v5.0.0-8.3.1` | 1 | PARTIEL | Les décisions sont prises par les services communs. Les refus de portée et de rôle ont été observés dans les services natifs et le transfert HTTP. Vérifier la totalité des routes d'écriture, y compris la révocation et les appels directs sans interface web. |
 | `v5.0.0-9.1.1` | 1 | PARTIEL | Cookie Flask signé pour CSRF/messages ; authentification API par référence opaque, sans JWT. Revue signature, paramètres et rotation de clé ; ne pas exclure le cookie signé du périmètre V9. |
 | `v5.0.0-11.4.2` | 2 | PARTIEL | Argon2id actuel memory_cost65536/time_cost3/parallelism2. Mesurer coût sur VM et vérifier politique de rehash/rotation et préservation des hashes migrés. |
 | `v5.0.0-11.5.1` | 2 | PARTIEL | Secrets et bearer via CSPRNG ; UUID publics ne servent pas de secrets. Web7166549 refuse désormais les clés courantes/fallback trop courtes sur toutes les sources ; 52 cas spécifiques et 428 tests réussis. La taille ne prouve pas l'entropie : provenance/génération de toutes clés et identités Mongo restent à vérifier. |
 | `v5.0.0-12.2.1` | 1 | NON_SATISFAIT | Service web stable exposé en HTTP dans le laboratoire ; staging HTTPS non établi. Configurer puis éprouver HTTPS, confiance certificat et absence de repli en clair. |
-| `v5.0.0-12.3.1` | 2 | NON_VERIFIE | SSH contrôlé ; essais Mongo loopback sans réseau externe, pas une preuve du transport de déploiement. Vérifier API/backend/Mongo/proxy/observabilité et documenter toute exception de frontière locale. |
-| `v5.0.0-13.2.1` | 2 | PARTIEL | Identités maintenance/application séparées et privilèges Mongo réduits démontrés en étude. Identités de déploiement, rotation/expiration et éventuelles exceptions aux secrets statiques à traiter. |
-| `v5.0.0-13.3.1` | 2 | PARTIEL | Secrets hors Git ; secrets Swarm/fichiers dédiés, pas de valeurs dans les preuves publiques. Tester rotation, sauvegarde, permissions, restauration ; pas de conformité key-vault/HSM déclarée. |
-| `v5.0.0-15.3.1` | 1 | PARTIEL | Profil public en liste de champs autorisés, hashes/bearer hors réponses de profil. Revalider projections, exports, erreurs et jointures de la future persistance Mongo. |
-| `v5.0.0-15.4.1` | 3 | PARTIEL | Verrou fichier, scopes propriétaires et transactions coordonnées ; client Mongo non partagé après fork. Courses métier et charge sur les deux backends ; primitive seule insuffisante pour FIFO complet. |
-| `v5.0.0-15.4.3` | 3 | PARTIEL | Verrou possédé par le stockage, garde d’imbrication et retries bornés. Éprouver contentions réelles, erreurs réseau et durée Argon2 ; ne pas masquer les 503 sous charge. |
+| `v5.0.0-12.3.1` | 2 | PARTIEL | TLS 1.3, CA et SAN éprouvés pour API → Mongo en isolation. Vérifier le transport et les frontières effectives en staging. |
+| `v5.0.0-13.2.1` | 2 | PARTIEL | Identités de maintenance, de restauration et d'application séparées avec droits testés. Le lien API → Mongo isolé a vérifié SCRAM sur TLS. Vérifier l'identité de chaque service réel, la rotation/expiration et les secrets statiques résiduels. |
+| `v5.0.0-13.3.1` | 2 | PARTIEL | Secrets montés ou lus dans des fichiers dédiés. Clés de session Web courante et de secours validées. L'archive chiffrée a été restaurée et sa clé renouvelée sous Linux puis vérifiée sous Windows. Tester accès minimaux, génération, rotation, sauvegarde, restauration et destruction des secrets dans le déploiement final ; pas de conformité globale key-vault/HSM ni de validation de v1 annoncée. |
+| `v5.0.0-15.3.1` | 1 | PARTIEL | Les vues publiques sont des projections de champs autorisés. C5 a vérifié des projections de lecture sur Mongo restauré et P5 a réellement exercé les profils HTTP. Vérifier les projections, erreurs et pièces de téléchargement par rôle et sur le couple final. |
+| `v5.0.0-15.4.1` | 3 | PARTIEL | Transactions contrôlées et sept courses processus dans C4/P4. Mesures HTTP sur les deux moteurs à 120 et 600 films, sur hôte isolé. Vérifier la course HTTP sur la dernière copie, la FIFO sous charge et le service final sur plusieurs hôtes. |
+| `v5.0.0-15.4.3` | 3 | PARTIEL | Les courses processus C4/P4 et mesures comparatives de 736 réponses HTTP complètent le runner transactionnel avec réessais bornés. Vérifier contentions et erreurs réseau à charge soutenue, latence Argon2, admission et 503 sans masquer les refus. |
 | `v5.0.0-16.3.1` | 2 | NON_SATISFAIT | Audit métier existant ne journalise pas toutes les opérations d’authentification. Ajouter journal de sécurité structuré/rotation/rétention, sans mots de passe, bearer ni corps bruts. |
-| `v5.0.0-16.5.1` | 2 | PARTIEL | Réponses génériques côté API/web ; détails driver assainis ; pas de répétition POST automatique. Rejouer les erreurs du vrai backend/proxy et contrôler les journaux, pas seulement le corps HTTP. |
+| `v5.0.0-16.5.1` | 2 | PARTIEL | Réponses 500 génériques et journaux expurgés dans les tests Flask. Les champs expurgés et la corrélation ont été vérifiés sur un vrai GET Web/API en loopback. Rejouer les erreurs du vrai backend/proxy et contrôler les journaux, pas seulement le corps HTTP. |
 
 ## Gates avant conclusion
 

@@ -37,10 +37,11 @@ archive hors VM, source supprimée, restauration neuve de 393 documents et 40 in
 redémarrage et 31 appels de services partagés vérifiés. Ces preuves ne constituent
 pas l'activation HTTP Mongo ni la qualification du schéma final s'il évolue.
 
-Les contrôles2.1 à compléter comprennent les propriétés métier séquentielles,
-le mutation testing ciblé, les mesures web comparables et les procédures
-d'exploitation portables. Le critère de livraison reste la reprise du projet par
-un développeur extérieur, sans Codex ni information privée du poste d'origine.
+La [qualification du candidat Enterprise 2.1](docs/quality/ENTERPRISE_21_QUALIFICATION.md)
+regroupe les nouveaux contrôles HTTP et Chromium, la preuve de quarantaine,
+les archives vérifiées du portail et les conditions de livraison encore ouvertes.
+Le critère de livraison reste la reprise du projet par un développeur extérieur,
+sans Codex ni information privée du poste d'origine.
 
 Ce dépôt regroupe l'architecture, les configurations et la documentation de CineVault Enterprise. Le 9 novembre 2026 à 16 h 04, heure de Paris, les images issues des CI GitHub réussies ont été déployées par digest sur trois VM : API `6a86f2e`, web `f3d10cb`. Vingt-cinq contrôles de mise à jour ont réussi, avec préservation des données, comptes, secrets et sessions. Voir la [synthèse datée des validations et de leurs limites](docs/validation-current.md). Le rapport scientifique de19pages est compilé et inspecté ; son PDF est identique sur Windows et Ubuntu. L’audit indépendant final est effectué, avec réserves explicites.
 
