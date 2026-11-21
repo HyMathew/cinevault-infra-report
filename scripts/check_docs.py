@@ -1,5 +1,6 @@
 """Offline checks of published document structure and local links, not runtime QA."""
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -8,7 +9,30 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def check_pedagogical_evidence():
+    folder = ROOT / "evidence/academic-20261109"
+    manifest = json.loads((folder / "manifest.json").read_bytes())
+    files = manifest["files"]
+    assert set(files) == {
+        "exercice-a.jpg",
+        "exercice-b-formulaire.jpg",
+        "exercice-c-fiche.jpg",
+        "browser-json-chain.json",
+        "vscode-api.jpg",
+        "vscode-web.jpg",
+    }
+    for name, expected in files.items():
+        source = folder / name
+        assert source.is_file() and not source.is_symlink(), name
+        content = source.read_bytes()
+        assert (len(content), hashlib.sha256(content).hexdigest()) == (
+            expected["bytes"],
+            expected["sha256"],
+        ), f"Published evidence differs from its manifest: {name}"
+
+
 def main():
+    check_pedagogical_evidence()
     documents = []
     for directory in (ROOT, ROOT / "docs", ROOT / "report", ROOT / "evidence"):
         files = directory.glob("*.md") if directory == ROOT else directory.rglob("*.md")

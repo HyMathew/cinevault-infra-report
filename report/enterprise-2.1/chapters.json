@@ -12,7 +12,7 @@
     "title": "Analyse du sujet et des cours",
     "paragraphs": [
       "Le sujet RT0705TP suit trois étapes. Il demande l’analyse des fonctionnalités, des acteurs, des données et de leur exécution. Il précise ensuite la séparation en deux projets, le montage du code dans les conteneurs et les exercices Flask/Jinja. Il poursuit avec l’API et le démarrage coordonné de la présentation. TRACEABILITY.md conserve les 28 exigences du socle et la portée des vérifications.",
-      "Les cours C0 à C5 fournissent le vocabulaire pour décrire le traitement des données et des messages. Les séquences relient les requêtes aux vérifications, aux opérations de stockage et aux réponses. Les comptes, le prêt d’exemplaires et l’orchestration Swarm prolongent cette réalisation pédagogique."
+      "C0 situe le laboratoire. C1 et C2 éclairent la séparation des tiers et la structure JSON. C3 et C4 aident à décrire les échanges synchrones, les délais et la concurrence. C5 relie Flask, les formulaires et les gabarits aux exercices. Les comptes, le prêt d’exemplaires et Swarm relèvent du mandat étendu."
     ]
   },
   {
@@ -204,8 +204,9 @@
     "id": "tests",
     "title": "Stratégie de tests",
     "paragraphs": [
-      "Les tests unitaires et de contrat couvrent les formes, les droits, les transitions et la concurrence déterministe. Les essais Compose contrôlent les échanges HTTP et les volumes. Les campagnes distribuées vérifient le placement, les images et les communications réelles. Les observations navigateur qualifient un parcours et une taille d’écran identifiés.",
-      "L’API a500e245 a été exécutée dans le workflow 44831153091, qui publie des résultats Windows, Ubuntu et cinq tests MongoDB réels. Les campagnes P5, C5, TLS et de backup gardent chacune leurs propres preuves. Les essais locaux des révisions de journaux 22bcecd et 70fa78e comptent respectivement 567 et 470 tests réussis. Le total API est accompagné de 35 sous-tests réussis et cinq tests ignorés dans cette exécution locale."
+      "Les tests unitaires et de contrat couvrent les droits, les transitions et la concurrence. Compose vérifie les volumes et les échanges HTTP. Les relevés Swarm et navigateur identifient les déploiements ou les parcours observés.",
+      "Cinq tests MongoDB natifs ont réussi sur a500e245 (workflow 44831153091), révision des campagnes P5, TLS et transfert. La CI du corpus académique épingle l’API 6a86f2e.",
+      "Le 21 novembre, la paire API 4dd5cd9 et Web 2607907 a réussi six contrôles avec le client Flask côté Web et une API HTTP réelle, puis 45 contrôles Chromium sur les deux services en JSON isolé. Les deux workflows de la paire ont réussi. Le scénario Insights MongoDB a exercé la même paire en boucle locale sous Docker Desktop. Le scénario Insights JSON a utilisé l’API 22bcecd."
     ]
   },
   {
@@ -221,7 +222,8 @@
     "title": "Résultats observés",
     "paragraphs": [
       "Le 9 novembre à 16 h 04 à Paris, trois nœuds sont Ready, le manager est Leader en Drain et deux services JSON sont sains sur leurs workers. Les 25 contrôles de mise à jour des références API 6a86f2e et Web f3d10cb ont confirmé le placement, les digests, la conservation du volume métier et du digest des comptes, ainsi que le maintien d’une session existante et une nouvelle connexion signée. La comparaison du digest exclut les champs opérationnels de session, compteurs et révision. La campagne est documentée dans validation-current.md.",
-      "Le 21 novembre, 21 échanges HTTP ont vérifié l’import et l’export de catalogue en mode MongoDB sur a500e245. Le lot a créé un film et ajouté du stock. Les contrôles couvrent l’atomicité d’un refus, les droits, le rejeu, les exports JSON et CSV et les cardinalités finales. catalogue-transfer-native-20261121.json en conserve le résultat."
+      "Le 21 novembre, 21 échanges HTTP ont vérifié l’import et l’export de catalogue en mode MongoDB sur a500e245. Le lot a créé un film et ajouté du stock. Les contrôles couvrent l’atomicité d’un refus, les droits, le rejeu, les exports JSON et CSV et les cardinalités finales. catalogue-transfer-native-20261121.json en conserve le résultat.",
+      "La paire 4dd5cd9 et 2607907 a renvoyé 200, 503 puis 200 pour la santé de l’API et l’écran Insights Web avant, pendant et après la pause du seul MongoDB local, et une campagne HTTP distincte a vérifié 264 échanges de comptes et de circulation sur quatre tours par moteur, JSON et MongoDB."
     ]
   },
   {

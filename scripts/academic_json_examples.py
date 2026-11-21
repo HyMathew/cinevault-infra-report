@@ -15,6 +15,7 @@ import itertools
 import json
 import re
 import socket
+import subprocess
 import sys
 import tempfile
 import uuid
@@ -237,6 +238,41 @@ def source_sha256(path):
     return sha256(text.encode("utf-8"))
 
 
+def catalogue_etag(entity):
+    try:
+        from app.services.catalogue_model import etag
+    except ModuleNotFoundError as error:
+        if error.name not in {"app.services", "app.services.catalogue_model"}:
+            raise
+        from app.enterprise_catalogue import etag
+
+    return etag(entity)
+
+
+def verify_replay_source(api_root, expected_commit):
+    if re.fullmatch(r"[0-9a-f]{40}", expected_commit) is None:
+        raise ValueError("Replay requires a complete API commit")
+    git = ["git", "-C", str(api_root)]
+    observed = subprocess.check_output([*git, "rev-parse", "HEAD"], text=True).strip()
+    if observed != expected_commit:
+        raise ValueError("API replay checkout differs from the pinned commit")
+    changed = subprocess.check_output(
+        [
+            *git,
+            "status",
+            "--porcelain",
+            "--untracked-files=all",
+            "--",
+            "app",
+            "schemas",
+            "docs/openapi-v1.json",
+            "requirements*.txt",
+        ],
+    )
+    if changed:
+        raise ValueError("API replay checkout has modified inputs")
+
+
 def verify_source_fingerprints(api_root, manifest):
     api_root = api_root.resolve()
     assert manifest["source_fingerprint_mode"] == SOURCE_FINGERPRINT_MODE
@@ -363,9 +399,7 @@ class Evidence:
         if component:
             self.component(component, value)
         if value and isinstance(value, dict) and "_etag" in value:
-            from app.enterprise_catalogue import etag
-
-            assert value["_etag"] == etag(
+            assert value["_etag"] == catalogue_etag(
                 {key: item for key, item in value.items() if key != "_etag"}
             )
         return value
@@ -438,12 +472,16 @@ class FictionalProvider:
         )
 
 
-def application(root, clock, filename="enterprise.json"):
+def application(root, clock, filename="enterprise.json", initial_snapshot=None):
     from app import create_app
     from app.storage_v2 import V2Store
 
     path = root / filename
-    V2Store(path).initialize()
+    if initial_snapshot is None:
+        V2Store(path).initialize()
+    else:
+        with path.open("xb") as output:
+            output.write(initial_snapshot)
     app = create_app(
         {
             "TESTING": True,
@@ -795,14 +833,6 @@ def build(api_root):
             "/api/v1/loans/" + to_cancel["id"] + "/cancel",
             headers={**carol, "If-Match": to_cancel["_etag"]},
         )
-        pending = call(
-            "retained-pending-loan",
-            "POST",
-            "/api/v1/loans",
-            headers=alice,
-            body={"movie_id": movie_b["id"]},
-            status=201,
-        )
         clock[0] = reservations[2]["expires_at"] + 1
         for username in accounts:
             login = call(
@@ -822,11 +852,19 @@ def build(api_root):
             "/api/v1/reservations/" + reservations[2]["id"],
             headers=dave,
         )
+        pending = call(
+            "retained-pending-loan",
+            "POST",
+            "/api/v1/loans",
+            headers={**alice, "Idempotency-Key": "FICTIVE-loan-operation-0001"},
+            body={"movie_id": movie_b["id"]},
+            status=201,
+        )
         waiting = call(
             "retained-waiting-reservation",
             "POST",
             "/api/v1/reservations",
-            headers=carol,
+            headers={**carol, "Idempotency-Key": "FICTIVE-reservation-operation-0001"},
             body={"movie_id": movie_a["id"]},
             status=201,
         )
@@ -1093,10 +1131,9 @@ def build(api_root):
             evidence.component(name, document[collection][0])
         evidence.component("ExternalSource", movie_a["external_source"])
         # The fake prefix passes the storage shape but is deliberately not a password hash.
-        store_file = root / "published-store.json"
-        store_file.write_bytes(encoded(published_store))
-        verifier_client = client.application.test_client()
-        client.application.extensions["enterprise_store"] = V2Store(store_file)
+        verifier_client, store_file = application(
+            root, clock, "published-store.json", initial_snapshot=encoded(published_store)
+        )
         assert (
             verifier_client.get(
                 "/api/v1/me", headers={"Authorization": "Bearer " + PUBLISHED_TOKEN}
@@ -1234,7 +1271,6 @@ def build(api_root):
 
 def validate_artifacts(api_root, artifacts):
     from app.catalogue_transfer import normalize, parse_csv
-    from app.enterprise_catalogue import etag
     from app.metadata import MetadataCache
     from app.registration_admission import RegistrationAdmission
     from app.storage_v2 import validate_document
@@ -1247,7 +1283,7 @@ def validate_artifacts(api_root, artifacts):
     for name, value in components.items():
         schema_validate(spec, {"$ref": "#/components/schemas/" + name}, value)
         if isinstance(value, dict) and "_etag" in value:
-            assert value["_etag"] == etag(
+            assert value["_etag"] == catalogue_etag(
                 {key: item for key, item in value.items() if key != "_etag"}
             )
     document = artifacts["enterprise-store.synthetic.json"]
@@ -1280,6 +1316,16 @@ def validate_artifacts(api_root, artifacts):
         "import_summary": components["ImportSummary"],
         "external_source": components["ExternalSource"],
     }
+    for name, operation in (
+        ("cached_loan", "loan.request"),
+        ("cached_reservation", "reservation.create"),
+    ):
+        if name in store_schema["$defs"]:
+            defs[name] = next(
+                record["response"]
+                for record in document["idempotency_records"]
+                if record["operation"] == operation
+            )
     assert set(defs) == set(store_schema["$defs"])
     for name, value in defs.items():
         schema_validate(store_schema, {"$ref": "#/$defs/" + name}, value)
@@ -1295,7 +1341,7 @@ def validate_artifacts(api_root, artifacts):
         for state, value in lifecycle[plural].items():
             assert state == value["status"]
             schema_validate(spec, {"$ref": "#/components/schemas/" + name}, value)
-            assert value["_etag"] == etag(
+            assert value["_etag"] == catalogue_etag(
                 {key: item for key, item in value.items() if key != "_etag"}
             )
     schema_locations = set()
@@ -1330,7 +1376,7 @@ def validate_artifacts(api_root, artifacts):
             schema_validate(spec, schema, exchange["response_body"])
             value = exchange["response_body"]
             if isinstance(value, dict) and "_etag" in value:
-                assert value["_etag"] == etag(
+                assert value["_etag"] == catalogue_etag(
                     {key: item for key, item in value.items() if key != "_etag"}
                 )
             schema_locations.add(
@@ -1551,13 +1597,21 @@ def main():
         )
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--api-root", type=Path, default=BASE.parent / "cinevault-api")
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--write",
         action="store_true",
         help="Generate fixtures after all offline checks pass",
     )
+    mode.add_argument(
+        "--replay-api-commit",
+        help="Run the fictional scenario in memory against a pinned clean API checkout",
+    )
     args = parser.parse_args()
     api_root = args.api_root.resolve()
+    replay = args.replay_api_commit is not None
+    if replay:
+        verify_replay_source(api_root, args.replay_api_commit)
     sys.path.insert(0, str(api_root))
     specification = json.loads(
         (api_root / "docs/openapi-v1.json").read_text(encoding="utf-8")
@@ -1585,7 +1639,7 @@ def main():
             ),
         ),
     ):
-        if args.write:
+        if args.write or replay:
             artifacts, checks = build(api_root)
         else:
             artifacts, manifest = load_artifacts(DESTINATION)
@@ -1655,14 +1709,16 @@ def main():
         json.dumps(
             {
                 "result": "PASS",
-                "mode": "generate" if args.write else "validate",
+                "mode": "replay" if replay else "generate" if args.write else "validate",
+                "api_source_commit": args.replay_api_commit,
+                "runtime_checks_executed": len(checks) if replay or args.write else None,
                 "components": len(coverage["openapi_components"]),
                 "storage_defs": len(coverage["storage_defs"]),
                 "http_exchanges": coverage["http_exchange_count"],
                 "http_schema_locations": len(coverage["http_schema_locations"]),
                 "openapi_operations": coverage["openapi_operation_count"],
                 "technical_schemas": coverage["technical_schema_count"],
-                "output": str(DESTINATION.relative_to(BASE)),
+                "output": None if replay else str(DESTINATION.relative_to(BASE)),
             },
             ensure_ascii=False,
         )

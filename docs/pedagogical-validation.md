@@ -37,3 +37,9 @@ Le volume de données est inscriptible, contrairement au code. Les deux services
 Le script HTTP a d'abord créé un autre film fictif et comparé fichier, réponse API et rendu. Le parcours Chrome a ensuite créé le film des captures ; sa comparaison JSON a été vérifiée séparément. Les deux résultats ne sont pas fusionnés en une manipulation fictive. Les sessions et jetons CSRF ne figurent pas dans les pièces publiques.
 
 Les [empreintes des six pièces publiées](../evidence/academic-20261109/manifest.json) permettent de contrôler leur intégrité. Les inspections de montages et reçus SSH détaillés sont conservés dans l'espace de preuves privé. Ces essais couvrent le socle pédagogique aux révisions citées ; ils ne remplacent pas les tests métier Enterprise ni la validation des modifications frontend ultérieures.
+
+Le manifeste du candidat indique l'empreinte des 659 octets LF de la pièce
+`browser-json-chain.json`, telle qu'elle est suivie par Git. La conversion de
+cette pièce en CRLF reproduit les 681 octets et l'empreinte du manifeste
+historique. Le contrôle documentaire recalcule maintenant les six empreintes
+à partir des octets publiés.

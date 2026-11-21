@@ -62,6 +62,54 @@
     "cleanup_confirmed": true,
     "receipt_sha256": "66b52c100a6e8d59de497b774799d22fb145745fd09e720a0197a9f4340ff1b2"
   },
+  "concurrent_circulation": {
+    "api_source_commit": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "scope": "Overlapping loopback HTTP clients on synthetic fixtures",
+    "engines": ["JSON", "MongoDB 8.0.34"],
+    "rounds_per_engine": 4,
+    "race_cases_per_engine": 12,
+    "http_exchanges": 264,
+    "persistent_movies_per_engine": 4,
+    "persistent_loans_per_engine": 20,
+    "persistent_reservations_per_engine": 8,
+    "one_last_copy_grant": true,
+    "fifo_priority_verified": true,
+    "duplicate_requests_replay_one_reservation": true,
+    "cleanup_confirmed": true,
+    "receipt_sha256": "a83756ebe2466e82edb9998e8a72e1379181b6e41b43cb817a6a6ae521af76ac"
+  },
+  "mongo_pause_recovery": {
+    "api_source_commit": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "web_source_commit": "26079075bdb8c153f1965ce6869a8e946b7e70c2",
+    "scope": "Pause and resume of only the isolated local MongoDB container",
+    "pause_seconds_between_docker_acknowledgements": 10.401,
+    "api_health_statuses": [200, 503, 200],
+    "web_insights_statuses": [200, 503, 200],
+    "first_health_200_ms_after_resume_acknowledgement": 195.7,
+    "same_api_process_and_pymongo_pool": true,
+    "same_mongodb_process": true,
+    "film_favorite_and_session_preserved": true,
+    "cleanup_confirmed": true,
+    "receipt_sha256": "b1bc1a3c885060027db6f48eb8bbecb642b09aaf0eb408ea8ee4b121641d0be2"
+  },
+  "academic_candidate_replay": {
+    "source_commit": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "scope": "Deterministic in-memory replay through Flask, offline",
+    "http_exchanges": 93,
+    "openapi_operations": 44,
+    "openapi_components": 42,
+    "storage_definitions": 20,
+    "technical_schemas": 5,
+    "written_examples": 0
+  },
+  "report_attestation_previous_revision": {
+    "infra_source_commit": "6c983f0a085f5d49dc344e58666f6c7a14dacc0b",
+    "workflow": ".github/workflows/docs.yml",
+    "run": 44954701826,
+    "sha256": "9c891e534242b48170b0ca3d11bcab9b29b19bbea2bc83867ae2b51d534b2992",
+    "sigstore_signature_verified": true,
+    "archives_verification_sha256": "790edb17be2271a536801d5dbf5f67baff10558a044f0a1111939e71a23acbcb"
+  },
   "documentation_portal": {
     "infra_source_commit": "0427e10081e9215c5c601e51dba1fe0f789b0fdf",
     "run": 44911096819,

@@ -4,7 +4,9 @@
 
 Cette édition reprend le socle pédagogique, puis présente MongoDB, la migration,
 la reprise, la vérification de TLS, les mesures et l’exploitation. Elle précise
-la distinction entre qualification isolée et staging Swarm. La v1 est
+la distinction entre qualification isolée et staging Swarm. Elle référence la
+paire candidate API `4dd5cd9` et Web `2607907`, les reçus de reprise et de
+circulation ainsi que les pages utilisées du sujet RT0705 et des cours C0 à C5. La v1 est
 [conservée séparément](../RT0705_CineVault_Mathieu_Kuhnapfel.pdf).
 
 ## Reconstruire le PDF
@@ -20,9 +22,10 @@ La [source Typst](main.typ), les [chapitres](chapters.json) et la
 utilise Typst 0.15.1, ses polices embarquées et une date fixe. Le script accepte
 le chemin d’un compilateur déjà vérifié avec `--typst`.
 
-Les compilations Windows et Linux ont produit 764 117 octets, SHA-256
-`9c891e534242b48170b0ca3d11bcab9b29b19bbea2bc83867ae2b51d534b2992`.
-Les vingt pages ont été rendues et inspectées. Les dix-huit pages A4 portent
+Les compilations Windows et Linux ont produit 778 774 octets, SHA-256
+`8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a`.
+Les vingt pages ont été rendues et les six pages modifiées inspectées.
+Les 45 destinations internes ont été vérifiées. Les dix-huit pages A4 portent
 le corps et les preuves. Les deux planches A2 conservent la lisibilité des
 diagrammes. La [preuve de vérification](verification.json) décrit les contrôles,
-les rendus et les corrections de la relecture indépendante.
+les rendus et les corrections de la revue universitaire.

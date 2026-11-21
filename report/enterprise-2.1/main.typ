@@ -94,8 +94,7 @@ Des campagnes séparées ont testé le transfert de catalogue, les commandes de 
       table.header([*Campagne*], [*Résultat*], [*Périmètre*]),
       [Socle pédagogique], [16 contrôles], [Compose neuf 6a86f2e / 4883876],
       [Swarm JSON historique], [25 contrôles], [API 6a86f2e / Web f3d10cb],
-      [API 22bcecd], [567 tests et 35 sous-tests], [Windows, 5 MongoDB ignorés faute d’URI],
-      [Web 70fa78e], [470 tests], [Windows],
+      [Paire candidat 2.1], [6 contrôles HTTP et 45 Chromium], [API 4dd5cd9 / Web 2607907, JSON isolé],
       [CI moteur], [5 / 5], [MongoDB natif, API a500e245],
       [Migration P5], [39 requêtes HTTP], [Aller MongoDB puis retour JSON],
       [Transfert de catalogue], [21 requêtes HTTP], [MongoDB isolé])
@@ -128,10 +127,13 @@ La connexion et l'ouverture effective des deux projets sont visibles. Un diagnos
 #heading(level: 2)[Sources et reproductibilité]
 Les sources publiques et leurs historiques sont disponibles dans les trois dépôts suivants. Les fichiers README, les matrices d'exigences et les manifestes précisent les limites temporelles et la portée des preuves.
 
-- #link("https://github.com/HyMathew/cinevault-api")[API, services et adaptateurs JSON et MongoDB].
-- #link("https://github.com/HyMathew/cinevault-web")[Présentation Flask/Jinja].
+- #link("https://github.com/HyMathew/cinevault-api/tree/4dd5cd99287fafdc647dead5ce32dbd42a5c457c")[API 4dd5cd9, services et adaptateurs JSON et MongoDB].
+- #link("https://github.com/HyMathew/cinevault-web/tree/26079075bdb8c153f1965ce6869a8e946b7e70c2")[Web 2607907, présentation Flask/Jinja].
 - #link("https://github.com/HyMathew/cinevault-infra-report")[Infrastructure, modèles, preuves et rapport].
-- #link("https://github.com/HyMathew/cinevault-api/actions/runs/42536728355")[CI API 173 tests par plateforme].
+- #link("https://github.com/HyMathew/cinevault-infra-report/blob/quality/cinevault-v2/docs/quality/ENTERPRISE_21_QUALIFICATION.md#paire-api-et-web")[Qualification de la paire Enterprise 2.1 et limites des campagnes].
+- #link("https://github.com/HyMathew/cinevault-infra-report/blob/quality/cinevault-v2/evidence/public/enterprise-2.1-candidate-20261121.json")[Manifeste de qualification, reprise MongoDB et circulation HTTP].
+- #link("https://github.com/HyMathew/cinevault-infra-report/actions/runs/44912210123")[CI paire JSON] et #link("https://github.com/HyMathew/cinevault-infra-report/actions/runs/44912210105")[CI Chromium].
+- #link("https://github.com/HyMathew/cinevault-api/actions/runs/42536728355")[CI historique de l’API, 173 tests par plateforme].
 - #link("https://github.com/HyMathew/cinevault-web/actions/runs/42640090796")[CI historique du Web].
 - #link("https://github.com/HyMathew/cinevault-api/actions/runs/44831153091")[CI API a500e245 et job MongoDB natif].
 - #link("https://github.com/HyMathew/cinevault-api/blob/22bcecdadee4512ddc5eb6db5759834c27b1ad48/docs/evidence/mongodb-p5-operator-native-20261120.json")[Reçu de migration et commandes de comptes].
@@ -139,7 +141,20 @@ Les sources publiques et leurs historiques sont disponibles dans les trois dép�
 - #link("https://github.com/HyMathew/cinevault-infra-report/blob/d3108dea6e50c2a251e1335db301b673312e6183/evidence/public/mongodb-performance-observability-20261121.json")[Mesures natives et corrélation HTTP].
 - #link("https://www.openssl-library.org/source/")[Versions OpenSSL publiées].
 
-Les supports C0 à C5 et le sujet RT0705TP constituent les sources pédagogiques de cette étude. Les choix de formatage du présent document utilisent #link("https://typst.app/docs/")[la documentation officielle Typst] et le compilateur portable 0.15.1, dont l'archive a été vérifiée contre le digest officiel.
+Les essais locaux des révisions de journalisation 22bcecd et 70fa78e comptent 567 tests API et 470 tests Web. Le résultat API comprend 35 sous-tests réussis et compte cinq tests MongoDB ignorés.
+
+*Sources pédagogiques.* Les dates indiquent la création des PDF d’après leurs métadonnées. Les pages renvoient aux fichiers fournis.
+
+- *Sujet RT0705TP*, _Gestion d’une vidéothèque_, 5 novembre 2026, p. 1–3.
+- Olivier Flauzac, _Programmation des applications en réseau_, RT0705, M1 R&T, supports du 20 octobre 2026.
+  - C0 — _Programmation des applications en réseau_, p. 2 et 4.
+  - C1 — _Modélisation des applications réparties_, p. 21, 25 et 28.
+  - C2 — _Échanges de données_, p. 23, 25 et 42.
+  - C3 — _Communication indirecte et modèle à messages_, p. 4, 21 et 45.
+  - C4 — _Client / serveur_, p. 5, 11 et 18.
+  - C5 — _Développement client / serveur_, p. 44, 49 et 57.
+
+La composition emploie #link("https://typst.app/docs/")[Typst] 0.15.1, dont l’archive a été vérifiée contre le digest officiel.
 
 #pagebreak()
 #set page(paper: "a2", margin: 20mm)

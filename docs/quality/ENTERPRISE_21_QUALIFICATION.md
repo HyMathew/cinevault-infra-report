@@ -31,6 +31,15 @@ MongoDB, l'API encore active a renvoyé 503 en 10,3 s. Les écrans Web ont répo
 été retirés. La campagne couvre la boucle locale sans TLS. La qualification
 multi-hôtes reste ouverte.
 
+La campagne de circulation a exécuté 264 échanges HTTP sur les deux moteurs,
+avec quatre tours par moteur. Chaque tour a présenté deux demandes concurrentes
+pour le dernier exemplaire, puis une course entre le premier et le dernier de
+la file. Elle a aussi rejoué en parallèle une même création de réservation.
+Le premier cas a produit une seule approbation. La file a conservé la priorité
+du premier en attente et les appels répétés ont conservé une seule réservation.
+Les états persistés ont été relus sur chaque moteur.
+[Reçu de circulation biomoteur](../../evidence/public/enterprise-2.1-candidate-20261121.json).
+
 ## Données et reprise
 
 La qualification MongoDB à partir d'une archive chiffrée a restauré 393
@@ -39,6 +48,14 @@ restée identique et le candidat a accepté le nouvel administrateur tout en
 refusant deux méthodes d'authentification archivées. La campagne a opéré dans
 un replica set isolé depuis le PC par SSH.
 [Reçu natif de l'API](https://github.com/HyMathew/cinevault-api/blob/4dd5cd99287fafdc647dead5ce32dbd42a5c457c/docs/evidence/mongodb-quarantine-native-20261121.json).
+
+Une autre campagne a suspendu le seul conteneur Mongo local pendant
+environ 10,4 secondes. L'API et l'écran Insights ont suivi la séquence
+200 → 503 → 200. Le premier 200 de la santé a été observé 196 ms après
+l'acquittement de la reprise Docker. Le film, le favori et la session
+étaient toujours accessibles. L'API a conservé son processus et son pool
+PyMongo. La sonde porte sur une pause locale du même processus Mongo.
+[Reçu de reprise après pause](../../evidence/public/enterprise-2.1-candidate-20261121.json).
 
 ## Publication documentaire et déploiement
 
@@ -49,6 +66,12 @@ empreinte. Elles comprennent le PDF Enterprise identifié par son SHA-256.
 Le job Chromium Ubuntu a réussi 207 contrôles. Les fichiers et dépendances
 natives varient selon les plateformes. Le portail hébergé reste à la révision
 indiquée dans le README. [CI documentaire statique](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44911096819).
+
+La première édition 2.1, d'empreinte `9c891e53…`, possède une attestation
+Sigstore vérifiée par un job en lecture seule. Le contrôle lie ce PDF, le
+workflow, la branche et le commit `6c983f0`. Le PDF corrigé par la revue
+universitaire fait l'objet d'une attestation distincte.
+[CI de signature et de vérification](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44954701826).
 
 La branche prépare une livraison. Le dernier contrôle image cité dans le
 [rapport Enterprise](../../report/enterprise-2.1/README.md) bloque encore

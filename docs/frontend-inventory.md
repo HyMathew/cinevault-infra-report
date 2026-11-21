@@ -2,6 +2,23 @@
 
 **Références de source :** les liens ciblent des commits immuables désormais accessibles dans les dépôts publics audités. Les documents pédagogiques, secrets et journaux privés restent exclus. Voir la [synthèse courante des validations](validation-current.md) pour les révisions déployées et les CI réellement exécutées. Les analyses statiques historiques ci-dessous restent datées.
 
+## Candidat Enterprise 2.1 au 21 novembre 2026
+
+La fabrique Web à `2607907` enregistre 36 règles applicatives et 33 fonctions
+de vue en mode Enterprise. Le mode pédagogique en enregistre 11. Le relevé
+exclut la route statique et les méthodes HEAD et OPTIONS implicites. Le
+candidat contient 12 modules Python, 32 fichiers de template et une feuille
+CSS. Le module supplémentaire journalise les accès avec un identifiant
+généré par le serveur. [Sources de la révision](https://github.com/HyMathew/cinevault-web/tree/26079075bdb8c153f1965ce6869a8e946b7e70c2/app).
+
+Par rapport à l'inventaire historique, trois nouveaux fragments partagent
+les champs répétables, la navigation et l'affiche de secours. Le template
+`lending_retry.html` présente la reprise manuelle d'une création de prêt ou
+de réservation après un résultat incertain. Le formulaire garde la clé
+d'idempotence et propose de consulter l'état avant de réessayer. Le test
+Chromium déclenche ce cas en interrompant la réponse de l'API après création.
+[Qualification du couple et portée](quality/ENTERPRISE_21_QUALIFICATION.md).
+
 ## Actualisation du client natif — web10612c9, puis CSSf3d10cb
 
 La révision courante ajoute `app/response_contracts.py` : validation structurelle des réponses JSON après décodage et avant adaptation/Jinja. Elle vérifie les champs consommés, tableaux, cartes, pagination et chaînes UTF-8 ; elle refuse un204 inattendu. Une réponse incompatible lève APIError503. Les réponses sans contenu documentées, champs nuls légitimes, données vides, Unicode ordinaire et affiches facultatives restent compatibles. Les clients injectés ne sont pas enveloppés. Aucun nouvel écran, URL ou template : le total passe à11 modules, avec28 templates et36 règles inchangés. Les74 cas ajoutés portent la suite à159 tests sur chacune des CI Windows/Ubuntu ; cette version est déployée et contrôlée séparément.

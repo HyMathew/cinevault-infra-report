@@ -1,8 +1,21 @@
 {
-  "bytes": 764117,
+  "academic_acceptance_review": {
+    "api_revision": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "corrections_applied": {
+      "R3": "exact API and Web pair references, local and CI evidence scopes, and local MongoDB reconnect and two-engine HTTP evidence",
+      "R4": "course and subject references with page numbers and PDF metadata creation dates"
+    },
+    "native_circulation_receipt_sha256": "a83756ebe2466e82edb9998e8a72e1379181b6e41b43cb817a6a6ae521af76ac",
+    "native_mongodb_resume_receipt_sha256": "b1bc1a3c885060027db6f48eb8bbecb642b09aaf0eb408ea8ee4b121641d0be2",
+    "review_receipt_sha256": "ef99398a2cd342e9fadea39f649d3c369739cc579761d1500a8f3ba1b3c63b0a",
+    "reviewed_pdf_sha256": "9c891e534242b48170b0ca3d11bcab9b29b19bbea2bc83867ae2b51d534b2992",
+    "web_revision": "26079075bdb8c153f1965ce6869a8e946b7e70c2"
+  },
+  "bytes": 778774,
   "compiler": "typst 0.15.1 (9dfd3a08)",
   "creation_timestamp": 1795268349,
   "edition": "Enterprise 2.1",
+  "external_https_destinations": 16,
   "independent_fact_review": {
     "corrections_applied": [
       "P5 exchange count scope",
@@ -14,9 +27,13 @@
     ],
     "reviewed_pdf_sha256": "8a3a1ce489bb27beed2e7d093d39158460e5b0cc8648bdcc5087d9e79ffd0b83"
   },
+  "internal_destinations_resolved": 45,
+  "local_git_link_targets_resolved": 8,
   "original_pdf_sha256": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
   "original_rebuilt_in_separate_path": true,
-  "pdf_sha256": "9c891e534242b48170b0ca3d11bcab9b29b19bbea2bc83867ae2b51d534b2992",
+  "pdf_sha256": "8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a",
+  "previous_edition_git_commit": "cc00edd5d4f294166ef1329fc7d62c2ae55337ae",
+  "previous_edition_pdf_sha256": "9c891e534242b48170b0ca3d11bcab9b29b19bbea2bc83867ae2b51d534b2992",
   "reference_evidence_sha256": {
     "lab-resource-vm2-20261121.json": "ad4e56760a6d38c63af959c4c363aae1fdc1e388d88af9c56dd7c01a9ce82a39",
     "mongodb-performance-observability-20261121.json": "c56ac9bcc7f4760ddd8c6978574901b857e9fb101f8b1cd637a2c9da71a1490e"
@@ -26,116 +43,125 @@
     {
       "page": 1,
       "paper": "A4",
-      "render_sha256": "a7ecb61063ec704603132608c7dab5050d2d5ca3c1ba38e7069d274b9b50fcee"
+      "render_sha256": "4936a918b192113f5133c55378297059a33f9325b7d44f78e03065677cff4410"
     },
     {
       "page": 2,
       "paper": "A4",
-      "render_sha256": "447d9d500772f1241b03580653c638d1c759c9a08003598a8a8790c6738dd1fa"
+      "render_sha256": "18dec06f86bb59d6a296ca0daeca936d723b6eddbee461c36eee72249620eccf"
     },
     {
       "page": 3,
       "paper": "A4",
-      "render_sha256": "7fa57947392d1e65caba95cf19a2134ff6eab38949b76b8a333d7f9209a47a21"
+      "render_sha256": "b470a201e4cdc78b1145d479e2572dce607b31c3a0a8e906a8b05a80b4cd06ea"
     },
     {
       "page": 4,
       "paper": "A4",
-      "render_sha256": "a28ca42e7b79924c523c248ac93049b63716197cea78c92762623036cbc2dac1"
+      "render_sha256": "b9cc58f1cb2578272c271ca4d9decd473f96a37b011711c559a57b6bfb548aab"
     },
     {
       "page": 5,
       "paper": "A4",
-      "render_sha256": "8e3b9bfed406732f30f31fac21a8e521cdd144fee232ca607937d7e29b259b26"
+      "render_sha256": "8588cb3dc3a36c15a495804d4f0e1a9082bd057b258e2712fe15bba924216fe2"
     },
     {
       "page": 6,
       "paper": "A4",
-      "render_sha256": "74d3854d8a695720c31affc9647182f4a1604c422565f0a6341d07f2434a78ed"
+      "render_sha256": "51103020ecbb08c3010d71b4ab741c119ac95b14c2977b076288cab109c62e04"
     },
     {
       "page": 7,
       "paper": "A4",
-      "render_sha256": "93578c2271bd7595e4f934928265993f36e55f1d6fe54c617fae07a70b6d6344"
+      "render_sha256": "142bee7219c43891b74ce6c5be18750f95443bdf102c0495d572a32c0181f1c7"
     },
     {
       "page": 8,
       "paper": "A4",
-      "render_sha256": "17c3f0b7f19aedbdc0220c2d3c65076049892dede1b3aca9ab08a74763ee0154"
+      "render_sha256": "685187f52774ee56693dadded9c8ffc8d5bd98793464f7ee141a505a5c1ada0b"
     },
     {
       "page": 9,
       "paper": "A4",
-      "render_sha256": "4d4ebf639f553106339d84945aab7d408bf794710ec8434b8dc0e872fec06195"
+      "render_sha256": "c33a0a788614b8e290823a634808ad43461adc713d5d86dd21dd8e6d6080251e"
     },
     {
       "page": 10,
       "paper": "A4",
-      "render_sha256": "4588c467a2bf111099f68a4c220bb214120481622fdd01cd592255d6b82bbbfd"
+      "render_sha256": "a27873851ac80a19b1898ddd49146f10c300dd8108a282f47ede03cc7385608b"
     },
     {
       "page": 11,
       "paper": "A4",
-      "render_sha256": "731f8b3fd900533caeea194111f475db1f68af331afedd8282a70f57d190304d"
+      "render_sha256": "a1fec2b9f639c9a865a91384ba79d2434d6e1724048deb929be76555c51c1102"
     },
     {
       "page": 12,
       "paper": "A4",
-      "render_sha256": "729f9fb2e2faa25f95fde67b46fdd7f34a88bbcb296cba13eb2f499c9cdb454d"
+      "render_sha256": "224ca8f0d44e1fa8076de0ada211097fe0b00a1646ef6eb5178ee2609bfbd92c"
     },
     {
       "page": 13,
       "paper": "A4",
-      "render_sha256": "1e9bab5205a5156e19ea65887a07c07fe04b5bba99e86a6c9291cd3f076ab67a"
+      "render_sha256": "bef2270191c11b2a331c926298fd8da8fe72e49c432f9e58340fda0f3b990037"
     },
     {
       "page": 14,
       "paper": "A4",
-      "render_sha256": "080ea716ff4112b4286b3da351a01889173f28b843c64a8ddfa61f8e77053512"
+      "render_sha256": "03f03bc95e6f76fcecbeaaf65334a90547c188515661da8a82846b065969bf41"
     },
     {
       "page": 15,
       "paper": "A4",
-      "render_sha256": "12ffe5bd09154a8fb7afcd9758ea101345a4ca5e87e2bd993decd4376b95f3d6"
+      "render_sha256": "cffc404fab48998e2d918cbbdd2c76f318d0eb31475a451854b1c58f2ed9300c"
     },
     {
       "page": 16,
       "paper": "A4",
-      "render_sha256": "8ccadca1efb83f4d24d04f988feb98844e915649ea5103db3c98ec53c5928bef"
+      "render_sha256": "9f4e348654ba189edc2031bf369c09a429c6608703b6714684d2f35ea4f8ce9e"
     },
     {
       "page": 17,
       "paper": "A4",
-      "render_sha256": "9d549681da240cb54955402108083ac1dcfe25246f474d807bd2c4f6e01495e3"
+      "render_sha256": "4b36e7b2088e95a66a188f9e313d1ffa5c2ff93d26b408290067d296bee42323"
     },
     {
       "page": 18,
       "paper": "A4",
-      "render_sha256": "e1f9d2abab34d2efcc69fdfb09fe08f101c8d0ef52bc35f124fbf59f28994955"
+      "render_sha256": "8367fccfa83232d1317452842bfe82485ad75bfba1a7769ead795d1c09e121d7"
     },
     {
       "page": 19,
       "paper": "A2",
-      "render_sha256": "3db94b48e6a45627f2e0dc14895dbb1de4294f2ea1e9f1d5ee1f0b80f6987cda"
+      "render_sha256": "304f5d7ca4f7c8810590f63d9a9469ff100998ddd0c546d74e4a4dbedd42991f"
     },
     {
       "page": 20,
       "paper": "A2",
-      "render_sha256": "7765c4d29f755326dd62c18845d141e2772e89a24c4ea47749855d8053c75e3b"
+      "render_sha256": "528f2457e9e38d9e858a75e497dad4627b894ec6fba0b9fb2845b4485aaf68cd"
     }
   ],
   "reproducible_platforms": [
     "Windows",
     "Linux (Ubuntu WSL)"
   ],
-  "scope": "report bytes, text boundaries, visual inspection, and initial edition preservation",
+  "scope": "report bytes reproduced with Windows build script and WSL Ubuntu Typst, covered link objects checked locally, text bounds, render and inspection of revised pages, preserved older editions",
   "source_sha256": {
     "build-config.json": "1d1cfa81897fe9d4de6d28246623edc4ba0f9305b2a8a6290dce8f8ecddb382e",
-    "chapters.json": "ed607a146b1e5b394b24dc1e8b93be9e5082c5134865ba594f9e131d7aee4cdd",
+    "chapters.json": "ec8aea8c7da299574258e3ed1b89d892eb308d2d0e751f1318cc12d946e97eb8",
     "figures/adaptateurs-mongodb.dot": "9c330a9d31d0ee0193a4a74d5b7175952569b78dd02043637f73c9f19771e0f2",
     "figures/adaptateurs-mongodb.svg": "b4ddabc5fbcedc332aa78a3e4ac183136383928323ed8b1bd0787d635f3518c7",
-    "main.typ": "c17e9e72ee221cda46f2a088672f05681143469338d1344800ea620176996006"
+    "main.typ": "cd0c103a3debe5c55ff3f36fde09ec58f0f5434de362e10855194b365ba0fe4c"
   },
   "text_and_bounds_verified": true,
+  "verified_at_utc": "2026-11-21T22:15:42.519634+00:00",
+  "visual_review_pages": [
+    3,
+    4,
+    12,
+    13,
+    14,
+    18
+  ],
   "visual_review_passed": true
 }

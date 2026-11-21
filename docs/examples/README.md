@@ -1,6 +1,21 @@
 # Exemples JSON entièrement fictifs
 
-Le dossier `academic-json/` illustre les formes réellement présentes dans le candidat API adjacent. Son contrat comporte **42 composants OpenAPI**, comptés depuis `components.schemas`, ainsi que 18 définitions du schéma de stockage. Aucun 43e composant n'a été inventé. `manifest.json` donne les composants, emplacements de schéma HTTP, versions d'outils, empreintes des sources et artefacts, contrôles exécutés et limites.
+Le dossier `academic-json/` conserve les formes exécutées sur l'API historique
+`6a86f2e`. Son contrat comporte **42 composants OpenAPI** et 18 définitions du
+schéma de stockage. `manifest.json` répertorie les emplacements de schéma HTTP,
+les versions d'outils, les empreintes des sources et des artefacts, ainsi que la
+portée des contrôles.
+
+Le 21 novembre 2026, un rejeu hors réseau à la révision Enterprise `4dd5cd9`
+a exécuté 93 échanges Flask sur 44 opérations, puis validé 42 composants
+OpenAPI, 20 définitions du schéma de stockage et cinq schémas techniques.
+Les deux définitions de stockage supplémentaires décrivent les reçus de
+création de prêt et de réservation. Le rejeu utilise une copie de travail API
+propre à la révision demandée. Les exemples générés restent en mémoire.
+
+```sh
+python -B scripts/academic_json_examples.py --api-root ../cinevault-api --replay-api-commit 4dd5cd99287fafdc647dead5ce32dbd42a5c457c
+```
 
 Le générateur utilise les vrais handlers Flask avec `test_client`, un stockage neuf dans `TemporaryDirectory`, une horloge historique, des UUID maîtrisés et un fournisseur explicitement synthétique. Aucun réseau, serveur, compte réel ou machine distante n'intervient. Le cache local et les validations métier sont ceux de l'API. Les exemples comprennent 93 échanges HTTP couvrant les **44 couples méthode + chemin paramétré déclarés dans OpenAPI**, tous les états des prêts et réservations, des imports JSON/CSV, les politiques de doublon et reçus, les projections publiques/privées, les états techniques et une reprise hors ligne jetable. Les suppressions utilisent des objets jetables dédiés pour préserver le snapshot et les liens des cycles métier. Cette couverture de routes ne signifie pas que toutes leurs branches ou tous leurs cas d'erreur ont été exercés.
 
