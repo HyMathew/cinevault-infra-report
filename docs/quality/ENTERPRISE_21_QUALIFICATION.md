@@ -7,8 +7,11 @@ Le 21 novembre 2026, le contrôle HTTP a validé six étapes sur l'API
 validé 45 contrôles sur les deux services réels, dont l'authentification, les
 formulaires, les prêts, les réservations et la reprise d'une création dont la
 réponse est coupée par le proxy de test. Les deux contrôles ont utilisé
-les sources aux révisions déclarées avec données synthétiques.
-[Reçu des contrôles](../../evidence/public/enterprise-2.1-candidate-20261121.json).
+les sources aux révisions déclarées avec données synthétiques. Les workflows
+ont ensuite réussi pour le même couple sur les runners déclarés.
+[Reçu des contrôles](../../evidence/public/enterprise-2.1-candidate-20261121.json) ·
+[CI de la paire JSON](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44912210123) ·
+[CI Chromium](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44912210105).
 
 La campagne Insights est distincte et couvre l'API `22bcecd` avec le Web
 `2607907` et JSON. Avant correction, les répartitions entièrement à zéro
@@ -17,7 +20,16 @@ et 24 scans axe sans violation ni résultat incomplet à 320, 390, 768 et 1280 p
 Les cas incluent le clavier, les compteurs vides ou réellement alimentés,
 les droits, les données d'un autre membre et une indisponibilité provoquée en
 arrêtant l'API isolée. Les temps de navigation observés restent propres au PC.
-La qualification des parcours MongoDB et multi-hôtes reste ouverte.
+
+Le couple exact `4dd5cd9` et `2607907` a rejoué ces écrans avec MongoDB
+8.0.34 dans Docker Desktop. Les tests ont validé 36 navigations aux mêmes
+largeurs, 32 contrôles de mise en page, 24 scans axe sans résultat négatif
+et les parcours clavier. Le moteur a conservé les comptes, sessions, films et
+entrées privées observés, avec 12 collections et 40 index. Après arrêt réel de
+MongoDB, l'API encore active a renvoyé 503 en 10,3 s. Les écrans Web ont répondu
+503 en environ 5,1 s. Le conteneur, son réseau et les données temporaires ont
+été retirés. La campagne couvre la boucle locale sans TLS. La qualification
+multi-hôtes reste ouverte.
 
 ## Données et reprise
 

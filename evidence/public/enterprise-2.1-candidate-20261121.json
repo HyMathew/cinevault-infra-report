@@ -40,6 +40,28 @@
     "cleanup_confirmed": true,
     "receipt_sha256": "c3188fd0873a614fcfb06f83fbceecd6868fe9a8dffb72b99a14b04eac4ab12e"
   },
+  "insights_mongodb": {
+    "api_source_commit": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "web_source_commit": "26079075bdb8c153f1965ce6869a8e946b7e70c2",
+    "engine": "MongoDB 8.0.34",
+    "scope": "Isolated Docker Desktop replica set and real locally served browser routes",
+    "passed": true,
+    "viewport_widths_px": [320, 390, 768, 1280],
+    "navigations": 36,
+    "layout_checks": 32,
+    "axe_scans": 24,
+    "axe_violations": 0,
+    "axe_incomplete": 0,
+    "screens": 18,
+    "mongo_collections": 12,
+    "mongo_indexes": 40,
+    "business_json_absent": true,
+    "api_http_after_motor_shutdown": 503,
+    "api_health_observed_seconds": 10.296,
+    "web_insights_http_after_motor_shutdown": 503,
+    "cleanup_confirmed": true,
+    "receipt_sha256": "66b52c100a6e8d59de497b774799d22fb145745fd09e720a0197a9f4340ff1b2"
+  },
   "documentation_portal": {
     "infra_source_commit": "0427e10081e9215c5c601e51dba1fe0f789b0fdf",
     "run": 44911096819,

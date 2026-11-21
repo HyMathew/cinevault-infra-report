@@ -46,10 +46,12 @@ des images et le résultat de la commande.
 5. Garder les modifications du staging indépendantes de l'instance stable.
    Retenir une fenêtre avant/après une correction et rejouer la sonde concernée.
 
-Aucun collecteur périodique ni destination d'alerte n'a été installé pour
-cette validation. La perte de collecte, les seuils de ressources, la fréquence
-des sauvegardes et le délai de reprise relèvent de la politique d'exploitation
-du déploiement.
+La [sonde d'exploitation à la demande](quality/OPERATING_PROBE.md) vérifie
+les deux endpoints de santé, un résumé de collecte et la fraîcheur des reçus
+de sauvegarde et de restauration. L'exploitant fournit les fenêtres et seuils.
+Le test local a détecté une réponse 503 de l'API puis son retour à 200 avec le
+Web toujours disponible. Il a aussi détecté l'absence de collecte et une
+sauvegarde périmée à partir de reçus synthétiques. La sonde s'exécute manuellement.
 
 ## Résultat mesuré
 
