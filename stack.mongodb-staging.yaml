@@ -179,3 +179,4 @@ networks:
     driver: overlay
     driver_opts: {encrypted: ""}
     internal: true
+    attachable: true

@@ -56,6 +56,9 @@ avant de créer le premier administrateur de maintenance. La sonde MongoDB du
 manifeste teste le processus et la négociation TLS. L'état primaire et
 l'authentification restent des contrôles séparés.
 
+Le réseau `data` accepte le conteneur opérateur temporaire. Lui seul reçoit
+l’URI de maintenance pendant le provisionnement.
+
 Provisionner la base vide avec `app.persistence.mongo_maintenance.provision`
 depuis le compte de maintenance. Préparer des identités séparées pour l'API et
 la migration. Accorder à l'application `find`, `insert`, `update` et
