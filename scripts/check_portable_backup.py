@@ -26,6 +26,7 @@ LOCK = ROOT / "tools/mongodb_backup/requirements.lock"
 UPSTREAM = ROOT / "tools/mongodb_backup/upstream.lock.json"
 MAX_LOG_BYTES = 8 * 1024 * 1024
 LOG_LIMIT_MARKER = b"\n[qualification log byte limit exceeded]\n"
+EXPECTED_CONTRACT_TESTS = 47
 WINDOWS_ONLY_SKIP = (
     (
         "test_mongodb_backup.BoundaryTests."
@@ -117,8 +118,8 @@ def test_contract(result, test_ids):
     skipped = [(case.id(), reason) for case, reason in result.skipped]
     expected_skips = [] if os.name == "nt" else [WINDOWS_ONLY_SKIP]
     passed = (
-        len(test_ids) == result.testsRun == 45
-        and len(set(test_ids)) == 45
+        len(test_ids) == result.testsRun == EXPECTED_CONTRACT_TESTS
+        and len(set(test_ids)) == len(test_ids)
         and len(age_ids) == 7
         and not any(name in {item[0] for item in skipped} for name in age_ids)
         and skipped == expected_skips
@@ -126,6 +127,7 @@ def test_contract(result, test_ids):
     )
     return {
         "passed": passed,
+        "expected_test_count": EXPECTED_CONTRACT_TESTS,
         "tests_run": result.testsRun,
         "tests_passed": result.testsRun
         - len(result.failures)
@@ -349,7 +351,7 @@ def worker(args):
         )
         stage = "license_inventory"
         collect_notices(args.tools_directory.resolve(), report)
-        stage = "all_45_contract_tests_real_age_enabled"
+        stage = "all_contract_tests_real_age_enabled"
         suite = unittest.defaultTestLoader.discover(
             str(ROOT / "tests"), pattern="test_mongodb_backup.py"
         )

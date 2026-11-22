@@ -1,6 +1,7 @@
-"""Real-child regressions for the qualification runner's output and time bounds."""
+"""Regressions for the portable backup qualification runner."""
 
 import importlib.util
+import os
 import subprocess
 import sys
 import tempfile
@@ -12,6 +13,27 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts/check_portable_backup.py
 SPEC = importlib.util.spec_from_file_location("portable_backup_ci", SCRIPT)
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
+
+
+class ContractTests(unittest.TestCase):
+    def test_current_suite_is_accepted_and_smaller_suite_is_rejected(self):
+        suite = unittest.defaultTestLoader.discover(
+            str(SCRIPT.parents[1] / "tests"), pattern="test_mongodb_backup.py"
+        )
+        cases = list(runner.flat_tests(suite))
+        test_ids = [case.id() for case in cases]
+        result = unittest.TestResult()
+        result.testsRun = len(test_ids)
+        if os.name != "nt":
+            skipped_id, reason = runner.WINDOWS_ONLY_SKIP
+            result.addSkip(
+                next(case for case in cases if case.id() == skipped_id), reason
+            )
+
+        self.assertTrue(runner.test_contract(result, test_ids)["passed"])
+
+        result.testsRun -= 1
+        self.assertFalse(runner.test_contract(result, test_ids[:-1])["passed"])
 
 
 class LogBoundTests(unittest.TestCase):
