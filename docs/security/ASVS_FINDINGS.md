@@ -112,12 +112,18 @@ utilisateur de visualisation/révocation des sessions après réauthentification
 la rotation d'une éventuelle session courante de réauthentification mérite un
 contrat explicite (`7.2.4`, partiel).
 
-Action : compléter les politiques et tests communs JSON/Mongo ; conserver les
-budgets anti-bruteforce avant Argon2, la révocation atomique et les refus lors d'un
-recul d'horloge. Les essais UoW et index Mongo ne prouvent pas encore toutes les
-routes de prêts, réservations, import et administration. Les constats de capacité
-du scan v1 restent ouverts tant que leurs scénarios métier ne sont pas traités et
-retestés ; changer de moteur ne les clôt pas automatiquement.
+Les quatre plafonds globaux de sessions, collections privées, prêts et
+réservations ont été retestés au seuil sur l'API `15a894e`. MongoDB refuse
+les dépassements en annulant la transaction, y compris les écritures annexes.
+Le plafonnement d'un historique peut toujours interrompre de nouvelles
+créations lorsque le seuil est atteint. Une politique de capacité et de
+conservation reste à définir. La reprise nécessite aussi une place
+disponible pour un nouveau compte de secours.
+[Reçu biomoteur du 22 novembre](../../evidence/public/enterprise-2.1-candidate-20261122.json).
+
+Compléter les politiques et les tests communs JSON/Mongo requiert de conserver
+les budgets anti-bruteforce avant Argon2, la révocation atomique et les refus
+lors d'un recul d'horloge.
 
 ### Journal de sécurité et conservation
 

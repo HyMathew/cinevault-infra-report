@@ -109,3 +109,12 @@ Le 21 novembre 2026, le CLI du manager a rendu cette configuration avec zéro
 puis un réplica de chaque application. Les deux rendus contiennent trois
 services, deux réseaux internes chiffrés, zéro port publié et des secrets montés
 en 0400. Cette vérification de configuration précède le déploiement du staging.
+
+Le 22 novembre, les trois VM ont répondu en SSH depuis le PC. Le contrôle a
+confirmé les labels, les deux workers prêts, le manager en Drain et l’absence
+de ressources portant les noms de staging. VM2 disposait d’environ 1 466 Mio
+de mémoire disponible à cet instant. La stack stable était saine, avec HTTP
+200 sur la sonde Web. Les connexions PC vers les ports API et MongoDB ont
+expiré. Ce contrôle porte sur les flux depuis le PC et la capacité observée
+à cet instant.
+[Reçu des contrôles SSH](../evidence/public/enterprise-2.1-candidate-20261122.json).

@@ -13,6 +13,15 @@ ont ensuite réussi pour le même couple sur les runners déclarés.
 [CI de la paire JSON](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44912210123) ·
 [CI Chromium](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44912210105).
 
+Le 22 novembre, la paire API `15a894e` et Web `bdf6063` a repassé sur
+le PC les six contrôles HTTP et les 45 contrôles Chromium avec JSON.
+Les deux services réels ont utilisé des données synthétiques retirées
+après l’essai. Le rejeu académique sur cette API a aussi vérifié 93 échanges,
+44 opérations OpenAPI et dix contrôles d’exécution.
+La révision API `6f2e90d` modifie la vérification de traces du job MongoDB.
+Elle a repassé les mêmes contrôles sur le PC avec le Web `bdf6063`.
+[Reçu de la paire](../../evidence/public/enterprise-2.1-candidate-20261122.json).
+
 La campagne Insights est distincte et couvre l'API `22bcecd` avec le Web
 `2607907` et JSON. Avant correction, les répartitions entièrement à zéro
 masquaient les messages d'état vide. Chromium a ensuite validé 36 navigations
@@ -51,6 +60,16 @@ Les états persistés ont été relus sur chaque moteur.
 
 ## Données et reprise
 
+Sur l’API `15a894e`, les plafonds de sessions, d’entrées privées, de prêts
+et de réservations s’appliquent désormais aux deux moteurs. Dans MongoDB,
+un dépassement renvoie HTTP 503 et annule la transaction. Les 62 tests
+ciblés sur le commit exact ont exercé les frontières avec MongoDB 8.0.34
+et une identité applicative SCRAM limitée. La suite complète du contenu
+commité totalise 627 tests et 35 sous-tests réussis. Il faut encore disposer
+d’une place dans le registre pour créer le compte de reprise à la limite
+de 10 000 utilisateurs.
+[Reçu des contrôles de capacité](../../evidence/public/enterprise-2.1-candidate-20261122.json).
+
 La qualification MongoDB à partir d'une archive chiffrée a restauré 393
 documents, 12 collections et 40 index avant la quarantaine. La source est
 restée identique et le candidat a accepté le nouvel administrateur tout en
@@ -68,13 +87,15 @@ PyMongo. La sonde porte sur une pause locale du même processus Mongo.
 
 ## Publication documentaire et déploiement
 
-Le portail a été reconstruit deux fois sur chacun des runners Windows et
-Ubuntu, avec 5 651 liens vérifiés par runner. Les deux archives ont été
-téléchargées et contrôlées, puis leurs inventaires ont été vérifiés par
-empreinte. Elles comprennent le PDF Enterprise identifié par son SHA-256.
-Le job Chromium Ubuntu a réussi 207 contrôles. Les fichiers et dépendances
-natives varient selon les plateformes. Le portail expose son propre reçu
-de construction. [CI documentaire statique](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44911096819).
+Le commit documentaire `55cab7b` a été reconstruit deux fois sur chacun
+des runners Windows et Ubuntu. Les deux archives ont passé 5 974 vérifications
+de liens chacune, avec 60 pages HTML et le PDF Enterprise de même empreinte.
+Le job Chromium Ubuntu a réussi 213 contrôles. Après publication, les
+415 fichiers publics servis en HTTPS ont tous correspondu aux octets
+qualifiés. Chrome a réussi 217 contrôles sur le portail hébergé.
+[CI documentaire](https://github.com/HyMathew/cinevault-infra-report/actions/runs/45034193153) ·
+[Publication](https://github.com/HyMathew/cinevault-infra-report/actions/runs/45034848105) ·
+[Reçu du portail](https://hymathew.github.io/cinevault-infra-report/build-receipt.json).
 
 La première édition 2.1, d'empreinte `9c891e53…`, possède une attestation
 Sigstore vérifiée par un job en lecture seule. Le contrôle lie ce PDF, le
@@ -85,7 +106,17 @@ académique sur l'API candidate. Les huit archives de ce run ont été vérifié
 [Premier run de signature](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44954701826) ·
 [Rejeu et signature du rapport corrigé](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44956333500).
 
-La branche prépare une livraison. Le dernier contrôle image cité dans le
-[rapport Enterprise](../../report/enterprise-2.1/README.md) bloque encore
-le déploiement du candidat. La v1 dispose de sa
+Une sonde locale sur l’API `4882c7f` et le Web `bdf6063` a vérifié TLS 1.3
+et les attributs des cookies à travers Caddy avec une CA privée. Les clients
+natifs ont refusé une CA et un nom d’hôte incorrects. Un Chromium isolé,
+sur l’API `15a894e` et le Web `bdf6063`, a également refusé ces deux cas.
+Avec la CA privée chargée dans le conteneur jetable, la connexion
+et l’accès au catalogue ont réussi en TLS 1.3. Chromium a reçu des
+cookies de session `Secure`, `HttpOnly` et `SameSite=Lax`.
+La qualification Swarm et la promotion applicative restent ouvertes.
+[Reçu HTTPS local](../../evidence/public/enterprise-2.1-candidate-20261122.json).
+
+Cinq CVE OpenSSL de gravité haute bloquent le contrôle image Web au commit
+`bdf6063`. La v1 dispose de sa
 [qualification historique](../validation-current.md).
+[Contrôle image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45033494493).
