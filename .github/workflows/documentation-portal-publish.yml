@@ -26,10 +26,11 @@ jobs:
         run: |
           import hashlib, io, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
           REPO = 'HyMathew/cinevault-infra-report'
-          COMMIT = 'cf026c0b98205af5fcaa4fa6de8e319335c58664'
-          RUN = 43502640262
-          ARTIFACT = 14074392758
-          DIGEST = '01ff467afa5f993a37603211605747429f71457520f80203f005be59d24746a1'
+          COMMIT = '55cab7b8e4d8e8dcca3ae8ca19d485442f58551e'
+          RUN = 45034193153
+          ARTIFACT = 14759126103
+          DIGEST = '61c9edf032415c6b65a3be1a0a78e6af45133e69aaf8fd2120483f50a03d7862'
+          ARCHIVE_SIZE = 10846962
           ROOT = f'https://api.github.com/repos/{REPO}/'
           headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
                      'Accept': 'application/vnd.github+json', 'User-Agent': 'CineVault-portal-promotion',
@@ -49,6 +50,7 @@ jobs:
           a = api(f'actions/artifacts/{ARTIFACT}')
           assert a['id'] == ARTIFACT and a['name'] == 'documentation-portal-ubuntu-24.04'
           assert not a['expired'] and a['digest'] == 'sha256:' + DIGEST
+          assert a['size_in_bytes'] == ARCHIVE_SIZE
           assert a['workflow_run']['id'] == RUN and a['workflow_run']['head_sha'] == COMMIT
           # Stop the API redirect before sending any authorization to blob storage.
           try:
@@ -62,32 +64,35 @@ jobs:
           assert location_parts.scheme == 'https' and location_parts.hostname
           assert location_parts.username is None and location_parts.password is None
           with urllib.request.urlopen(location, timeout=60) as r:
-              data = r.read(6964502)
-          assert len(data) == 6964501 and hashlib.sha256(data).hexdigest() == DIGEST
+              data = r.read(ARCHIVE_SIZE + 1)
+          assert len(data) == ARCHIVE_SIZE and hashlib.sha256(data).hexdigest() == DIGEST
           with zipfile.ZipFile(io.BytesIO(data)) as z:
-              assert z.testzip() is None
               names = z.namelist()
-              assert len(names) == len(set(names))
+              assert len(names) == len(set(names)) <= 1200
+              assert sum(item.file_size for item in z.infolist()) < 96 * 1024 * 1024
               for item in z.infolist():
                   p = pathlib.PurePosixPath(item.filename)
                   assert not p.is_absolute() and '..' not in p.parts and '\\' not in item.filename
                   assert p.parts[0] in ('dist', '.cache')
                   assert not stat.S_ISLNK(item.external_attr >> 16)
+              assert z.testzip() is None
               receipt = json.loads(z.read('dist/build-receipt.json'))
               assert receipt['source_commit'] == COMMIT
               assert receipt['source_clean'] and receipt['tooling_clean']
               assert receipt['base'] == '/cinevault-infra-report'
-              assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 50
-              assert receipt['checks']['checkedLinks'] == 4500 and not receipt['checks']['errors']
+              assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 60
+              assert receipt['checks']['checkedLinks'] == 5974 and not receipt['checks']['errors']
               repro = json.loads(z.read('.cache/reproducibility.json'))
-              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 352
+              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 416
               dist = {n[5:]: z.read(n) for n in names if n.startswith('dist/') and not n.endswith('/')}
               assert set(dist) == {f['path'] for f in repro['files']}
               assert all(hashlib.sha256(dist[f['path']]).hexdigest() == f['sha256'] for f in repro['files'])
               browser = json.loads(z.read('.cache/browser-report/receipt.json'))
               assert browser['build_receipt'] == receipt and browser['passed']
-              assert len(browser['checks']) == 183 and all(c['passed'] for c in browser['checks'])
+              assert len(browser['checks']) == 213 and all(c['passed'] for c in browser['checks'])
               assert not browser['page_errors'] and browser['owned_server_stopped']
+              pdf = dist['sources/report/enterprise-2.1/RT0705_CineVault_Mathieu_Kuhnapfel.pdf']
+              assert hashlib.sha256(pdf).hexdigest() == '8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a'
               home = dist['index.html'].decode('utf-8')
               assert 'en préparation' in home and 'pas une validation finale' in home
               target = pathlib.Path('qualified-site')
@@ -96,7 +101,7 @@ jobs:
                   dest = target.joinpath(*pathlib.PurePosixPath(name).parts)
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(content)
-          print('Verified qualified candidate: 352 exact dist files; 50 HTML; 183 retained browser checks.')
+          print('Verified qualified candidate: 416 exact dist files; 60 HTML; 213 retained browser checks.')
       - name: Package exact public files including linked dot-directory sources
         shell: bash
         run: |
@@ -105,7 +110,7 @@ jobs:
           import os, pathlib, tarfile
           with tarfile.open(pathlib.Path(os.environ['RUNNER_TEMP']) / 'artifact.tar') as t:
               files = [m for m in t.getmembers() if m.isfile()]
-              assert len(files) == 351
+              assert len(files) == 415
               assert all(m.isfile() or m.isdir() for m in t.getmembers())
               assert './sources/.github/workflows/browser-pair.yml' in t.getnames()
               assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
