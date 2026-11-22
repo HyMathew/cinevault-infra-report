@@ -110,6 +110,27 @@
     "sigstore_signature_verified": true,
     "archives_verification_sha256": "790edb17be2271a536801d5dbf5f67baff10558a044f0a1111939e71a23acbcb"
   },
+  "report_attestation_revised_edition": {
+    "infra_source_commit": "c26b50694c9ad16976e7894dd70d720af44ecabf",
+    "workflow": ".github/workflows/docs.yml",
+    "run": 44956333500,
+    "verification_job": 137005454128,
+    "sha256": "8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a",
+    "sigstore_signature_verified": true,
+    "archives_verification_sha256": "ae79314c71831b4fff1fdb06273f7384e1eb3e7036d95efd76b4c3a1340bb2ef"
+  },
+  "product_review_and_corrections": {
+    "api_source_commit": "4dd5cd99287fafdc647dead5ce32dbd42a5c457c",
+    "reviewed_web_commit": "26079075bdb8c153f1965ce6869a8e946b7e70c2",
+    "corrected_web_commit": "bdf6063ff575e5dbd034d6ea87211acf4c5fdd8b",
+    "reviewed_browser_states": 56,
+    "verified_corrected_browser_states": 20,
+    "viewport_widths_px": [320, 390, 768, 1280],
+    "axe_violations_in_corrected_states": 0,
+    "full_web_tests_passed": 495,
+    "scope": "Real browser and Flask services with isolated JSON on the PC",
+    "receipt_sha256": "550495efd40575de80a98172839504fc25ddb1068adcb2b4e9e7ed868906f76c"
+  },
   "documentation_portal": {
     "infra_source_commit": "0427e10081e9215c5c601e51dba1fe0f789b0fdf",
     "run": 44911096819,

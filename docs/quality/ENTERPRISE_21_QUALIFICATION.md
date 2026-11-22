@@ -31,6 +31,15 @@ MongoDB, l'API encore active a renvoyé 503 en 10,3 s. Les écrans Web ont répo
 été retirés. La campagne couvre la boucle locale sans TLS. La qualification
 multi-hôtes reste ouverte.
 
+La revue produit sur `4dd5cd9` et `2607907` a observé 56 états et trois
+problèmes dans le parcours clavier de recherche, les filtres des favoris et
+l'identification des contrôles d'administration. Après correction Web
+`bdf6063`, Chromium a vérifié 20 états aux quatre largeurs. Le décompte
+reçoit le focus après une recherche et un seul Tab atteint le premier résultat.
+Les favoris ne transmettent plus de filtre de liste nommée. Les contrôles de
+rôle et de statut identifient le compte. Les 20 scans axe ciblés n'ont
+rapporté aucune violation. Les 495 tests Web locaux ont réussi.
+
 La campagne de circulation a exécuté 264 échanges HTTP sur les deux moteurs,
 avec quatre tours par moteur. Chaque tour a présenté deux demandes concurrentes
 pour le dernier exemplaire, puis une course entre le premier et le dernier de
@@ -64,14 +73,17 @@ Ubuntu, avec 5 651 liens vérifiés par runner. Les deux archives ont été
 téléchargées et contrôlées, puis leurs inventaires ont été vérifiés par
 empreinte. Elles comprennent le PDF Enterprise identifié par son SHA-256.
 Le job Chromium Ubuntu a réussi 207 contrôles. Les fichiers et dépendances
-natives varient selon les plateformes. Le portail hébergé reste à la révision
-indiquée dans le README. [CI documentaire statique](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44911096819).
+natives varient selon les plateformes. Le portail expose son propre reçu
+de construction. [CI documentaire statique](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44911096819).
 
 La première édition 2.1, d'empreinte `9c891e53…`, possède une attestation
 Sigstore vérifiée par un job en lecture seule. Le contrôle lie ce PDF, le
 workflow, la branche et le commit `6c983f0`. Le PDF corrigé par la revue
-universitaire fait l'objet d'une attestation distincte.
-[CI de signature et de vérification](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44954701826).
+universitaire a été reproduit sur Windows et Ubuntu et possède sa propre
+attestation au commit `c26b506`. Deux jobs distincts y ont rejoué le corpus
+académique sur l'API candidate. Les huit archives de ce run ont été vérifiées.
+[Premier run de signature](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44954701826) ·
+[Rejeu et signature du rapport corrigé](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44956333500).
 
 La branche prépare une livraison. Le dernier contrôle image cité dans le
 [rapport Enterprise](../../report/enterprise-2.1/README.md) bloque encore

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "scope": "Public GHCR manifests only, matched by digest to the historical v1 configuration received from the image gate",
+  "api": {
+    "anonymous_manifest_access": true,
+    "layer_descriptors": 6,
+    "passed": true,
+    "platform_selected_from_index": null,
+    "registry_config_digest": "sha256:a3a0fc3911ddff9f7ab631b921ee840ea658a652154c23582092320dea2b231d",
+    "registry_platform_manifest_digest": "sha256:ca3effbd243062120078029f6ebcb9e5be1d142760913f52bb4187e3df355783",
+    "registry_reference": "ghcr.io/hymathew/cinevault-api@sha256:ca3effbd243062120078029f6ebcb9e5be1d142760913f52bb4187e3df355783",
+    "registry_subject_digest": "sha256:ca3effbd243062120078029f6ebcb9e5be1d142760913f52bb4187e3df355783"
+  },
+  "web": {
+    "anonymous_manifest_access": true,
+    "layer_descriptors": 5,
+    "passed": true,
+    "platform_selected_from_index": null,
+    "registry_config_digest": "sha256:403f2ad04c0227cfaf4fa1ca83b0f43e9ee2703a9ea53b29e4563319546ffaea",
+    "registry_platform_manifest_digest": "sha256:4d715bc72b7b18faff2ba9e5a7b8386adf99e96f5d2baea4b6cfe2a4d9a85bcf",
+    "registry_reference": "ghcr.io/hymathew/cinevault-web@sha256:4d715bc72b7b18faff2ba9e5a7b8386adf99e96f5d2baea4b6cfe2a4d9a85bcf",
+    "registry_subject_digest": "sha256:4d715bc72b7b18faff2ba9e5a7b8386adf99e96f5d2baea4b6cfe2a4d9a85bcf"
+  },
+  "unexpected_config_refused": true,
+  "source": "v1 qualification dated 2026-11-09"
+}

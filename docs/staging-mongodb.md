@@ -19,7 +19,8 @@ dans ce staging isolé. [Réseaux Swarm](https://docs.docker.com/engine/swarm/ne
   totalisent 1 152 Mio sur VM2. La disponibilité mémoire varie avec la charge.
 - Geler les références des deux images qualifiées dans `CINEVAULT_STAGE_API_IMAGE`
   et `CINEVAULT_STAGE_WEB_IMAGE`. Pour une image de registre, utiliser le digest
-  de manifeste dont le digest de configuration correspond au reçu de build.
+  de manifeste dont le digest de configuration correspond au reçu de scan.
+  [Vérifier le manifeste dans le registre](#vérifier-les-images-du-registre).
 - Préparer les deux volumes neufs sur VM2. `cvstage_mongo_data_v1` est réservé
   à UID 999. `cvstage_api_sidecars_v1` appartient à UID 10001. Ce dernier contient
   uniquement la fenêtre locale d'admission et le cache éventuel. Garder un seul
@@ -37,6 +38,27 @@ dans ce staging isolé. [Réseaux Swarm](https://docs.docker.com/engine/swarm/ne
   `replicaSet=cv-stage-rs`, `tls=true` et
   `tlsCAFile=/run/secrets/mongo_ca`. Le fichier d'URI contient le seul compte
   CRUD. La base configurée dans l'API s'appelle `cinevault_stage`.
+
+## Vérifier les images du registre
+
+Utiliser le digest de configuration `scan_provenance.archive_config_digest`
+de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
+demande uniquement les manifestes publics par digest, recalcule leurs
+empreintes et compare la configuration au scan. Si le reçu contient un digest
+OCI de plateforme, le fournir aussi avec `--platform-manifest-digest`.
+
+```sh
+python3 scripts/verify_registry_image.py \
+  --reference "$CINEVAULT_STAGE_API_IMAGE" --config-digest "$CINEVAULT_STAGE_API_CONFIG_DIGEST"
+python3 scripts/verify_registry_image.py \
+  --reference "$CINEVAULT_STAGE_WEB_IMAGE" --config-digest "$CINEVAULT_STAGE_WEB_CONFIG_DIGEST"
+```
+
+Un écart de digest entraîne le code de sortie 1. Le contrôle s'ajoute au
+scan et à la vérification ultérieure du tirage et de l'identité sur les
+workers. Les deux références v1 sont les seuls exemples déjà contrôlés en
+ligne avec ce script. [Reçu GHCR v1](../evidence/public/registry-manifest-check-20261122.json) ·
+[Spécification OCI Distribution](https://github.com/opencontainers/distribution-spec/blob/main/spec.md).
 
 ## Démarrer par étapes
 

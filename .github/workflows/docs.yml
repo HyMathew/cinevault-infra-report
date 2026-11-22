@@ -50,9 +50,11 @@ jobs:
             cinevault-infra-report/report/build-receipt.json
           retention-days: 7
           if-no-files-found: error
-      - name: Check HTTP correlation and the operating probe
+      - name: Check HTTP correlation, the operating probe and registry manifests
         working-directory: cinevault-infra-report
-        run: python -B -m pytest -q -W error tests/test_http_log_summary.py tests/test_operational_health.py
+        run: >-
+          python -B -m pytest -q -W error tests/test_http_log_summary.py
+          tests/test_operational_health.py tests/test_verify_registry_image.py
       - name: Compile Enterprise 2.1 report with pinned Typst
         run: python -B cinevault-infra-report/scripts/build_report.py --edition enterprise-2.1
       - name: Keep Enterprise 2.1 PDF and receipt
