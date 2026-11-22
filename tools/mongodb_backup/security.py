@@ -230,11 +230,20 @@ def connection_config(data):
         "authenticated_uri_without_database_required",
     )
     require(options.get("authmechanism") == "SCRAM-SHA-256", "scram_sha256_required")
+    nodes = parsed["nodelist"]
     require(
         options.get("tls") is True
-        or all(
-            host in {"127.0.0.1", "::1", "localhost"} for host, _ in parsed["nodelist"]
+        or (
+            options.get("directconnection") is True
+            and len(nodes) == 1
+            and nodes[0][0] in {"127.0.0.1", "::1", "localhost"}
         ),
         "tls_required_off_loopback",
     )
-    return value, (sorted(parsed["nodelist"]), options)
+    principal = (options["authsource"], parsed["username"])
+    transport = {
+        key: value
+        for key, value in options.items()
+        if key not in {"authsource", "authmechanism"}
+    }
+    return value, (sorted(nodes), transport), principal

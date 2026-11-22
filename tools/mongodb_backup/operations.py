@@ -79,9 +79,9 @@ def digest_file(path):
 
 def private_config(path, work, filename):
     data = read_private(path)
-    config, endpoint = connection_config(data)
+    config, endpoint, principal = connection_config(data)
     snapshot = write_private(work / filename, json.dumps(config).encode())
-    return config, endpoint, snapshot
+    return config, endpoint, principal, snapshot
 
 
 def external_identity(identity, archive):
@@ -110,18 +110,17 @@ def backup(args, age, work):
     database_name(args.database)
     external_identity(args.source_config, args.output)
     external_identity(args.freeze_config, args.output)
-    dump = executable(args.mongodump, TOOLS_VERSION, mongo=True)
-    source_config, endpoint, source_file = private_config(
+    source_config, source_endpoint, source_principal, source_file = private_config(
         args.source_config, work, "source.json"
     )
-    freeze_config, freeze_endpoint, _ = private_config(
+    freeze_config, freeze_endpoint, freeze_principal, _ = private_config(
         args.freeze_config, work, "freeze.json"
     )
-    # authSource/identity may differ; deployment and transport must be identical.
-    for value in (endpoint, freeze_endpoint):
-        value[1].pop("authsource", None)
-        value[1].pop("authmechanism", None)
-    require(endpoint == freeze_endpoint, "source_freezer_endpoints_differ")
+    require(source_endpoint == freeze_endpoint, "source_freezer_endpoints_differ")
+    require(
+        source_principal != freeze_principal, "source_freezer_principals_must_differ"
+    )
+    dump = executable(args.mongodump, TOOLS_VERSION, mongo=True)
     recipients = write_private(
         work / "recipients.txt",
         key_lines(read_private(args.recipients_file), identity=False),
@@ -194,7 +193,7 @@ def read_operation(args, age, work):
             database_name(args.database)
             external_identity(args.target_config, args.input)
             restore = executable(args.mongorestore, TOOLS_VERSION, mongo=True)
-            config, _, config_file = private_config(
+            config, _, _, config_file = private_config(
                 args.target_config, work, "target.json"
             )
             with connect(config) as target:

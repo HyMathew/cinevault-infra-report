@@ -373,7 +373,7 @@ class BoundaryTests(unittest.TestCase):
     def test_connection_config_is_authenticated_primary_scoped(self):
         from tools.mongodb_backup.security import connection_config
 
-        base = "mongodb://fixture:synthetic@127.0.0.1:27017/?replicaSet=rs&authSource=auth&authMechanism=SCRAM-SHA-256"
+        base = "mongodb://fixture:synthetic@127.0.0.1:27017/?replicaSet=rs&authSource=auth&authMechanism=SCRAM-SHA-256&directConnection=true"
         self.assertEqual(
             connection_config(json.dumps({"uri": base}).encode())[0]["uri"], base
         )
@@ -387,6 +387,105 @@ class BoundaryTests(unittest.TestCase):
         ):
             with self.subTest(uri=uri), self.assertRaises(ValueError):
                 connection_config(json.dumps({"uri": uri}).encode())
+
+    def test_connection_config_requires_tls_for_discovery(self):
+        from tools.mongodb_backup.security import connection_config
+
+        base = "mongodb://fixture:synthetic@127.0.0.1:27017/?replicaSet=rs&authSource=auth&authMechanism=SCRAM-SHA-256"
+        for uri in (base, base + "&directConnection=false"):
+            with (
+                self.subTest(uri=uri),
+                self.assertRaisesRegex(ValueError, "tls_required_off_loopback"),
+            ):
+                connection_config(json.dumps({"uri": uri}).encode())
+
+        for uri in (
+            base + "&directConnection=true",
+            base.replace("127.0.0.1", "[::1]") + "&directConnection=true",
+            base + "&tls=true",
+            base.replace("127.0.0.1:27017", "mongo-a.test,mongo-b.test") + "&tls=true",
+        ):
+            with self.subTest(uri=uri):
+                config = connection_config(json.dumps({"uri": uri}).encode())[0]
+                self.assertEqual(config["uri"], uri)
+
+    def test_backup_requires_distinct_mongodb_principals(self):
+        from types import SimpleNamespace
+
+        from tools.mongodb_backup.operations import backup
+
+        base = "mongodb://{username}:{password}@127.0.0.1:{port}/?replicaSet=rs&authSource={auth_db}&authMechanism=SCRAM-SHA-256&directConnection=true"
+
+        def config(username, password, auth_db, port=27017):
+            return json.dumps(
+                {
+                    "uri": base.format(
+                        username=username, password=password, auth_db=auth_db, port=port
+                    )
+                }
+            ).encode()
+
+        args = SimpleNamespace(
+            database="cinevault",
+            source_config=Path("source-input.json"),
+            freeze_config=Path("freeze-input.json"),
+            recipients_file=Path("public-recipients.txt"),
+            output=Path("archives/backup.cvmb.age"),
+            mongodump=Path("mongodump"),
+        )
+        source = config("reader", "synthetic", "auth")
+        for case, freezer, error, code in (
+            (
+                "same principal",
+                source,
+                ValueError,
+                "source_freezer_principals_must_differ",
+            ),
+            (
+                "same principal with a different password",
+                config("reader", "synthetic-rotated", "auth"),
+                ValueError,
+                "source_freezer_principals_must_differ",
+            ),
+            (
+                "different username",
+                config("freezer", "synthetic", "auth"),
+                RuntimeError,
+                "offline test",
+            ),
+            (
+                "different authentication database",
+                config("reader", "synthetic", "freeze_auth"),
+                RuntimeError,
+                "offline test",
+            ),
+            (
+                "different endpoint",
+                config("freezer", "synthetic", "auth", port=27018),
+                ValueError,
+                "source_freezer_endpoints_differ",
+            ),
+        ):
+            with (
+                self.subTest(case=case),
+                patch("tools.mongodb_backup.operations.external_identity"),
+                patch("tools.mongodb_backup.operations.executable") as executable,
+                patch(
+                    "tools.mongodb_backup.operations.read_private",
+                    side_effect=[source, freezer, b"fixture recipients"],
+                ),
+                patch("tools.mongodb_backup.operations.write_private"),
+                patch("tools.mongodb_backup.operations.key_lines"),
+                patch(
+                    "tools.mongodb_backup.mongo.connect",
+                    side_effect=RuntimeError("offline test"),
+                ) as connect,
+            ):
+                with self.assertRaisesRegex(error, code):
+                    backup(args, age=None, work=Path("work"))
+                if error is ValueError:
+                    executable.assert_not_called()
+                    connect.assert_not_called()
 
     def test_cli_error_never_exposes_config_content(self):
         from tools.mongodb_backup.__main__ import main
