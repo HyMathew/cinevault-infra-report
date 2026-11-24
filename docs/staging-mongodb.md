@@ -21,6 +21,8 @@ dans ce staging isolé. [Réseaux Swarm](https://docs.docker.com/engine/swarm/ne
   et `CINEVAULT_STAGE_WEB_IMAGE`. Pour une image de registre, utiliser le digest
   de manifeste dont le digest de configuration correspond au reçu de scan.
   [Vérifier le manifeste dans le registre](#vérifier-les-images-du-registre).
+- Construire et analyser l'image MongoDB décrite ci-dessous. Fixer
+  `CINEVAULT_STAGE_MONGO_IMAGE` sur la référence chargée et vérifiée sur VM2.
 - Préparer les deux volumes neufs sur VM2. `cvstage_mongo_data_v1` est réservé
   à UID 999. `cvstage_api_sidecars_v1` appartient à UID 10001. Ce dernier contient
   uniquement la fenêtre locale d'admission et le cache éventuel. Garder un seul
@@ -41,6 +43,16 @@ dans ce staging isolé. [Réseaux Swarm](https://docs.docker.com/engine/swarm/ne
 
 ## Vérifier les images du registre
 
+Pour un candidat, déclencher le workflow `tests.yml` de chacun des dépôts
+applicatifs sur `quality/cinevault-v2` avec l’entrée `candidate_commit`
+égale au SHA complet souhaité. GitHub Actions exige que le SHA du job
+corresponde à cette entrée. Le job de publication exige les suites
+habituelles, dont le contrat MongoDB pour l’API, puis le build, le contrôle
+de santé et le scan de l’image du même job. Il publie sous
+`sha-<commit>` et enregistre le digest rendu par le registre.
+Vérifier ensuite ce digest avec le reçu de scan avant de préparer les
+workers. [Contrôle de publication Web](https://github.com/HyMathew/cinevault-web/actions/runs/45511942301).
+
 Utiliser le digest de configuration `scan_provenance.archive_config_digest`
 de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
 demande uniquement les manifestes publics par digest, recalcule leurs
@@ -60,6 +72,39 @@ workers. Les deux références v1 sont les seuls exemples déjà contrôlés en
 ligne avec ce script. [Reçu GHCR v1](../evidence/public/registry-manifest-check-20261122.json) ·
 [Spécification OCI Distribution](https://github.com/opencontainers/distribution-spec/blob/main/spec.md).
 
+## Construire l'image MongoDB de staging
+
+L'image officielle MongoDB 8.0.38 de base fournit les correctifs de MongoDB.
+Elle contient encore une version de `js-yaml` signalée par Grype dans le
+script d'entrée Docker. Le [Dockerfile](../docker/mongodb-staging/Dockerfile)
+remplace cette bibliothèque par la version 3.15.2 et conserve sa licence.
+BuildKit vérifie l'archive npm à partir de son SHA-256 épinglé.
+[Image Docker amont](https://github.com/docker-library/mongo/blob/5fd7eb19024b73c9ec84644f1b23acbb33bee8b0/8.0/Dockerfile) ·
+[Version js-yaml](https://github.com/nodeca/js-yaml/releases/tag/3.15.2).
+
+```sh
+docker build --network none --provenance=false --platform linux/amd64 \
+  --build-arg SOURCE_DATE_EPOCH=1795219200 \
+  --iidfile staging-mongo-image.txt \
+  --tag cinevault-mongo-local:8.0.38-staging docker/mongodb-staging
+```
+
+Conserver la référence et les digests de ce build dans le reçu de staging.
+Analyser cette image avec une base de vulnérabilités à jour et vérifier le
+digest de configuration du rapport. Charger l'image contrôlée sur VM2 si
+elle est transférée par archive. Recalculer l'empreinte de l'archive
+à l'arrivée et vérifier le digest de configuration sur VM2 avant d'utiliser
+la référence locale. Les deux images applicatives restent des références
+GHCR par digest, téléchargées à l'avance sur leur worker.
+
+La construction a été reproduite deux fois sans cache sur Docker Desktop.
+Grype a relevé zéro constat High ou Critical sur l'image dérivée avec la
+base du 24 novembre 2026 à 06 h 22 UTC. Le contrat natif a réussi sur le
+même manifeste, avec les privilèges applicatifs limités. Le contrôle de
+prédéploiement associe l'image chargée au digest de manifeste ou de
+configuration attendu, selon le stockage d'images du moteur Docker.
+[Reçu de l'image MongoDB](../evidence/public/mongodb-staging-image-20261125.json).
+
 ## Démarrer par étapes
 
 Valider la configuration sur le manager. Avec
@@ -67,7 +112,7 @@ Valider la configuration sur le manager. Avec
 
 ```sh
 docker stack config -c stack.mongodb-staging.yaml
-docker stack deploy --resolve-image always -c stack.mongodb-staging.yaml cvstage
+docker stack deploy --resolve-image never -c stack.mongodb-staging.yaml cvstage
 docker stack services cvstage
 ```
 

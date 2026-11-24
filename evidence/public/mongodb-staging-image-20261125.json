@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-25",
+  "scope": "Qualification locale de l'image MongoDB",
+  "qualified_mongo_image": {
+    "image": "cinevault-mongo-local:stage-ac95711228fd",
+    "platform_manifest_digest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+    "config_digest": "sha256:72d359627f73f59e89d4a35929d133061976d5dd1393c4c8a819c5c301a54859",
+    "archive_sha256": "179fdc1e1de7049fed6b949030159c5aabb834998c4af8dc75c6fe76d0c19ffc",
+    "scan_report_sha256": "cee1cf70405e1a5887c0366c2933e7591982ac6aa6a071c36cd53df3e2592c8d",
+    "dockerfile_sha256": "4818663bb5e2a91d6532ced0bce7fe7473d3eeede277e715c8b7e942ad4d5402",
+    "server_version": "8.0.38",
+    "reproducible_builds": 2,
+    "runtime_contract_passed": true,
+    "runtime_log_sha256": "e59c8a3d2f26d14c03eb639f1acf69a63c35350f9e797c350ba661535b9b4f2f",
+    "scan_passed": true,
+    "severity_counts": {
+      "Medium": 218,
+      "Low": 7,
+      "Negligible": 4
+    },
+    "scan_database_utc": "2026-11-24T06:22:05Z"
+  },
+  "qualified_receipt_sha256": "af3754b9999735bc3a394340f554bd6c88917ec78f410ce171ac95534dd4da0a",
+  "comparison_sha256": "28d595be5252436ceb334d46279cb96ebf60b4bc856380ae358bdebf9d50f8ff",
+  "official_mongo_8_0_34_high_matches": 5,
+  "official_mongo_8_0_38_high_matches": 3,
+  "qualified_mongo_image_high_matches": 0,
+  "mongo_github_gate": {
+    "commit": "d02f27fde89f55c4fad91fafd44f9d44417687d0",
+    "run": 45510598430,
+    "job": 138857017488,
+    "passed": true,
+    "receipt_sha256": "2c70a6e9ea3334be23e64f465c9a526556ebfa79223e6eead8796fc7625d1178"
+  },
+  "deployment_status": "local only",
+  "hosted_documentation": {
+    "source_commit": "d171c5a995ccd70d326abf2af42979f83289f0ca",
+    "publish_run": 45511676042,
+    "https_matching_files": 417,
+    "browser_checks": 217,
+    "https_receipt_sha256": "6a8a60a5dbe128de4f6844f18cd78bc9b19f78ae5ba24eb2554343adbc2c458c",
+    "browser_receipt_sha256": "c01326488e91283a476da4d33acf27de0ca307f7d827788af513f6cfe88dda7c"
+  }
+}

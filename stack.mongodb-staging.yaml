@@ -3,7 +3,7 @@ version: "3.8"
 
 services:
   mongo:
-    image: mongo@sha256:1d7a2d487c6465ea022474b90b65d6c91bb600b421b65880d8c6e141d6122200
+    image: ${CINEVAULT_STAGE_MONGO_IMAGE:?Verified staging MongoDB image required}
     user: "999:999"
     read_only: true
     cap_drop: [ALL]
