@@ -4,13 +4,19 @@ L'outil public [tools/mongodb_backup](../../tools/mongodb_backup/__main__.py) s'
 
 ## Conditions obligatoires
 
-- Hôte opérateur autorisé : Windows x64 avec Windows PowerShell système, ou Ubuntu 24.04 x64 ; Python 3.11 à 3.14. Les versions sont verrouillées : age 1.3.2, Database Tools 100.20.0 et MongoDB Server 8.0.34. Le dump et le restore utilisent la même version Tools. Voir les [notices et limites d'audit](../../tools/mongodb_backup/THIRD_PARTY.md).
+- Hôte opérateur autorisé, Windows x64 avec Windows PowerShell système ou Ubuntu 24.04 x64, avec Python 3.11 à 3.14. Utiliser age 1.3.2 et Database Tools 100.20.0 pour le dump et le restore. Les versions serveur prises en charge sont MongoDB 8.0.34 et 8.0.38. Une archive 8.0.34 peut être restaurée sur l'une ou l'autre version. Une archive 8.0.38 exige une cible 8.0.38. Voir les [notices et limites d'audit](../../tools/mongodb_backup/THIRD_PARTY.md).
 - Replica set accessible sur son primaire. Les comptes de lecture et de gel doivent avoir des couples `(authSource, utilisateur)` différents et joindre exactement le même déploiement avec la même configuration de transport.
 - Les URI source, gel et restauration utilisent `mongodb://` avec un utilisateur, un mot de passe encodé, `authSource`, `replicaSet` et `authMechanism=SCRAM-SHA-256`. Laisser vide le nom de base dans le chemin. Les seules autres options acceptées sont `directConnection`, `tls` et `tlsCAFile`. Une connexion sans TLS exige un unique hôte de boucle locale (`127.0.0.1`, `::1` ou `localhost`) et `directConnection=true`. Dans les autres cas, activer TLS vérifié avec `tls=true`. Les options TLS permissives, SRV, lecture secondaire et paramètres supplémentaires sont refusés.
 - Tous les writers applicatifs doivent prendre en premier, dans leur transaction, le coordinateur canonique `coordination / business`, dont `revision` est un BSON Int64. Arrêter séparément migrations, DDL, scripts administrateurs et writers directs. Les index TTL, vues, collections capped/time-series et chiffrement de champs sont refusés. Ne pas désactiver ces protections pour obtenir une sauvegarde ; choisir une maintenance et requalifier une méthode adaptée si le schéma en dépend.
 - Le gel ne convient qu'à un dump assez court : 30 secondes par défaut, maximum 45, inventaires compris. La transaction reste non validée puis est annulée. Les requêtes applicatives concurrentes peuvent recevoir des conflits et épuiser leur budget de retry : prévoir une fenêtre de maintenance. Une transaction expirée, un changement de primaire, un inventaire différent ou un outil en échec invalide le résultat ; aucun fichier final n'est publié.
 - La cible doit être un serveur/replica set isolé, avec nouveaux volumes provisionnés par la procédure de déploiement et sans trafic applicatif. L'outil exige un autre nom de base, une base sans collection et un autre identifiant de processus MongoDB. Ce dernier contrôle ne prouve pas à lui seul la séparation des volumes : l'opérateur doit la vérifier. Ne jamais pointer la commande vers une base de production existante.
 - Stockage local fiable prenant en charge les liens physiques (NTFS/ext4), espace libre pour le fichier chiffré et une copie chiffrée temporaire pendant vérification/restauration. Aucun dump clair n'est écrit sur disque par l'outil. Les dumps mémoire, le swap/pagefile et un hôte compromis restent hors de cette garantie.
+
+Le 25 novembre 2026, trois restaurations natives ont confirmé les
+combinaisons ci-dessus avec FCV 8.0, chacune sur 393 documents et 40 index.
+Les deux processus source avaient été supprimés avant les restaurations.
+Le refus de 8.0.38 vers 8.0.34 a laissé la cible vide.
+[Reçu de qualification](../../evidence/public/mongodb-backup-versions-20261125.json).
 
 ## Installation depuis un clone
 

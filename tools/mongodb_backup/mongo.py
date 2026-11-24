@@ -11,7 +11,7 @@ from pymongo.read_concern import ReadConcern
 from pymongo.write_concern import WriteConcern
 
 from .security import BackupError, database_name, require
-from .streams import deadline_check
+from .streams import MONGO_RESTORE_TARGETS, deadline_check
 
 MARKER = "_cinevault_restore_claim"
 
@@ -57,7 +57,10 @@ def instance_digest(value):
 
 def version(client):
     value = client.server_info()["version"]
-    require(value == "8.0.34", "mongo_server_version_not_qualified")
+    require(
+        isinstance(value, str) and value in MONGO_RESTORE_TARGETS,
+        "mongo_server_version_not_qualified",
+    )
     return value
 
 
@@ -190,7 +193,8 @@ def claim_target(client, name, manifest, operation_id):
         "same_source_process_refused_as_target",
     )
     require(
-        version(client) == manifest["mongo_version"], "source_target_version_mismatch"
+        version(client) in MONGO_RESTORE_TARGETS.get(manifest["mongo_version"], ()),
+        "source_target_version_mismatch",
     )
     database = client[name]
     require(not database.list_collection_names(), "target_database_not_empty")

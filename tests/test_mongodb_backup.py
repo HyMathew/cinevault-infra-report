@@ -334,6 +334,10 @@ class BoundaryTests(unittest.TestCase):
     def test_manifest_rejects_wildcard_namespace_or_missing_coordinator(self):
         from tools.mongodb_backup.streams import header
 
+        for version in ("8.0.34", "8.0.38"):
+            with self.subTest(qualified_source=version):
+                self.assertTrue(header({**manifest(), "mongo_version": version}))
+
         for change in ("namespace", "coordinator", "type", "digest", "tools", "server"):
             value = manifest()
             if change == "namespace":
@@ -1028,13 +1032,36 @@ class MongoContract(unittest.TestCase):
             patch(
                 "tools.mongodb_backup.mongo.primary", return_value={"new": "primary"}
             ),
-            patch("tools.mongodb_backup.mongo.version", return_value="8.0.34"),
         ):
             client.__getitem__.return_value.list_collection_names.return_value = [
                 "existing"
             ]
-            with self.assertRaisesRegex(ValueError, "not_empty"):
-                claim_target(client, "restored", manifest(), "operation")
+            for source, target in (
+                ("8.0.34", "8.0.34"),
+                ("8.0.34", "8.0.38"),
+                ("8.0.38", "8.0.38"),
+            ):
+                with (
+                    self.subTest(source=source, target=target),
+                    patch("tools.mongodb_backup.mongo.version", return_value=target),
+                    self.assertRaisesRegex(ValueError, "not_empty"),
+                ):
+                    claim_target(
+                        client,
+                        "restored",
+                        {**manifest(), "mongo_version": source},
+                        "operation",
+                    )
+            with (
+                patch("tools.mongodb_backup.mongo.version", return_value="8.0.34"),
+                self.assertRaisesRegex(ValueError, "source_target_version_mismatch"),
+            ):
+                claim_target(
+                    client,
+                    "restored",
+                    {**manifest(), "mongo_version": "8.0.38"},
+                    "operation",
+                )
         client.__getitem__.return_value.create_collection.assert_not_called()
 
     def test_failed_restore_verification_preserves_quarantine_marker(self):

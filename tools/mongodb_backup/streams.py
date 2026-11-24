@@ -19,6 +19,10 @@ MAX_HEADER = 1024 * 1024
 CHUNK = 65536
 TOOLS_VERSION = "100.20.0"
 AGE_VERSION = "v1.3.2"
+MONGO_RESTORE_TARGETS = {
+    "8.0.34": frozenset({"8.0.34", "8.0.38"}),
+    "8.0.38": frozenset({"8.0.38"}),
+}
 
 
 def deadline_check(deadline):
@@ -63,7 +67,8 @@ def validate_manifest(value):
         "utc_capture_time_required",
     )
     require(
-        isinstance(value["mongo_version"], str) and value["mongo_version"] == "8.0.34",
+        isinstance(value["mongo_version"], str)
+        and value["mongo_version"] in MONGO_RESTORE_TARGETS,
         "unsupported_mongo_version",
     )
     inventory = value["inventory"]
