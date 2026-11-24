@@ -76,7 +76,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     env:
-      CINEVAULT_EXAMPLES_API_COMMIT: 6f2e90da6f7804dd52371f9ab0341a1114e5f29a
+      CINEVAULT_EXAMPLES_API_COMMIT: d02f27fde89f55c4fad91fafd44f9d44417687d0
       PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

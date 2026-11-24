@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-25",
+  "source_commits": {
+    "api": "58b12009b49a711b7de58b2f76b7f20d9049a6e0",
+    "web": "bdf6063ff575e5dbd034d6ea87211acf4c5fdd8b"
+  },
+  "windows_json_pair": {
+    "http": {
+      "checks": 6,
+      "receipt_sha256": "0e8d167d6e836eba4e502e2c7edd4ae621590b94e4316d0aa91da1f102ff96c7"
+    },
+    "chromium": {
+      "checks": 45,
+      "receipt_sha256": "6152cadf9f3aed9c370e02f287f9b062571dc6b2a0376ed2c992d8462f4ca7ef"
+    }
+  },
+  "mongodb_8_0_34": {
+    "github_run": 45075339930,
+    "artifact_id": 14774963309,
+    "expired_in_one_transaction": 501,
+    "audit_write_commands": 2,
+    "mixed_batch_rollback": true,
+    "native_ci_receipt_sha256": "61c5432cdd3301380a5a49e46dfb44e5a69c8f8b79885c2689419d0c390ccfae",
+    "local_main_transaction_seconds": 3.184,
+    "local_full_tests_passed": 628,
+    "local_subtests_passed": 42,
+    "local_expiration_log_sha256": "5a76ae63518598617f8ae17e636de475cc90ac1e86585525906fcab7f21fd296"
+  },
+  "portable_backup_ci": {
+    "run": 45074559877,
+    "source_commit": "1a77838f7eb39b19a341270895bb37ee9738ab6a",
+    "verified_receipt_sha256": "8f01e44240ef23c5663ef3731ed75d43cdf54f7d2d69ed39242a576c1bcf9ef3",
+    "windows_passed": 47,
+    "ubuntu_passed": 46,
+    "ubuntu_platform_skip": 1,
+    "real_age_checks_per_runner": 7
+  },
+  "api_image_audit": {
+    "run": 45075339930,
+    "artifact_id": 14774882612,
+    "independent_receipt_sha256": "005e85c659ba65cec06db6cac0339276d61676a451c0fff49f0f12141d3847e1",
+    "passed": false,
+    "distinct_high_cves": [
+      "CVE-2026-107493",
+      "CVE-2026-107494",
+      "CVE-2026-121482",
+      "CVE-2026-124709",
+      "CVE-2026-84786"
+    ]
+  },
+  "mongodb_8_0_38_local": {
+    "official_linux_amd64_manifest": "sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+    "test_source_commit": "58b12009b49a711b7de58b2f76b7f20d9049a6e0",
+    "contract_passed": true,
+    "native_receipt_sha256": "c1225e97e86c4484668dbea6ce12f34868bd643641cae520e8ed40beeabae2a9",
+    "github_ci_pin_commit": "d02f27fde89f55c4fad91fafd44f9d44417687d0"
+  }
+}

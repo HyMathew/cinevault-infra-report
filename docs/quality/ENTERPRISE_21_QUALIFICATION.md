@@ -22,6 +22,10 @@ La révision API `6f2e90d` modifie la vérification de traces du job MongoDB.
 Elle a repassé les mêmes contrôles sur le PC avec le Web `bdf6063`.
 [Reçu de la paire](../../evidence/public/enterprise-2.1-candidate-20261122.json).
 
+La paire API `58b1200` et Web `bdf6063` a repassé les six contrôles HTTP,
+les 45 contrôles Chromium et le rejeu des 93 échanges académiques sur le PC.
+[Reçu de la paire exacte](../../evidence/public/enterprise-2.1-candidate-20261125.json).
+
 La campagne Insights est distincte et couvre l'API `22bcecd` avec le Web
 `2607907` et JSON. Avant correction, les répartitions entièrement à zéro
 masquaient les messages d'état vide. Chromium a ensuite validé 36 navigations
@@ -70,6 +74,22 @@ d’une place dans le registre pour créer le compte de reprise à la limite
 de 10 000 utilisateurs.
 [Reçu des contrôles de capacité](../../evidence/public/enterprise-2.1-candidate-20261122.json).
 
+Sur l'API `58b1200`, le scénario natif a expiré 501 réservations dans une
+transaction et inscrit leurs événements d'audit en deux lots. La transaction
+mesurée sur le PC a pris 3,18 secondes. Le runner GitHub a vérifié que le
+rejet d'un lot avec un identifiant déjà utilisé préserve le journal et le
+registre d'identités. La CI de la sauvegarde portable a réussi 47 tests
+sous Windows et 46 sous Ubuntu, avec le seul cas propre à Windows ignoré
+sous Ubuntu. Chaque runner a exécuté sept tests avec age.
+[Reçu des contrôles natifs et de la sauvegarde](../../evidence/public/enterprise-2.1-candidate-20261125.json).
+
+MongoDB 8.0.38 est disponible sous forme d'image Docker officielle. Le
+manifest linux/amd64, sa configuration et les références au SBOM et à la
+provenance Docker ont été comparés par empreinte. Sur le PC, le contrat natif
+avec des privilèges applicatifs limités a réussi sur cette image exacte,
+dont les 501 expirations. Le commit API `d02f27f` épingle ce digest pour la CI.
+[Reçu de la version MongoDB](../../evidence/public/enterprise-2.1-candidate-20261125.json).
+
 La qualification MongoDB à partir d'une archive chiffrée a restauré 393
 documents, 12 collections et 40 index avant la quarantaine. La source est
 restée identique et le candidat a accepté le nouvel administrateur tout en
@@ -116,7 +136,8 @@ cookies de session `Secure`, `HttpOnly` et `SameSite=Lax`.
 La qualification Swarm et la promotion applicative restent ouvertes.
 [Reçu HTTPS local](../../evidence/public/enterprise-2.1-candidate-20261122.json).
 
-Cinq CVE OpenSSL de gravité haute bloquent le contrôle image Web au commit
-`bdf6063`. La v1 dispose de sa
+Cinq CVE OpenSSL de gravité haute bloquent les contrôles d'images de l'API
+`58b1200` et du Web `bdf6063`. La v1 dispose de sa
 [qualification historique](../validation-current.md).
+[Contrôle image API](https://github.com/HyMathew/cinevault-api/actions/runs/45075339930) ·
 [Contrôle image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45033494493).
