@@ -117,6 +117,7 @@ jobs:
               assert './.cinevault-output.json' not in t.getnames()
           PY
       - name: Upload Pages tar using the already qualified artifact action
+        id: pages-tar
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           path: ${{ runner.temp }}/artifact.tar
@@ -124,6 +125,38 @@ jobs:
           retention-days: 1
           if-no-files-found: error
           archive: true
+      - name: Wait for the uploaded artifact to appear in the run listing
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGES_ARTIFACT_ID: ${{ steps.pages-tar.outputs.artifact-id }}
+        run: |
+          import json, os, time, urllib.request
+          artifact_id = int(os.environ['PAGES_ARTIFACT_ID'])
+          run_id = int(os.environ['GITHUB_RUN_ID'])
+          repository = 'HyMathew/cinevault-infra-report'
+          request = urllib.request.Request(
+              f'https://api.github.com/repos/{repository}/actions/runs/{run_id}/artifacts?name=github-pages',
+              headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                       'Accept': 'application/vnd.github+json',
+                       'User-Agent': 'CineVault-Pages-Artifact-Visibility'})
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, req, fp, code, msg, hdrs, newurl):
+                  return None
+          opener = urllib.request.build_opener(NoRedirect())
+          for attempt in range(8):
+              with opener.open(request, timeout=10) as response:
+                  data = response.read(1024 * 1024 + 1)
+              assert len(data) <= 1024 * 1024
+              items = json.loads(data)['artifacts']
+              if items:
+                  assert len(items) == 1 and items[0]['id'] == artifact_id
+                  assert items[0]['name'] == 'github-pages' and items[0]['expired'] is False
+                  break
+              if attempt < 7:
+                  time.sleep(3)
+          else:
+              raise RuntimeError('The uploaded Pages artifact is still absent from the run listing')
       - name: Deploy candidate documentation
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
