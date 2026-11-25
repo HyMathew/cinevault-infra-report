@@ -116,15 +116,14 @@ jobs:
               assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
               assert './.cinevault-output.json' not in t.getnames()
           PY
-      - name: Upload Pages tar using the already qualified artifact action
+      - name: Upload the exact tar using the Pages artifact uploader version
         id: pages-tar
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2, used by upload-pages-artifact v4
         with:
           path: ${{ runner.temp }}/artifact.tar
           name: github-pages
           retention-days: 1
           if-no-files-found: error
-          archive: true
       - name: Wait for the uploaded artifact to appear in the run listing
         shell: python
         env:
