@@ -2,7 +2,7 @@
 	admin off
 	persist_config off
 	skip_install_trust
-	auto_https disable_redirects
+	auto_https off
 	servers {
 		protocols h1 h2
 		strict_sni_host on

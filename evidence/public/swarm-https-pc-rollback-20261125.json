@@ -1,0 +1,58 @@
+{
+  "scope": "RemoteLabz Swarm Caddy configuration update and rollback with a synthetic origin on a second worker; TLS negotiated on the Windows client over pinned SSH.",
+  "finished_at_utc": "2026-11-25T17:25:46.950971+00:00",
+  "proxy_image_manifest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "checks": {
+    "before": {
+      "tls": "TLSv1.3",
+      "status": 200,
+      "marker": null,
+      "leaf_sha256": "b3b1e304fbd643f16ff32ffe6e0ee6b7630180474a6eaa57cf931b24ac011c10"
+    },
+    "updated": {
+      "tls": "TLSv1.3",
+      "status": 200,
+      "marker": "second",
+      "leaf_sha256": "b3b1e304fbd643f16ff32ffe6e0ee6b7630180474a6eaa57cf931b24ac011c10"
+    },
+    "rolled_back": {
+      "tls": "TLSv1.3",
+      "status": 200,
+      "marker": null,
+      "leaf_sha256": "b3b1e304fbd643f16ff32ffe6e0ee6b7630180474a6eaa57cf931b24ac011c10"
+    },
+    "pc_tls_validates_server": true,
+    "pc_unknown_ca_rejected": true,
+    "pc_wrong_name_rejected": true,
+    "three_distinct_proxy_tasks": true,
+    "same_proxy_service_identity": true,
+    "exact_previous_spec_restored": true,
+    "origin_task_unchanged": true,
+    "published_ports": 0,
+    "origin_cross_worker": true,
+    "workers": [
+      1,
+      2
+    ],
+    "original_caddyfile_sha256": "48db230e96431bb8407e8c223129d60c52b8e49dd165c4dee19179efb4e9adce",
+    "updated_caddyfile_sha256": "90650e2b0715dab44673a97773cc5b11d9d506069f53e7f8297d71904957f974"
+  },
+  "session_port_relay_only": true,
+  "cleanup_confirmed": true,
+  "v1_services_healthy_same_tasks_and_versions": true,
+  "application_stack_update_or_rollback_verified": false,
+  "native_receipt_sha256": "7291562b9b1b184b53f711b5dc2f148d0beacf7e9e708d356d4f5c938dabd07f",
+  "local_read_only_tmpfs_recheck": {
+    "images": {
+      "api": "sha256:9d4a1e0d10a8d44c3e584929ffef5158a9897a7dd87d0bf81604265e4a20300e",
+      "web": "sha256:a0991a313f7d3a03019e33a4f27bc56623c90cb07194e0f5392adbbb55d2e23d",
+      "https": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+      "mongo": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064"
+    },
+    "tls_protocol": "TLSv1.3",
+    "secure_session_and_auth_cookies": true,
+    "mongo_migration_replay_passed": true,
+    "published_ports": 0,
+    "receipt_sha256": "78419e99084ed07540cd9c27b43f884f040f988c07a7045744da2b9fb8a7beb1"
+  }
+}

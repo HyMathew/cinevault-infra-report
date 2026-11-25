@@ -251,6 +251,24 @@ tenir compte de l’adresse partagée derrière Caddy. Le parcours HTTPS avec le
 images applicatives qualifiées et les réseaux Overlay reste à valider sur
 Swarm.
 
+La mise à jour a révélé que la gestion automatique de Caddy préparait une
+CA interne au démarrage. Le Caddyfile désactive désormais cette gestion
+avec `auto_https off` et charge les deux secrets PEM explicitement.
+Le parcours intégré sur le PC a réussi avec le répertoire temporaire
+du proxy monté en lecture seule.
+
+Le client Windows a négocié TLS 1.3 à travers une session SSH vers le
+proxy. Le relais de la session ouvrait une seule connexion sur la boucle
+locale du conteneur. Le contrôle a refusé une CA inconnue et un nom
+incorrect. Aucun port n’a été publié sur la VM ou sur le PC.
+
+Sur la même instance Swarm de test, une mise à jour de la config Caddy
+a créé une nouvelle tâche et ajouté un en-tête de réponse observable
+depuis le PC. Le retour arrière a restauré la spécification précédente
+et une troisième tâche a répondu en HTTPS sans cet en-tête. Le serveur
+synthétique sur le second worker a conservé sa tâche durant l’essai.
+[Reçu de mise à jour et de retour arrière HTTPS](../evidence/public/swarm-https-pc-rollback-20261125.json).
+
 ## Démarrer par étapes
 
 Valider la configuration sur le manager. Avec
