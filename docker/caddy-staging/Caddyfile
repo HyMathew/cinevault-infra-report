@@ -1,0 +1,17 @@
+{
+	admin off
+	persist_config off
+	skip_install_trust
+	auto_https disable_redirects
+	servers {
+		protocols h1 h2
+		strict_sni_host on
+	}
+}
+
+https://cinevault-stage.test:8443 {
+	tls /run/secrets/https_cert /run/secrets/https_key {
+		protocols tls1.3 tls1.3
+	}
+	reverse_proxy web:5000
+}

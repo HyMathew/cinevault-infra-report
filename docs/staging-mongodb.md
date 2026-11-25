@@ -155,6 +155,66 @@ prédéploiement associe l'image chargée au digest de manifeste ou de
 configuration attendu, selon le stockage d'images du moteur Docker.
 [Reçu de l'image MongoDB](../evidence/public/mongodb-staging-image-20261125.json).
 
+## Valider la variante HTTPS privée
+
+La [surcouche Swarm](../stack.mongodb-staging.https.yaml) ajoute Caddy sur le
+worker Web et active les cookies `Secure`. Seuls Caddy et le Web rejoignent
+le réseau `edge`, interne et chiffré. Caddy sert TLS 1.3 pour
+`cinevault-stage.test:8443` et relaie les requêtes uniquement à
+`web:5000`. L’API garde `front` et `data`. MongoDB garde
+`data` seul. Aucun des quatre services ne publie de port. Le point
+d’administration et la redirection HTTP automatique de Caddy sont désactivés.
+[Configuration de Caddy](../docker/caddy-staging/Caddyfile).
+
+L’image officielle Caddy 2.11.9 testée a échoué au scan. La recette de staging
+part du commit Caddy `679806f` et de Go 1.26.11 épinglé par digest. Elle
+vérifie les sommes des modules avant la compilation sans réseau. L’image
+contient le binaire statique et la licence Caddy. Le scan du candidat du
+25 novembre compte un constat Medium, aucun High ni Critical.
+[Dockerfile](../docker/caddy-staging/Dockerfile) ·
+[Reçu de qualification du proxy](../evidence/public/swarm-staging-https-proxy-20261125.json).
+
+Depuis la racine du dépôt, construire avec BuildKit 0.34.2 et Buildx 0.38.1.
+
+```sh
+docker buildx build --no-cache --pull --platform linux/amd64 \
+  --build-arg SOURCE_DATE_EPOCH=1760000000 --provenance=false --sbom=false \
+  --output type=docker,oci-mediatypes=true,rewrite-timestamp=true \
+  --iidfile caddy-staging.iid --tag cinevault-caddy-local:staging-679806f \
+  docker/caddy-staging
+```
+
+Vérifier le manifeste et son digest de configuration avant de scanner
+l’archive avec une base à jour. Confirmer l’identité de l’image chargée
+sur le worker Web. Utiliser cette référence dans
+`CINEVAULT_STAGE_PROXY_IMAGE`. Les images API et Web restent soumises
+à leurs contrôles respectifs.
+
+Créer le certificat serveur et sa clé avec une CA de staging. Le nom
+`cinevault-stage.test` doit figurer dans le SAN du certificat. Conserver la
+clé de la CA hors Swarm et remettre son certificat aux seuls clients de test
+autorisés. L’opérateur crée les secrets `cvstage_https_cert_v1` et
+`cvstage_https_key_v1` à partir de fichiers PEM privés. La surcouche
+les monte en 0400, dans le seul service HTTPS. Elle fournit le Caddyfile
+sous forme de config Swarm en lecture seule.
+
+Rendre les deux fichiers sur le manager avec les références d’images
+qualifiées. Avec `CINEVAULT_STAGE_APP_REPLICAS=0`, seul MongoDB a un
+réplica. Avec la valeur `1`, le proxy démarre avec le Web et l’API.
+
+```sh
+docker stack config -c stack.mongodb-staging.yaml -c stack.mongodb-staging.https.yaml
+```
+
+Le test local du proxy a utilisé un serveur HTTP synthétique. Il a confirmé
+TLS 1.3, la réponse 200 de l’amont et le refus d’une CA inconnue, d’un nom TLS
+incorrect, de TLS 1.2 et d’un en-tête Host différent du nom TLS. Le réseau
+frontal du test n’a pas résolu le proxy. Dans cette configuration, le Web
+voit l’adresse de son pair réseau. Les tests de charge et de quotas devront
+tenir compte de l’adresse partagée derrière Caddy. Le parcours HTTPS avec les
+images applicatives qualifiées et les réseaux Overlay reste à valider sur
+Swarm.
+
 ## Démarrer par étapes
 
 Valider la configuration sur le manager. Avec

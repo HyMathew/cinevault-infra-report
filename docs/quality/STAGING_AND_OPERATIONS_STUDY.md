@@ -36,8 +36,13 @@ Swarm devient nécessaire. Son
 [provider Swarm](https://doc.traefik.io/traefik/reference/install-configuration/providers/swarm/)
 ajouterait ici une dépendance à l'API du manager et sa frontière d'accès. Les routes
 actuelles ne justifient pas cette découverte ni deux reverse proxies simultanés.
-Ce choix ne fixe encore aucune image Caddy : version, digest, licence, scan et
-configuration seront qualifiés lors du prototype.
+L’étude du 12 novembre laissait la version, le digest, la licence, le scan
+et la configuration de Caddy à qualifier lors du prototype.
+
+La [variante HTTPS privée du staging](../staging-mongodb.md#valider-la-variante-https-privée)
+concrétise ce choix. Le Caddyfile et le routage isolé ont été testés avec
+le binaire recompilé depuis le commit amont épinglé. Le parcours intégré
+avec les images applicatives qualifiées reste à vérifier sur Swarm.
 
 Le staging doit posséder son propre hôte ou contexte de déploiement, volumes,
 secrets, réseau Mongo privé et données synthétiques. Un autre nom de stack partageant

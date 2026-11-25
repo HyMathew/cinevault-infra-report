@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  web:
+    environment:
+      COOKIE_SECURE: "true"
+    networks: [front, edge]
+
+  https:
+    image: ${CINEVAULT_STAGE_PROXY_IMAGE:?Qualified staging HTTPS proxy image required}
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    entrypoint: [caddy]
+    command: [run, --config, /etc/caddy/Caddyfile, --adapter, caddyfile]
+    environment:
+      HOME: /tmp
+      XDG_CONFIG_HOME: /tmp/config
+      XDG_DATA_HOME: /tmp/data
+    configs:
+      - source: https_config
+        target: /etc/caddy/Caddyfile
+        uid: "10001"
+        gid: "10001"
+        mode: 0444
+    secrets:
+      - {source: https_cert, target: https_cert, uid: "10001", gid: "10001", mode: 0400}
+      - {source: https_key, target: https_key, uid: "10001", gid: "10001", mode: 0400}
+    volumes:
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 16777216
+    networks: [edge]
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+    deploy:
+      replicas: ${CINEVAULT_STAGE_APP_REPLICAS:-0}
+      placement:
+        constraints: [node.labels.cinevault == web]
+      resources:
+        limits: {cpus: "0.25", memory: 128M}
+        reservations: {memory: 32M}
+      restart_policy: {condition: on-failure, delay: 5s, max_attempts: 3, window: 120s}
+      update_config: {parallelism: 1, order: stop-first, monitor: 45s, failure_action: pause}
+
+configs:
+  https_config:
+    file: ./docker/caddy-staging/Caddyfile
+
+secrets:
+  https_cert: {external: true, name: cvstage_https_cert_v1}
+  https_key: {external: true, name: cvstage_https_key_v1}
+
+networks:
+  edge:
+    driver: overlay
+    driver_opts: {encrypted: ""}
+    internal: true

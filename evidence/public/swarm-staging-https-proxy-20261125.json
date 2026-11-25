@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-25",
+  "scope": "Linux amd64 proxy with a synthetic HTTP origin on isolated local Docker networks, plus Swarm stack configuration rendering.",
+  "upstream_commit": "679806f92d49e5b494200f2e90a93f228203a418",
+  "go_toolchain": "docker.io/library/golang:1.26.11-bookworm@sha256:66c04b389c4b0a2e0f0d51f3a37de0109650887a321b2a3b8cd9f573d7490a01",
+  "buildkit": "v0.34.2",
+  "buildx": "v0.38.1",
+  "source_date_epoch": 1760000000,
+  "reproductions_without_layer_cache": 3,
+  "dockerfile_sha256": "0d5da1ae2e895dc2798342dec933b25b1b3a34a4d4e79e984c9670759450f222",
+  "https_override_sha256": "3e654a9eb54ac44804c3422859ed2b74fb689d59c87e5db5f3b9434d586ff947",
+  "caddyfile_sha256": "a3d560681e76aa7a9af98dcc9f359a0c819f0bf83dbb9142c35f0f7bf22532ed",
+  "oci_manifest_digest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "config_digest": "sha256:56d2a0dd456514887ebaa929261413b37385b2d24d0d97c95e2438d8dfe387c3",
+  "rootfs_diff_ids": [
+    "sha256:db5f006b2c0db5210e9e02999e1151edb1ea50e3b28d511175b2b3c9ab533a6d",
+    "sha256:ecf809cdc1af647389da6038efb09bfc6654a52973444c15068e49ae6fd92ea1"
+  ],
+  "scanned_archive_sha256": "b0ff2d8a3b98d34db43a2e05ec9930eb8774355b31f0fc32ddde50f5844104d2",
+  "scanner": "grype 0.121.2",
+  "scan_database_built": "2026-11-25T06:22:21Z",
+  "scan_exit": 0,
+  "scan_report_sha256": "51fdb657c07e3ec0b7dd3e76796f25415a16f445b0fd63e268f3cb3f293fd4b9",
+  "cataloger": "syft 1.57.2",
+  "sbom_sha256": "60cf01f04bf59d890bfae720e7388d1d727f3691188703a14b5b0523cd9a1227",
+  "sbom_components": 162,
+  "remaining_findings": [
+    {
+      "package": "go.opentelemetry.io/otel/sdk/log",
+      "id": "GHSA-q7gw-24fr-5p69",
+      "severity": "Medium"
+    }
+  ],
+  "baseline": {
+    "official": {
+      "image": "docker.io/library/caddy@sha256:fc9cbc100585871d18d4e451cca7021785c90a7006087427ae5ceb3e4efe6424",
+      "severity": {
+        "High": 21,
+        "Medium": 17,
+        "Critical": 1
+      },
+      "scan_exit": 2
+    },
+    "official_binary_in_minimal_image": {
+      "severity": {
+        "High": 3,
+        "Medium": 8
+      },
+      "scan_exit": 2
+    }
+  },
+  "stack_configuration": {
+    "api_replicas_checked": [
+      0,
+      1
+    ],
+    "https_replicas_checked": [
+      0,
+      1
+    ],
+    "published_ports": 0,
+    "proxy_networks": [
+      "edge"
+    ]
+  },
+  "runtime_test": {
+    "tls": "TLSv1.3",
+    "upstream_http": 200,
+    "untrusted_forwarded_for_ignored": true,
+    "mismatched_host_status": 421,
+    "negative_tls": {
+      "unknown_ca": true,
+      "wrong_tls_hostname": true,
+      "tls12": true
+    },
+    "front_cannot_resolve_edge_proxy": true,
+    "cleanup_passed": true
+  },
+  "full_remote_lab_stage_verified": false
+}
