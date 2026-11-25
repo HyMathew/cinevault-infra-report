@@ -1,0 +1,38 @@
+{
+  "scope": "Exact API and Web candidate images, migrated MongoDB, Caddy and HTTPS probe on isolated local Docker networks",
+  "start": "2026-11-25T17:14:35.031879+00:00",
+  "passed": true,
+  "probe_sha256": "f83dd4295a03982bf237ef38c017bbe8caed2f77ed8fbf30277a84ed70f40985",
+  "images": {
+    "api": "sha256:9d4a1e0d10a8d44c3e584929ffef5158a9897a7dd87d0bf81604265e4a20300e",
+    "web": "sha256:a0991a313f7d3a03019e33a4f27bc56623c90cb07194e0f5392adbbb55d2e23d",
+    "https": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+    "mongo": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064"
+  },
+  "migration": {
+    "passed": true,
+    "collections": 12,
+    "indexes": 40,
+    "replay": true,
+    "different_profiles": true,
+    "application_management_denied": true,
+    "source_unchanged": true,
+    "source_sha256": "b00c13326078ea438776b502011a86c7f1a456a884eeac928979dfe151ac2b98",
+    "migration_snapshot_sha256": "d998d5da2d2511f790a7f61b55f757283582f8bb6f76bcacd3c32fe7dae986d8"
+  },
+  "https": {
+    "passed": true,
+    "tls_protocol": "TLSv1.3",
+    "invalid_server_name_rejected": true,
+    "catalogue_contains_migrated_movie": true,
+    "anonymous_profile_denied": true,
+    "login_redirected_to_profile": true,
+    "secure_session_and_auth_cookies": true,
+    "authenticated_profile_visible": true
+  },
+  "published_ports": 0,
+  "cleanup_confirmed": true,
+  "finish": "2026-11-25T17:15:29.444063+00:00",
+  "remote_lab_application_stack_verified": false,
+  "private_result_sha256": "265030389ea80ee3751953102066ca4c162462bc872ba2d0cb31ae07d632e3a8"
+}

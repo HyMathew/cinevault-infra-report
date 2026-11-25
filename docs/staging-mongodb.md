@@ -220,6 +220,32 @@ port. Les services, réseaux, secrets et configs temporaires ont été retirés.
 Les versions de service et les tâches saines de la v1 ont été conservées.
 [Reçu HTTPS entre workers](../evidence/public/swarm-https-between-workers-20261125.json).
 
+Pour vérifier un staging démarré, exécuter la
+[sonde HTTPS](../scripts/check_staging_https.py) depuis l’espace réseau du
+proxy sur le worker Web. Préparer un JSON privé avec `ca` (certificat
+PEM de la CA HTTPS), `username`, `password`, `title` et
+`movie_id`. Utiliser le compte de démonstration et le film synthétique
+issus de la migration. Définir `probe_input` avec le chemin de ce fichier,
+puis le transmettre sur l’entrée standard.
+
+```sh
+task=$(sudo docker ps --filter label=com.docker.swarm.service.name=cvstage_https --format '{{.ID}}')
+pid=$(sudo docker inspect --format '{{.State.Pid}}' "$task")
+sudo nsenter --target "$pid" --net python3 -I -B scripts/check_staging_https.py < "$probe_input"
+```
+
+La sonde se connecte en boucle locale dans l’espace réseau du proxy et
+vérifie le nom TLS. Elle lit le catalogue et exerce la connexion,
+le refus du profil anonyme et les attributs des cookies. Elle rend un
+reçu JSON sans jeton ni identifiant et sort avec le code 1 en cas d’échec.
+
+Sur le PC, les quatre images aux digests attendus ont été exécutées sur
+des réseaux Docker internes sans port publié. La migration a produit
+12 collections et 40 index, puis le rejeu a confirmé le même instantané.
+La sonde a retrouvé le film migré dans le catalogue, refusé le profil
+anonyme et vérifié la connexion et les cookies en TLS 1.3.
+[Reçu MongoDB et HTTPS de l’essai local](../evidence/public/staging-mongo-authenticated-https-local-20261125.json).
+
 Dans cette configuration, le Web voit l’adresse de son pair réseau. Les tests de charge et de quotas devront
 tenir compte de l’adresse partagée derrière Caddy. Le parcours HTTPS avec les
 images applicatives qualifiées et les réseaux Overlay reste à valider sur
