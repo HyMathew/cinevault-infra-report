@@ -26,11 +26,11 @@ jobs:
         run: |
           import hashlib, io, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
           REPO = 'HyMathew/cinevault-infra-report'
-          COMMIT = '258c9a2a2184f844ffadc5515f4af9135f06b05c'
-          RUN = 45713932940
-          ARTIFACT = 15068044390
-          DIGEST = 'a98447e1247777d417539b0c0d06df244e30ad7c18b017f451cd7e52ff94e035'
-          ARCHIVE_SIZE = 10909155
+          COMMIT = '874bc4bd5d273834f79ab45ec9c7fb1fcc13890a'
+          RUN = 45716444919
+          ARTIFACT = 15068849663
+          DIGEST = '5e746e3d12b941b1a08306c015e0f1d2a2b4d085cd62b4fa9a5b5d3db7a9f05a'
+          ARCHIVE_SIZE = 10920359
           ROOT = f'https://api.github.com/repos/{REPO}/'
           headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
                      'Accept': 'application/vnd.github+json', 'User-Agent': 'CineVault-portal-promotion',
@@ -81,9 +81,9 @@ jobs:
               assert receipt['source_clean'] and receipt['tooling_clean']
               assert receipt['base'] == '/cinevault-infra-report'
               assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 60
-              assert receipt['checks']['checkedLinks'] == 6036 and not receipt['checks']['errors']
+              assert receipt['checks']['checkedLinks'] == 6049 and not receipt['checks']['errors']
               repro = json.loads(z.read('.cache/reproducibility.json'))
-              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 436
+              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 437
               dist = {n[5:]: z.read(n) for n in names if n.startswith('dist/') and not n.endswith('/')}
               assert set(dist) == {f['path'] for f in repro['files']}
               assert all(hashlib.sha256(dist[f['path']]).hexdigest() == f['sha256'] for f in repro['files'])
@@ -93,6 +93,7 @@ jobs:
               assert not browser['page_errors'] and browser['owned_server_stopped']
               pdf = dist['sources/report/enterprise-2.1/RT0705_CineVault_Mathieu_Kuhnapfel.pdf']
               assert hashlib.sha256(pdf).hexdigest() == '8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a'
+              assert hashlib.sha256(dist['sources/evidence/public/chromium-backend-performance-20261125.json']).hexdigest() == '270ab1ee501dac32d0f14ed88b634320b6cf8db0d30ec726d8f473a8aad0762e'
               assert hashlib.sha256(dist['sources/evidence/public/enterprise-2.1-alpine-runtime-20261125.json']).hexdigest() == 'b1d21d28ce6af68f8c49053a6ed0ade5c383b3de84b1bdf1118da5a6b1bba121'
               assert hashlib.sha256(dist['sources/evidence/public/swarm-https-pc-rollback-20261125.json']).hexdigest() == 'a058303733c8b57e0f1631ba326c61606cb98c79b1441a6f4656c08ff7160cf4'
               assert hashlib.sha256(dist['sources/evidence/public/application-image-cross-environment-20261125.json']).hexdigest() == '798ed363c53dc9b93bbf35c55cfdde5c273b2e05be0c7ad3f7cdb52fff88fd63'
@@ -106,7 +107,7 @@ jobs:
                   dest = target.joinpath(*pathlib.PurePosixPath(name).parts)
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(content)
-          print('Verified qualified candidate: 436 exact dist files; 60 HTML; 213 retained browser checks.')
+          print('Verified qualified candidate: 437 exact dist files; 60 HTML; 213 retained browser checks.')
       - name: Package exact public files including linked dot-directory sources
         shell: bash
         run: |
@@ -115,7 +116,7 @@ jobs:
           import os, pathlib, tarfile
           with tarfile.open(pathlib.Path(os.environ['RUNNER_TEMP']) / 'artifact.tar') as t:
               files = [m for m in t.getmembers() if m.isfile()]
-              assert len(files) == 435
+              assert len(files) == 436
               assert all(m.isfile() or m.isdir() for m in t.getmembers())
               assert './sources/.github/workflows/browser-pair.yml' in t.getnames()
               assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
