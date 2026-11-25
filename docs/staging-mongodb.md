@@ -71,6 +71,17 @@ de construction variables. Le résultat vaut pour les mêmes entrées
 amont et la version de BuildKit mesurée.
 [Reçu de reconstruction des images](../evidence/public/application-image-reproduction-20261125.json).
 
+Pour chacune des révisions API et Web qualifiées le 25 novembre, deux
+constructions sans cache sur le PC Windows et une sur GitHub Actions Ubuntu
+ont donné les mêmes digests de l’archive source, du manifeste OCI, de la
+configuration et des couches décompressées. Les jobs utilisent BuildKit
+0.34.2 épinglé par digest, Buildx 0.38.1 et l’archive du commit exact avec
+des fins de ligne LF. Le manifeste comparé est celui produit par BuildKit
+avant l’importation dans Docker. Chaque reçu enregistre le SHA du commit,
+le digest de configuration vérifié par Grype et le résultat du scan.
+Le résultat de reconstruction vaut pour les entrées amont mesurées.
+[Reçu de comparaison PC et GitHub Actions](../evidence/public/application-image-cross-environment-20261125.json).
+
 Utiliser le digest de configuration `scan_provenance.archive_config_digest`
 de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
 demande uniquement les manifestes publics par digest, recalcule leurs

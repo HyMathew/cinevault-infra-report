@@ -1,0 +1,69 @@
+{
+  "tested_on": "2026-11-25",
+  "platform": "linux/amd64",
+  "buildkit_image": "moby/buildkit:v0.34.2@sha256:c5f8862f52499773af85bc07695b2379ef08e8002352b0df2c4864c91d78dabe",
+  "buildx": "v0.38.1",
+  "source_date_epoch": 1760000000,
+  "scope": "Two no-cache builds from Docker Desktop on Windows and one from GitHub Actions Ubuntu for each exact source revision with the same upstream inputs.",
+  "applications": {
+    "api": {
+      "commit": "5c05ce3a496b381a1f443850f690df9677db4e73",
+      "github_actions_run": "https://github.com/HyMathew/cinevault-api/actions/runs/45651680858",
+      "github_actions_artifact_id": 15041890917,
+      "github_actions_artifact_digest": "sha256:3b5ad3ce969908d35cae0c5384cd28a848e1eab3ff30afacc8291e9db21b2148",
+      "local_receipt_digest": "sha256:6945b5990b12d5a80bae4bdd68257ebfe35a41abb88eb086bc2bdc2b48682d1f",
+      "verified_ci_receipt_digest": "sha256:d951dc416033a9edf5ec7f1f046e64405141cac64be2ddf78fca0b5b85ecfc5f",
+      "source_tar_digest": "sha256:d0ad4e02dfeb6aa0ab3a1aa6313d118ec8fbed3646e255bea772027e74039ea8",
+      "config_digest": "sha256:347284f958f86d4c99200e0a0b15297840b328382bdb263a65e62881bea102fb",
+      "oci_manifest_digest": "sha256:9d4a1e0d10a8d44c3e584929ffef5158a9897a7dd87d0bf81604265e4a20300e",
+      "rootfs_diff_ids": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:889060b7a05ccf1e529f21def65c1b270c0a4e3abdb84519df67ed21feb0cf31",
+        "sha256:255e6a402ab8fc7bff7dd97398eb9affd7ca2bfaf804805162111ddffe0316f9",
+        "sha256:5e336f3e05d73b56bd74c12193ad91569ad4f1ee32ff4f173a7aa502d3aace70",
+        "sha256:8cb87fa4f8b30e78ceae3b552bfccf899c544a716c77a9980c7d03e9158b82a7",
+        "sha256:5858a38461af7401cca9ccf4eabe1795409323dddbd13dc7b79b1dfff61c7b5b",
+        "sha256:64f6874e86b9e1d29426d4700c8ab3c31b1f5d0cede52afe7b18cbd8b0bb0f08",
+        "sha256:58060b35c16b07ab38ec51ffec37d6e3f1db2a016962857754bf3e94c71f8863"
+      ],
+      "sbom_components": 50,
+      "security_gate_passed": false,
+      "high_critical_cves": [
+        "CVE-2026-107493",
+        "CVE-2026-107494",
+        "CVE-2026-121482",
+        "CVE-2026-124709",
+        "CVE-2026-84786"
+      ],
+      "published": false
+    },
+    "web": {
+      "commit": "64b257984e7486cca7d66e983d9abc08cb22714e",
+      "github_actions_run": "https://github.com/HyMathew/cinevault-web/actions/runs/45651679009",
+      "github_actions_artifact_id": 15040687348,
+      "github_actions_artifact_digest": "sha256:6bb8356caa38f54b5b9227181820acfaac8976e8b6b7a6e7bfd0bc79ef8bdabc",
+      "local_receipt_digest": "sha256:b247998673ae7e5e4033db90eabfe540da8e09e5e989aace90eb1bd57d58a3b5",
+      "verified_ci_receipt_digest": "sha256:5f85d58d03d6c9e468e2184c41975da3b5159d26a9fdae8461b4480af877fd40",
+      "source_tar_digest": "sha256:23193786218d90c297b661f3fb00bca942ee61ee2e80b90dd3eb7c6bc60c10bd",
+      "config_digest": "sha256:46deddc5c0cf096c52f02615815fc25f41df1de9fa483d5d8ca1a643a9b700be",
+      "oci_manifest_digest": "sha256:a0991a313f7d3a03019e33a4f27bc56623c90cb07194e0f5392adbbb55d2e23d",
+      "rootfs_diff_ids": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:889060b7a05ccf1e529f21def65c1b270c0a4e3abdb84519df67ed21feb0cf31",
+        "sha256:375175ecf9e2b3f3c1bdf5c5d397dc0b8a2e61342b06283db8db8aa4552ea221",
+        "sha256:5e336f3e05d73b56bd74c12193ad91569ad4f1ee32ff4f173a7aa502d3aace70",
+        "sha256:34a935c24fcb59730ff4936317f0e1150e63850d219cc02204590b0441be8157"
+      ],
+      "sbom_components": 48,
+      "security_gate_passed": false,
+      "high_critical_cves": [
+        "CVE-2026-107493",
+        "CVE-2026-107494",
+        "CVE-2026-121482",
+        "CVE-2026-124709",
+        "CVE-2026-84786"
+      ],
+      "published": false
+    }
+  }
+}
