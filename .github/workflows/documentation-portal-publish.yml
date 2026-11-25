@@ -125,7 +125,7 @@ jobs:
           name: github-pages
           retention-days: 1
           if-no-files-found: error
-      - name: Wait for the uploaded artifact to appear in the run listing
+      - name: Confirm the uploaded artifact stays visible before Pages deployment
         shell: python
         env:
           GH_TOKEN: ${{ github.token }}
@@ -144,7 +144,11 @@ jobs:
               def redirect_request(self, req, fp, code, msg, hdrs, newurl):
                   return None
           opener = urllib.request.build_opener(NoRedirect())
-          for attempt in range(8):
+          visible_since = None
+          deadline = time.monotonic() + 90
+          # The Pages action lists artifacts through the Actions results service.
+          # Its view can lag behind this REST listing immediately after upload.
+          while time.monotonic() < deadline:
               with opener.open(request, timeout=10) as response:
                   data = response.read(1024 * 1024 + 1)
               assert len(data) <= 1024 * 1024
@@ -152,11 +156,15 @@ jobs:
               if items:
                   assert len(items) == 1 and items[0]['id'] == artifact_id
                   assert items[0]['name'] == 'github-pages' and items[0]['expired'] is False
-                  break
-              if attempt < 7:
-                  time.sleep(3)
+                  if visible_since is None:
+                      visible_since = time.monotonic()
+                  elif time.monotonic() - visible_since >= 25:
+                      break
+              else:
+                  visible_since = None
+              time.sleep(5)
           else:
-              raise RuntimeError('The uploaded Pages artifact is still absent from the run listing')
+              raise RuntimeError('The uploaded Pages artifact did not stay visible in the run listing')
       - name: Deploy candidate documentation
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
