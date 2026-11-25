@@ -26,11 +26,11 @@ jobs:
         run: |
           import hashlib, io, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
           REPO = 'HyMathew/cinevault-infra-report'
-          COMMIT = 'b345a08f90a703911fb448b4ee381f8626c8e552'
-          RUN = 45523334578
-          ARTIFACT = 14981935424
-          DIGEST = '55c29d4d7b4dc973e1f84b6ac486236989da259715baa882a5046d10c5db1aa1'
-          ARCHIVE_SIZE = 10881410
+          COMMIT = 'ef99c96319aabf45a3a1cdf4900014ebf77922ed'
+          RUN = 45653030830
+          ARTIFACT = 15041368297
+          DIGEST = '2dd31078b173264b2b29a6934da55110f5e720f8c2f6ff32b18be65884f318c3'
+          ARCHIVE_SIZE = 10888220
           ROOT = f'https://api.github.com/repos/{REPO}/'
           headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
                      'Accept': 'application/vnd.github+json', 'User-Agent': 'CineVault-portal-promotion',
@@ -81,9 +81,9 @@ jobs:
               assert receipt['source_clean'] and receipt['tooling_clean']
               assert receipt['base'] == '/cinevault-infra-report'
               assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 60
-              assert receipt['checks']['checkedLinks'] == 6014 and not receipt['checks']['errors']
+              assert receipt['checks']['checkedLinks'] == 6019 and not receipt['checks']['errors']
               repro = json.loads(z.read('.cache/reproducibility.json'))
-              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 425
+              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 427
               dist = {n[5:]: z.read(n) for n in names if n.startswith('dist/') and not n.endswith('/')}
               assert set(dist) == {f['path'] for f in repro['files']}
               assert all(hashlib.sha256(dist[f['path']]).hexdigest() == f['sha256'] for f in repro['files'])
@@ -93,6 +93,7 @@ jobs:
               assert not browser['page_errors'] and browser['owned_server_stopped']
               pdf = dist['sources/report/enterprise-2.1/RT0705_CineVault_Mathieu_Kuhnapfel.pdf']
               assert hashlib.sha256(pdf).hexdigest() == '8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a'
+              assert hashlib.sha256(dist['sources/evidence/public/application-image-cross-environment-20261125.json']).hexdigest() == '798ed363c53dc9b93bbf35c55cfdde5c273b2e05be0c7ad3f7cdb52fff88fd63'
               assert hashlib.sha256(dist['sources/evidence/public/swarm-rollback-data-20261125.json']).hexdigest() == '3776cacf2312af16a339cadd6be4b7b19219ab7897dbbe38c4010713bed3e3e3'
               assert hashlib.sha256(dist['sources/evidence/public/swarm-mongodb-overlay-tls-20261125.json']).hexdigest() == '5e34d9b366f3292a2b449fb9ea20679cac29fcd84b02713d7cb126029ea4b896'
               home = dist['index.html'].decode('utf-8')
@@ -103,7 +104,7 @@ jobs:
                   dest = target.joinpath(*pathlib.PurePosixPath(name).parts)
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(content)
-          print('Verified qualified candidate: 425 exact dist files; 60 HTML; 213 retained browser checks.')
+          print('Verified qualified candidate: 427 exact dist files; 60 HTML; 213 retained browser checks.')
       - name: Package exact public files including linked dot-directory sources
         shell: bash
         run: |
@@ -112,7 +113,7 @@ jobs:
           import os, pathlib, tarfile
           with tarfile.open(pathlib.Path(os.environ['RUNNER_TEMP']) / 'artifact.tar') as t:
               files = [m for m in t.getmembers() if m.isfile()]
-              assert len(files) == 424
+              assert len(files) == 426
               assert all(m.isfile() or m.isdir() for m in t.getmembers())
               assert './sources/.github/workflows/browser-pair.yml' in t.getnames()
               assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
