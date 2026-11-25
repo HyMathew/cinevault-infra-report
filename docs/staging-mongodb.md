@@ -210,3 +210,19 @@ de mémoire disponible à cet instant. La stack stable était saine, avec HTTP
 expiré. Ce contrôle porte sur les flux depuis le PC et la capacité observée
 à cet instant.
 [Reçu des contrôles SSH](../evidence/public/enterprise-2.1-candidate-20261122.json).
+
+Le 25 novembre, une instance MongoDB 8.0.38 sur VM2 a élu son primaire
+sur le réseau de données chiffré. Un client jetable sur VM1 a vérifié le
+certificat du serveur, ouvert une session TLS avec SCRAM-SHA-256 et lu un
+document synthétique. Le serveur a refusé l'accès à une autre base et la
+consultation des comptes d'administration. Le mot de passe invalide, l'autorité
+de certification inconnue, le nom absent du certificat et la connexion en
+clair ont échoué. Sur le seul réseau frontal, le client n'a pu ni résoudre
+le nom de MongoDB ni joindre son adresse interne sur TCP 27017.
+
+Le service n'a publié aucun port. Les deux réseaux, les secrets, le volume
+et les conteneurs temporaires ont été retirés. Les deux services CineVault
+stables sont restés sains avec les mêmes versions Swarm et les mêmes tâches.
+Cet essai couvre MongoDB et le réseau entre workers. Les parcours avec
+les images API et Web qualifiées restent à vérifier.
+[Reçu MongoDB entre workers](../evidence/public/swarm-mongodb-overlay-tls-20261125.json).

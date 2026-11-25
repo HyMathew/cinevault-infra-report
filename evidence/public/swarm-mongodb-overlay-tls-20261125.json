@@ -1,0 +1,27 @@
+{
+  "date_utc": "2026-11-25",
+  "passed": true,
+  "scope": "Qualification de MongoDB et des flux entre workers Swarm par SSH depuis Windows, avec un document synthétique et un client mongosh jetable.",
+  "server_version": "8.0.38",
+  "manifest_digest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "placement": {
+    "mongo_worker": 2,
+    "client_worker": 1
+  },
+  "published_ports": 0,
+  "checks": {
+    "two_internal_encrypted_overlays_no_published_port": true,
+    "replica_elected_and_fixture_seeded": true,
+    "cross_worker_tls_scram_least_privilege": true,
+    "scram_wrong_password_rejected": true,
+    "rejected_ca": true,
+    "rejected_san": true,
+    "rejected_clear": true,
+    "front_only_worker_denied_dns_and_tcp": true
+  },
+  "temporary_objects_removed_confirmed_by_independent_ssh_query": true,
+  "stable_service_versions_and_tasks_unchanged_and_healthy": true,
+  "candidate_api_and_web_services_started": false,
+  "native_receipt_sha256": "ea463935110faca1ad83f764fb99c01263bb92deab1a0f54f5ea5b682537ca9c",
+  "native_harness_sha256": "155ef05b63e8e5c64dcbd43d8620eef35516cbb3a57e11dd4bedb03de31313ae"
+}
