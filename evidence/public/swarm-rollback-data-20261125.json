@@ -1,0 +1,40 @@
+{
+  "date_utc": "2026-11-25",
+  "api_source_sha": "f78fe323f291c3303aeafd107ac9b8c7a51ed399",
+  "qualified_mongodb_manifest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "local_http_backend_switch": {
+    "scope": "Sources API exactes et vrai MongoDB jetable sous Docker Desktop. Trois serveurs HTTP sur la boucle locale se succèdent avec des données synthétiques.",
+    "source_and_backup_unchanged": true,
+    "catalogue_write_survived": true,
+    "private_favorite_survived": true,
+    "sessions_before_and_after_cutover_survived": true,
+    "anonymous_favorite_denied": true,
+    "historical_snapshot_refused": true,
+    "reverse_export_replay": true,
+    "mongo_stopped_before_opening_json": true,
+    "mongo_revision": 9,
+    "initial_snapshot_sha256": "41debf2366a139b1873085020738c1043c8200e7e7819ee38353db7bd2668ffb",
+    "export_snapshot_sha256": "90390d56a12cf033bfcf7a64cbaf6e5fb7fc9a3fc7427db97ff1094f0321ecf1",
+    "cleanup_confirmed": true,
+    "native_receipt_sha256": "c3591278070fea255755c8b01effb4fc79b90608ff42672557d0445d08459aee"
+  },
+  "local_staging_operator_replay": {
+    "scope": "Programmes du contrôleur rejoués avec la même API et des chemins locaux, MongoDB sur la boucle locale.",
+    "passed": true,
+    "catalogue_and_favorite_preserved": true,
+    "original_account_authenticated": true,
+    "anonymous_access_denied": true,
+    "export_idempotent": true,
+    "stale_snapshot_rejected": true,
+    "native_receipt_sha256": "702b3a29e207f48179da28bc71a1ef673e83b4dfa4ae5b835ecfdb01ae8c8960",
+    "staging_controller_sha256": "a58e4e5e1c7cf309ccd84895d633969124d62fc70921d6a67a3001af6efbd0ff"
+  },
+  "swarm_writer_shutdown": {
+    "scope": "Services inertes sur deux workers, contrôle de l'arrêt piloté en SSH depuis le PC.",
+    "writers_stopped_while_data_task_remained": true,
+    "stable_services_healthy_and_same_tasks": true,
+    "cleanup_confirmed": true,
+    "native_receipt_sha256": "06a056233300faa71623c01dda1bd329f736ed7c3bce83c8a6d4db8dfe1ee382"
+  },
+  "integrated_candidate_swarm_run_required": true
+}

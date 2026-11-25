@@ -185,6 +185,36 @@ stables ont conservé leur identité et leur état de santé. Le retour arrière
 du staging applicatif reste à éprouver avec le couple qualifié.
 [Reçu du retour arrière Swarm](../evidence/public/swarm-service-rollback-20261125.json).
 
+### Revenir à JSON après de nouvelles écritures
+
+1. Mettre le Web puis l'API hors service. Vérifier sur le manager que
+   leurs réplicas désirés sont à zéro, puis sur chaque nœud qu'aucun
+   conteneur d'écriture ne tourne encore. Laisser le réplica MongoDB
+   disponible à l'identité de migration.
+2. Garder le fichier d'origine et sa sauvegarde. Inspecter l'instantané
+   MongoDB après le gel et exporter vers un nouveau chemin JSON avec les
+   empreintes de l'original et de cet instantané. Refaire l'inspection si
+   le digest attendu diffère. Suivre les commandes du
+   [guide de migration API](https://github.com/HyMathew/cinevault-api/blob/f78fe323f291c3303aeafd107ac9b8c7a51ed399/docs/mongodb-migration.md).
+3. Vérifier l'empreinte de l'export. Ouvrir le candidat JSON dans une
+   instance isolée sans accès à MongoDB. Vérifier l'ancien catalogue,
+   les données écrites après la bascule, l'authentification et les droits.
+   Garder MongoDB et l'original intacts jusqu'à la validation du candidat.
+
+Le 25 novembre, l'API exécutée depuis ses sources exactes sur le PC a
+servi JSON, puis MongoDB 8.0.38, puis le fichier JSON exporté. La dernière
+instance a retrouvé le film et le favori créés dans MongoDB, ainsi que les
+sessions ouvertes avant et après la bascule. L'export a refusé l'empreinte d'un instantané
+antérieur et a produit les mêmes octets au rejeu. Le contrôleur de
+staging a aussi rejoué ses opérations d'export et de vérification dans
+cet environnement local.
+
+Sur Swarm, deux tâches inertes représentant les services d'écriture
+se sont arrêtées et une troisième représentant la base est restée en
+service. Le contrôle intégré des images API et Web sur Swarm reste
+à exécuter avec le couple qualifié.
+[Reçu de la reprise des données](../evidence/public/swarm-rollback-data-20261125.json).
+
 ## Critères de vérification
 
 - Depuis l'API, vérifier le DNS, le certificat du serveur, SCRAM et `/health`.
