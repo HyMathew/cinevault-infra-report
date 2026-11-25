@@ -1,0 +1,46 @@
+{
+  "date_utc": "2026-11-25",
+  "scope": "Inventaires Syft et résultats Grype vérifiés depuis les archives CI des deux images candidates.",
+  "api": {
+    "source_commit": "2144c3f55dcda02787a2924a08f0bb2648ac18b6",
+    "ci_run": 45648270192,
+    "ci_artifact": 15038462979,
+    "ci_artifact_sha256": "sha256:149c4685a1f32ebb7b969efaf04bea940d64cc329020d125e8e4c8d9e98f8b22",
+    "checked_receipt_sha256": "e3fb45084e0232dbaeac5d172b20f0fa448f6bc4a20721f05804d71afeb02b68",
+    "configuration_digest": "sha256:ab7e92b001372ec24cea8e103c6148d18fb4dfffc7b63c8189405be0f2617b9e",
+    "scanned_archive_sha256": "sha256:6e2ab861a7410852aa33cfc9eeb372791254d2da967bce41e91f51c4d397e806",
+    "inventory_sha256": "sha256:afe934b5f8f12829d2f816eb6e5b78c274d174002701cd30db9b34ffe268f1ab",
+    "cataloger": "anchore/syft:v1.57.2@sha256:9c2563b5fb56e9f5e9cb5b6cf10b9ab0dc6a6d1c1b1e24165bcdf9c8c85a9584",
+    "components": 51,
+    "scanner_database_utc": "2026-11-25T06:22:21Z",
+    "scan_passed": false,
+    "high_or_critical": [
+      "CVE-2026-107493",
+      "CVE-2026-107494",
+      "CVE-2026-121482",
+      "CVE-2026-124709",
+      "CVE-2026-84786"
+    ]
+  },
+  "web": {
+    "source_commit": "f0db9b35f06e0eaa1ea69bb618a3a3e44abadae5",
+    "ci_run": 45648269707,
+    "ci_artifact": 15038073307,
+    "ci_artifact_sha256": "sha256:e6cb2246de23d12bc527434cca1f21a3f30f414e81baa4b74aef142e7a7134f1",
+    "checked_receipt_sha256": "95593a9d63f8f9b1569d652da557f6cb61fe53e1787bc5a6bcee63b1e16f69c4",
+    "configuration_digest": "sha256:4ab2c330ece9a677183cc751315e6f489905c27b38907720b485a8ac1900a39d",
+    "scanned_archive_sha256": "sha256:ee8438962415cb0e63afef0a3c8ae5e9300d946778538cece09f419031bda798",
+    "inventory_sha256": "sha256:ef4b702b010f8e399047d52acc13d02c48e8a3075c6198b5a39b00870dfb04b7",
+    "cataloger": "anchore/syft:v1.57.2@sha256:9c2563b5fb56e9f5e9cb5b6cf10b9ab0dc6a6d1c1b1e24165bcdf9c8c85a9584",
+    "components": 49,
+    "scanner_database_utc": "2026-11-25T06:22:21Z",
+    "scan_passed": false,
+    "high_or_critical": [
+      "CVE-2026-107493",
+      "CVE-2026-107494",
+      "CVE-2026-121482",
+      "CVE-2026-124709",
+      "CVE-2026-84786"
+    ]
+  }
+}

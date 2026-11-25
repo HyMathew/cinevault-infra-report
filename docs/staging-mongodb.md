@@ -53,9 +53,15 @@ de santé et le scan de l’image du même job. Il publie sous
 Les workflows des dépôts officiels attestent ce digest, puis un job en
 lecture seule vérifie la signature Sigstore et les identités de source et
 de workflow. Conserver `image-audit` et `image-verified-provenance` du
-même run. Le reçu de publication, le scan et le sujet signé doivent
-correspondre avant de préparer les workers.
+même run. Le reçu de publication, l'inventaire Syft, le rapport Grype et
+le sujet signé doivent correspondre avant de préparer les workers.
 [Vérification GitHub CLI](https://cli.github.com/manual/gh_attestation_verify).
+
+La CI du 25 novembre a produit un inventaire de 51 composants pour l'API
+et de 49 pour le Web. Les archives vérifiées relient chaque inventaire à
+la configuration exacte utilisée par Grype. La publication a été bloquée
+sur les cinq mêmes CVE OpenSSL dans les deux images.
+[Reçu des inventaires et des scans](../evidence/public/image-sbom-qualification-20261125.json).
 
 Utiliser le digest de configuration `scan_provenance.archive_config_digest`
 de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
