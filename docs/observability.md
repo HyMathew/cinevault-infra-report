@@ -60,3 +60,31 @@ Sur le PC, un vrai appel HTTP à `/films` du Web `70fa78e` a chargé
 200 à partir de l'identifiant retourné par le Web. Le journal n'a retenu
 aucune des valeurs de contrôle transmises dans la recherche, le cookie ou
 l'identifiant entrant. [Reçu et révisions](../evidence/public/mongodb-performance-observability-20261121.json).
+
+### Relevé sur les workers Swarm
+
+Le 25 novembre 2026, un client sur VM1 a effectué 60 lectures unitaires
+d'un document synthétique en TLS sur MongoDB 8.0.38, sur VM2. Après une
+lecture d'échauffement, le client a attendu 250 ms entre deux lectures.
+La série a duré 15,3 s et la latence observée par le client était de 7 ms
+au p50, 13 ms au p95 et 46 ms au p99, à la résolution de la milliseconde.
+
+Sur les trois relevés pris pendant la série, `docker stats` a mesuré
+2,47 %, 2,42 % puis 74,65 % de CPU, et environ 109,4, 109,4 puis 274 Mio
+de mémoire pour le conteneur MongoDB. Ces instantanés incluent les
+processus de sonde du conteneur et ne permettent pas d'attribuer le pic
+à une opération particulière. Entre les relevés encadrant la série,
+les compteurs cumulés du conteneur ont augmenté d'environ 39 ko en
+réception et 46 ko en émission. Le worker VM2 disposait encore d'environ
+1 216 Mio de RAM et 5,86 Gio sur le disque de Docker au relevé intermédiaire.
+[Définition des compteurs Docker](https://docs.docker.com/reference/cli/docker/container/stats/).
+
+Les sondes internes du Web et de l'API stables ont répondu HTTP 200 avant,
+pendant et après. Douze sondes Web depuis le PC ont répondu HTTP 200, dont
+six pendant la fenêtre qui encadre la série. L'exercice a relevé la
+capacité sur les trois nœuds. Avec un seuil de démonstration à 6 Gio, la
+sonde a détecté le passage temporaire du disque Docker de VM2 sous le
+seuil, puis le retour à l'état normal à partir des mesures réelles. Cet
+essai à faible cadence calibre le diagnostic de capacité. Il ne fixe
+aucun objectif de performance pour le staging applicatif.
+[Reçu de capacité Swarm](../evidence/public/swarm-mongodb-capacity-20261125.json).

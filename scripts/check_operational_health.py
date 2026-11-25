@@ -13,7 +13,9 @@ from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, ProxyHandler, build_opener
 
 SERVICES = ("api", "web")
+SWARM_ROLES = ("web", "api", "manager")
 MAX_JSON_BYTES = 4 * 1024 * 1024
+MIB = 1024**2
 
 
 class Parser(argparse.ArgumentParser):
@@ -185,6 +187,69 @@ def backup_receipt(path, expected_status, age_seconds, max_age_hours):
     }
 
 
+def capacity_node(value, now, max_age_hours, min_memory_mib, min_disk_mib):
+    if not isinstance(value, dict):
+        return {"state": "invalid"}
+    memory = value.get("available_ram_bytes")
+    disk = value.get("docker_available_disk_bytes")
+    timestamp = value.get("timestamp_utc")
+    if (
+        type(memory) is not int
+        or type(disk) is not int
+        or min(memory, disk) < 0
+        or not isinstance(timestamp, str)
+    ):
+        return {"state": "invalid"}
+    try:
+        observed_at = utc_timestamp(timestamp)
+    except argparse.ArgumentTypeError:
+        return {"state": "invalid"}
+    if observed_at is None:
+        return {"state": "timestamp_missing"}
+    age = (now - observed_at).total_seconds()
+    if age < 0:
+        return {"state": "future_timestamp"}
+    below_threshold = [
+        metric
+        for metric, free, limit in (
+            ("memory", memory, min_memory_mib),
+            ("docker_disk", disk, min_disk_mib),
+        )
+        if free < limit * MIB
+    ]
+    state = "ok"
+    if age > max_age_hours * 3600:
+        state = "stale"
+    elif below_threshold:
+        state = "threshold_exceeded"
+    return {
+        "state": state,
+        "age_seconds": int(age),
+        "available_memory_mib": memory // MIB,
+        "available_docker_disk_mib": disk // MIB,
+        "below_threshold": below_threshold,
+    }
+
+
+def swarm_capacity(path, now, max_age_hours, min_memory_mib, min_disk_mib):
+    value, failure = read_evidence(path)
+    if failure:
+        return {"state": failure}
+    nodes = value.get("nodes")
+    if not isinstance(nodes, dict) or nodes.keys() - SWARM_ROLES:
+        return {"state": "invalid"}
+    checks = {
+        role: capacity_node(
+            nodes[role], now, max_age_hours, min_memory_mib, min_disk_mib
+        )
+        if role in nodes
+        else {"state": "missing"}
+        for role in SWARM_ROLES
+    }
+    ok = all(check["state"] == "ok" for check in checks.values())
+    return {"state": "ok" if ok else "node_check_failed", "nodes": checks}
+
+
 def main(argv=None):
     parser = Parser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--api-url", required=True, type=health_url)
@@ -205,6 +270,10 @@ def main(argv=None):
     parser.add_argument("--restore-receipt", required=True, type=Path)
     parser.add_argument("--restore-finished-at-utc", **timestamp_options)
     parser.add_argument("--max-restore-age-hours", required=True, type=float)
+    parser.add_argument("--swarm-capacity-snapshot", type=Path)
+    parser.add_argument("--max-capacity-age-hours", type=float)
+    parser.add_argument("--min-available-memory-mib", type=int)
+    parser.add_argument("--min-docker-free-mib", type=int)
     args = parser.parse_args(argv)
     limits = (
         args.max_summary_age_hours,
@@ -217,6 +286,18 @@ def main(argv=None):
         or any(not math.isfinite(limit) or limit <= 0 for limit in limits)
     ):
         parser.error("Invalid threshold.")
+    capacity_options = (
+        args.max_capacity_age_hours,
+        args.min_available_memory_mib,
+        args.min_docker_free_mib,
+    )
+    if args.swarm_capacity_snapshot is None:
+        if any(option is not None for option in capacity_options):
+            parser.error("Swarm capacity snapshot required.")
+    elif any(
+        option is None or option <= 0 for option in capacity_options
+    ) or not math.isfinite(args.max_capacity_age_hours):
+        parser.error("All Swarm capacity thresholds must be positive.")
     now = datetime.now(UTC)
     timestamps = (
         args.summary_ended_at_utc,
@@ -256,6 +337,10 @@ def main(argv=None):
             args.max_restore_age_hours,
         ),
     }
+    if args.swarm_capacity_snapshot is not None:
+        checks["swarm_capacity"] = swarm_capacity(
+            args.swarm_capacity_snapshot, now, *capacity_options
+        )
     ok = all(check["state"] == "ok" for check in (*health.values(), *checks.values()))
     print(
         json.dumps(

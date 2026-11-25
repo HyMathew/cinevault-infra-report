@@ -1,0 +1,272 @@
+{
+  "date_utc": "2026-11-25",
+  "passed": true,
+  "scope": "Lectures MongoDB synthétiques entre deux workers et santé des services stables échantillonnées en SSH depuis le PC.",
+  "mongo_image_manifest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "read_operations": 60,
+  "readout": {
+    "elapsed_ms": 15295,
+    "p50_ms": 7,
+    "p95_ms": 13,
+    "p99_ms": 46,
+    "pause_ms": 250
+  },
+  "nodes": {
+    "web": {
+      "timestamp_utc": "2026-11-25T00:47:50.374603+00:00",
+      "available_ram_bytes": 1553801216,
+      "total_ram_bytes": 2062168064,
+      "swap_used_bytes": 39800832,
+      "docker_available_disk_bytes": 6983385088
+    },
+    "api": {
+      "timestamp_utc": "2026-11-25T00:47:50.390200+00:00",
+      "available_ram_bytes": 1274982400,
+      "total_ram_bytes": 2062172160,
+      "swap_used_bytes": 52957184,
+      "docker_available_disk_bytes": 6295240704
+    },
+    "manager": {
+      "timestamp_utc": "2026-11-25T00:47:50.917918+00:00",
+      "available_ram_bytes": 1546874880,
+      "total_ram_bytes": 2062168064,
+      "swap_used_bytes": 5009408,
+      "docker_available_disk_bytes": 31298510848
+    }
+  },
+  "nodes_before": {
+    "web": {
+      "timestamp_utc": "2026-11-25T00:46:41.047087+00:00",
+      "available_ram_bytes": 1539391488,
+      "total_ram_bytes": 2062168064,
+      "swap_used_bytes": 39800832,
+      "docker_available_disk_bytes": 6994796544
+    },
+    "api": {
+      "timestamp_utc": "2026-11-25T00:46:41.104758+00:00",
+      "available_ram_bytes": 1548988416,
+      "total_ram_bytes": 2062172160,
+      "swap_used_bytes": 52957184,
+      "docker_available_disk_bytes": 6506205184
+    },
+    "manager": {
+      "timestamp_utc": "2026-11-25T00:46:41.001535+00:00",
+      "available_ram_bytes": 1570512896,
+      "total_ram_bytes": 2062168064,
+      "swap_used_bytes": 5009408,
+      "docker_available_disk_bytes": 31298551808
+    }
+  },
+  "nodes_after": {
+    "web": {
+      "timestamp_utc": "2026-11-25T00:48:39.921070+00:00",
+      "available_ram_bytes": 1555247104,
+      "total_ram_bytes": 2062168064,
+      "swap_used_bytes": 40325120,
+      "docker_available_disk_bytes": 6983442432
+    },
+    "api": {
+      "timestamp_utc": "2026-11-25T00:48:39.922416+00:00",
+      "available_ram_bytes": 1574588416,
+      "total_ram_bytes": 2062172160,
+      "swap_used_bytes": 52957184,
+      "docker_available_disk_bytes": 6506110976
+    },
+    "manager": {
+      "timestamp_utc": "2026-11-25T00:48:39.874388+00:00",
+      "available_ram_bytes": 1598603264,
+      "total_ram_bytes": 2062168064,
+      "swap_used_bytes": 5009408,
+      "docker_available_disk_bytes": 31298469888
+    }
+  },
+  "mongo_before_reads": {
+    "timestamp_utc": "2026-11-25T00:47:49.353785+00:00",
+    "cpu_percent": 1.52,
+    "memory_bytes_approx": 114609357,
+    "memory_limit_bytes_approx": 805306368,
+    "network_rx_bytes_approx": 47400,
+    "network_tx_bytes_approx": 61500,
+    "block_read_bytes_approx": 41000,
+    "block_write_bytes_approx": 2570000,
+    "pids": 79
+  },
+  "mongo_during_reads": [
+    {
+      "timestamp_utc": "2026-11-25T00:47:54.895244+00:00",
+      "cpu_percent": 2.47,
+      "memory_bytes_approx": 114714214,
+      "memory_limit_bytes_approx": 805306368,
+      "network_rx_bytes_approx": 64300,
+      "network_tx_bytes_approx": 83600,
+      "block_read_bytes_approx": 41000,
+      "block_write_bytes_approx": 2570000,
+      "pids": 81
+    },
+    {
+      "timestamp_utc": "2026-11-25T00:47:59.905549+00:00",
+      "cpu_percent": 2.42,
+      "memory_bytes_approx": 114714214,
+      "memory_limit_bytes_approx": 805306368,
+      "network_rx_bytes_approx": 72300,
+      "network_tx_bytes_approx": 91200,
+      "block_read_bytes_approx": 41000,
+      "block_write_bytes_approx": 2650000,
+      "pids": 80
+    },
+    {
+      "timestamp_utc": "2026-11-25T00:48:03.914889+00:00",
+      "cpu_percent": 74.65,
+      "memory_bytes_approx": 287309824,
+      "memory_limit_bytes_approx": 805306368,
+      "network_rx_bytes_approx": 80900,
+      "network_tx_bytes_approx": 102000,
+      "block_read_bytes_approx": 41000,
+      "block_write_bytes_approx": 2660000,
+      "pids": 95
+    }
+  ],
+  "mongo_after_reads": {
+    "timestamp_utc": "2026-11-25T00:48:08.509680+00:00",
+    "cpu_percent": 2.31,
+    "memory_bytes_approx": 114923930,
+    "memory_limit_bytes_approx": 805306368,
+    "network_rx_bytes_approx": 86500,
+    "network_tx_bytes_approx": 107000,
+    "block_read_bytes_approx": 41000,
+    "block_write_bytes_approx": 2750000,
+    "pids": 78
+  },
+  "stable_health_before_during_after": {
+    "before": {
+      "web": {
+        "status": 200,
+        "latency_ms": 39.456
+      },
+      "api": {
+        "status": 200,
+        "latency_ms": 25.118
+      }
+    },
+    "during": {
+      "web": {
+        "status": 200,
+        "latency_ms": 23.447
+      },
+      "api": {
+        "status": 200,
+        "latency_ms": 25.912
+      }
+    },
+    "after": {
+      "web": {
+        "status": 200,
+        "latency_ms": 24.111
+      },
+      "api": {
+        "status": 200,
+        "latency_ms": 26.69
+      }
+    }
+  },
+  "stable_web_http_from_pc": {
+    "responses_200": 12,
+    "responses_200_during_mongo_window": 6,
+    "min_client_elapsed_ms": 58.916,
+    "max_client_elapsed_ms": 149.933
+  },
+  "capacity_gate_exercise": {
+    "max_age_hours": 1,
+    "min_available_memory_mib": 1024,
+    "lab_preflight_min_docker_free_mib": 3072,
+    "demonstration_min_docker_free_mib": 6144,
+    "checked_utc": "2026-11-25T00:51:42.486018+00:00",
+    "observed": {
+      "before": {
+        "state": "ok",
+        "nodes": {
+          "web": {
+            "state": "ok",
+            "age_seconds": 301,
+            "available_memory_mib": 1468,
+            "available_docker_disk_mib": 6670,
+            "below_threshold": []
+          },
+          "api": {
+            "state": "ok",
+            "age_seconds": 301,
+            "available_memory_mib": 1477,
+            "available_docker_disk_mib": 6204,
+            "below_threshold": []
+          },
+          "manager": {
+            "state": "ok",
+            "age_seconds": 301,
+            "available_memory_mib": 1497,
+            "available_docker_disk_mib": 29848,
+            "below_threshold": []
+          }
+        }
+      },
+      "during": {
+        "state": "node_check_failed",
+        "nodes": {
+          "web": {
+            "state": "ok",
+            "age_seconds": 232,
+            "available_memory_mib": 1481,
+            "available_docker_disk_mib": 6659,
+            "below_threshold": []
+          },
+          "api": {
+            "state": "threshold_exceeded",
+            "age_seconds": 232,
+            "available_memory_mib": 1215,
+            "available_docker_disk_mib": 6003,
+            "below_threshold": [
+              "docker_disk"
+            ]
+          },
+          "manager": {
+            "state": "ok",
+            "age_seconds": 231,
+            "available_memory_mib": 1475,
+            "available_docker_disk_mib": 29848,
+            "below_threshold": []
+          }
+        }
+      },
+      "after": {
+        "state": "ok",
+        "nodes": {
+          "web": {
+            "state": "ok",
+            "age_seconds": 182,
+            "available_memory_mib": 1483,
+            "available_docker_disk_mib": 6659,
+            "below_threshold": []
+          },
+          "api": {
+            "state": "ok",
+            "age_seconds": 182,
+            "available_memory_mib": 1501,
+            "available_docker_disk_mib": 6204,
+            "below_threshold": []
+          },
+          "manager": {
+            "state": "ok",
+            "age_seconds": 182,
+            "available_memory_mib": 1524,
+            "available_docker_disk_mib": 29848,
+            "below_threshold": []
+          }
+        }
+      }
+    }
+  },
+  "swarm_objects_removed_verified_separately": true,
+  "stable_service_versions_and_tasks_unchanged": true,
+  "native_receipt_sha256": "0d1567bfe79bdc5f4c2375f30d8cc1f929958827458c2c53f2cb79ee89e417a4",
+  "native_observer_sha256": "ef9bbe2687dff52d53935b9d1da19896e102b637e442bd893b56fc662642cdd8",
+  "windows_health_receipt_sha256": "1a269cbab100eea1a70791963753299bef79e132f689c8e886e845862bdc28c6"
+}

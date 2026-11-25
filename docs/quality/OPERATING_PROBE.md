@@ -35,11 +35,36 @@ python3 scripts/check_operational_health.py \
   --max-restore-age-hours "$MAX_RESTORE_AGE_HOURS"
 ```
 
+### Contrôler la capacité Swarm
+
+Pour le lab à trois nœuds, fournir un JSON contenant `nodes` avec les rôles
+`web`, `api` et `manager`. Chaque entrée contient `timestamp_utc`,
+`available_ram_bytes` et `docker_available_disk_bytes`. Relever
+`MemAvailable` dans `/proc/meminfo` sur le nœud et convertir ses Kio en
+octets. Relever l'espace disponible en octets sur le système de fichiers qui
+contient le répertoire Docker. Le [reçu de mesure](../../evidence/public/swarm-mongodb-capacity-20261125.json)
+montre le format des mesures pendant la fenêtre de lecture.
+
+Ajouter ensemble les quatre arguments au contrôle précédent.
+
+```sh
+--swarm-capacity-snapshot "$SWARM_CAPACITY_SNAPSHOT" \
+--max-capacity-age-hours "$MAX_CAPACITY_AGE_HOURS" \
+--min-available-memory-mib "$MIN_AVAILABLE_MEMORY_MIB" \
+--min-docker-free-mib "$MIN_DOCKER_FREE_MIB"
+```
+
+La sonde échoue si un relevé manque, est trop ancien, porte une date future
+ou franchit un minimum. Le rapport désigne le nœud et le seuil concerné.
+Une exécution périodique doit collecter un nouvel instantané et traiter
+également une absence de résultat. La sonde fournit le résultat JSON et
+le code de sortie pour l'intégration au canal d'alerte choisi.
+
 ## Résultats et limites
 
 | Code | Interprétation |
 | --- | --- |
-| `0` | Les deux contrôles HTTP et les trois contrôles de preuves réussissent. |
+| `0` | Les deux contrôles HTTP, les trois contrôles de preuves et le contrôle de capacité s’il est demandé réussissent. |
 | `1` | Au moins un contrôle échoue. Le JSON identifie le service ou la preuve et son état. |
 | `2` | La validation des arguments échoue avant les appels réseau. |
 

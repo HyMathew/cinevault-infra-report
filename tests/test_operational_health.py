@@ -215,6 +215,79 @@ def test_qualification_receipt_is_not_a_restore_receipt(arguments, capsys):
     assert output["restore"]["state"] == "invalid"
 
 
+def test_swarm_capacity_reports_each_threshold_and_recovers(
+    arguments, capsys, tmp_path
+):
+    snapshot = tmp_path / f"capacity-{PRIVATE}.json"
+    arguments.update(
+        {
+            "swarm-capacity-snapshot": str(snapshot),
+            "max-capacity-age-hours": "1",
+            "min-available-memory-mib": "1024",
+            "min-docker-free-mib": "3072",
+        }
+    )
+    capacity = {
+        "timestamp_utc": timestamp(),
+        "available_ram_bytes": 1024 * 1024**2,
+        "docker_available_disk_bytes": 3072 * 1024**2,
+        "discarded": PRIVATE,
+    }
+    nodes = {role: capacity.copy() for role in ("web", "api", "manager")}
+    nodes["web"]["available_ram_bytes"] -= 1
+    nodes["api"]["docker_available_disk_bytes"] -= 1
+    snapshot.write_text(json.dumps({"nodes": nodes}), encoding="utf-8")
+    code, output = run(arguments, capsys)
+    checks = output["swarm_capacity"]["nodes"]
+    assert code == 1
+    assert checks["web"]["below_threshold"] == ["memory"]
+    assert checks["api"]["below_threshold"] == ["docker_disk"]
+    assert checks["manager"]["state"] == "ok"
+
+    snapshot.write_text(
+        json.dumps({"nodes": {role: capacity for role in nodes}}), encoding="utf-8"
+    )
+    code, output = run(arguments, capsys)
+    assert code == 0
+    assert output["swarm_capacity"]["state"] == "ok"
+
+
+def test_swarm_capacity_rejects_missing_stale_and_future_data(
+    arguments, capsys, tmp_path
+):
+    snapshot = tmp_path / "capacity.json"
+    arguments.update(
+        {
+            "swarm-capacity-snapshot": str(snapshot),
+            "max-capacity-age-hours": "1",
+            "min-available-memory-mib": "1",
+            "min-docker-free-mib": "1",
+        }
+    )
+    code, output = run(arguments, capsys)
+    assert code == 1
+    assert output["swarm_capacity"]["state"] == "missing"
+
+    resources = {"available_ram_bytes": 1024**2, "docker_available_disk_bytes": 1024**2}
+    snapshot.write_text(
+        json.dumps(
+            {
+                "nodes": {
+                    "web": {**resources, "timestamp_utc": timestamp(2)},
+                    "api": {**resources, "timestamp_utc": timestamp(-2)},
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    code, output = run(arguments, capsys)
+    checks = output["swarm_capacity"]["nodes"]
+    assert code == 1
+    assert checks["web"]["state"] == "stale"
+    assert checks["api"]["state"] == "future_timestamp"
+    assert checks["manager"]["state"] == "missing"
+
+
 @pytest.mark.parametrize(
     ("key", "value"),
     [
@@ -222,6 +295,8 @@ def test_qualification_receipt_is_not_a_restore_receipt(arguments, capsys):
         ("api-url", f"http://127.0.0.1/health?token={PRIVATE}"),
         ("timeout-seconds", "nan"),
         ("max-5xx-percent", "101"),
+        ("min-docker-free-mib", "3072"),
+        ("swarm-capacity-snapshot", "partial.json"),
         ("backup-finished-at-utc", "2026-11-21T04:00:00"),
         ("restore-finished-at-utc", "9999-12-31T00:00:00Z"),
     ],
