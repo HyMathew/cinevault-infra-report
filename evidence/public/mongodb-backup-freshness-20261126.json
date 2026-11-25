@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-25T23:39:23.366654+00:00",
+  "scope": "Windows verification of an archive from an isolated MongoDB synthetic fixture",
+  "mongo": "8.0.38",
+  "age": "1.3.2",
+  "collections": 12,
+  "documents": 5,
+  "indexes": 40,
+  "capture_utc": "2026-11-25T23:39:15.969167+00:00",
+  "verified_at_utc": "2026-11-25T23:39:19.803678+00:00",
+  "maximum_age_hours": 24,
+  "status": "BACKUP_FRESHNESS_VERIFIED",
+  "fresh_archive_with_mtime_older_than_threshold_accepted": true,
+  "missing_or_wrong_trusted_digest_refused": true,
+  "source_removed_before_verification": true,
+  "temporary_resources_removed": true,
+  "operations_sha256": "649d9f2b0cc30f9f3932982b87e5b3552facc45ee5d08be4a7eb8456eff49c51",
+  "cli_sha256": "6979ddb461aab820001684bb254fa95ed6946463d6ac2b28180b6b9dc0874005",
+  "private_receipt_sha256": "920c7fc1a4feceac172753e6df62b1dd952f421eaa0d138a2807ee455f2fd8ec"
+}

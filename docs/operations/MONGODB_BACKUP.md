@@ -116,6 +116,9 @@ python -m tools.mongodb_backup --age "$AGE" verify --work-dir "$OPS/work" --inpu
 
 Ce contrôle relit tout le fichier ; une clé erronée, un octet altéré, une troncature même tardive ou des données ajoutées refusent le résultat. Comparer aussi le hash retourné au reçu de confiance : age seul ne certifie pas l'identité de l'auteur.
 
+`--expected-sha256` peut automatiser cette comparaison. Récupérer la
+valeur depuis le reçu conservé dans le canal authentifié indépendant.
+
 ## Restaurer sans écraser
 
 Préparer un replica set isolé de même version et vérifier séparément sa FCV, ses nouveaux volumes, ses identités et l'absence de trafic. Provisionner le rôle cible pour le nom neuf retenu. Récupérer le SHA-256 du reçu authentifié, pas d'un fichier de hash modifiable à côté d'une archive non fiable :
@@ -133,6 +136,31 @@ Dans tous ces cas sans reçu de succès, **garder la cible isolée, sans trafic 
 ## Rotation, fréquence et rétention
 
 Politique de départ conservatrice : sauvegarde quotidienne, alerte après 24 heures sans nouveau reçu vérifié, conservation pendant 30 jours et au moins sept points ; essai de restauration isolée mensuel et à chaque changement de schéma, serveur, outils ou stratégie de clés. Adapter explicitement ces valeurs à la capacité, au RPO/RTO acceptés et aux obligations du déploiement. Planifier la commande de sauvegarde avec cron/systemd timer sur Ubuntu ou le Planificateur de tâches Windows, sous une identité dédiée ; utiliser des chemins absolus, un nom UTC neuf par exécution, les fichiers privés et le contrôle du code de sortie. Aucun service de planification n'est installé par cet outil.
+
+Sur l’hôte qui conserve la copie hors VM, planifier un contrôle régulier
+sous une identité de récupération autorisée. Définir `ARCHIVE` comme le
+chemin de la dernière copie livrée et `TRUSTED_SHA256` comme le champ
+`ciphertext_sha256` du reçu correspondant transmis par le canal
+authentifié. Configurer l’alerte sur un code de sortie non nul, y compris
+si aucun couple archive et reçu n’est disponible.
+
+```text
+python -m tools.mongodb_backup --age "$AGE" verify --work-dir "$OPS/work" --input "$ARCHIVE" --identity-file "$OPS/keys/restore-2026.txt" --expected-sha256 "$TRUSTED_SHA256" --maximum-age-hours 24 --timeout 300
+```
+
+Le code 0 et le statut `BACKUP_FRESHNESS_VERIFIED` confirment le
+SHA-256, l’authentification intégrale et l’âge de capture dans le
+manifeste chiffré. Une copie qui vient d’être transférée ou recréée
+conserve l’âge de la capture. Le seuil accepte 1 à 168 heures.
+`backup_freshness_expired` indique que le seuil a été dépassé.
+`backup_capture_in_future` signale un horodatage futur. Vérifier l’heure
+UTC des deux hôtes puis le dernier transfert en cas d’alerte. Une copie
+synthétique issue de MongoDB 8.0.38 a passé ce contrôle sous Windows
+avec une date de fichier reculée de deux jours. L’absence du SHA-256
+de confiance et une valeur incorrecte ont déclenché un refus.
+[Reçu de la vérification sur archive MongoDB](../../evidence/public/mongodb-backup-freshness-20261126.json).
+
+Exécuter séparément le plan de rétention par dates de fichiers.
 
 ```text
 python -m tools.mongodb_backup retention-plan --directory "$OPS/backups" --keep-days 30 --keep-minimum 7 --maximum-age-hours 24

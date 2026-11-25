@@ -53,6 +53,12 @@ Le test local a détecté une réponse 503 de l'API puis son retour à 200 avec 
 Web toujours disponible. Il a aussi détecté l'absence de collecte et une
 sauvegarde périmée à partir de reçus synthétiques. La sonde s'exécute manuellement.
 
+Pour contrôler la copie hors VM, `verify --maximum-age-hours` vérifie
+le SHA-256 de confiance, authentifie l’archive et calcule son âge à
+partir de la date de capture. Le planificateur peut déclencher une
+alerte sur le code de sortie.
+[Commande et procédure d’exploitation](operations/MONGODB_BACKUP.md#rotation-fréquence-et-rétention).
+
 ## Résultat mesuré
 
 Sur le PC, un vrai appel HTTP à `/films` du Web `70fa78e` a chargé

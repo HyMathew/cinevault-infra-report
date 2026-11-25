@@ -26,7 +26,7 @@ LOCK = ROOT / "tools/mongodb_backup/requirements.lock"
 UPSTREAM = ROOT / "tools/mongodb_backup/upstream.lock.json"
 MAX_LOG_BYTES = 8 * 1024 * 1024
 LOG_LIMIT_MARKER = b"\n[qualification log byte limit exceeded]\n"
-EXPECTED_CONTRACT_TESTS = 47
+EXPECTED_CONTRACT_TESTS = 48
 WINDOWS_ONLY_SKIP = (
     (
         "test_mongodb_backup.BoundaryTests."
@@ -120,7 +120,7 @@ def test_contract(result, test_ids):
     passed = (
         len(test_ids) == result.testsRun == EXPECTED_CONTRACT_TESTS
         and len(set(test_ids)) == len(test_ids)
-        and len(age_ids) == 7
+        and len(age_ids) == 8
         and not any(name in {item[0] for item in skipped} for name in age_ids)
         and skipped == expected_skips
         and result.wasSuccessful()

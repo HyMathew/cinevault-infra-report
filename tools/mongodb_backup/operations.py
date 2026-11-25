@@ -8,7 +8,7 @@ import tempfile
 import time
 import uuid
 from contextlib import contextmanager
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from .security import (
@@ -169,9 +169,19 @@ def backup(args, age, work):
 
 
 def read_operation(args, age, work):
-    if args.command == "restore":
+    maximum_age = args.maximum_age_hours if args.command == "verify" else None
+    trusted_digest = (
+        args.expected_sha256 if args.command in ("verify", "restore") else None
+    )
+    if maximum_age is not None:
+        require(1 <= maximum_age <= 168, "invalid_freshness_policy")
+    if (
+        trusted_digest is not None
+        or maximum_age is not None
+        or args.command == "restore"
+    ):
         require(
-            re.fullmatch(r"[0-9a-f]{64}", args.expected_sha256),
+            re.fullmatch(r"[0-9a-f]{64}", trusted_digest or ""),
             "trusted_sha256_required",
         )
     identity = write_private(
@@ -181,9 +191,9 @@ def read_operation(args, age, work):
     external_identity(args.identity_file, args.input)
     deadline = time.monotonic() + args.timeout
     with ciphertext_snapshot(args.input, work, deadline) as (ciphertext, cipher_digest):
-        if args.command == "restore":
+        if trusted_digest is not None:
             require(
-                cipher_digest == args.expected_sha256,
+                cipher_digest == trusted_digest,
                 "ciphertext_trusted_digest_mismatch",
             )
         expected = authenticate(age, identity, ciphertext, deadline)
@@ -244,6 +254,18 @@ def read_operation(args, age, work):
         }
         if args.command == "rotate":
             result["rotated_ciphertext_sha256"] = digest_file(args.output)
+        if maximum_age is not None:
+            checked_at = datetime.now(UTC)
+            captured_at = datetime.fromisoformat(expected[0]["created_utc"])
+            elapsed = checked_at - captured_at
+            require(elapsed >= timedelta(0), "backup_capture_in_future")
+            require(elapsed <= timedelta(hours=maximum_age), "backup_freshness_expired")
+            result.update(
+                status="BACKUP_FRESHNESS_VERIFIED",
+                created_utc=captured_at.isoformat(),
+                checked_at_utc=checked_at.isoformat(),
+                maximum_age_hours=maximum_age,
+            )
         return result
 
 

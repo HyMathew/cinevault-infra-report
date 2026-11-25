@@ -1114,12 +1114,15 @@ class AgeIntegration(unittest.TestCase):
         self.recipients.write_bytes(public.stdout)
         self.recipients.chmod(0o600)
 
-    def encrypted(self, destination=None):
+    def encrypted(self, destination=None, *, created_utc=None):
         import time
 
         from tools.mongodb_backup.streams import encrypt_dump
 
         destination = destination or self.path / "fixture.age"
+        metadata = manifest()
+        if created_utc is not None:
+            metadata["created_utc"] = created_utc
         with destination.open("wb") as output:
             encrypt_dump(
                 self.age,
@@ -1129,7 +1132,7 @@ class AgeIntegration(unittest.TestCase):
                     "-c",
                     "import sys;sys.stdout.buffer.write(b'fixture' * 40000)",
                 ],
-                manifest(),
+                metadata,
                 output,
                 time.monotonic() + 20,
             )
@@ -1307,6 +1310,88 @@ class AgeIntegration(unittest.TestCase):
         self.assertEqual(json.loads(result.stdout)["status"], "ROTATED_COPY_CREATED")
         self.assertEqual(list(work.iterdir()), [])
         self.assertEqual({path.suffix for path in archive_dir.iterdir()}, {".age"})
+
+    def test_verified_freshness_uses_trusted_digest_and_authenticated_capture_time(
+        self,
+    ):
+        import hashlib
+        from datetime import UTC, datetime, timedelta
+
+        archive_dir, work = self.path / "backups", self.path / "work"
+        archive_dir.mkdir(mode=0o700)
+        work.mkdir(mode=0o700)
+        source = archive_dir / "fixture.cvmb.age"
+        verify = [
+            sys.executable,
+            "-W",
+            "error",
+            "-m",
+            "tools.mongodb_backup",
+            "--age",
+            str(self.age),
+            "verify",
+            "--input",
+            str(source),
+            "--work-dir",
+            str(work),
+            "--identity-file",
+            str(self.identity),
+        ]
+
+        def check(flags, error=None):
+            result = subprocess.run(
+                verify + flags, cwd=ROOT, capture_output=True, check=False
+            )
+            if error is not None:
+                self.assertEqual(result.returncode, 1)
+                self.assertEqual(
+                    result.stderr.strip().decode(), f"Operation refused: {error}"
+                )
+                self.assertEqual(result.stdout, b"")
+                return None
+            self.assertEqual(result.returncode, 0, result.stderr.decode())
+            return json.loads(result.stdout)
+
+        now = datetime.now(UTC)
+        for hours, error in (
+            (-1, None),
+            (-25, "backup_freshness_expired"),
+            (1, "backup_capture_in_future"),
+        ):
+            with self.subTest(offset_hours=hours):
+                capture = now + timedelta(hours=hours)
+                self.encrypted(source, created_utc=capture.isoformat())
+                mtime = (
+                    now.timestamp() if error else (now - timedelta(days=14)).timestamp()
+                )
+                os.utime(source, (mtime, mtime))
+                digest = hashlib.sha256(source.read_bytes()).hexdigest()
+                trusted = ["--expected-sha256", digest]
+                window = ["--maximum-age-hours", "24"]
+                receipt = check(trusted + window, error)
+                if receipt is not None:
+                    self.assertEqual(receipt["status"], "BACKUP_FRESHNESS_VERIFIED")
+                    self.assertEqual(receipt["created_utc"], capture.isoformat())
+                    self.assertEqual(receipt["ciphertext_sha256"], digest)
+                    self.assertEqual(receipt["maximum_age_hours"], 24)
+                    self.assertGreaterEqual(
+                        datetime.fromisoformat(receipt["checked_at_utc"]), capture
+                    )
+        check(window, "trusted_sha256_required")
+        check(trusted + ["--maximum-age-hours", "169"], "invalid_freshness_policy")
+        check(
+            ["--expected-sha256", "0" * 64] + window,
+            "ciphertext_trusted_digest_mismatch",
+        )
+        self.assertEqual(check(trusted)["status"], "CIPHERTEXT_AUTHENTICATED")
+        original = source.read_bytes()
+        altered = original[:-1] + bytes([original[-1] ^ 1])
+        source.write_bytes(altered)
+        check(
+            ["--expected-sha256", hashlib.sha256(altered).hexdigest()] + window,
+            "external_tool_failed",
+        )
+        self.assertEqual(list(work.iterdir()), [])
 
     def test_verified_second_pass_sends_exact_archive_to_consumer(self):
         import hashlib

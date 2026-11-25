@@ -38,8 +38,19 @@ def parser():
                 action="store_true",
                 required=True,
             )
+        if name in ("verify", "restore"):
+            command.add_argument(
+                "--expected-sha256",
+                required=name == "restore",
+                help="SHA-256 from an independently trusted backup receipt",
+            )
+        if name == "verify":
+            command.add_argument(
+                "--maximum-age-hours",
+                type=int,
+                help="Require a verified capture within 1 to 168 hours; requires --expected-sha256",
+            )
         if name == "restore":
-            command.add_argument("--expected-sha256", required=True)
             command.add_argument("--database", required=True)
             command.add_argument("--target-config", type=Path, required=True)
             command.add_argument("--mongorestore", type=Path, required=True)
