@@ -164,3 +164,14 @@ La v1 dispose de sa [qualification historique](../validation-current.md).
 [Reçu de la paire verrouillée](../../evidence/public/enterprise-2.1-alpine-runtime-20261125.json) ·
 [Contrôle image API](https://github.com/HyMathew/cinevault-api/actions/runs/45667428307) ·
 [Contrôle image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45668181740).
+
+## Restauration chiffrée et parcours HTTP sur le candidat actuel
+
+Le 26 novembre, l’API `05171fd` a écrit un film et un favori dans
+MongoDB 8.0.38. Après authentification de l’archive age depuis
+Windows et retrait de la source, une nouvelle instance MongoDB a
+retrouvé exactement l’inventaire de 15 documents et 40 index. L’API
+a retrouvé le même film et le même favori. Le Web `b6b67aa` a
+affiché le film et le profil après connexion HTTPS. L’essai a utilisé
+des données synthétiques et des réseaux internes sur Docker Desktop.
+[Reçu de la restauration et des sondes HTTP](../../evidence/public/mongodb-backup-http-20261126.json).

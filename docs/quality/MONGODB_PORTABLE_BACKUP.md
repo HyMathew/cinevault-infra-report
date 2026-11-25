@@ -64,6 +64,26 @@ Le domaine complet restauré est comparé à l'oracle synthétique avant le prem
 
 Le runtime applicatif distinct utilise Python 3.12.3 et PyMongo 4.19.0 sans extensions C, avec les sept dépendances verrouillées et `pip check` réussi. Ce SDK a été construit deux fois depuis le sdist officiel avec `NO_EXT=1` : wheels octet-identiques, tag CP312/Linux conservé sans retag, dix contrôles BSON réussis. Il est distinct du SDK 4.20.0 du backup. Son dossier privé de dépendances peut rester pour inspection ; aucun processus serveur n'y réside. Après succès, la clé temporaire, le conteneur et les deux volumes de cette seconde cible ont été supprimés. Ces appels de services ne sont pas un parcours HTTP ni une qualification du nouveau candidat identité C5.
 
+## Parcours HTTP sur le candidat du 26 novembre
+
+L’essai a utilisé dans Docker Desktop les images exactes de l’API
+`05171fd`, du Web `b6b67aa` et de MongoDB 8.0.38. Après la migration
+de données synthétiques, l’API a créé un film et un favori par HTTP.
+Le CLI de sauvegarde a produit une archive age. Sous Windows,
+`verify` a authentifié l’archive originale et rejeté une copie dont
+le dernier octet avait été modifié.
+
+Le processus source a été retiré avant la création de la cible.
+La restauration a retrouvé exactement 12 collections, 15 documents
+BSON et 40 index avec leurs options. Le rejeu a été refusé sur la
+cible remplie, dont l’inventaire est resté identique. Après cette
+comparaison, l’API a authentifié le compte synthétique et retrouvé le
+même film et le même favori. Le Web a affiché le film et le profil
+authentifié en TLS 1.3 via Caddy, avec les attributs de cookies
+attendus et HSTS. Aucun port n’a été publié. Les conteneurs,
+réseaux et fichiers temporaires de l’essai ont été retirés.
+[Reçu du parcours HTTP après restauration](../../evidence/public/mongodb-backup-http-20261126.json).
+
 ## Portée restante
 
 Sur le commit `3bb73bb`, le workflow de sauvegarde a installé les dépendances et exécutables épinglés sur deux machines GitHub Actions. Windows a réussi 45 tests et Ubuntu en a réussi 44, avec le seul test d'alias de chemin Windows ignoré explicitement. Les sept tests qui appellent age ont réussi sur les deux plateformes. Les quatre tests du journal et du délai d'exécution ont aussi réussi sur les deux machines. Les empreintes des deux archives CI et les 15 fichiers source déclarés par chaque machine ont été rapprochés du commit exécuté. [Exécution GitHub Actions](https://github.com/HyMathew/cinevault-infra-report/actions/runs/44748082354).

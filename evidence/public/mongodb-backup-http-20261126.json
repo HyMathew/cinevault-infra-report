@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-25T23:27:13.004623+00:00",
+  "scope": "Synthetic data in isolated Docker Desktop networks, with archive authentication on Windows",
+  "infra_commit": "9e0533477bb846a9e2db060c06cbe9d0a1aebd88",
+  "api_commit": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+  "api_image": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+  "web_commit": "b6b67aa1cedd851c6fded2191b74badc537fb5ac",
+  "web_image": "sha256:e46544fe197a937e42980591b5f862474d8faef89416beb36e536ce34b1037d6",
+  "mongo_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "caddy_image": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "operator": {
+    "age": "1.3.2",
+    "mongodb_database_tools": "100.20.0",
+    "pymongo": "4.20.0"
+  },
+  "backup": {
+    "source_film_and_favorite_written_by_api": true,
+    "coordinator_aborted_unchanged": true,
+    "inventory_unchanged_during_dump": true,
+    "source_removed_before_target_created": true,
+    "ciphertext_bytes": 10075,
+    "ciphertext_sha256": "fb171bb58172ca3be340af6d2f3d0ff443d87731488618b05853b50398ab8cce",
+    "windows_verify": "CIPHERTEXT_AUTHENTICATED",
+    "modified_ciphertext_refused": true
+  },
+  "restore": {
+    "status": "ISOLATED_RESTORE_VERIFIED",
+    "source_and_target_mongodb": "8.0.38",
+    "separate_primary_process": true,
+    "target_initially_empty": true,
+    "inventory_matched_before_application_login": true,
+    "inventory_sha256": "36616565c6610973a5875746d89788f13ce989ffcac62fc83b4a48a9ec2e92ab",
+    "collections": 12,
+    "documents": 15,
+    "indexes": 40,
+    "quarantine_marker_removed": true,
+    "replay_on_nonempty_target_refused_without_mutation": true
+  },
+  "application_after_restore": {
+    "api_authenticated": true,
+    "api_found_same_film_and_favorite": true,
+    "web_film_in_catalogue": true,
+    "web_authenticated_profile": true,
+    "web_secure_session_and_auth_cookies": true,
+    "tls": "TLSv1.3",
+    "invalid_server_name_refused": true,
+    "strict_transport_security": "max-age=300",
+    "https_probe_sha256": "ad2937b04bf5d3976b0351f52b509a55df421a204525090468d4d39ef6adc7a0"
+  },
+  "published_ports": 0,
+  "temporary_resources_removed": true,
+  "private_receipt_sha256": "5ef8b85e3369f4b2a059b1896b2b5713284236712aee49622ae7f72c06b12298"
+}
