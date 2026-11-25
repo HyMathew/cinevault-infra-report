@@ -50,8 +50,12 @@ corresponde à cette entrée. Le job de publication exige les suites
 habituelles, dont le contrat MongoDB pour l’API, puis le build, le contrôle
 de santé et le scan de l’image du même job. Il publie sous
 `sha-<commit>` et enregistre le digest rendu par le registre.
-Vérifier ensuite ce digest avec le reçu de scan avant de préparer les
-workers. [Contrôle de publication Web](https://github.com/HyMathew/cinevault-web/actions/runs/45511942301).
+Les workflows des dépôts officiels attestent ce digest, puis un job en
+lecture seule vérifie la signature Sigstore et les identités de source et
+de workflow. Conserver `image-audit` et `image-verified-provenance` du
+même run. Le reçu de publication, le scan et le sujet signé doivent
+correspondre avant de préparer les workers.
+[Vérification GitHub CLI](https://cli.github.com/manual/gh_attestation_verify).
 
 Utiliser le digest de configuration `scan_provenance.archive_config_digest`
 de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
