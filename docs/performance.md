@@ -1,4 +1,9 @@
-# Mesures API sur JSON et MongoDB
+# Mesures sur JSON et MongoDB
+
+Les mesures API sur RemoteLabz et les navigations Chromium sur Docker
+Desktop décrivent deux environnements et deux charges distinctes.
+
+## Campagne API sur RemoteLabz
 
 Le 21 novembre 2026, le même code API `a500e245` a été testé sur VM3 x86_64
 avec deux CPU logiques, Python 3.12.3, Flask 3.1.3, Werkzeug 3.1.9 et
@@ -14,7 +19,7 @@ La campagne a utilisé un espace de qualification dédié. L'import transactionn
 a produit la cible MongoDB depuis le même document initial. La source et
 sa copie de sauvegarde ont été comparées à l'octet près à la fin.
 
-## Latences p95 en millisecondes
+### Latences p95 en millisecondes
 
 Chaque ligne représente un groupe de requêtes mesurées, avec une phase
 d'échauffement exclue. La latence inclut la connexion HTTP locale, la
@@ -47,3 +52,74 @@ SLO et ne couvre ni le réseau Overlay, ni le navigateur, ni le débit de
 sauvegarde ou la consommation totale des deux moteurs. Les écritures sont
 synthétiques et le moteur, ses volumes et les dossiers sont tous retirés
 après l'essai. [Reçu et résultats détaillés](../evidence/public/mongodb-performance-observability-20261121.json).
+
+## Navigation Chromium avec les images du candidat 2.1
+
+La campagne utilise l'API `8205e0c`, le Web `7eb4dc3`, Caddy et
+MongoDB 8.0.38, chargés par digest dans Docker Desktop sur un PC Windows
+équipé d'un i7-12700H. Le moteur Docker 29.9.3 voit 20 CPU logiques et
+15,5 Gio de RAM. Les limites API, Web et MongoDB sont respectivement
+1, 1 et 0,75 CPU, et 384, 256 et 768 Mio. Le proxy dispose de
+0,5 CPU et 128 Mio. Les réseaux sont internes et le PC ne publie
+aucun port. Chromium 156.0.8078.4 vérifie le certificat privé et
+utilise TLS 1.3.
+
+Le jeu synthétique de 618 190 octets contient 600 films et 1 798
+exemplaires. Les deux moteurs partent du même document vérifié par
+SHA-256. Le test charge une page de 20 films, une recherche sur le mot
+`festival` donnant 119 résultats, et la fiche du même film avec une
+session ouverte. Chaque combinaison scénario, largeur et moteur reçoit
+cinq échauffements, puis vingt navigations mesurées, soit 240
+échantillons. Les fenêtres de 390 et 1 280 px utilisent le même PC.
+
+| Scénario et largeur | JSON premier octet p95 | JSON chargement p95 | MongoDB premier octet p95 | MongoDB chargement p95 |
+| --- | ---: | ---: | ---: | ---: |
+| Catalogue, 390 px | 88,9 ms | 111,1 ms | 30,8 ms | 55,4 ms |
+| Recherche, 390 px | 85,9 ms | 109,7 ms | 32,3 ms | 57,4 ms |
+| Fiche, 390 px | 413,5 ms | 440,3 ms | 69,1 ms | 89,2 ms |
+| Catalogue, 1 280 px | 89,2 ms | 111,8 ms | 36,4 ms | 61,8 ms |
+| Recherche, 1 280 px | 93,3 ms | 121,6 ms | 38,6 ms | 67,3 ms |
+| Fiche, 1 280 px | 268,5 ms | 290,4 ms | 101,4 ms | 119,6 ms |
+
+Le premier octet est mesuré depuis `requestStart`. Le chargement court
+du début de la navigation à `loadEventEnd`. La réponse HTML représente
+15 166 octets pour le catalogue, 15 543 pour la recherche et 4 732 pour
+la fiche avec les deux moteurs.
+
+Le maximum mémoire cgroup observé depuis le démarrage de l'API est de
+175,5 Mio avec JSON et de 146,1 Mio avec MongoDB. Le conteneur MongoDB
+atteint 768 Mio sur son propre cgroup, pour une limite de 768 Mio.
+Cette mesure inclut le cache et les fichiers temporaires du conteneur.
+La taille apparente après l'essai est de 618 801 octets pour le fichier
+JSON et de 210 722 509 octets pour le répertoire MongoDB, qui contient
+les fichiers WiredTiger et l’oplog du replica set. L'essai utilise des
+tmpfs. Ces tailles décrivent le déploiement de test et sa configuration.
+
+### Rendu et ressources transférées
+
+Une seconde série, exécutée dans l'ordre inverse des moteurs, observe
+trois échauffements puis cinq relevés de rendu par scénario, largeur
+et moteur, soit 60 échantillons. Elle retient le dernier candidat LCP
+reçu 500 ms après le chargement. Le CLS correspond à la plus forte
+fenêtre de décalages sans interaction dans cette durée.
+[LCP](https://web.dev/articles/lcp) · [CLS](https://web.dev/articles/cls).
+
+| Scénario et largeur | LCP médian JSON | LCP médian MongoDB |
+| --- | ---: | ---: |
+| Catalogue, 390 px | 116 ms | 68 ms |
+| Recherche, 390 px | 116 ms | 64 ms |
+| Fiche, 390 px | 256 ms | 96 ms |
+| Catalogue, 1 280 px | 116 ms | 68 ms |
+| Recherche, 1 280 px | 116 ms | 72 ms |
+| Fiche, 1 280 px | 256 ms | 108 ms |
+
+Le CLS est de zéro dans les 60 observations. L'excédent au-delà de 50 ms
+des tâches longues commençant après le FCP est également nul dans cette
+fenêtre. Le navigateur observe le document et deux ressources par
+page, soit 42 946 octets encodés pour le catalogue, 43 323 pour la
+recherche et 32 512 pour la fiche. Les caches sont chauds après
+échauffement. Le périmètre couvre le chargement sur le PC de test.
+Une mesure de TBT Lighthouse, d'INP ou d'usage réel nécessiterait une
+campagne distincte. [TBT](https://web.dev/articles/tbt).
+
+[Échantillons et conditions de mesure](../evidence/public/chromium-backend-performance-20261125.json).
