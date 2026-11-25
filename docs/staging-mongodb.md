@@ -57,19 +57,11 @@ même run. Le reçu de publication, l'inventaire Syft, le rapport Grype et
 le sujet signé doivent correspondre avant de préparer les workers.
 [Vérification GitHub CLI](https://cli.github.com/manual/gh_attestation_verify).
 
-La CI du 25 novembre a produit un inventaire de 51 composants pour l'API
-et de 49 pour le Web. Les archives vérifiées relient chaque inventaire à
-la configuration exacte utilisée par Grype. La publication a été bloquée
-sur les cinq mêmes CVE OpenSSL dans les deux images.
-[Reçu des inventaires et des scans](../evidence/public/image-sbom-qualification-20261125.json).
-
-Dans deux répertoires séparés sur le PC, deux builds sans cache par
-application à partir de `git archive` ont reproduit les digests du
-manifeste, de la configuration et des couches Linux amd64. BuildKit
-normalise les horodatages et les Dockerfiles omettent les métadonnées
-de construction variables. Le résultat vaut pour les mêmes entrées
-amont et la version de BuildKit mesurée.
-[Reçu de reconstruction des images](../evidence/public/application-image-reproduction-20261125.json).
+Les révisions comparées le 25 novembre ont produit un inventaire Syft de
+50 composants pour l’API et de 48 pour le Web. Leurs rapports Grype se
+rattachent aux mêmes digests de configuration. La publication reste bloquée
+sur cinq CVE OpenSSL classées High par Grype.
+[Qualification initiale des inventaires et des scans](../evidence/public/image-sbom-qualification-20261125.json).
 
 Pour chacune des révisions API et Web qualifiées le 25 novembre, deux
 constructions sans cache sur le PC Windows et une sur GitHub Actions Ubuntu
@@ -100,6 +92,35 @@ scan et à la vérification ultérieure du tirage et de l'identité sur les
 workers. Les deux références v1 sont les seuls exemples déjà contrôlés en
 ligne avec ce script. [Reçu GHCR v1](../evidence/public/registry-manifest-check-20261122.json) ·
 [Spécification OCI Distribution](https://github.com/opencontainers/distribution-spec/blob/main/spec.md).
+
+## Reproduire une image applicative en local
+
+Utiliser Git, Python, Docker en mode conteneurs Linux et Buildx 0.38.1.
+Dans un clone de l’API ou du Web, se placer sur le commit complet indiqué
+par le reçu, puis lancer ces commandes dans un shell compatible POSIX.
+Si Python 3 est accessible sous `python`, définir `PYTHON=python`. Les
+commandes utilisent un builder dédié et chargent une image de test dans
+le moteur Docker local.
+
+```sh
+commit="$(git rev-parse HEAD)"
+app=cinevault-api  # cinevault-web dans le clone Web
+builder="cinevault-repro-$$"
+
+docker buildx create --name "$builder" --driver docker-container \
+  --driver-opt image=moby/buildkit:v0.34.2@sha256:c5f8862f52499773af85bc07695b2379ef08e8002352b0df2c4864c91d78dabe
+docker buildx inspect "$builder" --bootstrap
+
+"${PYTHON:-python3}" scripts/check_image.py --builder "$builder" --source-commit "$commit" \
+  --image "$app:repro-$commit"
+```
+
+Après le contrôle, lire `reports/image-check.json`. Comparer
+`build_provenance.source_tar_digest`, `manifest_digest` et `config_digest`
+au reçu du même commit. Le script sort avec le code 1 si la santé, le scan
+ou le nettoyage échoue. Le scan dépend de la base Grype disponible au
+moment du contrôle. Pour retirer le builder de cette session, exécuter
+`docker buildx rm "$builder"`.
 
 ## Construire l'image MongoDB de staging
 
