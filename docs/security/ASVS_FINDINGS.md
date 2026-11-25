@@ -87,6 +87,11 @@ non possédé. Contrôles : `v5.0.0-3.3.1`, `3.3.3`, `3.4.1`, `3.4.8`, `12.1.1`,
 `12.2.1`. Le reporting CSP `3.4.7` est un complément L3 distinct nécessitant un
 collecteur et une politique de minimisation.
 
+Le 26 novembre, l’essai privé a vérifié l’en-tête HSTS de 300 secondes et
+la réécriture interne d’une URL HTTP par Chromium sur le même port. La
+durée d’essai laisse le contrôle `3.4.1` au statut partiel. Son seuil ASVS
+est d’un an. [Guide de staging](../staging-mongodb.md#valider-la-variante-https-privée).
+
 ### Politique de mots de passe
 
 [`valid_password`](https://github.com/HyMathew/cinevault-api/blob/72b7624101eb25bda4387726b9825c3bc596205c/app/enterprise_auth.py)

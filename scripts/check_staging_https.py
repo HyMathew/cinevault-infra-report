@@ -12,6 +12,7 @@ from urllib.parse import urlencode
 HOST = "cinevault-stage.test"
 PORT = 8443
 MAX_BODY = 1_000_000
+STAGING_HSTS = "max-age=300"
 
 
 class HiddenFields(HTMLParser):
@@ -51,6 +52,9 @@ def request(context, path, form=None, cookies=None, server_name=HOST):
         protocol = conn.sock.version()
         conn.request("GET" if form is None else "POST", path, body, headers)
         with conn.getresponse() as response:
+            assert response.headers.get_all("Strict-Transport-Security") == [
+                STAGING_HSTS
+            ], "unexpected_hsts_response"
             data = response.read(MAX_BODY + 1)
             assert len(data) <= MAX_BODY
             parsed = SimpleCookie()
@@ -119,6 +123,7 @@ def verify(payload):
         "login_redirected_to_profile": True,
         "secure_session_and_auth_cookies": True,
         "authenticated_profile_visible": True,
+        "strict_transport_security": STAGING_HSTS,
     }
 
 

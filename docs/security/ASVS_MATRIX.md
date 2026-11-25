@@ -1,6 +1,6 @@
 # Matrice ASVS 5.0.0 — état de vérification CineVault
 
-État au 21 novembre 2026. L'applicabilité des **345 contrôles** a été examinée
+État au 26 novembre 2026. L'applicabilité des **345 contrôles** a été examinée
 par revue documentaire et du code. Les contrôles de bout en bout du candidat
 Enterprise 2.1 restent en cours. Les preuves locales, natives et CI sont datées
 et rattachées au code mesuré. Le déploiement stable v1 possède ses propres preuves.
@@ -17,8 +17,8 @@ et leur texte officiel anglais : 70 de niveau 1, 183 de niveau 2 et 92 de niveau
 Il fournit un état, une justification, une preuve disponible et la vérification
 restante par identifiant versionné. Il ne supprime pas les exigences difficiles.
 
-La grille contient **236 contrôles applicables**, dont 177 partiels,
-30 non vérifiés et 29 non satisfaits, et **109 conditionnellement non applicables**
+La grille contient **236 contrôles applicables**, dont 178 partiels,
+30 non vérifiés et 28 non satisfaits, et **109 conditionnellement non applicables**
 à l'architecture actuelle. Chaque ligne comporte une justification et une
 vérification restante. Aucun contrôle n'est déclaré pleinement satisfait et aucun
 pourcentage de conformité n'est calculé. La qualification d'applicabilité n'est
@@ -148,7 +148,7 @@ ce tableau n'est pas la totalité du périmètre.
 | `v5.0.0-3.3.2` | 2 | PARTIEL | SameSite=Lax configuré pour session et bearer cookie. Vérifier les parcours cross-origin et la configuration déployée après reverse proxy. |
 | `v5.0.0-3.3.3` | 2 | NON_SATISFAIT | Les cookies actuels ne portent pas le préfixe __Host-. Définir le périmètre host-only HTTPS et vérifier migration/logout/path/domain. |
 | `v5.0.0-3.3.4` | 2 | PARTIEL | HttpOnly configuré ; le bearer n’est pas retourné au JavaScript de présentation. Constater Set-Cookie sur le candidat déployé et les parcours logout/erreur. |
-| `v5.0.0-3.4.1` | 1 | NON_SATISFAIT | Aucun HSTS constaté dans la configuration actuelle, HTTP laboratoire stable. Ajouter la politique seulement avec HTTPS validé et traiter le périmètre des sous-domaines. |
+| `v5.0.0-3.4.1` | 1 | PARTIEL | Le HTTPS privé émet HSTS avec une durée d’essai de 300 s. Chromium applique la règle. La durée minimale d’un an et la couverture du déploiement final restent à vérifier. |
 | `v5.0.0-3.4.3` | 2 | PARTIEL | CSP self, object-src none, base-uri none, frame-ancestors none et médias Wikimedia bornés. Vérifier toutes réponses et ressources du redesign ; justifier chaque origine permise. |
 | `v5.0.0-3.4.4` | 2 | PARTIEL | X-Content-Type-Options nosniff sur les réponses Flask web. Vérifier erreurs, fichiers statiques et reverse proxy ; ne pas extrapoler au serveur externe. |
 | `v5.0.0-3.4.5` | 2 | PARTIEL | Referrer-Policy same-origin. Contrôler fuite des URLs/paramètres et liens externes dans le navigateur. |

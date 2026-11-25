@@ -150,8 +150,11 @@ catalogue migré et l'authentification avec cookies sécurisés.
 Chromium a ouvert le catalogue après connexion et constaté les attributs
 `Secure`, `HttpOnly` et `SameSite=Lax`. Avec sa vérification de
 certificat active, il a refusé la CA inconnue. Le proxy a interrompu
-le handshake pour un SNI absent de sa configuration. L’en-tête HSTS
-est absent sur ce point d’accès privé.
+le handshake pour un SNI absent de sa configuration. L’essai du 25
+novembre a observé un point d’accès sans HSTS. Le 26 novembre,
+Chromium a confirmé l’activation HSTS sur la variante privée, et
+un test Swarm a vérifié la mise à jour et le retour arrière.
+[Reçu HSTS](../../evidence/public/swarm-https-hsts-20261126.json).
 
 Deux builds Windows et un build GitHub Actions Ubuntu par image
 ont reproduit les mêmes digests OCI. Les contrôles d'image restent

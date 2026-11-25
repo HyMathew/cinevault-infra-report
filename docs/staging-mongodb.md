@@ -172,6 +172,15 @@ le réseau `edge`, interne et chiffré. Caddy sert TLS 1.3 pour
 d’administration et la redirection HTTP automatique de Caddy sont désactivés.
 [Configuration de Caddy](../docker/caddy-staging/Caddyfile).
 
+Cette variante annonce `Strict-Transport-Security: max-age=300` pour le
+nom privé `cinevault-stage.test`. Un navigateur qui a reçu cette politique
+sur une connexion TLS valide réécrit les liens HTTP de ce nom en HTTPS,
+en conservant le port explicite 8443. La durée de cinq minutes borne l’effet
+côté navigateur après un retour arrière. L’opérateur peut aussi effacer la
+politique en servant `max-age=0` par HTTPS. La politique s’applique à ce
+nom seul, avec les clients de test qui font confiance à la CA privée.
+[RFC 6797, traitement navigateur](https://www.rfc-editor.org/rfc/rfc6797#section-8.3).
+
 L’image officielle Caddy 2.11.9 testée a échoué au scan. La recette de staging
 part du commit Caddy `679806f` et de Go 1.26.11 épinglé par digest. Elle
 vérifie les sommes des modules avant la compilation sans réseau. L’image
@@ -242,7 +251,8 @@ sudo nsenter --target "$pid" --net python3 -I -B scripts/check_staging_https.py 
 
 La sonde se connecte en boucle locale dans l’espace réseau du proxy et
 vérifie le nom TLS. Elle lit le catalogue et exerce la connexion,
-le refus du profil anonyme et les attributs des cookies. Elle rend un
+le refus du profil anonyme et les attributs des cookies. Chaque réponse
+doit contenir un seul en-tête HSTS avec la valeur attendue. La sonde rend un
 reçu JSON sans jeton ni identifiant et sort avec le code 1 en cas d’échec.
 
 Sur le PC, les quatre images aux digests attendus ont été exécutées sur
@@ -274,6 +284,16 @@ depuis le PC. Le retour arrière a restauré la spécification précédente
 et une troisième tâche a répondu en HTTPS sans cet en-tête. Le serveur
 synthétique sur le second worker a conservé sa tâche durant l’essai.
 [Reçu de mise à jour et de retour arrière HTTPS](../evidence/public/swarm-https-pc-rollback-20261125.json).
+
+Le 26 novembre, une nouvelle mise à jour a activé l’en-tête HSTS sur
+le proxy temporaire. Depuis Windows, via SSH, l’opérateur a observé
+trois réponses TLS 1.3 avec le même certificat et la même réponse
+amont. L’en-tête est apparu après l’activation et a disparu après le
+retour arrière. Sur Docker Desktop, Chromium a enregistré une
+réécriture interne 307 motivée par HSTS pour une URL HTTP au port 8443.
+Le catalogue migré était ensuite visible en HTTPS. Les tâches et
+versions de la v1 ont été conservées.
+[Reçu HSTS et retour arrière](../evidence/public/swarm-https-hsts-20261126.json).
 
 ## Démarrer par étapes
 

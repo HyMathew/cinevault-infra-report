@@ -13,5 +13,6 @@ https://cinevault-stage.test:8443 {
 	tls /run/secrets/https_cert /run/secrets/https_key {
 		protocols tls1.3 tls1.3
 	}
+	header >Strict-Transport-Security "max-age=300"
 	reverse_proxy web:5000
 }

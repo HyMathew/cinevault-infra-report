@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-25T23:10:04.499216+00:00",
+  "hostname": "cinevault-stage.test",
+  "tls_port": 8443,
+  "policy": "max-age=300",
+  "proxy_image_manifest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "baseline_caddyfile_sha256": "48db230e96431bb8407e8c223129d60c52b8e49dd165c4dee19179efb4e9adce",
+  "active_caddyfile_sha256": "80c57a72d289b27a400c99eb8e7c28feba9c29d07021e67175e41b390223413c",
+  "operator_probe_sha256": "ad2937b04bf5d3976b0351f52b509a55df421a204525090468d4d39ef6adc7a0",
+  "local": {
+    "source_commits": {
+      "api": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+      "web": "b6b67aa1cedd851c6fded2191b74badc537fb5ac"
+    },
+    "tls": "TLSv1.3",
+    "secure_session_and_auth_cookies": true,
+    "migration_and_replay": true,
+    "catalogue_http": 200,
+    "updated_configuration_in_read_only_proxy": true,
+    "strict_transport_security": "max-age=300",
+    "chromium_saw_http307_internal_hsts_upgrade": true,
+    "chromium_version": "156.0.8078.4",
+    "published_ports": 0,
+    "cleanup_confirmed": true,
+    "receipt_sha256": "aedda75b7190539c9bd2a07ddd54a51058117cfeccf35fbb23ad0e1c50b89761"
+  },
+  "swarm_component": {
+    "client": "Windows via pinned SSH",
+    "phases": {
+      "before": {
+        "tls": "TLSv1.3",
+        "status": 200,
+        "strict_transport_security": null,
+        "leaf_sha256": "6dac4e20db521f64cb0896472b9549f223412b1617d7d6c90f59d8aaec090263"
+      },
+      "updated": {
+        "tls": "TLSv1.3",
+        "status": 200,
+        "strict_transport_security": "max-age=300",
+        "leaf_sha256": "6dac4e20db521f64cb0896472b9549f223412b1617d7d6c90f59d8aaec090263"
+      },
+      "rolled_back": {
+        "tls": "TLSv1.3",
+        "status": 200,
+        "strict_transport_security": null,
+        "leaf_sha256": "6dac4e20db521f64cb0896472b9549f223412b1617d7d6c90f59d8aaec090263"
+      }
+    },
+    "pc_unknown_ca_rejected": true,
+    "pc_wrong_name_rejected": true,
+    "same_proxy_service_identity": true,
+    "three_distinct_proxy_tasks": true,
+    "origin_task_unchanged": true,
+    "origin_cross_worker": true,
+    "published_ports": 0,
+    "exact_previous_spec_restored": true,
+    "cleanup_confirmed": true,
+    "stable_same_tasks_and_versions": true,
+    "receipt_sha256": "af0ec0c29deb177c0624145c245b0cb8531ae1ddfb69df5be1e42ce1b3cf1e5e"
+  },
+  "scope": "Private staging HTTPS. End-to-end local apps and MongoDB. Synthetic origin on Swarm."
+}
