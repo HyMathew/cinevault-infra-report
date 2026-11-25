@@ -1,0 +1,27 @@
+{
+  "scope": "Caddy HTTPS component on RemoteLabz Swarm with a synthetic HTTP origin on a different worker and no application images",
+  "date_utc": "2026-11-25T16:59:18.502741+00:00",
+  "proxy_image_manifest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "proxy_config_digest": "sha256:56d2a0dd456514887ebaa929261413b37385b2d24d0d97c95e2438d8dfe387c3",
+  "caddyfile_sha256": "a3d560681e76aa7a9af98dcc9f359a0c819f0bf83dbb9142c35f0f7bf22532ed",
+  "controller_access": "local Windows SSH with pinned host keys",
+  "checks": {
+    "https_http": 200,
+    "tls": "1.3",
+    "host_sni_mismatch": 421,
+    "wrong_sni_rejected": true,
+    "tls12_rejected": true,
+    "unknown_ca_rejected": true,
+    "front_edge_tcp_blocked": true,
+    "origin_cross_worker": true,
+    "published_ports": 0,
+    "workers": [
+      1,
+      2
+    ]
+  },
+  "cleanup_confirmed": true,
+  "stable_services_healthy_same_tasks_and_versions": true,
+  "native_receipt_sha256": "dd49f60676ca968e95c3312694de79ae41a1487de91d61d43081ce2f4fb689f2",
+  "full_application_stack_verified": false
+}

@@ -209,8 +209,18 @@ docker stack config -c stack.mongodb-staging.yaml -c stack.mongodb-staging.https
 Le test local du proxy a utilisé un serveur HTTP synthétique. Il a confirmé
 TLS 1.3, la réponse 200 de l’amont et le refus d’une CA inconnue, d’un nom TLS
 incorrect, de TLS 1.2 et d’un en-tête Host différent du nom TLS. Le réseau
-frontal du test n’a pas résolu le proxy. Dans cette configuration, le Web
-voit l’adresse de son pair réseau. Les tests de charge et de quotas devront
+frontal du test n’a pas résolu le proxy.
+
+Sur RemoteLabz, le même digest et le même Caddyfile ont servi une réponse
+HTTPS 200 depuis le proxy sur VM1 vers un serveur synthétique sur VM2.
+Les tests ont confirmé TLS 1.3, les refus de certificat et l’absence de
+chemin TCP depuis le seul réseau frontal vers le proxy sur `edge`.
+L’opération a été conduite par SSH depuis le PC. Swarm n’a publié aucun
+port. Les services, réseaux, secrets et configs temporaires ont été retirés.
+Les versions de service et les tâches saines de la v1 ont été conservées.
+[Reçu HTTPS entre workers](../evidence/public/swarm-https-between-workers-20261125.json).
+
+Dans cette configuration, le Web voit l’adresse de son pair réseau. Les tests de charge et de quotas devront
 tenir compte de l’adresse partagée derrière Caddy. Le parcours HTTPS avec les
 images applicatives qualifiées et les réseaux Overlay reste à valider sur
 Swarm.
