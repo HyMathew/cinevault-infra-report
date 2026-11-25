@@ -63,6 +63,14 @@ la configuration exacte utilisée par Grype. La publication a été bloquée
 sur les cinq mêmes CVE OpenSSL dans les deux images.
 [Reçu des inventaires et des scans](../evidence/public/image-sbom-qualification-20261125.json).
 
+Dans deux répertoires séparés sur le PC, deux builds sans cache par
+application à partir de `git archive` ont reproduit les digests du
+manifeste, de la configuration et des couches Linux amd64. BuildKit
+normalise les horodatages et les Dockerfiles omettent les métadonnées
+de construction variables. Le résultat vaut pour les mêmes entrées
+amont et la version de BuildKit mesurée.
+[Reçu de reconstruction des images](../evidence/public/application-image-reproduction-20261125.json).
+
 Utiliser le digest de configuration `scan_provenance.archive_config_digest`
 de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
 demande uniquement les manifestes publics par digest, recalcule leurs

@@ -1,0 +1,67 @@
+{
+  "date_utc": "2026-11-25",
+  "passed": true,
+  "scope": "Reconstruction locale du manifeste, de la configuration et des couches de l'image Linux amd64. Deux constructions sans cache par révision depuis git archive.",
+  "buildkit": "0.34.2",
+  "buildx": "0.38.1",
+  "source_date_epoch": 1760000000,
+  "same_upstream_package_inputs": true,
+  "api": {
+    "source_commit": "6a5322f953b811afd90e142745e4b4e8a442c260",
+    "source_tree_archive_sha256": "sha256:598e2475a0876a09388e0950eda32d929c6d9cb369b323c7574f3713c8e39b7b",
+    "dockerfile_sha256": "sha256:4be5c4657f5ca24872b52038e6c67073a8054eaf2cc32056bcb9636f7de4f2e2",
+    "baseline_source_commit": "2144c3f55dcda02787a2924a08f0bb2648ac18b6",
+    "baseline_configs_match": false,
+    "repeatable_platform_image": {
+      "config": "sha256:c46cd533b18f2a4281887d3d576aff3094efc74e8b50a61f40ab144561ff0f24",
+      "rootfs_diff_ids": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:889060b7a05ccf1e529f21def65c1b270c0a4e3abdb84519df67ed21feb0cf31",
+        "sha256:255e6a402ab8fc7bff7dd97398eb9affd7ca2bfaf804805162111ddffe0316f9",
+        "sha256:5e336f3e05d73b56bd74c12193ad91569ad4f1ee32ff4f173a7aa502d3aace70",
+        "sha256:4955798e2b8e428b2b641270cccd9b07cc9c9fef79e3b36d7a93596769c94f1a",
+        "sha256:a9ab8f22588252c6615e3430fe1490e04039aedd3897a14ce131433fd157efd6",
+        "sha256:3bf0defc4166fae1bd903b5bc9707e231fdecd53dd8df0b5abf85179aaf42936",
+        "sha256:682b27c8cbb383384fb0e6f9642dd6ddb136d163129a87d5ecf622adf060e5f0"
+      ],
+      "archive_layers": [
+        "sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17",
+        "sha256:8d394e6da90e1754301ff3d5c6f07035b484eb8db791c555abdd1f49fc77b5ce",
+        "sha256:03d17bf4861262395ebdf287cbf2cff913859f31f293fd7de0880ced1f2da477",
+        "sha256:c0ebc3b494d046320c56133bc8c4406d16d460838eeee7e7a4fa1c4b54d5f739",
+        "sha256:0325234cdd14089aedc3fd24590ff283282566ea7ad5880f062dc4b5f17c0af5",
+        "sha256:e3dd66547258d358cf9bd19b8d445a8a89f7809f72e74de4ef871cbbe002077b",
+        "sha256:01d2a5068863424ed29469a0de9f8186cf84e2bdb1f41816e19ea630cb8b1468",
+        "sha256:9a2ce2a09ac9506b35ddc3d2693f67a1f74d1f771d28ad9d820ff5c5b698aea4"
+      ],
+      "manifest": "sha256:9237e5bdead7b523fba535be2bbd134333503e4406b9465398ceb71eb5d27fbb"
+    },
+    "native_build_receipt_sha256": "361edbb3606dcd3f935f663c23c7be73f16211fced83680ff008a7deb2036de5"
+  },
+  "web": {
+    "source_commit": "77274ebfc233e09296f6fcbe69488f46f87fb446",
+    "source_tree_archive_sha256": "sha256:a67f9e0a9806bcc956656b4ba2ad30b13cd3bc8a1b11a8b21f5a1ef9a6e4b809",
+    "dockerfile_sha256": "sha256:6c9ec801307469ae984718dcaf607f5db8df853abcaab001a4a2fb273a975c79",
+    "baseline_source_commit": "f0db9b35f06e0eaa1ea69bb618a3a3e44abadae5",
+    "baseline_configs_match": false,
+    "repeatable_platform_image": {
+      "config": "sha256:178c3b49859d368d8bc7d3ec1edea14d9133b937218d431d09ef4d5bdfcd8f18",
+      "rootfs_diff_ids": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:889060b7a05ccf1e529f21def65c1b270c0a4e3abdb84519df67ed21feb0cf31",
+        "sha256:375175ecf9e2b3f3c1bdf5c5d397dc0b8a2e61342b06283db8db8aa4552ea221",
+        "sha256:5e336f3e05d73b56bd74c12193ad91569ad4f1ee32ff4f173a7aa502d3aace70",
+        "sha256:b45b61d6ae91b24a9fcc962e4b69238a8a68ff45eacb637becef1434e5f49dfa"
+      ],
+      "archive_layers": [
+        "sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17",
+        "sha256:8d394e6da90e1754301ff3d5c6f07035b484eb8db791c555abdd1f49fc77b5ce",
+        "sha256:3392de7eb1b0181088092422295270dc5fb4718da28fc56219755590c1d0f5e3",
+        "sha256:c0ebc3b494d046320c56133bc8c4406d16d460838eeee7e7a4fa1c4b54d5f739",
+        "sha256:b99ce521e8c8d07d52d77534fdbd4d3351a0f62ac25492a8cc66e4cbf967ba90"
+      ],
+      "manifest": "sha256:31a18da3a391e6160b0441b74adab0a3660254a43f06e47b67e880ef04ca807f"
+    },
+    "native_build_receipt_sha256": "b3e257212e972c0a70e47ee2f0b24bcdb3f643afcf3409638ea5c08845a4d0b1"
+  }
+}
