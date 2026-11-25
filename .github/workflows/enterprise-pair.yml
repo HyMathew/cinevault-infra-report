@@ -24,13 +24,13 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: HyMathew/cinevault-api
-          ref: d02f27fde89f55c4fad91fafd44f9d44417687d0
+          ref: 8205e0cf47873a907de79d686eeb0d6eda38d85e
           path: cinevault-api
           persist-credentials: false
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: HyMathew/cinevault-web
-          ref: bdf6063ff575e5dbd034d6ea87211acf4c5fdd8b
+          ref: 7eb4dc3e4a73bd54dcaaca0e90cb0ff919994fdd
           path: cinevault-web
           persist-credentials: false
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0

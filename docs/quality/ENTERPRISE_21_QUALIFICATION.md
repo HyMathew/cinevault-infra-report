@@ -136,8 +136,28 @@ cookies de session `Secure`, `HttpOnly` et `SameSite=Lax`.
 La qualification Swarm et la promotion applicative restent ouvertes.
 [Reçu HTTPS local](../../evidence/public/enterprise-2.1-candidate-20261122.json).
 
-Cinq CVE OpenSSL de gravité haute bloquent les contrôles d'images de l'API
-`58b1200` et du Web `bdf6063`. La v1 dispose de sa
-[qualification historique](../validation-current.md).
-[Contrôle image API](https://github.com/HyMathew/cinevault-api/actions/runs/45075339930) ·
-[Contrôle image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45033494493).
+## Paire avec paquets Alpine verrouillés
+
+Le 25 novembre, l'API `8205e0c` et le Web `7eb4dc3` ont repassé
+les six contrôles HTTP et les 45 contrôles Chrome sur JSON. Le rejeu
+académique a couvert 93 échanges et 44 opérations OpenAPI sur l'API.
+Dans Docker Desktop, les deux images de ces commits ont démarré avec
+MongoDB 8.0.38 et Caddy sur des réseaux internes sans port publié.
+La migration de données synthétiques a créé 12 collections et 40
+index. Son rejeu a réussi, et le compte applicatif a été refusé pour
+l'administration de la base. La sonde HTTPS a confirmé TLS 1.3, le
+catalogue migré et l'authentification avec cookies sécurisés.
+Chromium a ouvert le catalogue après connexion et constaté les attributs
+`Secure`, `HttpOnly` et `SameSite=Lax`. Avec sa vérification de
+certificat active, il a refusé la CA inconnue. Le proxy a interrompu
+le handshake pour un SNI absent de sa configuration. L’en-tête HSTS
+est absent sur ce point d’accès privé.
+
+Deux builds Windows et un build GitHub Actions Ubuntu par image
+ont reproduit les mêmes digests OCI. Les contrôles d'image restent
+bloqués par cinq CVE OpenSSL classées High par Grype. La publication
+applicative et la qualification de la paire sur Swarm restent ouvertes.
+La v1 dispose de sa [qualification historique](../validation-current.md).
+[Reçu de la paire verrouillée](../../evidence/public/enterprise-2.1-alpine-runtime-20261125.json) ·
+[Contrôle image API](https://github.com/HyMathew/cinevault-api/actions/runs/45667428307) ·
+[Contrôle image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45668181740).

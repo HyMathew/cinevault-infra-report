@@ -74,6 +74,12 @@ le digest de configuration vérifié par Grype et le résultat du scan.
 Le résultat de reconstruction vaut pour les entrées amont mesurées.
 [Reçu de comparaison PC et GitHub Actions](../evidence/public/application-image-cross-environment-20261125.json).
 
+Les révisions suivantes ont verrouillé par SHA-256 les archives APK
+signées. Leur installation s’effectue hors réseau avec les clés Alpine
+de l’image de base épinglée. Les deux images amd64 conservent les mêmes
+26 paquets installés. Un build avec une empreinte falsifiée échoue.
+[Reçu du candidat avec paquets verrouillés](../evidence/public/enterprise-2.1-alpine-runtime-20261125.json).
+
 Utiliser le digest de configuration `scan_provenance.archive_config_digest`
 de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
 demande uniquement les manifestes publics par digest, recalcule leurs

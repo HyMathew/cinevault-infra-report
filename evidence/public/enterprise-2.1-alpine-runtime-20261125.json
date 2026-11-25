@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-25T17:56:39.482962+00:00",
+  "applications": {
+    "api": {
+      "commit": "8205e0cf47873a907de79d686eeb0d6eda38d85e",
+      "image_manifest_digest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+      "image_config_digest": "sha256:76c9d68f6ad61df49178db3ca05613dff5b3db15fe210b16532367a9fe8f2892",
+      "scan_components": 50,
+      "image_audit_run": 45667428307,
+      "image_audit_artifact_digest": "sha256:01f836b23805c1f0e9d3f99448a4c765a75f7a4ba3a78dba7522cb22c351a4a7",
+      "scan_passed": false,
+      "high_cves": [
+        "CVE-2026-107493",
+        "CVE-2026-107494",
+        "CVE-2026-121482",
+        "CVE-2026-124709",
+        "CVE-2026-84786"
+      ]
+    },
+    "web": {
+      "commit": "7eb4dc3e4a73bd54dcaaca0e90cb0ff919994fdd",
+      "image_manifest_digest": "sha256:e46544fe197a937e42980591b5f862474d8faef89416beb36e536ce34b1037d6",
+      "image_config_digest": "sha256:4594e30164546d324d0a5d0ecd3f5b9789bc9fb40ff07e0ca6bf51f68ac16b3e",
+      "scan_components": 48,
+      "image_audit_run": 45668181740,
+      "image_audit_artifact_digest": "sha256:bd03c5e11100e70f5276cb356d715f812846508b1bbb596da60136de556ab3bc",
+      "scan_passed": false,
+      "high_cves": [
+        "CVE-2026-107493",
+        "CVE-2026-107494",
+        "CVE-2026-121482",
+        "CVE-2026-124709",
+        "CVE-2026-84786"
+      ]
+    }
+  },
+  "image_reproduction": {
+    "windows_no_cache_builds_per_application": 2,
+    "ubuntu_ci_builds_per_application": 1,
+    "same_source_archive_manifest_config_and_uncompressed_layers": true,
+    "identical_installed_amd64_packages": 26,
+    "apk_wrong_checksum_rejected": true,
+    "qualification_receipt_sha256": "sha256:f207f9429488eefafde19e418ba3845e67229593d49322faca4fe34127475036"
+  },
+  "source_pair_and_rt0705": {
+    "data": "disposable synthetic JSON",
+    "http_checks": 6,
+    "chromium_checks": 45,
+    "chromium_screenshots": 7,
+    "academic_http_exchanges": 93,
+    "openapi_operations": 44,
+    "academic_runtime_checks": 10,
+    "http_receipt_sha256": "sha256:1de51a6463c8f6ab1891c72c7488ec42594401631b3bef9c9f2b13e3b196bdd2",
+    "chromium_receipt_sha256": "sha256:db0d83ea12c9679a2f28ccda6db9ef0554030d32d47ff4a50105213129b5bfac"
+  },
+  "docker_desktop_mongodb_https": {
+    "image_manifests": {
+      "api": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+      "web": "sha256:e46544fe197a937e42980591b5f862474d8faef89416beb36e536ce34b1037d6",
+      "https": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+      "mongo": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064"
+    },
+    "published_ports": 0,
+    "migration": {
+      "collections": 12,
+      "indexes": 40,
+      "replay": true,
+      "application_management_denied": true,
+      "source_unchanged": true
+    },
+    "https": {
+      "passed": true,
+      "tls_protocol": "TLSv1.3",
+      "invalid_server_name_rejected": true,
+      "catalogue_contains_migrated_movie": true,
+      "anonymous_profile_denied": true,
+      "login_redirected_to_profile": true,
+      "secure_session_and_auth_cookies": true,
+      "authenticated_profile_visible": true
+    },
+    "chromium": {
+      "image": "mcr.microsoft.com/playwright/python@sha256:7d030ac0638b279ecc72493f8b6706fecef80a893679a23b02f912905c4915c0",
+      "probe_sha256": "86efd1e33e70769e11c8f0838342260ee92674705a722fcd1007cd8b16cc8d02",
+      "version": "156.0.8078.4",
+      "protocol": "TLS 1.3",
+      "root_untrusted_rejected": true,
+      "wrong_sni_rejected_during_tls_handshake": true,
+      "login": 303,
+      "catalogue": 200,
+      "migrated_movie_visible": true,
+      "secure_httponly_lax_cookies": true,
+      "csp_nosniff_referrer_policy": true,
+      "strict_transport_security_present": false
+    },
+    "resources_removed": true,
+    "fixture": "synthetic migrated data",
+    "runtime_receipt_sha256": "sha256:821696266b1b2eb7ba62be435e027ce67149a5445a106ea87685696ff68dce7f"
+  },
+  "scope": "Application integration and exact OCI build comparison. Swarm staging and release are pending."
+}
