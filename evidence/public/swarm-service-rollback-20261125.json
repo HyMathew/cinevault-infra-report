@@ -1,0 +1,26 @@
+{
+  "date_utc": "2026-11-25",
+  "passed": true,
+  "scope": "SSH depuis le PC, service temporaire inerte sur le worker VM2. Aucune inference sur les donnees ni le staging applicatif.",
+  "manifest_digest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "internal_encrypted_overlay": true,
+  "published_ports": 0,
+  "state_change_and_health_check": {
+    "initial-task-healthy": 4.893,
+    "updated-task-healthy": 19.907,
+    "update-completed": 45.34,
+    "unhealthy-update-paused": 32.358,
+    "restored-task-healthy": 6.797,
+    "rollback-completed": 45.752,
+    "service-task-removed": 14.002
+  },
+  "healthy_task_instances": 3,
+  "stable_service_specs_and_tasks_preserved": true,
+  "owned_service_network_and_tasks_removed": true,
+  "worker_volumes_match_baseline": true,
+  "first_pass_runner_postcondition_failed": true,
+  "first_run_receipt_sha256": "9c39d3721c5868533bdb8c8b0795be0a00b1a7c9b97d32c97da727b840bf8db3",
+  "native_receipt_sha256": "7aee50286bf67e800d16cd29ece6fd4fa0224bcecd9e44d700cbc1e5b430e5f2",
+  "native_harness_sha256": "0423fba5fffc360f10de76483bf29ae5f712862fc0ad04d759ed7c6eb9b77b8d",
+  "manager_render_receipt_sha256": "129a250e667c3e197dbc0ff655059004d8c5229336c87a0fc109c467b85ae3eb"
+}

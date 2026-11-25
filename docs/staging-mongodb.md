@@ -138,6 +138,53 @@ Une fois la base cohérente, appliquer le même manifeste avec
 placement et les montages effectifs des secrets. Comparer les services et le
 stockage de la stack stable à leur état initial.
 
+## Mettre à jour et revenir à une révision précédente
+
+Avant la mise à jour, relever pour chaque service le manifeste d'image
+effectif, l'identifiant de tâche, l'état de santé et la version Swarm du
+service. Garder le manifeste résolu et instancier les mêmes entrées
+privées depuis le poste opérateur. Pour une intervention qui touche les
+données, produire une sauvegarde vérifiée et répétable avant le changement.
+
+Les services de staging utilisent `stop-first` avec une fenêtre de
+surveillance de 45 secondes. Le service peut donc être indisponible
+pendant le remplacement. Swarm met en pause la mise à jour en cas d'échec.
+Vérifier d'abord le digest, la tâche démarrée et son état de santé, puis
+exercer une requête depuis le consommateur du service.
+
+```sh
+docker service ps --no-trunc cvstage_api
+docker service inspect --format '{{json .UpdateStatus}}' cvstage_api
+```
+
+Pour revenir à la spécification immédiatement précédente, contrôler
+`PreviousSpec` avant d'exécuter la commande. Si une intervention inverse
+plusieurs changements ou si la spécification précédente ne correspond plus
+au point de reprise, réappliquer le manifeste résolu conservé.
+
+```sh
+docker service inspect --format '{{.PreviousSpec.TaskTemplate.ContainerSpec.Image}}' cvstage_api
+docker service rollback cvstage_api
+docker service inspect --format '{{json .UpdateStatus}}' cvstage_api
+```
+
+Attendre la santé de la tâche de remplacement et vérifier de nouveau les
+requêtes avant de réouvrir les écritures. La commande Swarm revient à une
+spécification de service. Les données exigent soit une restauration isolée
+compatible, soit l'export inverse si MongoDB a reçu de nouvelles écritures
+depuis le basculement JSON. Les archives issues de MongoDB 8.0.38 exigent
+une cible 8.0.38. [Sauvegarde et compatibilité](operations/MONGODB_BACKUP.md).
+
+Le 25 novembre 2026, un service jetable sur VM2 a remplacé une tâche saine,
+mis en pause une mise à jour dont la sonde échouait et démarré une tâche
+saine après `docker service rollback`. Le manager a confirmé l'état
+`rollback_completed`. L'essai a utilisé un processus inerte sur un réseau
+Overlay privé et chiffré, sans port publié. Le service, ses tâches et son
+réseau ont été retirés. Les spécifications et les tâches des deux services
+stables ont conservé leur identité et leur état de santé. Le retour arrière
+du staging applicatif reste à éprouver avec le couple qualifié.
+[Reçu du retour arrière Swarm](../evidence/public/swarm-service-rollback-20261125.json).
+
 ## Critères de vérification
 
 - Depuis l'API, vérifier le DNS, le certificat du serveur, SCRAM et `/health`.
