@@ -75,7 +75,9 @@ def test_enterprise_compose_uses_only_file_secrets_without_environment_key():
     assert not api.get("ports")
 
 
-def test_enterprise_compose_requires_the_file_paths_even_with_a_legacy_key():
-    result = compose({"SECRET_KEY": "fixture-key"}, enterprise=True)
+@pytest.mark.parametrize("missing_key", KEY_FILES)
+def test_enterprise_compose_requires_each_file_path_even_with_a_legacy_key(missing_key):
+    variables = {key: value for key, value in KEY_FILES.items() if key != missing_key}
+    result = compose({**variables, "SECRET_KEY": "fixture-key"}, enterprise=True)
     assert result.returncode != 0
-    assert "CINEVAULT_AUTH_KEY_FILE" in result.stderr
+    assert missing_key in result.stderr
