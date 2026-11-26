@@ -1,0 +1,1 @@
+{"result": "PASS", "mode": "replay", "api_source_commit": "4c74c86a2483748d135791f2200409d339d4c920", "runtime_checks_executed": 10, "components": 42, "storage_defs": 20, "http_exchanges": 93, "http_schema_locations": 51, "openapi_operations": 44, "technical_schemas": 5, "output": null}

@@ -127,3 +127,37 @@ Une mesure de TBT Lighthouse, d'INP ou d'usage réel nécessiterait une
 campagne distincte. [TBT](https://web.dev/articles/tbt).
 
 [Échantillons et conditions de mesure](../evidence/public/chromium-backend-performance-20261125.json).
+
+## Charge HTTPS mixte à quatre clients
+
+Sur le même PC Windows et le catalogue synthétique de 600 films,
+quatre clients HTTP ont exercé Caddy, le Web et l’API sur des réseaux
+internes Docker Desktop, avec vérification du certificat TLS 1.3.
+Chaque client utilisait une session distincte du même compte et des
+films différents pour ses favoris. Deux tours d’échauffement précédaient
+dix tours mesurés. Un tour comprenait le catalogue, la recherche, une
+fiche, l’ouverture du formulaire et son POST. La latence couvre l’envoi
+et la lecture intégrale de la réponse HTTP.
+
+Les deux passes MongoDB ont terminé. Les deux passes JSON de la série
+alternée se sont arrêtées sur HTTP 503, l’une sur l’ouverture du
+formulaire, l’autre sur une fiche. Le Web a mesuré respectivement
+5 092 et 5 009 ms pour ces réponses. Un rejeu instrumenté distinct
+avec JSON est allé au bout. Il donne un point de comparaison
+exploratoire, avec 40 mesures par ligne et par passe.
+
+| Requête | JSON, p95 du rejeu | MongoDB, p95 des deux passes |
+| --- | ---: | ---: |
+| Catalogue | 1 799 ms | 163–203 ms |
+| Recherche | 708 ms | 177–179 ms |
+| Fiche | 1 434 ms | 246–258 ms |
+| Ouverture du formulaire | 2 451 ms | 163–173 ms |
+| Ajout d’un favori | 1 693 ms | 213–218 ms |
+
+Chaque passe terminée a retrouvé exactement 48 favoris, dont huit
+créés pendant l’échauffement. Les journaux Web et API rapprochent
+chaque POST de création de sa requête API. Un doublon volontaire
+hors mesure a été refusé avec HTTP 409. Les limites CPU et mémoire,
+les ressources observées et les données brutes figurent dans le reçu.
+L’essai couvre cette charge fermée sur un seul hôte.
+[Mesures HTTPS et résultats des passes interrompues](../evidence/public/mixed-https-baseline-20261126.json).

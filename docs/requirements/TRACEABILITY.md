@@ -1,6 +1,23 @@
 # Traçabilité du socle académique RT0705
 
-État documentaire rapproché le **9 novembre 2026**, après la campagne de **16 h 04 Paris** : API `6a86f2e`, web `f3d10cb`, 25 contrôles distribués réussis avec données, comptes, secrets et sessions préservés. Les anciens états figurent dans l'historique Git ; les lignes ci-dessous décrivent les preuves courantes, avec les campagnes historiques identifiées séparément.
+La matrice conserve le jalon du **9 novembre 2026**, avec l’API
+`6a86f2e` et le Web `f3d10cb`. Les 25 contrôles distribués de ce
+jalon ont vérifié la préservation des données, comptes, secrets et sessions.
+
+## Vérifications sur les candidats Enterprise 2.1
+
+- Pour RT0705-REQ-009, 010, 022 et 024, le corpus a été rejoué sur l’API
+  `4c74c86`. Les 93 échanges, 44 opérations OpenAPI et dix contrôles
+  d’exécution ont réussi avec un magasin JSON jetable et les handlers Flask.
+  [Reçu du rejeu](../../evidence/public/academic-json-api-4c74c86-20261126.json).
+- Pour RT0705-REQ-018 à 021 et 028, Compose et Chrome ont exercé les
+  modes pédagogique et Enterprise JSON dans deux projets isolés depuis
+  les clones publics API `05171fd` et Web `b6b67aa`. Après recréation
+  des conteneurs, le navigateur, l’API et le fichier JSON retrouvaient
+  le même film sur les volumes préservés. La preuve couvre Docker
+  Desktop sur le PC. [Reçu Compose](../../evidence/public/compose-clean-clone-20261126.json).
+
+## Matrice et preuves du jalon du 9 novembre
 
 `VERIFIED` signifie que la portée formulée et la preuve indiquée sont vérifiées, sans garantir toutes les branches possibles, tous les environnements ou l'absence de défaut. `IN_PROGRESS` désigne un livrable ou un contrôle encore réellement ouvert. Les limites de boot VM2/3, de panne de disque, de haute disponibilité, de HTTPS public et d'accessibilité ciblée restent explicites ; elles ne deviennent pas, par leur seule mention, de nouvelles obligations du sujet.
 

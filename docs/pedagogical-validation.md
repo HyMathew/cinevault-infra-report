@@ -2,6 +2,13 @@
 
 Cette campagne complète les exigences du sujet p.2 sans confondre le mode de développement avec la stack Enterprise distribuée. Les sources utilisées sont celles des images publiées : API `6a86f2eba9de4dd704c7d4a38d93ab75ff32adc5`, web `4883876f596e1e44218de762cad9a6ea6d1148c1`. Les captures sont authentiques ; les films et personnes saisis sont fictifs.
 
+Le 26 novembre, une campagne distincte a rejoué les exercices et le
+parcours Enterprise JSON sur Windows, avec Compose 5.7.1, Chrome 158
+et les clones publics API `05171fd` et Web `b6b67aa`. Elle a vérifié
+les montages en lecture seule, les trois représentations du film et
+la persistance après recréation des conteneurs.
+[Reçu du rejeu Compose](../evidence/public/compose-clean-clone-20261126.json).
+
 ## Deux projets Git ouverts par VS Code Remote SSH
 
 Les deux dépôts publics ont été clonés dans un nouvel espace de développement sur le worker web, puis placés aux révisions ci-dessus. Les clones sont propres après les essais. Un workspace distant contient les deux dossiers indépendants. Les captures montrent le fichier d'initialisation de l'API puis le client HTTP du frontend, les deux projets dans l'explorateur et l'indicateur SSH actif. L'administration est effectuée depuis le PC ; elle ne dépend pas des consoles du navigateur intégré.
