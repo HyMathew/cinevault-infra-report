@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-26T00:34:33.839920+00:00",
+  "scope": "Temporary Swarm HTTPS proxy on VM1 with synthetic upstream on VM2, verified from Windows over pinned SSH",
+  "proxy_manifest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "checks": {
+    "before": {
+      "tls": "TLSv1.3",
+      "status": 200,
+      "strict_transport_security": "max-age=300",
+      "leaf_sha256": "629f5efb1737557e46c474a98057efa0f5b6f7c7ebded145c4bffd5a7f1f1d6e",
+      "leaf_expires_at_utc": "2026-11-26T02:32:07+00:00"
+    },
+    "rotated": {
+      "tls": "TLSv1.3",
+      "status": 200,
+      "strict_transport_security": "max-age=300",
+      "leaf_sha256": "9b4af89c2288f892766bdc1adb10b1e797cc714b74ca45228b3ec85e0620e866",
+      "leaf_expires_at_utc": "2026-11-27T00:32:07+00:00"
+    },
+    "rolled_back": {
+      "tls": "TLSv1.3",
+      "status": 200,
+      "strict_transport_security": "max-age=300",
+      "leaf_sha256": "629f5efb1737557e46c474a98057efa0f5b6f7c7ebded145c4bffd5a7f1f1d6e",
+      "leaf_expires_at_utc": "2026-11-26T02:32:07+00:00"
+    },
+    "same_ca_trusted": true,
+    "different_public_keys": true,
+    "pc_unknown_ca_rejected": true,
+    "actual_mount_mode": "0400",
+    "actual_uid_gid": "10001:10001",
+    "scoped_secret_references": true,
+    "three_distinct_proxy_tasks": true,
+    "same_proxy_service_identity": true,
+    "exact_previous_spec_restored": true,
+    "origin_task_unchanged": true,
+    "published_ports": 0,
+    "origin_cross_worker": true,
+    "workers": [
+      1,
+      2
+    ],
+    "caddyfile_sha256": "80c57a72d289b27a400c99eb8e7c28feba9c29d07021e67175e41b390223413c"
+  },
+  "intermediate_previous_spec_fields_changed": [
+    ".RollbackConfig",
+    ".UpdateConfig"
+  ],
+  "restored_spec_fields_changed": [],
+  "temporary_resources_removed": true,
+  "stable_tasks_and_versions_unchanged": true,
+  "private_receipt_sha256": "e5f681295b6fcb09c2b10d6e896cfcfe25f9596719422b479f599b347a44f516"
+}

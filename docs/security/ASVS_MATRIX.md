@@ -17,8 +17,8 @@ et leur texte officiel anglais : 70 de niveau 1, 183 de niveau 2 et 92 de niveau
 Il fournit un état, une justification, une preuve disponible et la vérification
 restante par identifiant versionné. Il ne supprime pas les exigences difficiles.
 
-La grille contient **236 contrôles applicables**, dont 178 partiels,
-30 non vérifiés et 28 non satisfaits, et **109 conditionnellement non applicables**
+La grille contient **236 contrôles applicables**, dont 179 partiels,
+30 non vérifiés et 27 non satisfaits, et **109 conditionnellement non applicables**
 à l'architecture actuelle. Chaque ligne comporte une justification et une
 vérification restante. Aucun contrôle n'est déclaré pleinement satisfait et aucun
 pourcentage de conformité n'est calculé. La qualification d'applicabilité n'est
@@ -102,6 +102,12 @@ les contrôles de reprise en staging et le chemin Mongo déployé doivent encore
   Linux et Windows. Le lot opérationnel reste ouvert pour les identités et les
   secrets applicatifs du déploiement final.
   [Reçu de sauvegarde et rotation](../../evidence/public/mongodb-portable-backup-ci-rotation-20261120.json).
+- Le renouvellement du certificat et de la clé HTTPS sous une CA
+  constante, puis leur retour arrière, ont été observés depuis Windows
+  via SSH sur un proxy Swarm temporaire. Le contrôle `13.3.4` reste
+  partiel pour le cycle de vie des autres secrets et du déploiement
+  final.
+  [Reçu de rotation TLS](../../evidence/public/swarm-https-certificate-rotation-20261126.json).
 - La reprise `f1515dd` a publié la quarantaine dans une nouvelle base à partir
   d'une archive chiffrée restaurée. Elle a désactivé quatre comptes et révoqué
   six sessions. Le nouveau compte a obtenu 200 en HTTP. Un ancien mot de passe

@@ -9,7 +9,7 @@ configuration web `7166549f932ea608a8b1a272931d504ad209cc05`, décrit ci-dessous
 Les autres modifications après les révisions initiales ne sont pas couvertes par
 cette qualification.
 
-La grille contient 235 contrôles applicables : 175 partiels, 31 non vérifiés,
+Au 11 novembre, la grille comptait 235 contrôles applicables : 175 partiels, 31 non vérifiés,
 29 non satisfaits. Les 110 N/A sont conditionnels à l'absence d'une fonctionnalité
 précise. Aucun statut ne vaut certification ou validation du déploiement v2.
 Les niveaux ASVS sont des niveaux d'exigence, pas une échelle de sévérité de
@@ -154,6 +154,13 @@ produisent des résultats datés et bloquent High/Critical ; aucun calendrier de
 remédiation par risque n'est défini (`15.1.1`). La provenance/SBOM de la livraison
 2.0, le build PyMongo, les sauvegardes Mongo restaurées et le transport Mongo
 déployé demandent leurs preuves propres.
+
+Le 26 novembre, une rotation du certificat et de sa clé a réussi sur
+un proxy de staging temporaire, avec rétablissement observé du
+certificat initial après rollback. La grille classe désormais
+`13.3.4` comme partiel. Le renouvellement de la CA, la rotation
+des autres secrets et leur échéancier restent à vérifier.
+[Reçu de rotation TLS](../../evidence/public/swarm-https-certificate-rotation-20261126.json).
 
 Actions : définir procédures/fréquences et cas de retour arrière, puis tester
 rotation, continuité des budgets, lecture/restauration des backups, avis Medium/Low

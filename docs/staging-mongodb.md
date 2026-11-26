@@ -317,6 +317,54 @@ Le catalogue migré était ensuite visible en HTTPS. Les tâches et
 versions de la v1 ont été conservées.
 [Reçu HSTS et retour arrière](../evidence/public/swarm-https-hsts-20261126.json).
 
+### Renouveler le certificat du proxy
+
+Pour un renouvellement sous la même CA, préparer un nouveau certificat et
+une nouvelle clé qui lui correspond. Vérifier leur date de début, leur
+date d’expiration et le SAN `cinevault-stage.test` avant de créer les
+secrets. Calculer le SHA-256 du certificat public pour le contrôle depuis
+le PC. La CA doit rester valide pendant la période prévue de service.
+Si elle change, distribuer et vérifier la nouvelle chaîne de confiance
+sur les postes autorisés avant le basculement.
+
+Sur le manager, examiner les secrets actuellement montés dans
+`cvstage_https` et conserver la spécification de départ. L’exemple
+suivant passe de `v1` à `v2` dans une seule mise à jour, avec les mêmes
+cibles lues par le Caddyfile. `CERT_PEM` et `KEY_PEM` désignent les
+chemins de fichiers privés fournis par l’opérateur.
+
+```sh
+docker secret create cvstage_https_cert_v2 - < "$CERT_PEM"
+docker secret create cvstage_https_key_v2 - < "$KEY_PEM"
+docker service update --no-resolve-image \
+  --secret-rm cvstage_https_cert_v1 --secret-rm cvstage_https_key_v1 \
+  --secret-add source=cvstage_https_cert_v2,target=https_cert,uid=10001,gid=10001,mode=0400 \
+  --secret-add source=cvstage_https_key_v2,target=https_key,uid=10001,gid=10001,mode=0400 \
+  cvstage_https
+```
+
+Le proxy mono-réplique utilise `stop-first`. Prévoir une fenêtre de
+maintenance. Vérifier depuis le PC la validation TLS, l’empreinte du
+nouveau certificat et la réponse du service derrière le proxy. Garder
+les deux secrets précédents pendant la fenêtre de retour arrière.
+Si le contrôle échoue et que l’ancien certificat reste utilisable,
+exécuter `docker service rollback cvstage_https`, puis vérifier
+l’empreinte précédente et le rétablissement du service depuis le PC.
+Après validation d’une rotation, reporter les nouvelles références dans
+la surcouche de déploiement avant de redéployer la stack. Retirer les
+anciens secrets après la fenêtre de retour et après avoir vérifié leurs
+usages restants.
+[Gestion des secrets Swarm](https://docs.docker.com/engine/swarm/secrets/#example-rotate-a-secret).
+
+Le 26 novembre, un proxy temporaire sur VM1 a servi une réponse
+synthétique de VM2. Depuis Windows via SSH, trois connexions validées
+en TLS 1.3 ont observé le certificat initial, le nouveau certificat
+avec une clé distincte, puis le certificat initial après retour
+arrière. Les montages ont conservé les droits 0400 et les cibles
+prévues. Les trois tâches ont conservé la réponse HTTP 200 et HSTS
+aux points de mesure. Les ressources de l’essai ont été retirées.
+[Reçu du renouvellement et du retour arrière](../evidence/public/swarm-https-certificate-rotation-20261126.json).
+
 ## Démarrer par étapes
 
 Valider la configuration sur le manager. Avec
