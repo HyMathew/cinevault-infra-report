@@ -53,9 +53,10 @@ Le résultat `backup_verification` donne l’âge de capture, l’âge du
 contrôle ou l’état de l’erreur. Un fichier manquant, un SHA-256
 différent ou une capture périmée fait échouer la sonde.
 
-Un essai sous Windows a utilisé un reçu issu d’une nouvelle archive
-MongoDB 8.0.38 et le reçu d’une restauration antérieure. Les endpoints
-HTTP locaux de test ont signalé une panne API puis un retour à 200.
+Un essai sous Windows a utilisé une archive MongoDB 8.0.38 issue
+d’une fixture synthétique et le reçu d’une restauration antérieure.
+Les endpoints HTTP synthétiques sur la boucle locale ont signalé
+une panne API puis un retour à 200.
 La sonde a aussi refusé le reçu manquant et le SHA-256 divergent.
 [Reçu du contrôle d’exploitation](../../evidence/public/operating-probe-backup-verification-20261126.json).
 
@@ -153,4 +154,7 @@ portable CI qualifient les contrats hors ligne. La sonde attend les reçus natif
 d’une sauvegarde et d’une restauration.
 Le dernier exercice de restauration peut porter sur un autre chiffré que la
 sauvegarde récente. Le contrôle porte sur les métadonnées des deux reçus.
-L’exécution reste manuelle.
+L’essai a été exécuté manuellement. La validation intégrée sur le staging
+reste ouverte pour la sonde périodique, les endpoints réels via SSH/TLS,
+le stockage de sauvegarde hors VM et le canal d’alerte.
+[État de qualification Enterprise 2.1](ENTERPRISE_21_QUALIFICATION.md).

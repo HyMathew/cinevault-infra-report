@@ -69,4 +69,6 @@ Référence : sujet RT0705, pages1–3, identifiants S01–S28 conservés dans l
 | RT0705-REQ-027 | Sujet p. 3 | Exécuter le serveur web Flask en conteneur ; IMPORTANT | Web Flask/Gunicorn embarqué dans image f3d10cb | D : tâche saine sur VM1, image/source/CSS vérifiées ; B : catalogue après déploiement | VERIFIED | État courant distribué ; contrôle ciblé, pas toutes les variantes d'interface. |
 | RT0705-REQ-028 | Sujet p. 3 ; mandat §4.9 | Création coordonnée des deux conteneurs, d'abord Compose ; IMPORTANT | Compose crée conjointement API/web avec code et données séparés | Compose historique avant premier Swarm ; P renouvelle 16 contrôles coordonnés sur VM1 | VERIFIED | Pile pédagogique nettoyée après essais ; services et volume Enterprise préservés. |
 
-Les 28 lignes académiques sont vérifiées dans les portées indiquées. Cela ne clôture pas la mission Enterprise : voir les états réellement ouverts de la matrice des extensions. La couverture des 44 opérations n'est pas une couverture de toutes leurs branches ; les séquences restent des modèles statiques et les fixtures des exemples synthétiques.
+Les 28 lignes académiques sont vérifiées dans les portées indiquées. La couverture des 44 opérations porte sur les échanges répertoriés, avec des fixtures synthétiques et des séquences qui décrivent les modèles statiques.
+[Matrice du jalon v1.0.0](EXTENSIONS.md) ·
+[Qualification du candidat Enterprise 2.1](../quality/ENTERPRISE_21_QUALIFICATION.md).

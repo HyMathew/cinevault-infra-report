@@ -1,5 +1,25 @@
 # Qualification du candidat Enterprise 2.1
 
+## État de la qualification du 26 novembre 2026
+
+La paire API `31ee4ea` et Web `895749e` passe le contrôle Chromium
+et les contrats JSON sur Ubuntu et Windows. Le corpus académique
+rejoue ses 93 échanges sur le commit API exact. La provenance
+Sigstore du PDF 2.1 a été vérifiée pour la tentative 1 de la CI.
+[Paire Chromium](https://github.com/HyMathew/cinevault-infra-report/actions/runs/45896166272) ·
+[Corpus et PDF](https://github.com/HyMathew/cinevault-infra-report/actions/runs/45896166420).
+
+| Contrôle de clôture | État |
+| --- | --- |
+| Audit des deux images applicatives | Bloqué par les avis OpenSSL classés High dans les rapports Grype vérifiés. |
+| Publication et attestation des images 2.1 | En attente de la réussite de l’audit. |
+| Staging intégré sur trois VM | En attente des deux références d’images signées et du rejeu des contrôles du guide. |
+| Exploitation périodique hors VM | Qualification ouverte pour les endpoints TLS réels, le stockage hors VM et le canal d’alerte. |
+
+[Audit image API](https://github.com/HyMathew/cinevault-api/actions/runs/45895897888) ·
+[Audit image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45855982485) ·
+[Guide du staging](../staging-mongodb.md).
+
 ## Paire API et Web
 
 Le 21 novembre 2026, le contrôle HTTP a validé six étapes sur l'API

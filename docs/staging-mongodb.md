@@ -483,12 +483,19 @@ le refus du profil anonyme et les attributs des cookies. Chaque réponse
 doit contenir un seul en-tête HSTS avec la valeur attendue. La sonde rend un
 reçu JSON sans jeton ni identifiant et sort avec le code 1 en cas d’échec.
 
-Sur le PC, les quatre images aux digests attendus ont été exécutées sur
+Le 25 novembre, les quatre images référencées dans le reçu local
+ont été exécutées sur le PC, sur
 des réseaux Docker internes sans port publié. La migration a produit
 12 collections et 40 index, puis le rejeu a confirmé le même instantané.
 La sonde a retrouvé le film migré dans le catalogue, refusé le profil
 anonyme et vérifié la connexion et les cookies en TLS 1.3.
 [Reçu MongoDB et HTTPS de l’essai local](../evidence/public/staging-mongo-authenticated-https-local-20261125.json).
+
+Le contrôle distinct de HSTS a utilisé l’API `05171fd` et le Web
+`b6b67aa` sur Docker Desktop. Sur Swarm, le test de HSTS a exercé
+le proxy et une origine isolée sur deux workers. La qualification
+du déploiement intégré des images applicatives signées reste ouverte.
+[Reçu des deux essais HSTS](../evidence/public/swarm-https-hsts-20261126.json).
 
 Dans cette configuration, le Web voit l’adresse de son pair réseau. Les tests de charge et de quotas devront
 tenir compte de l’adresse partagée derrière Caddy. Le parcours HTTPS avec les
@@ -961,10 +968,18 @@ service. Le contrôle intégré des images API et Web sur Swarm reste
 - Relever la mémoire, le CPU, le trafic Overlay et le disque autour des essais.
   Conserver les résultats avec les identifiants exacts des références testées.
 
-Le 21 novembre 2026, le CLI du manager a rendu cette configuration avec zéro
-puis un réplica de chaque application. Les deux rendus contiennent trois
+Le 21 novembre 2026, le CLI du manager a rendu le manifeste de base
+avec zéro puis un réplica de chaque application. Les deux rendus contiennent trois
 services, deux réseaux internes chiffrés, zéro port publié et des secrets montés
 en 0400. Cette vérification de configuration précède le déploiement du staging.
+
+Le 26 novembre, le CLI Docker sur le PC a rendu les variantes de base et
+HTTPS avec zéro puis un réplica, sur les références d’images des candidats
+API `31ee4ea` et Web `895749e`. La variante HTTPS a quatre services,
+trois réseaux Overlay internes chiffrés, des secrets déclarés en mode
+0400 et zéro port publié. Ce contrôle porte sur la configuration
+rendue avant déploiement.
+[Reçu des quatre rendus](../evidence/public/stack-config-exact-20261126.json).
 
 Le 22 novembre, les trois VM ont répondu en SSH depuis le PC. Le contrôle a
 confirmé les labels, les deux workers prêts, le manager en Drain et l’absence

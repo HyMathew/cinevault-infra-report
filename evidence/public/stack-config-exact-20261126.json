@@ -1,0 +1,86 @@
+{
+  "scope": "Local Docker CLI render and merged configuration assertions. Image references are inputs to the renderer; no resolution or deployment.",
+  "passed": true,
+  "app_source": {
+    "api": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+    "web": "895749e69b3397db243c5814c9917928a2a78804"
+  },
+  "stack_files": {
+    "stack.mongodb-staging.yaml": "5c12422d5a29e4c7f30cc9c53558aa260d59f4cb9c657df10c26ade786f22f60",
+    "stack.mongodb-staging.https.yaml": "3e654a9eb54ac44804c3422859ed2b74fb689d59c87e5db5f3b9434d586ff947"
+  },
+  "renders": {
+    "base-0": {
+      "stack_config_sha256": "a118460bf324315a0073819b055ed70e71b63a115253e1386eb9edd93ac60670",
+      "services": {
+        "api": [
+          "data",
+          "front"
+        ],
+        "web": [
+          "front"
+        ],
+        "mongo": [
+          "data"
+        ]
+      },
+      "published_ports": 0
+    },
+    "base-1": {
+      "stack_config_sha256": "c9004e5f654fc8af66a1f1898e60101f328ffd6fa4811092f37d044688a152b3",
+      "services": {
+        "api": [
+          "data",
+          "front"
+        ],
+        "web": [
+          "front"
+        ],
+        "mongo": [
+          "data"
+        ]
+      },
+      "published_ports": 0
+    },
+    "https-0": {
+      "stack_config_sha256": "0d42c933380910f06cf654c81d5c9762a209a333a4c1f884ad1a756eb71a3f95",
+      "services": {
+        "api": [
+          "data",
+          "front"
+        ],
+        "web": [
+          "edge",
+          "front"
+        ],
+        "mongo": [
+          "data"
+        ],
+        "https": [
+          "edge"
+        ]
+      },
+      "published_ports": 0
+    },
+    "https-1": {
+      "stack_config_sha256": "9154ca68abacac785a7c3172eb28ae9349126193ddb5694291af6fac7f34ea1e",
+      "services": {
+        "api": [
+          "data",
+          "front"
+        ],
+        "web": [
+          "edge",
+          "front"
+        ],
+        "mongo": [
+          "data"
+        ],
+        "https": [
+          "edge"
+        ]
+      },
+      "published_ports": 0
+    }
+  }
+}

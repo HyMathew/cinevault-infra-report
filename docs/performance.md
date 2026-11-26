@@ -179,3 +179,15 @@ compris entre 715 et 920 ms, et celui du formulaire entre 989 et
 rapport au rejeu exploratoire. Ces deux passes sur un seul PC
 ne fixent pas de garantie de capacité.
 [Mesures sur le candidat JSON](../evidence/public/mixed-https-json-read-lock-20261126.json).
+
+Le build Windows de ces deux premières passes utilisait les fins de
+ligne du poste. Avec l’archive Git LF et le BuildKit épinglés en CI,
+deux reconstructions locales sans cache ont reproduit le manifeste,
+la configuration et toutes les couches de l’image API auditée.
+Deux nouvelles passes à quatre clients ont utilisé les manifestes API
+et Web exacts des scans CI. Elles ont chacune retrouvé les 48 favoris
+attendus et terminé sans HTTP 503. Le p95 du catalogue est de 850 à
+876 ms, celui du formulaire de 1 207 à 1 355 ms et celui du POST de
+2 131 à 2 872 ms. La stabilisation observée sur ces passes coexiste
+avec une latence d’écriture élevée sur cette fixture.
+[Rejeu sur les manifestes exacts de la CI](../evidence/public/mixed-https-exact-ci-20261126.json).
