@@ -160,6 +160,15 @@ avec une date de fichier reculée de deux jours. L’absence du SHA-256
 de confiance et une valeur incorrecte ont déclenché un refus.
 [Reçu de la vérification sur archive MongoDB](../../evidence/public/mongodb-backup-freshness-20261126.json).
 
+Une seconde archive MongoDB a été authentifiée avec age et son SHA-256
+sous Windows. Avec l’horloge du processus de vérification contrôlée,
+elle est acceptée une seconde avant le seuil puis exactement à 24 heures.
+Une seconde après le seuil, la commande renvoie le code 1 avec
+`backup_freshness_expired`. Une vérification datée une seconde avant
+la capture est aussi refusée. Les octets chiffrés et l’horloge système
+restent identiques pendant ces essais.
+[Reçu des valeurs limites](../../evidence/public/mongodb-backup-expiry-boundaries-20261126.json).
+
 Exécuter séparément le plan de rétention par dates de fichiers.
 
 ```text

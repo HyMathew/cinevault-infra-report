@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "scope": "Real age authentication on Windows of an encrypted backup from isolated MongoDB 8.0.38. A process-local verification clock exercised the time boundaries; original encrypted bytes, tools, system clocks and application code were preserved.",
+  "observed_at_utc": "2026-11-26T16:34:55.801447+00:00",
+  "runtime_api": {
+    "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+    "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+  },
+  "mongodb": "8.0.38",
+  "clock_outcomes": {
+    "future_capture": {
+      "seconds_since_capture": -1,
+      "exit_code": 1,
+      "refusal": "backup_capture_in_future"
+    },
+    "one_second_before_cutoff": {
+      "seconds_since_capture": 86399,
+      "exit_code": 0,
+      "refusal": null
+    },
+    "exact_cutoff": {
+      "seconds_since_capture": 86400,
+      "exit_code": 0,
+      "refusal": null
+    },
+    "one_second_after_cutoff": {
+      "seconds_since_capture": 86401,
+      "exit_code": 1,
+      "refusal": "backup_freshness_expired"
+    }
+  },
+  "fixture": {
+    "collections": 12,
+    "documents": 5,
+    "indexes": 40
+  },
+  "maximum_age_hours": 24,
+  "real_clock_verification_passed": true,
+  "source_removed_before_verification": true,
+  "ciphertext_unchanged": true,
+  "temporary_resources_removed": true,
+  "operations_sha256": "649d9f2b0cc30f9f3932982b87e5b3552facc45ee5d08be4a7eb8456eff49c51",
+  "cli_sha256": "6979ddb461aab820001684bb254fa95ed6946463d6ac2b28180b6b9dc0874005",
+  "verification_clock_harness_sha256": "1e49638bec723d91ded92c2fe40f32cceca350f5f084966c2a79ff6532b1cc4a",
+  "private_receipt_sha256": "d647c5b57d6bcb267b0305db00fa08ab546fecef63336a317fbbfbe7b3e5a84a"
+}

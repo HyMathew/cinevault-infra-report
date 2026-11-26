@@ -201,6 +201,10 @@ MongoDB 8.0.38 a réussi après suppression de la source, avec un seuil de
 l’horodatage de la capture authentifiée est récent. Une empreinte
 manquante ou erronée bloque la vérification.
 [Reçu de fraîcheur](../../evidence/public/mongodb-backup-freshness-20261126.json).
+Les valeurs limites ont été vérifiées sur une autre archive authentique
+avec une horloge de vérification contrôlée. Une capture de 24 heures
+exactement est acceptée, et une capture de 24 heures et une seconde
+est refusée. [Reçu des valeurs limites](../../evidence/public/mongodb-backup-expiry-boundaries-20261126.json).
 
 La sonde locale a utilisé des reçus de sauvegarde et de restauration
 natifs, portant sur des archives distinctes, et des endpoints HTTP
