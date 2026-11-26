@@ -297,7 +297,7 @@ def receipt_age(failure, age_seconds, max_age_hours):
     }
 
 
-def backup_verification(path, backup, now, max_age_hours):
+def backup_verification(path, backup, now, max_age_hours, *, verified_since=None):
     proof, failure = read_backup_receipt(path, "BACKUP_FRESHNESS_VERIFIED")
     if failure:
         return {"state": failure}
@@ -327,6 +327,8 @@ def backup_verification(path, backup, now, max_age_hours):
         return {"state": "future_timestamp"}
     if not timedelta(0) <= checked - capture <= timedelta(hours=maximum):
         return {"state": "invalid"}
+    if verified_since is not None and checked < verified_since:
+        return {"state": "verification_predates_attempt"}
 
     age = (now - capture).total_seconds()
     return {
@@ -419,6 +421,10 @@ def main(argv=None):
         type=Path,
         help="Receipt from verify --maximum-age-hours for the off-host copy",
     )
+    parser.add_argument(
+        "--backup-verified-since-utc",
+        help="Require the off-host copy to have been checked at or after this ISO 8601 UTC time",
+    )
     parser.add_argument("--backup-finished-at-utc", **timestamp_options)
     parser.add_argument("--max-backup-age-hours", required=True, type=float)
     parser.add_argument("--restore-receipt", required=True, type=Path)
@@ -480,6 +486,16 @@ def main(argv=None):
                 "Web URL must match the HTTPS name and port in the proxy policy."
             )
     now = datetime.now(UTC)
+    verified_since = None
+    if args.backup_verified_since_utc is not None:
+        if args.backup_verification_receipt is None:
+            parser.error("Backup verification receipt required.")
+        try:
+            verified_since = utc_timestamp(args.backup_verified_since_utc)
+        except argparse.ArgumentTypeError as error:
+            parser.error(str(error))
+        if verified_since is None or verified_since > now:
+            parser.error("Verification cutoff must be a known UTC time.")
     timestamps = (
         args.summary_ended_at_utc,
         args.backup_finished_at_utc,
@@ -523,7 +539,11 @@ def main(argv=None):
     }
     if args.backup_verification_receipt is not None:
         checks["backup_verification"] = backup_verification(
-            args.backup_verification_receipt, backup, now, args.max_backup_age_hours
+            args.backup_verification_receipt,
+            backup,
+            now,
+            args.max_backup_age_hours,
+            verified_since=verified_since,
         )
     if args.swarm_capacity_snapshot is not None:
         checks["swarm_capacity"] = swarm_capacity(

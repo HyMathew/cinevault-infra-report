@@ -393,6 +393,42 @@ def test_off_host_verification_missing_then_recovers(
     assert value["ciphertext_sha256"] not in json.dumps(output)
 
 
+@pytest.mark.parametrize(
+    ("offset_microseconds", "expected_code", "expected_state"),
+    [(-1, 0, "ok"), (0, 0, "ok"), (1, 1, "verification_predates_attempt")],
+)
+def test_off_host_verification_respects_attempt_boundary(
+    arguments,
+    capsys,
+    backup_verification,
+    offset_microseconds,
+    expected_code,
+    expected_state,
+):
+    path, value = backup_verification
+    checked_at = datetime.fromisoformat(value["checked_at_utc"])
+    arguments["backup-verified-since-utc"] = (
+        checked_at + timedelta(microseconds=offset_microseconds)
+    ).isoformat()
+    path.write_text(json.dumps(value), encoding="utf-8")
+    code, output = run(arguments, capsys)
+    assert code == expected_code
+    assert output["backup"]["state"] == "ok"
+    assert output["backup_verification"]["state"] == expected_state
+
+
+@pytest.mark.parametrize("cutoff", ["unknown", "9999-12-31T00:00:00Z", "bad"])
+def test_verification_cutoff_must_be_known_and_past(
+    arguments, endpoints, capsys, backup_verification, cutoff
+):
+    arguments["backup-verified-since-utc"] = cutoff
+    with pytest.raises(SystemExit) as error:
+        main(argv(arguments))
+    assert error.value.code == 2
+    assert not capsys.readouterr().out
+    assert endpoints[2] == []
+
+
 def test_verified_capture_must_also_meet_current_policy(
     arguments, capsys, backup_verification
 ):
@@ -513,6 +549,7 @@ def test_swarm_capacity_rejects_missing_stale_and_future_data(
         ("swarm-capacity-snapshot", "partial.json"),
         ("backup-finished-at-utc", "2026-11-21T04:00:00"),
         ("restore-finished-at-utc", "9999-12-31T00:00:00Z"),
+        ("backup-verified-since-utc", "2020-01-01T00:00:00Z"),
     ],
 )
 def test_invalid_inputs_fail_before_network(arguments, endpoints, capsys, key, value):

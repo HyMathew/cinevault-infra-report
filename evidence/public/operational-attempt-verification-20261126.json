@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "scope": "Native age, real MongoDB archive, synthetic loopback TLS and HTTP",
+  "observed_at_utc": "2026-11-26T21:51:06.592929+00:00",
+  "infra_base_commit": "5038a5f338feeb2d912801be654353a7dd0cfc16",
+  "operational_probe_sha256": "d7c14fe9ceb6ba7a1343165830ba5263a8b0b76a86b965964cf80ca6acba33f7",
+  "api_image": {
+    "manifest": "sha256:2d492091585f461d5bd1857a62986322606ef43a577007fffe7f1b6d88f75c4a",
+    "commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25"
+  },
+  "mongodb_version": "8.0.38",
+  "source_removed_before_verification": true,
+  "cleanup_confirmed": true,
+  "scenarios": {
+    "previous_receipt": {
+      "exit_code": 1,
+      "verification": "verification_predates_attempt",
+      "web_http": 200,
+      "api_http": 200
+    },
+    "failed_verifier": {
+      "exit_code": 1,
+      "verification": "missing",
+      "web_http": 200,
+      "api_http": 200,
+      "verifier_exit_code": 1
+    },
+    "same_attempt": {
+      "exit_code": 0,
+      "verification": "ok",
+      "web_http": 200,
+      "api_http": 200
+    },
+    "web_unavailable": {
+      "exit_code": 1,
+      "verification": "ok",
+      "web_http": 502,
+      "api_http": 200
+    },
+    "recovered": {
+      "exit_code": 0,
+      "verification": "ok",
+      "web_http": 200,
+      "api_http": 200
+    },
+    "deadline": {
+      "probe_result_missing": true,
+      "process_terminated": true,
+      "observer_marked_failed": true
+    },
+    "after_deadline": {
+      "exit_code": 0,
+      "verification": "ok",
+      "web_http": 200,
+      "api_http": 200
+    }
+  },
+  "observer_deadline_seconds": 0.5,
+  "remote_scheduler_verified": false,
+  "alert_delivery_verified": false,
+  "private_receipt_sha256": "e6ad66fa409edee4c2f1032dc4207de77ffedf4cc35ea0f27ac286843bf05479"
+}

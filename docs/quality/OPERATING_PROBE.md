@@ -41,7 +41,12 @@ Avant chaque contrôle planifié, produire un reçu hors VM avec
 `verify --expected-sha256 … --maximum-age-hours …`. Transmettre ce
 reçu à la sonde avec `--backup-verification-receipt "$VERIFIED_COPY_RECEIPT"`.
 Utiliser un chemin de reçu neuf par exécution et signaler tout code
-non nul de `verify`. La sonde doit lire le chemin de cette tentative.
+non nul de `verify`. Relever le début UTC de cette tentative sur la
+machine hors VM, avant d'y lancer `verify`, puis passer cette valeur
+à la sonde avec `--backup-verified-since-utc "$ATTEMPT_STARTED_AT_UTC"`.
+Un reçu daté avant ce début donne `verification_predates_attempt` et
+un code de sortie 1, même quand la capture de sauvegarde est encore
+récente. Un contrôle effectué exactement à l’heure de début est accepté.
 Conserver les reçus de sauvegarde et de vérification dans des
 emplacements protégés.
 [Commande de vérification](../operations/MONGODB_BACKUP.md#rotation-fréquence-et-rétention).
@@ -59,6 +64,12 @@ Les endpoints HTTP synthétiques sur la boucle locale ont signalé
 une panne API puis un retour à 200.
 La sonde a aussi refusé le reçu manquant et le SHA-256 divergent.
 [Reçu du contrôle d’exploitation](../../evidence/public/operating-probe-backup-verification-20261126.json).
+
+Un autre essai Windows sur une archive MongoDB authentique a refusé un
+reçu antérieur, accepté le reçu de la tentative et détecté le Web
+indisponible. Un superviseur d’essai a interrompu la sonde à son
+échéance sans sortie JSON, puis un autre appel a confirmé le
+rétablissement. [Reçu des sept scénarios de tentative](../../evidence/public/operational-attempt-verification-20261126.json).
 
 ### Contrôler la capacité Swarm
 
@@ -84,6 +95,25 @@ ou franchit un minimum. Le rapport désigne le nœud et le seuil concerné.
 Une exécution périodique doit collecter un nouvel instantané et traiter
 également une absence de résultat. La sonde fournit le résultat JSON et
 le code de sortie pour l'intégration au canal d'alerte choisi.
+
+### Qualifier la réception des alertes
+
+Le lanceur hors VM attribue un identifiant à la tentative avant
+l’ouverture du tunnel et enregistre son échéance en UTC. Un superviseur
+distinct du processus de la sonde signale un échec d’exécution ou
+l’absence de résultat à l’échéance. L’identifiant de l’incident
+permet de relier les messages de panne et de reprise, y compris
+quand aucune requête ne parvient à Flask.
+
+| Essai | Observation hors VM | Preuve côté destinataire |
+| --- | --- | --- |
+| Arrêt du Web | Statut Web 502, API 200, émission horodatée | Alerte reçue avec le même identifiant d’incident et une heure de réception dans le délai retenu |
+| Contrôle absent | Échéance dépassée sans résultat de la tentative, signal déclenché par le superviseur | Alerte reçue avec l’identifiant de tentative et l’échéance concernés |
+| Retour du Web | Statut Web 200 et retour à l’état sain de la sonde | Message de reprise reçu et rattaché à l’identifiant de l’incident |
+
+Consigner les horodatages UTC et la référence du message reçu. Le
+signal local ou l’acquittement de transport constitue une preuve
+d’émission. La remise est confirmée côté destinataire.
 
 ### Vérifier l’échéance des certificats
 
@@ -154,11 +184,11 @@ illisible, un échec de négociation ou un service injoignable produit
 par `--timeout-seconds` pour la connexion et la négociation.
 
 Le test sur un réseau interne Docker Desktop a interrogé Caddy et
-MongoDB 8.0.38. Les deux certificats ont passé un seuil de 24 heures,
-puis déclenché une alerte au seuil de 72 heures. Les essais ont aussi
-signalé une CA et un nom TLS incorrects, un fichier CA manquant et
-un service injoignable. Les réponses HTTP et les reçus de sauvegarde
-utilisés pendant ce test étaient synthétiques.
+MongoDB 8.0.38. Les deux certificats ont passé un seuil de 24 heures.
+La sonde a signalé leur expiration proche au seuil de 72 heures.
+Les essais ont aussi signalé une CA et un nom TLS incorrects, un
+fichier CA manquant et un service injoignable. Les réponses HTTP et
+les reçus de sauvegarde utilisés pendant ce test étaient synthétiques.
 [Reçu du contrôle des échéances TLS](../../evidence/public/operational-tls-expiry-20261126.json).
 
 ## Résultats et limites
