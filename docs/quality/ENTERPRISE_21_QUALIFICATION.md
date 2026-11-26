@@ -193,6 +193,24 @@ affiché le film et le profil après connexion HTTPS. L’essai a utilisé
 des données synthétiques et des réseaux internes sur Docker Desktop.
 [Reçu de la restauration et des sondes HTTP](../../evidence/public/mongodb-backup-http-20261126.json).
 
+## Contrôle opérationnel et fraîcheur des sauvegardes
+
+Sur Windows, la vérification d’une archive chiffrée issue d’une fixture
+MongoDB 8.0.38 a réussi après suppression de la source, avec un seuil de
+24 heures. La date de modification ancienne est sans effet lorsque
+l’horodatage de la capture authentifiée est récent. Une empreinte
+manquante ou erronée bloque la vérification.
+[Reçu de fraîcheur](../../evidence/public/mongodb-backup-freshness-20261126.json).
+
+La sonde locale a utilisé des reçus de sauvegarde et de restauration
+natifs, portant sur des archives distinctes, et des endpoints HTTP
+synthétiques. Elle a détecté un reçu absent, un reçu issu d’une autre
+archive et une indisponibilité de l’API avant de confirmer son retour.
+Le suivi périodique sur le staging reste à qualifier avec des endpoints
+TLS réels et une alerte sur le stockage de sauvegarde hors VM.
+[Guide de la sonde](OPERATING_PROBE.md) ·
+[Reçu des scénarios](../../evidence/public/operating-probe-backup-verification-20261126.json).
+
 ## Reprise MongoDB avec quarantaine des anciens comptes
 
 La CLI de l’image API `05171fd` a copié une source MongoDB 8.0.38

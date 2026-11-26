@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "local_policy_qualification": {
+    "passed": true,
+    "observed_at_utc": "2026-11-26T16:08:28.134836+00:00",
+    "workflow_sha256_by_role": {
+      "api": "b7ef3fc79c55cd014e7e8d426b836db20268e6f3c835367d4e06f0e8cd0d5ae7",
+      "web": "bee90aadef14a446dccc51d59a64c063f39a5948943ddf6462f0939b6feb8f72"
+    },
+    "filter_sha256": "46d07ca2f93113efedc2c97270acdb273fc20a7a42a563992ffb2b6ffe58eede",
+    "verified_fixture_sha256": "d74e40d7828314b234f5a2ed039045ba1f2d6cad9e76fd8ad3579122a73eadce",
+    "fixture_workflow": "CineVault Infra 44954701826 attempt 1, retained verification of the academic report",
+    "checks": [
+      "actual verified record retained",
+      "mixed evidence filtered",
+      "certificate missing the selected attempt refused",
+      "wrong attempt refused",
+      "wrong run refused"
+    ],
+    "scope": "Executed both workflows' identical filtering code locally; no claim of publication of an application image."
+  },
+  "github_actions_candidate_scans": {
+    "api": {
+      "source_commit": "4c74c86a2483748d135791f2200409d339d4c920",
+      "previous_source_commit": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+      "workflow_blob_sha256": "b7ef3fc79c55cd014e7e8d426b836db20268e6f3c835367d4e06f0e8cd0d5ae7",
+      "ci_run": 45855982369,
+      "ci_event": "push",
+      "property_ci_run": 45855982471,
+      "scan_archive": {
+        "id": 15135817863,
+        "digest": "sha256:d0cac85216c78a71b454910207e7e5a1ad1f8423392b9e4ad31f4b4fd85b9bf0",
+        "size": 156829
+      },
+      "grype_db_built": "2026-11-26T06:22:34Z",
+      "high_or_critical_ids": [
+        "CVE-2026-107493",
+        "CVE-2026-107494",
+        "CVE-2026-121482",
+        "CVE-2026-124709",
+        "CVE-2026-84786"
+      ],
+      "high_or_critical_package_names": [
+        "libcrypto3",
+        "libssl3"
+      ],
+      "high_or_critical_counts": {
+        "High": 10,
+        "Critical": 0
+      },
+      "image_scan_passed": false,
+      "syft_sbom_verified": true,
+      "buildkit_manifest_digest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+      "buildkit_config_digest": "sha256:76c9d68f6ad61df49178db3ca05613dff5b3db15fe210b16532367a9fe8f2892",
+      "same_buildkit_manifest_config_and_rootfs_as_previous_candidate": true,
+      "source_archive_digest_changed": true
+    },
+    "web": {
+      "source_commit": "895749e69b3397db243c5814c9917928a2a78804",
+      "previous_source_commit": "b6b67aa1cedd851c6fded2191b74badc537fb5ac",
+      "workflow_blob_sha256": "bee90aadef14a446dccc51d59a64c063f39a5948943ddf6462f0939b6feb8f72",
+      "ci_run": 45855982485,
+      "ci_event": "push",
+      "property_ci_run": null,
+      "scan_archive": {
+        "id": 15135712518,
+        "digest": "sha256:d7d2c540e620a1c71bc85d8255193ae180cbaa1be5751cbffd03c7678584e5b6",
+        "size": 134870
+      },
+      "grype_db_built": "2026-11-26T06:22:34Z",
+      "high_or_critical_ids": [
+        "CVE-2026-107493",
+        "CVE-2026-107494",
+        "CVE-2026-121482",
+        "CVE-2026-124709",
+        "CVE-2026-84786"
+      ],
+      "high_or_critical_package_names": [
+        "libcrypto3",
+        "libssl3"
+      ],
+      "high_or_critical_counts": {
+        "High": 10,
+        "Critical": 0
+      },
+      "image_scan_passed": false,
+      "syft_sbom_verified": true,
+      "buildkit_manifest_digest": "sha256:e46544fe197a937e42980591b5f862474d8faef89416beb36e536ce34b1037d6",
+      "buildkit_config_digest": "sha256:4594e30164546d324d0a5d0ecd3f5b9789bc9fb40ff07e0ca6bf51f68ac16b3e",
+      "same_buildkit_manifest_config_and_rootfs_as_previous_candidate": true,
+      "source_archive_digest_changed": true
+    }
+  },
+  "scope": "Workflow policy executed locally using retained verified Infra report certificate evidence. The push runs audit images and created no application release or provenance. Signed publication and staging deployment remain pending."
+}

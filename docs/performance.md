@@ -69,8 +69,11 @@ exemplaires. Les deux moteurs partent du même document vérifié par
 SHA-256. Le test charge une page de 20 films, une recherche sur le mot
 `festival` donnant 119 résultats, et la fiche du même film avec une
 session ouverte. Chaque combinaison scénario, largeur et moteur reçoit
-cinq échauffements, puis vingt navigations mesurées, soit 240
-échantillons. Les fenêtres de 390 et 1 280 px utilisent le même PC.
+cinq échauffements, puis vingt navigations séquentielles, soit 240
+échantillons pour un seul client. Sur vingt mesures de latence, le p95
+est la dix-neuvième valeur dans l’ordre croissant. Le reçu réunit
+également les médianes et les maxima. Les fenêtres de 390 et 1 280 px
+utilisent le même PC.
 
 | Scénario et largeur | JSON premier octet p95 | JSON chargement p95 | MongoDB premier octet p95 | MongoDB chargement p95 |
 | --- | ---: | ---: | ---: | ---: |
@@ -115,10 +118,11 @@ fenêtre de décalages sans interaction dans cette durée.
 
 Le CLS est de zéro dans les 60 observations. L'excédent au-delà de 50 ms
 des tâches longues commençant après le FCP est également nul dans cette
-fenêtre. Le navigateur observe le document et deux ressources par
-page, soit 42 946 octets encodés pour le catalogue, 43 323 pour la
-recherche et 32 512 pour la fiche. Les caches sont chauds après
-échauffement. Le périmètre couvre le chargement sur le PC de test.
+fenêtre. Après échauffement, le document et les deux ressources
+représentent 42 946 octets encodés pour le catalogue, 43 323 pour la
+recherche et 32 512 pour la fiche. Les tailles transférées relevées par
+le navigateur sont respectivement de 43 846, 44 223 et 33 412 octets.
+Le périmètre couvre le chargement sur le PC de test.
 Une mesure de TBT Lighthouse, d'INP ou d'usage réel nécessiterait une
 campagne distincte. [TBT](https://web.dev/articles/tbt).
 

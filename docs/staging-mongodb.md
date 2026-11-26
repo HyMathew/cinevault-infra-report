@@ -187,6 +187,13 @@ même run. Le reçu de publication, l'inventaire Syft, le rapport Grype et
 le sujet signé doivent correspondre avant de préparer les workers.
 [Vérification GitHub CLI](https://cli.github.com/manual/gh_attestation_verify).
 
+Les workflows API et Web filtrent les attestations vérifiées sur
+`runInvocationURI` dans le certificat authentifié. L’URL doit contenir le
+run et le numéro de tentative de la publication en cours. Si le contrôle
+échoue après la relance d’un seul job, relancer le workflow complet pour
+que l’attestation et sa vérification portent sur la même tentative.
+[Reçu du contrôle de tentative](../evidence/public/image-attestation-exact-attempt-20261126.json).
+
 Depuis un clone Infra, vérifier chaque publication candidate avec le
 [contrôle du run et de l’image](../scripts/check_staging_image_release.py).
 Télécharger les ZIP bruts `image-audit` et
