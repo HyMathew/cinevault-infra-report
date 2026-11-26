@@ -1,0 +1,152 @@
+{
+  "scope": "Windows Task Scheduler, local synthetic HTTPS/backup fixture, pinned SSH to a distinct unprivileged Ubuntu lab recipient",
+  "distinct_watcher_processes": 3,
+  "observed_event_to_receipt_seconds": [
+    1.914346,
+    1.354999,
+    1.892972
+  ],
+  "stable_healthy_each_snapshot": true,
+  "dedicated_staging_services_observed": 0,
+  "private_receipt_sha256": "98f8acabb6460e254bf485b07bdee9bf585c94ef417cc53cd83cdc216af14efd",
+  "receiver": {
+    "uid_non_root": true,
+    "system": "linux",
+    "agent_python": "3.12.3",
+    "source_hashes": {
+      "check_operational_health.py": "d7c14fe9ceb6ba7a1343165830ba5263a8b0b76a86b965964cf80ca6acba33f7",
+      "supervise_operational_health.py": "12837b3cbf023766ef0e46fd9eae5b5142ec1a190cdb1c27ca41d4cc160ae3d6"
+    }
+  },
+  "scheduler": {
+    "first_utc": "2026-11-26T22:21:23.0000000Z",
+    "repetition": "PT1M"
+  },
+  "first_transfer_before_receipt": {
+    "sender_sha256": "dc61a57e1868c79749ad54f7cd048cc8fea193ed39dbf8219064318b1fa1cf6b",
+    "inbox_sha256": "dc61a57e1868c79749ad54f7cd048cc8fea193ed39dbf8219064318b1fa1cf6b",
+    "messages": 1,
+    "receipts": 0
+  },
+  "receipt_replay_identical": true,
+  "watcher_invocations": [
+    {
+      "slot": "2026-11-26T22:21:09+00:00",
+      "scheduled_window_ended_at_utc": "2026-11-26T22:21:21+00:00",
+      "invoked_at_utc": "2026-11-26T22:21:23.621816+00:00",
+      "code": 1,
+      "watch": {
+        "reason": "web_http_error",
+        "slot_utc": "2026-11-26T22:21:09.000000+00:00"
+      }
+    },
+    {
+      "slot": "2026-11-26T22:22:09+00:00",
+      "scheduled_window_ended_at_utc": "2026-11-26T22:22:21+00:00",
+      "invoked_at_utc": "2026-11-26T22:22:24.636267+00:00",
+      "code": 1,
+      "watch": {
+        "reason": "missing_result",
+        "slot_utc": "2026-11-26T22:22:09.000000+00:00"
+      }
+    },
+    {
+      "slot": "2026-11-26T22:23:09+00:00",
+      "scheduled_window_ended_at_utc": "2026-11-26T22:23:21+00:00",
+      "invoked_at_utc": "2026-11-26T22:23:24.645471+00:00",
+      "code": 0,
+      "watch": {
+        "reason": "healthy",
+        "slot_utc": "2026-11-26T22:23:09.000000+00:00"
+      }
+    }
+  ],
+  "received": [
+    {
+      "event": {
+        "api_http": 200,
+        "deadline_utc": "2026-11-26T22:21:21.000000+00:00",
+        "event": "opened",
+        "event_id": "0cd7e70f2274471d96a464777a866ecd",
+        "incident_id": "876ed2a38fad4f668f9be2acd8a54f25",
+        "observed_at_utc": "2026-11-26T22:21:24.380505+00:00",
+        "reason": "web_http_error",
+        "slot_utc": "2026-11-26T22:21:09.000000+00:00",
+        "web_http": 502
+      },
+      "recipient": {
+        "sender_sha256": "dc61a57e1868c79749ad54f7cd048cc8fea193ed39dbf8219064318b1fa1cf6b",
+        "inbox_sha256": "dc61a57e1868c79749ad54f7cd048cc8fea193ed39dbf8219064318b1fa1cf6b",
+        "messages": 1,
+        "receipt": {
+          "event": "opened",
+          "event_id": "0cd7e70f2274471d96a464777a866ecd",
+          "event_sha256": "dc61a57e1868c79749ad54f7cd048cc8fea193ed39dbf8219064318b1fa1cf6b",
+          "incident_id": "876ed2a38fad4f668f9be2acd8a54f25",
+          "received_at_utc": "2026-11-26T22:21:26.294851+00:00"
+        },
+        "receipts": 1
+      }
+    },
+    {
+      "event": {
+        "api_http": null,
+        "deadline_utc": "2026-11-26T22:22:21.000000+00:00",
+        "event": "updated",
+        "event_id": "9ee5328e6d6a41af90ddb4cb8046ec04",
+        "incident_id": "876ed2a38fad4f668f9be2acd8a54f25",
+        "observed_at_utc": "2026-11-26T22:22:25.402507+00:00",
+        "reason": "missing_result",
+        "slot_utc": "2026-11-26T22:22:09.000000+00:00",
+        "web_http": null
+      },
+      "recipient": {
+        "sender_sha256": "0761011a1e976958687ba567dd560f54ddad3537721ca9bb2f73e9aaaf755272",
+        "inbox_sha256": "0761011a1e976958687ba567dd560f54ddad3537721ca9bb2f73e9aaaf755272",
+        "messages": 2,
+        "receipt": {
+          "event": "updated",
+          "event_id": "9ee5328e6d6a41af90ddb4cb8046ec04",
+          "event_sha256": "0761011a1e976958687ba567dd560f54ddad3537721ca9bb2f73e9aaaf755272",
+          "incident_id": "876ed2a38fad4f668f9be2acd8a54f25",
+          "received_at_utc": "2026-11-26T22:22:26.757506+00:00"
+        },
+        "receipts": 2
+      }
+    },
+    {
+      "event": {
+        "api_http": 200,
+        "deadline_utc": "2026-11-26T22:23:21.000000+00:00",
+        "event": "recovered",
+        "event_id": "edc762219bfd43b0b4f13200a115141d",
+        "incident_id": "876ed2a38fad4f668f9be2acd8a54f25",
+        "observed_at_utc": "2026-11-26T22:23:25.418962+00:00",
+        "reason": "healthy",
+        "slot_utc": "2026-11-26T22:23:09.000000+00:00",
+        "web_http": 200
+      },
+      "recipient": {
+        "sender_sha256": "d995d37a3ef7cd503dca71e2580767cbd9a84447ba661641b128bf696a3d3f43",
+        "inbox_sha256": "d995d37a3ef7cd503dca71e2580767cbd9a84447ba661641b128bf696a3d3f43",
+        "messages": 3,
+        "receipt": {
+          "event": "recovered",
+          "event_id": "edc762219bfd43b0b4f13200a115141d",
+          "event_sha256": "d995d37a3ef7cd503dca71e2580767cbd9a84447ba661641b128bf696a3d3f43",
+          "incident_id": "876ed2a38fad4f668f9be2acd8a54f25",
+          "received_at_utc": "2026-11-26T22:23:27.311934+00:00"
+        },
+        "receipts": 3
+      }
+    }
+  ],
+  "scheduler_removed": true,
+  "inbox_removed": true,
+  "passed": true,
+  "source_commit": "a3d7113b38eea7786d0e566155fd90a04a6a2f94",
+  "started_at_utc": "2026-11-26T22:20:44.944530+00:00",
+  "ended_at_utc": "2026-11-26T22:23:33.601565+00:00",
+  "isolated_loopback_application_fixture": true,
+  "full_staging_deployed": false
+}

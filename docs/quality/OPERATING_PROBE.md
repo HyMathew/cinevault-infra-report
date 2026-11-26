@@ -156,6 +156,25 @@ accusés. Le superviseur a repris un envoi après indisponibilité
 de la boîte et a ignoré les relectures répétées du même créneau.
 [Reçu des trois messages et accusés locaux](../../evidence/public/operational-watch-delivery-20261126.json).
 
+Quand l’observateur et le destinataire sont sur deux hôtes, déposer
+le fichier `<event_id>.json` dans la boîte du destinataire via le
+transport autorisé. Conserver les octets UTF-8 du fichier pendant le
+transfert et vérifier son SHA-256 à l’arrivée. Exécuter `receive`
+sur le fichier reçu et archiver cet accusé avec l’événement original.
+Si le transport aboutit avant que l’accusé soit disponible, reprendre
+avec le même `event_id` et les mêmes octets. Un accusé déjà conservé
+pour cet identifiant se rapproche par son SHA-256.
+
+Le banc inter-hôtes a déclenché trois créneaux successifs à une
+minute d’intervalle depuis le Planificateur Windows. Il a contrôlé
+une application de test en boucle locale et transmis les trois
+événements par SSH épinglé à un destinataire Ubuntu. Le premier
+transfert a été réalisé avant la lecture destinataire. Sa reprise
+a produit un seul accusé conservé et le rejeu a renvoyé ce même accusé.
+Les trois lectures distantes rattachent l’ouverture, l’absence de
+résultat et la reprise au même incident.
+[Reçu inter-hôtes et preuve de périodicité](../../evidence/public/operational-watch-cross-host-20261126.json).
+
 ### Vérifier l’échéance des certificats
 
 Ajouter `--tls-policy "$TLS_POLICY"` pour vérifier le certificat
