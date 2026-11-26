@@ -8,7 +8,7 @@ import socket
 import ssl
 import stat
 from datetime import UTC, datetime, timedelta
-from http.client import HTTPException
+from http.client import HTTPConnection, HTTPException
 from ipaddress import ip_address
 from pathlib import Path
 from urllib.error import HTTPError
@@ -136,7 +136,26 @@ def tls_policy(path):
     return targets
 
 
-def probe_tls(target, timeout):
+def probe_proxy_http(tls, url, timeout):
+    client = HTTPConnection(url.hostname, url.port or 443, timeout=timeout)
+    # Keep the request on the socket already authenticated under the proxy policy.
+    client.auto_open = False
+    client.sock = tls
+    try:
+        client.request("GET", url.path or "/", headers={"Host": url.netloc})
+        with client.getresponse() as response:
+            return {
+                "state": "ok" if response.status == 200 else "unexpected_status",
+                "http_status": response.status,
+            }
+    except (OSError, ValueError, HTTPException):
+        return {"state": "unreachable"}
+    finally:
+        client.close()
+
+
+def probe_tls(target, timeout, *, health_target=None):
+    http_health = {}
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
     try:
         context.load_verify_locations(cafile=target["ca_file"])
@@ -153,6 +172,10 @@ def probe_tls(target, timeout):
         ):
             certificate = tls.getpeercert()
             protocol = tls.version()
+            if health_target is not None:
+                http_health["http_health"] = probe_proxy_http(
+                    tls, health_target, timeout
+                )
     except ssl.SSLCertVerificationError:
         return {"state": "certificate_invalid"}
     except ssl.SSLError:
@@ -173,6 +196,7 @@ def probe_tls(target, timeout):
         "remaining_seconds": max(0, int(remaining)),
         "min_remaining_hours": limit,
         "tls_protocol": protocol,
+        **http_health,
     }
 
 
@@ -407,6 +431,11 @@ def main(argv=None):
     parser.add_argument(
         "--tls-policy", type=Path, help="JSON policy for staging TLS certificates"
     )
+    parser.add_argument(
+        "--web-via-proxy-tls",
+        action="store_true",
+        help="Send the Web health GET over the authenticated proxy connection in --tls-policy",
+    )
     args = parser.parse_args(argv)
     limits = (
         args.max_summary_age_hours,
@@ -437,6 +466,19 @@ def main(argv=None):
             targets = tls_policy(args.tls_policy)
         except argparse.ArgumentTypeError:
             parser.error("Invalid TLS policy.")
+    web_target = None
+    if args.web_via_proxy_tls:
+        proxy = targets.get("proxy")
+        web_target = urlsplit(args.web_url)
+        if (
+            proxy is None
+            or web_target.scheme != "https"
+            or web_target.hostname != proxy["server_name"].lower()
+            or (web_target.port or 443) != proxy["port"]
+        ):
+            parser.error(
+                "Web URL must match the HTTPS name and port in the proxy policy."
+            )
     now = datetime.now(UTC)
     timestamps = (
         args.summary_ended_at_utc,
@@ -452,10 +494,9 @@ def main(argv=None):
     summary_age, backup_age, restore_age = ages
 
     opener = build_opener(ProxyHandler({}), NoRedirect())
-    health = {
-        "api": probe(opener, args.api_url, args.timeout_seconds),
-        "web": probe(opener, args.web_url, args.timeout_seconds),
-    }
+    health = {"api": probe(opener, args.api_url, args.timeout_seconds)}
+    if web_target is None:
+        health["web"] = probe(opener, args.web_url, args.timeout_seconds)
     backup, backup_failure = read_backup_receipt(
         args.backup_receipt, "ENCRYPTED_BACKUP_CREATED"
     )
@@ -490,10 +531,17 @@ def main(argv=None):
         )
     if targets:
         certificates = {
-            role: probe_tls(targets[role], args.timeout_seconds)
+            role: probe_tls(
+                targets[role],
+                args.timeout_seconds,
+                health_target=web_target if role == "proxy" else None,
+            )
             for role in TLS_ROLES
             if role in targets
         }
+        if web_target is not None:
+            proxy = certificates["proxy"]
+            health["web"] = proxy.pop("http_health", {"state": proxy["state"]})
         checks["tls_certificates"] = {
             "state": "ok"
             if all(check["state"] == "ok" for check in certificates.values())

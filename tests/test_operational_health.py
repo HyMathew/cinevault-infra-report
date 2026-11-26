@@ -184,6 +184,82 @@ def test_tls_checks_set_exit_status_without_exposing_configuration(
     assert PRIVATE not in capsys.readouterr().err
 
 
+@pytest.mark.parametrize(
+    ("proxy_result", "web_result", "exit_code"),
+    [
+        (
+            {"state": "ok", "http_health": {"state": "ok", "http_status": 200}},
+            {"state": "ok", "http_status": 200},
+            0,
+        ),
+        (
+            {
+                "state": "ok",
+                "http_health": {"state": "unexpected_status", "http_status": 302},
+            },
+            {"state": "unexpected_status", "http_status": 302},
+            1,
+        ),
+        ({"state": "certificate_invalid"}, {"state": "certificate_invalid"}, 1),
+    ],
+)
+def test_proxy_health_uses_the_authenticated_connection(
+    arguments,
+    tls_target,
+    endpoints,
+    capsys,
+    tmp_path,
+    monkeypatch,
+    proxy_result,
+    web_result,
+    exit_code,
+):
+    policy = tmp_path / "tls.json"
+    policy.write_text(json.dumps({"proxy": tls_target}), encoding="utf-8")
+    url = f"https://{tls_target['server_name']}:{tls_target['port']}/health"
+    arguments.update({"tls-policy": str(policy), "web-url": url})
+    proxy = MagicMock(return_value=dict(proxy_result))
+    monkeypatch.setattr(operational_health, "probe_tls", proxy)
+
+    result = main([*argv(arguments), "--web-via-proxy-tls"])
+    captured = capsys.readouterr()
+    assert result == exit_code
+    assert tls_target["server_name"] not in captured.out + captured.err
+    assert captured.err == ""
+    assert json.loads(captured.out)["health"]["web"] == web_result
+    assert endpoints[2] == [f"/api/{PRIVATE}"]
+    assert proxy.call_args.kwargs["health_target"].geturl() == url
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "http://staging.test:8443/health",
+        "https://other.test:8443/health",
+        "https://staging.test:8444/health",
+    ],
+)
+def test_proxy_health_rejects_a_different_origin_before_requests(
+    url,
+    arguments,
+    tls_target,
+    endpoints,
+    capsys,
+    tmp_path,
+):
+    policy = tmp_path / "tls.json"
+    policy.write_text(
+        json.dumps({"proxy": {**tls_target, "server_name": "staging.test"}}),
+        encoding="utf-8",
+    )
+    arguments.update({"tls-policy": str(policy), "web-url": url})
+    with pytest.raises(SystemExit) as error:
+        main([*argv(arguments), "--web-via-proxy-tls"])
+    assert error.value.code == 2
+    assert not endpoints[2]
+    assert not capsys.readouterr().out
+
+
 def test_real_http_api_outage_recovery_and_redirect_refusal(
     arguments, endpoints, capsys
 ):

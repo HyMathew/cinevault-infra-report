@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "scope": "Operational Web health through pinned private TLS on isolated Docker and via synthetic loopback servers in native Windows",
+  "infra_base_commit": "8d9ffa3b686b4b61ab079eb1f6a56bc17eca7ea9",
+  "operational_probe_sha256": "20675d692658e41e397ab61631a3e8d534a1b068df71267ac2739c4275e7e681",
+  "docker": {
+    "started_at": "2026-11-26T21:33:37.176883+00:00",
+    "finished_at": "2026-11-26T21:34:53.073483+00:00",
+    "app_images": {
+      "api": {
+        "tested_manifest_digest": "sha256:2d492091585f461d5bd1857a62986322606ef43a577007fffe7f1b6d88f75c4a",
+        "matching_ci_source_commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+        "ci_run": 45895897888
+      },
+      "web": {
+        "tested_manifest_digest": "sha256:e46544fe197a937e42980591b5f862474d8faef89416beb36e536ce34b1037d6",
+        "matching_ci_source_commit": "895749e69b3397db243c5814c9917928a2a78804",
+        "ci_run": 45855982485
+      }
+    },
+    "caddy_manifest_digest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+    "mongodb_manifest_digest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+    "workload_sha256": "db87312b44ced7022bea499698722556b1fd8a5737757429d66c5162874a32a2",
+    "checks": {
+      "trusted": {
+        "exit": 0,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "certificate": "ok"
+      },
+      "redirect": {
+        "exit": 1,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "http_status": 303,
+          "state": "unexpected_status"
+        },
+        "certificate": "ok"
+      },
+      "web_missing": {
+        "exit": 1,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "http_status": 404,
+          "state": "unexpected_status"
+        },
+        "certificate": "ok"
+      },
+      "wrong_ca": {
+        "exit": 1,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "state": "certificate_invalid"
+        },
+        "certificate": "certificate_invalid"
+      },
+      "missing_ca": {
+        "exit": 1,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "state": "trust_unavailable"
+        },
+        "certificate": "trust_unavailable"
+      },
+      "wrong_name": {
+        "exit": 1,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "state": "handshake_failed"
+        },
+        "certificate": "handshake_failed"
+      },
+      "mismatched_url": {
+        "exit": 2,
+        "arguments_refused": true
+      },
+      "web_down": {
+        "exit": 1,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "http_status": 502,
+          "state": "unexpected_status"
+        },
+        "certificate": "ok"
+      },
+      "recovered": {
+        "exit": 0,
+        "api": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "web": {
+          "http_status": 200,
+          "state": "ok"
+        },
+        "certificate": "ok"
+      }
+    },
+    "observer_relay_loopback_only": true,
+    "published_ports": 0,
+    "cleanup_confirmed": true,
+    "private_receipt_sha256": "9c1611a5151ded7cba1b7517fe1c27b8f746f09ade8d0112568de00665ad7e3c"
+  },
+  "windows": {
+    "passed": true,
+    "scope": "Native Windows process, ephemeral loopback servers, private synthetic CA",
+    "pinned_ca_and_sni": true,
+    "same_http_host": true,
+    "single_tls_connection": true,
+    "api_http": 200,
+    "web_https": 200,
+    "operational_probe_sha256": "20675d692658e41e397ab61631a3e8d534a1b068df71267ac2739c4275e7e681"
+  },
+  "remote_staging_ssh_schedule_verified": false,
+  "off_vm_alert_delivery_verified": false
+}

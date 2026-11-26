@@ -230,6 +230,10 @@ La sonde locale a utilisé des reçus de sauvegarde et de restauration
 natifs, portant sur des archives distinctes, et des endpoints HTTP
 synthétiques. Elle a détecté un reçu absent, un reçu issu d’une autre
 archive et une indisponibilité de l’API avant de confirmer son retour.
+Un second essai local a interrogé le Web sur la connexion TLS authentifiée
+à Caddy. La sonde a signalé un HTTP 502 pendant l’arrêt du Web, puis
+confirmé le retour à HTTP 200. L’API est restée joignable.
+[Reçu du contrôle Web par TLS](../../evidence/public/operational-proxy-http-20261126.json).
 Le suivi périodique sur le staging reste à qualifier avec des endpoints
 TLS réels et une alerte sur le stockage de sauvegarde hors VM.
 [Guide de la sonde](OPERATING_PROBE.md) ·

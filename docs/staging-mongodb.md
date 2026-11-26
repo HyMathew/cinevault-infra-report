@@ -918,10 +918,14 @@ du staging applicatif reste à éprouver avec le couple qualifié.
 
 ### Revenir à JSON après de nouvelles écritures
 
-1. Mettre le Web puis l'API hors service. Vérifier sur le manager que
-   leurs réplicas désirés sont à zéro, puis sur chaque nœud qu'aucun
-   conteneur d'écriture ne tourne encore. Laisser le réplica MongoDB
-   disponible à l'identité de migration.
+1. Sur le manager, inventorier les tâches et versions de la stack stable.
+   Dans la seule stack `cvstage`, ramener successivement `cvstage_https`
+   s’il existe, `cvstage_web` puis `cvstage_api` à zéro réplica avec
+   `docker service scale`. Vérifier les réplicas désirés sur le manager
+   et l’arrêt effectif des écrivains de staging sur les nœuds. Comparer
+   les tâches et versions de la stack stable à l’inventaire. Garder les
+   écrivains arrêtés jusqu’à la fin de l’export et laisser `cvstage_mongo`
+   disponible à l’identité de migration.
 2. Garder le fichier d'origine et sa sauvegarde. Inspecter l'instantané
    MongoDB après le gel et exporter vers un nouveau chemin JSON avec les
    empreintes de l'original et de cet instantané. Refaire l'inspection si

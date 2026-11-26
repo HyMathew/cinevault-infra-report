@@ -116,6 +116,33 @@ Pour ajouter `mongodb`, utiliser le même format avec
 et le fichier CA MongoDB. Les chemins, ports et seuils doivent
 correspondre au contexte de la sonde.
 
+### Vérifier la santé Web à travers le tunnel TLS
+
+Pour le proxy privé, ajouter `--web-via-proxy-tls` à la commande
+de la sonde et fournir `--tls-policy "$TLS_POLICY"`. Indiquer en
+`connect_host` l’adresse locale du tunnel, par exemple `127.0.0.1`.
+Indiquer le port local dans la politique et dans `--web-url`. Par
+exemple, avec un tunnel local sur le port `18443`, utiliser
+`https://cinevault-stage.test:18443/health`. Conserver
+`cinevault-stage.test` comme `server_name` et renseigner le PEM de
+la CA privée dans `ca_file`.
+
+Le GET Web passe sur la connexion TLS authentifiée par cette
+politique. Il utilise le même nom pour la vérification du certificat
+et l’en-tête HTTP Host. Le contrôle exige HTTP 200 et renvoie le
+statut des redirections et des erreurs HTTP sans les suivre.
+Le GET de l’API conserve l’URL `--api-url` et son accès propre.
+
+Sur Docker Desktop, un relais local a acheminé le GET vers Caddy avec les
+images candidates API et Web et MongoDB 8.0.38. La sonde a signalé le
+HTTP 502 pendant l’arrêt du Web, tandis que l’API répondait HTTP 200,
+puis a confirmé le rétablissement. Elle a également signalé les réponses
+303 et 404 et les échecs de confiance TLS. Un test natif Windows a
+vérifié le nom TLS, l’en-tête Host et le GET sur une seule connexion.
+[Reçu des neuf scénarios Docker et du test Windows](../../evidence/public/operational-proxy-http-20261126.json).
+
+### Interpréter les résultats TLS
+
 La négociation TLS vérifie la chaîne de confiance et le nom. Le rapport
 donne pour chaque service l’expiration du certificat serveur en UTC,
 le nombre de secondes restantes, le seuil et la version TLS négociée.
