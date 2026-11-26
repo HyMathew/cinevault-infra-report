@@ -161,3 +161,21 @@ hors mesure a été refusé avec HTTP 409. Les limites CPU et mémoire,
 les ressources observées et les données brutes figurent dans le reçu.
 L’essai couvre cette charge fermée sur un seul hôte.
 [Mesures HTTPS et résultats des passes interrompues](../evidence/public/mixed-https-baseline-20261126.json).
+
+### Verrou de lecture du magasin JSON
+
+L’API `31ee4ea` conserve le verrou pendant la lecture du fichier puis
+valide les octets capturés après sa libération. Le test de concurrence
+suspend le décodeur. Un écrivain termine entre la capture et la
+validation, le lecteur retrouve la révision capturée et la lecture
+suivante retrouve la nouvelle révision. Les transactions continuent
+à valider et remplacer le fichier sous le verrou d’écriture.
+
+Deux constructions locales sans cache ont donné le même manifeste.
+Deux rejeux HTTPS sur cette image ont terminé sans HTTP 503 et
+retrouvé chacun les 48 favoris attendus. Le p95 du catalogue est
+compris entre 715 et 920 ms, et celui du formulaire entre 989 et
+1 162 ms. Le p95 de la fiche et du POST varie dans les deux sens par
+rapport au rejeu exploratoire. Ces deux passes sur un seul PC
+ne fixent pas de garantie de capacité.
+[Mesures sur le candidat JSON](../evidence/public/mixed-https-json-read-lock-20261126.json).

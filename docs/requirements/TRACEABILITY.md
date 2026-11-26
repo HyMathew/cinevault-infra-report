@@ -9,7 +9,10 @@ jalon ont vérifié la préservation des données, comptes, secrets et sessions.
 - Pour RT0705-REQ-009, 010, 022 et 024, le corpus a été rejoué sur l’API
   `4c74c86`. Les 93 échanges, 44 opérations OpenAPI et dix contrôles
   d’exécution ont réussi avec un magasin JSON jetable et les handlers Flask.
-  [Reçu du rejeu](../../evidence/public/academic-json-api-4c74c86-20261126.json).
+  Le résultat est reproduit sur l’API `31ee4ea` après changement de
+  la durée du verrou JSON.
+  [Rejeu initial](../../evidence/public/academic-json-api-4c74c86-20261126.json) ·
+  [Rejeu sur le candidat](../../evidence/public/academic-json-api-31ee4ea-20261126.json).
 - Pour RT0705-REQ-018 à 021 et 028, Compose et Chrome ont exercé les
   modes pédagogique et Enterprise JSON dans deux projets isolés depuis
   les clones publics API `05171fd` et Web `b6b67aa`. Après recréation
