@@ -17,9 +17,11 @@ vérifier le propriétaire, l’emprunteur, les états et le nom d’acteur avec
 
 Pour le prêt et la réservation, un proxy local relaie la création à l'API réelle,
 lit son201 puis ferme sa connexion au Web sans livrer de réponse. Le Web présente
-son503 d'incertitude. Le scénario consulte les GET de rapprochement puis reprend
-manuellement le même formulaire, avec la même clé et le même corps. Il exige un
-rejeu confirmé et une seule entité, un seul audit de création et un reçu inchangé.
+son503 d'incertitude. Le scénario consulte les GET de rapprochement, atteint le
+bouton de rejeu avec Tab, vérifie le focus clavier et l’active avec Entrée. Il exige
+la même clé et le même corps, une confirmation, une seule entité, un seul audit
+de création et un reçu inchangé.
+[Reçu des 47 contrôles sur Chrome, Chromium et Firefox](../../evidence/public/browser-pair-keyboard-20261126.json).
 Ce mécanisme est une injection de coupure HTTP locale ; il ne simule pas un
 succès métier et ne démontre pas une panne physique ni un commit Mongo incertain.
 

@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "scope": "Windows. Three real browsers, local HTTP API and Web, disposable synthetic JSON. Focus and keyboard activation tested on the two uncertain POST responses.",
+  "source": {
+    "api": "4c74c86a2483748d135791f2200409d339d4c920",
+    "web": "895749e69b3397db243c5814c9917928a2a78804"
+  },
+  "browser_pair_script_sha256": "0dc11747cc367e7f3f00c52b67f138272ce8860cb591c7da5b8544186c2bc54b",
+  "new_checks": [
+    "loan retry reachable by Tab with visible focus",
+    "reservation retry reachable by Tab with visible focus"
+  ],
+  "runs": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.4",
+      "checks_passed": 47,
+      "playwright": "1.64.1",
+      "temporary_data_removed": true,
+      "full_report_sha256": "dd876cf71a3c765aa236373cf9448116d5dbb50b7540bbe31b176b9c0e2e629c"
+    },
+    {
+      "browser": "firefox",
+      "version": "157.0",
+      "checks_passed": 47,
+      "playwright": "1.64.1",
+      "temporary_data_removed": true,
+      "full_report_sha256": "a5b7454bec5db50377114bf7d2ee0d6ee3f5981b9c244a3cdacbee19188a76c6"
+    },
+    {
+      "browser": "chrome",
+      "version": "158.0.8127.37",
+      "checks_passed": 47,
+      "playwright": "1.64.1",
+      "temporary_data_removed": true,
+      "full_report_sha256": "debc7ddd76c6e0b96907ea3a0639683b642389c70662d24c5be17117254857ff"
+    }
+  ]
+}

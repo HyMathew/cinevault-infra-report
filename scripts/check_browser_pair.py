@@ -267,6 +267,14 @@ def settle(page):
     page.wait_for_load_state("networkidle")
 
 
+def reach_by_tab(page, target):
+    for _ in range(40):
+        page.keyboard.press("Tab")
+        if target.evaluate("element => element === document.activeElement"):
+            return target.evaluate("element => element.matches(':focus-visible')")
+    return False
+
+
 def login(page, base, username, password):
     page.goto(base + "/connexion")
     page.get_by_label("Identifiant", exact=True).fill(username)
@@ -367,15 +375,24 @@ def exercise_lost_creation(
         kind + " no automatic creation retry",
         len(fault.creation_attempts("/api/v1/" + table)) == 1,
     )
+    retry_button = page.get_by_role(
+        "button", name="Réessayer la même demande", exact=True
+    )
+    check(
+        kind + " retry reachable by Tab with visible focus",
+        reach_by_tab(page, retry_button),
+    )
     with page.expect_response(
         lambda response: (
             urlsplit(response.url).path == film_path + "/" + action
             and response.request.method == "POST"
         )
     ) as replayed:
-        page.get_by_role("button", name="Réessayer la même demande", exact=True).click()
-    settle(page)
+        page.keyboard.press("Enter")
     check(kind + " manual same-key replay is confirmed", replayed.value.status == 303)
+    listing_path = "/emprunts" if kind == "loan" else "/reservations"
+    page.wait_for_url(lambda url: urlsplit(url).path == listing_path)
+    settle(page)
     current = json.loads((folder / "enterprise.json").read_text(encoding="utf-8"))
     check(
         kind + " replay leaves exactly one original entity",
