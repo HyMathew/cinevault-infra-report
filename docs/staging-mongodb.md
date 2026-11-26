@@ -201,6 +201,39 @@ Télécharger les ZIP bruts `image-audit` et
 numéro de tentative visible sur ce run. La commande utilise GitHub CLI
 authentifié en lecture et Python 3.11 ou supérieur.
 
+Pour préparer le déploiement, rassembler les deux publications dans un
+manifeste local et utiliser le [contrôle de la paire](../scripts/check_staging_image_pair.py).
+Le manifeste contient les clés `api` et `web`. Chaque entrée indique
+`commit` (SHA complet), `run` et `attempt` (entiers), `audit_zip` et
+`provenance_zip`. Les chemins relatifs partent du répertoire du manifeste.
+
+```sh
+PAIR_RECEIPT="$(python3 scripts/check_staging_image_pair.py --manifest "$PAIR_MANIFEST")" || {
+  printf '%s\n' "$PAIR_RECEIPT" >&2
+  exit 1
+}
+CINEVAULT_STAGE_API_IMAGE="$(printf '%s' "$PAIR_RECEIPT" | python3 -c \
+  'import json, sys; print(json.load(sys.stdin)["compose_environment"]["CINEVAULT_STAGE_API_IMAGE"])')" || exit 1
+CINEVAULT_STAGE_WEB_IMAGE="$(printf '%s' "$PAIR_RECEIPT" | python3 -c \
+  'import json, sys; print(json.load(sys.stdin)["compose_environment"]["CINEVAULT_STAGE_WEB_IMAGE"])')" || exit 1
+export CINEVAULT_STAGE_API_IMAGE CINEVAULT_STAGE_WEB_IMAGE
+```
+
+Le contrôle fournit les deux références par digest dans
+`compose_environment` après vérification des deux publications. En cas
+d’échec, il renvoie les erreurs par rôle sans références à exporter.
+Conserver le reçu JSON et sa date UTC avec les preuves du déploiement.
+
+Le contrôle a refusé en direct un couple de publications échouées et un
+couple issu de simples scans des commits en qualification. Dans les deux
+cas, il n’a exposé aucune référence de déploiement. Avec des résultats
+positifs simulés, Docker a rendu les configurations de base et HTTPS avec
+zéro ou un réplica applicatif, en conservant les deux références fournies.
+La vérification d’un couple réellement publié et signé reste à effectuer.
+[Reçu du précontrôle de la paire](../evidence/public/staging-image-pair-preflight-20261126.json).
+
+Pour diagnostiquer un seul rôle, lancer le contrôle unitaire.
+
 ```sh
 python3 scripts/check_staging_image_release.py \
   --role api --commit "$API_SOURCE_SHA" --run "$API_RUN_ID" --attempt "$API_ATTEMPT" \

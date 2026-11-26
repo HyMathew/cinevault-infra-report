@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "infra_base_commit": "a9de5d2cb2f437fe56f6d5e20cb64b0cdbaf994d",
+  "pair_checker_sha256": "181ea8358d64ea9430e80bdafd7afb8284255bd7bd50ebf6f0a6d844027acf7b",
+  "qualification": {
+    "actual_negative_gate": {
+      "scope": "Live GitHub negative publication verification and byte-verified retained scan archives",
+      "observed_at_utc": "2026-11-26T22:36:16.734756+00:00",
+      "pair_checker_sha256": "181ea8358d64ea9430e80bdafd7afb8284255bd7bd50ebf6f0a6d844027acf7b",
+      "passed": true,
+      "source": {
+        "api": {
+          "source_commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+          "scan_workflow_run": 45895897888,
+          "verified_audit_sha256": "sha256:e585373b62c986819e51db27936ce9621b8e108d1c8a3937bb5e915582ed5395",
+          "audit_refused": true,
+          "historical_publication_run": 45524933595,
+          "historical_source_commit": "01bfd7736db55aaccfeb6fd91f68d7c8018ea937"
+        },
+        "web": {
+          "source_commit": "895749e69b3397db243c5814c9917928a2a78804",
+          "scan_workflow_run": 45855982485,
+          "verified_audit_sha256": "sha256:d7d2c540e620a1c71bc85d8255193ae180cbaa1be5751cbffd03c7678584e5b6",
+          "audit_refused": true,
+          "historical_publication_run": 45524934184,
+          "historical_source_commit": "137e99556b17555718c60235d3d06980d0107e87"
+        }
+      },
+      "historical_failed_dispatch_pair": {
+        "exit_code": 1,
+        "refusal_by_role": {
+          "api": "publication workflow did not succeed",
+          "web": "publication workflow did not succeed"
+        },
+        "deployment_values_emitted": false
+      },
+      "current_scan_only_pair": {
+        "exit_code": 1,
+        "refusal_by_role": {
+          "api": "workflow identity or attempt differs",
+          "web": "workflow identity or attempt differs"
+        },
+        "deployment_values_emitted": false
+      },
+      "successful_publication_pair_verified": false,
+      "private_receipt_sha256": "98ed55892d8766c93b42a3bd738f5e93a8272d56b6e50d55e3802101e745044c"
+    },
+    "synthetic_render": {
+      "passed": true,
+      "scope": "Synthetic successful verification results, actual Docker stack and Compose configuration only",
+      "observed_at_utc": "2026-11-26T22:36:21.140538+00:00",
+      "pair_checker_sha256": "181ea8358d64ea9430e80bdafd7afb8284255bd7bd50ebf6f0a6d844027acf7b",
+      "fixture_references": {
+        "api": "ghcr.io/hymathew/cinevault-api@sha256:2d492091585f461d5bd1857a62986322606ef43a577007fffe7f1b6d88f75c4a",
+        "web": "ghcr.io/hymathew/cinevault-web@sha256:e46544fe197a937e42980591b5f862474d8faef89416beb36e536ce34b1037d6"
+      },
+      "renders": [
+        {
+          "https_overlay": false,
+          "app_replicas": 0,
+          "api_web_references_preserved": true,
+          "stack_config_sha256": "6f3a579716508819a7c24208d1c8d9f485875e1c76f65f989dc98a44166e41aa",
+          "published_ports": 0
+        },
+        {
+          "https_overlay": false,
+          "app_replicas": 1,
+          "api_web_references_preserved": true,
+          "stack_config_sha256": "663f27e29a755e0ee52793053635816ee884e82a747bfc2ad3133963c2911031",
+          "published_ports": 0
+        },
+        {
+          "https_overlay": true,
+          "app_replicas": 0,
+          "api_web_references_preserved": true,
+          "stack_config_sha256": "ee3eb67901d26d04d674729058c87522823e14645da4cb69d8a76ab37884847a",
+          "published_ports": 0
+        },
+        {
+          "https_overlay": true,
+          "app_replicas": 1,
+          "api_web_references_preserved": true,
+          "stack_config_sha256": "94f6fbc40cc2dba26310b2c4c17cab451bfa3b340da652110d2a35a2e329b5c5",
+          "published_ports": 0
+        }
+      ],
+      "private_receipt_sha256": "f49a4698326e3a34ed48c0361467ca0ddefbb97a9d65e8c4874383bf0efec89e"
+    }
+  },
+  "candidate_publication_verified": false,
+  "staging_deployed": false
+}
