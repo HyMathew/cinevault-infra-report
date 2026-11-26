@@ -501,10 +501,29 @@ def exercise_browser(browser, base, config, folder, args, report, fault):
         admin.locator("#synopsis").fill(
             "Film fictif réservé à cette validation locale."
         )
-        admin.get_by_role("button", name="Ajouter un acteur", exact=True).click()
-        settle(admin)
-        admin.get_by_label("Acteur 1", exact=True).fill("Élodie, Martin")
-        admin.get_by_role("button", name="Créer le film", exact=True).click()
+        add_actor = admin.get_by_role("button", name="Ajouter un acteur", exact=True)
+        check(
+            "movie add actor reachable by Tab with visible focus",
+            reach_by_tab(admin, add_actor),
+        )
+        admin.keyboard.press("Enter")
+        actor_input = admin.get_by_label("Acteur 1", exact=True)
+        actor_input.wait_for(state="visible")
+        check(
+            "movie actor field reachable by Tab with visible focus",
+            reach_by_tab(admin, actor_input),
+        )
+        admin.keyboard.insert_text("Élodie, Martin")
+        create_button = admin.get_by_role("button", name="Créer le film", exact=True)
+        check(
+            "movie create submit reachable by Tab with visible focus",
+            reach_by_tab(admin, create_button),
+        )
+        admin.keyboard.press("Enter")
+        admin.wait_for_url(
+            lambda url: re.fullmatch(r"/films/[0-9a-f-]{36}", urlsplit(url).path)
+            is not None
+        )
         settle(admin)
         film_path = urlsplit(admin.url).path
         check(

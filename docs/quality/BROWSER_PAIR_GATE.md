@@ -7,6 +7,12 @@ présentation qui utilisent des réponses synthétiques simulées.
 
 ## Parcours vérifiés
 
+Dans la création d’un film, le gate atteint le bouton d’ajout et le
+nouveau champ acteur avec Tab. Il vérifie le focus, saisit le nom et
+active la création avec Entrée. Il attend la fiche du film et vérifie
+dans le magasin JSON que le nom avec virgule est conservé.
+[Reçu des 50 contrôles sur Chrome, Chromium et Firefox](../../evidence/public/browser-movie-keyboard-20261126.json).
+
 Le scénario crée uniquement des données fictives dans un magasin neuf : connexion
 administrateur avec contexte client signé, création d’un film et de son premier
 exemplaire, inscription et connexion d’un membre, modification de son profil,

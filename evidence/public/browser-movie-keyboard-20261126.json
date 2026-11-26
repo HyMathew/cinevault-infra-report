@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "scope": "Windows. Three real browsers, local HTTP API and Web, disposable synthetic JSON. Real keyboard navigation and activation for adding an actor and submitting the movie form. Two prior keyboard replays remain in this gate.",
+  "source": {
+    "api": "4c74c86a2483748d135791f2200409d339d4c920",
+    "web": "895749e69b3397db243c5814c9917928a2a78804"
+  },
+  "browser_pair_script_sha256": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+  "new_checks": [
+    "movie add actor reachable by Tab with visible focus",
+    "movie actor field reachable by Tab with visible focus",
+    "movie create submit reachable by Tab with visible focus"
+  ],
+  "runs": [
+    {
+      "browser": "chromium",
+      "version": "156.0.8078.4",
+      "checks_passed": 50,
+      "playwright": "1.64.1",
+      "temporary_data_removed": true,
+      "full_report_sha256": "b21472f758cea1db240b0476a33390eb485304a96032eeadd3364aac3ebc3eed"
+    },
+    {
+      "browser": "firefox",
+      "version": "157.0",
+      "checks_passed": 50,
+      "playwright": "1.64.1",
+      "temporary_data_removed": true,
+      "full_report_sha256": "f8f90465e98db1ee730c770de3692aa1167d94443683fbaf336526f2eca91ce1"
+    },
+    {
+      "browser": "chrome",
+      "version": "158.0.8127.37",
+      "checks_passed": 50,
+      "playwright": "1.64.1",
+      "temporary_data_removed": true,
+      "full_report_sha256": "fabdd3ff269b96afa5c1b8c6fa545b1eb134bc86a18603e8f021cad520a2090c"
+    }
+  ]
+}
