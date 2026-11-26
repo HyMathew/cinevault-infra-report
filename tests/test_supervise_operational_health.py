@@ -3,6 +3,7 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import closing
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 
 import pytest
 
@@ -141,6 +142,28 @@ def test_simultaneous_observers_record_a_single_event(operator):
         assert list(workers.map(lambda _: watch(), range(8))) == ["missing_result"] * 8
     assert len(list(inbox.iterdir())) == 1
     assert len(incident_messages(inbox)) == 1
+
+
+@pytest.mark.parametrize("same_bytes", [True, False])
+def test_windows_replace_contention_checks_published_bytes(
+    operator, capsys, monkeypatch, same_bytes
+):
+    database, inbox, slot = operator
+
+    def competing_writer(source, target):
+        target.write_bytes(source.read_bytes() if same_bytes else b"conflict")
+        raise PermissionError("concurrent reader")
+
+    monkeypatch.setattr(Path, "replace", competing_writer)
+    code, _ = watched(database, inbox, slot, capsys)
+    assert code == (1 if same_bytes else 2)
+    (target,) = inbox.iterdir()
+    with closing(supervisor.monitor_db(database)) as connection:
+        (event,) = connection.execute("SELECT delivered, body FROM events")
+    assert event["delivered"] == int(same_bytes)
+    assert target.read_bytes() == (
+        event["body"].encode() if same_bytes else b"conflict"
+    )
 
 
 def test_runner_retry_preserves_the_first_result(operator, capsys, monkeypatch):

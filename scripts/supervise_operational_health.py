@@ -208,7 +208,13 @@ def deliver(database, inbox):
                         temporary.write(raw)
                         temporary.flush()
                         os.fsync(temporary.fileno())
-                    path.replace(target)
+                    try:
+                        path.replace(target)
+                    except PermissionError:
+                        # Windows may refuse replacement while another watcher reads
+                        # the already-published event. Only identical content is safe.
+                        if not target.exists() or target.read_bytes() != raw:
+                            raise
                 finally:
                     if path is not None:
                         path.unlink(missing_ok=True)
