@@ -26,11 +26,11 @@ jobs:
         run: |
           import hashlib, io, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
           REPO = 'HyMathew/cinevault-infra-report'
-          COMMIT = '8b3aa8c632d1cffa317c34f13bbfdfce9b356371'
-          RUN = 45726955974
-          ARTIFACT = 15074443023
-          DIGEST = '121ea213192660d37a2236c47f0e6563be349cf795bfc7bf20355667a2c70548'
-          ARCHIVE_SIZE = 10936342
+          COMMIT = '33357d653b47eb261d177bf5731628b0bd7d7624'
+          RUN = 45728327913
+          ARTIFACT = 15075681521
+          DIGEST = 'ae0a1e5ea32eeb1fe68d38ca5aa6c0bf144d69ea6962353e9534fcd997b20cfc'
+          ARCHIVE_SIZE = 10940101
           ROOT = f'https://api.github.com/repos/{REPO}/'
           headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
                      'Accept': 'application/vnd.github+json', 'User-Agent': 'CineVault-portal-promotion',
@@ -81,9 +81,9 @@ jobs:
               assert receipt['source_clean'] and receipt['tooling_clean']
               assert receipt['base'] == '/cinevault-infra-report'
               assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 60
-              assert receipt['checks']['checkedLinks'] == 6074 and not receipt['checks']['errors']
+              assert receipt['checks']['checkedLinks'] == 6075 and not receipt['checks']['errors']
               repro = json.loads(z.read('.cache/reproducibility.json'))
-              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 442
+              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 443
               dist = {n[5:]: z.read(n) for n in names if n.startswith('dist/') and not n.endswith('/')}
               assert set(dist) == {f['path'] for f in repro['files']}
               assert all(hashlib.sha256(dist[f['path']]).hexdigest() == f['sha256'] for f in repro['files'])
@@ -94,6 +94,7 @@ jobs:
               pdf = dist['sources/report/enterprise-2.1/RT0705_CineVault_Mathieu_Kuhnapfel.pdf']
               assert hashlib.sha256(pdf).hexdigest() == '8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a'
               assert hashlib.sha256(dist['sources/evidence/public/compose-clean-clone-20261126.json']).hexdigest() == '4432142c2bdb43c9f45466f30330319cad426b3209a91b6c2db64e3cd369ee7f'
+              assert hashlib.sha256(dist['sources/evidence/public/image-release-provenance-preflight-20261126.json']).hexdigest() == '238409ffbff64489656b17a783c856b550ff2cf5c34ac04289f4b9621e4e7be8'
               assert hashlib.sha256(dist['sources/evidence/public/operating-probe-backup-verification-20261126.json']).hexdigest() == '2186cc86191c0b2275aa6faf0f612c03c9448007b8b084a6ac8e603d63cae826'
               assert hashlib.sha256(dist['sources/evidence/public/mongodb-backup-freshness-20261126.json']).hexdigest() == 'cf3e2c0abbfd4d8857e839069a8cfe45403c3a21f288032193f430552b7b59b8'
               assert hashlib.sha256(dist['sources/evidence/public/mongodb-backup-http-20261126.json']).hexdigest() == 'ddb16c934817005d3333c26924e6a35b5259d594e34be50ecf246a8b6cf520ca'
@@ -112,7 +113,7 @@ jobs:
                   dest = target.joinpath(*pathlib.PurePosixPath(name).parts)
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(content)
-          print('Verified qualified candidate: 442 exact dist files; 60 HTML; 213 retained browser checks.')
+          print('Verified qualified candidate: 443 exact dist files; 60 HTML; 213 retained browser checks.')
       - name: Package exact public files including linked dot-directory sources
         shell: bash
         run: |
@@ -121,7 +122,7 @@ jobs:
           import os, pathlib, tarfile
           with tarfile.open(pathlib.Path(os.environ['RUNNER_TEMP']) / 'artifact.tar') as t:
               files = [m for m in t.getmembers() if m.isfile()]
-              assert len(files) == 441
+              assert len(files) == 442
               assert all(m.isfile() or m.isdir() for m in t.getmembers())
               assert './sources/.github/workflows/browser-pair.yml' in t.getnames()
               assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
