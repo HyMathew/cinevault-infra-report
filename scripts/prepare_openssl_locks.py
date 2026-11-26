@@ -9,6 +9,7 @@ import re
 import subprocess
 import sys
 import tarfile
+import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path, PurePosixPath
 from urllib.error import HTTPError
@@ -228,14 +229,23 @@ def prepare(sources, version, docker, output):
             for path, (old, new) in proposed.items()
         },
     }
-    output.mkdir()
-    for path, (_, new) in proposed.items():
-        target = output / path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        with target.open("xb") as stream:
-            stream.write(new)
-    with (output / "receipt.json").open("x", encoding="utf-8", newline="\n") as stream:
-        stream.write(json.dumps(result, indent=2) + "\n")
+    with tempfile.TemporaryDirectory(
+        prefix=".cinevault-apk-", dir=output.parent
+    ) as temporary:
+        staged = Path(temporary) / "proposal"
+        staged.mkdir()
+        for path, (_, new) in proposed.items():
+            target = staged / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open("xb") as stream:
+                stream.write(new)
+        with (staged / "receipt.json").open(
+            "x", encoding="utf-8", newline="\n"
+        ) as stream:
+            stream.write(json.dumps(result, indent=2) + "\n")
+        if output.exists() or output.is_symlink():
+            raise PlanError("output_directory_already_exists")
+        staged.rename(output)
     return result
 
 

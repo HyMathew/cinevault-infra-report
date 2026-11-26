@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "source_sha256": "7a7a60ff221f45dcf348ea8863523c99d18cefa2e6b631c836236fe758d96d7f",
+  "original_preflight_sha256": "04ae3dc26dd9d1d5732b7d0525134812d18c35c29270c501c573cc529e8566ce",
+  "unchanged_proposal_sha256": "2d93a216ee3ccd25093dc85b1daa0d85890801aad1ecf8f052120df6e38716dc",
+  "architecture_count": 8,
+  "lock_count": 9,
+  "verified_controls": [
+    "partial_receipt_write_leaves_no_visible_proposal",
+    "current_official_packages_reproduce_exact_original_proposal"
+  ],
+  "independent_review_model": "gemini-4-neon-high"
+}

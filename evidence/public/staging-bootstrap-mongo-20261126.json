@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "collections": 12,
+  "declared_indexes": 28,
+  "scoped_roles": true,
+  "applied": true,
+  "reconciled": true,
+  "reader_snapshot_matches": true,
+  "app_reads_migrated_movie": true,
+  "source_and_backup_unchanged": true,
+  "database": "cinevault_stage",
+  "api": {
+    "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+    "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+  },
+  "mongodb_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "guide_sha256": "dee773e37f651038f1b1102d2a1dd2e91b272d37a6441d0d77e6b11d387c2c56",
+  "role_snippet_sha256": "bc2cf4878c8b36cebe16a36bd96393afb122652049a2a1fc9a649ca09ee1dc3f",
+  "provision_snippet_sha256": "f224d66de6f47df8ebfad61f6d17f9e6af90d2458f6dbcd8d9d731de79a682ed",
+  "scope": "Local disposable TLS replica set and exact API image, no Swarm actions. Password prompts replaced with synthetic secrets.",
+  "cleanup_confirmed": true
+}

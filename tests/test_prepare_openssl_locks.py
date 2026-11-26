@@ -3,6 +3,7 @@
 import gzip
 import io
 import tarfile
+from pathlib import Path
 
 import pytest
 
@@ -76,3 +77,28 @@ def test_refuses_partial_proposal_when_one_architecture_fails(monkeypatch, tmp_p
             {"api": tmp_path, "web": tmp_path}, NEW, ["docker"], destination
         )
     assert not destination.exists()
+
+
+def test_incomplete_receipt_does_not_publish_any_files(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        refresh, "snapshot", lambda _: ("a" * 40, "alpine", {"x86_64": FROZEN})
+    )
+    monkeypatch.setattr(refresh, "download", lambda *_: b"valid fixture")
+    monkeypatch.setattr(refresh, "verify", lambda *_: None)
+    monkeypatch.setattr(refresh, "check_metadata", lambda *_: None)
+    original_open = Path.open
+
+    def fail_receipt(path, *args, **kwargs):
+        if path.name == "receipt.json":
+            with original_open(path, "xb") as partial:
+                partial.write(b"{")
+            raise OSError("simulated failure after a partial receipt write")
+        return original_open(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "open", fail_receipt)
+    destination = tmp_path / "proposal"
+    with pytest.raises(OSError, match="partial receipt write"):
+        refresh.prepare(
+            {"api": tmp_path, "web": tmp_path}, NEW, ["docker"], destination
+        )
+    assert list(tmp_path.iterdir()) == []

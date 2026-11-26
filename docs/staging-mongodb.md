@@ -690,15 +690,131 @@ avant de créer le premier administrateur de maintenance. La sonde MongoDB du
 manifeste teste le processus et la négociation TLS. L'état primaire et
 l'authentification restent des contrôles séparés.
 
-Le réseau `data` accepte le conteneur opérateur temporaire. Lui seul reçoit
-l’URI de maintenance pendant le provisionnement.
+### Initialiser le membre et les comptes
 
-Provisionner la base vide avec `app.persistence.mongo_maintenance.provision`
-depuis le compte de maintenance. Préparer des identités séparées pour l'API et
-la migration. Accorder à l'application `find`, `insert`, `update` et
-`remove` sur la seule base de staging. Maintenir les écrivains arrêtés pendant
-l'import et le contrôle de l'inventaire. Utiliser le
-[pilote de migration et retour arrière](https://github.com/HyMathew/cinevault-api/blob/quality/cinevault-v2/docs/mongodb-migration.md).
+Sur VM2, sélectionner la tâche MongoDB de `cvstage`, puis ouvrir
+`mongosh`. Pour cette étape, le volume MongoDB doit être neuf.
+
+```sh
+mongo_task="$(docker ps -q --filter label=com.docker.swarm.service.name=cvstage_mongo)"
+test -n "$mongo_task" || exit 1
+docker exec -it "$mongo_task" mongosh --norc --host localhost --tls --tlsCAFile /run/secrets/mongo_ca
+```
+
+Dans `mongosh`, saisir l’initialisation et attendre que
+`db.hello().isWritablePrimary` renvoie `true` et que `me` indique
+`mongo.cv-stage.internal:27017`. Créer le compte d’administration initial
+via l’accès localhost. Saisir son mot de passe dans l’invite.
+
+```javascript
+rs.initiate({_id: "cv-stage-rs", members: [{_id: 0, host: "mongo.cv-stage.internal:27017"}]})
+db.hello()
+db.getSiblingDB("admin").createUser({
+  user: "cvstage_bootstrap",
+  pwd: passwordPrompt(),
+  roles: [{role: "root", db: "admin"}],
+  mechanisms: ["SCRAM-SHA-256"]
+})
+```
+
+Quitter, puis se reconnecter avec le compte d’administration initial.
+Réserver ce compte à l’administration des identités hors des tâches
+applicatives. Les mots de passe des quatre autres comptes sont distincts.
+
+```sh
+docker exec -it "$mongo_task" mongosh --norc --host localhost --tls \
+  --tlsCAFile /run/secrets/mongo_ca --authenticationDatabase admin \
+  --authenticationMechanism SCRAM-SHA-256 --username cvstage_bootstrap
+```
+
+Créer les rôles et les comptes ci-dessous. Le dernier mot de passe
+doit correspondre à celui encodé dans le secret `mongo_app_uri`.
+Le rôle applicatif du guide de rotation est `cvstage_crud`.
+
+```javascript
+const admin = db.getSiblingDB("admin")
+const database = "cinevault_stage"
+const read = ["find", "listCollections", "listIndexes"]
+const profiles = [
+  ["cvstage_ddl", "cvstage_provisioner", [...read, "createCollection", "createIndex", "insert"]],
+  ["cvstage_import_write", "cvstage_import", [...read, "insert"]],
+  ["cvstage_export_read", "cvstage_reader", read],
+  ["cvstage_crud", "cvstage_application", ["find", "insert", "update", "remove"]]
+]
+for (const [role, user, actions] of profiles) {
+  const privileges = [{resource: {db: database, collection: ""}, actions}]
+  if (user === "cvstage_import") {
+    privileges.push({resource: {db: database, collection: "coordination"}, actions: ["update"]})
+  }
+  admin.createRole({role, roles: [], privileges})
+  admin.createUser({user, pwd: passwordPrompt(), roles: [{role, db: "admin"}],
+                    mechanisms: ["SCRAM-SHA-256"]})
+}
+```
+
+### Provisionner et migrer avec les écrivains arrêtés
+
+Sur VM2, utiliser un répertoire privé de travail `STAGE_OPERATOR_DIR`
+lisible par l’UID 10001. Il contient uniquement la CA publique
+`mongo_ca` et deux fichiers d’URI, `provision_uri` et `import_uri`,
+protégés en 0400. Chacune utilise le compte correspondant, la même
+destination TLS que l’URI de l’API et
+`tlsCAFile=/operator/mongo_ca`. Monter ce répertoire en lecture seule.
+
+Le réseau interne `cvstage_data` permet d’exécuter l’opérateur sans
+publier de port. Le provisionnement utilise le module Python de l’image
+API chargée sur VM2.
+
+```sh
+docker run --rm -i --pull never --network cvstage_data --read-only --no-healthcheck \
+  --user 10001:10001 --cap-drop ALL --security-opt no-new-privileges \
+  --mount "type=bind,src=$STAGE_OPERATOR_DIR,dst=/operator,readonly" \
+  --entrypoint python "$CINEVAULT_STAGE_API_IMAGE" -B - <<'PY'
+import json
+from pathlib import Path
+
+from pymongo import MongoClient
+from pymongo.uri_parser import parse_uri
+
+from app.persistence.factory import validate_mongo_uri
+from app.persistence.mongo_maintenance import provision
+
+uri = validate_mongo_uri(Path("/operator/provision_uri").read_text(encoding="utf-8").rstrip("\r\n"), parse_uri)
+with MongoClient(uri, serverSelectionTimeoutMS=5000, timeoutMS=20000) as client:
+    print(json.dumps(provision(client["cinevault_stage"])))
+PY
+```
+
+Le reçu attendu indique 12 collections et 28 index déclarés, soit
+40 index avec les index `_id`. Préparer `STAGE_JSON_DIR` avec le
+JSON académique synthétique `original.json` et sa copie vérifiée
+`backup.json` selon le
+[guide de migration API](https://github.com/HyMathew/cinevault-api/blob/05171fd6cb8f8607b7832f7a997e07509db4139c/docs/mongodb-migration.md).
+Les deux fichiers et le répertoire de travail doivent être accessibles
+par l’UID 10001. Le montage du dossier doit être inscriptible pour le
+fichier de verrou adjacent. Fixer `SOURCE_SHA256` à l’empreinte de la
+copie officielle avant la migration.
+
+```sh
+docker run --rm --pull never --network cvstage_data --read-only --no-healthcheck \
+  --user 10001:10001 --cap-drop ALL --security-opt no-new-privileges \
+  --mount "type=bind,src=$STAGE_OPERATOR_DIR,dst=/operator,readonly" \
+  --mount "type=bind,src=$STAGE_JSON_DIR,dst=/vault" \
+  --entrypoint sh "$CINEVAULT_STAGE_API_IMAGE" -ec '
+    CINEVAULT_MIGRATION_MONGODB_URI="$(cat /operator/import_uri)"
+    export CINEVAULT_MIGRATION_MONGODB_URI
+    exec python -B -m app.migrate_backends "$@"
+  ' cinevault apply-forward --database cinevault_stage \
+  --source /vault/original.json --backup /vault/backup.json \
+  --expected-source-sha256 "$SOURCE_SHA256" --isolated-and-writers-stopped
+```
+
+Le wrapper lit l’URI dans le conteneur sans l’ajouter aux arguments
+Docker. Avant d’activer les applications, rejouer le contrôle en
+remplaçant `apply-forward` par `reconcile-forward` et en retirant
+`--backup /vault/backup.json` et `--isolated-and-writers-stopped`.
+Les deux reçus doivent porter la même empreinte MongoDB. Vérifier que
+les deux fichiers JSON ont gardé leur empreinte.
 
 Une fois la base cohérente, appliquer le même manifeste avec
 `CINEVAULT_STAGE_APP_REPLICAS=1`. Contrôler l'ID d'image de chaque tâche, son

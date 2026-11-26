@@ -254,3 +254,20 @@ fichier témoin a été refusée et ses propriétaires et permissions ont
 essai couvre la génération locale et les volumes, avant toute
 création de secrets ou de services sur Swarm.
 [Reçu de préparation](../../evidence/public/staging-bootstrap-inputs-20261126.json).
+
+Les commandes documentées ont aussi provisionné une base MongoDB 8.0.38
+jetable avec les rôles SCRAM de maintenance, d’import, de lecture et
+d’application. Le compte d’import a migré le JSON et la réconciliation
+a confirmé la même empreinte. Le compte applicatif a retrouvé le film
+migré et la lecture indépendante a confirmé l’instantané. Les fichiers
+JSON source et sauvegarde sont restés identiques. L’essai utilise
+l’image API `05171fd` sur un réseau Docker Desktop isolé.
+[Reçu des rôles et de la migration](../../evidence/public/staging-bootstrap-mongo-20261126.json).
+
+Une revue indépendante a relevé qu’une erreur pendant l’écriture du
+reçu Alpine pouvait laisser une proposition incomplète. Le générateur
+prépare désormais le lot dans un dossier temporaire sur le même
+système de fichiers. Une erreur simulée après écriture partielle du reçu
+ne laisse aucune proposition visible. Les paquets officiels actuels
+reproduisent le lot initial avec la même empreinte.
+[Reçu du test d’écriture](../../evidence/public/openssl-lock-atomic-proposal-20261126.json).
