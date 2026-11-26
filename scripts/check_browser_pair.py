@@ -193,8 +193,13 @@ def parse_args(argv=None):
     parser.add_argument("--api-python", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--screens-dir", type=Path, required=True)
+    parser.add_argument(
+        "--browser", choices=("chromium", "firefox"), default="chromium"
+    )
     parser.add_argument("--browser-channel", choices=("chrome", "chromium"))
     args = parser.parse_args(argv)
+    if args.browser == "firefox" and args.browser_channel is not None:
+        parser.error("--browser-channel is only supported with --browser chromium")
     args.api_root, args.web_root = args.api_root.resolve(), args.web_root.resolve()
     # Preserve an environment's bin/python symlink. Resolving it selects the base interpreter.
     args.api_python = args.api_python.absolute()
@@ -712,11 +717,15 @@ def exercise_browser(browser, base, config, folder, args, report, fault):
 
 
 def run_pair(args):
+    browser_name = getattr(args, "browser", "chromium")
+    browser_channel = args.browser_channel or f"playwright-default-{browser_name}"
     report = {
         "passed": False,
         "started_at": datetime.now(UTC).isoformat(),
         "stage": "initialize",
         "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
+        "browser_engine": browser_name,
+        "browser_channel": browser_channel,
         "checks": [],
         "screens": [],
         "limits": [
@@ -783,15 +792,13 @@ def run_pair(args):
         base = "http://127.0.0.1:" + str(server.server_port)
         report["stage"] = "launch_browser"
         with sync_playwright() as pw:
+            browser_type = pw.firefox if browser_name == "firefox" else pw.chromium
             options = {"headless": True}
             if args.browser_channel:
                 options["channel"] = args.browser_channel
-            browser = pw.chromium.launch(**options)
+            browser = browser_type.launch(**options)
             try:
                 report["browser"] = browser.version
-                report["browser_channel"] = (
-                    args.browser_channel or "playwright-default-chromium"
-                )
                 exercise_browser(browser, base, config, folder, args, report, fault)
             finally:
                 browser.close()
