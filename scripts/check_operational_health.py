@@ -4,9 +4,12 @@ import argparse
 import json
 import math
 import re
+import socket
+import ssl
 import stat
 from datetime import UTC, datetime, timedelta
 from http.client import HTTPException
+from ipaddress import ip_address
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.parse import urlsplit
@@ -14,6 +17,9 @@ from urllib.request import HTTPRedirectHandler, ProxyHandler, build_opener
 
 SERVICES = ("api", "web")
 SWARM_ROLES = ("web", "api", "manager")
+TLS_ROLES = ("proxy", "mongodb")
+TLS_FIELDS = {"connect_host", "server_name", "port", "ca_file", "min_remaining_hours"}
+DNS_LABEL = re.compile(r"[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?")
 MAX_JSON_BYTES = 4 * 1024 * 1024
 MIB = 1024**2
 
@@ -94,6 +100,80 @@ def read_evidence(path):
     except (ValueError, RecursionError):
         pass
     return None, "invalid"
+
+
+def tls_host(value):
+    if not isinstance(value, str):
+        return False
+    try:
+        ip_address(value)
+        return "%" not in value
+    except ValueError:
+        return len(value) <= 253 and all(
+            DNS_LABEL.fullmatch(label) for label in value.split(".")
+        )
+
+
+def tls_policy(path):
+    targets, failure = read_evidence(path)
+    if failure or not targets or targets.keys() - TLS_ROLES:
+        raise argparse.ArgumentTypeError("Expected a policy for proxy and/or mongodb.")
+    for target in targets.values():
+        if (
+            not isinstance(target, dict)
+            or target.keys() != TLS_FIELDS
+            or not tls_host(target["connect_host"])
+            or not tls_host(target["server_name"])
+            or type(target["port"]) is not int
+            or not 1 <= target["port"] <= 65535
+            or not isinstance(target["ca_file"], str)
+            or not Path(target["ca_file"]).is_absolute()
+            or "\x00" in target["ca_file"]
+            or type(target["min_remaining_hours"]) is not int
+            or target["min_remaining_hours"] <= 0
+        ):
+            raise argparse.ArgumentTypeError("Invalid TLS target.")
+    return targets
+
+
+def probe_tls(target, timeout):
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+    try:
+        context.load_verify_locations(cafile=target["ca_file"])
+    except (OSError, ValueError):
+        return {"state": "trust_unavailable"}
+    try:
+        with (
+            socket.create_connection(
+                (target["connect_host"], target["port"]), timeout=timeout
+            ) as connection,
+            context.wrap_socket(
+                connection, server_hostname=target["server_name"]
+            ) as tls,
+        ):
+            certificate = tls.getpeercert()
+            protocol = tls.version()
+    except ssl.SSLCertVerificationError:
+        return {"state": "certificate_invalid"}
+    except ssl.SSLError:
+        return {"state": "handshake_failed"}
+    except (OSError, ValueError):
+        return {"state": "unreachable"}
+    try:
+        expires_at = datetime.fromtimestamp(
+            ssl.cert_time_to_seconds(certificate["notAfter"]), UTC
+        )
+    except (KeyError, ValueError, OverflowError, OSError):
+        return {"state": "certificate_invalid"}
+    remaining = (expires_at - datetime.now(UTC)).total_seconds()
+    limit = target["min_remaining_hours"]
+    return {
+        "state": "ok" if remaining >= limit * 3600 else "expires_soon",
+        "expires_at_utc": expires_at.isoformat(),
+        "remaining_seconds": max(0, int(remaining)),
+        "min_remaining_hours": limit,
+        "tls_protocol": protocol,
+    }
 
 
 def service_summary(group, max_5xx):
@@ -324,6 +404,9 @@ def main(argv=None):
     parser.add_argument("--max-capacity-age-hours", type=float)
     parser.add_argument("--min-available-memory-mib", type=int)
     parser.add_argument("--min-docker-free-mib", type=int)
+    parser.add_argument(
+        "--tls-policy", type=Path, help="JSON policy for staging TLS certificates"
+    )
     args = parser.parse_args(argv)
     limits = (
         args.max_summary_age_hours,
@@ -348,6 +431,12 @@ def main(argv=None):
         option is None or option <= 0 for option in capacity_options
     ) or not math.isfinite(args.max_capacity_age_hours):
         parser.error("All Swarm capacity thresholds must be positive.")
+    targets = {}
+    if args.tls_policy is not None:
+        try:
+            targets = tls_policy(args.tls_policy)
+        except argparse.ArgumentTypeError:
+            parser.error("Invalid TLS policy.")
     now = datetime.now(UTC)
     timestamps = (
         args.summary_ended_at_utc,
@@ -399,6 +488,18 @@ def main(argv=None):
         checks["swarm_capacity"] = swarm_capacity(
             args.swarm_capacity_snapshot, now, *capacity_options
         )
+    if targets:
+        certificates = {
+            role: probe_tls(targets[role], args.timeout_seconds)
+            for role in TLS_ROLES
+            if role in targets
+        }
+        checks["tls_certificates"] = {
+            "state": "ok"
+            if all(check["state"] == "ok" for check in certificates.values())
+            else "certificate_check_failed",
+            "targets": certificates,
+        }
     ok = all(check["state"] == "ok" for check in (*health.values(), *checks.values()))
     print(
         json.dumps(

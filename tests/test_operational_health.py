@@ -5,12 +5,15 @@ import sys
 from datetime import UTC, datetime, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from ssl import SSLCertVerificationError
 from threading import Thread
+from unittest.mock import MagicMock
 from uuid import uuid4
 
 import pytest
 
-from scripts.check_operational_health import main
+from scripts import check_operational_health as operational_health
+from scripts.check_operational_health import main, probe_tls
 from scripts.summarize_http_logs import summarize
 
 PRIVATE = "PRIVATE_PROBE_SENTINEL"
@@ -110,6 +113,75 @@ def run(arguments, capsys):
     assert "http://" not in result.out + result.err
     assert result.err == ""
     return code, json.loads(result.out)
+
+
+@pytest.fixture
+def tls_target(tmp_path):
+    return {
+        "connect_host": "127.0.0.1",
+        "server_name": f"{PRIVATE.lower().replace('_', '-')}.test",
+        "port": 8443,
+        "ca_file": str(tmp_path / f"{PRIVATE}.pem"),
+        "min_remaining_hours": 48,
+    }
+
+
+def test_tls_probe_verifies_name_and_checks_remaining_lifetime(tls_target, monkeypatch):
+    context = MagicMock()
+    connection = MagicMock()
+    socket = context.wrap_socket.return_value.__enter__.return_value
+    socket.getpeercert.return_value = {
+        "notAfter": (datetime.now(UTC) + timedelta(hours=36)).strftime(
+            "%b %d %H:%M:%S %Y GMT"
+        )
+    }
+    socket.version.return_value = "TLSv1.3"
+    monkeypatch.setattr(operational_health.ssl, "SSLContext", lambda _: context)
+    connect = MagicMock(return_value=connection)
+    monkeypatch.setattr(operational_health.socket, "create_connection", connect)
+
+    result = probe_tls(tls_target, 5)
+    assert result["state"] == "expires_soon"
+    assert result["tls_protocol"] == "TLSv1.3"
+    assert 35 * 3600 < result["remaining_seconds"] <= 36 * 3600
+    connect.assert_called_once_with(("127.0.0.1", 8443), timeout=5)
+    context.load_verify_locations.assert_called_once_with(cafile=tls_target["ca_file"])
+    context.wrap_socket.assert_called_once_with(
+        connection.__enter__.return_value, server_hostname=tls_target["server_name"]
+    )
+    assert probe_tls({**tls_target, "min_remaining_hours": 24}, 5)["state"] == "ok"
+
+    context.wrap_socket.side_effect = SSLCertVerificationError(1, PRIVATE)
+    assert probe_tls(tls_target, 5) == {"state": "certificate_invalid"}
+
+
+def test_tls_checks_set_exit_status_without_exposing_configuration(
+    arguments, tls_target, endpoints, capsys, tmp_path, monkeypatch
+):
+    policy = tmp_path / "tls.json"
+    policy.write_text(json.dumps({"proxy": tls_target, "mongodb": tls_target}))
+    arguments["tls-policy"] = str(policy)
+    probe = MagicMock(side_effect=[{"state": "ok"}, {"state": "certificate_invalid"}])
+    monkeypatch.setattr(operational_health, "probe_tls", probe)
+    code, output = run(arguments, capsys)
+    assert code == 1
+    assert output["tls_certificates"] == {
+        "state": "certificate_check_failed",
+        "targets": {
+            "proxy": {"state": "ok"},
+            "mongodb": {"state": "certificate_invalid"},
+        },
+    }
+    assert probe.call_count == 2
+
+    _, _, requests = endpoints
+    requests.clear()
+    policy.write_text(json.dumps({"proxy": {**tls_target, "port": True}}))
+    with pytest.raises(SystemExit) as error:
+        main(argv(arguments))
+    assert error.value.code == 2
+    assert not requests
+    assert PRIVATE not in capsys.readouterr().err
 
 
 def test_real_http_api_outage_recovery_and_redirect_refusal(

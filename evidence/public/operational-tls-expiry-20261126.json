@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "scope": "Docker Desktop internal network, actual Caddy and MongoDB TLS, synthetic HTTP endpoints and evidence receipts",
+  "passed": true,
+  "started_at_utc": "2026-11-26T00:59:19.877919+00:00",
+  "finished_at_utc": "2026-11-26T00:59:32.332906+00:00",
+  "probe_sha256": "496c907f8022a15d03adb739d436f72068d6420ee93dec74331b618ff6c9e1b3",
+  "mongo_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "caddy_image": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+  "published_ports": 0,
+  "cleaned_up": true,
+  "checks": {
+    "trusted": {
+      "exit_code": 0,
+      "targets": {
+        "mongodb": {
+          "expires_at_utc": "2026-11-28T00:59:19+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172790,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        },
+        "proxy": {
+          "expires_at_utc": "2026-11-28T00:59:26+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172797,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        }
+      }
+    },
+    "below_expiry_threshold": {
+      "exit_code": 1,
+      "targets": {
+        "mongodb": {
+          "expires_at_utc": "2026-11-28T00:59:19+00:00",
+          "min_remaining_hours": 72,
+          "remaining_seconds": 172790,
+          "state": "expires_soon",
+          "tls_protocol": "TLSv1.3"
+        },
+        "proxy": {
+          "expires_at_utc": "2026-11-28T00:59:26+00:00",
+          "min_remaining_hours": 72,
+          "remaining_seconds": 172797,
+          "state": "expires_soon",
+          "tls_protocol": "TLSv1.3"
+        }
+      }
+    },
+    "incorrect_mongodb_ca": {
+      "exit_code": 1,
+      "targets": {
+        "mongodb": {
+          "state": "certificate_invalid"
+        },
+        "proxy": {
+          "expires_at_utc": "2026-11-28T00:59:26+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172797,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        }
+      }
+    },
+    "incorrect_proxy_name": {
+      "exit_code": 1,
+      "targets": {
+        "mongodb": {
+          "expires_at_utc": "2026-11-28T00:59:19+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172789,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        },
+        "proxy": {
+          "state": "handshake_failed"
+        }
+      }
+    },
+    "incorrect_mongodb_name": {
+      "exit_code": 1,
+      "targets": {
+        "mongodb": {
+          "state": "certificate_invalid"
+        },
+        "proxy": {
+          "expires_at_utc": "2026-11-28T00:59:26+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172796,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        }
+      }
+    },
+    "missing_trust_file": {
+      "exit_code": 1,
+      "targets": {
+        "mongodb": {
+          "expires_at_utc": "2026-11-28T00:59:19+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172789,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        },
+        "proxy": {
+          "state": "trust_unavailable"
+        }
+      }
+    },
+    "unreachable": {
+      "exit_code": 1,
+      "targets": {
+        "mongodb": {
+          "state": "unreachable"
+        },
+        "proxy": {
+          "expires_at_utc": "2026-11-28T00:59:26+00:00",
+          "min_remaining_hours": 24,
+          "remaining_seconds": 172795,
+          "state": "ok",
+          "tls_protocol": "TLSv1.3"
+        }
+      }
+    }
+  }
+}

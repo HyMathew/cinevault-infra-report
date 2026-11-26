@@ -84,6 +84,55 @@ Une exécution périodique doit collecter un nouvel instantané et traiter
 également une absence de résultat. La sonde fournit le résultat JSON et
 le code de sortie pour l'intégration au canal d'alerte choisi.
 
+### Vérifier l’échéance des certificats
+
+Ajouter `--tls-policy "$TLS_POLICY"` pour vérifier le certificat
+présenté par le proxy, MongoDB ou les deux. Exécuter la sonde depuis
+le réseau autorisé du service. Le contrôle MongoDB doit joindre le
+réseau de données privé. Pour un tunnel SSH vers le proxy, indiquer
+`127.0.0.1` et le port local du tunnel dans les paramètres de connexion.
+Conserver le nom DNS du certificat dans `server_name`.
+
+Le fichier JSON fixe les cibles et leur durée minimale avant échéance,
+en heures entières strictement positives. Chaque fichier CA est un
+fichier PEM désigné par un chemin absolu du système qui exécute la
+sonde. Utiliser les mêmes CA que les clients du service.
+
+```json
+{
+  "proxy": {
+    "connect_host": "127.0.0.1",
+    "port": 8443,
+    "server_name": "cinevault-stage.test",
+    "ca_file": "/run/secrets/cinevault_proxy_ca.pem",
+    "min_remaining_hours": 72
+  }
+}
+```
+
+Pour ajouter `mongodb`, utiliser le même format avec
+`mongo.cv-stage.internal` comme nom et adresse DNS, le port `27017`
+et le fichier CA MongoDB. Les chemins, ports et seuils doivent
+correspondre au contexte de la sonde.
+
+La négociation TLS vérifie la chaîne de confiance et le nom. Le rapport
+donne pour chaque service l’expiration du certificat serveur en UTC,
+le nombre de secondes restantes, le seuil et la version TLS négociée.
+`expires_soon` indique un certificat valide qui passe sous le seuil.
+`certificate_invalid` signale un certificat rejeté, par exemple pour
+une CA inconnue, un nom différent ou une expiration passée. Une CA
+illisible, un échec de négociation ou un service injoignable produit
+également un code de sortie 1. Le contrôle TLS utilise le délai défini
+par `--timeout-seconds` pour la connexion et la négociation.
+
+Le test sur un réseau interne Docker Desktop a interrogé Caddy et
+MongoDB 8.0.38. Les deux certificats ont passé un seuil de 24 heures,
+puis déclenché une alerte au seuil de 72 heures. Les essais ont aussi
+signalé une CA et un nom TLS incorrects, un fichier CA manquant et
+un service injoignable. Les réponses HTTP et les reçus de sauvegarde
+utilisés pendant ce test étaient synthétiques.
+[Reçu du contrôle des échéances TLS](../../evidence/public/operational-tls-expiry-20261126.json).
+
 ## Résultats et limites
 
 | Code | Interprétation |

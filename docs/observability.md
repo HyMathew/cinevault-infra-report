@@ -53,6 +53,11 @@ Le test local a détecté une réponse 503 de l'API puis son retour à 200 avec 
 Web toujours disponible. Il a aussi détecté l'absence de collecte et une
 sauvegarde périmée à partir de reçus synthétiques. La sonde s'exécute manuellement.
 
+L’option `--tls-policy` relève l’échéance du certificat servi par
+le proxy ou MongoDB après une négociation TLS vérifiée. Un certificat
+proche du seuil ou rejeté fait échouer la sonde avec un état par service.
+[Configurer la vérification des échéances](quality/OPERATING_PROBE.md#vérifier-léchéance-des-certificats).
+
 Pour contrôler la copie hors VM, `verify --maximum-age-hours` vérifie
 le SHA-256 de confiance, authentifie l’archive et calcule son âge à
 partir de la date de capture. Le planificateur peut déclencher une
