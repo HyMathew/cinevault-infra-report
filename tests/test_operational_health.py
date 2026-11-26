@@ -215,6 +215,72 @@ def test_qualification_receipt_is_not_a_restore_receipt(arguments, capsys):
     assert output["restore"]["state"] == "invalid"
 
 
+@pytest.fixture
+def backup_verification(arguments, tmp_path):
+    path = tmp_path / f"verified-{PRIVATE}.json"
+    arguments["backup-verification-receipt"] = str(path)
+    value = {
+        "status": "BACKUP_FRESHNESS_VERIFIED",
+        "ciphertext_sha256": "a" * 64,
+        "archive_bytes": 27,
+        "created_utc": timestamp(2),
+        "checked_at_utc": timestamp(0.5),
+        "maximum_age_hours": 24,
+    }
+    return path, value
+
+
+def test_off_host_verification_missing_then_recovers(
+    arguments, capsys, backup_verification
+):
+    path, value = backup_verification
+    assert run(arguments, capsys)[1]["backup_verification"] == {"state": "missing"}
+    path.write_text(json.dumps(value), encoding="utf-8")
+    code, output = run(arguments, capsys)
+    assert code == 0 and output["restore"]["state"] == "ok"
+    check = output["backup_verification"]
+    assert check["state"] == "ok"
+    assert check["capture_age_seconds"] >= 7200
+    assert check["verification_age_seconds"] >= 1800
+    assert value["ciphertext_sha256"] not in json.dumps(output)
+
+
+def test_verified_capture_must_also_meet_current_policy(
+    arguments, capsys, backup_verification
+):
+    path, value = backup_verification
+    value.update(created_utc=timestamp(25), maximum_age_hours=48)
+    path.write_text(json.dumps(value), encoding="utf-8")
+    code, output = run(arguments, capsys)
+    assert code == 1
+    assert output["backup"]["state"] == "ok"
+    assert output["backup_verification"]["state"] == "stale"
+
+
+@pytest.mark.parametrize(
+    ("changes", "state"),
+    [
+        ({"ciphertext_sha256": "b" * 64}, "archive_mismatch"),
+        ({"archive_bytes": 28}, "archive_mismatch"),
+        ({"status": "CIPHERTEXT_AUTHENTICATED"}, "invalid"),
+        ({"maximum_age_hours": 1}, "invalid"),
+        ({"maximum_age_hours": True}, "invalid"),
+        ({"checked_at_utc": "unknown"}, "timestamp_missing"),
+        ({"created_utc": "2026-11-25T02:09:19+01:00"}, "invalid"),
+        ({"checked_at_utc": "9999-12-31T00:00:00Z"}, "future_timestamp"),
+        ({"created_utc": "9999-12-31T00:00:00Z"}, "future_timestamp"),
+    ],
+)
+def test_rejects_invalid_off_host_verification(
+    arguments, capsys, backup_verification, changes, state
+):
+    path, value = backup_verification
+    path.write_text(json.dumps({**value, **changes}), encoding="utf-8")
+    code, output = run(arguments, capsys)
+    assert code == 1
+    assert output["backup_verification"] == {"state": state}
+
+
 def test_swarm_capacity_reports_each_threshold_and_recovers(
     arguments, capsys, tmp_path
 ):

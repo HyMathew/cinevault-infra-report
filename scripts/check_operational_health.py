@@ -165,10 +165,10 @@ def collection(path, age_seconds, max_age_hours, max_5xx):
     }
 
 
-def backup_receipt(path, expected_status, age_seconds, max_age_hours):
+def read_backup_receipt(path, expected_status):
     value, failure = read_evidence(path)
     if failure:
-        return {"state": failure}
+        return None, failure
     digest = value.get("ciphertext_sha256")
     size = value.get("archive_bytes")
     if (
@@ -178,12 +178,57 @@ def backup_receipt(path, expected_status, age_seconds, max_age_hours):
         or type(size) is not int
         or size <= 0
     ):
-        return {"state": "invalid"}
+        return None, "invalid"
+    return value, None
+
+
+def receipt_age(failure, age_seconds, max_age_hours):
+    if failure:
+        return {"state": failure}
     if age_seconds is None:
         return {"state": "timestamp_missing"}
     return {
         "state": "stale" if age_seconds / 3600 > max_age_hours else "ok",
         "age_seconds": int(age_seconds),
+    }
+
+
+def backup_verification(path, backup, now, max_age_hours):
+    proof, failure = read_backup_receipt(path, "BACKUP_FRESHNESS_VERIFIED")
+    if failure:
+        return {"state": failure}
+    if backup is None:
+        return {"state": "backup_receipt_unavailable"}
+    if any(proof[key] != backup[key] for key in ("ciphertext_sha256", "archive_bytes")):
+        return {"state": "archive_mismatch"}
+
+    capture = proof.get("created_utc")
+    checked = proof.get("checked_at_utc")
+    maximum = proof.get("maximum_age_hours")
+    if (
+        not isinstance(capture, str)
+        or not isinstance(checked, str)
+        or type(maximum) is not int
+        or not 1 <= maximum <= 168
+    ):
+        return {"state": "invalid"}
+    try:
+        capture = utc_timestamp(capture)
+        checked = utc_timestamp(checked)
+    except argparse.ArgumentTypeError:
+        return {"state": "invalid"}
+    if capture is None or checked is None:
+        return {"state": "timestamp_missing"}
+    if max(capture, checked) > now:
+        return {"state": "future_timestamp"}
+    if not timedelta(0) <= checked - capture <= timedelta(hours=maximum):
+        return {"state": "invalid"}
+
+    age = (now - capture).total_seconds()
+    return {
+        "state": "stale" if age / 3600 > max_age_hours else "ok",
+        "capture_age_seconds": int(age),
+        "verification_age_seconds": int((now - checked).total_seconds()),
     }
 
 
@@ -265,6 +310,11 @@ def main(argv=None):
     parser.add_argument("--max-summary-age-hours", required=True, type=float)
     parser.add_argument("--max-5xx-percent", required=True, type=float)
     parser.add_argument("--backup-receipt", required=True, type=Path)
+    parser.add_argument(
+        "--backup-verification-receipt",
+        type=Path,
+        help="Receipt from verify --maximum-age-hours for the off-host copy",
+    )
     parser.add_argument("--backup-finished-at-utc", **timestamp_options)
     parser.add_argument("--max-backup-age-hours", required=True, type=float)
     parser.add_argument("--restore-receipt", required=True, type=Path)
@@ -317,6 +367,12 @@ def main(argv=None):
         "api": probe(opener, args.api_url, args.timeout_seconds),
         "web": probe(opener, args.web_url, args.timeout_seconds),
     }
+    backup, backup_failure = read_backup_receipt(
+        args.backup_receipt, "ENCRYPTED_BACKUP_CREATED"
+    )
+    _, restore_failure = read_backup_receipt(
+        args.restore_receipt, "ISOLATED_RESTORE_VERIFIED"
+    )
     checks = {
         "collection": collection(
             args.http_summary,
@@ -324,19 +380,21 @@ def main(argv=None):
             args.max_summary_age_hours,
             args.max_5xx_percent,
         ),
-        "backup": backup_receipt(
-            args.backup_receipt,
-            "ENCRYPTED_BACKUP_CREATED",
+        "backup": receipt_age(
+            backup_failure,
             backup_age,
             args.max_backup_age_hours,
         ),
-        "restore": backup_receipt(
-            args.restore_receipt,
-            "ISOLATED_RESTORE_VERIFIED",
+        "restore": receipt_age(
+            restore_failure,
             restore_age,
             args.max_restore_age_hours,
         ),
     }
+    if args.backup_verification_receipt is not None:
+        checks["backup_verification"] = backup_verification(
+            args.backup_verification_receipt, backup, now, args.max_backup_age_hours
+        )
     if args.swarm_capacity_snapshot is not None:
         checks["swarm_capacity"] = swarm_capacity(
             args.swarm_capacity_snapshot, now, *capacity_options

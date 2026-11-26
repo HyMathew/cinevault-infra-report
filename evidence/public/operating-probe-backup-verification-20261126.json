@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-25T23:59:58.743378+00:00",
+  "scope": "Windows operating probe using native MongoDB backup and restore receipts, with synthetic HTTP health endpoints",
+  "probe_sha256": "0e1741274964f7e67634f7ff8a88a55ffd1312d96a00c59f4ba291d60f41643f",
+  "source_mongodb_version": "8.0.38",
+  "off_host_copy_verification": "BACKUP_FRESHNESS_VERIFIED",
+  "maximum_age_hours": 24,
+  "restore_receipt_from_separate_archive": true,
+  "real_loopback_http_requests": 10,
+  "scenarios": {
+    "missing": {
+      "exit": 1,
+      "backup_verification": "missing",
+      "api_http_status": 200,
+      "web_http_status": 200
+    },
+    "wrong_archive": {
+      "exit": 1,
+      "backup_verification": "archive_mismatch",
+      "api_http_status": 200,
+      "web_http_status": 200
+    },
+    "verified": {
+      "exit": 0,
+      "backup_verification": "ok",
+      "api_http_status": 200,
+      "web_http_status": 200
+    },
+    "api_outage": {
+      "exit": 1,
+      "backup_verification": "ok",
+      "api_http_status": 503,
+      "web_http_status": 200
+    },
+    "api_recovered": {
+      "exit": 0,
+      "backup_verification": "ok",
+      "api_http_status": 200,
+      "web_http_status": 200
+    }
+  },
+  "cleanup_confirmed": true,
+  "private_receipt_sha256": "6b7c91f64d03e20c86210252200b30f96dc74da98e1faa38ea56c0460d589202"
+}

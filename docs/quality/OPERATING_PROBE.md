@@ -35,6 +35,30 @@ python3 scripts/check_operational_health.py \
   --max-restore-age-hours "$MAX_RESTORE_AGE_HOURS"
 ```
 
+### Contrôler la copie hors VM
+
+Avant chaque contrôle planifié, produire un reçu hors VM avec
+`verify --expected-sha256 … --maximum-age-hours …`. Transmettre ce
+reçu à la sonde avec `--backup-verification-receipt "$VERIFIED_COPY_RECEIPT"`.
+Utiliser un chemin de reçu neuf par exécution et signaler tout code
+non nul de `verify`. La sonde doit lire le chemin de cette tentative.
+Conserver les reçus de sauvegarde et de vérification dans des
+emplacements protégés.
+[Commande de vérification](../operations/MONGODB_BACKUP.md#rotation-fréquence-et-rétention).
+
+La sonde rapproche le SHA-256 et la taille logique des deux reçus.
+Elle vérifie l’ordre des horodatages et applique
+`--max-backup-age-hours` à l’âge de capture au moment du contrôle.
+Le résultat `backup_verification` donne l’âge de capture, l’âge du
+contrôle ou l’état de l’erreur. Un fichier manquant, un SHA-256
+différent ou une capture périmée fait échouer la sonde.
+
+Un essai sous Windows a utilisé un reçu issu d’une nouvelle archive
+MongoDB 8.0.38 et le reçu d’une restauration antérieure. Les endpoints
+HTTP locaux de test ont signalé une panne API puis un retour à 200.
+La sonde a aussi refusé le reçu manquant et le SHA-256 divergent.
+[Reçu du contrôle d’exploitation](../../evidence/public/operating-probe-backup-verification-20261126.json).
+
 ### Contrôler la capacité Swarm
 
 Pour le lab à trois nœuds, fournir un JSON contenant `nodes` avec les rôles
@@ -64,7 +88,7 @@ le code de sortie pour l'intégration au canal d'alerte choisi.
 
 | Code | Interprétation |
 | --- | --- |
-| `0` | Les deux contrôles HTTP, les trois contrôles de preuves et le contrôle de capacité s’il est demandé réussissent. |
+| `0` | Les deux contrôles HTTP, les trois contrôles de preuves et les contrôles supplémentaires demandés réussissent. |
 | `1` | Au moins un contrôle échoue. Le JSON identifie le service ou la preuve et son état. |
 | `2` | La validation des arguments échoue avant les appels réseau. |
 
@@ -73,7 +97,8 @@ corps HTTP, empreintes et contenus de journaux restent dans les sources locales.
 Une collecte absente, vide, illisible, invalide ou périmée entraîne un échec.
 Une collecte partielle ou au-dessus du seuil détaille l’état de chaque service.
 
-L’opérateur déclare les heures UTC de fin qui servent au calcul de fraîcheur.
+L’opérateur déclare les heures UTC de fin des preuves de collecte,
+de sauvegarde et de restauration.
 Conserver les preuves avec ces heures et leurs sources. Les reçus du contrôle
 portable CI qualifient les contrats hors ligne. La sonde attend les reçus natifs
 d’une sauvegarde et d’une restauration.

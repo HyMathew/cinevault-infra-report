@@ -56,7 +56,8 @@ sauvegarde périmée à partir de reçus synthétiques. La sonde s'exécute manu
 Pour contrôler la copie hors VM, `verify --maximum-age-hours` vérifie
 le SHA-256 de confiance, authentifie l’archive et calcule son âge à
 partir de la date de capture. Le planificateur peut déclencher une
-alerte sur le code de sortie.
+alerte sur le code de sortie. La sonde d’exploitation peut rapprocher
+ce reçu du reçu de sauvegarde dans le même contrôle que les services.
 [Commande et procédure d’exploitation](operations/MONGODB_BACKUP.md#rotation-fréquence-et-rétention).
 
 ## Résultat mesuré
