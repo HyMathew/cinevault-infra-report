@@ -9,6 +9,10 @@ paire candidate API `4dd5cd9` et Web `2607907`, les reçus de reprise et de
 circulation ainsi que les pages utilisées du sujet RT0705 et des cours C0 à C5. La v1 est
 [conservée séparément](../RT0705_CineVault_Mathieu_Kuhnapfel.pdf).
 
+Le PDF fixe ses résultats au 21 novembre. La
+[qualification du candidat](../../docs/quality/ENTERPRISE_21_QUALIFICATION.md)
+donne les révisions et preuves des rejeux ultérieurs.
+
 ## Reconstruire le PDF
 
 Depuis la racine du dépôt.

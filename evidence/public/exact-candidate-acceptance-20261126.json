@@ -1,0 +1,207 @@
+{
+  "passed": true,
+  "scope": "Exact candidate clean-clone Docker Desktop runtime, focused Chrome accessibility, and separate read-only PDF inspection",
+  "commits": {
+    "api": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+    "web": "895749e69b3397db243c5814c9917928a2a78804",
+    "infra": "b409a6c0f3b6421ef1bd7b60de35718bef38241c"
+  },
+  "compose": {
+    "started": "2026-11-26T22:49:12.577038+00:00",
+    "scope": "Windows Docker Desktop and public GitHub checkouts",
+    "chrome": "158.0.8127.37",
+    "academic": {
+      "images": {
+        "cinevault-api": "sha256:c21453464eb405971695a8a03cb753c32f378749cc65735bed0356e419150c05",
+        "cinevault-web": "sha256:d073528b3e02a0e712b1934fbb76bc152eae2545b6c398f3cb8bc62be779fa43"
+      },
+      "browser_form_written_and_jinja_visible": true,
+      "exercise_a_page_verified": true,
+      "stored_document_and_api_match": true,
+      "new_container_ids_after_down_up": true,
+      "same_volume_preserved": true,
+      "web_available_after_recreation": true,
+      "api_unpublished": true,
+      "web_bound_to_loopback_only": true,
+      "code_bind_mounts_read_only": true,
+      "runtime_uid_gid": "10001:10001",
+      "interactive_bootstrap_password_masked": false,
+      "file_secrets_scoped_and_read_only": false
+    },
+    "enterprise_json": {
+      "images": {
+        "cinevault-api": "sha256:8a43b76328a86cb7a80a61d11325d053e76ec10979bc1c69b7aa7fcabc044bbf",
+        "cinevault-web": "sha256:b99d3ef07e7d3439f48f05a0ae8d1feb3c3381105b645a9152ec536d1927d36f"
+      },
+      "browser_form_written_and_jinja_visible": true,
+      "exercise_a_page_verified": false,
+      "stored_document_and_api_match": true,
+      "new_container_ids_after_down_up": true,
+      "same_volume_preserved": true,
+      "web_available_after_recreation": true,
+      "api_unpublished": true,
+      "web_bound_to_loopback_only": true,
+      "code_bind_mounts_read_only": true,
+      "runtime_uid_gid": "10001:10001",
+      "interactive_bootstrap_password_masked": true,
+      "file_secrets_scoped_and_read_only": true
+    },
+    "git": {
+      "cinevault-api": {
+        "commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+        "working_tree": ""
+      },
+      "cinevault-web": {
+        "commit": "895749e69b3397db243c5814c9917928a2a78804",
+        "working_tree": ""
+      },
+      "cinevault-infra-report": {
+        "commit": "b409a6c0f3b6421ef1bd7b60de35718bef38241c",
+        "working_tree": ""
+      }
+    },
+    "compose": "5.7.1",
+    "manifest_sha256": {
+      "compose.yaml": "a1278c76b38656cce380dca01e4970efcd9b2a2187eb1a05662de802cca84500",
+      "compose.enterprise.yaml": "d6c5c462d7f8edc064c87181de1560328e7f637446b10f84349d1da283f8eda4"
+    },
+    "temporary_resources_removed": true,
+    "finished": "2026-11-26T22:50:53.812688+00:00",
+    "passed": true
+  },
+  "targeted_ux": {
+    "backend": "json",
+    "sources": {
+      "api": {
+        "commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+        "tracked_files_verified_against_git_blobs": 234,
+        "git_archive_sha256": "cfc0927750a701275bf56fa4a98d65538e555230f4e51f3a69e66a02ce87756a",
+        "source_manifest_sha256": "b8c0f066344d27ab498f75578f6fb026cec8e03055f81621cee02d44aaa7ac86"
+      },
+      "web": {
+        "commit": "895749e69b3397db243c5814c9917928a2a78804",
+        "tracked_files_verified_against_git_blobs": 119,
+        "git_archive_sha256": "5663eda793ff21c7fb1c181033aa55ead656660e9068c99d2dffae43be7a5f00",
+        "source_manifest_sha256": "aa03d9da9507c98fd03ad5f0a69b8144d3524fad7c0c562e913291cd85a98e26"
+      }
+    },
+    "checked_widths_px": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "states": 20,
+    "states_without_horizontal_overflow": 20,
+    "axe_version": "4.11.0",
+    "axe_violations": 0,
+    "axe_incomplete": 0,
+    "browser": "158.0.8127.37",
+    "flows": {
+      "empty_catalogue_and_collection_http": true,
+      "favorite_added_via_browser_and_private_from_admin": true,
+      "validated_width_320": {
+        "focus_native_after_positive_and_empty_search": true,
+        "first_film_one_tab": true,
+        "sole_detail_link_per_film": true,
+        "queries_preserved_on_detail_return": true,
+        "favorite_browse_and_exclusive_named_list_preserved": true,
+        "role_and_status_accessible_names_are_account_specific": true
+      },
+      "validated_width_390": {
+        "focus_native_after_positive_and_empty_search": true,
+        "first_film_one_tab": true,
+        "sole_detail_link_per_film": true,
+        "queries_preserved_on_detail_return": true,
+        "favorite_browse_and_exclusive_named_list_preserved": true,
+        "role_and_status_accessible_names_are_account_specific": true
+      },
+      "validated_width_768": {
+        "focus_native_after_positive_and_empty_search": true,
+        "first_film_one_tab": true,
+        "sole_detail_link_per_film": true,
+        "queries_preserved_on_detail_return": true,
+        "favorite_browse_and_exclusive_named_list_preserved": true,
+        "role_and_status_accessible_names_are_account_specific": true
+      },
+      "validated_width_1280": {
+        "focus_native_after_positive_and_empty_search": true,
+        "first_film_one_tab": true,
+        "sole_detail_link_per_film": true,
+        "queries_preserved_on_detail_return": true,
+        "favorite_browse_and_exclusive_named_list_preserved": true,
+        "role_and_status_accessible_names_are_account_specific": true
+      },
+      "member_still_gets_403": true
+    },
+    "screen_sha256": [
+      {
+        "file": "recherche-resultat-320.png",
+        "sha256": "f269a7a5d3ca86049a0f2f9cee80d7808bebf6516bc4a79cf597729c87d456b4"
+      },
+      {
+        "file": "recherche-vide-320.png",
+        "sha256": "453c980e5c384f084ceeda4dca892809e765f965e5bae05ea626a756bd0f7757"
+      },
+      {
+        "file": "favoris-320.png",
+        "sha256": "67afc076889d95ee62305a90909ad578d3c0b6a7ae01720dda9a14990461a168"
+      },
+      {
+        "file": "liste-nommee-320.png",
+        "sha256": "676f46e3a9c8ba576fe35f36bc1f2789225bd56d77744ee99930235d017f0883"
+      },
+      {
+        "file": "administration-320.png",
+        "sha256": "994c51757ae8d979472226b31997d42bf9e2d19367e5fe2b01a295c396194b63"
+      },
+      {
+        "file": "recherche-resultat-1280.png",
+        "sha256": "3b507ded9ca309e54a60829746be04f858af05ee8e25761e09a95772baae2a16"
+      },
+      {
+        "file": "recherche-vide-1280.png",
+        "sha256": "0904d09ce37dc84c07f767e88e43774e2019b33e6e559efb8eb5ba056c0e40d4"
+      },
+      {
+        "file": "favoris-1280.png",
+        "sha256": "820972337a026d91b02760f45804cc945a04a87857231ec15b417e45fe8449e2"
+      },
+      {
+        "file": "liste-nommee-1280.png",
+        "sha256": "220e691c169e3a07059c14acd8e6a99a8c780c0e5d6a277aa8503d5ac37dc3f6"
+      },
+      {
+        "file": "administration-1280.png",
+        "sha256": "3e9034fd86f6facafca4761b68eee6304d078925cd4e948bab8fe0e9f84b4f81"
+      }
+    ],
+    "source_bytes_unchanged": true,
+    "cleanup": {
+      "browser_closed": true,
+      "web_stopped": true,
+      "api_exit": 0,
+      "runtime_removed": true
+    }
+  },
+  "pdf": {
+    "report_sha256": "8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a",
+    "subject_sha256": "1ef71e3ef6278d9624895a6a9d011ed34ecc57b08f78c17b958b41643e76e48c",
+    "report_pages": 20,
+    "subject_pages": 3,
+    "pages_with_annotations": 6,
+    "a2_pages": [
+      19,
+      20
+    ],
+    "all_page_renders_reviewed": true,
+    "pdf_content_historical_cutoff_retained": true
+  },
+  "private_receipt_sha256": {
+    "compose": "205792324535430180af6ca167231ec23a9c42d5e1e2e3f326574ee281422c5f",
+    "ux": "0bd713f70dcba95d3d819d02af3d2e9d0cb9be0021b1b8edc898c684e7ff9329",
+    "pdf": "fbc3c5d620ea179877415d1dbc2c722d318f16746d97a198ec8b24eb31767fc2"
+  },
+  "integrated_swarm_verified": false,
+  "application_publications_signed": false
+}

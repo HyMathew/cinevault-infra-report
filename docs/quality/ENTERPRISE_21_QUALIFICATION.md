@@ -14,11 +14,28 @@ Sigstore du PDF 2.1 a été vérifiée pour la tentative 1 de la CI.
 | Audit des deux images applicatives | Bloqué par les avis OpenSSL classés High dans les rapports Grype vérifiés. |
 | Publication et attestation des images 2.1 | En attente de la réussite de l’audit. |
 | Staging intégré sur trois VM | En attente des deux références d’images signées et du rejeu des contrôles du guide. |
-| Exploitation périodique hors VM | Qualification ouverte pour les endpoints TLS réels, le stockage hors VM et le canal d’alerte. |
+| Exploitation périodique hors VM | Planificateur Windows et réception SSH sur Ubuntu vérifiés avec un banc applicatif local. Réception et stockage des sauvegardes sur le staging intégré à vérifier. |
 
 [Audit image API](https://github.com/HyMathew/cinevault-api/actions/runs/45895897888) ·
 [Audit image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45855982485) ·
 [Guide du staging](../staging-mongodb.md).
+
+### Acceptation et portée des preuves
+
+| Domaine | Preuves disponibles | Limites à la clôture |
+| --- | --- | --- |
+| Académique | La matrice RT0705 conserve les preuves du lab. Le rejeu local du candidat couvre les trois exercices et les deux profils Compose. | Les captures VS Code et les contrôles historiques des VM restent rattachés au jalon pédagogique. |
+| Données et application | Les contrats API, les parcours métier, la migration et la restauration ont des preuves par moteur et par révision. | Le flux de secours à capacité maximale refuse la création d’un compte supplémentaire. Migration et retour arrière sur le staging intégré à rejouer. |
+| Produit | Vingt états du candidat exact ont été contrôlés sur quatre largeurs avec Tab, Entrée et axe. Les mesures TLS reposent sur deux replays des images exactes. | La vérification d’accessibilité reste ciblée sur les états éprouvés. |
+| Sécurité | Le précontrôle vérifie les ressources disponibles sur les trois VM. Le contrôle de la paire exige les deux scans et attestations exacts. | La grille ASVS est datée. La qualification des protections sur le staging et les deux scans applicatifs restent ouverts. |
+| GitHub | Les trois dépôts ont pu être clonés sans accès privé. La documentation est publiée et son PDF attesté. | Les images du candidat doivent encore réussir le scan, être publiées et être attestées. |
+| Documentation | Les sources, le PDF reconstruit et les vingt pages inspectées sont disponibles. | Le PDF fixe ses résultats au 21 novembre. Cette page et la matrice RT0705 rattachent les essais suivants à leurs révisions. |
+| Reproductibilité | Les deux profils Compose ont fonctionné depuis des clones propres. Les preuves fixent les commits, les empreintes des manifests et les versions des outils. | Le déploiement complet et la supervision du staging avec les images signées restent à exécuter. |
+
+[Matrice RT0705](../requirements/TRACEABILITY.md) ·
+[Rejeu Compose, produit et PDF](../../evidence/public/exact-candidate-acceptance-20261126.json) ·
+[Reçu inter-hôtes](../../evidence/public/operational-watch-cross-host-20261126.json) ·
+[Revue ASVS](../security/ASVS_FINDINGS.md).
 
 ## Paire API et Web
 
@@ -89,6 +106,12 @@ reçoit le focus après une recherche et un seul Tab atteint le premier résulta
 Les favoris ne transmettent plus de filtre de liste nommée. Les contrôles de
 rôle et de statut identifient le compte. Les 20 scans axe ciblés n'ont
 rapporté aucune violation. Les 495 tests Web locaux ont réussi.
+
+Le rejeu sur API `31ee4ea` et Web `895749e` confirme les trois
+corrections sur 20 états. Chrome a utilisé des largeurs de 320, 390,
+768 et 1280 px. Les scans ciblés n’ont relevé ni violation ni résultat
+incomplet. Les vues testées n’avaient aucun débordement horizontal.
+[Reçu des corrections sur le candidat](../../evidence/public/exact-candidate-acceptance-20261126.json).
 
 La campagne de circulation a exécuté 264 échanges HTTP sur les deux moteurs,
 avec quatre tours par moteur. Chaque tour a présenté deux demandes concurrentes
