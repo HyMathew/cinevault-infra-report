@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "scope": "Exact API and MongoDB on isolated Docker Desktop networks",
+  "started_at_utc": "2026-11-26T03:58:05.316569+00:00",
+  "phases": [
+    {
+      "phase": "before_rotation",
+      "live_api_identity": "application",
+      "authentication": {
+        "created": [],
+        "retired": [],
+        "fresh_connections_accepted_with_crud_role": [
+          "application"
+        ],
+        "fresh_connections_refused_with_code_18": [],
+        "management_and_cross_database_refused_with_code_13": [
+          "application"
+        ]
+      },
+      "authenticated_http": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      },
+      "mounted_uri_authenticates_expected_identity": true
+    },
+    {
+      "phase": "cutover_with_overlap",
+      "live_api_identity": "replacement",
+      "authentication": {
+        "created": [
+          "replacement"
+        ],
+        "retired": [],
+        "fresh_connections_accepted_with_crud_role": [
+          "application",
+          "replacement"
+        ],
+        "fresh_connections_refused_with_code_18": [],
+        "management_and_cross_database_refused_with_code_13": [
+          "application",
+          "replacement"
+        ]
+      },
+      "authenticated_http": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      },
+      "mounted_uri_authenticates_expected_identity": true
+    },
+    {
+      "phase": "rollback_before_retirement",
+      "live_api_identity": "application",
+      "authentication": {
+        "created": [],
+        "retired": [],
+        "fresh_connections_accepted_with_crud_role": [
+          "application",
+          "replacement"
+        ],
+        "fresh_connections_refused_with_code_18": [],
+        "management_and_cross_database_refused_with_code_13": [
+          "application",
+          "replacement"
+        ]
+      },
+      "authenticated_http": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      },
+      "mounted_uri_authenticates_expected_identity": true
+    },
+    {
+      "phase": "retire_previous_identity",
+      "live_api_identity": "replacement",
+      "authentication": {
+        "created": [],
+        "retired": [
+          "application"
+        ],
+        "fresh_connections_accepted_with_crud_role": [
+          "replacement"
+        ],
+        "fresh_connections_refused_with_code_18": [
+          "application"
+        ],
+        "management_and_cross_database_refused_with_code_13": [
+          "replacement"
+        ]
+      },
+      "authenticated_http": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      },
+      "mounted_uri_authenticates_expected_identity": true
+    },
+    {
+      "phase": "recover_with_new_secret",
+      "live_api_identity": "recovered",
+      "authentication": {
+        "created": [
+          "recovered"
+        ],
+        "retired": [],
+        "fresh_connections_accepted_with_crud_role": [
+          "replacement",
+          "recovered"
+        ],
+        "fresh_connections_refused_with_code_18": [
+          "application"
+        ],
+        "management_and_cross_database_refused_with_code_13": [
+          "replacement",
+          "recovered"
+        ]
+      },
+      "authenticated_http": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      },
+      "mounted_uri_authenticates_expected_identity": true
+    },
+    {
+      "phase": "retire_replacement_identity",
+      "live_api_identity": "recovered",
+      "authentication": {
+        "created": [],
+        "retired": [
+          "replacement"
+        ],
+        "fresh_connections_accepted_with_crud_role": [
+          "recovered"
+        ],
+        "fresh_connections_refused_with_code_18": [
+          "application",
+          "replacement"
+        ],
+        "management_and_cross_database_refused_with_code_13": [
+          "recovered"
+        ]
+      },
+      "authenticated_http": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      },
+      "mounted_uri_authenticates_expected_identity": true
+    }
+  ],
+  "api": {
+    "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+    "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+  },
+  "mongo_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "mongo_container_unchanged": true,
+  "prior_credential_remains_invalid_after_username_reuse": true,
+  "published_ports": 0,
+  "passed": true,
+  "cleanup_confirmed": true,
+  "finished_at_utc": "2026-11-26T03:59:34.314956+00:00"
+}

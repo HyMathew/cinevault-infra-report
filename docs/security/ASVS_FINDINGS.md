@@ -159,11 +159,14 @@ Le 26 novembre, une rotation du certificat et de sa clé a réussi sur
 un proxy de staging temporaire, avec rétablissement observé du
 certificat initial après rollback. La grille classe désormais
 `13.3.4` comme partiel. La CA MongoDB a été renouvelée et rétablie
-en local avec l’API du candidat et un membre unique. Le renouvellement
-de la CA du proxy HTTPS, la rotation des autres secrets et leur
-échéancier restent à vérifier dans le déploiement cible.
+en local avec l’API du candidat et un membre unique. Le remplacement,
+le retrait et la reprise avec un nouveau secret ont réussi pour
+l’identité SCRAM de l’API sur Docker Desktop. Le renouvellement de
+la CA du proxy HTTPS, la rotation des autres secrets et leur échéancier
+restent à vérifier dans le déploiement cible.
 [Reçu de rotation TLS](../../evidence/public/swarm-https-certificate-rotation-20261126.json) ·
-[Reçu de rotation CA MongoDB](../../evidence/public/mongodb-ca-rollover-20261126.json).
+[Reçu de rotation CA MongoDB](../../evidence/public/mongodb-ca-rollover-20261126.json) ·
+[Reçu de rotation SCRAM](../../evidence/public/mongodb-scram-rotation-20261126.json).
 
 Actions : définir procédures/fréquences et cas de retour arrière, puis tester
 rotation, continuité des budgets, lecture/restauration des backups, avis Medium/Low

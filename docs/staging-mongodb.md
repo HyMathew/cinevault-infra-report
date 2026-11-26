@@ -434,6 +434,79 @@ pendant les deux arrêts, puis 200. Le même film et le même favori
 ont été relus à chaque étape avec authentification.
 [Reçu du renouvellement de la CA MongoDB](../evidence/public/mongodb-ca-rollover-20261126.json).
 
+## Remplacer l’identité SCRAM de l’API
+
+Préparer une fenêtre de maintenance. L’API a un seul réplica et sa
+mise à jour est en `stop-first`. Vérifier la sauvegarde et conserver
+la référence du secret monté avant l’opération. MongoDB et son volume
+restent en service.
+
+1. Depuis le réseau de données, ouvrir une session `mongosh` en TLS avec
+   l’identité de maintenance. Vérifier le rôle de l’utilisateur courant
+   dans `admin`. Le rôle applicatif doit limiter les actions `find`,
+   `insert`, `update` et `remove` à la seule base `cinevault_stage`.
+2. Créer un autre utilisateur dans `admin` avec le même rôle et un
+   mot de passe neuf fourni par `passwordPrompt()`. Remplacer
+   `ROLE_CRUD_VERIFIE` par le rôle vérifié. Depuis un nouveau client,
+   contrôler la lecture permise et le refus des opérations de
+   maintenance avant le basculement.
+
+   ```javascript
+   db.getSiblingDB("admin").runCommand({
+     createUser: "cinevault_app_v2",
+     pwd: passwordPrompt(),
+     roles: [{ role: "ROLE_CRUD_VERIFIE", db: "admin" }],
+     mechanisms: ["SCRAM-SHA-256"],
+     writeConcern: { w: "majority", wtimeout: 5000 }
+   })
+   ```
+
+3. Préparer en privé le nouveau fichier URI. Encoder les identifiants
+   dans l’URI et conserver le nom MongoDB, la CA, la validation TLS,
+   `authSource=admin`, `authMechanism=SCRAM-SHA-256` et
+   `replicaSet=cv-stage-rs`. Créer le secret Swarm depuis ce fichier
+   sans recopier l’URI dans la ligne de commande. Régler
+   `CURRENT_MONGO_APP_SECRET` sur le nom de la source actuellement montée
+   sous `mongo_app_uri`.
+
+   ```sh
+   docker secret create cvstage_mongo_app_uri_v2 - < "$NEW_MONGO_APP_URI_FILE"
+   docker service update --no-resolve-image \
+     --secret-rm "$CURRENT_MONGO_APP_SECRET" \
+     --secret-add "source=cvstage_mongo_app_uri_v2,target=mongo_app_uri,uid=10001,gid=10001,mode=0400" \
+     cvstage_api
+   ```
+
+4. Attendre la nouvelle tâche et vérifier `/health`, une connexion MongoDB
+   neuve avec l’URI effectivement montée et une lecture authentifiée
+   des données attendues. Garder l’ancien compte pendant cette
+   validation si le motif de rotation permet de le conserver.
+5. Retirer l’ancien utilisateur avec `dropUser` dans `admin`, puis
+   confirmer que ses identifiants échouent sur une nouvelle connexion.
+   Valider de nouveau l’API et reporter le nom du secret actif dans
+   la configuration de déploiement. Supprimer l’ancien secret Swarm
+   lorsque les tâches qui le montaient ont toutes été arrêtées.
+
+Avant le retrait, le retour arrière peut remonter le secret précédent
+si son compte reste autorisé. Après le retrait, créer un compte de
+repli avec un nouveau mot de passe et publier un nouveau secret
+avant de relancer l’API. En cas de soupçon de compromission, planifier
+la révocation immédiate et traiter les connexions existantes dans le
+cadre de l’incident. La vérification de cette procédure porte sur
+de nouvelles connexions.
+[Créer un utilisateur MongoDB](https://www.mongodb.com/docs/v8.0/reference/command/createuser/) ·
+[Retirer un utilisateur MongoDB](https://www.mongodb.com/docs/v8.0/reference/command/dropuser/) ·
+[Mettre à jour un service Swarm](https://docs.docker.com/reference/cli/docker/service/update/).
+
+Sur Docker Desktop, l’API `05171fd` a retrouvé le même film et le même
+favori à chacune des six étapes avec MongoDB 8.0.38. Le compte de
+remplacement avait le même rôle CRUD, et les tentatives d’administration
+et d’accès à une autre base ont été refusées. Après retrait, l’ancien mot
+de passe a été refusé même lorsque le nom du compte a été recréé avec un
+secret neuf. MongoDB a conservé le même conteneur. L’essai a recréé les
+conteneurs API avec des fichiers d’URI montés en lecture seule.
+[Reçu de rotation de l’identité SCRAM](../evidence/public/mongodb-scram-rotation-20261126.json).
+
 ## Démarrer par étapes
 
 Valider la configuration sur le manager. Avec

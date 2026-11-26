@@ -107,9 +107,12 @@ les contrôles de reprise en staging et le chemin Mongo déployé doivent encore
   via SSH sur un proxy Swarm temporaire. Le contrôle `13.3.4` reste
   partiel pour le cycle de vie des autres secrets et du déploiement
   final. Le renouvellement de la CA MongoDB a aussi été validé
-  sur Docker Desktop avec l’API du candidat et un membre unique.
+  sur Docker Desktop avec l’API du candidat et un membre unique. Le
+  remplacement et le retrait du compte SCRAM de l’API ont été validés
+  dans ce même périmètre.
   [Reçu de rotation TLS](../../evidence/public/swarm-https-certificate-rotation-20261126.json) ·
-  [Reçu de rotation CA MongoDB](../../evidence/public/mongodb-ca-rollover-20261126.json).
+  [Reçu de rotation CA MongoDB](../../evidence/public/mongodb-ca-rollover-20261126.json) ·
+  [Reçu de rotation SCRAM](../../evidence/public/mongodb-scram-rotation-20261126.json).
 - La reprise `f1515dd` a publié la quarantaine dans une nouvelle base à partir
   d'une archive chiffrée restaurée. Elle a désactivé quatre comptes et révoqué
   six sessions. Le nouveau compte a obtenu 200 en HTTP. Un ancien mot de passe
