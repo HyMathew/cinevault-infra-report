@@ -1,9 +1,11 @@
-"""Verify a public CineVault registry manifest against the scanned configuration."""
+"""Verify a public CineVault registry manifest and, optionally, its provenance."""
 
 import argparse
 import hashlib
 import json
+import os
 import re
+import subprocess
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
@@ -26,6 +28,9 @@ CONFIG_TYPES = {
 }
 ACCEPT = ", ".join(sorted(INDEX_TYPES | MANIFEST_TYPES))
 MAX_MANIFEST_BYTES = 2 * 1024 * 1024
+PREDICATE = "https://slsa.dev/provenance/v1"
+ISSUER = "https://token.actions.githubusercontent.com"
+QUALIFICATION_REF = "refs/heads/quality/cinevault-v2"
 
 
 class RegistryVerificationError(ValueError):
@@ -195,16 +200,167 @@ def verify(reference, expected_config, expected_platform_manifest=None, *, opene
     }
 
 
+def provenance_source(reference, commit, source_ref, run):
+    match = IMAGE.fullmatch(reference)
+    require(match, "an immutable GHCR reference is required for provenance")
+    owner, image = match[1].split("/")
+    require(owner == "hymathew", "provenance requires an official CineVault repository")
+    require(
+        isinstance(commit, str) and re.fullmatch(r"[0-9a-f]{40}", commit),
+        "provenance requires a full source commit",
+    )
+    default = "master" if image == "cinevault-api" else "main"
+    require(
+        source_ref in {QUALIFICATION_REF, "refs/heads/" + default},
+        "source ref is not permitted for CineVault image publication",
+    )
+    require(type(run) is int and run > 0, "provenance requires a workflow run ID")
+    return f"HyMathew/{image}"
+
+
+def attest(release_subject, repository, workflow, commit, source_ref):
+    args = [
+        "gh",
+        "attestation",
+        "verify",
+        release_subject,
+        "--repo",
+        repository,
+        "--signer-workflow",
+        f"{repository}/{workflow}",
+        "--signer-digest",
+        commit,
+        "--source-digest",
+        commit,
+        "--source-ref",
+        source_ref,
+        "--cert-oidc-issuer",
+        ISSUER,
+        "--deny-self-hosted-runners",
+        "--predicate-type",
+        PREDICATE,
+        "--format",
+        "json",
+    ]
+    environment = {
+        **os.environ,
+        "GH_HOST": "github.com",
+        "GH_PROMPT_DISABLED": "1",
+        "GH_NO_UPDATE_NOTIFIER": "1",
+        "GH_NO_EXTENSION_UPDATE_NOTIFIER": "1",
+    }
+    try:
+        result = subprocess.run(
+            args,
+            env=environment,
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=90,
+            check=False,
+        )
+    except FileNotFoundError:
+        raise RegistryVerificationError(
+            "GitHub CLI is required for provenance"
+        ) from None
+    except (OSError, subprocess.TimeoutExpired):
+        raise RegistryVerificationError(
+            "GitHub CLI provenance check did not finish"
+        ) from None
+    require(result.returncode == 0, "GitHub CLI did not verify the artifact signature")
+    require(
+        0 < len(result.stdout) <= 8 * MAX_MANIFEST_BYTES,
+        "invalid provenance output size",
+    )
+    try:
+        rows = json.loads(result.stdout, object_pairs_hook=unique_object)
+    except (UnicodeError, json.JSONDecodeError, RecursionError):
+        raise RegistryVerificationError(
+            "GitHub CLI returned invalid provenance JSON"
+        ) from None
+    require(
+        isinstance(rows, list) and 1 <= len(rows) <= 30, "invalid provenance result"
+    )
+    return rows
+
+
+def matching_provenance(
+    rows, repository, workflow, commit, source_ref, run, name, digest
+):
+    uri = "https://github.com/" + repository
+    invocation = re.compile(
+        re.escape(f"{uri}/actions/runs/{run}/attempts/") + r"([1-9][0-9]*)"
+    )
+    identity = {
+        "sourceRepositoryURI": uri,
+        "sourceRepositoryRef": source_ref,
+        "sourceRepositoryDigest": commit,
+        "buildSignerURI": f"{uri}/{workflow}@{source_ref}",
+        "buildSignerDigest": commit,
+        "issuer": ISSUER,
+        "runnerEnvironment": "github-hosted",
+    }
+    for row in rows:
+        try:
+            result = row["verificationResult"]
+            cert = result["signature"]["certificate"]
+            statement = result["statement"]
+            attempt = invocation.fullmatch(cert["runInvocationURI"])
+            if (
+                attempt
+                and all(cert.get(field) == value for field, value in identity.items())
+                and result["verifiedTimestamps"]
+                and statement["predicateType"] == PREDICATE
+                and {"name": name, "digest": {"sha256": digest}} in statement["subject"]
+            ):
+                return int(attempt[1])
+        except (KeyError, TypeError, AttributeError, ValueError):
+            continue
+    raise RegistryVerificationError(
+        "verified provenance does not match the source and workflow run"
+    )
+
+
+def verify_attestation(reference, commit, source_ref, run):
+    repo = provenance_source(reference, commit, source_ref, run)
+    workflow = ".github/workflows/tests.yml"
+    name, digest = reference.split("@sha256:")
+    rows = attest("oci://" + reference, repo, workflow, commit, source_ref)
+    attempt = matching_provenance(
+        rows, repo, workflow, commit, source_ref, run, name, digest
+    )
+    return {
+        "signature_verified": True,
+        "source_commit": commit,
+        "source_ref": source_ref,
+        "workflow": f"{repo}/{workflow}",
+        "workflow_run": run,
+        "workflow_attempt": attempt,
+    }
+
+
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--reference", required=True)
     parser.add_argument("--config-digest", required=True)
     parser.add_argument("--platform-manifest-digest")
+    parser.add_argument("--source-commit")
+    parser.add_argument("--source-ref")
+    parser.add_argument("--run-id", type=int)
     args = parser.parse_args(argv)
     try:
+        source = (args.source_commit, args.source_ref, args.run_id)
+        needs_provenance = any(value is not None for value in source)
+        if needs_provenance:
+            provenance_source(args.reference, *source)
+            require(
+                is_digest(args.platform_manifest_digest),
+                "the scanned platform manifest digest is required for provenance",
+            )
         evidence = verify(
             args.reference, args.config_digest, args.platform_manifest_digest
         )
+        if needs_provenance:
+            evidence["provenance"] = verify_attestation(args.reference, *source)
     except RegistryVerificationError as exc:
         print(json.dumps({"passed": False, "error": str(exc)}, sort_keys=True))
         return 1

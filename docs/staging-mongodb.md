@@ -80,24 +80,46 @@ de l’image de base épinglée. Les deux images amd64 conservent les mêmes
 26 paquets installés. Un build avec une empreinte falsifiée échoue.
 [Reçu du candidat avec paquets verrouillés](../evidence/public/enterprise-2.1-alpine-runtime-20261125.json).
 
-Utiliser le digest de configuration `scan_provenance.archive_config_digest`
-de chaque reçu. La [vérification GHCR](../scripts/verify_registry_image.py)
-demande uniquement les manifestes publics par digest, recalcule leurs
-empreintes et compare la configuration au scan. Si le reçu contient un digest
-OCI de plateforme, le fournir aussi avec `--platform-manifest-digest`.
+Pour le précontrôle d’une livraison, utiliser chaque reçu `image-audit`
+vérifié. Relever le digest de configuration
+`scan_provenance.archive_config_digest`, le digest de manifeste OCI
+`scan_provenance.archive_oci_manifest_digest`, le SHA source, le ref
+Git complet et le numéro du run Actions. La
+[vérification GHCR](../scripts/verify_registry_image.py) recalcule
+les empreintes des manifestes publics et compare leur configuration
+au scan. Les trois options de provenance sont fournies ensemble.
+Elles nécessitent GitHub CLI authentifié en lecture sur GitHub.
 
 ```sh
 python3 scripts/verify_registry_image.py \
-  --reference "$CINEVAULT_STAGE_API_IMAGE" --config-digest "$CINEVAULT_STAGE_API_CONFIG_DIGEST"
+  --reference "$CINEVAULT_STAGE_API_IMAGE" --config-digest "$API_CONFIG_DIGEST" \
+  --platform-manifest-digest "$API_PLATFORM_DIGEST" \
+  --source-commit "$API_SOURCE_SHA" --source-ref "$API_SOURCE_REF" --run-id "$API_RUN_ID"
 python3 scripts/verify_registry_image.py \
-  --reference "$CINEVAULT_STAGE_WEB_IMAGE" --config-digest "$CINEVAULT_STAGE_WEB_CONFIG_DIGEST"
+  --reference "$CINEVAULT_STAGE_WEB_IMAGE" --config-digest "$WEB_CONFIG_DIGEST" \
+  --platform-manifest-digest "$WEB_PLATFORM_DIGEST" \
+  --source-commit "$WEB_SOURCE_SHA" --source-ref "$WEB_SOURCE_REF" --run-id "$WEB_RUN_ID"
 ```
 
-Un écart de digest entraîne le code de sortie 1. Le contrôle s'ajoute au
-scan et à la vérification ultérieure du tirage et de l'identité sur les
-workers. Les deux références v1 sont les seuls exemples déjà contrôlés en
-ligne avec ce script. [Reçu GHCR v1](../evidence/public/registry-manifest-check-20261122.json) ·
+GitHub CLI vérifie la signature Sigstore du sujet OCI. Le script exige
+ensuite le dépôt officiel, le workflow de publication `tests.yml`,
+le commit, le ref et le run attendus, ainsi qu’un runner hébergé par
+GitHub. En cas d’échec, il sort avec le code 1 et un diagnostic sans
+sortie brute du CLI. Conserver le reçu qui contient
+`provenance.signature_verified=true` avant le déploiement. Le contrôle
+s’ajoute au scan et à l’inspection des images chargées sur les workers.
+Sans les trois options, le script vérifie uniquement le manifeste,
+comme lors du contrôle des images historiques de la v1.
+[Reçu GHCR v1](../evidence/public/registry-manifest-check-20261122.json) ·
 [Spécification OCI Distribution](https://github.com/opencontainers/distribution-spec/blob/main/spec.md).
+
+Le 26 novembre, GitHub CLI 2.105.0 a vérifié la signature réelle du
+rapport universitaire et le script a retrouvé son run. Un autre
+commit et un autre run ont été refusés. GHCR a servi les manifestes v1
+attendus, dont la provenance n’a pas satisfait ce contrôle. Les images
+Enterprise 2.1 doivent encore passer le scan, être publiées et obtenir
+leurs propres attestations.
+[Reçu du précontrôle de provenance](../evidence/public/image-release-provenance-preflight-20261126.json).
 
 ## Reproduire une image applicative en local
 

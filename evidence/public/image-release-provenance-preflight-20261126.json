@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "passed": true,
+  "observed_at": "2026-11-26T00:22:11.239746+00:00",
+  "scope": "Live GitHub CLI on the attested PDF and live GHCR on the stable image pair",
+  "gh_release": "v2.105.0",
+  "gh_sha256": "77437defc10c5cf35ca0d25d626d58a5210de8ad10bf270c02df4630754bcd69",
+  "report_signature": {
+    "passed": true,
+    "run": 45726955773,
+    "attempt": 1,
+    "sha256": "8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a",
+    "source_commit": "8b3aa8c632d1cffa317c34f13bbfdfce9b356371",
+    "wrong_run_refused": true,
+    "wrong_commit_refused": true
+  },
+  "legacy": {
+    "api": {
+      "registry_manifest_verified": true,
+      "provenance_refused": true
+    },
+    "web": {
+      "registry_manifest_verified": true,
+      "provenance_refused": true
+    }
+  },
+  "verifier_sha256": "5417ee9ef7a3158ebd167380738f9ed40c21d01f7a8cb0c945aa0183221526db",
+  "native_receipt_sha256": "c841ef94f4f3823e1693a5ce5d36e8081aad499c1f263a5609630151277f91ea",
+  "candidate_scan_guard": {
+    "stage": "image_plan",
+    "code": "image_gate_rejected",
+    "staging_executed": false,
+    "private_receipt_sha256": "21ea96c025be0006388d700e897c37803770e51c250bc19bf9e9c8ede1b77015"
+  }
+}
