@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-26T15:11:44.756911+00:00",
+  "scope": "Read-only Linux and Docker collection on three existing teaching VMs",
+  "source_sha256": "4ad87451d786a276f9eab9195e20729d9632158d9fd699077fb0c3852bcffcf6",
+  "checks": {
+    "api_memory": true,
+    "api_placement": true,
+    "api_stable_healthy": true,
+    "contemporaneous_snapshots": true,
+    "distinct_ready_nodes": true,
+    "manager_drained_leader": true,
+    "resources_measured": true,
+    "stage_names_available": true,
+    "web_memory": true,
+    "web_placement": true,
+    "web_stable_healthy": true
+  },
+  "nodes": {
+    "api": {
+      "available_ram_bytes": 1567215616,
+      "docker_available_disk_bytes": 5941215232,
+      "logical_cpus": 2,
+      "timestamp_utc": "2026-11-26T15:11:44.180184+00:00"
+    },
+    "manager": {
+      "available_ram_bytes": 1580064768,
+      "docker_available_disk_bytes": 31272247296,
+      "logical_cpus": 2,
+      "timestamp_utc": "2026-11-26T15:11:44.207594+00:00"
+    },
+    "web": {
+      "available_ram_bytes": 1546809344,
+      "docker_available_disk_bytes": 6432342016,
+      "logical_cpus": 2,
+      "timestamp_utc": "2026-11-26T15:11:44.269549+00:00"
+    }
+  },
+  "operating_probe": {
+    "state": "ok",
+    "maximum_age_hours": 1,
+    "minimum_memory_mib": 1024,
+    "minimum_disk_mib": 3072
+  },
+  "limitations": "No deployment, candidate image verification or network probe in this observation."
+}

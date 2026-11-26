@@ -14,9 +14,44 @@ dans ce staging isolé. [Réseaux Swarm](https://docs.docker.com/engine/swarm/ne
 
 ## Préparer les entrées
 
-- Vérifier les labels de placement, le budget mémoire, CPU et disque, et la santé
-  de la stack déjà en service. Les limites de MongoDB et de l'API de staging
-  totalisent 1 152 Mio sur VM2. La disponibilité mémoire varie avec la charge.
+Le [précontrôle Swarm](../scripts/check_swarm_readiness.py) associe les
+relevés Docker à leurs rôles. Il vérifie les trois nœuds, le manager
+Leader en Drain, les labels, la santé et les digests des tâches stables,
+la mémoire et l’absence de noms de staging déjà utilisés. Il relève
+également le CPU et l’espace disponible sur le système de fichiers de
+Docker. Utiliser Python 3.11 ou supérieur.
+
+Depuis une session SSH administrateur sur chaque VM Linux, lancer le
+script avec le rôle de cette VM, `web`, `api` ou `manager`. L’accès au
+moteur Docker doit être disponible à travers les droits administrateur
+déjà configurés. La collecte interroge le socket Docker local
+`/var/run/docker.sock`. Pour dimensionner le disque, comparer l’espace
+relevé aux tailles des images et volumes prévues pour cette campagne.
+Voici la commande pour le worker web.
+
+```sh
+sudo python3 check_swarm_readiness.py collect web > web.json
+```
+
+Rapatrier les trois relevés via SSH et les assembler depuis le clone.
+Ils doivent dater de moins de quinze minutes. La commande renvoie 1
+si un contrôle échoue et 2 si la collecte ou le format est invalide.
+Le JSON agrégé sert aussi de relevé pour la sonde d’exploitation.
+
+```sh
+python scripts/check_swarm_readiness.py assess \
+  --web web.json --api api.json --manager manager.json > readiness.json
+```
+
+Appliquer ensuite les contrôles d’images ci-dessous. Le précontrôle
+interroge la stack stable et l’environnement du staging sans créer de
+ressource. Le 26 novembre, le relevé depuis le PC a confirmé les
+trois nœuds prêts et les deux tâches stables saines. Les mêmes mesures
+ont été acceptées par la sonde de capacité.
+[Reçu du précontrôle sur les trois VM](../evidence/public/swarm-predeployment-readiness-20261126.json).
+
+- Les limites de MongoDB et de l'API de staging totalisent 1 152 Mio
+  sur VM2. Évaluer le budget disponible au moment du déploiement.
 - Geler les références des deux images qualifiées dans `CINEVAULT_STAGE_API_IMAGE`
   et `CINEVAULT_STAGE_WEB_IMAGE`. Pour une image de registre, utiliser le digest
   de manifeste dont le digest de configuration correspond au reçu de scan.

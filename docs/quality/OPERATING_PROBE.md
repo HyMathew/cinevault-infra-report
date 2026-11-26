@@ -63,10 +63,10 @@ La sonde a aussi refusé le reçu manquant et le SHA-256 divergent.
 
 Pour le lab à trois nœuds, fournir un JSON contenant `nodes` avec les rôles
 `web`, `api` et `manager`. Chaque entrée contient `timestamp_utc`,
-`available_ram_bytes` et `docker_available_disk_bytes`. Relever
-`MemAvailable` dans `/proc/meminfo` sur le nœud et convertir ses Kio en
-octets. Relever l'espace disponible en octets sur le système de fichiers qui
-contient le répertoire Docker. Le [reçu de mesure](../../evidence/public/swarm-mongodb-capacity-20261125.json)
+`available_ram_bytes` et `docker_available_disk_bytes`. Le
+[précontrôle de staging](../staging-mongodb.md#préparer-les-entrées)
+collecte ces valeurs depuis le noyau et le système de fichiers de Docker.
+Le [reçu de mesure](../../evidence/public/swarm-mongodb-capacity-20261125.json)
 montre le format des mesures pendant la fenêtre de lecture.
 
 Ajouter ensemble les quatre arguments au contrôle précédent.
