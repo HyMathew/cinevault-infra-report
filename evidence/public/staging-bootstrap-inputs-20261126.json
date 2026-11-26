@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-11-26T15:38:20.492460+00:00",
+  "api": {
+    "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+    "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+  },
+  "guide_sha256": "5b335c112bf0770156d851c7e9f239372f72dd5107a9ab45a45ac4701e90b362",
+  "generated_keys_verified": true,
+  "attempted_key_overwrite_refused": true,
+  "owners_uid_gid_mode": [
+    [
+      999,
+      999,
+      448
+    ],
+    [
+      10001,
+      10001,
+      448
+    ]
+  ],
+  "nonempty_volume_refused_without_modification": true,
+  "cleanup_confirmed": true,
+  "scope": "Documented Python snippets on disposable Docker Desktop volumes. No Swarm secrets or VM changes."
+}

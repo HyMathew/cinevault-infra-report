@@ -241,3 +241,16 @@ d’hôte ni perte de quorum. Le réplica mono-membre du lab conserve
 ses limites de redondance.
 [Reçu de l’élection et du rejeu](../../evidence/public/mongodb-election-idempotency-20261126.json) ·
 [Élections MongoDB 8.0](https://www.mongodb.com/docs/v8.0/core/replica-set-elections/).
+
+## Préparation des ressources du premier démarrage
+
+Les commandes du guide génèrent la clé de réplication et trois clés
+applicatives indépendantes. La répétition a refusé d’écraser les
+fichiers existants. Sur Docker Desktop, l’image API `05171fd` a
+attribué les propriétaires `999:999` et `10001:10001` aux deux
+volumes d’essai, avec le mode 0700. Une seconde paire contenant un
+fichier témoin a été refusée et ses propriétaires et permissions ont
+été conservés. Les quatre volumes temporaires ont été retirés. Cet
+essai couvre la génération locale et les volumes, avant toute
+création de secrets ou de services sur Swarm.
+[Reçu de préparation](../../evidence/public/staging-bootstrap-inputs-20261126.json).

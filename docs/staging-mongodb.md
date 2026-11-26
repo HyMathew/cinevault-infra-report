@@ -76,6 +76,101 @@ ont été acceptées par la sonde de capacité.
   `tlsCAFile=/run/secrets/mongo_ca`. Le fichier d'URI contient le seul compte
   CRUD. La base configurée dans l'API s'appelle `cinevault_stage`.
 
+### Créer les entrées externes du premier démarrage
+
+Effectuer le précontrôle avant de créer les entrées `cvstage_*`. Le manifeste
+exige les références d’images et de secrets même quand les écrivains ont
+zéro réplica. Après validation des images, préparer les fichiers suivants
+dans un répertoire privé sur le manager. Ordonner les noms de fichiers comme
+dans le tableau permet de créer les secrets sans passer leur contenu en
+argument.
+
+| Fichier sous `STAGE_SECRET_DIR` | Secret Swarm | Contenu |
+| --- | --- | --- |
+| `mongo_server_tls` | `cvstage_mongo_server_tls_v1` | Certificat serveur suivi de sa clé privée, au format PEM |
+| `mongo_replica_key` | `cvstage_mongo_replica_key_v1` | Clé de réplication encodée en base64, générée ci-dessous |
+| `mongo_ca` | `cvstage_mongo_ca_v1` | Certificat PEM public de la CA MongoDB |
+| `mongo_app_uri` | `cvstage_mongo_app_uri_v1` | URI TLS décrite ci-dessus. Encoder les identifiants en URL et conserver le même compte et mot de passe pour sa création dans `admin`. |
+| `auth_throttle` | `cvstage_auth_throttle_v1` | Clé aléatoire indépendante pour les compteurs API |
+| `web_session` | `cvstage_web_session_v1` | Clé aléatoire indépendante de session Flask |
+| `client_context` | `cvstage_client_context_v1` | Une même clé aléatoire, montée par le Web et l’API |
+| `https_cert` | `cvstage_https_cert_v1` | Certificat serveur PEM de la variante HTTPS |
+| `https_key` | `cvstage_https_key_v1` | Clé privée PEM de la variante HTTPS |
+
+Définir `STAGE_SECRET_DIR` sur un répertoire existant de mode 0700.
+Créer le PEM MongoDB et le fichier URI de façon privée, puis produire
+les quatre clés aléatoires. Le mode `xb` refuse de remplacer un fichier
+existant. Les trois clés applicatives sont des octets bruts.
+
+```sh
+umask 077
+python3 - "$STAGE_SECRET_DIR" <<'PY'
+import base64
+import secrets
+import sys
+from pathlib import Path
+
+directory = Path(sys.argv[1])
+keys = {"mongo_replica_key": base64.b64encode(secrets.token_bytes(72))}
+for name in ("auth_throttle", "web_session", "client_context"):
+    keys[name] = secrets.token_bytes(48)
+for name, content in keys.items():
+    with (directory / name).open("xb") as destination:
+        destination.write(content)
+PY
+```
+
+Dans un shell sur le manager, vérifier la présence des sept fichiers avant
+toute création. Pour la variante HTTPS, ajouter `https_cert https_key` à
+la liste avant d’exécuter les deux boucles.
+
+```sh
+inputs="mongo_server_tls mongo_replica_key mongo_ca mongo_app_uri auth_throttle web_session client_context"
+for input in $inputs; do
+  test -s "$STAGE_SECRET_DIR/$input" || exit 1
+done
+for input in $inputs; do
+  docker secret create "cvstage_${input}_v1" - < "$STAGE_SECRET_DIR/$input" || exit 1
+done
+```
+
+Sur VM2, créer les deux volumes locaux après le précontrôle et vérifier
+leur appartenance à cette opération. Utiliser la référence API
+qualifiée et déjà chargée. Le conteneur opérateur refuse les montages
+manquants et les volumes non vides avant de régler le mode et les UID.
+
+```sh
+stage_run="$(openssl rand -hex 8)" || exit 1
+for volume in cvstage_mongo_data_v1 cvstage_api_sidecars_v1; do
+  docker volume create --label "cinevault.bootstrap=$stage_run" "$volume" || exit 1
+  owner="$(docker volume inspect --format '{{index .Labels "cinevault.bootstrap"}}' "$volume")" || exit 1
+  test "$owner" = "$stage_run" || exit 1
+done
+
+docker run --rm -i --pull never --network none --read-only --no-healthcheck \
+  --user 0:0 --cap-drop ALL --cap-add CHOWN --security-opt no-new-privileges \
+  --mount type=volume,src=cvstage_mongo_data_v1,dst=/mnt/mongo,volume-nocopy \
+  --mount type=volume,src=cvstage_api_sidecars_v1,dst=/mnt/sidecars,volume-nocopy \
+  --entrypoint python "$CINEVAULT_STAGE_API_IMAGE" -I -B - <<'PY'
+import os
+from pathlib import Path
+
+directories = {"/mnt/mongo": 999, "/mnt/sidecars": 10001}
+mounts = {line.split()[4] for line in Path("/proc/self/mountinfo").read_text().splitlines()}
+for name in directories:
+    path = Path(name)
+    if name not in mounts or path.is_symlink() or any(path.iterdir()):
+        raise SystemExit("Montage absent ou volume déjà utilisé")
+for name, uid in directories.items():
+    path = Path(name)
+    path.chmod(0o700)
+    os.chown(path, uid, uid)
+    info = path.stat()
+    if (info.st_uid, info.st_gid, info.st_mode & 0o777) != (uid, uid, 0o700):
+        raise SystemExit("Propriétaire ou mode incorrect")
+PY
+```
+
 ## Vérifier les images du registre
 
 Pour un candidat, déclencher le workflow `tests.yml` de chacun des dépôts
@@ -304,9 +399,13 @@ sous forme de config Swarm en lecture seule.
 Rendre les deux fichiers sur le manager avec les références d’images
 qualifiées. Avec `CINEVAULT_STAGE_APP_REPLICAS=0`, seul MongoDB a un
 réplica. Avec la valeur `1`, le proxy démarre avec le Web et l’API.
+Lancer depuis la racine du clone Infra sur le manager pour que le
+Caddyfile soit disponible au chemin de la surcouche.
 
 ```sh
 docker stack config -c stack.mongodb-staging.yaml -c stack.mongodb-staging.https.yaml
+docker stack deploy --resolve-image never \
+  -c stack.mongodb-staging.yaml -c stack.mongodb-staging.https.yaml cvstage
 ```
 
 Le test local du proxy a utilisé un serveur HTTP synthétique. Il a confirmé
