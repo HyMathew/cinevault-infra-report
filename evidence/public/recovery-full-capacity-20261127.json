@@ -1,0 +1,218 @@
+{
+  "api_source_commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+  "web_source_commit": "0283bf3eb295859b302aabb1ba13a35dac627a9f",
+  "browser_gate_source_commit": "3a27a164184eadd065f97f5c610c480946f2fa04",
+  "registry_fixture": "synthetic credentials and data hosted only on disposable local services",
+  "accounts": 10000,
+  "json": {
+    "summary_sha256": "84c03fa8ad2eb421803f00145aeec3dce2a46ff1f65d153e006cb6fee40902ac",
+    "result": {
+      "passed": true,
+      "started_at": "2026-11-26T23:19:26.158853+00:00",
+      "finished_at": "2026-11-26T23:38:56.951115+00:00",
+      "api_source_commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+      "accounts_preserved": 10000,
+      "all_hashes_replaced_and_distinct": true,
+      "old_administrator_password_rejected": true,
+      "source_preserved": true,
+      "argon2": {
+        "time_cost": 3,
+        "memory_kib": 65536,
+        "parallelism": 2
+      },
+      "offline_recovery_duration_seconds": 1169.88,
+      "cleanup_confirmed": true,
+      "recovery": {
+        "operation_id": "be26e4bf-68f8-40b9-9bf9-cbbf3f895acd",
+        "disabled_users": 9999,
+        "revoked_sessions": 0,
+        "closed_reservations": 0,
+        "retained_existing_admin": true,
+        "source_sha256": "806b5ebeacddff1f6eeb2e48fbf3baca1926f5239a57956307f7079b2219ceba",
+        "target_sha256": "450fe2a1eced2ef3775eaae730d578d97b9173426fdb47231a8b42924e14fbb5"
+      }
+    },
+    "interactive_masking_summary_sha256": "72a8d1fb2b9b6bc82a016067c2465d847ff1ba019e2505dfb5d544f01f122633"
+  },
+  "mongodb": {
+    "summary_sha256": "537c761ac9c929d3ec27d6a8ab71b0c5802d141e753de9b4442a14d4adc7d6fa",
+    "result": {
+      "started_at": "2026-11-26T23:24:12.703290+00:00",
+      "api_source_commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+      "dependency_runtime": {
+        "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+        "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+      },
+      "mongodb_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+      "result": {
+        "passed": true,
+        "mongodb_version": "8.0.38",
+        "schema_inventory": {
+          "cv_quarantine_source": [
+            12,
+            40
+          ],
+          "cv_quarantine_target": [
+            12,
+            40
+          ],
+          "cv_quarantine_uncertain": [
+            12,
+            40
+          ]
+        },
+        "source_preserved": true,
+        "all_user_ids_preserved": true,
+        "actor_preserved": true,
+        "retention_receipt": {
+          "closed_reservations": 2,
+          "disabled_users": 9999,
+          "operation_id": "94f9c258-5c2b-45c7-98d5-abb623e44697",
+          "retained_existing_admin": true,
+          "revision": 15,
+          "revoked_sessions": 3,
+          "source_snapshot_sha256": "cea83a0a8e692a37c565f3054596e7c2f84c87d71a5a648508cf79e7d6077040",
+          "status": "applied",
+          "target_snapshot_sha256": "8cc2fbbe8e6058f35317ce18ae16700a01359c06b509a5397497903d1a2c5bd9"
+        },
+        "reconciliation": "matched",
+        "retry_exit": 2,
+        "historical_password_rejected_prepublication": true,
+        "http": {
+          "old_password": 401,
+          "old_bearer": 401,
+          "new_password": 200,
+          "profile": 200
+        },
+        "tested_accounts": 10000,
+        "argon2": "runtime defaults",
+        "retention_duration_seconds": 1514.95
+      },
+      "published_ports": 0,
+      "isolation": "Internal disposable Docker network, TLS/SCRAM, candidate source read-only",
+      "program_sha256": "592953e81664479ee97f795c83397ecc4c9fb8e0ed6d40f09e9a6bbf27664f10",
+      "passed": true,
+      "cleanup_confirmed": true,
+      "finished_at": "2026-11-26T23:50:07.533458+00:00"
+    },
+    "simulated_interruption": {
+      "summary_sha256": "bdf3091622df63be8448f3109357c1fc5047024fb7d869e1ae88362a2297625f",
+      "result": {
+        "passed": true,
+        "mongodb_version": "8.0.38",
+        "tested_accounts": 3,
+        "simulation": "KeyboardInterrupt raised in Python after the real MongoDB commit.",
+        "apply_exit": 3,
+        "receipt": {
+          "closed_reservations": 1,
+          "disabled_users": 2,
+          "operation_id": "85bc853c-2605-45bc-b994-de27b30a5914",
+          "retained_existing_admin": true,
+          "revision": 14,
+          "revoked_sessions": 3,
+          "source_snapshot_sha256": "b6912d2e907555b9f40085da3cd87144cf702997b4834f90bec15f0d6074d5a4",
+          "status": "commit_outcome_unknown",
+          "target_snapshot_sha256": "0aa7796943c6edc22c002ee0e02cff870fbfac2a0f844739e6c298f679377d63"
+        },
+        "matched_reconcile_exit": 0,
+        "empty_target_reconcile_exit": 3,
+        "wrong_digest_reconcile_exit": 3,
+        "source_preserved": true
+      }
+    }
+  },
+  "http_browser_pair": [
+    {
+      "browser": "chrome",
+      "engine": "chromium",
+      "checks": 50,
+      "summary_sha256": "254e1dc279fb3bc52d56b6ec2e57fb74004f0a8d1d4fcba5a5deb0bb3bdc8e3b"
+    },
+    {
+      "browser": "playwright-default-firefox",
+      "engine": "firefox",
+      "checks": 50,
+      "summary_sha256": "54bfb8349d07bd46d7526a01ef8323416a9d927aa32ec1d831672a9f3c21bfca"
+    }
+  ],
+  "http_contract": {
+    "checks": 6,
+    "summary_sha256": "5b96c8c29cffd9079a24d323dd5ef483294b545e29b994939e6d02f086f63581"
+  },
+  "academic_examples": {
+    "http_exchanges": 93,
+    "summary_sha256": "40e06597a9899651d23441d239c1848bd4cfbea6745276e4e864726c3a8a5dbd"
+  },
+  "ci": {
+    "summary_sha256": "6219b88ca8a74f142ae0e3bd5abcfa2c0b7a4bc9fbf1134f06d3eb5bf8aafa9e",
+    "observed_at": "2026-11-26T23:27:31.797187+00:00",
+    "api_source_commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+    "quality_url": "https://github.com/HyMathew/cinevault-api/actions/runs/45910297965",
+    "contracts_url": "https://github.com/HyMathew/cinevault-api/actions/runs/45910298021",
+    "quality_jobs": {
+      "quality (windows-latest)": "success",
+      "quality (ubuntu-24.04)": "success",
+      "tests (windows-latest)": "success",
+      "tests (ubuntu-24.04)": "success",
+      "mongodb": "success",
+      "image": "failure",
+      "publish-image": "skipped",
+      "Attest the published image digest": "skipped",
+      "Verify published image provenance": "skipped"
+    },
+    "contracts_jobs": {
+      "properties (ubuntu-24.04)": "success",
+      "properties (windows-latest)": "success",
+      "named-mutations": "success",
+      "circulation-mutations": "success"
+    },
+    "artifacts": [
+      {
+        "name": "image-audit",
+        "id": 15159977261,
+        "digest": "sha256:1560c1cb7fe423038ef3253262a3cc74ba52553c45b494b5d5dd27a59a9503bd",
+        "size": 156775,
+        "image_config_digest": "sha256:891d8b2be5448475486cbcfcbb6bcb5d42a62d156cb49ed76a12474759b08576",
+        "build_platform_digest": "sha256:a2c8d2833ebebf638ae253ae6037981445850385a73c5a0990dba7ba36e90063",
+        "severity_counts": {
+          "High": 10,
+          "Medium": 12,
+          "Low": 2,
+          "Negligible": 1
+        },
+        "blocking_ids": [
+          "CVE-2026-107493",
+          "CVE-2026-107494",
+          "CVE-2026-121482",
+          "CVE-2026-124709",
+          "CVE-2026-84786"
+        ],
+        "published": false
+      },
+      {
+        "name": "tests-ubuntu-24.04",
+        "id": 15159318980,
+        "digest": "sha256:e25bf81f37a895a0d3db235b2f20673e75461cce0ff0f546a6f7e3148cc571af",
+        "size": 15666,
+        "junit_cases": 643,
+        "skipped": 9,
+        "retention_cases_passed": 2
+      },
+      {
+        "name": "tests-windows-latest",
+        "id": 15158779677,
+        "digest": "sha256:5381903f7ee05089b69a14dd2a3d1cff4162336cbf04c767ac576806c2de145d",
+        "size": 16162,
+        "junit_cases": 643,
+        "skipped": 9,
+        "retention_cases_passed": 2
+      }
+    ]
+  },
+  "limits": [
+    "Times measure the supplied synthetic workload on one host and do not establish a recovery SLA.",
+    "MongoDB uses an isolated single-member replica set and the committed source mounted read-only.",
+    "The browser pair exercises JSON over local HTTP.",
+    "The OCI audit is blocked. No integrated Swarm deployment or external failover was exercised."
+  ]
+}

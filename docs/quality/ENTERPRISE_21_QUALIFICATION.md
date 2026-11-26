@@ -1,11 +1,11 @@
 # Qualification du candidat Enterprise 2.1
 
-## État de la qualification du 26 novembre 2026
+## État de la qualification du 27 novembre 2026
 
-La paire API `31ee4ea` et Web `895749e` passe le contrôle Chromium
-et les contrats JSON sur Ubuntu et Windows. Le corpus académique
-rejoue ses 93 échanges sur le commit API exact. La provenance
-Sigstore du PDF 2.1 a été vérifiée pour la tentative 1 de la CI.
+Le 26 novembre, la paire API `31ee4ea` et Web `895749e` a passé le contrôle
+Chromium et les contrats JSON sur Ubuntu et Windows. Le corpus académique a
+rejoué ses 93 échanges sur le commit API exact. La provenance Sigstore du PDF
+2.1 a été vérifiée pour la tentative 1 de la CI du 26 novembre.
 [Paire Chromium](https://github.com/HyMathew/cinevault-infra-report/actions/runs/45896166272) ·
 [Corpus et PDF](https://github.com/HyMathew/cinevault-infra-report/actions/runs/45896166420).
 
@@ -16,8 +16,8 @@ Sigstore du PDF 2.1 a été vérifiée pour la tentative 1 de la CI.
 | Staging intégré sur trois VM | En attente des deux références d’images signées et du rejeu des contrôles du guide. |
 | Exploitation périodique hors VM | Planificateur Windows et réception SSH sur Ubuntu vérifiés avec un banc applicatif local. Réception et stockage des sauvegardes sur le staging intégré à vérifier. |
 
-[Audit image API](https://github.com/HyMathew/cinevault-api/actions/runs/45895897888) ·
-[Audit image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45855982485) ·
+[Audit image API](https://github.com/HyMathew/cinevault-api/actions/runs/45910297965) ·
+[Audit image Web](https://github.com/HyMathew/cinevault-web/actions/runs/45908354777) ·
 [Guide du staging](../staging-mongodb.md).
 
 ### Acceptation et portée des preuves
@@ -25,7 +25,7 @@ Sigstore du PDF 2.1 a été vérifiée pour la tentative 1 de la CI.
 | Domaine | Preuves disponibles | Limites à la clôture |
 | --- | --- | --- |
 | Académique | La matrice RT0705 conserve les preuves du lab. Le rejeu local du candidat couvre les trois exercices et les deux profils Compose. | Les captures VS Code et les contrôles historiques des VM restent rattachés au jalon pédagogique. |
-| Données et application | Les contrats API, les parcours métier, la migration et la restauration ont des preuves par moteur et par révision. | Le flux de secours à capacité maximale refuse la création d’un compte supplémentaire. Migration et retour arrière sur le staging intégré à rejouer. |
+| Données et application | Les contrats API, les parcours métier, la migration et la restauration ont des preuves par moteur et par révision. | La reprise avec conservation d’un administrateur exige la vérification de son titulaire. Migration et retour arrière sur le staging intégré à rejouer. |
 | Produit | Vingt états du candidat exact ont été contrôlés sur quatre largeurs avec Tab, Entrée et axe. Les mesures TLS reposent sur deux replays des images exactes. | La vérification d’accessibilité reste ciblée sur les états éprouvés. |
 | Sécurité | Le précontrôle vérifie les ressources disponibles sur les trois VM. Le contrôle de la paire exige les deux scans et attestations exacts. | La grille ASVS est datée. La qualification des protections sur le staging et les deux scans applicatifs restent ouverts. |
 | GitHub | Les trois dépôts ont pu être clonés sans accès privé. La documentation est publiée et son PDF attesté. | Les images du candidat doivent encore réussir le scan, être publiées et être attestées. |
@@ -36,6 +36,39 @@ Sigstore du PDF 2.1 a été vérifiée pour la tentative 1 de la CI.
 [Rejeu Compose, produit et PDF](../../evidence/public/exact-candidate-acceptance-20261126.json) ·
 [Reçu inter-hôtes](../../evidence/public/operational-watch-cross-host-20261126.json) ·
 [Revue ASVS](../security/ASVS_FINDINGS.md).
+
+## Reprise d’un registre à capacité maximale
+
+Le mode opérateur `--retain-verified-admin` de l’API `f4457ac` conserve l’UUID
+d’un administrateur actif dont le titulaire a été vérifié par un canal indépendant.
+La source et les références métier sont préservées. L’ancien mot de passe est refusé,
+toutes les sessions sont invalidées et les autres comptes entrent en quarantaine.
+La commande exige une cible dédiée et une empreinte source approuvée.
+[Guide opérateur](https://github.com/HyMathew/cinevault-api/blob/f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0/docs/recovery.md).
+
+Les deux essais à 10 000 comptes ont conservé les identités et l’archive source,
+avec 9 999 comptes mis en quarantaine. Sur le poste de test, la reprise JSON a
+duré 19 min 30 s. La commande MongoDB a duré 25 min 15 s sur un réplica isolé
+à un membre, avec TLS et SCRAM. Elle a révoqué trois sessions, confirmé l’empreinte
+de la cible et retrouvé le même profil administrateur par HTTP. Les deux essais ont
+employé les paramètres Argon2 du service. Ils mesurent la durée complète sur leur
+jeu synthétique. Les environnements et les méthodes de chronométrage diffèrent.
+[Reçus de qualification](../../evidence/public/recovery-full-capacity-20261127.json).
+
+Après la saisie masquée, le terminal peut rester silencieux pendant le calcul des
+hachages Argon2. MongoDB ouvre la transaction de publication après cette préparation.
+En cas d’interruption, maintenir la cible isolée. Un reçu d’issue incertaine permet
+de demander `reconcile` sur l’empreinte candidate. Garder une cible sans reçu pour
+inspection avant de reprendre. Les durées mesurées sur le jeu synthétique servent
+à préparer la fenêtre de maintenance du même environnement.
+
+La paire locale API `f4457ac` et Web `0283bf3` a réussi 50 contrôles dans Chrome
+et 50 dans Firefox, avec les services réels et un magasin JSON jetable. Le corpus
+académique a rejoué 93 échanges sur le nouveau commit API. Les jobs de test
+sur Windows et Ubuntu ont chacun réussi 634 tests et ignoré 9 cas. Le contrat
+MongoDB et les tests de propriétés et de mutations ont réussi dans la CI du candidat.
+[Tests et audit](https://github.com/HyMathew/cinevault-api/actions/runs/45910297965) ·
+[Propriétés et mutations](https://github.com/HyMathew/cinevault-api/actions/runs/45910298021).
 
 ## Paire API et Web
 
