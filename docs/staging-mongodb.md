@@ -365,6 +365,75 @@ prévues. Les trois tâches ont conservé la réponse HTTP 200 et HSTS
 aux points de mesure. Les ressources de l’essai ont été retirées.
 [Reçu du renouvellement et du retour arrière](../evidence/public/swarm-https-certificate-rotation-20261126.json).
 
+## Remplacer la CA MongoDB
+
+Cette séquence s’applique au replica set mono-nœud de staging, avec
+authentification cliente SCRAM et secrets Swarm immuables. Le
+redémarrage du seul membre crée une fenêtre d’indisponibilité.
+Prévoir cette fenêtre, sauvegarder les données et vérifier l’état de
+la sauvegarde avant la mise à jour.
+
+1. Préparer la CA B et un nouveau PEM serveur signé par B. Garder
+   les SAN `mongo.cv-stage.internal` et `localhost`. Conserver
+   l’ancienne paire, les deux CA publiques et la spécification
+   de départ pendant la fenêtre de retour arrière.
+2. Faire charger le bundle A+B à tous les clients qui doivent suivre
+   la rotation, dont l’API et le poste de sauvegarde. Recréer les
+   processus concernés pour ouvrir de nouvelles connexions. Vérifier
+   leurs connexions pendant que MongoDB sert encore le certificat A.
+3. Sur le service MongoDB uniquement, remplacer dans la même mise à
+   jour le PEM serveur et le fichier CA par la paire B. Garder le
+   volume de données et la clé du replica set. Attendre le primaire,
+   vérifier le certificat servi avec une nouvelle connexion et
+   rejouer les contrôles de santé et de lecture. La sonde `mongosh`
+   du manifeste lit le fichier CA monté par le service MongoDB.
+4. Ramener la confiance des clients à B après validation, puis
+   recréer les processus clients. Vérifier qu’une connexion neuve
+   avec la seule CA A échoue et que les clients avec B retrouvent
+   les données attendues.
+
+Sur le manager, créer les trois secrets suivants depuis les fichiers
+préparés. Confirmer les références actuellement montées avant chaque
+commande de mise à jour.
+
+```sh
+docker secret create cvstage_mongo_ca_bridge_v2 - < "$MONGO_CA_AB"
+docker secret create cvstage_mongo_ca_v2 - < "$MONGO_CA_B"
+docker secret create cvstage_mongo_server_tls_v2 - < "$MONGO_SERVER_PEM_B"
+```
+
+La colonne « Source » donne la valeur de `--secret-add source=…`.
+Ajouter `,target=…`, `,uid=…`, `,gid=…` et `,mode=0400` comme dans la
+commande de rotation HTTPS. Utiliser `--secret-rm` avec la référence
+retirée. Appliquer les deux lignes MongoDB dans le même
+`docker service update --no-resolve-image`, puis valider le service
+avant de passer à la phase suivante.
+
+| Phase | Service | Référence retirée | Source | Cible | UID/GID |
+| --- | --- | --- | --- | --- | --- |
+| 2 | `cvstage_api` | `cvstage_mongo_ca_v1` | `cvstage_mongo_ca_bridge_v2` | `mongo_ca` | 10001 |
+| 3 | `cvstage_mongo` | `cvstage_mongo_server_tls_v1` | `cvstage_mongo_server_tls_v2` | `server_tls` | 999 |
+| 3 | `cvstage_mongo` | `cvstage_mongo_ca_v1` | `cvstage_mongo_ca_v2` | `mongo_ca` | 999 |
+| 4 | `cvstage_api` | `cvstage_mongo_ca_bridge_v2` | `cvstage_mongo_ca_v2` | `mongo_ca` | 10001 |
+
+Pour revenir à A après l’étape 4, recharger A+B côté clients, restaurer
+le PEM serveur et la CA A côté MongoDB, attendre son retour à l’état
+primaire, puis vérifier les connexions et les données avant de
+ramener les clients à A. Valider les sources de secrets dans la
+surcouche déployée avant de réappliquer la stack. Réserver les
+changements d’identité SCRAM ou de clé de réplication à une campagne
+distincte.
+[Configuration TLS MongoDB 8.0](https://www.mongodb.com/docs/v8.0/tutorial/configure-ssl/).
+
+Le 26 novembre, la séquence a été exécutée sur Docker Desktop avec
+MongoDB 8.0.38 et l’API `05171fd`. Le membre unique a redémarré
+sur le même volume. Le script a contrôlé le fichier CA effectivement
+monté, le certificat servi et les connexions neuves sous A, A+B et B.
+Après le basculement, la seule CA A a été refusée. L’API a répondu 503
+pendant les deux arrêts, puis 200. Le même film et le même favori
+ont été relus à chaque étape avec authentification.
+[Reçu du renouvellement de la CA MongoDB](../evidence/public/mongodb-ca-rollover-20261126.json).
+
 ## Démarrer par étapes
 
 Valider la configuration sur le manager. Avec

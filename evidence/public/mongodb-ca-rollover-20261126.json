@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "started": "2026-11-26T00:44:22.709942+00:00",
+  "scope": "Isolated Docker Desktop with MongoDB 8.0.38 and the current API image",
+  "phases": [
+    {
+      "api_trust": "A",
+      "tls_trust_checks": {
+        "A": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "AB": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "B": {
+          "certificate_rejected": true
+        }
+      },
+      "authenticated_data_read": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      }
+    },
+    {
+      "api_trust": "AB",
+      "tls_trust_checks": {
+        "A": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "AB": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "B": {
+          "certificate_rejected": true
+        }
+      },
+      "authenticated_data_read": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      }
+    },
+    {
+      "api_trust": "AB",
+      "tls_trust_checks": {
+        "A": {
+          "certificate_rejected": true
+        },
+        "AB": {
+          "leaf_sha256": "e67edf0cbc40a7071afbd6cb51be9c18b45598da14865cf54c8bf5b49e4105ae",
+          "tls": "TLSv1.3"
+        },
+        "B": {
+          "leaf_sha256": "e67edf0cbc40a7071afbd6cb51be9c18b45598da14865cf54c8bf5b49e4105ae",
+          "tls": "TLSv1.3"
+        }
+      },
+      "authenticated_data_read": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      }
+    },
+    {
+      "api_trust": "B",
+      "tls_trust_checks": {
+        "A": {
+          "certificate_rejected": true
+        },
+        "AB": {
+          "leaf_sha256": "e67edf0cbc40a7071afbd6cb51be9c18b45598da14865cf54c8bf5b49e4105ae",
+          "tls": "TLSv1.3"
+        },
+        "B": {
+          "leaf_sha256": "e67edf0cbc40a7071afbd6cb51be9c18b45598da14865cf54c8bf5b49e4105ae",
+          "tls": "TLSv1.3"
+        }
+      },
+      "authenticated_data_read": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      }
+    },
+    {
+      "api_trust": "AB",
+      "tls_trust_checks": {
+        "A": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "AB": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "B": {
+          "certificate_rejected": true
+        }
+      },
+      "authenticated_data_read": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      }
+    },
+    {
+      "api_trust": "A",
+      "tls_trust_checks": {
+        "A": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "AB": {
+          "leaf_sha256": "b55b177a5915c5697ef4fd690ce3a544ee1577333382b8364a3541799246ad8b",
+          "tls": "TLSv1.3"
+        },
+        "B": {
+          "certificate_rejected": true
+        }
+      },
+      "authenticated_data_read": {
+        "passed": true,
+        "authenticated": true,
+        "movie_found": true,
+        "same_favorite_found": true
+      }
+    }
+  ],
+  "readiness_during_restart": [
+    503,
+    503
+  ],
+  "readiness_after_restart": [
+    200,
+    200
+  ],
+  "mongo_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "api": {
+    "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+    "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+  },
+  "three_distinct_mongo_containers": true,
+  "same_persistent_volume": true,
+  "same_business_objects_after_rotation_and_rollback": true,
+  "new_server_uses_only_ca_b": true,
+  "published_ports": 0,
+  "passed": true,
+  "cleanup_confirmed": true,
+  "finished": "2026-11-26T00:46:10.083458+00:00",
+  "source_receipt_sha256": "66ee6739f09364c9e4e8d641d243eef41767258032091db13cba414587d58914"
+}
