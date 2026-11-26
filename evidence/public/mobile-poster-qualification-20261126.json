@@ -1,0 +1,271 @@
+{
+  "passed": true,
+  "api_commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25",
+  "web_commit": "0283bf3eb295859b302aabb1ba13a35dac627a9f",
+  "previous_web_commit": "895749e69b3397db243c5814c9917928a2a78804",
+  "scope": "Fresh app sources over loopback HTTP with disposable JSON, real browsers, no external assets fetched",
+  "css_sha256": "ce31df827ca02a9ed370bf1b91e0be55f44194d7b093fa8ad36bb445fdb1342b",
+  "authenticated_real_staging_verified": false,
+  "browsers": [
+    {
+      "engine": "chrome",
+      "browser_version": "158.0.8127.37",
+      "observed_at_utc": "2026-11-26T23:02:18.879702+00:00",
+      "poster_checks": [
+        {
+          "surface": "catalogue",
+          "width": 320,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 320,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 390,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 390,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 600,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 600,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 601,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 601,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 768,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 768,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 1280,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 1280,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        }
+      ],
+      "opened_filter_widths": [
+        320,
+        390,
+        600
+      ],
+      "axe_states": 20,
+      "axe_violations": 0,
+      "axe_incomplete": 0,
+      "screens": [
+        {
+          "file": "poster-chrome-2-320.png",
+          "sha256": "90226dde4efe6598d97153ba37a9067c79c8ea68cb4cd8bc0a30e353f2adbd93"
+        },
+        {
+          "file": "poster-chrome-1-320.png",
+          "sha256": "90226dde4efe6598d97153ba37a9067c79c8ea68cb4cd8bc0a30e353f2adbd93"
+        },
+        {
+          "file": "poster-chrome-2-1280.png",
+          "sha256": "79badbf78fde07b6c2a78c80b17c1abd87cda17713f461f53971615358724686"
+        },
+        {
+          "file": "poster-chrome-1-1280.png",
+          "sha256": "4fc8739403df318790d5e966816c215bff6184f8396f2502886414ae6b465c13"
+        }
+      ],
+      "private_receipt_sha256": "1f843b1a90b895b6e7c60ade182e718aaceca6df48efe03a4d0e0b0d8895ca8f"
+    },
+    {
+      "engine": "firefox",
+      "browser_version": "157.0",
+      "observed_at_utc": "2026-11-26T23:02:18.879985+00:00",
+      "poster_checks": [
+        {
+          "surface": "catalogue",
+          "width": 320,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 320,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 390,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 390,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 600,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 600,
+          "decorative_title_visible": false,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 601,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 601,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 768,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 768,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "catalogue",
+          "width": 1280,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        },
+        {
+          "surface": "detail",
+          "width": 1280,
+          "decorative_title_visible": true,
+          "heading_complete": true,
+          "note_visible": true,
+          "two_by_three_ratio": true
+        }
+      ],
+      "opened_filter_widths": [
+        320,
+        390,
+        600
+      ],
+      "axe_states": 20,
+      "axe_violations": 0,
+      "axe_incomplete": 0,
+      "screens": [
+        {
+          "file": "poster-firefox-2-320.png",
+          "sha256": "3a2622073fc34a1cbb1ec95aca89737d9f7b473c41a8ec6d54fce42bfb3ec0e4"
+        },
+        {
+          "file": "poster-firefox-1-320.png",
+          "sha256": "2177a96982f6065ee24b935b7a134ac736aa76efd19c4c8db7402cf84f45721d"
+        },
+        {
+          "file": "poster-firefox-2-1280.png",
+          "sha256": "6c26e5ff858141bbb8c63ef199ecd8fb66a875b172d90454b29ff001045c784a"
+        },
+        {
+          "file": "poster-firefox-1-1280.png",
+          "sha256": "da14d40cb7fd6a9c927504802f2f08d2b07e74575436f66abbc9c678ec953399"
+        }
+      ],
+      "private_receipt_sha256": "d6e19c9b63c438a5d906f7323d24d59f080e7a444572ad29247d6c0712a75e1d"
+    }
+  ]
+}

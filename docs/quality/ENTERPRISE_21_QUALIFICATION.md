@@ -113,6 +113,12 @@ corrections sur 20 états. Chrome a utilisé des largeurs de 320, 390,
 incomplet. Les vues testées n’avaient aucun débordement horizontal.
 [Reçu des corrections sur le candidat](../../evidence/public/exact-candidate-acceptance-20261126.json).
 
+Sur le Web `0283bf3`, les affiches de remplacement du catalogue
+et des fiches affichent la mention d’indisponibilité seule à 600 px
+ou moins. Le titre complet reste dans le titre HTML. Chrome et Firefox
+ont contrôlé six largeurs de 320 à 1280 px, y compris 600 et 601 px.
+[Reçu du contrôle des affiches](../../evidence/public/mobile-poster-qualification-20261126.json).
+
 La campagne de circulation a exécuté 264 échanges HTTP sur les deux moteurs,
 avec quatre tours par moteur. Chaque tour a présenté deux demandes concurrentes
 pour le dernier exemplaire, puis une course entre le premier et le dernier de
