@@ -1,9 +1,10 @@
-# Overlay for the opt-in account milestone; never mounts a production store.
+# Local development overlay for Enterprise with JSON v2.
 # Set all three CINEVAULT_*_KEY_FILE variables to separate private local files.
 services:
   cinevault-api:
     environment:
       ENTERPRISE_ENABLED: "true"
+      STORAGE_BACKEND: json
       ENTERPRISE_DATA_FILE: /data/enterprise.json
       AUTH_THROTTLE_KEY_FILE: /run/secrets/auth_throttle
       CLIENT_CONTEXT_KEY_FILE: /run/secrets/client_context

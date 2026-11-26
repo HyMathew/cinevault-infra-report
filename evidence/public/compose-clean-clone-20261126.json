@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "observed_at": "2026-11-26T00:10:59.038396+00:00",
+  "scope": "Local development only using Windows Docker Desktop and public source checkouts",
+  "compose": "5.7.1",
+  "chrome": "158.0.8127.37",
+  "api_commit": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+  "web_commit": "b6b67aa1cedd851c6fded2191b74badc537fb5ac",
+  "manifest_sha256": {
+    "compose.yaml": "a1278c76b38656cce380dca01e4970efcd9b2a2187eb1a05662de802cca84500",
+    "compose.enterprise.yaml": "d6c5c462d7f8edc064c87181de1560328e7f637446b10f84349d1da283f8eda4"
+  },
+  "academic": {
+    "film_id_and_title_seen_in_api_and_json": true,
+    "browser_form_written_and_jinja_visible": true,
+    "new_container_ids_after_down_up": true,
+    "same_volume_preserved": true,
+    "web_available_after_recreation": true,
+    "api_unpublished": true,
+    "web_bound_to_loopback_only": true,
+    "code_bind_mounts_read_only": true,
+    "runtime_uid_gid": "10001:10001"
+  },
+  "enterprise_json": {
+    "film_id_and_title_seen_in_api_and_json": true,
+    "browser_form_written_and_jinja_visible": true,
+    "new_container_ids_after_down_up": true,
+    "same_volume_preserved": true,
+    "web_available_after_recreation": true,
+    "api_unpublished": true,
+    "web_bound_to_loopback_only": true,
+    "code_bind_mounts_read_only": true,
+    "runtime_uid_gid": "10001:10001",
+    "interactive_bootstrap_password_masked": true,
+    "file_secrets_scoped_and_read_only": true
+  },
+  "temporary_resources_removed": true,
+  "private_receipt_sha256": "18cbe145835409a51d6886044b6b6d954ac133dc11bdd5cbf36f49dc1a321d09"
+}

@@ -16,7 +16,9 @@ services:
       context: ../cinevault-web
     environment:
       API_URL: http://cinevault-api:8000
-      SECRET_KEY: ${SECRET_KEY:?Définir une clé de session secrète et stable}
+      # Compose interpolates before merging the Enterprise file. The Web
+      # validates the selected session key before serving requests.
+      SECRET_KEY: ${SECRET_KEY:-}
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
     ports:
       - "127.0.0.1:8080:5000"
