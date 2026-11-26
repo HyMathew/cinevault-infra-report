@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "scope": "Two controlled elections on disposable three-member replica sets on one Docker Desktop host",
+  "limitations": [
+    "Synthetic data only",
+    "No remote lab changes",
+    "No physical host failure, quorum loss or service-level objective tested"
+  ],
+  "fixture_receipts": [
+    {
+      "sha256": "50a3dbe35813b15434e9b1da1a7708522206647448145a810ef153d90f48ee7d"
+    },
+    {
+      "sha256": "79480c635432204e8f1f19898e8d8b9e1ea0265b8db60b7c82bc559b880efb71"
+    }
+  ],
+  "runs": [
+    {
+      "passed": true,
+      "started_at": "2026-11-26T14:57:22.143168+00:00",
+      "finished_at": "2026-11-26T14:57:47.844668+00:00",
+      "scope": "Synthetic fixture on one Docker Desktop host with three TLS/SCRAM MongoDB members. No lab changes.",
+      "api": {
+        "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+        "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+      },
+      "infra_source_commit": "73320286d9526e96887c2b5d149ec0aa93e8ffcc",
+      "mongo_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+      "published_ports": 0,
+      "cleanup_confirmed": true,
+      "result": {
+        "passed": true,
+        "mongodb_version": "8.0.38",
+        "data_bearing_voters": 3,
+        "primary_changed": true,
+        "old_primary_became_secondary": true,
+        "trigger": "Non-forced replSetStepDown after the first copy insert acknowledgment, before commit.",
+        "partial_write_visible": false,
+        "transient_transaction_command_failures": [
+          "insert",
+          "abortTransaction"
+        ],
+        "transaction_numbers_for_copy_inserts": 2,
+        "copy_insert_acknowledgments": 2,
+        "http_during_election": 201,
+        "automatic_retry_observed": true,
+        "http_replay": 201,
+        "one_copy_and_receipt": true,
+        "replay_preserved_business_records": true,
+        "api_health_and_same_session": true,
+        "revision_before": 3,
+        "revision_after": 4,
+        "revision_after_replay": 5,
+        "timing": {
+          "request_ms": 78,
+          "stepdown_to_http_response_ms": 65
+        }
+      },
+      "driver_script_sha256": "84640e4b5a3ece2d59dd9575246c9fc0ad8dc105f7631ae27da2d687af0e2f17",
+      "probe_sha256": "8c95c6b8ffba29b42540b364a5aa16e0fcee0283bcf61ba1e71657ba5147536a"
+    },
+    {
+      "passed": true,
+      "started_at": "2026-11-26T14:57:55.241337+00:00",
+      "finished_at": "2026-11-26T14:58:30.901271+00:00",
+      "scope": "Synthetic fixture on one Docker Desktop host with three TLS/SCRAM MongoDB members. No lab changes.",
+      "api": {
+        "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+        "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+      },
+      "infra_source_commit": "73320286d9526e96887c2b5d149ec0aa93e8ffcc",
+      "mongo_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+      "published_ports": 0,
+      "cleanup_confirmed": true,
+      "result": {
+        "passed": true,
+        "mongodb_version": "8.0.38",
+        "data_bearing_voters": 3,
+        "primary_changed": true,
+        "old_primary_became_secondary": true,
+        "trigger": "Non-forced replSetStepDown after the first copy insert acknowledgment, before commit.",
+        "partial_write_visible": false,
+        "transient_transaction_command_failures": [
+          "insert",
+          "abortTransaction"
+        ],
+        "transaction_numbers_for_copy_inserts": 2,
+        "copy_insert_acknowledgments": 2,
+        "http_during_election": 201,
+        "automatic_retry_observed": true,
+        "http_replay": 201,
+        "one_copy_and_receipt": true,
+        "replay_preserved_business_records": true,
+        "api_health_and_same_session": true,
+        "revision_before": 3,
+        "revision_after": 4,
+        "revision_after_replay": 5,
+        "timing": {
+          "request_ms": 88,
+          "stepdown_to_http_response_ms": 66
+        }
+      },
+      "driver_script_sha256": "84640e4b5a3ece2d59dd9575246c9fc0ad8dc105f7631ae27da2d687af0e2f17",
+      "probe_sha256": "8c95c6b8ffba29b42540b364a5aa16e0fcee0283bcf61ba1e71657ba5147536a"
+    }
+  ]
+}

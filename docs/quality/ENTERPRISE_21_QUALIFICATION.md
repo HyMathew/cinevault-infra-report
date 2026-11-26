@@ -214,3 +214,30 @@ SCRAM-SHA-256. L’essai portait sur des données synthétiques et un
 réplica local à un membre. Il n’a pas testé le basculement entre
 plusieurs membres.
 [Reçu de la reprise native](../../evidence/public/mongodb-quarantine-current-20261126.json).
+
+## Élection MongoDB pendant une transaction d’écriture
+
+Deux essais indépendants ont utilisé l’API `05171fd` et un réplica
+MongoDB 8.0.38 de trois membres votants sur Docker Desktop. L’API
+a envoyé une création d’exemplaire avec clé d’idempotence. Une sonde
+du pilote a suspendu le traitement
+après le premier accusé de l’insertion, avant le commit. À cet
+instant, une lecture distincte ne voyait ni l’exemplaire ni le reçu.
+Une connexion de maintenance a demandé au primaire de céder sa place
+avec `replSetStepDown`, sans utiliser l’option de forçage.
+
+La transaction a rencontré une erreur transitoire et a été rejouée
+sur le nouveau primaire. L’appel HTTP d’origine a renvoyé 201 et la
+base contenait un seul exemplaire et un seul reçu. Une nouvelle
+soumission avec la même clé a rendu le même corps avec
+`Idempotency-Replayed: true`. Les enregistrements métier sont restés
+identiques lors de ce rejeu, qui a fait avancer la révision interne de
+coordination. L’API a retrouvé sa santé et la session existante dans
+le même processus.
+
+Les trois membres utilisaient TLS et SCRAM. Ils partageaient un seul
+hôte physique. Cet essai mesure une élection contrôlée, sans panne
+d’hôte ni perte de quorum. Le réplica mono-membre du lab conserve
+ses limites de redondance.
+[Reçu de l’élection et du rejeu](../../evidence/public/mongodb-election-idempotency-20261126.json) ·
+[Élections MongoDB 8.0](https://www.mongodb.com/docs/v8.0/core/replica-set-elections/).
