@@ -185,6 +185,37 @@ ou le nettoyage échoue. Le scan dépend de la base Grype disponible au
 moment du contrôle. Pour retirer le builder de cette session, exécuter
 `docker buildx rm "$builder"`.
 
+## Préparer une mise à jour OpenSSL des images applicatives
+
+Le [générateur de verrous](../scripts/prepare_openssl_locks.py) lit les
+commits courants des deux clones. À partir d’une version publiée dans
+Alpine 3.24, il récupère `libcrypto3` et `libssl3` pour les architectures
+répertoriées dans ces commits. Il valide les signatures avec les clés de
+l’image Alpine épinglée pour chaque architecture, puis contrôle le nom,
+la version, l’architecture et la dépendance entre les deux paquets. La
+commande utilise Git, Python 3.11 ou supérieur et un moteur Docker Linux
+capable d’exécuter ces architectures nativement ou par émulation.
+
+```sh
+python3 scripts/prepare_openssl_locks.py \
+  --api "$API_CLONE" --web "$WEB_CLONE" \
+  --version "$ALPINE_OPENSSL_VERSION" --output "$PROPOSAL_DIR"
+```
+
+Choisir un répertoire de sortie absent. La commande refuse le lot si
+une architecture manque ou si une signature échoue. Les propositions
+conservent les autres paquets et laissent les clones intacts. Examiner
+`receipt.json` et comparer les deux arbres proposés avant d’appliquer
+les seuls fichiers de verrou sur leurs branches de qualification.
+Les nouveaux commits suivent ensuite les builds reproductibles, les
+tests, le scan et la vérification de provenance habituels.
+
+Le 26 novembre, le contrôle a authentifié les seize paquets déjà
+verrouillés sur huit architectures. Les neuf fichiers proposés sont
+identiques aux verrous Git. L’essai a refusé un paquet altéré, une
+architecture incohérente et un paquet candidat indisponible.
+[Reçu des contrôles Alpine](../evidence/public/openssl-lock-preflight-20261126.json).
+
 ## Construire l'image MongoDB de staging
 
 L'image officielle MongoDB 8.0.38 de base fournit les correctifs de MongoDB.

@@ -1,0 +1,140 @@
+{
+  "status": "verified_lock_proposal",
+  "version": "3.5.9-r1",
+  "alpine_base": "alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a",
+  "source_repository": "https://dl-cdn.alpinelinux.org/alpine/v3.24/main",
+  "source_commits": {
+    "api": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+    "web": "b6b67aa1cedd851c6fded2191b74badc537fb5ac"
+  },
+  "architectures": {
+    "aarch64": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "58ea027d8bd64fffac7d2106a9034341d6735387298a5e01b551429c73a13c71"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "4aff30f84e7ac922b026f8b2dd574d91bb3bb01d22767a8a9a0a10c5ef64a44b"
+      ]
+    },
+    "armhf": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "5586d239d501759c76db53d7ca61dc78bd26f20c54cac035716e41deb8869216"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "2218266e3715b1a015a4e0321d4d4d6abd3303ab9b51d9904954d894bace75fa"
+      ]
+    },
+    "armv7": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "0a5d3a724fdc869c672256d0adb6e083c3bdfde674e5f0fb47578d5f4105a1ca"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "183119c1b5ae6c75e8a73db6742cb154bf718f637c6ba32195df9f990e8b8d14"
+      ]
+    },
+    "ppc64le": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "7a48c09c8c207a617eae1fc1361bcecff3578f45f18f0d77ae0e6f1ffc558d1b"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "64eb24d5d2fdbc11c5ffd3b0411785da73b7bf7aae99f19da4d4c02902733c48"
+      ]
+    },
+    "riscv64": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "2c8c5b9cccab35a289c9b50cf4f68702af1f29602c5fefaef9f85ee7307867fd"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "c1f553217ad38402c58021ce2ce6d492bab887109f62d5217626c4a080c208a9"
+      ]
+    },
+    "s390x": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "6bc609ba7a8465ade52a068f337d4897c4ed914d080b06bf8e4f8925d3a61990"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "376c2f948689638a234e8f0d11040dd4cf8027c00572e4edca51ffcac701fe0b"
+      ]
+    },
+    "x86": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "84aa06e9fceebbbb919c6506d6163bd83fd38a2ea243a396964e64cdee362213"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "a42acf6e63b1814b4c950f751ceceb84e0bff1147b53b35daa39c4dc17ee7a97"
+      ]
+    },
+    "x86_64": {
+      "libcrypto3": [
+        "libcrypto3-3.5.9-r1.apk",
+        "042026082cc9bc7872d1baa81755c50efa70b05f03b5369fdc5f0a1303009720"
+      ],
+      "libssl3": [
+        "libssl3-3.5.9-r1.apk",
+        "18c5778cbe52e1991303f8531970b05d4e6e036ea08349322f7422f42a689dc7"
+      ]
+    }
+  },
+  "locks": {
+    "api/docker/alpine-runtime/x86_64.sha256": {
+      "sha256": "1064db0fd2255ce262d4eccffb9dfc8a060f9cf813d918bd09c3c3723b0c4897",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/aarch64.sha256": {
+      "sha256": "731ca80720ef2310a86cb17050061bfa991a8c937fae21a5a820d201045dbce8",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/armhf.sha256": {
+      "sha256": "1b152c77dffd727160035e5c8c9c5f7d5c0ef1657734ad046ee28449bb8b095f",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/armv7.sha256": {
+      "sha256": "e5a706a14136975b909f9c75d2be22b8c35b405fa73acadc97b897734e5ca155",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/ppc64le.sha256": {
+      "sha256": "13ad592d7a60561a50b7ca8d6eee60009124463544832dbf1c23c7b47f74c957",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/riscv64.sha256": {
+      "sha256": "961ff6043fa1c9fda0ef4e454a305eb252fe45c2303c9bf00b3296ee4301d037",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/s390x.sha256": {
+      "sha256": "301394c6770a4ba893e05650042bd9d38d60e07e568d5def44296c178fd1cf08",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/x86.sha256": {
+      "sha256": "fcafba47ec366d144a5ae6e5ee4da8dbd1d6f0877c58cb6ae4dc7012008020e4",
+      "changed": false
+    },
+    "web/docker/alpine-runtime/x86_64.sha256": {
+      "sha256": "1064db0fd2255ce262d4eccffb9dfc8a060f9cf813d918bd09c3c3723b0c4897",
+      "changed": false
+    }
+  },
+  "observed_at_utc": "2026-11-26T15:25:53.883791+00:00",
+  "generator_sha256": "be1aace727e75296c6f59d1f2b578755f9373cc94bad4c806368677002ce55ca",
+  "altered_alpine_package_refused": true,
+  "wrong_architecture_refused": true,
+  "candidate_package_unavailable": {
+    "version": "3.5.10-r0",
+    "http_status": 404,
+    "package": "aarch64/libcrypto3-3.5.10-r0.apk"
+  },
+  "scope": "Official Alpine package and lock verification. Application image scan is a separate gate."
+}
