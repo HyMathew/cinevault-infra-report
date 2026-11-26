@@ -51,7 +51,13 @@ les deux endpoints de santé, un résumé de collecte et la fraîcheur des reçu
 de sauvegarde et de restauration. L'exploitant fournit les fenêtres et seuils.
 Le test local a détecté une réponse 503 de l'API puis son retour à 200 avec le
 Web toujours disponible. Il a aussi détecté l'absence de collecte et une
-sauvegarde périmée à partir de reçus synthétiques. La sonde s'exécute manuellement.
+sauvegarde périmée à partir de reçus synthétiques.
+
+Le [superviseur hors VM](quality/OPERATING_PROBE.md#qualifier-la-réception-des-alertes)
+permet à une tâche séparée du lanceur d’identifier un créneau sans résultat.
+Il conserve l’identifiant de l’incident jusqu’à la reprise et dépose des
+événements dans une boîte de réception dont le destinataire peut produire
+un accusé horodaté.
 
 L’option `--tls-policy` relève l’échéance du certificat servi par
 le proxy ou MongoDB après une négociation TLS vérifiée. Un certificat

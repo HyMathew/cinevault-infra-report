@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "scope": "Native Windows processes, authenticated age verification of a real MongoDB archive, loopback TLS, and independently read local inbox",
+  "infra_base_commit": "d6ddb8e11f67a21510735c833408f344dec027fd",
+  "observed_at_utc": "2026-11-26T22:06:08.515054+00:00",
+  "supervisor_sha256": "0151d3e94532265605748b0b42106c69c5b41cc3e618e7604f9221766daf2b9b",
+  "operational_probe_sha256": "d7c14fe9ceb6ba7a1343165830ba5263a8b0b76a86b965964cf80ca6acba33f7",
+  "api_image": {
+    "manifest": "sha256:2d492091585f461d5bd1857a62986322606ef43a577007fffe7f1b6d88f75c4a",
+    "commit": "31ee4eab7c9844a42326f16ae992c08d59a57e25"
+  },
+  "mongodb_version": "8.0.38",
+  "cleanup_confirmed": true,
+  "remote_staging_scheduler_verified": false,
+  "private_receipt_sha256": "40765ffb3a916dcc46b9b1abad4eaf99f6dd750a17bf5d5ba98cf23135901ebe",
+  "inbox_retry_same_slot": true,
+  "web_slot": "2026-11-26T22:05:48.639086+00:00",
+  "not_started_slot": "2026-11-26T22:05:56.462844+00:00",
+  "second_missing_slot_no_duplicate": true,
+  "recovery_slot": "2026-11-26T22:05:59.398429+00:00",
+  "delivery": [
+    {
+      "event": {
+        "api_http": 200,
+        "deadline_utc": "2026-11-26T22:05:55.639086+00:00",
+        "event": "opened",
+        "event_id": "f47ac75f253e41169e73aa868806304f",
+        "incident_id": "ce1d8ed7fcb9495d86b17f187b53c826",
+        "observed_at_utc": "2026-11-26T22:05:55.903805+00:00",
+        "reason": "web_http_error",
+        "slot_utc": "2026-11-26T22:05:48.639086+00:00",
+        "web_http": 502
+      },
+      "recipient_receipt": {
+        "event": "opened",
+        "event_id": "f47ac75f253e41169e73aa868806304f",
+        "event_sha256": "950eb0bf28d9a4c2c38d3cb74f483de4f0cb1525da9e7bae8a8659f8f765456c",
+        "incident_id": "ce1d8ed7fcb9495d86b17f187b53c826",
+        "received_at_utc": "2026-11-26T22:06:07.258438+00:00"
+      }
+    },
+    {
+      "event": {
+        "api_http": null,
+        "deadline_utc": "2026-11-26T22:05:57.462844+00:00",
+        "event": "updated",
+        "event_id": "b94f6e84724046c98e24eb6a1a0d19f1",
+        "incident_id": "ce1d8ed7fcb9495d86b17f187b53c826",
+        "observed_at_utc": "2026-11-26T22:05:57.717946+00:00",
+        "reason": "missing_result",
+        "slot_utc": "2026-11-26T22:05:56.462844+00:00",
+        "web_http": null
+      },
+      "recipient_receipt": {
+        "event": "updated",
+        "event_id": "b94f6e84724046c98e24eb6a1a0d19f1",
+        "event_sha256": "6f9ab8fd554a607edba0d26454afc22a40ce2170f03d6ea5aea2d912bd265099",
+        "incident_id": "ce1d8ed7fcb9495d86b17f187b53c826",
+        "received_at_utc": "2026-11-26T22:06:07.545780+00:00"
+      }
+    },
+    {
+      "event": {
+        "api_http": 200,
+        "deadline_utc": "2026-11-26T22:06:06.398429+00:00",
+        "event": "recovered",
+        "event_id": "15bd31344d2d4c618640b0665b7735d9",
+        "incident_id": "ce1d8ed7fcb9495d86b17f187b53c826",
+        "observed_at_utc": "2026-11-26T22:06:06.653839+00:00",
+        "reason": "healthy",
+        "slot_utc": "2026-11-26T22:05:59.398429+00:00",
+        "web_http": 200
+      },
+      "recipient_receipt": {
+        "event": "recovered",
+        "event_id": "15bd31344d2d4c618640b0665b7735d9",
+        "event_sha256": "dd7facec82474708c59bb57eeb859af06ed9e6d677324618c17595feb9e16385",
+        "incident_id": "ce1d8ed7fcb9495d86b17f187b53c826",
+        "received_at_utc": "2026-11-26T22:06:07.798047+00:00"
+      }
+    }
+  ],
+  "distinct_processes": true,
+  "loopback_tls_only": true,
+  "remote_host_delivery_verified": false
+}

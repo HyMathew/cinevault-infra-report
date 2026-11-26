@@ -98,12 +98,45 @@ le code de sortie pour l'intégration au canal d'alerte choisi.
 
 ### Qualifier la réception des alertes
 
-Le lanceur hors VM attribue un identifiant à la tentative avant
-l’ouverture du tunnel et enregistre son échéance en UTC. Un superviseur
-distinct du processus de la sonde signale un échec d’exécution ou
-l’absence de résultat à l’échéance. L’identifiant de l’incident
-permet de relier les messages de panne et de reprise, y compris
-quand aucune requête ne parvient à Flask.
+Depuis le clone Infra sur l’hôte de supervision, utiliser
+[`python -m scripts.supervise_operational_health`](../../scripts/supervise_operational_health.py).
+Configurer deux
+déclenchements indépendants pour le même créneau UTC. Le premier
+prépare le tunnel et les reçus, puis lance le contrôle. Le second
+lit le résultat à l’échéance, y compris quand la première tâche
+n’a produit aucun JSON.
+
+```sh
+# Le lanceur reçoit les arguments de la sonde dans "$@".
+python -m scripts.supervise_operational_health run --database "$SUPERVISOR_DB" \
+  --slot-utc "$SLOT_UTC" --deadline-seconds "$DEADLINE_SECONDS" -- "$@"
+
+# La tâche de surveillance utilise la même échéance et le même créneau.
+python -m scripts.supervise_operational_health watch --database "$SUPERVISOR_DB" \
+  --slot-utc "$SLOT_UTC" --deadline-seconds "$DEADLINE_SECONDS" --inbox "$ALERT_INBOX"
+
+# Sur le poste destinataire, conserver le JSON de cette commande.
+python -m scripts.supervise_operational_health receive --event "$EVENT_FILE"
+```
+
+Placer la base SQLite sur le disque local de l’hôte de supervision.
+Donner aux deux tâches le même créneau UTC et sa durée de validité
+en secondes. Traiter les créneaux par ordre chronologique.
+Réserver un chemin neuf au reçu de vérification pour
+chaque créneau. `run` impose comme seuil de vérification le début
+de ce créneau. Utiliser une boîte de réception protégée, accessible
+au destinataire, sur un système de fichiers qui permet le renommage
+atomique dans le répertoire cible.
+Conserver le message et son accusé de réception avant la rotation
+des preuves d’exploitation.
+
+`watch` renvoie 3 avant l’échéance, 0 pour un état sain et 1 pour
+un incident. Le code 2 signale une erreur d’exécution ou d’accès.
+Réessayer le même créneau après un échec d’écriture dans la boîte.
+Le journal SQLite conserve l’événement à livrer, son identifiant,
+et le dernier état de l’incident. Rejouer un créneau n’émet aucun
+nouvel événement. Une nouvelle cause d’échec met à jour l’incident
+ouvert et la reprise le clôt avec le même identifiant.
 
 | Essai | Observation hors VM | Preuve côté destinataire |
 | --- | --- | --- |
@@ -114,6 +147,14 @@ quand aucune requête ne parvient à Flask.
 Consigner les horodatages UTC et la référence du message reçu. Le
 signal local ou l’acquittement de transport constitue une preuve
 d’émission. La remise est confirmée côté destinataire.
+
+Sur un même hôte Windows, des processus distincts ont reproduit
+un Web en HTTP 502, un créneau sans lanceur et un retour à HTTP 200
+avec une archive MongoDB vérifiée par age. Le destinataire a
+lu trois messages rattachés au même incident et émis trois
+accusés. Le superviseur a repris un envoi après indisponibilité
+de la boîte et a ignoré les relectures répétées du même créneau.
+[Reçu des trois messages et accusés locaux](../../evidence/public/operational-watch-delivery-20261126.json).
 
 ### Vérifier l’échéance des certificats
 
