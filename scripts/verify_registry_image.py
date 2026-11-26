@@ -284,7 +284,16 @@ def attest(release_subject, repository, workflow, commit, source_ref):
 
 
 def matching_provenance(
-    rows, repository, workflow, commit, source_ref, run, name, digest
+    rows,
+    repository,
+    workflow,
+    commit,
+    source_ref,
+    run,
+    name,
+    digest,
+    *,
+    expected_attempt=None,
 ):
     uri = "https://github.com/" + repository
     invocation = re.compile(
@@ -307,6 +316,7 @@ def matching_provenance(
             attempt = invocation.fullmatch(cert["runInvocationURI"])
             if (
                 attempt
+                and (expected_attempt is None or int(attempt[1]) == expected_attempt)
                 and all(cert.get(field) == value for field, value in identity.items())
                 and result["verifiedTimestamps"]
                 and statement["predicateType"] == PREDICATE
@@ -320,13 +330,21 @@ def matching_provenance(
     )
 
 
-def verify_attestation(reference, commit, source_ref, run):
+def verify_attestation(reference, commit, source_ref, run, *, expected_attempt=None):
     repo = provenance_source(reference, commit, source_ref, run)
     workflow = ".github/workflows/tests.yml"
     name, digest = reference.split("@sha256:")
     rows = attest("oci://" + reference, repo, workflow, commit, source_ref)
     attempt = matching_provenance(
-        rows, repo, workflow, commit, source_ref, run, name, digest
+        rows,
+        repo,
+        workflow,
+        commit,
+        source_ref,
+        run,
+        name,
+        digest,
+        expected_attempt=expected_attempt,
     )
     return {
         "signature_verified": True,

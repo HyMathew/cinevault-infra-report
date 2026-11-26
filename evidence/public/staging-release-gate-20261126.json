@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "observed_at_utc": "2026-11-26T15:59:12.103791+00:00",
+  "script_sha256": "8e880d7ab21709908e676b6db5c0983e77d4022227bc2ebf7133bd23dcc4117c",
+  "repositories": {
+    "api": {
+      "failed_dispatch_rejected": 45524933595,
+      "scan_only_push_rejected": 45717751060,
+      "current_commit": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+      "current_red_zip_sha256": "sha256:9b0cad1cbde5dd82bde65de6539d504b7591d6352b8d28084190615ad43530b9"
+    },
+    "web": {
+      "failed_dispatch_rejected": 45524934184,
+      "scan_only_push_rejected": 45717971711,
+      "current_commit": "b6b67aa1cedd851c6fded2191b74badc537fb5ac",
+      "current_red_zip_sha256": "sha256:41ff8adafa2bca3ca839143cbf52670ff02f6e8056808b4e87c16ea02992e391"
+    }
+  },
+  "scope": "Live negative run verification and exact retained image audit archives. A passing candidate workflow is still pending."
+}

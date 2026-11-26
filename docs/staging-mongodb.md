@@ -187,6 +187,38 @@ même run. Le reçu de publication, l'inventaire Syft, le rapport Grype et
 le sujet signé doivent correspondre avant de préparer les workers.
 [Vérification GitHub CLI](https://cli.github.com/manual/gh_attestation_verify).
 
+Depuis un clone Infra, vérifier chaque publication candidate avec le
+[contrôle du run et de l’image](../scripts/check_staging_image_release.py).
+Télécharger les ZIP bruts `image-audit` et
+`image-verified-provenance` depuis le run de publication. Indiquer le
+numéro de tentative visible sur ce run. La commande utilise GitHub CLI
+authentifié en lecture et Python 3.11 ou supérieur.
+
+```sh
+python3 scripts/check_staging_image_release.py \
+  --role api --commit "$API_SOURCE_SHA" --run "$API_RUN_ID" --attempt "$API_ATTEMPT" \
+  --audit-zip "$API_AUDIT_ZIP" --provenance-zip "$API_PROVENANCE_ZIP"
+```
+
+Répéter pour `web` avec ses propres valeurs. Le contrôle vérifie
+l’identité du workflow, ses jobs de publication et de vérification
+ainsi que la taille et le SHA-256 des deux archives enregistrées
+par GitHub. Il rapproche les rapports Grype et Syft de la même
+configuration Docker, puis compare l’image avec le registre et
+exige la vérification en ligne de la signature de la tentative choisie.
+Si l’archive scannée contient un manifeste OCI, sa comparaison
+au manifeste GHCR est exacte. Si Docker a réexporté une archive
+indexée par configuration, le reçu distingue le manifeste BuildKit,
+le manifeste GHCR et la configuration exacte attendue. La commande
+renvoie 1 si une preuve manque ou si un contrôle échoue.
+
+Le 26 novembre, la commande a refusé deux publications échouées et
+deux exécutions de simple scan. Les deux archives des révisions API
+et Web candidates ont été contrôlées par empreinte, puis refusées
+au contrôle de scan. La vérification d’une publication candidate
+réussie reste à exécuter.
+[Reçu de la vérification des runs](../evidence/public/staging-release-gate-20261126.json).
+
 Les révisions comparées le 25 novembre ont produit un inventaire Syft de
 50 composants pour l’API et de 48 pour le Web. Leurs rapports Grype se
 rattachent aux mêmes digests de configuration. La publication reste bloquée
@@ -210,11 +242,13 @@ de l’image de base épinglée. Les deux images amd64 conservent les mêmes
 26 paquets installés. Un build avec une empreinte falsifiée échoue.
 [Reçu du candidat avec paquets verrouillés](../evidence/public/enterprise-2.1-alpine-runtime-20261125.json).
 
-Pour le précontrôle d’une livraison, utiliser chaque reçu `image-audit`
+Pour une vérification au niveau des manifestes OCI, utiliser chaque reçu `image-audit`
 vérifié. Relever le digest de configuration
 `scan_provenance.archive_config_digest`, le digest de manifeste OCI
 `scan_provenance.archive_oci_manifest_digest`, le SHA source, le ref
-Git complet et le numéro du run Actions. La
+Git complet et le numéro du run Actions. Si le digest de manifeste OCI
+est absent de l’archive scannée, utiliser le contrôle du run décrit plus
+haut. La
 [vérification GHCR](../scripts/verify_registry_image.py) recalcule
 les empreintes des manifestes publics et compare leur configuration
 au scan. Les trois options de provenance sont fournies ensemble.
