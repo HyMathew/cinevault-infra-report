@@ -192,3 +192,25 @@ a retrouvé le même film et le même favori. Le Web `b6b67aa` a
 affiché le film et le profil après connexion HTTPS. L’essai a utilisé
 des données synthétiques et des réseaux internes sur Docker Desktop.
 [Reçu de la restauration et des sondes HTTP](../../evidence/public/mongodb-backup-http-20261126.json).
+
+## Reprise MongoDB avec quarantaine des anciens comptes
+
+La CLI de l’image API `05171fd` a copié une source MongoDB 8.0.38
+vers deux bases provisionnées séparément. Elle a conservé le catalogue,
+le prêt actif, le favori, le reçu d’idempotence et l’audit historique.
+Chaque cible est passée de la révision source 13 à la révision 14.
+Les trois anciens comptes et leurs sessions ont été révoqués et la
+réservation en attente a été annulée. L’API a refusé l’ancien mot de
+passe et le jeton archivé avec HTTP 401. Le nouvel administrateur a
+pu se connecter, consulter son profil et retrouver le film.
+
+Le second essai a simulé une perte d’accusé au niveau Python après
+l’écriture effective. La CLI a rendu le code 3 avec l’empreinte du
+candidat. La réconciliation en lecture seule a confirmé cette
+empreinte et en a refusé une autre. Sur les deux cibles, une empreinte
+source erronée a laissé la cible vide et un nouvel `apply` a laissé
+la cible remplie intacte. Les connexions MongoDB utilisaient TLS et
+SCRAM-SHA-256. L’essai portait sur des données synthétiques et un
+réplica local à un membre. Il n’a pas testé le basculement entre
+plusieurs membres.
+[Reçu de la reprise native](../../evidence/public/mongodb-quarantine-current-20261126.json).

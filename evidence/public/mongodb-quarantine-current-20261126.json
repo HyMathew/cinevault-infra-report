@@ -1,0 +1,97 @@
+{
+  "started_at": "2026-11-26T14:43:32.878571+00:00",
+  "infra_source_commit": "8b1b2e0114165dfad4d99ba4e65720cfade00f61",
+  "api": {
+    "manifest": "sha256:9561641830610314d2d809b06d80806faaa70621f928e74c69a1cdd056f6f014",
+    "commit": "05171fd6cb8f8607b7832f7a997e07509db4139c"
+  },
+  "mongodb_image": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "result": {
+    "passed": true,
+    "mongodb_version": "8.0.38",
+    "schema_inventory": {
+      "cv_quarantine_source": [
+        12,
+        40
+      ],
+      "cv_quarantine_target": [
+        12,
+        40
+      ],
+      "cv_quarantine_uncertain": [
+        12,
+        40
+      ]
+    },
+    "cases": {
+      "normal": {
+        "apply_status": "applied",
+        "apply_exit": 0,
+        "source_sha256": "a077ab194d3fa29ad0688515eaed3732fa8b90766c87ecaa3522c016ea641a59",
+        "target_sha256": "abc41f12c0d68998f902ecb911e938ddf9d53b504421d3798a7c39ad9bbf522d",
+        "source_revision": 13,
+        "target_revision": 14,
+        "reconcile_exit": 0,
+        "mismatch_exit": 3,
+        "stale_source_exit": 2,
+        "populated_target_retry_exit": 2
+      },
+      "simulated_lost_ack": {
+        "apply_status": "commit_outcome_unknown",
+        "apply_exit": 3,
+        "source_sha256": "a077ab194d3fa29ad0688515eaed3732fa8b90766c87ecaa3522c016ea641a59",
+        "target_sha256": "c8be98e35df87bc5720d10e0e0a7eb875825747e72762e1bd590930f15f7f640",
+        "source_revision": 13,
+        "target_revision": 14,
+        "reconcile_exit": 0,
+        "mismatch_exit": 3,
+        "stale_source_exit": 2,
+        "populated_target_retry_exit": 2
+      }
+    },
+    "fixture_counts": {
+      "users": 3,
+      "sessions": 3,
+      "auth_attempts": 2,
+      "idempotency_records": 1,
+      "movies": 1,
+      "copies": 1,
+      "collection_entries": 1,
+      "loans": 1,
+      "reservations": 1,
+      "audit_events": 4,
+      "coordination": 1,
+      "entity_ids": 16
+    },
+    "source_unchanged": true,
+    "profiles_scoped": true,
+    "business_collections_unchanged": [
+      "movies",
+      "copies",
+      "loans",
+      "collections",
+      "idempotency_records"
+    ],
+    "quarantined_users": 3,
+    "revoked_sessions": 3,
+    "auth_attempts_cleared": true,
+    "waiting_reservations_cancelled": 1,
+    "archived_audit_preserved": true,
+    "http": {
+      "archived_login": 401,
+      "archived_bearer": 401,
+      "recovery_login": 200,
+      "recovery_me": 200,
+      "migrated_movie": 200
+    },
+    "ambiguity_simulation": "Python reports an ambiguous result after the real native commit returns."
+  },
+  "published_ports": 0,
+  "exercise_sha256": "9f0f446fe50528e63f7ac61804d8a922dece052bc177b3ac03de11e4f2bb876b",
+  "probe_sha256": "068f72e23ad769f283b3b78b280e72821a01ab889a02a23086437910e83f7c8c",
+  "terminal_helper_sha256": "a98bd68594ac4d9c0258f77704accc4cc86244bbe78b10f2c99be1bcf6a1c9ec",
+  "isolation": "Single-member disposable MongoDB replica set, internal Docker Desktop network, temporary mounts",
+  "passed": true,
+  "cleanup_confirmed": true,
+  "finished_at": "2026-11-26T14:44:10.608247+00:00"
+}
