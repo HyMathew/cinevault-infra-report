@@ -26,6 +26,23 @@ La paire API `58b1200` et Web `bdf6063` a repassé les six contrôles HTTP,
 les 45 contrôles Chromium et le rejeu des 93 échanges académiques sur le PC.
 [Reçu de la paire exacte](../../evidence/public/enterprise-2.1-candidate-20261125.json).
 
+Le 26 novembre, la sonde de la paire a rejoué les mêmes 45 contrôles
+sur Firefox 157, Chromium 156 et Chrome 158 sous Windows avec l’API
+`05171fd` et le Web `b6b67aa`. Les applications Flask servaient
+des données JSON jetables via HTTP local. Les trois passages ont
+couvert la connexion, les droits, les formulaires, le prêt, la
+réservation et la reprise d’une création dont la réponse a été
+coupée. Chaque passage a arrêté ses services et retiré les données
+temporaires.
+
+Avec Playwright installé selon `requirements-browser.txt`,
+ajouter `--browser firefox` à `scripts/check_browser_pair.py`
+après installation de Firefox via Playwright. Sans cette option,
+la sonde continue de lancer Chromium. L’option `--browser-channel`
+sélectionne un canal Chromium. Le couple Firefox et canal Chromium
+est refusé avant le démarrage des services.
+[Reçu des trois navigateurs](../../evidence/public/browser-pair-firefox-20261126.json).
+
 La campagne Insights est distincte et couvre l'API `22bcecd` avec le Web
 `2607907` et JSON. Avant correction, les répartitions entièrement à zéro
 masquaient les messages d'état vide. Chromium a ensuite validé 36 navigations

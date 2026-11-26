@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "scope": "Windows loopback HTTP services from exact API source and ephemeral qualified MongoDB",
+  "passed": true,
+  "started_utc": "2026-11-26T04:21:41.153510+00:00",
+  "finished_utc": "2026-11-26T04:21:50.979719+00:00",
+  "api_commit": "05171fd6cb8f8607b7832f7a997e07509db4139c",
+  "mongo_image_digest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+  "mongo_version": "8.0.38",
+  "mongo_network_scope": "127.0.0.1, Docker allocated host port",
+  "verified": {
+    "source_and_backup_unchanged": true,
+    "catalogue_write_survived": true,
+    "private_favorite_survived": true,
+    "sessions_before_and_after_cutover_survived": true,
+    "anonymous_favorite_denied": true,
+    "historical_snapshot_refused": true,
+    "wrong_original_digest_refused_without_writing_json_or_mongodb": true,
+    "reverse_export_replay": true,
+    "mongo_stopped_before_opening_json": true,
+    "mongo_revision": 9,
+    "initial_snapshot_sha256": "e4632436f42e9743c5fb690c14a54c0ce736c57633f794d20c1dcfd6254b1704",
+    "export_snapshot_sha256": "50ad29696ca26ec51d1e9701ae1e64a091bc7cad5ed8222d83c39c70f707bae6"
+  },
+  "cleanup_confirmed": true,
+  "local_receipt_sha256": "b7603e8d2c9a79edb13978cbdadd3a47c39120ac0292b121d05f05b7ad6e4cf0",
+  "runner_sha256": "f67e2e0fdd344dddb5527a51709312dba2845ac81f3ef7fbf3c7dcf3d6eb32fb"
+}

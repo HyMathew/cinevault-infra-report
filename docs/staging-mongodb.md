@@ -597,7 +597,7 @@ du staging applicatif reste à éprouver avec le couple qualifié.
    MongoDB après le gel et exporter vers un nouveau chemin JSON avec les
    empreintes de l'original et de cet instantané. Refaire l'inspection si
    le digest attendu diffère. Suivre les commandes du
-   [guide de migration API](https://github.com/HyMathew/cinevault-api/blob/f78fe323f291c3303aeafd107ac9b8c7a51ed399/docs/mongodb-migration.md).
+   [guide de migration API](https://github.com/HyMathew/cinevault-api/blob/05171fd6cb8f8607b7832f7a997e07509db4139c/docs/mongodb-migration.md).
 3. Vérifier l'empreinte de l'export. Ouvrir le candidat JSON dans une
    instance isolée sans accès à MongoDB. Vérifier l'ancien catalogue,
    les données écrites après la bascule, l'authentification et les droits.
@@ -610,6 +610,16 @@ sessions ouvertes avant et après la bascule. L'export a refusé l'empreinte d'u
 antérieur et a produit les mêmes octets au rejeu. Le contrôleur de
 staging a aussi rejoué ses opérations d'export et de vérification dans
 cet environnement local.
+
+Le 26 novembre, l’essai a été rejoué avec l’API `05171fd` et
+MongoDB 8.0.38 sur le PC. Une empreinte erronée du fichier d’origine
+et une empreinte historique de MongoDB ont chacune été refusées sans
+création du JSON demandé. L’export valide a produit les mêmes octets
+au rejeu. Après arrêt de MongoDB, la nouvelle instance JSON a retrouvé
+le film, le favori et les sessions, avec un refus d’accès anonyme au
+favori. La fenêtre entre inspection et export exige que les écrivains
+restent arrêtés.
+[Reçu de l’essai sur le candidat exact](../evidence/public/native-http-cutover-current-20261126.json).
 
 Sur Swarm, deux tâches inertes représentant les services d'écriture
 se sont arrêtées et une troisième représentant la base est restée en
