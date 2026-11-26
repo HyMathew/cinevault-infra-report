@@ -26,11 +26,11 @@ jobs:
         run: |
           import hashlib, io, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
           REPO = 'HyMathew/cinevault-infra-report'
-          COMMIT = 'b409a6c0f3b6421ef1bd7b60de35718bef38241c'
-          RUN = 45905995989
-          ARTIFACT = 15157843490
-          DIGEST = 'fceae7f23abfc10ef5a29e3f5f193888ed5c6c10686ab7e5454257d45c700f6a'
-          ARCHIVE_SIZE = 11069196
+          COMMIT = '3f21c1fd81bf727bc4b6a07a7742d6c0e7f48f21'
+          RUN = 45907445525
+          ARTIFACT = 15158452188
+          DIGEST = 'c2cde6bd85cb88f6f292c0ba06cc8e9b371212c45bd7e9c0ef833a19fe5b7b9d'
+          ARCHIVE_SIZE = 11074815
           ROOT = f'https://api.github.com/repos/{REPO}/'
           headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
                      'Accept': 'application/vnd.github+json', 'User-Agent': 'CineVault-portal-promotion',
@@ -81,9 +81,9 @@ jobs:
               assert receipt['source_clean'] and receipt['tooling_clean']
               assert receipt['base'] == '/cinevault-infra-report'
               assert receipt['checks']['passed'] and receipt['checks']['htmlPages'] == 60
-              assert receipt['checks']['checkedLinks'] == 6201 and not receipt['checks']['errors']
+              assert receipt['checks']['checkedLinks'] == 6211 and not receipt['checks']['errors']
               repro = json.loads(z.read('.cache/reproducibility.json'))
-              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 478
+              assert repro['passed'] and repro['builds'] == 2 and len(repro['files']) == 479
               dist = {n[5:]: z.read(n) for n in names if n.startswith('dist/') and not n.endswith('/')}
               assert set(dist) == {f['path'] for f in repro['files']}
               assert all(hashlib.sha256(dist[f['path']]).hexdigest() == f['sha256'] for f in repro['files'])
@@ -127,6 +127,7 @@ jobs:
               assert hashlib.sha256(dist['sources/evidence/public/operational-watch-cross-host-20261126.json']).hexdigest() == 'dbf82ae67d2099edf6bd3b3997bf4e3be69061bcf5e246b00bee9f58dfc4b05c'
               assert hashlib.sha256(dist['sources/evidence/public/staging-image-pair-preflight-20261126.json']).hexdigest() == '5ac637c4d0d69e5a0d54bf37bbadf1e147e767d53b2d92c8cb374451efe96e22'
               assert hashlib.sha256(dist['sources/scripts/check_staging_image_pair.py']).hexdigest() == '181ea8358d64ea9430e80bdafd7afb8284255bd7bd50ebf6f0a6d844027acf7b'
+              assert hashlib.sha256(dist['sources/evidence/public/exact-candidate-acceptance-20261126.json']).hexdigest() == 'c1448be5a8a6040afb0169eed45043404eb1e18b5067f73fd25084e517e3b33b'
               assert hashlib.sha256(dist['sources/evidence/public/native-http-cutover-current-20261126.json']).hexdigest() == 'f5d323509d7becd666bf8b62f2b3f2bb122de9b1d8ff6e821d244f18702fe56e'
               assert hashlib.sha256(dist['sources/evidence/public/browser-pair-firefox-20261126.json']).hexdigest() == '9ab032d63b2689ededd22e42f486da848d0653315c40efab0fda04c83c81af65'
               assert hashlib.sha256(dist['sources/evidence/public/operating-probe-backup-verification-20261126.json']).hexdigest() == '2186cc86191c0b2275aa6faf0f612c03c9448007b8b084a6ac8e603d63cae826'
@@ -147,7 +148,7 @@ jobs:
                   dest = target.joinpath(*pathlib.PurePosixPath(name).parts)
                   dest.parent.mkdir(parents=True, exist_ok=True)
                   dest.write_bytes(content)
-          print('Verified qualified candidate: 478 exact dist files; 60 HTML; 213 retained browser checks.')
+          print('Verified qualified candidate: 479 exact dist files; 60 HTML; 213 retained browser checks.')
       - name: Package exact public files including linked dot-directory sources
         shell: bash
         run: |
@@ -156,7 +157,7 @@ jobs:
           import os, pathlib, tarfile
           with tarfile.open(pathlib.Path(os.environ['RUNNER_TEMP']) / 'artifact.tar') as t:
               files = [m for m in t.getmembers() if m.isfile()]
-              assert len(files) == 477
+              assert len(files) == 478
               assert all(m.isfile() or m.isdir() for m in t.getmembers())
               assert './sources/.github/workflows/browser-pair.yml' in t.getnames()
               assert './sources/.agents/skills/anti-slop-cinevault/LICENSE' in t.getnames()
