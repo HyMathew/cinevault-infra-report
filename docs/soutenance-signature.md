@@ -3,6 +3,8 @@
 La démonstration associe chaque manipulation à un invariant ou à une preuve.
 Annoncer à chaque scène si l’observation est faite en direct, sur un banc
 local, en CI ou à partir d’un relevé enregistré sur RemoteLabz.
+La [grille défensive](quality/SIGNATURE_DEFENSIVE_QUALIFICATION.md)
+précise la portée des preuves de segmentation, de collecte et d’alerte.
 
 ## Préparation
 

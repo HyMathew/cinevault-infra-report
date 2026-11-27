@@ -57,6 +57,7 @@ Les deux projets applicatifs sont publics : [API Flask/JSON](https://github.com/
 - [Qualification de la disponibilité au catalogue](docs/quality/SIGNATURE_CATALOGUE_AVAILABILITY.md)
 - [Qualification de la bibliothèque et de l’historique personnels](docs/quality/SIGNATURE_PERSONAL_LIBRARY.md)
 - [Qualification de la fiche film et de ses suggestions](docs/quality/SIGNATURE_FILM_DETAIL.md)
+- [Qualification de l’administration des comptes](docs/quality/SIGNATURE_ACCOUNT_DIRECTORY.md)
 - [Rapport scientifique Signature et sources Typst](report/signature/README.md)
 - [Inventaire des pages, traitements et scripts frontend](docs/frontend-inventory.md)
 - [Contrat HTTP et opérations effectives](docs/api.md)

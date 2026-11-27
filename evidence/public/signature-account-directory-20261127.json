@@ -1,0 +1,590 @@
+{
+  "scope": "Local account directory and administration using synthetic account fixtures",
+  "runs": {
+    "baseline-chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T15:34:01.496924+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "sources": {
+        "api": {
+          "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "9409fd7ac161f27f754f44262ff545670c28f85d8cea953701ff32798a7270af",
+          "source_manifest_sha256": "a0d26734d692d0f52954376a595e89275475d5457594d1ea5042c92b03aa8462"
+        },
+        "web": {
+          "commit": "7203e25942dac689a112810dea89364af2fdb5e7",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "ce3924d229adcb9c206f4f206dc4ac6dbbe8c73f0a0c1ca8547e4de4ee223173",
+          "source_manifest_sha256": "f4d520e327a3b06ae6360628eaef00f5a5b3b144444c0693734b47151b4472f2"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {},
+      "viewports": [],
+      "flows": {
+        "baseline_pagination_has_no_account_search": true
+      },
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:34:10.249027+00:00"
+    },
+    "json-chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T15:34:01.416377+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "sources": {
+        "api": {
+          "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "9409fd7ac161f27f754f44262ff545670c28f85d8cea953701ff32798a7270af",
+          "source_manifest_sha256": "a0d26734d692d0f52954376a595e89275475d5457594d1ea5042c92b03aa8462"
+        },
+        "web": {
+          "commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "0fda7c03f6b0d625b995081e25ad9a5798e2bc6d61d853ed149a693605118014",
+          "source_manifest_sha256": "f358d7360b231c1f316d2f971c6929a15b1651527fbd4f45dd2440b0b3f2c427"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "administration-390.png": "26f02b05f25d374584ed8d629fc49dce28e98a6a921bf008b64f47d8e4c8e201",
+        "administration-1280.png": "2c8cc5b7dd2fe95c9ae2bb66890e95b4855df1fc5add2a408e61d3ccbd8ed732"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "combined_filters_before_pagination_and_literal_prefix": true,
+        "successful_update_keeps_filters_and_second_page": true,
+        "last_admin_conflict_keeps_filters": true,
+        "out_of_range_page_and_disabled_accounts": true,
+        "authorization_and_filter_validation": true
+      },
+      "browser_version": "158.0.8127.37",
+      "navigation_activation": "keyboard Tab and Enter",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:34:20.851854+00:00"
+    },
+    "json-firefox": {
+      "passed": true,
+      "started_at": "2026-11-27T15:34:01.399332+00:00",
+      "backend": "json",
+      "browser": "firefox",
+      "sources": {
+        "api": {
+          "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "9409fd7ac161f27f754f44262ff545670c28f85d8cea953701ff32798a7270af",
+          "source_manifest_sha256": "a0d26734d692d0f52954376a595e89275475d5457594d1ea5042c92b03aa8462"
+        },
+        "web": {
+          "commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "0fda7c03f6b0d625b995081e25ad9a5798e2bc6d61d853ed149a693605118014",
+          "source_manifest_sha256": "f358d7360b231c1f316d2f971c6929a15b1651527fbd4f45dd2440b0b3f2c427"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "administration-390.png": "4a21b529cf505f8d547cca09ddf64410949f192c7b8e53edacb42399d4e5da1b",
+        "administration-1280.png": "a31f1c553cdd283970686990b7c404df7670cb9eb6a195523d8de033262e934c"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "combined_filters_before_pagination_and_literal_prefix": true,
+        "successful_update_keeps_filters_and_second_page": true,
+        "last_admin_conflict_keeps_filters": true,
+        "out_of_range_page_and_disabled_accounts": true,
+        "authorization_and_filter_validation": true
+      },
+      "browser_version": "157.0",
+      "navigation_activation": "keyboard Tab and Enter",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:34:28.227208+00:00"
+    },
+    "json-webkit": {
+      "passed": true,
+      "started_at": "2026-11-27T15:34:01.524634+00:00",
+      "backend": "json",
+      "browser": "webkit",
+      "sources": {
+        "api": {
+          "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "9409fd7ac161f27f754f44262ff545670c28f85d8cea953701ff32798a7270af",
+          "source_manifest_sha256": "a0d26734d692d0f52954376a595e89275475d5457594d1ea5042c92b03aa8462"
+        },
+        "web": {
+          "commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "0fda7c03f6b0d625b995081e25ad9a5798e2bc6d61d853ed149a693605118014",
+          "source_manifest_sha256": "f358d7360b231c1f316d2f971c6929a15b1651527fbd4f45dd2440b0b3f2c427"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "administration-390.png": "6e4ae7013afbdbe283b05112e4f36544204e388df080d5b3601f97da3f28e269",
+        "administration-1280.png": "6490a4367f9394a006dd12734cd3aa729aafc923b75a69cab67bbbaacc4c1cc8"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "combined_filters_before_pagination_and_literal_prefix": true,
+        "successful_update_keeps_filters_and_second_page": true,
+        "last_admin_conflict_keeps_filters": true,
+        "out_of_range_page_and_disabled_accounts": true,
+        "authorization_and_filter_validation": true
+      },
+      "browser_version": "27.2",
+      "navigation_activation": "pointer",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:34:17.154304+00:00"
+    },
+    "mongo-chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T15:34:01.426551+00:00",
+      "backend": "mongo",
+      "browser": "chrome",
+      "sources": {
+        "api": {
+          "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "9409fd7ac161f27f754f44262ff545670c28f85d8cea953701ff32798a7270af",
+          "source_manifest_sha256": "a0d26734d692d0f52954376a595e89275475d5457594d1ea5042c92b03aa8462"
+        },
+        "web": {
+          "commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "0fda7c03f6b0d625b995081e25ad9a5798e2bc6d61d853ed149a693605118014",
+          "source_manifest_sha256": "f358d7360b231c1f316d2f971c6929a15b1651527fbd4f45dd2440b0b3f2c427"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "administration-390.png": "26f02b05f25d374584ed8d629fc49dce28e98a6a921bf008b64f47d8e4c8e201",
+        "administration-1280.png": "2c8cc5b7dd2fe95c9ae2bb66890e95b4855df1fc5add2a408e61d3ccbd8ed732"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 22,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "combined_filters_before_pagination_and_literal_prefix": true,
+        "successful_update_keeps_filters_and_second_page": true,
+        "out_of_range_page_and_disabled_accounts": true,
+        "authorization_and_filter_validation": true
+      },
+      "mongo": {
+        "image": "mongo@sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "step": "api_engine_and_bootstrap",
+        "resources": {
+          "docker_cpus": 20,
+          "docker_memory_bytes": 16626065408,
+          "docker_server_version": "29.9.3",
+          "local_named_pipe": true
+        },
+        "image_id": "sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "container": {
+          "uid_gid": "999:999",
+          "capabilities_dropped": [
+            "ALL"
+          ],
+          "no_new_privileges": true,
+          "read_only_root": true,
+          "publication": "127.0.0.1, Docker allocated host port",
+          "network_dedicated": true,
+          "memory_mib": 768,
+          "cpus": 0.75,
+          "storage": "dedicated tmpfs mounts",
+          "bind_or_persistent_volumes": false,
+          "data_tmpfs_ceiling_mib": 1536,
+          "replica_key_owner_mode_verified": true
+        },
+        "bootstrap": {
+          "step": "serve_real_api",
+          "server_version_observed": "8.0.38",
+          "primary_observed": true,
+          "indexes_observed": 40,
+          "server_version": "8.0.38",
+          "replica": "cvinsights",
+          "members": 1,
+          "writable": true,
+          "collections": 12,
+          "indexes": 40,
+          "revision_after_provision": 0,
+          "app_actions": [
+            "find",
+            "insert",
+            "update",
+            "remove"
+          ],
+          "app_auth_mechanisms": [
+            "SCRAM-SHA-256"
+          ],
+          "maintenance_identity_separate": true,
+          "unauthenticated_read_code": 13,
+          "app_privileges_confirmed": true
+        }
+      },
+      "mongo_contract": {
+        "directory_filters": "passed",
+        "filtered_total": 108,
+        "second_page": 50
+      },
+      "browser_version": "158.0.8127.37",
+      "navigation_activation": "keyboard Tab and Enter",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:34:35.331266+00:00"
+    }
+  },
+  "suites": {
+    "api": {
+      "passed": 638,
+      "skipped": 9,
+      "junit_sha256": "df983d2d918cb8f334360f7acc8f1164dce4cb7e028c59330a0d6e71560c5fa5"
+    },
+    "web": {
+      "passed": 541,
+      "skipped": 0,
+      "junit_sha256": "f46676adf27b05c3ab42b4b0a86a3b3b47be327674da08ed671c63536ffc2be1"
+    }
+  },
+  "academic_replay": {
+    "result": "PASS",
+    "mode": "replay",
+    "api_source_commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+    "runtime_checks_executed": 10,
+    "components": 42,
+    "storage_defs": 20,
+    "http_exchanges": 93,
+    "http_schema_locations": 51,
+    "openapi_operations": 44,
+    "technical_schemas": 5,
+    "output": null
+  }
+}

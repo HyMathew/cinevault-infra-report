@@ -1,5 +1,9 @@
 # Observabilité et exploitation
 
+La [grille défensive Signature](quality/SIGNATURE_DEFENSIVE_QUALIFICATION.md)
+rattache les relevés de segmentation, de collecte et de réception à
+l’environnement qui les a produits.
+
 L'API et le Web émettent un événement JSON pour chaque réponse traitée par Flask.
 La durée en millisecondes s'arrête à la construction de la réponse. Le champ
 `route` porte le modèle Flask, par exemple `/films/<film_id>`, ou `unmatched`.
