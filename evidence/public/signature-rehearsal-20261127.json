@@ -1,0 +1,509 @@
+{
+  "schema": 1,
+  "scope": "Répétition locale JSON avec comptes, film et exemplaire synthétiques.",
+  "status": "PASS",
+  "runner_sources": {
+    "scripts/check_signature_rehearsal.py": "447dc5c47bd8854b17217fe34310c5f8ff8f27c75984612307659e34114707a1",
+    "scripts/check_browser_pair.py": "b27b724d4a0d3c8d0ceb5dcbeb486fb99277ea4029d3fbaf80e2e3eca8e4e4fb",
+    "scripts/check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5",
+    "scripts/summarize_http_logs.py": "c24677690b409863cd3e327b15bb2d563eeaf47c152b6301b214d301784a00d2"
+  },
+  "browser_runs": {
+    "chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T15:45:37.657982+00:00",
+      "stage": "complete",
+      "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
+      "browser_engine": "chromium",
+      "browser_channel": "chrome",
+      "checks": [
+        "Accueil, catalogue, recherche au clavier, fiche et collection",
+        "Deux demandes, décision HTTP 303/409, un prêt actif et une réservation",
+        "Le film rendu correspond au film conservé dans le seul fichier JSON",
+        "Corrélation Web/API des lectures, du refus de rôle et des deux décisions"
+      ],
+      "screens": [
+        {
+          "file": "fiche-390.png",
+          "sha256": "d8c1afcea5f16d4282d5054d880d47abfe4494b882ab501f7d93d22934a320de",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "path": "/films/e08f3ab6-45cc-483b-aabc-da689c4d21ce"
+        },
+        {
+          "file": "circulation-1280.png",
+          "sha256": "7b9a20c20e2573ec0a0a077e378dc7ee5c8c89758558adb24c88d75908fb3553",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "path": "/emprunts"
+        },
+        {
+          "file": "reservation-390.png",
+          "sha256": "f6d357e59f167638855a36c9b4759ad896746e1620b219cc7c8cead9240b3fdd",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "path": "/reservations"
+        }
+      ],
+      "limits": [
+        "Owned loopback Flask pair with synthetic users and disposable JSON",
+        "Exactly two approvals for one copy; no performance or production inference",
+        "RemoteLabz segmentation, alert delivery, recovery and signed images require separate evidence"
+      ],
+      "api_source": {
+        "kind": "git",
+        "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+        "application_sha256": "52223351cd2aa8a039fc51443021cac223ec8d251d0f268a5352c538b076556e",
+        "source_clean": true
+      },
+      "web_source": {
+        "kind": "git",
+        "commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+        "application_sha256": "f53e1a8157fcf30389dad8392151fc9c240b3a4d5d80dd254bc0a5be5460afd0",
+        "source_clean": true
+      },
+      "browser_packages": {
+        "playwright": "1.64.1",
+        "pyee": "14.0.0",
+        "greenlet": "3.5.6",
+        "typing-extensions": "4.16.0"
+      },
+      "browser": "158.0.8127.37",
+      "circulation": {
+        "copies": 1,
+        "approval_http": [
+          303,
+          409
+        ],
+        "active": 1,
+        "pending": 1,
+        "waiting_reservations": 1
+      },
+      "traces": {
+        "catalogue": [
+          {
+            "service": "web",
+            "method": "GET",
+            "route": "/films",
+            "status": 200,
+            "duration_ms": 96.689,
+            "request_id": "99b5b78157ca4244994df6ac7d802097",
+            "api_request_ids": [
+              "bce35cd98a3d4e2da37238e6f8a869ee",
+              "d3ddfe95f4c84f24a0e7fbcfd585cd51"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 9.5849,
+            "request_id": "bce35cd98a3d4e2da37238e6f8a869ee",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/movies",
+            "status": 200,
+            "duration_ms": 1.5358,
+            "request_id": "d3ddfe95f4c84f24a0e7fbcfd585cd51",
+            "api_request_ids": []
+          }
+        ],
+        "member_denied": [
+          {
+            "service": "web",
+            "method": "GET",
+            "route": "/administration",
+            "status": 403,
+            "duration_ms": 42.729,
+            "request_id": "7aee0a2d3be54473b68335375cb83534",
+            "api_request_ids": [
+              "3e53539ee6544284a5b58307c13c6dc7"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 4.0317,
+            "request_id": "3e53539ee6544284a5b58307c13c6dc7",
+            "api_request_ids": []
+          }
+        ],
+        "approval_accepted": [
+          {
+            "service": "web",
+            "method": "POST",
+            "route": "/emprunts/<loan_id>/valider",
+            "status": 303,
+            "duration_ms": 161.216,
+            "request_id": "01084afd0e864ca3a2a52c7c544c7c70",
+            "api_request_ids": [
+              "1bb738eaede545e78c71f05345e55fcd",
+              "28cd5e630c494e31906f944b50a3c855",
+              "c0e8253ace2b4a91a8c996653f057ef5",
+              "5c9b7bfb99ba4486b9bb31811673bfe4"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 5.629,
+            "request_id": "1bb738eaede545e78c71f05345e55fcd",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>",
+            "status": 200,
+            "duration_ms": 5.6864,
+            "request_id": "28cd5e630c494e31906f944b50a3c855",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>/options",
+            "status": 200,
+            "duration_ms": 9.3604,
+            "request_id": "c0e8253ace2b4a91a8c996653f057ef5",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "POST",
+            "route": "/api/v1/loans/<loan_id>/approve",
+            "status": 200,
+            "duration_ms": 7.115,
+            "request_id": "5c9b7bfb99ba4486b9bb31811673bfe4",
+            "api_request_ids": []
+          }
+        ],
+        "approval_declined": [
+          {
+            "service": "web",
+            "method": "POST",
+            "route": "/emprunts/<loan_id>/valider",
+            "status": 409,
+            "duration_ms": 353.363,
+            "request_id": "b14724c2d96d4c1da26373ebb72e419c",
+            "api_request_ids": [
+              "c15d9cb34fe1404a94425aaa1aae8cd2",
+              "5a1929cb313d459aaddbb644be1b28d2",
+              "718b3a2997d24e59aa913f33dd2bcb79",
+              "753edcfa768441128f752762954ba39f"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 7.7559,
+            "request_id": "c15d9cb34fe1404a94425aaa1aae8cd2",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>",
+            "status": 200,
+            "duration_ms": 6.4241,
+            "request_id": "5a1929cb313d459aaddbb644be1b28d2",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>/options",
+            "status": 200,
+            "duration_ms": 4.936,
+            "request_id": "718b3a2997d24e59aa913f33dd2bcb79",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "POST",
+            "route": "/api/v1/loans/<loan_id>/approve",
+            "status": 409,
+            "duration_ms": 259.4815,
+            "request_id": "753edcfa768441128f752762954ba39f",
+            "api_request_ids": []
+          }
+        ]
+      },
+      "browser_closed": true,
+      "web_thread_stopped": true,
+      "fault_proxy_stopped": true,
+      "owned_api_exit": 0,
+      "api_process_stopped": true,
+      "api_clean_exit": true,
+      "temporary_data_removed": true,
+      "finished_at": "2026-11-27T15:45:50.995553+00:00"
+    },
+    "firefox": {
+      "passed": true,
+      "started_at": "2026-11-27T15:45:37.679750+00:00",
+      "stage": "complete",
+      "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
+      "browser_engine": "firefox",
+      "browser_channel": "playwright-default-firefox",
+      "checks": [
+        "Accueil, catalogue, recherche au clavier, fiche et collection",
+        "Deux demandes, décision HTTP 303/409, un prêt actif et une réservation",
+        "Le film rendu correspond au film conservé dans le seul fichier JSON",
+        "Corrélation Web/API des lectures, du refus de rôle et des deux décisions"
+      ],
+      "screens": [
+        {
+          "file": "fiche-390.png",
+          "sha256": "0330a489c4bbfa4f77f16e313e27d3513350cbd7126fe297915408158265c012",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "path": "/films/7a573050-ef56-47fb-a582-0e5cd7c863aa"
+        },
+        {
+          "file": "circulation-1280.png",
+          "sha256": "ab75c25fe50fc9c674f5b45311cd77c6bbd1a0f103b2d34c23aa2aa805430f96",
+          "viewport": {
+            "width": 1280,
+            "height": 900
+          },
+          "path": "/emprunts"
+        },
+        {
+          "file": "reservation-390.png",
+          "sha256": "634b72b4ec1a3653820cb5c27d1c71b39a1ea5432cca2ab6a3c93e60ade60b8a",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "path": "/reservations"
+        }
+      ],
+      "limits": [
+        "Owned loopback Flask pair with synthetic users and disposable JSON",
+        "Exactly two approvals for one copy; no performance or production inference",
+        "RemoteLabz segmentation, alert delivery, recovery and signed images require separate evidence"
+      ],
+      "api_source": {
+        "kind": "git",
+        "commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+        "application_sha256": "52223351cd2aa8a039fc51443021cac223ec8d251d0f268a5352c538b076556e",
+        "source_clean": true
+      },
+      "web_source": {
+        "kind": "git",
+        "commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+        "application_sha256": "f53e1a8157fcf30389dad8392151fc9c240b3a4d5d80dd254bc0a5be5460afd0",
+        "source_clean": true
+      },
+      "browser_packages": {
+        "playwright": "1.64.1",
+        "pyee": "14.0.0",
+        "greenlet": "3.5.6",
+        "typing-extensions": "4.16.0"
+      },
+      "browser": "157.0",
+      "circulation": {
+        "copies": 1,
+        "approval_http": [
+          303,
+          409
+        ],
+        "active": 1,
+        "pending": 1,
+        "waiting_reservations": 1
+      },
+      "traces": {
+        "catalogue": [
+          {
+            "service": "web",
+            "method": "GET",
+            "route": "/films",
+            "status": 200,
+            "duration_ms": 84.084,
+            "request_id": "50f0070026ca48418d60f0a03e851a4d",
+            "api_request_ids": [
+              "65eae2bbc76b416b9d8985163b0cd69f",
+              "c688b1feda084ddf92c84203f0267080"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 7.7732,
+            "request_id": "65eae2bbc76b416b9d8985163b0cd69f",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/movies",
+            "status": 200,
+            "duration_ms": 1.0916,
+            "request_id": "c688b1feda084ddf92c84203f0267080",
+            "api_request_ids": []
+          }
+        ],
+        "member_denied": [
+          {
+            "service": "web",
+            "method": "GET",
+            "route": "/administration",
+            "status": 403,
+            "duration_ms": 52.439,
+            "request_id": "6846a0fbdc824baebeaa877f420621f3",
+            "api_request_ids": [
+              "b29e9d30238c480f977efc21a4d3d678"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 8.3198,
+            "request_id": "b29e9d30238c480f977efc21a4d3d678",
+            "api_request_ids": []
+          }
+        ],
+        "approval_accepted": [
+          {
+            "service": "web",
+            "method": "POST",
+            "route": "/emprunts/<loan_id>/valider",
+            "status": 303,
+            "duration_ms": 136.972,
+            "request_id": "9f9f5fd378bc452abbd2ddafe75f29bc",
+            "api_request_ids": [
+              "8e1dec939e294734b979dfb2114d5817",
+              "79b59808519443ae88908798c9745898",
+              "929840dbf8244d9eb4b7956dfabde9fd",
+              "4a77b39497e94596a838b3d8a20bd5a1"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 7.9565,
+            "request_id": "8e1dec939e294734b979dfb2114d5817",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>",
+            "status": 200,
+            "duration_ms": 5.0264,
+            "request_id": "79b59808519443ae88908798c9745898",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>/options",
+            "status": 200,
+            "duration_ms": 4.3433,
+            "request_id": "929840dbf8244d9eb4b7956dfabde9fd",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "POST",
+            "route": "/api/v1/loans/<loan_id>/approve",
+            "status": 200,
+            "duration_ms": 6.3019,
+            "request_id": "4a77b39497e94596a838b3d8a20bd5a1",
+            "api_request_ids": []
+          }
+        ],
+        "approval_declined": [
+          {
+            "service": "web",
+            "method": "POST",
+            "route": "/emprunts/<loan_id>/valider",
+            "status": 409,
+            "duration_ms": 183.183,
+            "request_id": "896e1a2cddc94302a2b71cae265d155e",
+            "api_request_ids": [
+              "5557a82e619b448180240af0e1641449",
+              "0311516fc4fb45f0a951992762cc0061",
+              "f06d37999d194c96a3c2beca4ed6427c",
+              "73117d023a594b4191175068cdd2b5f1"
+            ]
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/me",
+            "status": 200,
+            "duration_ms": 4.9981,
+            "request_id": "5557a82e619b448180240af0e1641449",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>",
+            "status": 200,
+            "duration_ms": 7.2838,
+            "request_id": "0311516fc4fb45f0a951992762cc0061",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "GET",
+            "route": "/api/v1/loans/<loan_id>/options",
+            "status": 200,
+            "duration_ms": 10.8654,
+            "request_id": "f06d37999d194c96a3c2beca4ed6427c",
+            "api_request_ids": []
+          },
+          {
+            "service": "api",
+            "method": "POST",
+            "route": "/api/v1/loans/<loan_id>/approve",
+            "status": 409,
+            "duration_ms": 8.9999,
+            "request_id": "73117d023a594b4191175068cdd2b5f1",
+            "api_request_ids": []
+          }
+        ]
+      },
+      "browser_closed": true,
+      "web_thread_stopped": true,
+      "fault_proxy_stopped": true,
+      "owned_api_exit": 0,
+      "api_process_stopped": true,
+      "api_clean_exit": true,
+      "temporary_data_removed": true,
+      "finished_at": "2026-11-27T15:45:54.159320+00:00"
+    }
+  },
+  "separate_stage_evidence": [
+    "swarm-predeployment-readiness-20261126.json",
+    "swarm-mongodb-overlay-tls-20261125.json",
+    "operational-proxy-http-20261126.json",
+    "staging-image-pair-preflight-20261126.json"
+  ]
+}

@@ -25,11 +25,44 @@ précise la portée des preuves de segmentation, de collecte et d’alerte.
 | --- | --- | --- |
 | 1. Produit, 2 min | Suivre accueil, catalogue et recherche rapide avec Ctrl+K ou ⌘K. Taper un titre, choisir une suggestion au clavier, ouvrir la fiche et créer une réservation comme membre. Montrer la collection et le catalogue à 390 px. | [Qualification recherche rapide](quality/SIGNATURE_QUICK_SEARCH.md) pour le dialogue. [Acceptation produit 2.1](../evidence/public/exact-candidate-acceptance-20261126.json) pour le catalogue et les autres parcours à leurs révisions. |
 | 2. Architecture distribuée, 2 min | Présenter les rôles des trois VM et les services, réseaux et volumes observés. Suivre une requête de Web vers API puis vers la seule persistance active. Sur le banc académique, comparer fichier JSON, réponse REST et fiche rendue par Jinja. Expliquer où MongoDB intervient en mode Enterprise. | [Déploiement Swarm v1 exécuté](deploiement-swarm-enterprise.md), [exercices A/B/C](pedagogical-validation.md) et [Compose en clones neufs](../evidence/public/compose-clean-clone-20261126.json). Le reçu de [MongoDB sur overlay avec TLS](../evidence/public/swarm-mongodb-overlay-tls-20261125.json) qualifie un essai de composant. |
-| 3. Concurrence, 1 min 30 | Dans le banc synthétique, présenter deux demandes concurrentes portant sur le même exemplaire. Lire les deux réponses puis l’état final, avec un seul prêt actif pour l’exemplaire. Distinguer la concurrence de deux demandes et le rejeu d’une seule demande. | [Contrats MongoDB des services](quality/MONGODB_SERVICE_CONTRACTS.md) pour l’invariant et le banc. [Élection et rejeu](../evidence/public/mongodb-election-idempotency-20261126.json) pour le cas distinct de la réponse perdue pendant une élection. |
-| 4. Segmentation, 1 min 30 | Comparer les ports publiés et les réseaux effectifs. Montrer le frontal accessible, l’API et MongoDB réservés à leurs chemins autorisés, puis un échange légitime entre Web et API. Décrire le rôle de la liaison TLS entre l’API et MongoDB. | [Déploiement et réseau v1](deploiement-swarm-enterprise.md), [précontrôle des trois nœuds](../evidence/public/swarm-predeployment-readiness-20261126.json) et [essai overlay MongoDB](../evidence/public/swarm-mongodb-overlay-tls-20261125.json). Ces essais portent sur des périmètres distincts. |
+| 3. Concurrence, 1 min 30 | Ouvrir deux demandes déjà enregistrées et soumettre l’attribution du même exemplaire en parallèle. Montrer les réponses Web 303 et 409, les décisions API 200 et 409 et le prêt actif unique. Distinguer la concurrence de deux demandes et le rejeu d’une seule demande. | [Reçu de répétition](../evidence/public/signature-rehearsal-20261127.json), [contrats MongoDB des services](quality/MONGODB_SERVICE_CONTRACTS.md) et [élection et rejeu](../evidence/public/mongodb-election-idempotency-20261126.json). |
+| 4. Segmentation, 1 min 30 | Comparer les réseaux effectifs et les ports publiés. Dans la variante HTTPS privée, Caddy est accessible par le tunnel opérateur et la stack publie zéro port. Suivre les réseaux distincts de Web, API et MongoDB et décrire le rôle de la liaison TLS entre API et MongoDB. | [Déploiement et réseau v1](deploiement-swarm-enterprise.md), [précontrôle des trois nœuds](../evidence/public/swarm-predeployment-readiness-20261126.json) et [essai overlay MongoDB](../evidence/public/swarm-mongodb-overlay-tls-20261125.json). Ces essais portent sur des périmètres distincts. |
 | 5. Détection, 1 min 30 | Sur le banc, ouvrir l’administration en tant que membre. Montrer le refus HTTP 403 et le même identifiant de requête entre la réponse et le journal, avec le statut et la route. Montrer une réception d’alerte seulement si le destinataire est effectivement configuré et que le reçu correspond à l’événement montré. | [Journaux et corrélation](observability.md). Le [reçu de remise inter-hôtes](../evidence/public/operational-watch-cross-host-20261126.json) concerne une campagne de qualification distincte. |
 | 6. Résilience, 1 min 30 | Sur un banc isolé, suivre 200 → 502 → 200 lors d’un arrêt puis redémarrage du Web derrière Caddy. Relever les heures des observations et relire le film connu. Expliquer ce qui est mesuré et pourquoi un redémarrage du Web diffère d’une restauration de données. | [Sonde TLS pendant l’arrêt Web](../evidence/public/operational-proxy-http-20261126.json), [restauration MongoDB contrôlée](../evidence/public/mongodb-backup-http-20261126.json). Présenter la durée comme mesurée sur le banc concerné. |
 | 7. Chaîne de livraison, 2 min | Suivre une révision jusqu’au workflow, aux tests, à la nomenclature SBOM, au scanner, au digest, à la signature et à l’attestation. Montrer comment un avis High OpenSSL empêche la publication du couple candidat et donc la remise au staging. | [Périmètre de qualification](quality/ENTERPRISE_21_QUALIFICATION.md), [contrôle de provenance par tentative](../evidence/public/image-attestation-exact-attempt-20261126.json), [précontrôle des images](../evidence/public/staging-image-pair-preflight-20261126.json). Associer chaque digest au reçu de son propre essai. |
+
+## Rejouer le fil conducteur local
+
+Préparer les deux environnements Python séparés et le navigateur selon le
+[gate navigateur](quality/BROWSER_PAIR_GATE.md). Choisir un chemin de
+sortie neuf. Le [script de répétition](../scripts/check_signature_rehearsal.py)
+lance les deux services sur boucle locale avec des identités synthétiques
+et supprime le stockage de démonstration à la fermeture.
+
+```sh
+../.venv-web/bin/python -B scripts/check_signature_rehearsal.py \
+  --api-root ../cinevault-api --web-root ../cinevault-web \
+  --api-python ../.venv-api/bin/python \
+  --report .cache/signature-rehearsal.json \
+  --screens-dir .cache/signature-rehearsal-screens
+```
+
+Le film « La Dernière Séance » a un seul exemplaire. Une fois placé en
+collection, il fait l’objet de deux demandes de prêt. Deux formulaires
+validés au même instant côté client proposent cet exemplaire. Une
+attribution réussit et l’autre affiche un conflit. Le troisième membre
+rejoint la file par la fiche du film. Le reçu relie aussi la lecture du
+catalogue, le refus d’accès à l’administration et les deux décisions aux
+événements de Web et de l’API.
+
+[Fiche sur mobile](design/screens-signature-rehearsal/fiche-390.png) ·
+[État des deux prêts](design/screens-signature-rehearsal/circulation-1280.png) ·
+[Réservation sur mobile](design/screens-signature-rehearsal/reservation-390.png) ·
+[Reçu Chrome et Firefox](../evidence/public/signature-rehearsal-20261127.json)
+
+Pour la présentation hors ligne, les scènes de segmentation, de panne et
+de livraison utilisent les reçus distincts du tableau. En direct, préciser
+à quel environnement chaque observation appartient.
 
 ## Démonstration approfondie, 25 minutes
 

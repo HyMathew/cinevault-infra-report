@@ -752,7 +752,7 @@ def exercise_browser(browser, base, config, folder, args, report, fault):
     )
 
 
-def run_pair(args):
+def run_pair(args, exercise=exercise_browser):
     browser_name = getattr(args, "browser", "chromium")
     browser_channel = args.browser_channel or f"playwright-default-{browser_name}"
     report = {
@@ -835,7 +835,7 @@ def run_pair(args):
             browser = browser_type.launch(**options)
             try:
                 report["browser"] = browser.version
-                exercise_browser(browser, base, config, folder, args, report, fault)
+                exercise(browser, base, config, folder, args, report, fault)
             finally:
                 browser.close()
                 report["browser_closed"] = True
@@ -905,9 +905,9 @@ def run_pair(args):
     return report
 
 
-def main(argv=None):
+def main(argv=None, exercise=exercise_browser):
     args = parse_args(argv)
-    report = run_pair(args)
+    report = run_pair(args, exercise)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     with args.report.open("x", encoding="utf-8") as stream:
         json.dump(report, stream, ensure_ascii=False, indent=2)
