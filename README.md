@@ -52,6 +52,8 @@ Les deux projets applicatifs sont publics : [API Flask/JSON](https://github.com/
 - [Preuves VS Code, volume partagé et exercices A/B/C](docs/pedagogical-validation.md)
 - [Architecture, flux et modèle de données](docs/architecture.md)
 - [Dictionnaire des données, messages JSON et limites de validation](docs/data-dictionary.md)
+- [Guide de soutenance RT0705 Signature](docs/soutenance-signature.md)
+- [Recherche UX et références de design Signature](docs/design/REFERENCE_RESEARCH.md)
 - [Inventaire des pages, traitements et scripts frontend](docs/frontend-inventory.md)
 - [Contrat HTTP et opérations effectives](docs/api.md)
 - [Développement local et déploiement](docs/deploiement.md)

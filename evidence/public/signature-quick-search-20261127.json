@@ -1,0 +1,764 @@
+{
+  "scope": "Windows loopback, real Web and API, synthetic catalogue, JSON v2; Chromium channel Chrome plus Firefox and WebKit",
+  "controlled_faults": [
+    "Web suggestion endpoint HTTP 503",
+    "800 ms delay on one prior query"
+  ],
+  "web_commit": "51b6962f4d983e7fcb22b9bec67387a982274564",
+  "capture_paths": [
+    "docs/design/screens-signature-search/catalogue-avant-390.png",
+    "docs/design/screens-signature-search/dialogue-1280.png",
+    "docs/design/screens-signature-search/dialogue-390.png"
+  ],
+  "browser_script_sha256": "e0a5b55967ccec2f36f3a09087ab4ec05eb7d66748aafec9116c63ea9a82cb07",
+  "web_pytest": {
+    "commit": "51b6962f4d983e7fcb22b9bec67387a982274564",
+    "pass": 519,
+    "junit_sha256": "bfb0bb2c670a79f2ad2a6bbce8bf9e38a073cfd2bb8f2f36b71b2f897696c863"
+  },
+  "browser_evidence": {
+    "chrome-release": {
+      "status": "complete",
+      "engine": "chrome",
+      "playwright": "1.64.1",
+      "observed_at": "2026-11-27T14:24:04.788117+00:00",
+      "sources": {
+        "api": {
+          "commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "bde230ede3d8d352d8a866109208af7aedaf11076c0a814570fe1cde24418708",
+          "source_manifest_sha256": "c35969ec30cae4c9ce34c15860143d6159d83f80e244860cbee57a762185b8a9"
+        },
+        "web": {
+          "commit": "51b6962f4d983e7fcb22b9bec67387a982274564",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "fcee84ef7b45e0d85c0052012139d4f1027539be28e722a5b784ad859d8de242",
+          "source_manifest_sha256": "eeb8475aca1b6166ad08e1ae7eff95f932088fc66f7a8a858ade74d50ffcba22"
+        }
+      },
+      "harness": {
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5",
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb"
+      },
+      "flows": {
+        "keyboard_open_esc_close_and_restore": true,
+        "debounced_public_result_and_keyboard_detail": true,
+        "late_response_and_no_results": true,
+        "controlled_suggestions_failure_and_full_catalogue": true,
+        "guest_member_manager_admin_navigation": true,
+        "reduced_motion_four_viewports": true,
+        "catalogue_operates_with_javascript_disabled": true,
+        "public_result_cap_against_real_catalogue": true,
+        "stale_manager_destination_rejected_after_role_change": true
+      },
+      "screens": [
+        {
+          "file": "dialogue-390.png",
+          "sha256": "569a109aea9dc561eab3335eeec2e619a5e671497c3f4778cad79776127a4ec0"
+        },
+        {
+          "file": "dialogue-1280.png",
+          "sha256": "ccd5a635da42e9f30c5d0a0e89134f51ba6f608df6d031f0b305110dce11383a"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 320,
+          "sizes": {
+            "viewport": 320,
+            "document": 320,
+            "left": 19,
+            "right": 301,
+            "dialog": 280,
+            "content": 280,
+            "targets": [
+              44,
+              44,
+              44,
+              136,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 2
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": []
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 390,
+          "sizes": {
+            "viewport": 390,
+            "document": 390,
+            "left": 19,
+            "right": 371,
+            "dialog": 350,
+            "content": 350,
+            "targets": [
+              44,
+              44,
+              44,
+              112,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "#quick-search-hint"
+                  ],
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 768,
+          "sizes": {
+            "viewport": 768,
+            "document": 768,
+            "left": 64,
+            "right": 704,
+            "dialog": 638,
+            "content": 638,
+            "targets": [
+              44,
+              44,
+              44,
+              88,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 19,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 1280,
+          "sizes": {
+            "viewport": 1280,
+            "document": 1280,
+            "left": 320,
+            "right": 960,
+            "dialog": 638,
+            "content": 638,
+            "targets": [
+              44,
+              44,
+              44,
+              88,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        }
+      ],
+      "script_bytes": {
+        "raw": 4721,
+        "gzip_9": 1526
+      },
+      "browser_version": "158.0.8127.37",
+      "loopback_input_to_suggestion_ms": [
+        307.4,
+        304.6,
+        286.3,
+        286.9,
+        291.8,
+        283.1,
+        291,
+        295
+      ],
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "runtime_removed": true,
+      "finished_at": "2026-11-27T14:24:33.255607+00:00",
+      "loopback_median_ms": 291.4,
+      "playwright_timing_probe_ms": 414.8
+    },
+    "firefox-release": {
+      "status": "complete",
+      "engine": "firefox",
+      "playwright": "1.64.1",
+      "observed_at": "2026-11-27T14:24:04.863042+00:00",
+      "sources": {
+        "api": {
+          "commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "bde230ede3d8d352d8a866109208af7aedaf11076c0a814570fe1cde24418708",
+          "source_manifest_sha256": "c35969ec30cae4c9ce34c15860143d6159d83f80e244860cbee57a762185b8a9"
+        },
+        "web": {
+          "commit": "51b6962f4d983e7fcb22b9bec67387a982274564",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "fcee84ef7b45e0d85c0052012139d4f1027539be28e722a5b784ad859d8de242",
+          "source_manifest_sha256": "eeb8475aca1b6166ad08e1ae7eff95f932088fc66f7a8a858ade74d50ffcba22"
+        }
+      },
+      "harness": {
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5",
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb"
+      },
+      "flows": {
+        "keyboard_open_esc_close_and_restore": true,
+        "debounced_public_result_and_keyboard_detail": true,
+        "late_response_and_no_results": true,
+        "controlled_suggestions_failure_and_full_catalogue": true,
+        "guest_member_manager_admin_navigation": true,
+        "reduced_motion_four_viewports": true,
+        "catalogue_operates_with_javascript_disabled": true,
+        "public_result_cap_against_real_catalogue": true,
+        "stale_manager_destination_rejected_after_role_change": true
+      },
+      "screens": [
+        {
+          "file": "dialogue-390.png",
+          "sha256": "7b0bb24607778dea866d7ffaac08d24e6d515908be91236382d8ecf8df6a1120"
+        },
+        {
+          "file": "dialogue-1280.png",
+          "sha256": "cabda7d8bf24589842fd08a0d035595d7e57caf9cd6b13df9575d6f425553b70"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 320,
+          "sizes": {
+            "viewport": 320,
+            "document": 320,
+            "left": 19,
+            "right": 301,
+            "dialog": 280,
+            "content": 280,
+            "targets": [
+              44,
+              44,
+              44,
+              136,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 2
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": []
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 390,
+          "sizes": {
+            "viewport": 390,
+            "document": 390,
+            "left": 19,
+            "right": 371,
+            "dialog": 350,
+            "content": 350,
+            "targets": [
+              44,
+              44,
+              44,
+              112,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 768,
+          "sizes": {
+            "viewport": 768,
+            "document": 768,
+            "left": 64,
+            "right": 704,
+            "dialog": 638,
+            "content": 638,
+            "targets": [
+              44,
+              44,
+              44,
+              88,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 19,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 1280,
+          "sizes": {
+            "viewport": 1280,
+            "document": 1280,
+            "left": 320,
+            "right": 960,
+            "dialog": 638,
+            "content": 638,
+            "targets": [
+              44,
+              44,
+              44,
+              88,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        }
+      ],
+      "script_bytes": {
+        "raw": 4721,
+        "gzip_9": 1526
+      },
+      "browser_version": "157.0",
+      "loopback_input_to_suggestion_ms": [
+        297,
+        296,
+        299,
+        295,
+        287,
+        313,
+        283,
+        301
+      ],
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "runtime_removed": true,
+      "finished_at": "2026-11-27T14:24:42.650539+00:00",
+      "loopback_median_ms": 296.5,
+      "playwright_timing_probe_ms": 512.3
+    },
+    "webkit-release": {
+      "status": "complete",
+      "engine": "webkit",
+      "playwright": "1.64.1",
+      "observed_at": "2026-11-27T14:24:04.823121+00:00",
+      "sources": {
+        "api": {
+          "commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "bde230ede3d8d352d8a866109208af7aedaf11076c0a814570fe1cde24418708",
+          "source_manifest_sha256": "c35969ec30cae4c9ce34c15860143d6159d83f80e244860cbee57a762185b8a9"
+        },
+        "web": {
+          "commit": "51b6962f4d983e7fcb22b9bec67387a982274564",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "fcee84ef7b45e0d85c0052012139d4f1027539be28e722a5b784ad859d8de242",
+          "source_manifest_sha256": "eeb8475aca1b6166ad08e1ae7eff95f932088fc66f7a8a858ade74d50ffcba22"
+        }
+      },
+      "harness": {
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5",
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb"
+      },
+      "flows": {
+        "keyboard_open_esc_close_and_restore": true,
+        "debounced_public_result_and_keyboard_detail": true,
+        "late_response_and_no_results": true,
+        "controlled_suggestions_failure_and_full_catalogue": true,
+        "guest_member_manager_admin_navigation": true,
+        "reduced_motion_four_viewports": true,
+        "catalogue_operates_with_javascript_disabled": true,
+        "public_result_cap_against_real_catalogue": true,
+        "stale_manager_destination_rejected_after_role_change": true
+      },
+      "screens": [
+        {
+          "file": "dialogue-390.png",
+          "sha256": "9ef2c25b84ee6e4b471e93503feeca9b73051afdd29a1a1da805895ef2f2e0e8"
+        },
+        {
+          "file": "dialogue-1280.png",
+          "sha256": "9015baf868f114dbdc974acf3347983845758c8c3da4a674e1694c0108da45d7"
+        }
+      ],
+      "viewports": [
+        {
+          "width": 320,
+          "sizes": {
+            "viewport": 320,
+            "document": 320,
+            "left": 19,
+            "right": 301,
+            "dialog": 280,
+            "content": 280,
+            "targets": [
+              44,
+              44,
+              44,
+              136,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 2
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": []
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 390,
+          "sizes": {
+            "viewport": 390,
+            "document": 390,
+            "left": 19,
+            "right": 371,
+            "dialog": 350,
+            "content": 350,
+            "targets": [
+              44,
+              44,
+              44,
+              112,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 768,
+          "sizes": {
+            "viewport": 768,
+            "document": 768,
+            "left": 64,
+            "right": 704,
+            "dialog": 638,
+            "content": 638,
+            "targets": [
+              44,
+              44,
+              44,
+              88,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 19,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        },
+        {
+          "width": 1280,
+          "sizes": {
+            "viewport": 1280,
+            "document": 1280,
+            "left": 320,
+            "right": 960,
+            "dialog": 638,
+            "content": 638,
+            "targets": [
+              44,
+              44,
+              44,
+              88,
+              44,
+              44,
+              44,
+              44,
+              44
+            ],
+            "headerRows": 1
+          },
+          "axe": {
+            "version": "4.11.0",
+            "passes": 20,
+            "violations": [],
+            "incomplete": [
+              [
+                "color-contrast",
+                [
+                  [
+                    "strong"
+                  ]
+                ]
+              ]
+            ]
+          },
+          "result_title_contrast": {
+            "foreground": "rgb(245, 238, 229)",
+            "background": "rgb(27, 25, 25)",
+            "ratio": 15.207017754150003
+          }
+        }
+      ],
+      "script_bytes": {
+        "raw": 4721,
+        "gzip_9": 1526
+      },
+      "browser_version": "27.2",
+      "loopback_input_to_suggestion_ms": [
+        288,
+        308,
+        302,
+        295,
+        323,
+        283,
+        287,
+        303
+      ],
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "runtime_removed": true,
+      "finished_at": "2026-11-27T14:24:35.372733+00:00",
+      "loopback_median_ms": 298.5,
+      "playwright_timing_probe_ms": 529.8
+    },
+    "baseline-final": {
+      "status": "complete",
+      "engine": "chrome",
+      "playwright": "1.64.1",
+      "observed_at": "2026-11-27T14:17:37.904927+00:00",
+      "sources": {
+        "api": {
+          "commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "bde230ede3d8d352d8a866109208af7aedaf11076c0a814570fe1cde24418708",
+          "source_manifest_sha256": "c35969ec30cae4c9ce34c15860143d6159d83f80e244860cbee57a762185b8a9"
+        },
+        "web": {
+          "commit": "0283bf3eb295859b302aabb1ba13a35dac627a9f",
+          "tracked_files_verified_against_git_blobs": 119,
+          "git_archive_sha256": "c08da6677cfc2ed9e0a079a2156004bbb096fb586cebb58ab07528affc673fba",
+          "source_manifest_sha256": "b458e0b6455446a1fa5c95af650ab999c9585e757b9dee98ab6b3059643253f0"
+        }
+      },
+      "harness": {
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5",
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb"
+      },
+      "flows": {
+        "baseline_no_global_dialog": true
+      },
+      "screens": [
+        {
+          "file": "catalogue-avant-390.png",
+          "sha256": "35d9d19033c7379e94657eb0b8b8b2daa4738a260c2a67a604ee1d08b2e6c053"
+        },
+        {
+          "file": "catalogue-avant-1280.png",
+          "sha256": "ff81fe9ece1047013315d2b790890be519b4ac6d60969c900a9de2ac31820c31"
+        }
+      ],
+      "viewports": [],
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "runtime_removed": true,
+      "finished_at": "2026-11-27T14:17:48.052117+00:00"
+    }
+  }
+}
