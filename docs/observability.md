@@ -36,6 +36,21 @@ Contrôler la fenêtre, la collecte et les révisions exécutées avant de concl
 sur le trafic. Conserver avec le rapport les heures UTC, les sources exactes
 des images et le résultat de la commande.
 
+## Indicateurs de qualification
+
+Les seuils ci-dessous servent au banc de qualification. Le relevé doit
+indiquer la fenêtre UTC, la révision et le nombre d’observations. Un
+contrat de disponibilité nécessiterait une campagne représentative
+et un accord distinct.
+
+| Indicateur | Mesure à conserver | Cible pour le banc |
+| --- | --- | --- |
+| Disponibilité Web et API | Comptes de créneaux prévus, sains, en échec et sans résultat. Rapporter les réponses 200 sur les créneaux mesurés et la couverture des créneaux prévus. | Hors panne volontaire, obtenir 200 sur les deux services à chaque créneau du scénario. Signaler un créneau manquant séparément. |
+| Erreurs et durée HTTP | Sur une fenêtre bornée, relever 5xx / requêtes par service avec effectifs. Rapporter p50 et p95 par route, et p99 si l’échantillon permet de distinguer la queue. | Appliquer le seuil 5xx fourni à la sonde. Comparer la latence au témoin dans le même environnement et sur le même parcours, avec volume et concurrence documentés. |
+| Santé MongoDB | Relever l’état du réplica et une lecture métier attendue observée à travers l’API. Conserver la négociation TLS comme preuve de transport. | Lire le film témoin et confirmer le backend MongoDB sélectionné sur le staging. |
+| Sauvegarde et restauration | Reçu de capture et vérification indépendante de l’archive, puis reçu d’une restauration isolée et durée constatée. | Suivre la [politique de départ](operations/MONGODB_BACKUP.md#rotation-fréquence-et-rétention) de 24 heures pour la sauvegarde vérifiée et d’un exercice de restauration par mois. |
+| Détection et remise | Rapprocher l’heure du premier résultat dégradé ou du créneau absent, l’événement et l’accusé du destinataire. Mesurer les deux délais sur cette tentative. | Qualifier un incident et sa reprise. Le délai attendu dépend du créneau, de l’échéance et de la fréquence d’évaluation effectivement configurés. |
+
 ## Diagnostiquer une indisponibilité
 
 1. Vérifier l'état du manager et des tâches via `docker node ls`,
