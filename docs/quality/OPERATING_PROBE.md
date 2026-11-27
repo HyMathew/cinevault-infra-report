@@ -125,8 +125,10 @@ en secondes. Traiter les créneaux par ordre chronologique.
 Réserver un chemin neuf au reçu de vérification pour
 chaque créneau. `run` impose comme seuil de vérification le début
 de ce créneau. Utiliser une boîte de réception protégée, accessible
-au destinataire, sur un système de fichiers qui permet le renommage
-atomique dans le répertoire cible.
+au destinataire. La boîte doit prendre en charge la publication
+atomique sans remplacement par renommage sous Windows et par lien
+physique sous Linux. Un fichier déjà présent est confirmé uniquement
+si ses octets correspondent à l'événement du journal SQLite.
 Conserver le message et son accusé de réception avant la rotation
 des preuves d’exploitation.
 

@@ -3,7 +3,6 @@ import json
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import closing
 from datetime import UTC, datetime, timedelta
-from pathlib import Path
 
 import pytest
 
@@ -62,7 +61,7 @@ def incident_messages(inbox):
 def test_incident_lifecycle_replay_and_next_incident(operator, capsys):
     database, inbox, start = operator
     windows = [start + timedelta(seconds=10 * interval) for interval in range(5)]
-    first, changed, repeat, recovered, next_incident = windows
+    first, changed, repeat, recovered, _ = windows
     for slot in (changed, repeat):
         prepared_result(database, slot, reason="web_http_error", web=502)
     prepared_result(database, recovered)
@@ -145,16 +144,18 @@ def test_simultaneous_observers_record_a_single_event(operator):
 
 
 @pytest.mark.parametrize("same_bytes", [True, False])
-def test_windows_replace_contention_checks_published_bytes(
+def test_competing_publication_preserves_recipient_bytes(
     operator, capsys, monkeypatch, same_bytes
 ):
     database, inbox, slot = operator
 
+    publish = supervisor._publish_event
+
     def competing_writer(source, target):
         target.write_bytes(source.read_bytes() if same_bytes else b"conflict")
-        raise PermissionError("concurrent reader")
+        publish(source, target)
 
-    monkeypatch.setattr(Path, "replace", competing_writer)
+    monkeypatch.setattr(supervisor, "_publish_event", competing_writer)
     code, _ = watched(database, inbox, slot, capsys)
     assert code == (1 if same_bytes else 2)
     (target,) = inbox.iterdir()

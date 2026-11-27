@@ -185,6 +185,15 @@ def evaluate(database, slot, deadline):
         return reason
 
 
+def _publish_event(source, target):
+    # Windows rename refuses an existing destination. POSIX rename
+    # would replace it, so publish with a hard link there.
+    if os.name == "nt":
+        source.rename(target)
+    else:
+        target.hardlink_to(source)
+
+
 def deliver(database, inbox):
     if not inbox.is_dir():
         raise OSError
@@ -195,10 +204,7 @@ def deliver(database, inbox):
         for entry in pending:
             target = inbox / (entry["id"] + ".json")
             raw = entry["body"].encode("utf-8")
-            if target.exists():
-                if target.read_bytes() != raw:
-                    raise ValueError
-            else:
+            if not target.exists():
                 path = None
                 try:
                     with NamedTemporaryFile(
@@ -209,15 +215,14 @@ def deliver(database, inbox):
                         temporary.flush()
                         os.fsync(temporary.fileno())
                     try:
-                        path.replace(target)
-                    except PermissionError:
-                        # Windows may refuse replacement while another watcher reads
-                        # the already-published event. Only identical content is safe.
-                        if not target.exists() or target.read_bytes() != raw:
-                            raise
+                        _publish_event(path, target)
+                    except FileExistsError:
+                        pass
                 finally:
                     if path is not None:
                         path.unlink(missing_ok=True)
+            if target.read_bytes() != raw:
+                raise ValueError
             with connection:
                 connection.execute(
                     "UPDATE events SET delivered=1 WHERE id=?", (entry["id"],)
