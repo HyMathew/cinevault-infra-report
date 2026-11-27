@@ -63,6 +63,14 @@ workers. Ces valeurs exercent la décision du précontrôle sur un
 instantané mesuré et ne dimensionnent pas le déploiement.
 [Reçu des deux décisions](../evidence/public/staging-disk-budget-20261127.json).
 
+À 16 h 46 UTC, le contrôleur natif a rejoué ces deux décisions sur
+les VM. Il mesure le système de fichiers Docker des trois nœuds après
+la vérification des images déjà présentes et avant toute création de
+ressource. Son option `--min-docker-free-mib` est obligatoire pour
+l’exécution native. Utiliser comme seuil le besoin résiduel de la
+campagne après chargement des images.
+[Reçu expurgé du précontrôle Signature](../evidence/public/signature-staging-readiness-20261127.json).
+
 Appliquer ensuite les contrôles d’images ci-dessous. Le précontrôle
 interroge la stack stable et l’environnement du staging sans créer de
 ressource. Le 26 novembre, le relevé depuis le PC a confirmé les

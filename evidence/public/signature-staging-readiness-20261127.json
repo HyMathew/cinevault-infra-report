@@ -1,0 +1,77 @@
+{
+  "assessment": {
+    "assessment_sha256": "b330cf69db49988f0571b04011b9d918df560a13550b55217b76b1164a24c735",
+    "checked_at_utc": "2026-11-27T16:41:46.881071+00:00",
+    "checks": {
+      "api_disk": true,
+      "api_memory": true,
+      "api_placement": true,
+      "api_stable_healthy": true,
+      "contemporaneous_snapshots": true,
+      "distinct_ready_nodes": true,
+      "manager_disk": true,
+      "manager_drained_leader": true,
+      "resources_measured": true,
+      "stage_names_available": true,
+      "web_disk": true,
+      "web_memory": true,
+      "web_placement": true,
+      "web_stable_healthy": true
+    },
+    "collector_sha256": "ed2b692575e0eb08bb5c9233a80951a0ef6741d7ecb091ee644dff6fbb15278f",
+    "illustrative_minimum_docker_free_mib": 3072,
+    "infra_commit": "56054c2fc85b87ac5cf07c81e229a0a04007adbd",
+    "nodes": {
+      "api": {
+        "available_ram_bytes": 1557512192,
+        "docker_available_disk_bytes": 5928087552,
+        "logical_cpus": 2,
+        "timestamp_utc": "2026-11-27T16:41:30.341851+00:00"
+      },
+      "manager": {
+        "available_ram_bytes": 1568370688,
+        "docker_available_disk_bytes": 31259619328,
+        "logical_cpus": 2,
+        "timestamp_utc": "2026-11-27T16:41:30.449784+00:00"
+      },
+      "web": {
+        "available_ram_bytes": 1553264640,
+        "docker_available_disk_bytes": 6419714048,
+        "logical_cpus": 2,
+        "timestamp_utc": "2026-11-27T16:41:30.588863+00:00"
+      }
+    }
+  },
+  "controller_guard": {
+    "controller_sha256": "f4675f7bb9395ad01188f1a48ef4487878b6e9e5110b26e52d9f06af39f486c7",
+    "illustrative_cases": {
+      "16384": {
+        "available_bytes": {
+          "api": 5928042496,
+          "manager": 31259582464,
+          "web": 6419689472
+        },
+        "checked_at_utc": "2026-11-27T16:46:02.871143+00:00",
+        "min_free_mib": 16384,
+        "status": "docker_disk_below_staging_budget"
+      },
+      "3072": {
+        "available_bytes": {
+          "api": 5928042496,
+          "manager": 31259586560,
+          "web": 6419693568
+        },
+        "checked_at_utc": "2026-11-27T16:45:59.488591+00:00",
+        "min_free_mib": 3072,
+        "status": "accepted"
+      }
+    },
+    "schema": 1,
+    "scope": "read-only controller guard over pinned SSH",
+    "stable_unchanged_and_healthy": true
+  },
+  "deployment_disk_budget_established": false,
+  "schema": 1,
+  "scope": "Read-only inspection of the three lab nodes before the signed images were loaded",
+  "signed_staging_deployment_executed": false
+}
