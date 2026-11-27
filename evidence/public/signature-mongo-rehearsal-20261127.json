@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "infra_harness_commit": "6cb78697b9eeb3af892ac00c936595080f6f8f9e",
+  "applications": {
+    "api": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+    "web": "1693459f8df0bb0e2a80c7dd613131af7ef87462"
+  },
+  "scope": "Synthetic browser and real local Flask pair, authenticated MongoDB 8.0.38 replica with one member. Two orders targeting the same copy in each independent run.",
+  "harness_sha256": {
+    "run_mongo_rehearsal.py": "9e933b50fb44f1374fcb53f450b233cb4fb480154fac82d6c58d557214fb00f1",
+    "check_browser_pair.py": "f5d9d4e5193fd110b6ace954d47a158c876a4201e31962227e156423979f1675",
+    "check_signature_rehearsal.py": "6b4b2debc78cb65692c30da437bba5f842ff8c8507ffd74abcf35a511ad46d00",
+    "mongo_support.py": "d63765dbfaa624003ad96656b7ca811c259bd70d85c16b58835d14e014eaaf06",
+    "mongo_api_worker.py": "45424468022b252f776c948f45790eb0ce1a42b4637dc6626d3cf5fb5587c792"
+  },
+  "runs": {
+    "chrome": {
+      "browser": "158.0.8127.37",
+      "observed_at_utc": "2026-11-27T16:38:21.726818+00:00",
+      "receipt_sha256": "acf382d69f87625e540cc13a6627fe68d550fc47db41fc6f264b67e5d299d6f9",
+      "checks": [
+        "Accueil, catalogue, recherche au clavier, fiche et collection",
+        "Deux réponses Web HTTP 303/409, un prêt actif et une réservation",
+        "La fiche, la réponse REST et le stockage MongoDB concordent sur le film",
+        "Corrélation Web/API des lectures, du refus de rôle et des deux décisions"
+      ],
+      "mongo": {
+        "image": "mongo@sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "server_version": "8.0.38",
+        "replica_members": 1,
+        "writable": true,
+        "app_auth_mechanisms": [
+          "SCRAM-SHA-256"
+        ],
+        "app_privileges_confirmed": true,
+        "cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "legacy_json_absent_at_observation": true
+      },
+      "circulation": {
+        "copies": 1,
+        "approval_http": [
+          303,
+          409
+        ],
+        "active": 1,
+        "pending": 1,
+        "waiting_reservations": 1,
+        "approval_audit_events": 1,
+        "client_request_windows_overlapped": true,
+        "response_matches_stored_request": true
+      },
+      "api_approval_status": {
+        "approval_accepted": 200,
+        "approval_declined": 409
+      },
+      "catalogue_identity": {
+        "rest_status": 200,
+        "fields_matched": [
+          "id",
+          "title",
+          "year"
+        ]
+      }
+    },
+    "firefox": {
+      "browser": "157.0",
+      "observed_at_utc": "2026-11-27T16:38:25.923106+00:00",
+      "receipt_sha256": "98fad735037a029d0516bd60cc7cc33dcb6bc8009a09630c908f85e1ee7d399a",
+      "checks": [
+        "Accueil, catalogue, recherche au clavier, fiche et collection",
+        "Deux réponses Web HTTP 303/409, un prêt actif et une réservation",
+        "La fiche, la réponse REST et le stockage MongoDB concordent sur le film",
+        "Corrélation Web/API des lectures, du refus de rôle et des deux décisions"
+      ],
+      "mongo": {
+        "image": "mongo@sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "server_version": "8.0.38",
+        "replica_members": 1,
+        "writable": true,
+        "app_auth_mechanisms": [
+          "SCRAM-SHA-256"
+        ],
+        "app_privileges_confirmed": true,
+        "cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "legacy_json_absent_at_observation": true
+      },
+      "circulation": {
+        "copies": 1,
+        "approval_http": [
+          303,
+          409
+        ],
+        "active": 1,
+        "pending": 1,
+        "waiting_reservations": 1,
+        "approval_audit_events": 1,
+        "client_request_windows_overlapped": true,
+        "response_matches_stored_request": true
+      },
+      "api_approval_status": {
+        "approval_accepted": 200,
+        "approval_declined": 409
+      },
+      "catalogue_identity": {
+        "rest_status": 200,
+        "fields_matched": [
+          "id",
+          "title",
+          "year"
+        ]
+      }
+    }
+  },
+  "limits": [
+    "Client windows overlapped; no direct measurement of MongoDB transaction overlap.",
+    "No load, multi-node availability, TLS or signed staging claim."
+  ]
+}

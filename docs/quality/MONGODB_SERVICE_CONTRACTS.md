@@ -1,5 +1,27 @@
 # Services communs sur MongoDB réel
 
+## Répétition Signature par l’interface et l’API
+
+La répétition locale utilise l’API `5a2936b`, le Web `1693459` et
+MongoDB 8.0.38 sur un réplica d’un membre, avec un compte applicatif
+SCRAM-SHA-256. Chrome et Firefox ont parcouru le catalogue, la recherche
+au clavier et la collection, puis deux demandes de prêt pour un
+exemplaire. Une barrière déclenche les deux envois. Leurs fenêtres
+mesurées côté client se chevauchent. Les journaux corrèlent les
+réponses Web 303 et 409 aux décisions API 200 et 409.
+
+Une lecture directe du stockage relie le prêt actif à la réponse 303
+et la demande en attente à la réponse 409. Elle retrouve un seul
+événement d’attribution, rattaché au prêt actif, ainsi qu’une réservation
+en attente. La fiche et le document stocké concordent sur les champs
+`id`, `title` et `year` lus en REST. Aucun fichier JSON de persistance
+n’a été créé. Le conteneur et le réseau jetables ont été retirés.
+
+Le [reçu Chrome et Firefox](../../evidence/public/signature-mongo-rehearsal-20261127.json)
+porte sur deux répétitions de deux demandes, avec une base distincte pour
+chacune. Il ne mesure ni la charge, ni la disponibilité multi-nœuds, ni
+le comportement du staging signé.
+
 ## Qualification P4 — plans générés et mutations ciblées
 
 Le [candidat API3e15e61](https://github.com/HyMathew/cinevault-api/tree/3e15e61d0a309b12918338708e40d4f47a0ccdec)
