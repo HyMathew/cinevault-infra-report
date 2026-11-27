@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "scope": "Locally owned real Flask pair over loopback with disposable JSON. Backup and telemetry evidence intentionally absent.",
+  "sources": {
+    "api": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+    "web": "1693459f8df0bb0e2a80c7dd613131af7ef87462",
+    "infra": "19d530f76bcdd4c381fc76e0d8e2a8fcfa8223b5"
+  },
+  "owned_cleanup_verified": true,
+  "phases": {
+    "active": {
+      "environment": "synthetic",
+      "observed_at_utc": "2026-11-27T16:26:26.575594+00:00",
+      "api_http": {
+        "state_at_observation": "ok",
+        "http_status": 200
+      },
+      "web_http": {
+        "state_at_observation": "ok",
+        "http_status": 200
+      },
+      "backup": {
+        "state": "unavailable"
+      },
+      "independent_evidence": {
+        "mongodb_runtime": "unavailable",
+        "swarm_services": "unavailable",
+        "deployed_images": "unavailable",
+        "attestations": "unavailable",
+        "alert_delivery": "unavailable"
+      }
+    },
+    "web_stopped": {
+      "environment": "synthetic",
+      "observed_at_utc": "2026-11-27T16:26:29.262752+00:00",
+      "api_http": {
+        "state_at_observation": "ok",
+        "http_status": 200
+      },
+      "web_http": {
+        "state_at_observation": "unreachable"
+      },
+      "backup": {
+        "state": "unavailable"
+      },
+      "independent_evidence": {
+        "mongodb_runtime": "unavailable",
+        "swarm_services": "unavailable",
+        "deployed_images": "unavailable",
+        "attestations": "unavailable",
+        "alert_delivery": "unavailable"
+      }
+    }
+  }
+}

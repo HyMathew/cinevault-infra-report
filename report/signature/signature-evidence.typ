@@ -29,6 +29,28 @@ Pour prolonger la découverte, la fiche peut demander jusqu’à quatre films ap
 
 JSON et MongoDB ont produit le même résultat sur le jeu de test, qui distingue les départages par réalisateur, titre replié, année et identifiant. Le banc MongoDB a tracé trois commandes de lecture pour cette représentation. Les navigateurs ont vérifié quatre largeurs de 320 à 1 280 px. Le rejeu académique de cette API conserve les 93 échanges et les 44 opérations REST du corpus, dans un stockage temporaire hors réseau.
 
+#figure(
+  image("../../docs/design/screens-signature-detail/fiche-1280.png", width: 100%, height: 120mm, fit: "contain"),
+  caption: [Fiche d’un film fictif sur le banc local. Le contrôle de disponibilité précède le synopsis.],
+)
+
+#pagebreak()
+#heading(level: 1)[Administration, concurrence et exploitation]
+
+#heading(level: 2)[Annuaire et coût du filtrage]
+L’ancienne vue proposait uniquement de parcourir les pages. Les filtres par préfixe littéral, rôle et statut sont maintenant appliqués à l’annuaire avant pagination. Les formulaires de mise à jour conservent la sélection et la page. Sur les deux persistances, un changement de rôle en deuxième page a ramené le total filtré de 55 à 54. Le refus de désactiver le dernier administrateur a conservé les filtres sur le banc JSON.
+
+Sur MongoDB 8.0.38 et 2 501 comptes synthétiques, six plans ont utilisé l’index des identifiants pour la page. Le préfixe seul correspond à 250 comptes et son comptage lit 251 clés sans examiner leurs documents. Le comptage des gestionnaires actifs sans préfixe examine les 2 501 documents. La page à l’offset 1 800 parcourt 1 850 clés et retourne 50 profils. Ces mesures isolent le travail du moteur. La latence HTTP et la charge concurrente restent à mesurer pour ce parcours.
+
+#heading(level: 2)[Concurrence observée dans le parcours de soutenance]
+Deux membres déposent chacun une demande de prêt pour le même film. Une barrière commune déclenche deux soumissions depuis le poste de test pour le même exemplaire. Chrome et Firefox ont observé la même issue sur le couple Flask et le stockage JSON jetable. Le Web renvoie une redirection 303 après l’attribution et un conflit 409 pour l’autre demande. L’API renvoie respectivement 200 et 409. Le fichier final contient un prêt actif et une demande encore en attente. Un troisième membre prend la première place dans la file de réservation. La fiche, la réponse REST et le fichier concordent sur l’identité, le titre et l’année du film. Ce scénario démontre un cas du contrat de concurrence avec deux clients synchronisés, sur JSON local.
+
+#heading(level: 2)[Corrélation et fraîcheur des observations]
+Les réponses Web portent leur identifiant de requête. Le journal Web relie ses identifiants aux réponses de l’API par le champ `api_request_ids`. Le refus 403 d’accès à l’administration est émis par le Web après la lecture d’identité API `/api/v1/me`, qui répond 200. Le reçu montre aussi la corrélation des deux décisions d’attribution. Les contrôles enregistrent le modèle de route et le statut.
+
+La sonde date son relevé et l’associe à un environnement. La consultation opérateur écarte les résultats anciens ou d’un autre environnement. Deux services Flask isolés ont répondu 200. Après arrêt du Web local, seule l’API a gardé sa réponse 200. Cette observation laisse ouverts l’état du réplica, l’état des tâches Swarm, les attestations et la réception d’alerte pour le staging signé.
+
+#pagebreak()
 #heading(level: 1)[Provenance et limites du candidat]
 
 #table(
@@ -38,8 +60,13 @@ JSON et MongoDB ont produit le même résultat sur le jeu de test, qui distingue
   [Disponibilité], [be61632 / 4d63035], [signature-catalogue-availability-20261127.json],
   [Bibliothèque], [be61632 / ec5ff84], [signature-personal-library-20261127.json],
   [Fiche film], [3adf53b / 7203e25], [signature-film-detail-20261127.json],
+  [Annuaire], [5a2936b / 1693459], [signature-account-directory-20261127.json],
+  [Plans de l’annuaire], [API 5a2936b], [signature-account-directory-plans-20261127.json],
+  [Répétition], [5a2936b / 1693459], [signature-rehearsal-20261127.json],
 )
 
 Les reçus d’#link("https://github.com/HyMathew/cinevault-infra-report")[infrastructure] sont classés sous `evidence/public/`. Les références abrégées sont identifiées par leur empreinte complète dans ces fichiers. Les mesures Signature sont issues de bancs locaux. La qualification CI historique, le déploiement JSON du 9 novembre et les essais de composants identifient chacun leurs propres révisions.
+
+Sur API 5a2936b et Web 1693459, les suites complètes locales ont obtenu 638 tests API réussis et 541 tests Web réussis sous Windows et Linux. La suite API conserve neuf tests ignorés et 44 sous-tests réussis. Le contrôle académique rejoue 93 échanges et valide 44 opérations OpenAPI. Le manifeste Infra permet de faire rejouer les deux révisions ensemble en CI. Le PDF Signature doit recevoir sa propre attestation après exécution du workflow officiel.
 
 La lecture officielle du 27 novembre a retrouvé OpenSSL 3.5.9-r1 dans les huit index Alpine ciblés et a reçu HTTP 404 pour l’archive OpenSSL 3.5.10. Les scans CI du couple de qualification bloquent la publication à cause des avis classés High. L’évaluation conjointe d’images signées sur les trois VM, la migration intégrée et le retour arrière du staging restent à exécuter.

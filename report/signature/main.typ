@@ -39,7 +39,7 @@ La preuve académique du 9 novembre porte sur les exercices Compose et la stack 
 
 Des campagnes séparées ont testé le transfert de catalogue, les commandes de comptes, la sauvegarde chiffrée et une connexion TLS 1.3 avec refus de certificats erronés. Une comparaison de 736 requêtes sur deux volumes de données mesure les latences JSON et MongoDB. Le staging Swarm a une configuration contrôlée par le manager. Le scan du 21 novembre a bloqué les images de staging à cause de cinq avis OpenSSL encore détectés dans les paquets utilisés.
 
-Les mesures de la Signature Edition, effectuées le 27 novembre, complètent ces résultats avec les parcours clavier de la recherche rapide, la disponibilité groupée et les filtres de bibliothèque. La section d’évaluation relie chaque mesure à son banc et à sa révision.
+Les mesures de la Signature Edition, effectuées le 27 novembre, complètent ces résultats avec la recherche au clavier, la disponibilité groupée, l’annuaire et une répétition d’attribution concurrente sur les services réels. La section d’évaluation rattache chaque observation à son banc et à sa révision.
 
 #v(4mm)
 *Mots-clés.* Cinémathèque, application répartie, REST, JSON, BSON, Flask, Jinja, MongoDB, TLS, Docker Swarm.

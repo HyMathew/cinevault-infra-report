@@ -5,7 +5,9 @@
 Cette édition datée du 27 novembre 2026 conserve le corps scientifique
 et les planches vectorielles de l’édition Enterprise 2.1. Elle ajoute les
 protocoles, résultats et limites de la recherche rapide, de la disponibilité,
-de la bibliothèque et de la fiche film. Les résultats propres au candidat
+de la bibliothèque, de la fiche film, de l’annuaire et de la répétition de
+soutenance. Elle décrit le [relevé local d’exploitation](../../evidence/public/signature-operations-readout-20261127.json).
+Les résultats propres au candidat
 Signature proviennent de bancs locaux. Les dates et révisions historiques
 restent indiquées dans le corps. La qualification du staging signé reste
 ouverte.
@@ -23,8 +25,8 @@ Le PDF est composé avec les polices embarquées de Typst. Employer
 `--typst` pour un binaire de la même version déjà vérifié.
 
 Les builds locaux Windows et Linux WSL donnent le même SHA-256.
-Les 20 pages A4 et les deux planches A2 ont été rendues et les
-51 liens internes ont été vérifiés.
+Les 22 pages A4 et les deux planches A2 ont été rendues et les
+55 liens internes ont été vérifiés.
 
 [Source Typst](main.typ) · [chapitres communs](../enterprise-2.1/chapters.json) ·
 [complément Signature](signature-evidence.typ) · [configuration](build-config.json) ·
