@@ -3,7 +3,7 @@
   "scope": "Répétition locale JSON avec comptes, film et exemplaire synthétiques.",
   "status": "PASS",
   "runner_sources": {
-    "scripts/check_signature_rehearsal.py": "447dc5c47bd8854b17217fe34310c5f8ff8f27c75984612307659e34114707a1",
+    "scripts/check_signature_rehearsal.py": "03fbe1b9eb2ac7a8050dc0a0d11998a4ac98965fb99519ff4e26e020a0bc91eb",
     "scripts/check_browser_pair.py": "b27b724d4a0d3c8d0ceb5dcbeb486fb99277ea4029d3fbaf80e2e3eca8e4e4fb",
     "scripts/check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5",
     "scripts/summarize_http_logs.py": "c24677690b409863cd3e327b15bb2d563eeaf47c152b6301b214d301784a00d2"
@@ -11,7 +11,7 @@
   "browser_runs": {
     "chrome": {
       "passed": true,
-      "started_at": "2026-11-27T15:45:37.657982+00:00",
+      "started_at": "2026-11-27T15:59:34.071352+00:00",
       "stage": "complete",
       "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
       "browser_engine": "chromium",
@@ -19,7 +19,7 @@
       "checks": [
         "Accueil, catalogue, recherche au clavier, fiche et collection",
         "Deux demandes, décision HTTP 303/409, un prêt actif et une réservation",
-        "Le film rendu correspond au film conservé dans le seul fichier JSON",
+        "La fiche, la réponse REST et le document JSON concordent sur le film",
         "Corrélation Web/API des lectures, du refus de rôle et des deux décisions"
       ],
       "screens": [
@@ -30,11 +30,11 @@
             "width": 390,
             "height": 844
           },
-          "path": "/films/e08f3ab6-45cc-483b-aabc-da689c4d21ce"
+          "path": "/films/8354936c-99a6-4084-9669-141dd9256941"
         },
         {
           "file": "circulation-1280.png",
-          "sha256": "7b9a20c20e2573ec0a0a077e378dc7ee5c8c89758558adb24c88d75908fb3553",
+          "sha256": "a7cec3085776ab333ca299690097e94cebe8d0d73293c2c1e92d86c258ab3de3",
           "viewport": {
             "width": 1280,
             "height": 900
@@ -75,6 +75,14 @@
         "typing-extensions": "4.16.0"
       },
       "browser": "158.0.8127.37",
+      "catalogue_identity": {
+        "rest_status": 200,
+        "fields_matched": [
+          "id",
+          "title",
+          "year"
+        ]
+      },
       "circulation": {
         "copies": 1,
         "approval_http": [
@@ -92,11 +100,11 @@
             "method": "GET",
             "route": "/films",
             "status": 200,
-            "duration_ms": 96.689,
-            "request_id": "99b5b78157ca4244994df6ac7d802097",
+            "duration_ms": 49.471,
+            "request_id": "c24be160cb714d67850040cf9ada12b8",
             "api_request_ids": [
-              "bce35cd98a3d4e2da37238e6f8a869ee",
-              "d3ddfe95f4c84f24a0e7fbcfd585cd51"
+              "fbebba2c1fa048fd9f0876102caa6b95",
+              "4a15a3818dd8483fa5f8b72eabe97c17"
             ]
           },
           {
@@ -104,8 +112,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 9.5849,
-            "request_id": "bce35cd98a3d4e2da37238e6f8a869ee",
+            "duration_ms": 5.8902,
+            "request_id": "fbebba2c1fa048fd9f0876102caa6b95",
             "api_request_ids": []
           },
           {
@@ -113,8 +121,8 @@
             "method": "GET",
             "route": "/api/v1/movies",
             "status": 200,
-            "duration_ms": 1.5358,
-            "request_id": "d3ddfe95f4c84f24a0e7fbcfd585cd51",
+            "duration_ms": 0.9686,
+            "request_id": "4a15a3818dd8483fa5f8b72eabe97c17",
             "api_request_ids": []
           }
         ],
@@ -124,10 +132,10 @@
             "method": "GET",
             "route": "/administration",
             "status": 403,
-            "duration_ms": 42.729,
-            "request_id": "7aee0a2d3be54473b68335375cb83534",
+            "duration_ms": 57.587,
+            "request_id": "19494b1733c943fb8b0641af0ecca2cc",
             "api_request_ids": [
-              "3e53539ee6544284a5b58307c13c6dc7"
+              "2d7b6d745c5846b9b109c68831a260a6"
             ]
           },
           {
@@ -135,8 +143,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 4.0317,
-            "request_id": "3e53539ee6544284a5b58307c13c6dc7",
+            "duration_ms": 10.4655,
+            "request_id": "2d7b6d745c5846b9b109c68831a260a6",
             "api_request_ids": []
           }
         ],
@@ -146,13 +154,13 @@
             "method": "POST",
             "route": "/emprunts/<loan_id>/valider",
             "status": 303,
-            "duration_ms": 161.216,
-            "request_id": "01084afd0e864ca3a2a52c7c544c7c70",
+            "duration_ms": 111.399,
+            "request_id": "27ad6f723a484f5282fcac57455c06a9",
             "api_request_ids": [
-              "1bb738eaede545e78c71f05345e55fcd",
-              "28cd5e630c494e31906f944b50a3c855",
-              "c0e8253ace2b4a91a8c996653f057ef5",
-              "5c9b7bfb99ba4486b9bb31811673bfe4"
+              "6ea2181c7a55439db9737e06dde13bcd",
+              "d486257d105748ddab2d8f0b9c9eb6f5",
+              "7fb03de665b6436ca24aa5ba47a9f06b",
+              "de1d31532913409589a68672568bfaf8"
             ]
           },
           {
@@ -160,8 +168,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 5.629,
-            "request_id": "1bb738eaede545e78c71f05345e55fcd",
+            "duration_ms": 10.9331,
+            "request_id": "6ea2181c7a55439db9737e06dde13bcd",
             "api_request_ids": []
           },
           {
@@ -169,8 +177,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>",
             "status": 200,
-            "duration_ms": 5.6864,
-            "request_id": "28cd5e630c494e31906f944b50a3c855",
+            "duration_ms": 11.4374,
+            "request_id": "d486257d105748ddab2d8f0b9c9eb6f5",
             "api_request_ids": []
           },
           {
@@ -178,8 +186,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>/options",
             "status": 200,
-            "duration_ms": 9.3604,
-            "request_id": "c0e8253ace2b4a91a8c996653f057ef5",
+            "duration_ms": 12.4266,
+            "request_id": "7fb03de665b6436ca24aa5ba47a9f06b",
             "api_request_ids": []
           },
           {
@@ -187,8 +195,8 @@
             "method": "POST",
             "route": "/api/v1/loans/<loan_id>/approve",
             "status": 200,
-            "duration_ms": 7.115,
-            "request_id": "5c9b7bfb99ba4486b9bb31811673bfe4",
+            "duration_ms": 10.7743,
+            "request_id": "de1d31532913409589a68672568bfaf8",
             "api_request_ids": []
           }
         ],
@@ -198,13 +206,13 @@
             "method": "POST",
             "route": "/emprunts/<loan_id>/valider",
             "status": 409,
-            "duration_ms": 353.363,
-            "request_id": "b14724c2d96d4c1da26373ebb72e419c",
+            "duration_ms": 136.096,
+            "request_id": "f953f07e7923499286514aa71aaf7c16",
             "api_request_ids": [
-              "c15d9cb34fe1404a94425aaa1aae8cd2",
-              "5a1929cb313d459aaddbb644be1b28d2",
-              "718b3a2997d24e59aa913f33dd2bcb79",
-              "753edcfa768441128f752762954ba39f"
+              "3253269d29dd4dd8b08d1c70db0ab673",
+              "ad8108859d314d79b2d1f2fa0a70c283",
+              "a3e29e49fee747659f328c0082131453",
+              "10cf8f9663064d458a382d369c41577e"
             ]
           },
           {
@@ -212,8 +220,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 7.7559,
-            "request_id": "c15d9cb34fe1404a94425aaa1aae8cd2",
+            "duration_ms": 7.8098,
+            "request_id": "3253269d29dd4dd8b08d1c70db0ab673",
             "api_request_ids": []
           },
           {
@@ -221,8 +229,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>",
             "status": 200,
-            "duration_ms": 6.4241,
-            "request_id": "5a1929cb313d459aaddbb644be1b28d2",
+            "duration_ms": 12.0289,
+            "request_id": "ad8108859d314d79b2d1f2fa0a70c283",
             "api_request_ids": []
           },
           {
@@ -230,8 +238,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>/options",
             "status": 200,
-            "duration_ms": 4.936,
-            "request_id": "718b3a2997d24e59aa913f33dd2bcb79",
+            "duration_ms": 12.1684,
+            "request_id": "a3e29e49fee747659f328c0082131453",
             "api_request_ids": []
           },
           {
@@ -239,8 +247,8 @@
             "method": "POST",
             "route": "/api/v1/loans/<loan_id>/approve",
             "status": 409,
-            "duration_ms": 259.4815,
-            "request_id": "753edcfa768441128f752762954ba39f",
+            "duration_ms": 5.4737,
+            "request_id": "10cf8f9663064d458a382d369c41577e",
             "api_request_ids": []
           }
         ]
@@ -252,11 +260,11 @@
       "api_process_stopped": true,
       "api_clean_exit": true,
       "temporary_data_removed": true,
-      "finished_at": "2026-11-27T15:45:50.995553+00:00"
+      "finished_at": "2026-11-27T15:59:47.744425+00:00"
     },
     "firefox": {
       "passed": true,
-      "started_at": "2026-11-27T15:45:37.679750+00:00",
+      "started_at": "2026-11-27T15:59:34.046322+00:00",
       "stage": "complete",
       "scope": "Real local browser, Flask web and HTTP API, disposable JSON; no API mocks",
       "browser_engine": "firefox",
@@ -264,7 +272,7 @@
       "checks": [
         "Accueil, catalogue, recherche au clavier, fiche et collection",
         "Deux demandes, décision HTTP 303/409, un prêt actif et une réservation",
-        "Le film rendu correspond au film conservé dans le seul fichier JSON",
+        "La fiche, la réponse REST et le document JSON concordent sur le film",
         "Corrélation Web/API des lectures, du refus de rôle et des deux décisions"
       ],
       "screens": [
@@ -275,11 +283,11 @@
             "width": 390,
             "height": 844
           },
-          "path": "/films/7a573050-ef56-47fb-a582-0e5cd7c863aa"
+          "path": "/films/78f194b0-f87b-424c-97ec-98d96fc110a5"
         },
         {
           "file": "circulation-1280.png",
-          "sha256": "ab75c25fe50fc9c674f5b45311cd77c6bbd1a0f103b2d34c23aa2aa805430f96",
+          "sha256": "227cfa3016fb5b1f451878586b0f7c719caf05e9ad2f1bb3e8c4ca770ad7b919",
           "viewport": {
             "width": 1280,
             "height": 900
@@ -320,6 +328,14 @@
         "typing-extensions": "4.16.0"
       },
       "browser": "157.0",
+      "catalogue_identity": {
+        "rest_status": 200,
+        "fields_matched": [
+          "id",
+          "title",
+          "year"
+        ]
+      },
       "circulation": {
         "copies": 1,
         "approval_http": [
@@ -337,11 +353,11 @@
             "method": "GET",
             "route": "/films",
             "status": 200,
-            "duration_ms": 84.084,
-            "request_id": "50f0070026ca48418d60f0a03e851a4d",
+            "duration_ms": 76.96,
+            "request_id": "7a2c62d4360043099bb1d475a6e752ae",
             "api_request_ids": [
-              "65eae2bbc76b416b9d8985163b0cd69f",
-              "c688b1feda084ddf92c84203f0267080"
+              "3e99f108b0134c35a9b039ae006af805",
+              "afa8fde011a74591ad75e234baf3aa67"
             ]
           },
           {
@@ -349,8 +365,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 7.7732,
-            "request_id": "65eae2bbc76b416b9d8985163b0cd69f",
+            "duration_ms": 6.3739,
+            "request_id": "3e99f108b0134c35a9b039ae006af805",
             "api_request_ids": []
           },
           {
@@ -358,8 +374,8 @@
             "method": "GET",
             "route": "/api/v1/movies",
             "status": 200,
-            "duration_ms": 1.0916,
-            "request_id": "c688b1feda084ddf92c84203f0267080",
+            "duration_ms": 1.153,
+            "request_id": "afa8fde011a74591ad75e234baf3aa67",
             "api_request_ids": []
           }
         ],
@@ -369,10 +385,10 @@
             "method": "GET",
             "route": "/administration",
             "status": 403,
-            "duration_ms": 52.439,
-            "request_id": "6846a0fbdc824baebeaa877f420621f3",
+            "duration_ms": 31.441,
+            "request_id": "10f8d46559c44e3e84eb4ef3b8ff6891",
             "api_request_ids": [
-              "b29e9d30238c480f977efc21a4d3d678"
+              "97cdfcbdc6364046ada6dd86a1ff0b9d"
             ]
           },
           {
@@ -380,8 +396,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 8.3198,
-            "request_id": "b29e9d30238c480f977efc21a4d3d678",
+            "duration_ms": 11.7728,
+            "request_id": "97cdfcbdc6364046ada6dd86a1ff0b9d",
             "api_request_ids": []
           }
         ],
@@ -391,13 +407,13 @@
             "method": "POST",
             "route": "/emprunts/<loan_id>/valider",
             "status": 303,
-            "duration_ms": 136.972,
-            "request_id": "9f9f5fd378bc452abbd2ddafe75f29bc",
+            "duration_ms": 145.259,
+            "request_id": "c376a542d0c543bbb989621b694c7150",
             "api_request_ids": [
-              "8e1dec939e294734b979dfb2114d5817",
-              "79b59808519443ae88908798c9745898",
-              "929840dbf8244d9eb4b7956dfabde9fd",
-              "4a77b39497e94596a838b3d8a20bd5a1"
+              "33dc354de3ca4e3caee16090c387b668",
+              "f53cc8a2b6624310807acd1a02b50c95",
+              "a74d40f6fcdf41e6ba91206f073b02f7",
+              "80f6123d17644a3d882bcdd0b949966b"
             ]
           },
           {
@@ -405,8 +421,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 7.9565,
-            "request_id": "8e1dec939e294734b979dfb2114d5817",
+            "duration_ms": 9.4202,
+            "request_id": "33dc354de3ca4e3caee16090c387b668",
             "api_request_ids": []
           },
           {
@@ -414,8 +430,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>",
             "status": 200,
-            "duration_ms": 5.0264,
-            "request_id": "79b59808519443ae88908798c9745898",
+            "duration_ms": 10.1011,
+            "request_id": "f53cc8a2b6624310807acd1a02b50c95",
             "api_request_ids": []
           },
           {
@@ -423,8 +439,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>/options",
             "status": 200,
-            "duration_ms": 4.3433,
-            "request_id": "929840dbf8244d9eb4b7956dfabde9fd",
+            "duration_ms": 8.8875,
+            "request_id": "a74d40f6fcdf41e6ba91206f073b02f7",
             "api_request_ids": []
           },
           {
@@ -432,8 +448,8 @@
             "method": "POST",
             "route": "/api/v1/loans/<loan_id>/approve",
             "status": 200,
-            "duration_ms": 6.3019,
-            "request_id": "4a77b39497e94596a838b3d8a20bd5a1",
+            "duration_ms": 8.1221,
+            "request_id": "80f6123d17644a3d882bcdd0b949966b",
             "api_request_ids": []
           }
         ],
@@ -443,13 +459,13 @@
             "method": "POST",
             "route": "/emprunts/<loan_id>/valider",
             "status": 409,
-            "duration_ms": 183.183,
-            "request_id": "896e1a2cddc94302a2b71cae265d155e",
+            "duration_ms": 162.778,
+            "request_id": "f7e89855521d41e2b96588c4d5439665",
             "api_request_ids": [
-              "5557a82e619b448180240af0e1641449",
-              "0311516fc4fb45f0a951992762cc0061",
-              "f06d37999d194c96a3c2beca4ed6427c",
-              "73117d023a594b4191175068cdd2b5f1"
+              "91fd05a5c25e4309a83b2f865ee1f0e3",
+              "b81084983ad64f928b8a1a374f75ce5d",
+              "663ed91eb3a145a3aa539fedff89e525",
+              "f82d9e89cc1947daa7b8b421b4fc71aa"
             ]
           },
           {
@@ -457,8 +473,8 @@
             "method": "GET",
             "route": "/api/v1/me",
             "status": 200,
-            "duration_ms": 4.9981,
-            "request_id": "5557a82e619b448180240af0e1641449",
+            "duration_ms": 10.712,
+            "request_id": "91fd05a5c25e4309a83b2f865ee1f0e3",
             "api_request_ids": []
           },
           {
@@ -466,8 +482,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>",
             "status": 200,
-            "duration_ms": 7.2838,
-            "request_id": "0311516fc4fb45f0a951992762cc0061",
+            "duration_ms": 10.7875,
+            "request_id": "b81084983ad64f928b8a1a374f75ce5d",
             "api_request_ids": []
           },
           {
@@ -475,8 +491,8 @@
             "method": "GET",
             "route": "/api/v1/loans/<loan_id>/options",
             "status": 200,
-            "duration_ms": 10.8654,
-            "request_id": "f06d37999d194c96a3c2beca4ed6427c",
+            "duration_ms": 7.9995,
+            "request_id": "663ed91eb3a145a3aa539fedff89e525",
             "api_request_ids": []
           },
           {
@@ -484,8 +500,8 @@
             "method": "POST",
             "route": "/api/v1/loans/<loan_id>/approve",
             "status": 409,
-            "duration_ms": 8.9999,
-            "request_id": "73117d023a594b4191175068cdd2b5f1",
+            "duration_ms": 7.3662,
+            "request_id": "f82d9e89cc1947daa7b8b421b4fc71aa",
             "api_request_ids": []
           }
         ]
@@ -497,7 +513,7 @@
       "api_process_stopped": true,
       "api_clean_exit": true,
       "temporary_data_removed": true,
-      "finished_at": "2026-11-27T15:45:54.159320+00:00"
+      "finished_at": "2026-11-27T15:59:52.754887+00:00"
     }
   },
   "separate_stage_evidence": [

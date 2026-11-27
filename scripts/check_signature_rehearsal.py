@@ -134,7 +134,7 @@ def check_traces(events, api_log, identities):
     return details
 
 
-def exercise(browser, base, config, folder, args, report, _proxy):
+def exercise(browser, base, config, folder, args, report, proxy):
     from app.telemetry import _ACCESS_LOG
 
     report["limits"] = [
@@ -220,7 +220,16 @@ def exercise(browser, base, config, folder, args, report, _proxy):
         report["stage"] = "storage_invariants"
         document = json.loads((folder / "enterprise.json").read_text(encoding="utf-8"))
         movie = [row for row in document["movies"] if row["title"] == TITLE]
-        assert len(movie) == 1 and movie[0]["id"] == film_path.rsplit("/", 1)[-1]
+        identity = film_path.rsplit("/", 1)[-1]
+        assert len(movie) == 1 and movie[0]["id"] == identity
+        public_response = first.context.request.get(
+            f"{proxy.url}/api/v1/movies/{identity}"
+        )
+        assert public_response.status == 200
+        public_movie = public_response.json()
+        assert {key: public_movie[key] for key in ("id", "title", "year")} == {
+            key: movie[0][key] for key in ("id", "title", "year")
+        }
         assert len(document["copies"]) == 1 and document["copies"][0]["id"] == copy_id
         assert sorted(row["status"] for row in document["loans"]) == [
             "active",
@@ -235,8 +244,12 @@ def exercise(browser, base, config, folder, args, report, _proxy):
             "Deux demandes, décision HTTP 303/409, un prêt actif et une réservation"
         )
         report["checks"].append(
-            "Le film rendu correspond au film conservé dans le seul fichier JSON"
+            "La fiche, la réponse REST et le document JSON concordent sur le film"
         )
+        report["catalogue_identity"] = {
+            "rest_status": 200,
+            "fields_matched": ["id", "title", "year"],
+        }
         report["circulation"] = {
             "copies": 1,
             "approval_http": [303, 409],

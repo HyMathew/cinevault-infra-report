@@ -6,7 +6,7 @@ pour la segmentation, la journalisation et l’alerte. Elle complète la
 [guide de staging](../staging-mongodb.md). Les résultats restent rattachés
 à leur environnement et à leurs révisions.
 
-| Garantie à vérifier sur le staging signé | Preuve acquise | Critère d’acceptation |
+| Garantie à vérifier sur le staging signé | Relevés de préparation et de composants | Critère d’acceptation |
 | --- | --- | --- |
 | Accès privé au frontal et segmentation des services | [Réseau et TLS du composant MongoDB](../../evidence/public/swarm-mongodb-overlay-tls-20261125.json) et [précontrôle des trois nœuds](../../evidence/public/swarm-predeployment-readiness-20261126.json). | Relever depuis le manager les services, digests, tâches et ports publiés. Pour la variante HTTPS privée, les quatre services publient zéro port Swarm. Le tunnel opérateur donne accès à Caddy sur `edge`. Vérifier aussi Web sur `edge` et `front`, API sur `front` et `data`, MongoDB sur `data`. |
 | Identité et échéance TLS | [Sonde TLS et expiration en banc isolé](../../evidence/public/operational-tls-expiry-20261126.json). | Les noms, autorités attendues et dates du frontal et de MongoDB concordent avec la politique. Conserver les empreintes publiques et les heures UTC de la sonde déjà prévue. |
