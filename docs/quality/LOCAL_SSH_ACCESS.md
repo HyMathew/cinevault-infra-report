@@ -44,3 +44,20 @@ Le [reçu public](../../evidence/public/local-ssh-access-20261111.json) conserve
 résultats et empreintes des preuves privées, sans clés ni mots de passe. Cela ne
 constitue pas une rotation des clés, un déploiement de v2 ni une vérification
 complète de durcissement système.
+
+## Transport de qualification Signature
+
+Le 27 novembre 2026 à 17 h 00 UTC, le contrôleur natif a relu les trois
+nœuds. Il utilise le client SSH dédié après vérification de l’empreinte
+du code local. L’autorisation `sudo`, distincte de l’authentification
+SSH, réside sur le poste opérateur sous Windows DPAPI `CurrentUser`.
+Son fichier reprend la liste d’accès protégée de la clé privée. Un
+essai d’inscription avec une valeur synthétique a vérifié le
+déchiffrement sous ce profil et le refus d’écraser une entrée existante.
+
+Les 14 contrôles de préparation ont réussi. Le précontrôle disque a
+accepté et refusé les deux seuils d’essai attendus, avec des services
+stables sains avant et après. Ce relevé couvre le transport de lecture
+sur le profil Windows courant. Le déchiffrement sous un autre compte,
+la rotation des clés et le staging signé restent hors du relevé.
+[Reçu expurgé du transport Signature](../../evidence/public/signature-local-ssh-20261127.json).

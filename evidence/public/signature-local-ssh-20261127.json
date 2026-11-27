@@ -1,0 +1,45 @@
+{
+  "baseline_infra_commit": "8d84f187ef97606875f9307678d1a45b4763727c",
+  "checked_at_utc": "2026-11-27T17:00:08.904489+00:00",
+  "controller_disk_guard": {
+    "illustrative_decisions": {
+      "16384": "docker_disk_below_staging_budget",
+      "3072": "accepted"
+    },
+    "receipt_sha256": "013e845297d1f5ddc856948d7861474f4cc9d3941c5f2521c5a30b394b7e5f8e",
+    "stable_services_unchanged_and_healthy": true
+  },
+  "coverage": {
+    "cross_user_decryption_test": false,
+    "key_rotation": false,
+    "signed_staging": false,
+    "sudo_policy_modified": false
+  },
+  "operator_credential": {
+    "approved_ssh_client_sha256": "5c21a80b88adc08190c978e8e65098e72b65c909302df05082f8d753ad789650",
+    "private_discretionary_acl": true,
+    "scheme": "Windows DPAPI CurrentUser",
+    "windows_enrollment_fixture": {
+      "existing_slot_unchanged": true,
+      "fixture_only": true,
+      "protected_discretionary_acl_applied": true,
+      "windows_dpapi_current_user_positive": true
+    }
+  },
+  "operator_sources_sha256": {
+    "deploy_swarm_stage.py": "c3904b37154354693b5671b76b3fac22d54cfc0145abf39d81da565c31ecf15b",
+    "enroll_operator_sudo.py": "1d738c1247902545f6cc099414964182275ae6582d6b20d3b8958d91c7e3362b",
+    "operator_ssh.py": "d616ee1b1b65f04b4fda9dad03074ca29921a2803ae8ae1b79352610bd44a7b0"
+  },
+  "read_only_assessment": {
+    "checks_passed": 14,
+    "receipt_sha256": "18b1ff4556e4759ad6fdaeb376d8fbaddea6537ac43064c6157fb08b78124e97",
+    "roles_collected": [
+      "api",
+      "manager",
+      "web"
+    ]
+  },
+  "schema": 1,
+  "scope": "Qualification of the Windows operator transport on the three authorized lab VMs; read-only"
+}
