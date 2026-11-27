@@ -38,10 +38,30 @@ Ils doivent dater de moins de quinze minutes. La commande renvoie 1
 si un contrôle échoue et 2 si la collecte ou le format est invalide.
 Le JSON agrégé sert aussi de relevé pour la sonde d’exploitation.
 
+Estimer le besoin de chaque nœud à partir des images encore à charger,
+de la croissance des volumes, des journaux, des copies de sauvegarde et
+de restauration et de la marge d’exploitation. Sur VM2, inclure l’oplog
+MongoDB et les fichiers de l’API. Fixer `STAGE_DISK_BUDGET_MIB` au plus
+grand besoin estimé pour appliquer ce seuil commun. Relever l’espace sur
+chaque nœud après le chargement des images si le budget porte uniquement
+sur les écritures du staging. Vérifier séparément les montages qui
+se trouvent hors du système de fichiers Docker.
+
 ```sh
 python scripts/check_swarm_readiness.py assess \
-  --web web.json --api api.json --manager manager.json > readiness.json
+  --web web.json --api api.json --manager manager.json \
+  --min-docker-free-mib "$STAGE_DISK_BUDGET_MIB" > readiness.json
 ```
+
+Le seuil explicite est appliqué en Mio à chaque nœud et enregistré dans
+le reçu. Quand l’option est absente, le résultat évalue les autres
+contrôles et fournit la mesure du disque pour examen manuel.
+
+Le 27 novembre, les trois relevés du lab ont passé un seuil d’essai de
+3 072 Mio. Le même relevé a été refusé à 16 384 Mio pour les deux
+workers. Ces valeurs exercent la décision du précontrôle sur un
+instantané mesuré et ne dimensionnent pas le déploiement.
+[Reçu des deux décisions](../evidence/public/staging-disk-budget-20261127.json).
 
 Appliquer ensuite les contrôles d’images ci-dessous. Le précontrôle
 interroge la stack stable et l’environnement du staging sans créer de

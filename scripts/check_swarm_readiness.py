@@ -157,7 +157,11 @@ def collect(role):
     return result
 
 
-def assess(nodes, now):
+def assess(nodes, now, *, min_docker_free_mib=None):
+    if min_docker_free_mib is not None and (
+        type(min_docker_free_mib) is not int or min_docker_free_mib < 1
+    ):
+        raise ValueError("Requested minimum free space must be a positive integer")
     keys = {role: node["node_sha256"] for role, node in nodes.items()}
     topology = nodes["manager"]["observed"]
     rows = topology["members"]
@@ -222,11 +226,18 @@ def assess(nodes, now):
         <= timedelta(minutes=15)
         for node in nodes.values()
     )
+    budget = {}
+    if min_docker_free_mib is not None:
+        budget["minimum_docker_free_mib"] = min_docker_free_mib
+        for role, node in nodes.items():
+            free = node["docker_available_disk_bytes"]
+            checks[role + "_disk"] = type(free) is int and free >= min_docker_free_mib * MIB
     return {
         "passed": all(checks.values()),
         "checked_at_utc": now.isoformat(),
         "checks": checks,
         "nodes": nodes,
+        **budget,
     }
 
 
@@ -248,13 +259,18 @@ def main(argv=None):
     assess_parser = commands.add_parser("assess")
     for role in ROLES:
         assess_parser.add_argument("--" + role, required=True, type=Path)
+    assess_parser.add_argument(
+        "--min-docker-free-mib",
+        type=int,
+        help="Require this much free space on the Docker filesystem of each node",
+    )
     args = parser.parse_args(argv)
     try:
         if args.command == "collect":
             output = collect(args.role)
         else:
             nodes = {role: read_node(getattr(args, role), role) for role in ROLES}
-            output = assess(nodes, datetime.now(UTC))
+            output = assess(nodes, datetime.now(UTC), min_docker_free_mib=args.min_docker_free_mib)
     except (
         ValueError,
         KeyError,

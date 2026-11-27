@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "source_sha256": "ed2b692575e0eb08bb5c9233a80951a0ef6741d7ecb091ee644dff6fbb15278f",
+  "scope": "Read-only disk readiness and healthy stable tasks on three teaching VMs",
+  "tested_thresholds": "Inputs chosen to exercise success and refusal; no deployment sizing claimed",
+  "snapshots": {
+    "web": {
+      "captured_at": "2026-11-27T03:04:42.837041+00:00",
+      "available_docker_disk_mib": 6124,
+      "snapshot_sha256": "352ff7d92ccb9798128439a3d95e07c3f07466a378decbebfb92a05ac058f7f7"
+    },
+    "api": {
+      "captured_at": "2026-11-27T03:04:42.750077+00:00",
+      "available_docker_disk_mib": 5656,
+      "snapshot_sha256": "7b1585ec995c688febeba608107b8e8b7305a3b196a8a7dc549fddb12111bb46"
+    },
+    "manager": {
+      "captured_at": "2026-11-27T03:04:42.758424+00:00",
+      "available_docker_disk_mib": 29812,
+      "snapshot_sha256": "aa040a8538d758788453b22c5703d3a69244ac87b18ef62dcddcb17320184e2c"
+    }
+  },
+  "examples": {
+    "pass": {
+      "minimum_docker_free_mib": 3072,
+      "checks": {
+        "distinct_ready_nodes": true,
+        "manager_drained_leader": true,
+        "stage_names_available": true,
+        "resources_measured": true,
+        "web_placement": true,
+        "web_stable_healthy": true,
+        "web_memory": true,
+        "api_placement": true,
+        "api_stable_healthy": true,
+        "api_memory": true,
+        "contemporaneous_snapshots": true,
+        "web_disk": true,
+        "api_disk": true,
+        "manager_disk": true
+      },
+      "passed": true,
+      "receipt_sha256": "3396f06026fa45694fef729730803fd630470fa6aaffb8ac1d2e63bcb9dad3b8",
+      "cli_exit": 0
+    },
+    "refusal": {
+      "minimum_docker_free_mib": 16384,
+      "checks": {
+        "distinct_ready_nodes": true,
+        "manager_drained_leader": true,
+        "stage_names_available": true,
+        "resources_measured": true,
+        "web_placement": true,
+        "web_stable_healthy": true,
+        "web_memory": true,
+        "api_placement": true,
+        "api_stable_healthy": true,
+        "api_memory": true,
+        "contemporaneous_snapshots": true,
+        "web_disk": false,
+        "api_disk": false,
+        "manager_disk": true
+      },
+      "passed": false,
+      "receipt_sha256": "57464c9dc57716c0fcf8c76fdd239fb9fb7e843b266811954a93b9d1fbebe358",
+      "cli_exit": 1
+    }
+  }
+}

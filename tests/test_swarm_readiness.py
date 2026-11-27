@@ -75,6 +75,27 @@ def test_assess_preserves_capacity_snapshot_shape(snapshots):
     assert result["passed"]
     assert result["nodes"] == nodes
     assert result["checked_at_utc"] == now.isoformat()
+    assert "minimum_docker_free_mib" not in result
+
+
+def test_assess_enforces_the_supplied_disk_budget(snapshots):
+    nodes, now = snapshots
+    limited = nodes["api"]
+    limited["docker_available_disk_bytes"] = 3000 * probe.MIB - 1
+    result = probe.assess(nodes, now, min_docker_free_mib=3000)
+    assert result["minimum_docker_free_mib"] == 3000
+    assert result["checks"]["resources_measured"]
+    assert result["checks"]["web_disk"] and result["checks"]["manager_disk"]
+    assert not result["checks"]["api_disk"] and not result["passed"]
+    limited["docker_available_disk_bytes"] += 1
+    assert probe.assess(nodes, now, min_docker_free_mib=3000)["passed"]
+
+
+@pytest.mark.parametrize("minimum", [0, -1, True])
+def test_assess_refuses_invalid_disk_budget(snapshots, minimum):
+    nodes, now = snapshots
+    with pytest.raises(ValueError, match="positive integer"):
+        probe.assess(nodes, now, min_docker_free_mib=minimum)
 
 
 @pytest.mark.parametrize(
