@@ -1,0 +1,665 @@
+{
+  "scope": "Local film detail, public catalogue and native MongoDB on synthetic films and accounts",
+  "runs": {
+    "baseline-chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T15:07:46.952998+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "baseline": true,
+      "sources": {
+        "api": {
+          "commit": "db0473adf0d430a62b2b5800a1fd1cf377f85b4b",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "8fc3530c69bd0ad96e11409e658df4a8146fa4daf4123916c6b473ad7e64998d",
+          "source_manifest_sha256": "142dd763dc68e7fdb393a98efe05d9a87e4e9dc879dd482bec993c8e906f4faf"
+        },
+        "web": {
+          "commit": "ec5ff842fe55b1b8dccf81e05bea2ed0f45445d9",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "ff3fa3cca619ecd43267ca34e10e089333826dd8f6e56e607b0dc80dd4384076",
+          "source_manifest_sha256": "515351fb957824ed5a7c6fff2903c591fd4eca3ec5b1a85556b04b6e3bb532f4"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "fiche-avant-320.png": "accdbc3b04f23ea824a9f6855b03f2e2c770edea8297168061aab755d8d5b0db"
+      },
+      "viewports": [],
+      "flows": {
+        "baseline_artwork_precedes_lending_and_no_related": true
+      },
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:07:55.229037+00:00"
+    },
+    "json-chrome-release": {
+      "passed": true,
+      "started_at": "2026-11-27T15:22:04.107989+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "baseline": false,
+      "sources": {
+        "api": {
+          "commit": "3adf53b0f3b2a4a8523998543074508c97443c47",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "2e41fbd56cd8c0dc5a50caec8dd2b53dc36e6f00e35d31a6b1eb6118ea840a2f",
+          "source_manifest_sha256": "195f8d35a7b0f1c80a869aee6cf8e4b3b6e3ea6489d16c934e75113a91971521"
+        },
+        "web": {
+          "commit": "7203e25942dac689a112810dea89364af2fdb5e7",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "ce3924d229adcb9c206f4f206dc4ac6dbbe8c73f0a0c1ca8547e4de4ee223173",
+          "source_manifest_sha256": "f4d520e327a3b06ae6360628eaef00f5a5b3b144444c0693734b47151b4472f2"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "fiche-320.png": "36b9e4ceeb307e6095ab7e9fc39819ccd95ed2546f8ae7e143e04c4d73aa0fce",
+        "fiche-390.png": "a422c8d018b3b317dc8dfe22a960ee010dd186f8a643c612d09a62a6f9c25d37",
+        "films-apparentes-390.png": "23e9fe814d4666e43f8a22868b69e54be94ab7731be128630aa7418e9c2ef212",
+        "fiche-1280.png": "d514546575b186dae33dccc38aec010b6df2665d93104f1c0cf1747269740d72"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "lending_y": 424.125,
+          "poster_y": 653.09375,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "lending_y": 453.09375,
+          "poster_y": 303.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "lending_y": 388.125,
+          "poster_y": 256.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "lending_y": 388.125,
+          "poster_y": 256.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "genre_and_director_explanations_with_no_extra_http_call": true,
+        "stock_action_and_layout_at_four_widths": true,
+        "reservation_without_copies_kept_and_unrelated_section_absent": true
+      },
+      "browser_version": "158.0.8127.37",
+      "navigation_activation": "keyboard Tab and Enter",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:22:17.200642+00:00"
+    },
+    "json-firefox-release": {
+      "passed": true,
+      "started_at": "2026-11-27T15:22:04.107945+00:00",
+      "backend": "json",
+      "browser": "firefox",
+      "baseline": false,
+      "sources": {
+        "api": {
+          "commit": "3adf53b0f3b2a4a8523998543074508c97443c47",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "2e41fbd56cd8c0dc5a50caec8dd2b53dc36e6f00e35d31a6b1eb6118ea840a2f",
+          "source_manifest_sha256": "195f8d35a7b0f1c80a869aee6cf8e4b3b6e3ea6489d16c934e75113a91971521"
+        },
+        "web": {
+          "commit": "7203e25942dac689a112810dea89364af2fdb5e7",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "ce3924d229adcb9c206f4f206dc4ac6dbbe8c73f0a0c1ca8547e4de4ee223173",
+          "source_manifest_sha256": "f4d520e327a3b06ae6360628eaef00f5a5b3b144444c0693734b47151b4472f2"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "fiche-320.png": "8c4ab01bbad4bc6fb2dc73a75c8844dd7f3b236f8affc0a8dd9673c264b3c780",
+        "fiche-390.png": "cb529f4eb877d742880d88e872263751e58103947d41e6271caddbc93c890af4",
+        "films-apparentes-390.png": "91ce9bb0d1b5b127e07add2c4b850fffa1ab0d72a990aedb0cf2689e76ae04f8",
+        "fiche-1280.png": "e4ba1d0e0d0a36c29d303277ca910f39db2083fcf01bf70b465bf3614050a49a"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "lending_y": 424.1499938964844,
+          "poster_y": 653.1333618164062,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "lending_y": 453.1333312988281,
+          "poster_y": 303.1666564941406,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "lending_y": 388.1499938964844,
+          "poster_y": 256.1666564941406,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "lending_y": 388.1499938964844,
+          "poster_y": 256.1666564941406,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "genre_and_director_explanations_with_no_extra_http_call": true,
+        "stock_action_and_layout_at_four_widths": true,
+        "reservation_without_copies_kept_and_unrelated_section_absent": true
+      },
+      "browser_version": "157.0",
+      "navigation_activation": "keyboard Tab and Enter",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:22:26.108762+00:00"
+    },
+    "json-webkit-release": {
+      "passed": true,
+      "started_at": "2026-11-27T15:22:04.086040+00:00",
+      "backend": "json",
+      "browser": "webkit",
+      "baseline": false,
+      "sources": {
+        "api": {
+          "commit": "3adf53b0f3b2a4a8523998543074508c97443c47",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "2e41fbd56cd8c0dc5a50caec8dd2b53dc36e6f00e35d31a6b1eb6118ea840a2f",
+          "source_manifest_sha256": "195f8d35a7b0f1c80a869aee6cf8e4b3b6e3ea6489d16c934e75113a91971521"
+        },
+        "web": {
+          "commit": "7203e25942dac689a112810dea89364af2fdb5e7",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "ce3924d229adcb9c206f4f206dc4ac6dbbe8c73f0a0c1ca8547e4de4ee223173",
+          "source_manifest_sha256": "f4d520e327a3b06ae6360628eaef00f5a5b3b144444c0693734b47151b4472f2"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "fiche-320.png": "4ccfe70e35b9f0edc6ff8542aa50f0642a620bb8543cbe2a1ef79364060e5cf7",
+        "fiche-390.png": "eff356feedf7954c30ddf64e892bc158b602048e70881cf63f11f3f0fc5ccaf1",
+        "films-apparentes-390.png": "752491f4f856ea682396ec7806481dd8eae4dbead17293a50595b7814e84f564",
+        "fiche-1280.png": "bfd6dde0d218b06ed44e1fe04d3b7eff718c795dcaa620305d7b24aebd740e27"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "lending_y": 424.125,
+          "poster_y": 653.09375,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "lending_y": 453.09375,
+          "poster_y": 303.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "lending_y": 388.125,
+          "poster_y": 256.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "lending_y": 388.125,
+          "poster_y": 256.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "genre_and_director_explanations_with_no_extra_http_call": true,
+        "stock_action_and_layout_at_four_widths": true,
+        "reservation_without_copies_kept_and_unrelated_section_absent": true
+      },
+      "browser_version": "27.2",
+      "navigation_activation": "pointer",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:22:18.061275+00:00"
+    },
+    "mongo-chrome-release": {
+      "passed": true,
+      "started_at": "2026-11-27T15:22:04.107319+00:00",
+      "backend": "mongo",
+      "browser": "chrome",
+      "baseline": false,
+      "sources": {
+        "api": {
+          "commit": "3adf53b0f3b2a4a8523998543074508c97443c47",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "2e41fbd56cd8c0dc5a50caec8dd2b53dc36e6f00e35d31a6b1eb6118ea840a2f",
+          "source_manifest_sha256": "195f8d35a7b0f1c80a869aee6cf8e4b3b6e3ea6489d16c934e75113a91971521"
+        },
+        "web": {
+          "commit": "7203e25942dac689a112810dea89364af2fdb5e7",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "ce3924d229adcb9c206f4f206dc4ac6dbbe8c73f0a0c1ca8547e4de4ee223173",
+          "source_manifest_sha256": "f4d520e327a3b06ae6360628eaef00f5a5b3b144444c0693734b47151b4472f2"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "fiche-320.png": "36b9e4ceeb307e6095ab7e9fc39819ccd95ed2546f8ae7e143e04c4d73aa0fce",
+        "fiche-390.png": "a422c8d018b3b317dc8dfe22a960ee010dd186f8a643c612d09a62a6f9c25d37",
+        "films-apparentes-390.png": "23e9fe814d4666e43f8a22868b69e54be94ab7731be128630aa7418e9c2ef212",
+        "fiche-1280.png": "d514546575b186dae33dccc38aec010b6df2665d93104f1c0cf1747269740d72"
+      },
+      "viewports": [
+        {
+          "width": 320,
+          "lending_y": 424.125,
+          "poster_y": 653.09375,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 390,
+          "lending_y": 453.09375,
+          "poster_y": 303.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 768,
+          "lending_y": 388.125,
+          "poster_y": 256.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "width": 1280,
+          "lending_y": 388.125,
+          "poster_y": 256.15625,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 23,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "genre_and_director_explanations_with_no_extra_http_call": true,
+        "stock_action_and_layout_at_four_widths": true,
+        "reservation_without_copies_kept_and_unrelated_section_absent": true
+      },
+      "mongo": {
+        "image": "mongo@sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "step": "api_engine_and_bootstrap",
+        "resources": {
+          "docker_cpus": 20,
+          "docker_memory_bytes": 16626065408,
+          "docker_server_version": "29.9.3",
+          "local_named_pipe": true
+        },
+        "image_id": "sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "container": {
+          "uid_gid": "999:999",
+          "capabilities_dropped": [
+            "ALL"
+          ],
+          "no_new_privileges": true,
+          "read_only_root": true,
+          "publication": "127.0.0.1, Docker allocated host port",
+          "network_dedicated": true,
+          "memory_mib": 768,
+          "cpus": 0.75,
+          "storage": "dedicated tmpfs mounts",
+          "bind_or_persistent_volumes": false,
+          "data_tmpfs_ceiling_mib": 1536,
+          "replica_key_owner_mode_verified": true
+        },
+        "bootstrap": {
+          "step": "serve_real_api",
+          "server_version_observed": "8.0.38",
+          "primary_observed": true,
+          "indexes_observed": 40,
+          "server_version": "8.0.38",
+          "replica": "cvinsights",
+          "members": 1,
+          "writable": true,
+          "collections": 12,
+          "indexes": 40,
+          "revision_after_provision": 0,
+          "app_actions": [
+            "find",
+            "insert",
+            "update",
+            "remove"
+          ],
+          "app_auth_mechanisms": [
+            "SCRAM-SHA-256"
+          ],
+          "maintenance_identity_separate": true,
+          "unauthenticated_read_code": 13,
+          "app_privileges_confirmed": true
+        }
+      },
+      "mongo_contract": {
+        "related_catalogue": "passed",
+        "native_public_related_commands": 3
+      },
+      "browser_version": "158.0.8127.37",
+      "navigation_activation": "keyboard Tab and Enter",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:22:33.421928+00:00"
+    },
+    "previous-api-final": {
+      "passed": true,
+      "started_at": "2026-11-27T15:10:04.520144+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "baseline": false,
+      "sources": {
+        "api": {
+          "commit": "be61632b588e0ef999b07193112dd00b76d3e80a",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "ef6c63bd66d3c8b9a695d3eb290675b8aa9c9389eac5a07165133b6e0711e891",
+          "source_manifest_sha256": "8403276ce393b4a1248d2c7b632effb9514e691e62619fd91f866b812f58e11c"
+        },
+        "web": {
+          "commit": "d6aa0817eb199b2aaacc60c7395526ee50f8c479",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "b12d35df4bf6bd7c519f9e0486e78044017598e4e45c369a8324e069906abd2f",
+          "source_manifest_sha256": "599963ffb0da92a55533223bf2d8399f76d9e23c35aea947b4a623b540ade6e2"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {},
+      "viewports": [],
+      "flows": {
+        "older_api_keeps_the_film_detail_without_the_projection": true
+      },
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T15:10:13.138195+00:00"
+    }
+  },
+  "suites": {
+    "api": {
+      "passed": 637,
+      "skipped": 9,
+      "junit_sha256": "b9211062950f6c56cb76d829f2803e86bcbf44f306a05df1b00ef9c3ce029421"
+    },
+    "web": {
+      "passed": 537,
+      "skipped": 0,
+      "junit_sha256": "631d2ba3fc7f4c8ee90d724a6a3a59b4f028d2110967bc0e0ec9ecb549a52552"
+    }
+  },
+  "academic_replay": {
+    "result": "PASS",
+    "mode": "replay",
+    "api_source_commit": "3adf53b0f3b2a4a8523998543074508c97443c47",
+    "runtime_checks_executed": 10,
+    "components": 42,
+    "storage_defs": 20,
+    "http_exchanges": 93,
+    "http_schema_locations": 51,
+    "openapi_operations": 44,
+    "technical_schemas": 5,
+    "output": null
+  }
+}

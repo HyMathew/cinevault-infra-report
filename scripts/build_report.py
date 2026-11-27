@@ -16,6 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "0.15.1"
+EDITIONS = ("enterprise-2.1", "signature")
 ASSETS = {
     "Windows": (
         "typst-x86_64-pc-windows-msvc.zip",
@@ -62,7 +63,7 @@ def compiler(folder):
 
 def compile_report(executable, edition=None):
     report = ROOT / "report"
-    if edition == "enterprise-2.1":
+    if edition in EDITIONS:
         report = report / edition
     version = subprocess.check_output([str(executable), "--version"], text=True).strip()
     assert version.startswith("typst " + VERSION + " "), "Unexpected Typst version"
@@ -110,7 +111,7 @@ def main():
     parser.add_argument(
         "--typst", type=Path, help="Use a previously verified local Typst0.15.1"
     )
-    parser.add_argument("--edition", choices=("enterprise-2.1",))
+    parser.add_argument("--edition", choices=EDITIONS)
     args = parser.parse_args()
     if args.typst:
         compile_report(args.typst.resolve(), args.edition)

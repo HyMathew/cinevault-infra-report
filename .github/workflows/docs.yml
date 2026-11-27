@@ -76,6 +76,31 @@ jobs:
             cinevault-infra-report/report/enterprise-2.1/build-receipt.json
           retention-days: 7
           if-no-files-found: error
+      - name: Rebuild and verify Signature PDF
+        working-directory: cinevault-infra-report
+        shell: python
+        run: |
+          import hashlib
+          import json
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          edition = Path("report/signature")
+          expected = json.loads((edition / "verification.json").read_text(encoding="utf-8"))
+          subprocess.run([sys.executable, "-B", "scripts/build_report.py", "--edition", "signature"], check=True)
+          pdf = edition / "RT0705_CineVault_Mathieu_Kuhnapfel.pdf"
+          if hashlib.sha256(pdf.read_bytes()).hexdigest() != expected["pdf_sha256"]:
+              raise SystemExit("Signature PDF does not match its sealed digest")
+      - name: Keep Signature PDF and receipt
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: report-signature-${{ matrix.os }}
+          path: |
+            cinevault-infra-report/report/signature/RT0705_CineVault_Mathieu_Kuhnapfel.pdf
+            cinevault-infra-report/report/signature/build-receipt.json
+          retention-days: 7
+          if-no-files-found: error
 
   candidate-examples:
     name: Replay academic examples on the candidate (${{ matrix.os }})

@@ -1,0 +1,27 @@
+{
+  "edition": "signature",
+  "scope": "Compilation Windows et Linux WSL, vérification PDF, inspection visuelle; qualification de staging distincte.",
+  "compiler": "typst 0.15.1 (9dfd3a08)",
+  "pdf_sha256": "b0cfc5e1aaf89d4346577461e58652b93c5a5ee7947929305feaccb2bd9a90eb",
+  "windows_linux_byte_equivalence": true,
+  "pdf_bytes": 809119,
+  "pages": {
+    "total": 22,
+    "a4": 20,
+    "a2": 2,
+    "rendered": 22
+  },
+  "verified_internal_link_destinations": 51,
+  "previous_editions": {
+    "report/RT0705_CineVault_Mathieu_Kuhnapfel.pdf": "2668ea3a3a1d73004b5ecf1310e30a07ea1cd9ba1a9c4b80c897cb5ae9525885",
+    "report/enterprise-2.1/RT0705_CineVault_Mathieu_Kuhnapfel.pdf": "8c70cd4b392e9b79d70ff8a1a4b90f10cb674742faf4c11cfe94e43ea17eed5a"
+  },
+  "source_sha256_lf": {
+    "scripts/build_report.py": "1f5964644983dc60235ba819ce2863bf263d21f4a753cddeee2ff651fa7460c7",
+    "report/signature/main.typ": "2e4ead86d047eec4b46b867096be62f27e5adf89545b5f419e39a85efac9e89e",
+    "report/signature/signature-evidence.typ": "52b237921d99c5382a8d816877e7dd860de8b1c8f8cf16d5db4fe813409465f9",
+    "report/signature/build-config.json": "d826228dac8b5a879b491a85fb1fac943a4ce073b3c78a39f65e72c8add58ebb",
+    "report/enterprise-2.1/chapters.json": "ec8aea8c7da299574258e3ed1b89d892eb308d2d0e751f1318cc12d946e97eb8",
+    "report/enterprise-2.1/main.typ": "cd0c103a3debe5c55ff3f36fde09ec58f0f5434de362e10855194b365ba0fe4c"
+  }
+}
