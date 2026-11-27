@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "scope": "MongoDB 8.0.38 on an owned local replica, 2501 synthetic users. Execution plans do not measure HTTP latency or the transaction overhead.",
+  "api_commit": "5a2936bd49e62d168edacaf4501e6a2a18f08228",
+  "image": "mongo@sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+  "synthetic_users": 2501,
+  "owned_cleanup_verified": true,
+  "page_limit": 50,
+  "query_shapes": {
+    "all_first": {
+      "matches": 2501,
+      "offset": 0,
+      "page": {
+        "stages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 50,
+        "documents_examined": 50,
+        "returned": 50,
+        "execution_ms_server": 0
+      },
+      "count": {
+        "stages": [
+          "COLLSCAN",
+          "GROUP"
+        ],
+        "indexes": [],
+        "keys_examined": 0,
+        "documents_examined": 2501,
+        "returned": 1,
+        "execution_ms_server": 1
+      }
+    },
+    "all_deep": {
+      "matches": 2501,
+      "offset": 1800,
+      "page": {
+        "stages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT",
+          "SKIP"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 1850,
+        "documents_examined": 50,
+        "returned": 50,
+        "execution_ms_server": 1
+      },
+      "count": {
+        "stages": [
+          "COLLSCAN",
+          "GROUP"
+        ],
+        "indexes": [],
+        "keys_examined": 0,
+        "documents_examined": 2501,
+        "returned": 1,
+        "execution_ms_server": 1
+      }
+    },
+    "prefix_first": {
+      "matches": 250,
+      "offset": 0,
+      "page": {
+        "stages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 50,
+        "documents_examined": 50,
+        "returned": 50,
+        "execution_ms_server": 0
+      },
+      "count": {
+        "stages": [
+          "GROUP",
+          "IXSCAN"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 251,
+        "documents_examined": 0,
+        "returned": 1,
+        "execution_ms_server": 0
+      }
+    },
+    "prefix_deep": {
+      "matches": 250,
+      "offset": 180,
+      "page": {
+        "stages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT",
+          "SKIP"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 230,
+        "documents_examined": 50,
+        "returned": 50,
+        "execution_ms_server": 0
+      },
+      "count": {
+        "stages": [
+          "GROUP",
+          "IXSCAN"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 251,
+        "documents_examined": 0,
+        "returned": 1,
+        "execution_ms_server": 0
+      }
+    },
+    "manager_enabled": {
+      "matches": 235,
+      "offset": 0,
+      "page": {
+        "stages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 531,
+        "documents_examined": 531,
+        "returned": 50,
+        "execution_ms_server": 1
+      },
+      "count": {
+        "stages": [
+          "COLLSCAN",
+          "GROUP"
+        ],
+        "indexes": [],
+        "keys_examined": 0,
+        "documents_examined": 2501,
+        "returned": 1,
+        "execution_ms_server": 1
+      }
+    },
+    "prefix_manager_enabled": {
+      "matches": 23,
+      "offset": 0,
+      "page": {
+        "stages": [
+          "FETCH",
+          "IXSCAN",
+          "LIMIT"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 251,
+        "documents_examined": 250,
+        "returned": 23,
+        "execution_ms_server": 1
+      },
+      "count": {
+        "stages": [
+          "FETCH",
+          "GROUP",
+          "IXSCAN"
+        ],
+        "indexes": [
+          "username_unique"
+        ],
+        "keys_examined": 251,
+        "documents_examined": 250,
+        "returned": 1,
+        "execution_ms_server": 1
+      }
+    }
+  }
+}

@@ -44,5 +44,36 @@ largeur, sans violation axe détectée sur la page d’administration.
 [Aperçu à 1 280 px](../design/screens-signature-directory/administration-1280.png) ·
 [Reçu du lot](../../evidence/public/signature-account-directory-20261127.json)
 
+## Coût des filtres sur MongoDB
+
+Sur un réplica local de MongoDB 8.0.38 et 2 501 comptes synthétiques,
+`explain("executionStats")` a évalué le comptage et la page séparément.
+La page trie par identifiant, lit au plus 50 résultats et utilise
+l’index `username_unique` dans les six formes mesurées.
+
+| Sélection | Décalage | Clés parcourues pour la page | Documents lus pour le comptage |
+| --- | ---: | ---: | ---: |
+| Tous les comptes | 0 | 50 | 2 501 |
+| Tous les comptes | 1 800 | 1 850 | 2 501 |
+| Préfixe littéral | 0 | 50 | 0 |
+| Préfixe littéral | 180 | 230 | 0 |
+| Gestionnaires actifs | 0 | 531 | 2 501 |
+| Préfixe et gestionnaires actifs | 0 | 251 | 250 |
+
+Pour reproduire les formes, utiliser une collection de démonstration
+et les mêmes filtres dans deux commandes MongoDB. La première est un
+`find` avec `sort: {username: 1}`, `skip` et `limit: 50`. La seconde
+est une agrégation avec `$match` et `$group` qui additionne un par
+document. Le préfixe mesuré correspond à 250 identifiants. Un compte sur
+dix est gestionnaire et un sur dix-sept est désactivé, hors compte
+d’amorçage.
+
+Le préfixe seul borne le parcours de l’index sans lecture de document
+pour le comptage. Les filtres de rôle et de statut seuls ne le bornent
+pas. Les mesures portent sur le coût observé par le moteur sur ce banc.
+Elles laissent ouverts la latence HTTP et le coût en charge. Aucun index
+supplémentaire n’est ajouté dans ce lot.
+[Reçu des plans](../../evidence/public/signature-account-directory-plans-20261127.json)
+
 Le candidat Web et l’API avec filtres doivent être qualifiés ensemble pour
 le staging. Les anciennes lectures sans filtre conservent leur contrat.
