@@ -7,6 +7,7 @@ import logging
 import secrets
 from concurrent.futures import ThreadPoolExecutor
 from threading import Barrier
+from time import perf_counter_ns
 from urllib.parse import urlencode, urlsplit
 
 import check_browser_pair as browser_pair
@@ -79,6 +80,7 @@ def simultaneous_approvals(admin, base):
         )
         try:
             ready.wait()
+            entered = perf_counter_ns()
             connection.request(
                 "POST",
                 path,
@@ -94,16 +96,22 @@ def simultaneous_approvals(admin, base):
                 response.status,
                 response.getheader("X-Request-ID"),
                 CONFLICT in content,
+                entered,
+                perf_counter_ns(),
+                path.split("/")[2],
             )
         finally:
             connection.close()
 
     with ThreadPoolExecutor(max_workers=2) as workers:
         outcomes = sorted(workers.map(approve, drafts))
-    assert [(status, conflict) for status, _, conflict in outcomes] == [
+    assert [(outcome[0], outcome[2]) for outcome in outcomes] == [
         (303, False),
         (409, True),
     ]
+    assert max(outcome[3] for outcome in outcomes) < min(
+        outcome[4] for outcome in outcomes
+    )
     return outcomes, drafts[0][1]["copy_id"]
 
 
@@ -134,11 +142,29 @@ def check_traces(events, api_log, identities):
     return details
 
 
-def exercise(browser, base, config, folder, args, report, proxy):
+def read_json_store(folder):
+    return json.loads((folder / "enterprise.json").read_bytes())
+
+
+def exercise(
+    browser,
+    base,
+    config,
+    folder,
+    args,
+    report,
+    proxy,
+    *,
+    read_store=read_json_store,
+    backend="JSON",
+):
     from app.telemetry import _ACCESS_LOG
 
+    report["scope"] = (
+        f"Real local browser, Flask web and HTTP API, disposable {backend}; no API mocks"
+    )
     report["limits"] = [
-        "Owned loopback Flask pair with synthetic users and disposable JSON",
+        f"Owned loopback Flask pair with synthetic users and disposable {backend}",
         "Exactly two approvals for one copy; no performance or production inference",
         "RemoteLabz segmentation, alert delivery, recovery and signed images require separate evidence",
     ]
@@ -218,7 +244,7 @@ def exercise(browser, base, config, folder, args, report, proxy):
         capture(reader, "reservation-390.png", args, report)
 
         report["stage"] = "storage_invariants"
-        document = json.loads((folder / "enterprise.json").read_text(encoding="utf-8"))
+        document = read_store(folder)
         movie = [row for row in document["movies"] if row["title"] == TITLE]
         identity = film_path.rsplit("/", 1)[-1]
         assert len(movie) == 1 and movie[0]["id"] == identity
@@ -236,15 +262,24 @@ def exercise(browser, base, config, folder, args, report, proxy):
             "pending",
         ]
         assert sum(row["copy_id"] == copy_id for row in document["loans"]) == 1
+        approved = [
+            row for row in document["audit_events"] if row["action"] == "loan.approved"
+        ]
+        active = next(row for row in document["loans"] if row["status"] == "active")
+        assert len(approved) == 1 and approved[0]["entity_id"] == active["id"]
+        assert {row["id"]: row["status"] for row in document["loans"]} == {
+            outcomes[0][5]: "active",
+            outcomes[1][5]: "pending",
+        }
         assert (
             len(document["reservations"]) == 1
             and document["reservations"][0]["status"] == "waiting"
         )
         report["checks"].append(
-            "Deux demandes, décision HTTP 303/409, un prêt actif et une réservation"
+            "Deux réponses Web HTTP 303/409, un prêt actif et une réservation"
         )
         report["checks"].append(
-            "La fiche, la réponse REST et le document JSON concordent sur le film"
+            f"La fiche, la réponse REST et le stockage {backend} concordent sur le film"
         )
         report["catalogue_identity"] = {
             "rest_status": 200,
@@ -256,6 +291,9 @@ def exercise(browser, base, config, folder, args, report, proxy):
             "active": 1,
             "pending": 1,
             "waiting_reservations": 1,
+            "approval_audit_events": len(approved),
+            "client_request_windows_overlapped": True,
+            "response_matches_stored_request": True,
         }
 
         report["stage"] = "correlation"

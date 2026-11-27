@@ -752,7 +752,7 @@ def exercise_browser(browser, base, config, folder, args, report, fault):
     )
 
 
-def run_pair(args, exercise=exercise_browser):
+def run_pair(args, exercise=exercise_browser, *, start_api=pair.start_api):
     browser_name = getattr(args, "browser", "chromium")
     browser_channel = args.browser_channel or f"playwright-default-{browser_name}"
     report = {
@@ -799,7 +799,7 @@ def run_pair(args, exercise=exercise_browser):
         log = log_path.open("w", encoding="utf-8")
         report["stage"] = "start_api"
         api_start_attempted = True
-        process, config, api_url = pair.start_api(args, folder, log)
+        process, config, api_url = start_api(args, folder, log)
         endpoint = urlsplit(api_url)
         if (
             endpoint.scheme != "http"
