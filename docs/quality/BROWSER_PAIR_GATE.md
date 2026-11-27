@@ -108,6 +108,14 @@ associe chaque version à des révisions de navigateur précises ;
 [leur installation est documentée par l’éditeur](https://playwright.dev/python/docs/browsers).
 Ce pin de package n’est pas présenté comme un hash de l’archive Chromium.
 
+Pour qualifier la publication du portail documentaire, le workflow
+`documentation-portal.yml` conserve le ZIP Ubuntu sous
+`documentation-portal-ubuntu-24.04-attempt-<tentative>`.
+La promotion utilise le commit Infra, l’identifiant du run, le numéro
+de tentative, l’identifiant du ZIP et son SHA-256. Le reçu de promotion
+associe ces valeurs à l’empreinte du tar Pages. La qualification des
+images applicatives et du staging utilise ses propres reçus.
+
 ## Preuves, secrets et nettoyage
 
 Le rapport contient les versions, le canal navigateur, les contrôles passés, les
