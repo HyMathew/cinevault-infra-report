@@ -13,6 +13,7 @@ from uuid import uuid4
 import pytest
 
 from scripts import check_operational_health as operational_health
+from scripts import show_operational_status as operator_status
 from scripts.check_operational_health import main, probe_tls
 from scripts.summarize_http_logs import summarize
 
@@ -104,6 +105,52 @@ def arguments(tmp_path, endpoints):
 
 def argv(arguments):
     return [token for key, value in arguments.items() for token in (f"--{key}", value)]
+
+
+def test_readout_labels_and_preserves_probe_observations(arguments, endpoints, capsys):
+    arguments["environment"] = "synthetic"
+    assert main(argv(arguments)) == 0
+    receipt = json.loads(capsys.readouterr().out)
+    now = datetime.now(UTC)
+    view = operator_status.summarize(receipt, "synthetic", now, 5)
+    assert view["environment"] == "synthetic" and view["receipt_state"] == "recent"
+    assert view["signals"]["api_http"] == {
+        "state_at_observation": "ok",
+        "http_status": 200,
+    }
+    assert view["signals"]["mongodb_tls"] == {"state": "unavailable"}
+    assert view["independent_evidence"]["mongodb_runtime"] == "unavailable"
+    assert view["independent_evidence"]["alert_delivery"] == "unavailable"
+    assert PRIVATE not in json.dumps(view)
+
+    endpoints[1]["web"] = 503
+    assert main(argv(arguments)) == 1
+    receipt = json.loads(capsys.readouterr().out)
+    view = operator_status.summarize(receipt, "synthetic", datetime.now(UTC), 5)
+    assert view["signals"]["web_http"] == {
+        "state_at_observation": "unexpected_status",
+        "http_status": 503,
+    }
+
+
+def test_readout_refuses_old_unlabeled_or_wrong_environment(arguments, capsys):
+    arguments["environment"] = "synthetic"
+    assert main(argv(arguments)) == 0
+    receipt = json.loads(capsys.readouterr().out)
+    now = datetime.now(UTC)
+    stale = operator_status.summarize(
+        receipt, "synthetic", now + timedelta(minutes=6), 5
+    )
+    assert stale["receipt_state"] == "stale"
+    assert "http_status" not in stale["signals"]["api_http"]
+    for value, environment in (
+        (receipt, "stable"),
+        ({}, "synthetic"),
+        (None, "synthetic"),
+    ):
+        view = operator_status.summarize(value, environment, now, 5)
+        assert view["receipt_state"] == "unavailable"
+        assert view["signals"]["api_http"] == {"state": "unavailable"}
 
 
 def run(arguments, capsys):

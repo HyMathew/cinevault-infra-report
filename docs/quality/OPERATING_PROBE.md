@@ -6,6 +6,36 @@ et du Web. Elle conserve la validation TLS standard et refuse les redirections.
 Le délai s’applique aux opérations réseau de chaque requête. Utiliser les
 URL de santé du périmètre à contrôler, sans identifiant, paramètre ni fragment.
 
+## Relire un reçu depuis le poste opérateur
+
+Ajouter `--environment stable`, `--environment staging` ou
+`--environment synthetic` pour enregistrer le contexte et les heures
+UTC de début et de fin. Conserver le reçu dans le répertoire de travail
+privé de l’environnement choisi. Le libellé est fourni par l’opérateur
+et doit correspondre aux URL et aux sources données à la sonde.
+
+```sh
+python3 scripts/show_operational_status.py \
+  --environment staging --receipt "$STAGING_PROBE_RECEIPT" \
+  --max-age-minutes "$OPERATOR_VIEW_MAX_AGE_MINUTES"
+```
+
+La vue lit un fichier, sans réseau, service Web ni identifiant. Elle
+présente les états au moment de la mesure et écarte les résultats HTTP
+si le reçu est trop ancien pour cette consultation. Le seuil est mesuré
+depuis le début du contrôle. Un reçu sans contexte, daté dans le futur
+ou provenant d’un autre environnement est indisponible. Le code de
+sortie indique si le reçu est récent. L’échec éventuel d’un service
+reste dans son champ et conserve le code de sortie original de la sonde.
+
+Les erreurs HTTP, l’âge des sauvegardes, la dernière restauration
+vérifiée, les mesures de capacité et les échéances TLS apparaissent
+quand la sonde les a qualifiés. Pour chaque signal, le reçu séparé
+de l’environnement demeure la source. La capacité ne prouve pas
+l’état des tâches Swarm et le TLS MongoDB ne prouve pas une lecture
+métier. Les images, les attestations et la remise d’alertes sont à
+consulter dans leurs [preuves dédiées](SIGNATURE_DEFENSIVE_QUALIFICATION.md).
+
 ## Preuves à préparer
 
 - Conserver le JSON produit par le [résumeur HTTP](../../scripts/summarize_http_logs.py)

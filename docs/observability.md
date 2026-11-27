@@ -4,6 +4,10 @@ La [grille défensive Signature](quality/SIGNATURE_DEFENSIVE_QUALIFICATION.md)
 rattache les relevés de segmentation, de collecte et de réception à
 l’environnement qui les a produits.
 
+La [consultation opérateur](quality/OPERATING_PROBE.md#relire-un-reçu-depuis-le-poste-opérateur)
+affiche en local les états, le contexte et la fraîcheur du dernier
+reçu de sonde. Elle reste distincte des statistiques métier.
+
 L'API et le Web émettent un événement JSON pour chaque réponse traitée par Flask.
 La durée en millisecondes s'arrête à la construction de la réponse. Le champ
 `route` porte le modèle Flask, par exemple `/films/<film_id>`, ou `unmatched`.

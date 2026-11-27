@@ -18,6 +18,7 @@ from urllib.request import HTTPRedirectHandler, ProxyHandler, build_opener
 SERVICES = ("api", "web")
 SWARM_ROLES = ("web", "api", "manager")
 TLS_ROLES = ("proxy", "mongodb")
+ENVIRONMENTS = ("stable", "staging", "synthetic")
 TLS_FIELDS = {"connect_host", "server_name", "port", "ca_file", "min_remaining_hours"}
 DNS_LABEL = re.compile(r"[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?")
 MAX_JSON_BYTES = 4 * 1024 * 1024
@@ -442,6 +443,11 @@ def main(argv=None):
         action="store_true",
         help="Send the Web health GET over the authenticated proxy connection in --tls-policy",
     )
+    parser.add_argument(
+        "--environment",
+        choices=ENVIRONMENTS,
+        help="Label the receipt for the private operator view",
+    )
     args = parser.parse_args(argv)
     limits = (
         args.max_summary_age_hours,
@@ -569,12 +575,15 @@ def main(argv=None):
             "targets": certificates,
         }
     ok = all(check["state"] == "ok" for check in (*health.values(), *checks.values()))
-    print(
-        json.dumps(
-            {"state": "ok" if ok else "check_failed", "health": health, **checks},
-            sort_keys=True,
-        )
-    )
+    receipt = {"state": "ok" if ok else "check_failed", "health": health, **checks}
+    if args.environment is not None:
+        receipt["measurement"] = {
+            "schema": 1,
+            "environment": args.environment,
+            "started_at_utc": now.isoformat(),
+            "finished_at_utc": datetime.now(UTC).isoformat(),
+        }
+    print(json.dumps(receipt, sort_keys=True))
     return 0 if ok else 1
 
 
