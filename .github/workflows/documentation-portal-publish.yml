@@ -123,7 +123,7 @@ jobs:
               assert hashlib.sha256(dist['sources/evidence/public/operational-proxy-http-20261126.json']).hexdigest() == '04babf6c2f11879cf4d3dfc9fae4012aa6f48e1ba869a6546fdb8809e1a147e7'
               assert hashlib.sha256(dist['sources/evidence/public/operational-attempt-verification-20261126.json']).hexdigest() == 'c5837a1e7020ef3992fdc7fec2e4d4cb3314991db9a5b51f8420fb4ebee39059'
               assert hashlib.sha256(dist['sources/evidence/public/operational-watch-delivery-20261126.json']).hexdigest() == '003bd0f24879fd6d0f2b6496b6f869e0f5a9069671a1c1c966a3e66bb31b8f5b'
-              assert hashlib.sha256(dist['sources/scripts/supervise_operational_health.py']).hexdigest() == '12837b3cbf023766ef0e46fd9eae5b5142ec1a190cdb1c27ca41d4cc160ae3d6'
+              assert hashlib.sha256(dist['sources/scripts/supervise_operational_health.py']).hexdigest() == '9857111ac5bfe71081e5ee03aeb8627ee2cc259d6d776c2803ea68fda83e01c7'
               assert hashlib.sha256(dist['sources/evidence/public/operational-watch-cross-host-20261126.json']).hexdigest() == 'dbf82ae67d2099edf6bd3b3997bf4e3be69061bcf5e246b00bee9f58dfc4b05c'
               assert hashlib.sha256(dist['sources/evidence/public/staging-image-pair-preflight-20261126.json']).hexdigest() == '5ac637c4d0d69e5a0d54bf37bbadf1e147e767d53b2d92c8cb374451efe96e22'
               assert hashlib.sha256(dist['sources/scripts/check_staging_image_pair.py']).hexdigest() == '181ea8358d64ea9430e80bdafd7afb8284255bd7bd50ebf6f0a6d844027acf7b'
