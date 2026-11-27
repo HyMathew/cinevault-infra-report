@@ -94,8 +94,13 @@ greenlet, PSF-2.0 pour typing-extensions. Chromium et le driver distribuent auss
 leurs composants tiers ; aucune licence MIT globale n’est attribuée à cet
 ensemble. Le projet ne vendore pas les exécutables.
 
-Le [workflow navigateur](../../.github/workflows/browser-pair.yml) épingle les
-actions GitHub et les deux commits applicatifs. Les environnements sont séparés,
+Le [workflow navigateur](../../.github/workflows/browser-pair.yml), le contrôle
+HTTP et le rejeu académique du candidat lisent le même [manifeste des sources](../../.github/qualification-sources.json).
+Le job vérifie la propreté et les SHA des checkouts avant d’installer les
+dépendances. Son reçu lie le SHA du commit Infra, l’empreinte du manifeste
+et les SHA applicatifs utilisés. Le navigateur rejoue aussi le [parcours
+Signature](../soutenance-signature.md#rejouer-le-fil-conducteur-local).
+Les environnements sont séparés,
 les wheels d’outillage sont installées avec `--require-hashes`, puis le navigateur
 officiel correspondant à la version Playwright est installé selon les
 [instructions CI officielles](https://playwright.dev/python/docs/ci). Playwright

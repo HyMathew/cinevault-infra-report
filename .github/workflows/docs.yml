@@ -65,6 +65,7 @@ jobs:
           tests/test_supervise_operational_health.py tests/test_swarm_readiness.py
           tests/test_prepare_openssl_locks.py
           tests/test_staging_image_release.py tests/test_staging_image_pair.py
+          tests/test_qualification_sources.py
       - name: Compile Enterprise 2.1 report with pinned Typst
         run: python -B cinevault-infra-report/scripts/build_report.py --edition enterprise-2.1
       - name: Keep Enterprise 2.1 PDF and receipt
@@ -111,26 +112,35 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     env:
-      CINEVAULT_EXAMPLES_API_COMMIT: f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0
       PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           path: cinevault-infra-report
           persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Read the application commits from the qualification manifest
+        id: sources
+        run: python -B cinevault-infra-report/scripts/qualification_sources.py resolve --github-output
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           path: cinevault-api
           repository: HyMathew/cinevault-api
-          ref: ${{ env.CINEVAULT_EXAMPLES_API_COMMIT }}
+          ref: ${{ steps.sources.outputs.api }}
           persist-credentials: false
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.13'
+      - name: Verify the clean Infra and candidate API checkouts
+        run: >-
+          python -B cinevault-infra-report/scripts/qualification_sources.py verify
+          --infra-commit ${{ github.sha }} --api-root cinevault-api
+          --receipt qualification-sources.json
       - run: >-
           python -m pip install --only-binary=:all: -r cinevault-api/requirements-dev.txt
       - run: python -m pip check
       - name: Execute and validate the in-memory candidate examples
+        env:
+          CINEVAULT_EXAMPLES_API_COMMIT: ${{ steps.sources.outputs.api }}
         shell: python
         run: |
           import os
@@ -149,12 +159,14 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: candidate-academic-examples-${{ matrix.os }}
-          path: candidate-examples.json
+          path: |
+            qualification-sources.json
+            candidate-examples.json
           retention-days: 7
           if-no-files-found: error
 
   attest-enterprise-report:
-    name: Attest the compiled Enterprise 2.1 report
+    name: Attest the compiled ${{ matrix.label }} report
     needs: [documents, candidate-examples]
     if: >-
       github.event_name == 'push' &&
@@ -163,6 +175,16 @@ jobs:
       github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - edition: enterprise-2.1
+            label: Enterprise 2.1
+            provenance: enterprise-report
+          - edition: signature
+            label: Signature
+            provenance: signature-report
     permissions:
       contents: read
       id-token: write
@@ -173,9 +195,11 @@ jobs:
           persist-credentials: false
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: report-enterprise-2.1-ubuntu-24.04
+          name: report-${{ matrix.edition }}-ubuntu-24.04
           path: compiled-report
       - name: Match the candidate PDF to the Git blob and build receipt
+        env:
+          REPORT_EDITION: ${{ matrix.edition }}
         shell: python
         run: |
           import hashlib
@@ -186,7 +210,7 @@ jobs:
 
           name = "RT0705_CineVault_Mathieu_Kuhnapfel.pdf"
           received = Path("compiled-report", name).read_bytes()
-          source = f"report/enterprise-2.1/{name}"
+          source = f"report/{os.environ['REPORT_EDITION']}/{name}"
           expected = subprocess.check_output(["git", "show", f"{os.environ['GITHUB_SHA']}:{source}"])
           receipt = json.loads(Path("compiled-report/build-receipt.json").read_bytes())
           if (
@@ -203,23 +227,33 @@ jobs:
       - name: Keep the signed provenance bundle
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: enterprise-report-signed-provenance
+          name: ${{ matrix.provenance }}-signed-provenance
           path: ${{ steps.report-attestation.outputs.bundle-path }}
           retention-days: 7
           if-no-files-found: error
 
   verify-enterprise-report:
-    name: Verify Enterprise 2.1 report provenance
+    name: Verify ${{ matrix.label }} report provenance
     needs: attest-enterprise-report
     runs-on: ubuntu-24.04
     timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - edition: enterprise-2.1
+            label: Enterprise 2.1
+            provenance: enterprise-report
+          - edition: signature
+            label: Signature
+            provenance: signature-report
     permissions:
       contents: read
       attestations: read
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: report-enterprise-2.1-ubuntu-24.04
+          name: report-${{ matrix.edition }}-ubuntu-24.04
           path: compiled-report
       - name: Check the Sigstore signature and exact source identity
         env:
@@ -237,7 +271,7 @@ jobs:
       - name: Keep the signature verification receipt
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: enterprise-report-verified-provenance
+          name: ${{ matrix.provenance }}-verified-provenance
           path: report-attestation-verification.json
           retention-days: 7
           if-no-files-found: error

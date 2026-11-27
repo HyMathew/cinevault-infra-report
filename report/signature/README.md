@@ -30,5 +30,12 @@ Les 20 pages A4 et les deux planches A2 ont été rendues et les
 [complément Signature](signature-evidence.typ) · [configuration](build-config.json) ·
 [reçu de vérification](verification.json)
 
+Le [workflow de documentation](../../.github/workflows/docs.yml)
+recompile le PDF Signature sous Ubuntu et Windows. Sur le chemin de
+qualification, il compare le PDF Ubuntu aux octets du commit et au
+reçu de compilation avant de demander l’attestation. Le contrôle de
+provenance vérifie ensuite la signature et le commit source. Il publie
+un résultat propre à cette édition sous `signature-report-verified-provenance`.
+
 Les [sources et le PDF Enterprise 2.1](../enterprise-2.1/README.md) et
 le [rapport original v1](../README.md) sont conservés dans leurs éditions.

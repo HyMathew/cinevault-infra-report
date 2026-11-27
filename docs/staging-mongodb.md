@@ -226,9 +226,16 @@ manifeste local et utiliser le [contrôle de la paire](../scripts/check_staging_
 Le manifeste contient les clés `api` et `web`. Chaque entrée indique
 `commit` (SHA complet), `run` et `attempt` (entiers), `audit_zip` et
 `provenance_zip`. Les chemins relatifs partent du répertoire du manifeste.
+Mettre à jour le [manifeste des sources de qualification](../.github/qualification-sources.json)
+avec les deux SHA retenus après intégration des correctifs et après mise
+à disposition des commits. Rapprocher les reçus des contrôles HTTP,
+navigateur et académique de ces SHA. Le reçu de checkout atteste les
+sources lues par le job. Les résultats des essais établissent le
+comportement exercé.
 
 ```sh
-PAIR_RECEIPT="$(python3 scripts/check_staging_image_pair.py --manifest "$PAIR_MANIFEST")" || {
+PAIR_RECEIPT="$(python3 scripts/check_staging_image_pair.py --manifest "$PAIR_MANIFEST" \
+  --qualification-sources .github/qualification-sources.json)" || {
   printf '%s\n' "$PAIR_RECEIPT" >&2
   exit 1
 }
@@ -239,7 +246,9 @@ CINEVAULT_STAGE_WEB_IMAGE="$(printf '%s' "$PAIR_RECEIPT" | python3 -c \
 export CINEVAULT_STAGE_API_IMAGE CINEVAULT_STAGE_WEB_IMAGE
 ```
 
-Le contrôle fournit les deux références par digest dans
+Le contrôle confronte les deux commits à ceux du manifeste Infra avant
+d’interroger le registre. Il consigne l’empreinte de ce manifeste dans
+`qualification_sources_sha256`, puis fournit les références par digest dans
 `compose_environment` après vérification des deux publications. En cas
 d’échec, il renvoie les erreurs par rôle sans références à exporter.
 Conserver le reçu JSON et sa date UTC avec les preuves du déploiement.

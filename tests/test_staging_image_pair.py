@@ -1,3 +1,4 @@
+import hashlib
 import json
 from datetime import UTC, datetime
 
@@ -94,6 +95,39 @@ def test_one_or_two_failed_images_produce_no_deployment_values(
         "passed": False,
         "errors": {role: "publication workflow did not succeed" for role in failing},
     }
+
+
+def test_signed_pair_must_match_the_qualification_sources_before_registry_checks(
+    requested, monkeypatch, capsys
+):
+    manifest, entries = requested
+    lock = manifest.with_name("qualification-sources.json")
+    sources = {role: entry["commit"] for role, entry in entries.items()}
+    lock.write_text(json.dumps(sources), encoding="utf-8")
+    calls = []
+
+    def check(role, commit, run, attempt, *_):
+        calls.append(role)
+        return verified_evidence(role, commit, run, attempt)
+
+    monkeypatch.setattr(pair.release, "check", check)
+    args = ["--manifest", str(manifest), "--qualification-sources", str(lock)]
+    assert pair.main(args) == 0
+    receipt = json.loads(capsys.readouterr().out)
+    assert (
+        receipt["qualification_sources_sha256"]
+        == hashlib.sha256(lock.read_bytes()).hexdigest()
+    )
+    assert calls == ["api", "web"]
+    entries["web"]["commit"] = "c" * 40
+    manifest.write_text(json.dumps(entries), encoding="utf-8")
+    calls.clear()
+    assert pair.main(args) == 1
+    assert json.loads(capsys.readouterr().out) == {
+        "passed": False,
+        "error": "publication commits differ from the qualification manifest",
+    }
+    assert calls == []
 
 
 @pytest.mark.parametrize("mismatch", ["role", "attempt", "signature", "source_ref"])

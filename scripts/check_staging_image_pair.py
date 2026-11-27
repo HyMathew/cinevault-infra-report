@@ -10,8 +10,10 @@ from pathlib import Path
 
 if __package__:
     from . import check_staging_image_release as release
+    from .qualification_sources import load_sources
 else:
     import check_staging_image_release as release
+    from qualification_sources import load_sources
 
 
 ROLES = ("api", "web")
@@ -57,8 +59,15 @@ def inputs(path):
     return result
 
 
-def verify_pair(manifest):
+def verify_pair(manifest, qualification_sources=None):
     plan = inputs(manifest)
+    qualification_digest = None
+    if qualification_sources is not None:
+        sources, qualification_digest = load_sources(qualification_sources)
+        release.require(
+            sources == {role: entry[0] for role, entry in plan.items()},
+            "publication commits differ from the qualification manifest",
+        )
     verified, errors = {}, {}
     for role, parameters in plan.items():
         try:
@@ -100,6 +109,11 @@ def verify_pair(manifest):
     return {
         "passed": True,
         "verified_at_utc": datetime.now(UTC).isoformat(),
+        **(
+            {"qualification_sources_sha256": qualification_digest}
+            if qualification_digest is not None
+            else {}
+        ),
         "images": verified,
         "compose_environment": {
             f"CINEVAULT_STAGE_{role.upper()}_IMAGE": verified[role][
@@ -113,9 +127,14 @@ def verify_pair(manifest):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--manifest", type=Path, required=True)
+    parser.add_argument(
+        "--qualification-sources",
+        type=Path,
+        help="Require commits to match the Infra qualification sources before registry checks",
+    )
     args = parser.parse_args(argv)
     try:
-        result = verify_pair(args.manifest)
+        result = verify_pair(args.manifest, args.qualification_sources)
     except release.registry.RegistryVerificationError as error:
         result = {"passed": False, "error": str(error)}
     except (OSError, ValueError, RecursionError):

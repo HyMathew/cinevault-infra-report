@@ -21,21 +21,29 @@ jobs:
         with:
           path: cinevault-infra-report
           persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.13'
+      - name: Read the application commits from the qualification manifest
+        id: sources
+        run: python -B cinevault-infra-report/scripts/qualification_sources.py resolve --github-output
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: HyMathew/cinevault-api
-          ref: f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0
+          ref: ${{ steps.sources.outputs.api }}
           path: cinevault-api
           persist-credentials: false
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: HyMathew/cinevault-web
-          ref: 0283bf3eb295859b302aabb1ba13a35dac627a9f
+          ref: ${{ steps.sources.outputs.web }}
           path: cinevault-web
           persist-credentials: false
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: '3.13'
+      - name: Verify the clean three-repository checkout
+        run: >-
+          python -B cinevault-infra-report/scripts/qualification_sources.py verify
+          --infra-commit ${{ github.sha }} --api-root cinevault-api --web-root cinevault-web
+          --receipt cinevault-infra-report/reports/qualification-sources.json
       - name: Install each service in a separate environment
         shell: python
         run: |
@@ -59,13 +67,23 @@ jobs:
           --api-python .venv-api/bin/python
           --report cinevault-infra-report/reports/browser-pair.json
           --screens-dir cinevault-infra-report/reports/browser-pair-screens
+      - name: Rehearse Signature circulation on the same checked-out services
+        run: >-
+          .venv-web/bin/python cinevault-infra-report/scripts/check_signature_rehearsal.py
+          --api-root cinevault-api --web-root cinevault-web
+          --api-python .venv-api/bin/python
+          --report cinevault-infra-report/reports/signature-rehearsal.json
+          --screens-dir cinevault-infra-report/reports/signature-rehearsal-screens
       - name: Keep sanitized receipt and synthetic screenshots
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: real-browser-json-pair
           path: |
+            cinevault-infra-report/reports/qualification-sources.json
             cinevault-infra-report/reports/browser-pair.json
             cinevault-infra-report/reports/browser-pair-screens/
+            cinevault-infra-report/reports/signature-rehearsal.json
+            cinevault-infra-report/reports/signature-rehearsal-screens/
           retention-days: 7
           if-no-files-found: error
