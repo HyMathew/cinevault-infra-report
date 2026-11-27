@@ -466,6 +466,13 @@ contient le binaire statique et la licence Caddy. Le scan du candidat du
 [Dockerfile](../docker/caddy-staging/Dockerfile) ·
 [Reçu de qualification du proxy](../evidence/public/swarm-staging-https-proxy-20261125.json).
 
+Le 27 novembre, Grype a rescanné les archives exactes de MongoDB et Caddy
+avec sa base du 26 novembre à 06 h 22 UTC. Les deux scans ont réussi sans
+constat High ni Critical. Le reçu fixe les digests de configuration, des
+archives et des rapports d’analyse. Rejouer les scans avec la base disponible
+au moment du déploiement.
+[Reçu du nouveau scan](../evidence/public/staging-support-image-scan-20261127.json).
+
 Depuis la racine du dépôt, construire avec BuildKit 0.34.2 et Buildx 0.38.1.
 
 ```sh

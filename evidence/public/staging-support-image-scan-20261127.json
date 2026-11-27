@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "scope": "Read-only scans of exact retained local MongoDB and Caddy archives, with networking disabled during scans",
+  "started_at_utc": "2026-11-27T03:07:56.534186+00:00",
+  "finished_at_utc": "2026-11-27T03:10:22.238705+00:00",
+  "scanner": "anchore/grype:v0.121.2@sha256:6a36234da13f9faa327306ac0b3dab3405cfa2b4eb20c8f904125a8707863913",
+  "database_build_utc": "2026-11-26T06:22:34Z",
+  "database_schema": "v6.1.10",
+  "database_archive": "https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.10_2026-11-25T17:53:22Z_1795674154.tar.zst?checksum=sha256%3A2e9c096bc66d4a8b766ee2d228230440ecd34c5d59714fc92a334cb8567da2c2",
+  "catalog_validation_source": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+  "raw_receipt_sha256": "699d1e024f99532ef15507f2aef637dadc18e8fa2d9d3ed4116e3e96e95c5282",
+  "images": {
+    "mongo": {
+      "platform_manifest_digest": "sha256:ac95711228fd3cbd77c83ed36ce6f47a66737a8f1fd14c9afbba98aa1b56f064",
+      "archive_sha256": "sha256:179fdc1e1de7049fed6b949030159c5aabb834998c4af8dc75c6fe76d0c19ffc",
+      "archive_config_digest": "sha256:72d359627f73f59e89d4a35929d133061976d5dd1393c4c8a819c5c301a54859",
+      "grype_config_digest": "sha256:72d359627f73f59e89d4a35929d133061976d5dd1393c4c8a819c5c301a54859",
+      "grype_manifest_digest": "sha256:1ced015d375bd781d9aa6ba89143f4058b79bef83e4f98a64a7dc80d5f19b8a6",
+      "scan_report_sha256": "sha256:6f2436fcd78dd394374b3eb3cfaa8e082e09e2e69fa0e1aaf8761660ec08ee36",
+      "severity_counts": {
+        "Medium": 216,
+        "Low": 7,
+        "Negligible": 4
+      },
+      "blocking_ids": [],
+      "scan_exit": 0
+    },
+    "caddy": {
+      "platform_manifest_digest": "sha256:29c725fa179ce3ee7431de3a84fec7b2e3847d3ce5a1e5b1b0df824fe33c1a66",
+      "archive_sha256": "sha256:b0ff2d8a3b98d34db43a2e05ec9930eb8774355b31f0fc32ddde50f5844104d2",
+      "archive_config_digest": "sha256:56d2a0dd456514887ebaa929261413b37385b2d24d0d97c95e2438d8dfe387c3",
+      "grype_config_digest": "sha256:56d2a0dd456514887ebaa929261413b37385b2d24d0d97c95e2438d8dfe387c3",
+      "grype_manifest_digest": "sha256:67bd0af6a54bac601a1d953914b19009689db5dc782d79d67366c123f1ffa480",
+      "scan_report_sha256": "sha256:8410675d340bec38b233ca0e3133599a7e7bbc7cfd65d45655d52def539c5746",
+      "severity_counts": {
+        "Medium": 1
+      },
+      "blocking_ids": [],
+      "scan_exit": 0
+    }
+  }
+}
