@@ -1,0 +1,904 @@
+{
+  "scope": "Real loopback Web/API with synthetic JSON v2 and native local MongoDB replica, plus previous API pairing",
+  "suites": {
+    "api": {
+      "passed": 635,
+      "junit_cases": 688,
+      "skipped": 9,
+      "junit_sha256": "54d1fac1fa3805d22acc7f2d7c90809fe7eee67c1ead6b150a1a31862f96b442"
+    },
+    "web": {
+      "passed": 528,
+      "junit_cases": 528,
+      "skipped": 0,
+      "junit_sha256": "b41242f17a30da704223f20b10d8750580e9c5c08224869943d34263e5d69221"
+    }
+  },
+  "runs": {
+    "json-chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T14:36:58.138060+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "legacy_api": false,
+      "sources": {
+        "api": {
+          "commit": "be61632b588e0ef999b07193112dd00b76d3e80a",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "ef6c63bd66d3c8b9a695d3eb290675b8aa9c9389eac5a07165133b6e0711e891",
+          "source_manifest_sha256": "8403276ce393b4a1248d2c7b632effb9514e691e62619fd91f866b812f58e11c"
+        },
+        "web": {
+          "commit": "4d630352bd1ec33a0d375c94d5f3f28277d8b723",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "2b0f94d69dc7dce896ce1315811372050c9f72af2229a9d61285b78406de7210",
+          "source_manifest_sha256": "9d5d95bba0c958c0682bda70aa4d7edbc1e812d422541ca6ab47bd732b0f4c88"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "catalogue-390.png": "3e4983e90209e65baf754dab2845ee00317e1bb2f37a1c54f380f4ad78146e17",
+        "catalogue-1280.png": "7d9f1b392b88d4c07a3fd912ef7bae5740dd37f11d36ed4ba93301a83fd58ffc",
+        "inventaire-390.png": "2718f788a9098c9be3e2ed9617fcd98b24deb29816bf36a7c9ef243d4ec0bfbf",
+        "inventaire-1280.png": "12f045b4ee469e1f62db39c37662448fff189736f0cde096a5c38e652b868b73"
+      },
+      "viewports": [
+        {
+          "surface": "catalogue",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 26,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "published_count_respects_ready_member_priority": true,
+        "one_catalogue_call_pending_active_reserved_and_returned": true
+      },
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T14:37:21.024255+00:00"
+    },
+    "json-firefox": {
+      "passed": true,
+      "started_at": "2026-11-27T14:36:58.194810+00:00",
+      "backend": "json",
+      "browser": "firefox",
+      "legacy_api": false,
+      "sources": {
+        "api": {
+          "commit": "be61632b588e0ef999b07193112dd00b76d3e80a",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "ef6c63bd66d3c8b9a695d3eb290675b8aa9c9389eac5a07165133b6e0711e891",
+          "source_manifest_sha256": "8403276ce393b4a1248d2c7b632effb9514e691e62619fd91f866b812f58e11c"
+        },
+        "web": {
+          "commit": "4d630352bd1ec33a0d375c94d5f3f28277d8b723",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "2b0f94d69dc7dce896ce1315811372050c9f72af2229a9d61285b78406de7210",
+          "source_manifest_sha256": "9d5d95bba0c958c0682bda70aa4d7edbc1e812d422541ca6ab47bd732b0f4c88"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "catalogue-390.png": "f507952a15bae193053b91bc845409021515bf55ed6877d022e8540118f5b5a5",
+        "catalogue-1280.png": "eaf085606a231223c2988be27cd767815f56feb7813769f791af2a799b0f6dc8",
+        "inventaire-390.png": "40deb304171358a9a969e64f3cef08760cdb025ebbc89bb1fb4b48d4336c8a6c",
+        "inventaire-1280.png": "0722beaaa6df843f234b32304adba8bc44125ce892fdd2f77a808600711584cb"
+      },
+      "viewports": [
+        {
+          "surface": "catalogue",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 26,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "published_count_respects_ready_member_priority": true,
+        "one_catalogue_call_pending_active_reserved_and_returned": true
+      },
+      "browser_version": "157.0",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T14:37:30.779974+00:00"
+    },
+    "json-webkit": {
+      "passed": true,
+      "started_at": "2026-11-27T14:36:58.041289+00:00",
+      "backend": "json",
+      "browser": "webkit",
+      "legacy_api": false,
+      "sources": {
+        "api": {
+          "commit": "be61632b588e0ef999b07193112dd00b76d3e80a",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "ef6c63bd66d3c8b9a695d3eb290675b8aa9c9389eac5a07165133b6e0711e891",
+          "source_manifest_sha256": "8403276ce393b4a1248d2c7b632effb9514e691e62619fd91f866b812f58e11c"
+        },
+        "web": {
+          "commit": "4d630352bd1ec33a0d375c94d5f3f28277d8b723",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "2b0f94d69dc7dce896ce1315811372050c9f72af2229a9d61285b78406de7210",
+          "source_manifest_sha256": "9d5d95bba0c958c0682bda70aa4d7edbc1e812d422541ca6ab47bd732b0f4c88"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "catalogue-390.png": "0175885c689e021058e24aaedc9f26f8565310be8b1b53a6a6d36e6d6d0a27f2",
+        "catalogue-1280.png": "e1cb3aa794489a0ac5123468c05ebc06a3bd9b042c5e2cf86a295cdd4c2e934c",
+        "inventaire-390.png": "02e9bcf9ad6bfd5af679256a7e8d71c58fa00ab20187d85a3ca6f6b515156015",
+        "inventaire-1280.png": "0f35a22322593147085ce9072fc4620bd6dae4b90723a7f5eedbd335937ebbc6"
+      },
+      "viewports": [
+        {
+          "surface": "catalogue",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 26,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "published_count_respects_ready_member_priority": true,
+        "one_catalogue_call_pending_active_reserved_and_returned": true
+      },
+      "browser_version": "27.2",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T14:37:21.904403+00:00"
+    },
+    "mongo-chrome-final": {
+      "passed": true,
+      "started_at": "2026-11-27T14:37:58.884843+00:00",
+      "backend": "mongo",
+      "browser": "chrome",
+      "legacy_api": false,
+      "sources": {
+        "api": {
+          "commit": "be61632b588e0ef999b07193112dd00b76d3e80a",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "ef6c63bd66d3c8b9a695d3eb290675b8aa9c9389eac5a07165133b6e0711e891",
+          "source_manifest_sha256": "8403276ce393b4a1248d2c7b632effb9514e691e62619fd91f866b812f58e11c"
+        },
+        "web": {
+          "commit": "4d630352bd1ec33a0d375c94d5f3f28277d8b723",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "2b0f94d69dc7dce896ce1315811372050c9f72af2229a9d61285b78406de7210",
+          "source_manifest_sha256": "9d5d95bba0c958c0682bda70aa4d7edbc1e812d422541ca6ab47bd732b0f4c88"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {
+        "catalogue-390.png": "3e4983e90209e65baf754dab2845ee00317e1bb2f37a1c54f380f4ad78146e17",
+        "catalogue-1280.png": "7d9f1b392b88d4c07a3fd912ef7bae5740dd37f11d36ed4ba93301a83fd58ffc",
+        "inventaire-390.png": "2718f788a9098c9be3e2ed9617fcd98b24deb29816bf36a7c9ef243d4ec0bfbf",
+        "inventaire-1280.png": "12f045b4ee469e1f62db39c37662448fff189736f0cde096a5c38e652b868b73"
+      },
+      "viewports": [
+        {
+          "surface": "catalogue",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "catalogue",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 28,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 320,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 390,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 768,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 26,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "surface": "inventaire",
+          "width": 1280,
+          "axe": {
+            "version": "4.11.0",
+            "passes": 27,
+            "violations": [],
+            "incomplete": [
+              {
+                "rule": "aria-valid-attr-value",
+                "nodes": [
+                  [
+                    "#quick-search-trigger"
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "flows": {
+        "published_count_respects_ready_member_priority": true,
+        "one_catalogue_call_pending_active_reserved_and_returned": true
+      },
+      "mongo": {
+        "image": "mongo@sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "step": "api_engine_and_bootstrap",
+        "resources": {
+          "docker_cpus": 20,
+          "docker_memory_bytes": 16626065408,
+          "docker_server_version": "29.9.3",
+          "local_named_pipe": true
+        },
+        "image_id": "sha256:d819ca7f8e564eb253ae6dc9cac330386c56e6919f3570a74c04f04679433117",
+        "container": {
+          "uid_gid": "999:999",
+          "capabilities_dropped": [
+            "ALL"
+          ],
+          "no_new_privileges": true,
+          "read_only_root": true,
+          "publication": "127.0.0.1, Docker allocated host port",
+          "network_dedicated": true,
+          "memory_mib": 768,
+          "cpus": 0.75,
+          "storage": "dedicated tmpfs mounts",
+          "bind_or_persistent_volumes": false,
+          "data_tmpfs_ceiling_mib": 1536,
+          "replica_key_owner_mode_verified": true
+        },
+        "bootstrap": {
+          "step": "serve_real_api",
+          "server_version_observed": "8.0.38",
+          "primary_observed": true,
+          "indexes_observed": 40,
+          "server_version": "8.0.38",
+          "replica": "cvinsights",
+          "members": 1,
+          "writable": true,
+          "collections": 12,
+          "indexes": 40,
+          "revision_after_provision": 0,
+          "app_actions": [
+            "find",
+            "insert",
+            "update",
+            "remove"
+          ],
+          "app_auth_mechanisms": [
+            "SCRAM-SHA-256"
+          ],
+          "maintenance_identity_separate": true,
+          "unauthenticated_read_code": 13,
+          "app_privileges_confirmed": true
+        }
+      },
+      "mongo_contract": {
+        "catalogue_availability": "passed",
+        "fifo_expiry_boundary": true,
+        "native_commands_by_page_size": {
+          "1": 6,
+          "100": 6
+        }
+      },
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T14:38:37.099522+00:00"
+    },
+    "legacy-chrome": {
+      "passed": true,
+      "started_at": "2026-11-27T14:36:58.078792+00:00",
+      "backend": "json",
+      "browser": "chrome",
+      "legacy_api": true,
+      "sources": {
+        "api": {
+          "commit": "f4457ac7a9f0c4d3eecfbeb74f57b5b7e21eb7f0",
+          "tracked_files_verified_against_git_blobs": 234,
+          "git_archive_sha256": "bde230ede3d8d352d8a866109208af7aedaf11076c0a814570fe1cde24418708",
+          "source_manifest_sha256": "c35969ec30cae4c9ce34c15860143d6159d83f80e244860cbee57a762185b8a9"
+        },
+        "web": {
+          "commit": "4d630352bd1ec33a0d375c94d5f3f28277d8b723",
+          "tracked_files_verified_against_git_blobs": 122,
+          "git_archive_sha256": "2b0f94d69dc7dce896ce1315811372050c9f72af2229a9d61285b78406de7210",
+          "source_manifest_sha256": "9d5d95bba0c958c0682bda70aa4d7edbc1e812d422541ca6ab47bd732b0f4c88"
+        }
+      },
+      "harness": {
+        "check_browser_pair.py": "3260ebf119295fd28b230af47b79a786c2962b6b2756234d569f7743b516aabb",
+        "check_enterprise_pair.py": "148e525742375d64a791dab3c752d9747e287ed6d2cc6f6f42b193f7eae84cc5"
+      },
+      "screens": {},
+      "viewports": [],
+      "flows": {
+        "previous_api_read_fallback": true
+      },
+      "browser_version": "158.0.8127.37",
+      "web_stopped": true,
+      "api_exit": 0,
+      "source_bytes_unchanged": true,
+      "temporary_runtime_removed": true,
+      "finished_at": "2026-11-27T14:37:10.063044+00:00"
+    }
+  },
+  "screens_published": [
+    "docs/design/screens-signature-availability/catalogue-390.png",
+    "docs/design/screens-signature-availability/inventaire-390.png"
+  ]
+}
