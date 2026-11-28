@@ -1,0 +1,583 @@
+{
+  "candidate": {
+    "api_commit": "9243cbbbfc814b063eb4f1d46c365ed8aa9f4818",
+    "dataset_sha256": "ebb6abd72b71c724b9129f9d2d88edafde7e924d608c7e02f4bef19a0310be8b",
+    "finished_utc": "2026-11-28T02:16:52.012554+00:00",
+    "harness_sha256": "df5f2e7a0f6aceef702640c765149093b567ee0aa509de50803cf740fa11c914",
+    "observations": [
+      {
+        "backend": "json",
+        "temporary_data_removed": true,
+        "windows": [
+          {
+            "batch_wall_ms": 6758.367,
+            "concurrency": 1,
+            "distinct_sessions": 1,
+            "max_ms": 89.574,
+            "measurements_ms": [
+              89.574,
+              88.328,
+              77.582,
+              55.738,
+              65.652,
+              78.42
+            ],
+            "mode": "wall_clock_paced",
+            "operations": 6,
+            "p50_ms": 77.582,
+            "p95_ms": 89.574,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": null,
+            "revision_delta": 6,
+            "statuses": {
+              "200": 6
+            }
+          },
+          {
+            "batch_wall_ms": 1027.677,
+            "concurrency": 4,
+            "distinct_sessions": 1,
+            "max_ms": 523.012,
+            "measurements_ms": [
+              523.012,
+              291.104,
+              38.784,
+              29.748,
+              35.37,
+              44.018,
+              20.762,
+              44.091,
+              22.221,
+              39.729,
+              40.434,
+              39.307,
+              42.493,
+              44.072,
+              40.748,
+              295.496,
+              289.357,
+              38.52,
+              39.042,
+              29.731,
+              30.75,
+              33.851,
+              30.115,
+              53.346,
+              40.605,
+              38.268,
+              43.081,
+              40.339,
+              41.192,
+              44.752,
+              59.335,
+              38.014
+            ],
+            "mode": "shared_session_concurrent",
+            "operations": 32,
+            "p50_ms": 40.339,
+            "p95_ms": 295.496,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 31.14,
+            "revision_delta": 0,
+            "statuses": {
+              "200": 32
+            }
+          },
+          {
+            "batch_wall_ms": 831.823,
+            "concurrency": 4,
+            "distinct_sessions": 4,
+            "max_ms": 311.287,
+            "measurements_ms": [
+              30.672,
+              51.822,
+              39.328,
+              42.882,
+              42.426,
+              42.78,
+              287.881,
+              32.422,
+              291.18,
+              63.886,
+              43.347,
+              35.307,
+              41.773,
+              33.33,
+              282.595,
+              39.025,
+              311.287,
+              291.26,
+              30.465,
+              30.936,
+              32.622,
+              31.12,
+              34.509,
+              47.405,
+              49.067,
+              51.228,
+              41.013,
+              43.82,
+              42.011,
+              42.667,
+              61.263,
+              43.859
+            ],
+            "mode": "distinct_session_concurrent",
+            "operations": 32,
+            "p50_ms": 42.667,
+            "p95_ms": 291.26,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 38.47,
+            "revision_delta": 0,
+            "statuses": {
+              "200": 32
+            }
+          }
+        ]
+      },
+      {
+        "backend": "mongodb",
+        "mongo_cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "temporary_data_removed": true,
+        "windows": [
+          {
+            "batch_wall_ms": 6532.644,
+            "concurrency": 1,
+            "distinct_sessions": 1,
+            "max_ms": 47.547,
+            "measurements_ms": [
+              45.313,
+              43.778,
+              33.395,
+              35.515,
+              47.547,
+              23.256
+            ],
+            "mode": "wall_clock_paced",
+            "operations": 6,
+            "p50_ms": 35.515,
+            "p95_ms": 47.547,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": null,
+            "revision_delta": 6,
+            "statuses": {
+              "200": 6
+            }
+          },
+          {
+            "batch_wall_ms": 226.881,
+            "concurrency": 4,
+            "distinct_sessions": 1,
+            "max_ms": 40.012,
+            "measurements_ms": [
+              16.39,
+              26.096,
+              34.796,
+              27.48,
+              30.703,
+              31.971,
+              17.471,
+              25.634,
+              21.91,
+              39.096,
+              28.843,
+              13.685,
+              16.284,
+              19.322,
+              28.18,
+              19.519,
+              22.102,
+              40.012,
+              26.28,
+              31.854,
+              18.027,
+              31.341,
+              17.758,
+              37.357,
+              24.266,
+              38.923,
+              17.525,
+              15.239,
+              17.275,
+              34.986,
+              17.155,
+              16.805
+            ],
+            "mode": "shared_session_concurrent",
+            "operations": 32,
+            "p50_ms": 24.266,
+            "p95_ms": 39.096,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 141.04,
+            "revision_delta": 0,
+            "statuses": {
+              "200": 32
+            }
+          },
+          {
+            "batch_wall_ms": 205.046,
+            "concurrency": 4,
+            "distinct_sessions": 4,
+            "max_ms": 34.384,
+            "measurements_ms": [
+              13.083,
+              19.663,
+              30.544,
+              15.703,
+              18.993,
+              15.177,
+              26.383,
+              16.676,
+              13.866,
+              20.376,
+              17.033,
+              27.832,
+              19.752,
+              24.446,
+              32.142,
+              28.239,
+              33.19,
+              16.169,
+              18.251,
+              27.983,
+              26.973,
+              15.565,
+              34.384,
+              30.732,
+              16.829,
+              19.87,
+              26.006,
+              14.397,
+              16.912,
+              17.305,
+              27.467,
+              33.437
+            ],
+            "mode": "distinct_session_concurrent",
+            "operations": 32,
+            "p50_ms": 19.752,
+            "p95_ms": 33.437,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 156.06,
+            "revision_delta": 0,
+            "statuses": {
+              "200": 32
+            }
+          }
+        ]
+      }
+    ],
+    "scope": "Temporary synthetic Windows loopback Flask API and owned MongoDB Docker container",
+    "start_utc": "2026-11-28T02:16:23.024846+00:00"
+  },
+  "candidate_verification": {
+    "chrome": {
+      "json": {
+        "flows_passed": 5,
+        "receipt_sha256": "d388b1886618a28be5c2727029c68299ed4a3da0d1de7504360b963fb2ea71bc"
+      },
+      "mongo": {
+        "flows_passed": 4,
+        "receipt_sha256": "391af96e3ab12ee70705a8a06aeb6a1dbfda978f78779fa00c964f7753891021"
+      }
+    },
+    "local_api_suite": {
+      "passed": 640,
+      "skipped": 9,
+      "subtests_passed": 44
+    },
+    "native_directory_activity_sha256": "21e8a6ab7f3b28ddead150232a5aaf37fea94bd2033a79a05362bdb25328e969",
+    "native_test_covers_inactivity_expiration_and_revocation_between_transactions": true,
+    "native_test_passed": true,
+    "pair_check_sha256": "a0904020698fa1c3747f7ac6c311114491803d08c28eb2f62e04f3abf6fa2832",
+    "pair_passed": true,
+    "web_commit": "1693459f8df0bb0e2a80c7dd613131af7ef87462"
+  },
+  "limits": [
+    "One local host and one pass per revision",
+    "Six paced observations per engine",
+    "No TLS or integrated staging"
+  ],
+  "previous": {
+    "api_commit": "fdc616286d2314256082c4c2867b50290e73d510",
+    "dataset_sha256": "ebb6abd72b71c724b9129f9d2d88edafde7e924d608c7e02f4bef19a0310be8b",
+    "finished_utc": "2026-11-28T02:14:34.094113+00:00",
+    "harness_sha256": "df5f2e7a0f6aceef702640c765149093b567ee0aa509de50803cf740fa11c914",
+    "observations": [
+      {
+        "backend": "json",
+        "temporary_data_removed": true,
+        "windows": [
+          {
+            "batch_wall_ms": 6696.146,
+            "concurrency": 1,
+            "distinct_sessions": 1,
+            "max_ms": 72.394,
+            "measurements_ms": [
+              61.718,
+              55.136,
+              68.681,
+              72.394,
+              63.487,
+              71.804
+            ],
+            "mode": "wall_clock_paced",
+            "operations": 6,
+            "p50_ms": 63.487,
+            "p95_ms": 72.394,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": null,
+            "revision_delta": 6,
+            "statuses": {
+              "200": 6
+            }
+          },
+          {
+            "batch_wall_ms": 2006.35,
+            "concurrency": 4,
+            "distinct_sessions": 1,
+            "max_ms": 1090.437,
+            "measurements_ms": [
+              55.315,
+              43.767,
+              60.13,
+              60.087,
+              64.599,
+              1090.437,
+              40.455,
+              59.673,
+              795.139,
+              835.187,
+              69.647,
+              60.932,
+              54.816,
+              44.842,
+              75.758,
+              68.871,
+              338.572,
+              45.656,
+              54.491,
+              65.386,
+              59.474,
+              45.712,
+              64.278,
+              51.0,
+              839.44,
+              70.331,
+              64.681,
+              65.622,
+              58.907,
+              59.662,
+              60.666,
+              55.398
+            ],
+            "mode": "shared_session_concurrent",
+            "operations": 32,
+            "p50_ms": 60.13,
+            "p95_ms": 839.44,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 15.95,
+            "revision_delta": 32,
+            "statuses": {
+              "200": 32
+            }
+          },
+          {
+            "batch_wall_ms": 2062.387,
+            "concurrency": 4,
+            "distinct_sessions": 4,
+            "max_ms": 1094.504,
+            "measurements_ms": [
+              50.635,
+              78.749,
+              64.781,
+              64.61,
+              60.246,
+              69.926,
+              60.458,
+              44.663,
+              543.882,
+              59.899,
+              59.985,
+              44.58,
+              45.25,
+              580.872,
+              44.941,
+              54.887,
+              798.771,
+              60.824,
+              71.812,
+              90.42,
+              858.406,
+              54.298,
+              60.109,
+              65.55,
+              1094.504,
+              59.203,
+              65.231,
+              59.671,
+              340.25,
+              59.722,
+              45.142,
+              49.538
+            ],
+            "mode": "distinct_session_concurrent",
+            "operations": 32,
+            "p50_ms": 60.246,
+            "p95_ms": 858.406,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 15.52,
+            "revision_delta": 32,
+            "statuses": {
+              "200": 32
+            }
+          }
+        ]
+      },
+      {
+        "backend": "mongodb",
+        "mongo_cleanup": {
+          "owned_container_removed": true,
+          "owned_network_removed": true,
+          "post_cleanup_inventory_verified": true
+        },
+        "temporary_data_removed": true,
+        "windows": [
+          {
+            "batch_wall_ms": 6469.098,
+            "concurrency": 1,
+            "distinct_sessions": 1,
+            "max_ms": 38.396,
+            "measurements_ms": [
+              38.396,
+              21.489,
+              35.601,
+              30.179,
+              21.727,
+              18.701
+            ],
+            "mode": "wall_clock_paced",
+            "operations": 6,
+            "p50_ms": 21.727,
+            "p95_ms": 38.396,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": null,
+            "revision_delta": 6,
+            "statuses": {
+              "200": 6
+            }
+          },
+          {
+            "batch_wall_ms": 831.258,
+            "concurrency": 4,
+            "distinct_sessions": 1,
+            "max_ms": 386.13,
+            "measurements_ms": [
+              49.965,
+              61.181,
+              67.202,
+              386.13,
+              20.707,
+              36.317,
+              43.771,
+              52.164,
+              26.772,
+              104.39,
+              148.359,
+              38.688,
+              19.423,
+              49.552,
+              44.714,
+              27.894,
+              84.066,
+              271.105,
+              142.384,
+              18.053,
+              19.072,
+              231.768,
+              36.624,
+              26.349,
+              156.419,
+              45.069,
+              29.737,
+              21.349,
+              45.856,
+              302.181,
+              48.168,
+              46.032
+            ],
+            "mode": "shared_session_concurrent",
+            "operations": 32,
+            "p50_ms": 45.856,
+            "p95_ms": 302.181,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 38.5,
+            "revision_delta": 32,
+            "statuses": {
+              "200": 32
+            }
+          },
+          {
+            "batch_wall_ms": 925.247,
+            "concurrency": 4,
+            "distinct_sessions": 4,
+            "max_ms": 701.222,
+            "measurements_ms": [
+              21.611,
+              22.221,
+              153.778,
+              38.811,
+              49.795,
+              21.583,
+              19.405,
+              20.251,
+              117.584,
+              40.766,
+              19.789,
+              262.988,
+              61.958,
+              45.015,
+              45.962,
+              45.631,
+              70.405,
+              21.572,
+              48.928,
+              76.169,
+              36.184,
+              122.801,
+              42.389,
+              46.873,
+              701.222,
+              18.849,
+              44.242,
+              21.552,
+              23.472,
+              23.967,
+              39.518,
+              49.773
+            ],
+            "mode": "distinct_session_concurrent",
+            "operations": 32,
+            "p50_ms": 42.389,
+            "p95_ms": 262.988,
+            "response_sha256": "0102435e424dec0e42a560e3233be17b18c212596400fcdbfbe1ca49213ab474",
+            "responses_per_second": 34.59,
+            "revision_delta": 32,
+            "statuses": {
+              "200": 32
+            }
+          }
+        ]
+      }
+    ],
+    "scope": "Temporary synthetic Windows loopback Flask API and owned MongoDB Docker container",
+    "start_utc": "2026-11-28T02:14:00.474205+00:00"
+  },
+  "schema": 1,
+  "scope": "Local synthetic GET /api/v1/users, fixed-clock four-client bursts and six individually paced wall-clock requests per backend and revision",
+  "total_measurements": 280
+}

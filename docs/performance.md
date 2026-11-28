@@ -228,3 +228,31 @@ donnent trop peu de valeurs dans la queue de distribution pour publier
 un p99. La campagne couvre l’API seule et exclut le rendu Web, le TLS
 et le réseau de staging.
 [Résultats et empreintes des outils](../evidence/public/signature-http-projections-20261128.json).
+
+### Écriture d’activité dans l’annuaire
+
+L’API `9243cbb` consulte l’identité, le rôle et la page depuis le même
+instantané lorsque l’activité de la session est déjà à la seconde
+courante. Quand elle doit avancer, l’API revalide la session et met à
+jour l’activité dans la transaction qui lit l’annuaire. Les variantes
+JSON et MongoDB 8.0.38 ont rejoué le filtre sur le jeu de 500 comptes
+et 600 films, en repartant du même document pour chaque révision.
+
+Chaque ligne ci-dessous correspond à 32 GET avec quatre clients
+et une horloge applicative fixe. Le pourcentage de réponses réussies
+est de 100 % pour les deux révisions. Les corps JSON concordent.
+
+| Rafale | JSON p95 avant → après, ms | MongoDB p95 avant → après, ms | Révisions, chaque moteur |
+| --- | ---: | ---: | ---: |
+| Une session partagée | 839 → 295 | 302 → 39 | 32 → 0 |
+| Quatre sessions distinctes | 858 → 291 | 263 → 33 | 32 → 0 |
+
+Le lot séparé à horloge réelle a envoyé six requêtes par moteur et par
+révision, espacées d’au moins 1,05 s. Chacune a avancé l’activité.
+La latence maximale observée est passée de 72 à 90 ms avec JSON et de
+38 à 48 ms avec MongoDB. Une requête qui doit avancer l’activité paie
+le coût d’une lecture supplémentaire. L’échantillon espacé décrit le
+coût observé sur le banc. Le contrat natif a vérifié l’expiration
+d’inactivité et une révocation entre la première lecture et le
+renouvellement transactionnel.
+[Données brutes et périmètre](../evidence/public/signature-directory-activity-20261128.json).
