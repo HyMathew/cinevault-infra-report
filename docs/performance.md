@@ -204,7 +204,9 @@ d’un membre, limité à 0,75 CPU et 768 Mio.
 Pour chaque scénario et niveau de concurrence, cinq requêtes
 d’échauffement précèdent 50 GET mesurés. Le temps client comprend
 l’envoi, la lecture et le décodage JSON de la réponse. Le débit
-compte les succès par seconde sur la fenêtre de chaque lot. Le reçu
+compte les succès par seconde sur la fenêtre de chaque lot. L’annuaire
+utilise la même session administrateur pour tous les clients de la passe,
+avec une horloge applicative fixe. Le reçu
 conserve les latences et les statuts des 1 600 requêtes mesurées,
 toutes retournées en HTTP 200. Les deux moteurs ont renvoyé le même
 corps JSON canonisé pour chaque scénario. Le contrôle initial avait
