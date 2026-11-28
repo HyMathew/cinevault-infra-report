@@ -191,3 +191,38 @@ attendus et terminé sans HTTP 503. Le p95 du catalogue est de 850 à
 2 131 à 2 872 ms. La stabilisation observée sur ces passes coexiste
 avec une latence d’écriture élevée sur cette fixture.
 [Rejeu sur les manifestes exacts de la CI](../evidence/public/mixed-https-exact-ci-20261126.json).
+
+## Projections HTTP de Signature
+
+Le 28 novembre, l’API `244cd01` a servi les mêmes 600 films, 1 798
+exemplaires et 500 comptes synthétiques avec JSON et MongoDB 8.0.38.
+Chaque passe est repartie du même document. Le banc a alterné JSON,
+MongoDB, MongoDB, JSON sur le poste Windows. L’API Flask utilisait
+HTTP sur boucle locale et MongoDB tournait dans un réplica jetable
+d’un membre, limité à 0,75 CPU et 768 Mio.
+
+Pour chaque scénario et niveau de concurrence, cinq requêtes
+d’échauffement précèdent 50 GET mesurés. Le temps client comprend
+l’envoi, la lecture et le décodage JSON de la réponse. Le débit
+compte les succès par seconde sur la fenêtre de chaque lot. Le reçu
+conserve les latences et les statuts des 1 600 requêtes mesurées,
+toutes retournées en HTTP 200. Les deux moteurs ont renvoyé le même
+corps JSON canonisé pour chaque scénario. Le contrôle initial avait
+isolé un écart d’ordre dans les supports. La correction trie les
+supports distincts par identifiant, comme dans MongoDB.
+
+| Projection, quatre clients | JSON p95, ms | MongoDB p95, ms | JSON succès/s | MongoDB succès/s |
+| --- | ---: | ---: | ---: | ---: |
+| Catalogue avec disponibilité | 303–329 | 82–93 | 26–37 | 72–75 |
+| Cinq suggestions | 315–561 | 35–50 | 28–40 | 112–180 |
+| Fiche avec films apparentés | 309–311 | 35–52 | 30–44 | 116–196 |
+| Annuaire filtré avec pagination et session admin | 1 315–2 431 | 416–810 | 9–14 | 27–33 |
+
+Les intervalles correspondent aux deux passes par moteur, arrondies à
+l’unité. À un client, le p95 du catalogue avec disponibilité était de
+47–49 ms avec JSON et de 52–56 ms avec MongoDB. Les p50 et les durées
+de chaque lot figurent dans le reçu. Les 50 observations par lot
+donnent trop peu de valeurs dans la queue de distribution pour publier
+un p99. La campagne couvre l’API seule et exclut le rendu Web, le TLS
+et le réseau de staging.
+[Résultats et empreintes des outils](../evidence/public/signature-http-projections-20261128.json).
