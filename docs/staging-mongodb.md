@@ -14,6 +14,16 @@ dans ce staging isolé. [Réseaux Swarm](https://docs.docker.com/engine/swarm/ne
 
 ## Préparer les entrées
 
+La branche `quality/cinevault-signature-ci` sert à qualifier la paire de
+sources avant la disponibilité des paquets corrigés. Un push direct sur
+cette branche lance les tests applicatifs et documentaires. Les jobs de
+construction, de scan et de publication d’images sont désactivés sur
+cette ref. Les contrôles d’images et de provenance restent requis pour
+le staging signé. La branche est utilisée par push direct et le
+workflow des demandes de fusion conserve ses contrôles habituels.
+Le manifeste `.github/qualification-sources.json` lie les révisions
+de cette campagne.
+
 Le [précontrôle Swarm](../scripts/check_swarm_readiness.py) associe les
 relevés Docker à leurs rôles. Il vérifie les trois nœuds, le manager
 Leader en Drain, les labels, la santé et les digests des tâches stables,
